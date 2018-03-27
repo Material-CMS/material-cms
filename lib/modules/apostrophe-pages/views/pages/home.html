@@ -3,26 +3,28 @@
 {% block title %}Home{% endblock %}
 {% block main %}
   <div class="main-content">
-    <h3>Hello world!
-      {% if not data.user %}
-        <a class="login-link" href="/login">Login</a>
-      {% endif %}
-    </h3>
-    <p>This is a very barebones Apostrophe project. Now, get to work and make a real website!</p>
-    {{ apos.area(data.page, 'body', {
-      widgets: {
-        'apostrophe-images': {
-          size: 'full'
-        },
-        'apostrophe-rich-text': {
-          toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Unlink' ],
-          styles: [
-            { name: 'Heading', element: 'h3' },
-            { name: 'Subheading', element: 'h4' },
-            { name: 'Paragraph', element: 'p' }
-          ]
-        }
+    {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
+      limit: 1,
+      minSize: [ 1200, 600 ],
+      addLabel: 'Set the logo',
+      editLabel: 'Change the logo',
+      controls: {
+        movable: false,
+        removable: false,
+        position: 'bottom-right'
       }
+    }) }}
+  </div>
+
+  <div class="main-content">
+    {{ apos.singleton(data.page, 'textBlock', 'apostrophe-rich-text', {
+      toolbar: [ 'Bold', 'Italic' ]
+    }) }}
+  </div>
+
+  <div class="main-content">
+    {{ apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
+      toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ]
     }) }}
   </div>
 {% endblock %}
