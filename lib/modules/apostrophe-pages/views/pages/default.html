@@ -1,21 +1,19 @@
 {% extends "layout.html" %}
 
 {% block beforeMain %}
-  <div class="block hero">
-    <div class="inner">
-      <div class="hero-text">
-        <h4>Welcome to my first Apostrophe site!</h4>
-      </div>
-    </div>
-  </div>
+
 {% endblock %}
 
 {% block main %}
-  {#
-    Usually, your page templates in the apostrophe-pages module will override
-    this block. It is safe to assume this is where your page-specific content
-    should go.
-  #}
+  <div id="fullpage" class="glass">
+    <div id="section0" class="section">
+      <div class="main-content">
+        {{ apos.singleton(data.page, 'textBlock', 'apostrophe-rich-text', {
+          toolbar: [ 'Bold', 'Italic' ]
+        }) }}
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block afterMain %}

@@ -2,29 +2,40 @@
 
 {% block title %}Home{% endblock %}
 {% block main %}
-  <div class="main-content">
-    {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
-      limit: 1,
-      minSize: [ 1200, 600 ],
-      addLabel: 'Set the logo',
-      editLabel: 'Change the logo',
-      controls: {
-        movable: false,
-        removable: false,
-        position: 'bottom-right'
-      }
-    }) }}
+
+<div id="fullpage" class="glass">
+  <div id="section0" class="section">
+
+    <div class="main-content">
+      {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
+        limit: 1,
+        minSize: [ 1200, 600 ],
+        addLabel: 'Set the logo',
+        editLabel: 'Change the logo',
+        controls: {
+          movable: false,
+          removable: true,
+          position: 'bottom-right'
+        }
+      }) }}
+    </div>
+
+    <div class="main-content">
+      {{ apos.singleton(data.page, 'textBlock', 'apostrophe-rich-text', {
+        toolbar: [ 'Bold', 'Italic' ]
+      }) }}
+    </div>
+
   </div>
 
-  <div class="main-content">
-    {{ apos.singleton(data.page, 'textBlock', 'apostrophe-rich-text', {
-      toolbar: [ 'Bold', 'Italic' ]
-    }) }}
-  </div>
+  <div id="section1" class="section">
 
-  <div class="main-content">
-    {{ apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
-      toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ]
-    }) }}
+    <div class="main-content">
+      {{ apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
+        toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ]
+      }) }}
+    </div>
+
   </div>
+</div>
 {% endblock %}
