@@ -3,23 +3,20 @@
 {% block title %}Home{% endblock %}
 
 {% block beforeMain %}
-
-  <nav id="nav" class="out">
+  <nav id="nav">
     <ul>
-    <li><a data-menuanchor="intro" href="#intro" class="nav-label active">Intro</a></li>
-    <li><a data-menuanchor="me" href="#me" class="nav-label">Second Page</a></li>
-    <li><a data-menuanchor="id" href="#id" class="nav-label">Third Page</a></li>
+    <li><a data-menuanchor="page01" href="#page01" class="active">First Page</a></li>
+    <li><a data-menuanchor="page02" href="#page02" class="">Second Page</a></li>
+    <li><a data-menuanchor="page03" href="#page03" class="">Third Page</a></li>
+    <li><a data-menuanchor="page04" href="#page04" class="">Fourth Page</a></li>
     </ul>
   </nav>
-
 {% endblock %}
 
 {% block main %}
-
 <div id="fullpage" class="glass">
 
-  <div id="section0" class="section">
-
+  <div class="section">
     <div class="main-content">
       {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
         limit: 1,
@@ -35,29 +32,35 @@
         }
       }) }}
     </div>
-
     <div class="main-content">
       {{ apos.singleton(data.page, 'textBlock', 'apostrophe-rich-text', {
         toolbar: [ 'Bold', 'Italic' ]
       }) }}
     </div>
-
   </div>
 
-  <div id="section1" class="section">
-
+  <div class="section">
     <div class="main-content">
       {{ apos.singleton(data.page, 'resume', 'apostrophe-files', {
         limit: 1
       }) }}
     </div>
+  </div>
 
+  <div class="section">
+    <div class="main-content">
+      {{ apos.singleton(data.page, 'resume', 'apostrophe-files', {
+        limit: 1
+      }) }}
+    </div>
+  </div>
+
+  <div class="section fp-auto-height">
     <div class="main-content">
       {{ apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
         toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ]
       }) }}
     </div>
-
   </div>
 
 </div>
