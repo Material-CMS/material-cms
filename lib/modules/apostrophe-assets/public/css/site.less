@@ -3,6 +3,40 @@
 // Delete the boilerplate CSS below when you are ready to dive in and customize your sites:
 body { background-color: @apos-light; }
 
+//Navigation
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 1;
+
+  ul {
+
+    li {
+      display: inline-block;
+
+      a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        padding: 0 0.5em 0 0.5em;
+        outline: 0;
+        position: relative;
+        font-size: 16px;
+      }
+
+      a:hover {
+        background-color: #7BAABE;
+      }
+      
+    }
+  }
+
+
+}
+
+// Main stuff
 .main-content {
   font-family: 'Karla', sans-serif;
   margin: 200px auto;

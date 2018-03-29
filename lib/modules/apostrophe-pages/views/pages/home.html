@@ -1,21 +1,37 @@
 {% extends "layout.html" %}
 
 {% block title %}Home{% endblock %}
+
+{% block beforeMain %}
+
+  <nav id="nav" class="out">
+    <ul>
+    <li><a data-menuanchor="intro" href="#intro" class="nav-label active">Intro</a></li>
+    <li><a data-menuanchor="me" href="#me" class="nav-label">Second Page</a></li>
+    <li><a data-menuanchor="id" href="#id" class="nav-label">Third Page</a></li>
+    </ul>
+  </nav>
+
+{% endblock %}
+
 {% block main %}
 
 <div id="fullpage" class="glass">
+
   <div id="section0" class="section">
 
     <div class="main-content">
       {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
         limit: 1,
         minSize: [ 1200, 600 ],
+        aspectRatio: [ 2, 1 ],
+        size: 'full',
         addLabel: 'Set the logo',
         editLabel: 'Change the logo',
         controls: {
           movable: false,
           removable: true,
-          position: 'bottom-right'
+          position: 'bottom-left'
         }
       }) }}
     </div>
@@ -31,11 +47,18 @@
   <div id="section1" class="section">
 
     <div class="main-content">
+      {{ apos.singleton(data.page, 'resume', 'apostrophe-files', {
+        limit: 1
+      }) }}
+    </div>
+
+    <div class="main-content">
       {{ apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
         toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ]
       }) }}
     </div>
 
   </div>
+
 </div>
 {% endblock %}
