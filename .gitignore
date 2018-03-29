@@ -14,4 +14,3 @@ public/css/*.map
 public/css/master-*.less
 .jshintrc
 public/js/_site-compiled.js
-lib/modules/fullpage
