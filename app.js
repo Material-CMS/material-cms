@@ -21,6 +21,8 @@ var apos = require('apostrophe')({
     // `views/` folder of the project
 
     'fullpage': {},
+    'materialize': {},
+    'materialize-widgets': {},
 
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
 

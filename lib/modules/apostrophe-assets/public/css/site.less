@@ -5,50 +5,19 @@ body { background-color: @apos-light; }
 
 //Navigation
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100px;
-  z-index: 1;
-
-  ul {
-    font-size: 0;
-
-    li {
-      display: inline-block;
-
-      a {
-        position: relative;
-        display: block;
-        text-decoration: none;
-        padding: 1rem;
-        outline: 0;
-        font-family: 'Karla', sans-serif;
-        font-size: 16px;
-        color: @apos-primary;
-      }
-      
-      //hover and active backgrounds
-      a:hover {
-        background-color: @apos-white;
-      }
-
-      .active {
-        background-color: @apos-white;
-      }
-    }
+  .brand-logo {
+    font-family: 'Karla', sans-serif;
+    color: @apos-primary;
   }
+  ul { li { a {
+        font-family: 'Karla', sans-serif;
+        color: @apos-primary;
+  } } }
 }
 
 // Main stuff
 .main-content {
   font-family: 'Karla', sans-serif;
-  margin: 200px auto;
-  padding: 20px;
-  max-width: 500px;
-  color: @apos-white;
-  background-color: @apos-primary;
-  .apos-drop-shadow;
 
   .login-link {
     float: right;
@@ -68,4 +37,8 @@ nav {
 
   strong { font-weight: bold; }
   em { font-style: italic; }
+
+  .apos-peek {
+    opacity: 1;
+  }
 }
