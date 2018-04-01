@@ -1,23 +1,75 @@
 {% extends "layout.html" %}
 
 {% block beforeMain %}
-
-{% endblock %}
-
-{% block main %}
-  <div id="fullpage" class="glass">
-    <div id="section0" class="section">
-      <div class="main-content">
-        {{ apos.singleton(data.page, 'textBlock', 'apostrophe-rich-text', {
-          toolbar: [ 'Bold', 'Italic' ]
-        }) }}
+  <div class="navbar-fixed">
+    <nav class='grey lighten-5'>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li data-menuanchor="page01" class="active" ><a href="#page01">First Page</a></li>
+          <li data-menuanchor="page02"><a href="#page02">Second Page</a></li>
+          <li data-menuanchor="page03" ><a href="#page03">Third Page</a></li>
+          <li data-menuanchor="page04"><a href="#page04">Fourth Page</a></li>
+        </ul>
       </div>
-    </div>
+    </nav>
   </div>
 {% endblock %}
 
+
+{% block main %}
+<div id="fullpage" class="glass">
+
+  <div class="section">
+    <div class="main-content">
+      {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
+        limit: 1,
+        minSize: [ 100, 100 ],
+        aspectRatio: [ 2, 1 ],
+        size: 'full',
+        addLabel: 'Set the logo',
+        editLabel: 'Change the logo',
+        controls: {
+          movable: false,
+          removable: true,
+          position: 'bottom-left'
+        }
+      }) }}
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="main-content">
+      {{ apos.area(data.page, 'navigation', {
+        limit: 1,
+        widgets: {
+          materialize: {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
+    </div>
+  </div>
+
+  <div class="section">
+  </div>
+
+  <div class="section fp-auto-height">
+    <footer class="page-footer">
+      <div class="container">
+        {{ apos.singleton(data.page, 'materialize-footer', {
+
+        }) }}
+      </div>
+    </footer>
+  </div>
+</div>
+{% endblock %}
+
 {% block afterMain %}
-  {#
-    This would be a great place to put a global footer.
-  #}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}

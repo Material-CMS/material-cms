@@ -16,6 +16,9 @@
     </div>
   </nav>
 </div>
+
+
+
 {% endblock %}
 
 {% block main %}
@@ -37,6 +40,7 @@
         }
       }) }}
     </div>
+
   </div>
 
   <div class="section">
@@ -48,7 +52,7 @@
             controls: {
               movable: false,
               removable: true,
-              position: 'bottom-left'
+              position: 'top-right'
             }
           }
         }
@@ -57,20 +61,24 @@
   </div>
 
   <div class="section">
-    <div class="main-content">
-      {{ apos.singleton(data.page, 'resume', 'apostrophe-files', {
-        limit: 1
-      }) }}
-    </div>
+
+
+
   </div>
 
   <div class="section fp-auto-height">
-    <div class="main-content">
-      {{ apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
-        toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ]
-      }) }}
-    </div>
+    <footer class="page-footer">
+      <div class="container">
+        {{ apos.singleton(data.page, 'materialize-footer', {
+
+        }) }}
+      </div>
+    </footer>
   </div>
 
 </div>
+{% endblock %}
+
+{% block afterMain %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
