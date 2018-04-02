@@ -4,7 +4,7 @@
   <div class="navbar-fixed">
     <nav class='grey lighten-5'>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="{{ data.home._url }}" class="brand-logo">{{ data.home.title }}</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li data-menuanchor="page01" class="active" ><a href="#page01">First Page</a></li>
           <li data-menuanchor="page02"><a href="#page02">Second Page</a></li>
@@ -22,17 +22,16 @@
 
   <div class="section">
     <div class="main-content">
-      {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
+      {{ apos.area(data.page, 'image', {
         limit: 1,
-        minSize: [ 100, 100 ],
-        aspectRatio: [ 2, 1 ],
-        size: 'full',
-        addLabel: 'Set the logo',
-        editLabel: 'Change the logo',
-        controls: {
-          movable: false,
-          removable: true,
-          position: 'bottom-left'
+        widgets: {
+          'materialize-card': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
         }
       }) }}
     </div>
@@ -40,10 +39,10 @@
 
   <div class="section">
     <div class="main-content">
-      {{ apos.area(data.page, 'navigation', {
+      {{ apos.area(data.page, 'gallery', {
         limit: 1,
         widgets: {
-          materialize: {
+          'materialize-cards': {
             controls: {
               movable: false,
               removable: true,
@@ -61,9 +60,6 @@
   <div class="section fp-auto-height">
     <footer class="page-footer">
       <div class="container">
-        {{ apos.singleton(data.page, 'materialize-footer', {
-
-        }) }}
       </div>
     </footer>
   </div>

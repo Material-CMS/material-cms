@@ -20,7 +20,9 @@
           </div>
           {%- block description -%}
             {%- if image.description -%}
-              <div class="card-content">{{ image.description | nlbr }}</div>
+              <div class="card-content">
+                <p>{{ image.description | nlbr }}</p>
+              </div>
             {%- endif -%}
           {%- endblock -%}
           {%- block credit -%}

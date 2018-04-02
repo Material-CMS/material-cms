@@ -6,8 +6,8 @@
 
   <nav>
     <div class="navbar-fixed">
-      <div class="nav-wrapper grey lighten-5">
-        <a href="#" class="brand-logo">Logo</a>
+      <div class="nav-wrapper grey lighten-5 z-depth-2">
+        <a href="{{ data.home._url }}" class="brand-logo">{{ data.home.title }}</a>
          <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="nav-activator right hide-on-med-and-down">
           <li data-menuanchor="page01" class="active" ><a href="#page01">First Page</a></li>
@@ -31,7 +31,7 @@
 <div id="fullpage" class="glass">
 
   <div class="section">
-    <div class="main-content">
+    <div class="main-content container">
       {{ apos.area(data.page, 'video', {
         limit: 1,
         widgets: {
@@ -48,10 +48,17 @@
   </div>
 
   <div class="section">
-    <div class="main-content">
+    <div class="main-content container">
       {{ apos.area(data.page, 'gallery', {
         limit: 1,
         widgets: {
+          'materialize-card': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
           'materialize-cards': {
             controls: {
               movable: false,
@@ -65,7 +72,7 @@
   </div>
 
   <div class="section">
-    <div class="main-content">
+    <div class="main-content container">
       {{ apos.area(data.page, 'image', {
         limit: 1,
         widgets: {
@@ -75,11 +82,17 @@
               removable: true,
               position: 'top-right'
             }
+          },
+          'materialize-cards': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
           }
         }
       }) }}
     </div>
-
   </div>
 
   <div class="section fp-auto-height">

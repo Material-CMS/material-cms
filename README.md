@@ -1,5 +1,5 @@
 ## Apostrophe CMS, fullpage.js & Materialize CSS
-# This is my approach to integrate fullpage.js and materialize css into the awesome Apostrophe CMS.
+## This is my approach to integrate fullpage.js and materialize css into the awesome Apostrophe CMS.
 ---------------
 
 For more documentation on Fullpage JS, visit the [Fullpage repository](https://github.com/alvarotrigo/fullPage.js/)

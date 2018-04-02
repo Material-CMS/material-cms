@@ -23,7 +23,6 @@ var apos = require('apostrophe')({
     'apostrophe-video-widgets': {},
     'fullpage': {},
     'materialize': {},
-    'materialize-widgets': {},
     'materialize-video-widgets': {},
     'materialize-card-widgets': {},
     'materialize-cards-widgets': {},
