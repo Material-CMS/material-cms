@@ -1,20 +1,18 @@
 @import "utils/reset.less";
-
 // Delete the boilerplate CSS below when you are ready to dive in and customize your sites:
 body { background-color: @apos-light; }
-
 //Navigation
 nav {
+  
   .brand-logo {
     font-family: 'Karla', sans-serif;
-    color: @apos-primary;
+    color: @apos-primary !important;
   }
   ul { li { a {
         font-family: 'Karla', sans-serif;
-        color: @apos-primary;
+        color: @apos-primary !important;
   } } }
 }
-
 // Main stuff
 .main-content {
   font-family: 'Karla', sans-serif;
@@ -44,5 +42,12 @@ nav {
 }
 // Override because of Materialize
 .apos-ui .apos-field-input {
-    height: inherit;
+  height: inherit;
+}
+.apos-ui .apos-admin-bar {
+  top: 80px;
+  background-color: @apos-primary;
+}
+.sidenav-trigger {
+  color: @apos-primary;
 }

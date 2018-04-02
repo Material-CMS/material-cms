@@ -6,22 +6,11 @@
         {{ apos.singleton(data.widget, 'imageLeft', 'apostrophe-images', {
           minSize: [ 700, 350 ],
           aspectRatio: [ 2, 1 ],
-          limit: 1,
+          limit: 2,
           size: 'full',
           controls: {
             movable: false,
             position: 'top-left'
-          }
-        }) }}
-      </div>
-
-
-      <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-
-      <div class="card-content">
-        {{ apos.singleton(data.widget, 'contentLeft', 'apostrophe-rich-text', {
-          controls: {
-            position: 'top-right'
           }
         }) }}
       </div>
@@ -41,18 +30,6 @@
           controls: {
             movable: false,
             position: 'top-left'
-          }
-        }) }}
-      </div>
-
-      <div class="card-title">
-
-      </div>
-
-      <div class="card-content">
-        {{ apos.singleton(data.widget, 'contentRight', 'apostrophe-rich-text', {
-          controls: {
-            position: 'top-right'
           }
         }) }}
       </div>

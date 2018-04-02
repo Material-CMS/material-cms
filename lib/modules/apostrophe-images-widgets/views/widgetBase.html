@@ -14,22 +14,26 @@
               ; background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
             {%- endif -%}
           ">
-          {%- block title -%}<h4 class="apos-image-widget-image-title card-title">{{ image.title }}</h4>{%- endblock -%}
-          <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}" data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}" />
+          <div class="card-image">
+            <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}" data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}" />
+            {%- block title -%}<h4 class="card-title apos-image-widget-image-title">{{ image.title }}</h4>{%- endblock -%}
+          </div>
+          {%- block description -%}
+            {%- if image.description -%}
+              <div class="card-content">{{ image.description | nlbr }}</div>
+            {%- endif -%}
+          {%- endblock -%}
           {%- block credit -%}
             {%- if image.credit -%}
               {%- if image.creditUrl -%}
-                <a href="{{ image.creditUrl }}">
+                <div class="card-action">
+                  <a href="{{ image.creditUrl }}">
               {%- endif -%}
               {{ image.credit }}
               {%- if image.creditUrl -%}
-                </a>
+                  </a>
+                </div>
               {%- endif -%}
-            {%- endif -%}
-          {%- endblock -%}
-          {%- block description -%}
-            {%- if image.description -%}
-              <div>{{ image.description | nlbr }}</div>
             {%- endif -%}
           {%- endblock -%}
         </div>
@@ -39,7 +43,6 @@
 </div>
 {% block arrows %}
   {% if data.widget._pieces.length > 1 %}
-    <a href="#" data-next class="apos-slideshow-button apos-slideshow-next default-style"><i class="fa fa-angle-right"></i></a>
-    <a href="#" data-previous class="apos-slideshow-button apos-slideshow-prev default-style"><i class="fa fa-angle-left"></i></a>
+    <a href="#" data-next class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
   {% endif %}
 {% endblock %}
