@@ -32,28 +32,10 @@
 
   <div class="section">
     <div class="main-content">
-      {{ apos.singleton(data.page, 'logo', 'apostrophe-images', {
-        limit: 1,
-        minSize: [ 100, 100 ],
-        aspectRatio: [ 2, 1 ],
-        size: 'full',
-        addLabel: 'Set the logo',
-        editLabel: 'Change the logo',
-        controls: {
-          movable: false,
-          removable: true,
-          position: 'bottom-left'
-        }
-      }) }}
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="main-content">
-      {{ apos.area(data.page, 'gallery', {
+      {{ apos.area(data.page, 'video', {
         limit: 1,
         widgets: {
-          materialize: {
+          'materialize-video': {
             controls: {
               movable: false,
               removable: true,
@@ -66,6 +48,37 @@
   </div>
 
   <div class="section">
+    <div class="main-content">
+      {{ apos.area(data.page, 'gallery', {
+        limit: 1,
+        widgets: {
+          'materialize-cards': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="main-content">
+      {{ apos.area(data.page, 'image', {
+        limit: 1,
+        widgets: {
+          'materialize-card': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
+    </div>
 
   </div>
 

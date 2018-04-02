@@ -20,9 +20,14 @@ var apos = require('apostrophe')({
     // If a template is not found somewhere else, serve it from the top-level
     // `views/` folder of the project
 
+    'apostrophe-video-widgets': {},
     'fullpage': {},
     'materialize': {},
     'materialize-widgets': {},
+    'materialize-video-widgets': {},
+    'materialize-card-widgets': {},
+    'materialize-cards-widgets': {},
+
 
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
 
