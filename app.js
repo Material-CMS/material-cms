@@ -26,6 +26,8 @@ var apos = require('apostrophe')({
     'materialize-video-widgets': {},
     'materialize-card-widgets': {},
     'materialize-cards-widgets': {},
+    'materialize-button-widgets': {},
+    'materialize-footer-widgets': {},
 
 
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }

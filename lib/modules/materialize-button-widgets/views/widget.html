@@ -1,0 +1,9 @@
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">account_circle</i>
+  </a>
+  <ul>
+    {%- if data.widget.phone -%}<li><a href="{{ data.widget.phone }}" class="btn-floating green"><i class="material-icons">local_phone</i></a></li>{%- endif -%}
+    {%- if data.widget.email -%}<li><a href="mailto:{{ data.widget.email }}" class="btn-floating blue"><i class="material-icons">email</i></a></li>{%- endif -%}
+  </ul>
+</div>
