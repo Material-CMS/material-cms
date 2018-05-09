@@ -1,0 +1,43 @@
+
+<ul class="collapsible">
+
+{%- if data.widget.header1 -%}
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">filter_drama</i>
+      {{ data.widget.header1 }}
+
+      <span class="badge">{{ data.widget.date1 }}</span>
+
+    </div>
+    <div class="collapsible-body"><p>{{ data.widget.text1 }}</p></div>
+  </li>
+{%- endif -%}
+
+{%- if data.widget.header2 -%}
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">filter_drama</i>
+      {{ data.widget.header1 }}
+
+      <span class="badge">{{ data.widget.date2 }}</span>
+
+    </div>
+    <div class="collapsible-body"><p>{{ data.widget.text2 }}</p></div>
+  </li>
+{%- endif -%}
+
+{%- if data.widget.header3 -%}
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">filter_drama</i>
+      {{ data.widget.header3 }}
+
+      <span class="badge">{{ data.widget.date3 }}</span>
+
+    </div>
+    <div class="collapsible-body"><p>{{ data.widget.text3 }}</p></div>
+  </li>
+{%- endif -%}
+
+</ul>

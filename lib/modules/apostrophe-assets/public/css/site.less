@@ -1,17 +1,31 @@
 @import "utils/reset.less";
 // Delete the boilerplate CSS below when you are ready to dive in and customize your sites:
 body { background-color: @apos-light; }
+
 //Navigation
+.nav{
+  z-index:9;
+  display:block;
+  position: fixed;
+  width: 100%;
+}
+
 nav {
 
   .brand-logo {
     font-family: 'Karla', sans-serif;
     color: @apos-primary !important;
   }
-  ul { li { a {
+
+  ul {
+    li {
+      a {
         font-family: 'Karla', sans-serif;
         color: @apos-primary !important;
-  } } }
+      }
+    }
+  }
+
 }
 // Main stuff
 .main-content {
@@ -53,4 +67,10 @@ nav {
 }
 .fp-auto-height {
   min-height: 500px;
+}
+.sidenav-overlay {
+  z-index: 7;
+}
+.fixed-action-btn {
+  z-index: 1;
 }

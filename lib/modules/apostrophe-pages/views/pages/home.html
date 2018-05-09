@@ -3,8 +3,8 @@
 {% block title %}Home{% endblock %}
 
 {% block beforeMain %}
+<div class="nav">
   <nav>
-    <div class="navbar-fixed">
       <div class="nav-wrapper grey lighten-5 z-depth-2">
         <a href="{{ data.page._url }}" class="brand-logo">{{ data.page.title }}</a>
          <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -15,7 +15,7 @@
           <li data-menuanchor="page04"><a href="#page04">Fourth Page</a></li>
         </ul>
       </div>
-    </div>
+
     <ul class="nav-activator sidenav" id="mobile">
       <li data-menuanchor="page01" class="active" ><a href="#page01">First Page</a></li>
       <li data-menuanchor="page02"><a href="#page02">Second Page</a></li>
@@ -23,6 +23,7 @@
       <li data-menuanchor="page04"><a href="#page04">Fourth Page</a></li>
     </ul>
   </nav>
+</div>
 {% endblock %}
 
 {% block main %}
@@ -30,15 +31,40 @@
 
   <div class="section">
     <div class="main-content container">
-
+      {{ apos.area(data.page, 'section1', {
+        limit: 2,
+        widgets: {
+          'materialize-collapsible': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-video': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
     </div>
   </div>
 
   <div class="section">
     <div class="main-content container">
-      {{ apos.area(data.page, 'gallery', {
-        limit: 1,
+      {{ apos.area(data.page, 'section2', {
+        limit: 2,
         widgets: {
+          'apostrophe-video': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
           'materialize-card': {
             controls: {
               movable: false,
@@ -60,9 +86,16 @@
 
   <div class="section">
     <div class="main-content container">
-      {{ apos.area(data.page, 'image', {
-        limit: 1,
+      {{ apos.area(data.page, 'section3', {
+        limit: 2,
         widgets: {
+          'apostrophe-video': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
           'materialize-card': {
             controls: {
               movable: false,
@@ -80,31 +113,28 @@
         }
       }) }}
     </div>
-  </div>
-
-  <div class="section fp-auto-height">
-    <footer class="page-footer">
-      <div class="container">
-        {{ apos.area(data.page, 'button', {
-          limit: 1,
-          widgets: {
-
-            'materialize-button': {
-              controls: {
-                movable: false,
-                removable: true,
-                position: 'top-right'
-              }
-            }
-          }
-        }) }}
-      </div>
-    </footer>
   </div>
 
 </div>
 {% endblock %}
 
 {% block afterMain %}
+<div class="section">
 
+    <div class="main-content">
+      {{ apos.area(data.page, 'button', {
+        limit: 1,
+        widgets: {
+          'materialize-button': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
+    </div>
+
+</div>
 {% endblock %}

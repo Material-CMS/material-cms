@@ -24,10 +24,10 @@ var apos = require('apostrophe')({
     'fullpage': {},
     'materialize': {},
     'materialize-video-widgets': {},
+    'materialize-collapsible-widgets': {},
     'materialize-card-widgets': {},
     'materialize-cards-widgets': {},
     'materialize-button-widgets': {},
-    'materialize-footer-widgets': {},
 
 
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
