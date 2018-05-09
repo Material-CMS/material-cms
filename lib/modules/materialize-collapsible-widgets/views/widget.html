@@ -4,7 +4,7 @@
 {%- if data.widget.header1 -%}
   <li>
     <div class="collapsible-header">
-      <i class="material-icons">filter_drama</i>
+      <i class="material-icons">{{ data.widget.icon1 }}</i>
       {{ data.widget.header1 }}
 
       <span class="badge">{{ data.widget.date1 }}</span>
@@ -17,7 +17,7 @@
 {%- if data.widget.header2 -%}
   <li>
     <div class="collapsible-header">
-      <i class="material-icons">filter_drama</i>
+      <i class="material-icons">{{ data.widget.icon2 }}</i>
       {{ data.widget.header1 }}
 
       <span class="badge">{{ data.widget.date2 }}</span>
@@ -30,7 +30,7 @@
 {%- if data.widget.header3 -%}
   <li>
     <div class="collapsible-header">
-      <i class="material-icons">filter_drama</i>
+      <i class="material-icons">{{ data.widget.icon3 }}</i>
       {{ data.widget.header3 }}
 
       <span class="badge">{{ data.widget.date3 }}</span>
@@ -39,5 +39,19 @@
     <div class="collapsible-body"><p>{{ data.widget.text3 }}</p></div>
   </li>
 {%- endif -%}
+
+{%- if data.widget.header4 -%}
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">{{ data.widget.icon4 }}</i>
+      {{ data.widget.header4 }}
+
+      <span class="badge">{{ data.widget.date4 }}</span>
+
+    </div>
+    <div class="collapsible-body"><p>{{ data.widget.text4 }}</p></div>
+  </li>
+{%- endif -%}
+
 
 </ul>

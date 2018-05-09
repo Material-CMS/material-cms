@@ -28,6 +28,7 @@ var apos = require('apostrophe')({
     'materialize-card-widgets': {},
     'materialize-cards-widgets': {},
     'materialize-button-widgets': {},
+    'materialize-double-widgets': {},
 
 
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
