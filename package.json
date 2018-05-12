@@ -1,5 +1,5 @@
 {
-  "name": "bad-cms",
+  "name": "fullpage-cms",
   "version": "2.0.0",
   "description": "Minimal Apostrophe Boilerplate",
   "main": "app.js",
@@ -14,8 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "apostrophe": "^2.47.0",
-    "apostrophe-link-widgets": "^1.0.4",
-    "gulp": "^3.9.1",
-    "npm": "^5.8.0"
+    "mozjpeg": "^6.0.0"
   }
 }
