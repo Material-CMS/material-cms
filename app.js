@@ -1,7 +1,7 @@
 var path = require('path');
 
 var apos = require('apostrophe')({
-  shortName: 'bad-cms',
+  shortName: 'fullpage-cms',
 
   // See lib/modules for basic project-level configuration of our modules
   // responsible for serving static assets, managing page templates and
@@ -24,12 +24,14 @@ var apos = require('apostrophe')({
     'fullpage': {},
     'materialize': {},
     'materialize-video-widgets': {},
-    'materialize-collapsible-widgets': {},
     'materialize-card-widgets': {},
     'materialize-cards-widgets': {},
     'materialize-button-widgets': {},
     'materialize-double-widgets': {},
-
+    'materialize-collapsibles':{},
+    'materialize-collapsibles-widgets': {
+      extend: 'apostrophe-pieces-widgets'
+    },
 
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
 
