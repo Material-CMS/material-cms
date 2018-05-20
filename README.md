@@ -1,7 +1,7 @@
 ## Apostrophe CMS, fullpage.js & Materialize CSS
 ## This is my approach to integrate fullpage.js and materialize css into the awesome Apostrophe CMS.
 
-Still in alpha but most main functions for building amazing Static fullpage, material landing pages are implemented.
+Still in alpha but most main functions for building amazing static fullpage, material landing pages are implemented.
 
 
 v0.8

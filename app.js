@@ -26,8 +26,8 @@ var apos = require('apostrophe')({
     'materialize-video-widgets': {},
     'materialize-card-widgets': {},
     'materialize-cards-widgets': {},
-    'materialize-button-widgets': {},
     'materialize-double-widgets': {},
+    'materialize-footer-widgets': {},
     'materialize-collapsibles':{},
     'materialize-collapsibles-widgets': {
       extend: 'apostrophe-pieces-widgets'
