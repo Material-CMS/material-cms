@@ -1,11 +1,10 @@
 <div class="row">
+  
   <div class="col s12 m6 l6">
-    <div class="hoverable">
-
       {{ apos.area(data.widget, 'cardLeft', {
         limit: 4,
         widgets: {
-          'materialize-collapsible': {
+          'materialize-collapsibles': {
             controls: {
               movable: false,
               removable: true,
@@ -28,17 +27,13 @@
           }
         }
       }) }}
-
-    </div>
   </div>
 
   <div class="col s12 m6 l6">
-    <div class="hoverable">
-
       {{ apos.area(data.widget, 'cardRight', {
         limit: 4,
         widgets: {
-          'materialize-collapsible': {
+          'materialize-collapsibles': {
             controls: {
               movable: false,
               removable: true,
@@ -61,8 +56,6 @@
           }
         }
       }) }}
-
-    </div>
   </div>
 
 </div>
