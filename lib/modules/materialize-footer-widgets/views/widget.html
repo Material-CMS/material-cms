@@ -1,0 +1,21 @@
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5>{{ data.page.title }}</h5>
+      {%- if data.widget.text -%}<p>{{ data.widget.text }}</p>{%- endif -%}
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5>Links</h5>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copyright">
+    <div class="container">
+    © {{ data.widget.date }} {{ data.widget.copy }}
+    {%- if data.widget.link -%}<a class="grey-text text-lighten-4 right" href="{{ data.widget.link }}">{{ data.page.link }}</a>{%- endif -%}
+    </div>
+  </div>
+</footer>
