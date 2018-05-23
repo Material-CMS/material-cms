@@ -1,9 +1,10 @@
 <ul class="collapsible hoverable">
   {% for piece in data.widget._pieces %}
-  <li>
+  <li class="{{ piece.active }}">
 
     <div class="collapsible-header" tabindex="0">
       {%- if piece.icon -%}<i class="material-icons">{{ piece.icon }}</i>{%- endif -%}
+
       {{ piece.header }}
 
       {%- if piece.date -%}<span class="badge">{{ piece.date }}</span>{%- endif -%}

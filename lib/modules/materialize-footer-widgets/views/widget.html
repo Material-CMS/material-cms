@@ -1,11 +1,7 @@
 <footer class="page-footer">
   <div class="container">
     <div class="row">
-      <div class="col l2 s12">
-        <h5>{{ data.page.title }}</h5>
-      {%- if data.widget.text -%}<p>{{ data.widget.text }}</p>{%- endif -%}
-      </div>
-      <div class="col l8 offset-l2 s12">
+      <div class="col l8 s12">
         <form action="{{ data.widget.arn }}" method="post">
             <input type="hidden" name="_to" value="{{ data.widget.mailto }}">
             <input type="text" name="_honeypot" value="" style="display:none">
@@ -26,12 +22,18 @@
             </div>
         </form>
       </div>
+      <div class="col l3 offset-l1 s12">
+        <h5 class="center-align">{{ data.page.title }}</h5>
+        {%- if data.widget.text -%}
+          <p class="center-align">{{ data.widget.text }}</p>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 
   <div class="footer-copyright">
     <div class="container">
-    © {{ data.widget.date }} {{ data.widget.copy }}
+    {{ data.widget.date }} {{ data.widget.copy }}
     {%- if data.widget.link -%}<a class="grey-text text-lighten-4 right" href="{{ data.widget.link }}">{{ data.page.link }}</a>{%- endif -%}
     </div>
   </div>

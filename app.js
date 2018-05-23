@@ -19,9 +19,9 @@ var apos = require('apostrophe')({
 
     // If a template is not found somewhere else, serve it from the top-level
     // `views/` folder of the project
-
-    'apostrophe-video-widgets': {},
+    
     'fullpage': {},
+    'apostrophe-video-widgets': {},
     'materialize': {},
     'materialize-video-widgets': {},
     'materialize-card-widgets': {},
