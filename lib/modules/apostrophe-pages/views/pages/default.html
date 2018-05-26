@@ -1,5 +1,25 @@
 {% extends "layout.html" %}
 
+{% block extraHead %}
+
+  {% if data.piece %}
+    {% if data.piece.seoTitle %}
+      {% set title = data.piece.seoTitle %}
+    {% else %}
+      {% set title = data.piece.title %}
+    {% endif %}
+  {% else %}
+    {% if data.page.seoTitle %}
+      {% set title = data.page.seoTitle %}
+    {% else %}
+      {% set title = data.page.title %}
+    {% endif %}
+  {% endif %}
+  {% include "apostrophe-seo:view.html" %}
+  {% include "apostrophe-open-graph:view.html" %}
+
+{% endblock %}
+
 {% block beforeMain %}
 <nav>
   <div class="navbar-fixed">
