@@ -2,13 +2,13 @@ var path = require('path');
 
 var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
+  baseUrl: 'http://localhost:3000',
 
   // See lib/modules for basic project-level configuration of our modules
   // responsible for serving static assets, managing page templates and
   // configuring user acounts.
 
   modules: {
-
     // Apostrophe module configuration
 
     // Note: most configuration occurs in the respective
@@ -20,9 +20,11 @@ var apos = require('apostrophe')({
     // If a template is not found somewhere else, serve it from the top-level
     // `views/` folder of the project
 
+    //Style modules
     'fullpage': {},
     'apostrophe-video-widgets': {},
     'color-picker': {},
+    'background-widgets': {},
     'materialize': {},
     'materialize-video-widgets': {},
     'materialize-card-widgets': {},
@@ -34,7 +36,20 @@ var apos = require('apostrophe')({
       extend: 'apostrophe-pieces-widgets'
     },
 
-    'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
+    //Production modules
+    'apostrophe-seo': {},
+    'apostrophe-open-graph': {},
+    'apostrophe-global': {
+      seoGoogleFields: true
+    },
+    'apostrophe-site-map': {
+      // array of doc types you do NOT want
+      // to include, even though they are
+      // accessible on the site. You can also
+      // do this at the command line.
+      excludeTypes: []
+    },
 
+    'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
   }
 });

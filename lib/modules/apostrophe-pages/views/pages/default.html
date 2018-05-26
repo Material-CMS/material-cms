@@ -28,27 +28,97 @@
 <div id="fullpage" class="glass">
 
   <div class="section">
-    <div class="main-content">
-
+    <div class="main-content container">
+      {{ apos.area(data.page, 'section2', {
+        limit: 2,
+        widgets: {
+          'apostrophe-video': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-card': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-cards': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-double': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
     </div>
   </div>
 
   <div class="section">
-    <div class="main-content">
-
+    <div class="main-content container">
+      {{ apos.area(data.page, 'section3', {
+        limit: 2,
+        widgets: {
+          'apostrophe-video': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-card': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-cards': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-double': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
     </div>
-  </div>
-
-  <div class="section">
   </div>
 
   <div class="section fp-auto-height">
-    <footer class="page-footer">
-      <div class="container">
-      </div>
-    </footer>
+      {{ apos.area(data.page, 'footer', {
+        limit: 1,
+        widgets: {
+          'materialize-footer': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
   </div>
-</div>
+
+  </div>
 {% endblock %}
 
 {% block afterMain %}

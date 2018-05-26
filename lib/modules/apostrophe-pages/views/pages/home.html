@@ -1,6 +1,23 @@
 {% extends "layout.html" %}
 
-{% block title %}Home{% endblock %}
+{% block extraHead %}
+
+  {% if data.piece %}
+    {% if data.piece.seoTitle %}
+      {% set title = data.piece.seoTitle %}
+    {% else %}
+      {% set title = data.piece.title %}
+    {% endif %}
+  {% else %}
+    {% if data.page.seoTitle %}
+      {% set title = data.page.seoTitle %}
+    {% else %}
+      {% set title = data.page.title %}
+    {% endif %}
+  {% endif %}
+  {% include "apostrophe-seo:view.html" %}
+  {% include "apostrophe-open-graph:view.html" %}
+{% endblock %}
 
 {% block beforeMain %}
 <div class="nav">
@@ -36,13 +53,6 @@
       {{ apos.area(data.page, 'section1', {
         limit: 2,
         widgets: {
-          'materialize-collapsibles': {
-            controls: {
-              movable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
           'materialize-video': {
             controls: {
               movable: false,
