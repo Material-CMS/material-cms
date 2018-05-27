@@ -1,0 +1,28 @@
+<ul class="collapsible hoverable">
+
+  {% for piece in data.widget._pieces %}
+  <li  class="{{ piece.active }}">
+
+    <div class="collapsible-header" tabindex="0">
+    {%- if piece.icon -%}<i class="material-icons">{{ piece.icon }}</i>{%- endif -%}
+
+    <h4>
+      {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
+        {{ piece.title }}
+      {% if piece._url %}</a>{% endif %}
+    </h4>
+
+    <span class="badge"><h5>{{ piece.start | date('MMM Do') }} at {{ piece.start | date('h:mma') }}</h5></span>
+
+    </div>
+
+    {%- if piece.text -%}
+    <div class="collapsible-body">
+      <p>{{ piece.text }}</p>
+    </div>
+    {%- endif -%}
+
+  </li>
+  {% endfor %}
+
+</ul>
