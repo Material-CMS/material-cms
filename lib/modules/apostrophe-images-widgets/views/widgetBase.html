@@ -1,5 +1,5 @@
-<div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
-  <div data-slideshow-items>
+<div class="apos-slideshow{% block outerClass %}{% endblock %} materialboxed" data-slideshow>
+  <div data-slideshow-items >
     {%- block items -%}
       {%- for entry in data.widget._pieces -%}
         {# Works whether there's a relationship in the join or not. Normally there always #}
@@ -8,7 +8,7 @@
         {%- set relationship = entry.relationship -%}
         <div data-slideshow-item  class="apos-slideshow-item {% if loop.first %} apos-current {% endif %} {% block itemClass %} {% endblock %}" style="background-image: url({{ apos.attachments.url(image.attachment,{ size: data.options.size, crop: relationship }) }}) {%- if apos.attachments.hasFocalPoint(relationship) -%}; background-position:{{ apos.attachments.focalPointToBackgroundPosition(relationship) }} {%- endif -%}">
           <div class="card-image">
-            <img class="" alt="{% block imgAlt %}{{ image.title }}{% endblock %}" data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}" />
+            <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}" data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}" />
             {%- block title -%}<h4 class="card-title apos-image-widget-image-title">{{ image.title }}</h4>{%- endblock -%}
           </div>
           {%- block description -%}
