@@ -1,0 +1,43 @@
+@import 'components/array-editor.less';
+@import 'components/array-field.less';
+@import 'components/help.less';
+
+.apos-required {
+  label::after {
+    content: ' *';
+    color: @apos-base;
+  }
+}
+
+/////////////////////////////
+// generic state styles
+/////////////////////////////
+.apos-error
+{
+  input { .apos-glow(@apos-red); }
+  label {
+    color: @apos-red;
+    &::after {
+      margin-left: 10px;
+      content: "(" attr(data-apos-error-message) ")";
+    }
+  }
+}
+
+.apos-warning
+{
+  input { .apos-glow(@apos-gold); }
+  label { color: @apos-gold; }
+}
+
+/////////////////////////////
+// specific states
+/////////////////////////////
+
+.apos-error--required
+{
+  label:after
+  {
+    color: @apos-red;
+  }
+}
