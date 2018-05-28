@@ -1,5 +1,5 @@
-<div class="apos-slideshow{% block outerClass %}{% endblock %} materialboxed" data-slideshow>
-  <div data-slideshow-items >
+<div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
+  <div data-slideshow-items class="materialboxed">
     {%- block items -%}
       {%- for entry in data.widget._pieces -%}
         {# Works whether there's a relationship in the join or not. Normally there always #}
