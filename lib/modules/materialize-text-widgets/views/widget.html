@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-content">
+    {%- if data.widget.title -%}<span class="card-title">{{ data.widget.title }}</span>{%- endif -%}
+
+    {%- if data.widget.text -%}
+      {{ data.widget.text }}
+    {%- endif -%}
+
+  </div>
+  <div class="card-tabs">
+    <ul class="tabs tabs-fixed-width">
+      {%- if data.widget.tab1 -%}<li class="tab"><a href="#test4">{{ data.widget.tab1 }}</a></li>{%- endif -%}
+      {%- if data.widget.tab2 -%}<li class="tab"><a class="active" href="#test5">{{ data.widget.tab2 }}</a></li>{%- endif -%}
+      {%- if data.widget.tab3 -%}<li class="tab"><a href="#test6">{{ data.widget.tab3 }}</a></li>{%- endif -%}
+    </ul>
+  </div>
+  <div class="card-content grey lighten-4">
+    {%- if data.widget.text1 -%}<div id="test4">{{ data.widget.text1 }}</div>{%- endif -%}
+    {%- if data.widget.text2 -%}<div id="test5">{{ data.widget.text2 }}</div>{%- endif -%}
+    {%- if data.widget.text3 -%}<div id="test6">{{ data.widget.text3 }}</div>{%- endif -%}
+  </div>
+</div>
