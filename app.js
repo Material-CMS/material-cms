@@ -14,7 +14,6 @@ var apos = require('apostrophe')({
     'materialize': {},
     'materialize-video-widgets': {},
     'materialize-card-widgets': {},
-    'materialize-cards-widgets': {},
     'materialize-double-widgets': {},
     'materialize-footer-widgets': {},
     'materialize-events': {},
