@@ -17,6 +17,8 @@ var apos = require('apostrophe')({
     'materialize-cards-widgets': {},
     'materialize-double-widgets': {},
     'materialize-footer-widgets': {},
+    'materialize-events': {},
+    'materialize-events-widgets': {},
 
     //Production modules
     'apostrophe-seo': {},
@@ -27,9 +29,6 @@ var apos = require('apostrophe')({
     'apostrophe-site-map': {
       excludeTypes: []
     },
-
-    'materialize-events': {},
-    'materialize-events-widgets': {},
 
     //Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
