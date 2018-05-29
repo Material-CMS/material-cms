@@ -15,7 +15,7 @@
             </div>
             <div class="input-field col s9 l10">
               <i class="material-icons prefix">message</i>
-              <textarea class="materialize-textarea" placeholder="Geben Sie Ihre Nachricht hier ein...." type="text" name="message" tabindex="4" required></textarea>
+              <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
             </div>
             <div class="input-field col s3 l2">
               <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
@@ -23,9 +23,9 @@
         </form>
       </div>
       <div class="col l3 offset-l1 s12">
-        <h5 class="center-align">{{ data.page.title }}</h5>
+        <h5 class="">{{ data.page.title }}</h5>
         {%- if data.widget.text -%}
-          <p class="center-align">{{ data.widget.text }}</p>
+          <p class="">{{ data.widget.text }}</p>
         {%- endif -%}
       </div>
     </div>
