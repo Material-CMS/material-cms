@@ -9,14 +9,28 @@
   </div>
   <div class="card-tabs">
     <ul class="tabs tabs-fixed-width">
-      {%- if data.widget.tab1 -%}<li class="tab"><a href="#test4">{{ data.widget.tab1 }}</a></li>{%- endif -%}
-      {%- if data.widget.tab2 -%}<li class="tab"><a class="active" href="#test5">{{ data.widget.tab2 }}</a></li>{%- endif -%}
-      {%- if data.widget.tab3 -%}<li class="tab"><a href="#test6">{{ data.widget.tab3 }}</a></li>{%- endif -%}
+      {%- if data.widget.tab1-%}
+        <li class="tab"><a href="#tab1">{{ data.widget.tab1 }}</a></li>
+      {%- elif data.widget.icon1 -%}
+        <li class="tab"><a href="#tab1"><i class="material-icons">{{ data.widget.icon1 }}</i></a></li>
+      {%- endif -%}
+
+      {%- if data.widget.tab2 -%}
+        <li class="tab"><a href="#tab2">{{ data.widget.tab2 }}</a></li>
+      {%- elif data.widget.icon2 -%}
+        <li class="tab"><a href="#tab2"><i class="material-icons">{{ data.widget.icon2 }}</i></a></li>
+      {%- endif -%}
+
+      {%- if data.widget.tab3 -%}
+        <li class="tab"><a href="#tab3">{{ data.widget.tab3 }}</a></li>
+      {%- elif data.widget.icon3 -%}
+        <li class="tab"><a href="#tab3"><i class="material-icons">{{ data.widget.icon3 }}</i></a></li>
+      {%- endif -%}
     </ul>
   </div>
   <div class="card-content grey lighten-4">
-    {%- if data.widget.text1 -%}<div id="test4">{{ data.widget.text1 }}</div>{%- endif -%}
-    {%- if data.widget.text2 -%}<div id="test5">{{ data.widget.text2 }}</div>{%- endif -%}
-    {%- if data.widget.text3 -%}<div id="test6">{{ data.widget.text3 }}</div>{%- endif -%}
+    {%- if data.widget.text1 -%}<div id="tab1">{{ data.widget.text1 }}</div>{%- endif -%}
+    {%- if data.widget.text2 -%}<div id="tab2">{{ data.widget.text2 }}</div>{%- endif -%}
+    {%- if data.widget.text3 -%}<div id="tab3">{{ data.widget.text3 }}</div>{%- endif -%}
   </div>
 </div>
