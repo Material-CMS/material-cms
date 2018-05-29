@@ -5,7 +5,7 @@ $(function() {
 
   $(function(){
     $('.sidenav').sidenav();
-    $('.materialboxed').materialbox();
+    $('.tabs').tabs();
   });
 
 });

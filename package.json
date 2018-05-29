@@ -1,7 +1,7 @@
 {
   "name": "fullpage-cms",
   "version": "2.0.0",
-  "description": "Minimal Apostrophe Boilerplate",
+  "description": "Fullpage CMS - fullpage and materialized based on Apostrophe CMS",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
