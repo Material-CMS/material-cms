@@ -14,7 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "apostrophe": "^2.56.0",
-    "apostrophe-events": "^2.1.1",
     "apostrophe-open-graph": "^1.1.2",
     "apostrophe-optimizer": "^2.0.0",
     "apostrophe-seo": "^1.0.1",
