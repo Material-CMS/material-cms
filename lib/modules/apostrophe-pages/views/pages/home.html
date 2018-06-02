@@ -150,18 +150,58 @@
   </div>
 
   <div class="section fp-auto-height">
-      {{ apos.area(data.page, 'footer', {
-        limit: 1,
-        widgets: {
-          'materialize-footer': {
-            controls: {
-              movable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          }
-        }
-      }) }}
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col l8 s12">
+            <form action="{{ data.page.arn }}" method="post">
+                <input type="hidden" name="_to" value="{{ data.page.mailto }}">
+                <input type="text" name="_honeypot" value="" style="display:none">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input placeholder="Ihr Name" type="text" tabindex="1" required>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">email</i>
+                  <input placeholder="Ihre Email" type="email" name="usermail" tabindex="2" required>
+                </div>
+                <div class="input-field col s9 l10">
+                  <i class="material-icons prefix">message</i>
+                  <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
+                </div>
+                <div class="input-field col s3 l2">
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+                </div>
+            </form>
+          </div>
+
+          <div class="col l3 offset-l1 s12">
+
+             <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Privacy</a>
+             <div id="modal1" class="modal">
+               <div class="modal-content text-darken-4">
+                 <h4>Privacy</h4>
+                 <p>{{ apos.areas.richText(data.page.privacy) }}</p>
+               </div>
+               <div class="modal-footer">
+                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+               </div>
+             </div>
+
+             <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Impressum</a>
+             <div id="modal2" class="modal">
+               <div class="modal-content text-darken-4">
+                 <h4>Impressum</h4>
+                 <p>{{ apos.areas.richText(data.page.impressum) }}</p>
+               </div>
+             </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
   </div>
 
 </div>
