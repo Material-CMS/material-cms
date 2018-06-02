@@ -16,10 +16,8 @@ var apos = require('apostrophe')({
     'materialize-card-widgets': {},
     'materialize-text-widgets': {},
     'materialize-double-widgets': {},
-    'materialize-footer-widgets': {},
     'materialize-events': {},
     'materialize-events-widgets': {},
-
     //Production modules
     'apostrophe-seo': {},
     'apostrophe-open-graph': {},
