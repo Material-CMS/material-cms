@@ -26,7 +26,7 @@ var apos = require('apostrophe')({
     },
     'apostrophe-site-map': {
       excludeTypes: []
-    }
+    },
     //Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
   }
