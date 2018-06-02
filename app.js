@@ -2,7 +2,7 @@ var path = require('path');
 
 var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
-  baseUrl: 'http://localhost:3000',
+  baseUrl: process.env.BASE_URL,
 
   modules: {
 
