@@ -6,6 +6,7 @@ $(function() {
   $(function(){
     $('.sidenav').sidenav();
     $('.tabs').tabs();
+    $('.modal').modal();
   });
 
 });
