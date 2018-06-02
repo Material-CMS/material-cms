@@ -28,18 +28,20 @@
       <a href="{{ data.page._url }}" class="brand-logo">{{ data.page.title }}</a>
        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
-        <li data-menuanchor="page01" class="active" ><a href="#page01">Intro</a></li>
-        <li data-menuanchor="page02"><a href="#page02">Features</a></li>
-        <li data-menuanchor="page03" ><a href="#page03">Security</a></li>
-        <li data-menuanchor="page04"><a href="#page04">Contact</a></li>
+        <li data-menuanchor="page01" class="active" ><a href="#page01">{{ data.page.section1_title }}</a></li>
+        {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02">{{ data.page.section2_title }}</a></li>{% endif %}
+        {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03">{{ data.page.section3_title }}</a></li>{% endif %}
+        {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04">{{ data.page.section4_title }}</a></li>{% endif %}
+        <li data-menuanchor="page05"><a href="#page05">Contact</a></li>
       </ul>
     </div>
 
     <ul class="nav-activator sidenav" id="mobile">
-      <li data-menuanchor="page01" class="active" ><a href="#page01">Intro</a></li>
-      <li data-menuanchor="page02"><a href="#page02">Features</a></li>
-      <li data-menuanchor="page03" ><a href="#page03">Security</a></li>
-      <li data-menuanchor="page04"><a href="#page04">Contact</a></li>
+      <li data-menuanchor="page01" class="active" ><a href="#page01">{{ data.page.section1_title }}</a></li>
+      {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02">{{ data.page.section2_title }}</a></li>  {% endif %}
+      {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03">{{ data.page.section3_title }}</a></li>{% endif %}
+      {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04">{{ data.page.section4_title }}</a></li>{% endif %}
+      <li data-menuanchor="page05"><a href="#page05">Contact</a></li>
     </ul>
 
   </nav>
@@ -80,6 +82,7 @@
     </div>
   </div>
 
+{%- if data.page.section2_active -%}
   <div class="section">
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
@@ -117,7 +120,9 @@
       }) }}
     </div>
   </div>
+{%- endif -%}
 
+{%- if data.page.section3_active -%}
   <div class="section">
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
@@ -148,6 +153,40 @@
       }) }}
     </div>
   </div>
+{%- endif -%}
+
+{%- if data.page.section4_active -%}
+  <div class="section">
+    <div class="main-content container">
+      {{ apos.area(data.page, 'section4', {
+        limit: 2,
+        widgets: {
+          'apostrophe-video': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-card': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'materialize-events': {
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }
+        }
+      }) }}
+    </div>
+  </div>
+{%- endif -%}
 
   <div class="section fp-auto-height">
     <footer class="page-footer">
@@ -178,25 +217,29 @@
 
           <div class="col l3 offset-l1 s12">
 
+            {%- if data.page.privacy -%}
              <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Privacy</a>
              <div id="modal1" class="modal">
                <div class="modal-content text-darken-4">
                  <h4>Privacy</h4>
-                 <p>{{ apos.areas.richText(data.page.privacy) }}</p>
+                 <p>{{ data.page.privacy }}</p>
                </div>
                <div class="modal-footer">
                  <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                </div>
              </div>
+             {%- endif -%}
 
+             {%- if data.page.impressum -%}
              <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Impressum</a>
              <div id="modal2" class="modal">
                <div class="modal-content text-darken-4">
                  <h4>Impressum</h4>
-                 <p>{{ apos.areas.richText(data.page.impressum) }}</p>
+                 <p>{{ data.page.impressum }}</p>
                </div>
              </div>
+             {%- endif -%}
           </div>
 
         </div>
