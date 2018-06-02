@@ -215,31 +215,36 @@
             </form>
           </div>
 
-          <div class="col l3 offset-l1 s12">
+          <div class="col l3 offset-l1 s12 valign-wrapper">
 
             {%- if data.page.privacy -%}
-             <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Privacy</a>
-             <div id="modal1" class="modal">
-               <div class="modal-content text-darken-4">
-                 <h4>Privacy</h4>
-                 <p>{{ data.page.privacy }}</p>
+              <div class="col s6 l12 center-align">
+               <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Privacy</a>
+               <div id="modal1" class="modal">
+                 <div class="modal-content text-darken-4">
+                   <h4>Privacy</h4>
+                   <p>{{ data.page.privacy }}</p>
+                 </div>
+                 <div class="modal-footer">
+                   <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+                   <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                 </div>
                </div>
-               <div class="modal-footer">
-                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
-                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-               </div>
-             </div>
-             {%- endif -%}
+              </div>
+            {%- endif -%}
 
-             {%- if data.page.impressum -%}
-             <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Impressum</a>
-             <div id="modal2" class="modal">
-               <div class="modal-content text-darken-4">
-                 <h4>Impressum</h4>
-                 <p>{{ data.page.impressum }}</p>
+            {%- if data.page.impressum -%}
+             <div class="col s6 l12 center-align">
+               <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Impressum</a>
+               <div id="modal2" class="modal">
+                 <div class="modal-content text-darken-4">
+                   <h4>Impressum</h4>
+                   <p>{{ data.page.impressum }}</p>
+                 </div>
                </div>
              </div>
-             {%- endif -%}
+            {%- endif -%}
+
           </div>
 
         </div>
