@@ -25,7 +25,7 @@
   <nav>
 
     <div class="nav-wrapper grey lighten-5 z-depth-2">
-      <a href="{{ data.page._url }}" class="brand-logo">{{ data.page.title }}</a>
+      <a href="{{ data.page._url }}" class="brand-logo"><h1>{{ data.page.title }}</h1></a>
        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
         <li data-menuanchor="page01" class="active" ><a href="#page01">{{ data.page.section1_title }}</a></li>
@@ -52,6 +52,7 @@
 <div id="fullpage" class="glass">
 
   <div class="section">
+    <div class="header"><h2 class="center-align">{{ data.page.section1_title }}</h2></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section1', {
         limit: 2,
@@ -84,6 +85,7 @@
 
 {%- if data.page.section2_active -%}
   <div class="section">
+    <div class="header"><h2 class="center-align">{{ data.page.section2_title }}</h2></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
         limit: 2,
@@ -124,6 +126,7 @@
 
 {%- if data.page.section3_active -%}
   <div class="section">
+    <div class="header"><h2 class="center-align">{{ data.page.section3_title }}</h2></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
         limit: 2,
@@ -157,6 +160,7 @@
 
 {%- if data.page.section4_active -%}
   <div class="section">
+    <div class="header"><h2 class="center-align">{{ data.page.section4_title }}</h2></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section4', {
         limit: 2,
@@ -185,6 +189,7 @@
         }
       }) }}
     </div>
+
   </div>
 {%- endif -%}
 
