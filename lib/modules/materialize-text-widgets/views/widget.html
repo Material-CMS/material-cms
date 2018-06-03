@@ -1,12 +1,13 @@
 <div class="card">
   <div class="card-content">
-    {%- if data.widget.title -%}<span class="card-title"><h4>{{ data.widget.title }}</h4></span>{%- endif -%}
+    {%- if data.widget.title -%}<span class="card-title"><h4 class="truncate">{{ data.widget.title }}</h4></span>{%- endif -%}
 
     {%- if data.widget.text -%}
       <p>{{ data.widget.text }}</p>
     {%- endif -%}
 
   </div>
+  {%- if data.widget.text1 -%}
   <div class="card-tabs">
     <ul class="tabs tabs-fixed-width">
       {%- if data.widget.tab1-%}
@@ -28,9 +29,14 @@
       {%- endif -%}
     </ul>
   </div>
+  {%- endif -%}
+{%- if data.widget.text1 -%}
   <div class="card-content grey lighten-4">
-    {%- if data.widget.text1 -%}<div id="{{ data.widget.tab1_choice }}">{{ data.widget.text1 }}</div>{%- endif -%}
+    <div id="{{ data.widget.tab1_choice }}">{{ data.widget.text1 }}</div>
+
     {%- if data.widget.text2 -%}<div id="{{ data.widget.tab2_choice }}">{{ data.widget.text2 }}</div>{%- endif -%}
     {%- if data.widget.text3 -%}<div id="{{ data.widget.tab3_choice }}">{{ data.widget.text3 }}</div>{%- endif -%}
+
   </div>
+{%- endif -%}
 </div>
