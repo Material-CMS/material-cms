@@ -1,6 +1,4 @@
 @import "utils/reset.less";
-// Delete the boilerplate CSS below when you are ready to dive in and customize your sites:
-body { background-color: @apos-light; }
 
 //Navigation
 .nav{
@@ -9,40 +7,25 @@ body { background-color: @apos-light; }
   position: fixed;
   width: 100%;
 }
-
 nav {
-
   .brand-logo {
     height: 100%;
     padding-top: 0.5rem;
     padding-left: 0.5rem;
-
-    h1 {
-      font-size: 2.8rem;
-      color: @apos-primary !important;
-    }
+    h1 { font-size: 2.8rem; }
   }
 
-  ul {
-    li {
-      a {
-        font-size: 1.4rem;
-        color: @apos-primary !important;
-      }
-    }
-  }
-
+  ul { li { a { font-size: 1.4rem; } } }
 }
 // Main stuff
 .main-content {
-
-  .login-link {
-    float: right;
-    color: @apos-white;
-  }
-  .apos-peek {
-    opacity: 1;
-  }
+    .login-link {
+      float: right;
+      color: @apos-white;
+    }
+    .apos-peek {
+      opacity: 1;
+    }
 }
 // Override because of Materialize
 .apos-ui .apos-field-input {
@@ -50,10 +33,6 @@ nav {
 }
 .apos-ui .apos-admin-bar {
   top: 80px;
-  background-color: @apos-primary;
-}
-.sidenav-trigger {
-  color: @apos-primary;
 }
 .fp-auto-height {
   min-height: 500px;
@@ -76,3 +55,4 @@ nav {
 .row {
 margin-bottom: 0;
 }
+//

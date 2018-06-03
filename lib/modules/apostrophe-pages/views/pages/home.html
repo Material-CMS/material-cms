@@ -22,26 +22,26 @@
 
 {% block beforeMain %}
 <div class="nav">
-  <nav>
+  <nav style="background-color:{{ data.page.nav_color }};">
 
-    <div class="nav-wrapper grey lighten-5 z-depth-2">
-      <a href="{{ data.page._url }}" class="brand-logo"><h1>{{ data.page.title }}</h1></a>
-       <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div class="nav-wrapper z-depth-2">
+      <a href="{{ data.page._url }}" class="brand-logo"><h1 style="color:{{ data.page.acc_color }};">{{ data.page.title }}</h1></a>
+       <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons" style="color:{{ data.page.acc_color }};">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
-        <li data-menuanchor="page01" class="active" ><a href="#page01">{{ data.page.section1_title }}</a></li>
-        {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02">{{ data.page.section2_title }}</a></li>{% endif %}
-        {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03">{{ data.page.section3_title }}</a></li>{% endif %}
-        {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04">{{ data.page.section4_title }}</a></li>{% endif %}
-        <li data-menuanchor="page05"><a href="#page05">Contact</a></li>
+        <li data-menuanchor="page01" class="active" ><a href="#page01" style="color:{{ data.page.acc_color }};">{{ data.page.section1_title }}</a></li>
+        {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02" style="color:{{ data.page.acc_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
+        {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03" style="color:{{ data.page.acc_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
+        {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04" style="color:{{ data.page.acc_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
+        <li data-menuanchor="page05"><a href="#page05" style="color:{{ data.page.acc_color }};">Contact</a></li>
       </ul>
     </div>
 
     <ul class="nav-activator sidenav" id="mobile">
-      <li data-menuanchor="page01" class="active" ><a href="#page01">{{ data.page.section1_title }}</a></li>
-      {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02">{{ data.page.section2_title }}</a></li>{% endif %}
-      {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03">{{ data.page.section3_title }}</a></li>{% endif %}
-      {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04">{{ data.page.section4_title }}</a></li>{% endif %}
-      <li data-menuanchor="page05"><a href="#page05">Contact</a></li>
+      <li data-menuanchor="page01" class="active" ><a href="#page01" style="color:{{ data.page.acc_color }};">{{ data.page.section1_title }}</a></li>
+      {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02" style="color:{{ data.page.acc_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
+      {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03" style="color:{{ data.page.acc_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
+      {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04" style="color:{{ data.page.acc_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
+      <li data-menuanchor="page05"><a href="#page05" style="color:{{ data.page.acc_color }};">Contact</a></li>
     </ul>
 
   </nav>
@@ -51,8 +51,8 @@
 {% block main %}
 <div id="fullpage" class="glass">
 
-  <div class="section">
-    <div class="header"><h3 class="center-align">{{ data.page.section1_title }}</h3></div>
+  <div class="section" style="background-color:{{ data.page.sec1_color }};">
+    <div class="header"><h3 class="center-align" style="color:{{ data.page.acc_color }};">{{ data.page.section1_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section1', {
         limit: 2,
@@ -93,8 +93,8 @@
   </div>
 
 {%- if data.page.section2_active -%}
-  <div class="section">
-    <div class="header"><h3 class="center-align">{{ data.page.section2_title }}</h3></div>
+  <div class="section" style="background-color:{{ data.page.sec2_color }};">
+    <div class="header"><h3 class="center-align" style="color:{{ data.page.acc_color }};">{{ data.page.section2_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
         limit: 2,
@@ -141,8 +141,8 @@
 {%- endif -%}
 
 {%- if data.page.section3_active -%}
-  <div class="section">
-    <div class="header"><h3 class="center-align">{{ data.page.section3_title }}</h3></div>
+  <div class="section" style="background-color:{{ data.page.sec3_color }};">
+    <div class="header"><h3 class="center-align" style="color:{{ data.page.acc_color }};">{{ data.page.section3_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
         limit: 2,
@@ -189,8 +189,8 @@
 {%- endif -%}
 
 {%- if data.page.section4_active -%}
-  <div class="section">
-    <div class="header"><h3 class="center-align">{{ data.page.section4_title }}</h3></div>
+  <div class="section" style="background-color:{{ data.page.sec4_color }};">
+    <div class="header"><h3 class="center-align" style="color:{{ data.page.acc_color }};">{{ data.page.section4_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section4', {
         limit: 2,
@@ -237,7 +237,7 @@
   </div>
 {%- endif -%}
 
-  <div class="section fp-auto-height">
+  <div class="section fp-auto-height" style="background-color:{{ data.page.sec5_color }};">
     <footer class="page-footer">
       <div class="container">
         <div class="row">
@@ -255,11 +255,11 @@
                   <input placeholder="Ihre Email" type="email" name="usermail" tabindex="2" required>
                 </div>
                 <div class="input-field col s9 l10">
-                  <i class="material-icons prefix">message</i>
+                  <i class="material-icons prefix" >message</i>
                   <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
                 </div>
                 <div class="input-field col s3 l2">
-                  <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+                  <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:{{ data.page.acc_color }};">Submit<i class="material-icons right">send</i></button>
                 </div>
             </form>
           </div>
@@ -268,7 +268,7 @@
 
             {%- if data.page.privacy -%}
               <div class="col s6 l12 center-align">
-               <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Privacy</a>
+               <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="color:{{ data.page.acc_color }};">Privacy</a>
                <div id="modal1" class="modal">
                  <div class="modal-content text-darken-4">
                    <h4>Privacy</h4>
@@ -284,7 +284,7 @@
 
             {%- if data.page.impressum -%}
              <div class="col s6 l12 center-align">
-               <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Impressum</a>
+               <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="color:{{ data.page.acc_color }};">Impressum</a>
                <div id="modal2" class="modal">
                  <div class="modal-content text-darken-4">
                    <h4>Impressum</h4>
