@@ -6,11 +6,11 @@
     <div class="collapsible-header" tabindex="0">
     {%- if piece.icon -%}<i class="material-icons">{{ piece.icon }}</i>{%- endif -%}
 
-    <h4 class="truncate">
+    <h5 class="truncate">
       {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
         {{ piece.title }}
       {% if piece._url %}</a>{% endif %}
-    </h4>
+    </h5>
 
     <span class="badge"><h5>{{ piece.start | date('MMM Do') }} at {{ piece.start | date('h:mma') }}</h5></span>
 
