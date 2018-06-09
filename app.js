@@ -32,6 +32,15 @@ var apos = require('apostrophe')({
       stats: false,
       debug: false
     },
+    'apostrophe-favicons-global': {
+      destinationDir: '/favicons/',
+      tempDir: 'temp',
+      faviconConfig : {
+        icons: {
+          windows: false
+        }
+      }
+    },
     //Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
   }
