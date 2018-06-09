@@ -1,6 +1,6 @@
 {
   "name": "fullpage-cms",
-  "version": "2.0.0",
+  "version": "0.1.2",
   "description": "Fullpage CMS - fullpage and materialized based on Apostrophe CMS",
   "main": "app.js",
   "scripts": {
@@ -13,11 +13,13 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.56.0",
+    "apostrophe": "^2.57.2",
+    "apostrophe-favicons": "^1.0.10",
     "apostrophe-open-graph": "^1.1.2",
     "apostrophe-optimizer": "^2.0.0",
     "apostrophe-seo": "^1.0.1",
-    "apostrophe-site-map": "^2.4.2",
+    "apostrophe-site-map": "^2.4.3",
+    "core-js": "^2.5.7",
     "mozjpeg": "^6.0.0"
   }
 }
