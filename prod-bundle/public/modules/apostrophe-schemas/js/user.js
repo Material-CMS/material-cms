@@ -149,7 +149,7 @@ apos.define('apostrophe-schemas', {
         }
         // This won't be enough for every type of field, so we pass $el too
         var $field = self.findField($el, field.name);
-        if (!$field.length) {
+        if ((!$field.length) && field.legacy) {
           $field = self.findField($el, field.legacy);
         }
         var $fieldset = self.findFieldset($el, field.name);
@@ -325,7 +325,8 @@ apos.define('apostrophe-schemas', {
     };
 
     // Used to search for fieldsets at this level of the schema,
-    // without false positives for any schemas nested within it
+    // without false positives for any schemas nested within it.
+
     self.findFieldset = function($el, name) {
       return self.findSafe($el, '[data-name="' + name + '"]');
     };
@@ -333,8 +334,15 @@ apos.define('apostrophe-schemas', {
     // Used to search for elements without false positives from nested
     // schemas in unrelated fieldsets, however see `findFieldset` or
     // `findSafeInFieldset` for what you probably want.
+    //
+    // Optimized implementation at the DOM level, the jQuery
+    // `findSafe` plugin is much slower. Still returns a
+    // jQuery object, so there is no incompatibility with
+    // existing code that uses this method.
 
     self.findSafe = function($el, sel) {
+      // Slow but safe until we debug how the faster implementation
+      // broke tags
       return $el.findSafe(sel, '.apos-field');
     };
 
