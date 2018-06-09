@@ -33,7 +33,13 @@ var apos = require('apostrophe')({
       debug: false
     },
     'apostrophe-favicons-global': {
-      destinationDir: '/favicons/'
+      destinationDir: '/fav/',
+      tempDir: 'temp',
+      faviconConfig : {
+        icons: {
+          windows: false
+        }
+      }
     },
     //Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
