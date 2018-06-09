@@ -32,6 +32,7 @@ var apos = require('apostrophe')({
       stats: false,
       debug: false
     },
+    'apostrophe-favicons': {},
     'apostrophe-favicons-global': {
       destinationDir: '/fav/',
       tempDir: 'temp',
