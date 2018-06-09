@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-
+{% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
 {% block extraHead %}
 
   {% if data.piece %}
@@ -17,6 +17,7 @@
   {% endif %}
   {% include "apostrophe-seo:view.html" %}
   {% include "apostrophe-open-graph:view.html" %}
+  {{ favicons.renderLinks(apos, data.global) }}
 
 {% endblock %}
 
