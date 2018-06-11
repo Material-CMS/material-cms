@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
-{% block extraHead %}{% if data.piece %}{% if data.piece.seoTitle %}{% set title = data.piece.seoTitle %}{% else %}{% set title = data.piece.title %}{% endif %}
+{% block extraHead %}
+{% if data.piece %}{% if data.piece.seoTitle %}{% set title = data.piece.seoTitle %}{% else %}{% set title = data.piece.title %}{% endif %}
 {% else %}{% if data.page.seoTitle %}{% set title = data.page.seoTitle %}{% else %}{% set title = data.page.title %}{% endif %}{% endif %}
 {% include "apostrophe-seo:view.html" %}
 {% include "apostrophe-open-graph:view.html" %}
