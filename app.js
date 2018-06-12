@@ -10,7 +10,6 @@ var apos = require('apostrophe')({
     'fullpage': {},
     'apostrophe-video-widgets': {},
     'apostrophe-favicons': {},
-    'color-picker': {},
     'background-widgets': {},
     'materialize': {},
     'materialize-video-widgets': {},
