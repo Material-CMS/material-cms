@@ -116,7 +116,6 @@ apos.define('apostrophe-schemas', {
     // for autosave and similar operations.
 
     self.convert = function($el, schema, data, options, callback) {
-
       if (arguments.length === 4) {
         callback = options;
         options = {};
@@ -340,10 +339,51 @@ apos.define('apostrophe-schemas', {
     // jQuery object, so there is no incompatibility with
     // existing code that uses this method.
 
+    // Used to search for elements without false positives from nested
+    // schemas in unrelated fieldsets, however see `findFieldset` or
+    // `findSafeInFieldset` for what you probably want.
+    //
+    // Optimized implementation at the DOM level, the jQuery
+    // `findSafe` plugin is much slower. Still returns a
+    // jQuery object, so there is no incompatibility with
+    // existing code that uses this method.
+
     self.findSafe = function($el, sel) {
-      // Slow but safe until we debug how the faster implementation
-      // broke tags
-      return $el.findSafe(sel, '.apos-field');
+      if ((typeof sel) !== 'string') {
+        // Optimized version only understands searching for
+        // string selectors, maybe jQuery can do other tricks
+        return $el.findSafe(sel, '.apos-field');
+      }
+      var el = $el[0];
+      if (!el) {
+        apos.utils.warn('searching for ' + sel + ' inside nothing');
+        return $([]);
+      }
+      var fields = el.querySelectorAll(sel);
+      fields = _.filter(fields, function(field) {
+        var parent = field.parentNode;
+        while (parent) {
+          if (parent === el) {
+            return true;
+          }
+          if (parent.classList && parent.classList.contains('apos-field')) {
+            // A tricky catch: yes we found .apos-field, but
+            // what if sel looks like '[data-name="tags"] [data-selective]'?
+            // The first component of that selector IS an apos-field, so
+            // it shouldn't block itself. The solution is to check whether
+            // the apos-field we just walked up the tree to actually contains
+            // our element when filtered for the original selector.
+            var matches = parent.querySelectorAll(sel);
+            if (_.find(matches, function(match) {
+              return match === field;
+            })) {
+              return false;
+            }
+          }
+          parent = parent.parentNode;
+        }
+      });
+      return $(fields);
     };
 
     // A convenient way to find something safely within a specific fieldset
@@ -647,9 +687,16 @@ apos.define('apostrophe-schemas', {
         var manager;
         var $fieldset = self.findFieldset($el, name);
         var chooser = $fieldset.data('aposChooser');
+        var chooserGetter;
         if (!chooser) {
-          manager = apos.docs.getManager(field.withType);
-          return manager.getTool('chooser', { field: field, $el: $fieldset.find('[data-chooser]') }, function(err, _chooser) {
+          if (Array.isArray(field.withType)) {
+            manager = apos.docs.getManager('apostrophe-polymorphic');
+            chooserGetter = _.partial(manager.getTool, 'chooser');
+          } else {
+            manager = apos.docs.getManager(field.withType);
+            chooserGetter = _.partial(manager.getTool, 'chooser');
+          }
+          return chooserGetter({ field: field, $el: $fieldset.find('[data-chooser]') }, function(err, _chooser) {
             if (err) {
               return callback(err);
             }
@@ -699,28 +746,35 @@ apos.define('apostrophe-schemas', {
       name: 'joinByArray',
       populate: function(data, name, $field, $el, field, callback) {
         var chooser;
+        var manager;
         var $fieldset = self.findFieldset($el, name);
 
         return async.series({
           getChooser: function(callback) {
             chooser = $fieldset.data('aposChooser');
-            var manager;
-            if (chooser) {
-              return setImmediate(callback);
-            }
-            manager = apos.docs.getManager(field.withType);
-            return manager.getTool('chooser', {
-              field: field,
-              $el: $fieldset.find('[data-chooser]'),
-              removed: !!field.removedIdsField
-            }, function(err, _chooser) {
-              if (err) {
-                return callback(err);
+            var chooserGetter;
+            if (!chooser) {
+              if (Array.isArray(field.withType)) {
+                manager = apos.docs.getManager('apostrophe-polymorphic');
+                chooserGetter = _.partial(manager.getTool, 'chooser');
+              } else {
+                manager = apos.docs.getManager(field.withType);
+                chooserGetter = _.partial(manager.getTool, 'chooser');
               }
-              chooser = _chooser;
-              $fieldset.data('aposChooser', chooser);
-              return callback(null);
-            });
+              return chooserGetter({ field: field, $el: $fieldset.find('[data-chooser]') }, function(err, _chooser) {
+                if (err) {
+                  return callback(err);
+                }
+                chooser = _chooser;
+                var choices = [];
+                if (data[field.idField]) {
+                  choices.push({ value: data[field.idField] });
+                }
+                chooser.set(choices);
+                $fieldset.data('aposChooser', chooser);
+                return callback(null);
+              });
+            }
           },
           set: function(callback) {
             var choices = [];
@@ -873,7 +927,7 @@ apos.define('apostrophe-schemas', {
         return setImmediate(callback);
       },
       convert: function(data, name, $field, $el, field, callback) {
-        data[name] = self.findSafe($el, '[data-name="' + name + '"] [data-selective]').selective('get', { incomplete: true });
+        data[name] = self.findSafeInFieldset($el, name, '[data-selective]').selective('get', { incomplete: true });
         if (field.required && !data[name].length) {
           return setImmediate(_.partial(callback, 'required'));
         }
