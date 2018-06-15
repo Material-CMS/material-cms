@@ -28,6 +28,7 @@ var apos = require('apostrophe')({
       excludeTypes: []
     },
     'apostrophe-optimizer': {
+      enable: false,
       stats: false,
       debug: false
     },
