@@ -15,8 +15,6 @@
   "dependencies": {
     "apostrophe": "^2.59.0",
     "apostrophe-favicons": "^1.0.13",
-    "apostrophe": "^2.59.0",
-    "apostrophe-favicons": "^1.0.12",
     "apostrophe-open-graph": "^1.1.2",
     "apostrophe-optimizer": "^2.0.1",
     "apostrophe-seo": "^1.0.1",
