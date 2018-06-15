@@ -13,10 +13,10 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.57.2",
-    "apostrophe-favicons": "^1.0.12",
+    "apostrophe": "^2.59.0",
+    "apostrophe-favicons": "^1.0.13",
     "apostrophe-open-graph": "^1.1.2",
-    "apostrophe-optimizer": "^2.0.0",
+    "apostrophe-optimizer": "^2.0.1",
     "apostrophe-seo": "^1.0.1",
     "apostrophe-site-map": "^2.4.3",
     "core-js": "^2.5.7",
