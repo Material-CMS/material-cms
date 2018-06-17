@@ -1,3 +1,34 @@
+// Navigation Overrides
+.nav{
+  z-index:9;
+  display:block;
+  position: fixed;
+  width: 100%;
+}
+nav {
+  .brand-logo {
+    height: 100%;
+    padding-top: 0.7rem;
+    padding-left: 0.7rem;
+    h1 { font-size: 2.4rem; }
+  }
+
+  ul { li { a { font-size: 1.4rem; } } }
+}
+// Admin Bar Overrides
+.apos-ui .apos-admin-bar {
+  top: 80px;
+}
+.sidenav-overlay {
+  z-index: 7;
+}
+.fixed-action-btn {
+  z-index: 1;
+}
+// Grid Overrides
+.row {
+margin-bottom: 0;
+}
 //Card Overrides
 .card-content {
   background-color: #ffffff;
@@ -18,7 +49,20 @@
 .collapsible-body {
   background-color: #ffffff;
 }
-//Footer overrides
+// Modal Overrides
+.modal {
+  top: auto !important;
+  bottom: 5% !important;
+}
+.modal-content {
+   h4,p {
+    color: #000000 !important;
+    }
+}
+//Footer Overrides
 .page-footer {
   background-color: inherit;
+}
+.apos-ui .apos-field-input {
+  height: inherit;
 }
