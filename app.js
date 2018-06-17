@@ -14,11 +14,12 @@ var apos = require('apostrophe')({
     'materialize': {},
     'texts': {},
     'texts-widgets': {},
+    'double-widgets': {},
     'materialize-video-widgets': {},
     'materialize-card-widgets': {},
-    'materialize-double-widgets': {},
     'materialize-events': {},
     'materialize-events-widgets': {},
+
     //Production modules
     'apostrophe-seo': {},
     'apostrophe-open-graph': {},

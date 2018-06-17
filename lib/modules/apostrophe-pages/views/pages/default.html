@@ -1,5 +1,13 @@
 {% extends "layout.html" %}
-
+{% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
+{% block extraHead %}
+{% if data.piece %}{% if data.piece.seoTitle %}{% set title = data.piece.seoTitle %}{% else %}{% set title = data.piece.title %}{% endif %}
+{% else %}{% if data.page.seoTitle %}{% set title = data.page.seoTitle %}{% else %}{% set title = data.page.title %}{% endif %}{% endif %}
+{% include "apostrophe-seo:view.html" %}
+{% include "apostrophe-open-graph:view.html" %}
+{{ favicons.renderLinks(apos, data.global) }}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
 {% block beforeMain %}
 <div class="nav">
   <nav style="background-color:{{ data.page.nav_color }};">
@@ -38,7 +46,7 @@
               position: 'top-right'
             }
           },
-          'materialize-double': {
+          'double': {
             controls: {
               removable: true,
               position: 'top-right'
@@ -80,7 +88,7 @@
               position: 'top-right'
             }
           },
-          'materialize-double': {
+          'double': {
             controls: {
               movable: false,
               removable: true,
@@ -127,7 +135,7 @@
               position: 'top-right'
             }
           },
-          'materialize-double': {
+          'double': {
             controls: {
               movable: false,
               removable: true,
@@ -174,7 +182,7 @@
               position: 'top-right'
             }
           },
-          'materialize-double': {
+          'double': {
             controls: {
               movable: false,
               removable: true,
