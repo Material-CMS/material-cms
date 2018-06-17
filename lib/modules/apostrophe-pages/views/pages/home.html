@@ -221,8 +221,8 @@
     <div class="container">
       <div class="row">
         <div class="col l8 s12">
-          <form action="{{ data.page.arn }}" method="post">
-            <input type="hidden" name="_to" value="{{ data.page.mailto }}">
+          <form action="{{ data.global.arn }}" method="post">
+            <input type="hidden" name="_to" value="{{ data.global.mailto }}">
             <input type="text" name="_honeypot" value="" style="display:none">
             <div class="input-field col s12">
               <i class="material-icons prefix">account_circle</i>
@@ -242,13 +242,13 @@
           </form>
         </div>
         <div class="col l3 offset-l1 s12 valign-wrapper">
-          {%- if data.page.privacy -%}
+          {%- if data.global.privacy -%}
           <div class="col s6 l12 center-align">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="color:{{ data.page.acc1_color }};">Privacy</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="background-color:{{ data.page.acc1_color }};">Privacy</a>
             <div id="modal1" class="modal">
               <div class="modal-content text-darken-4">
                 <h4>Privacy</h4>
-                <p>{{ data.page.privacy }}</p>
+                <p>{{ data.global.privacy }}</p>
               </div>
               <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
@@ -257,13 +257,13 @@
             </div>
           </div>
           {%- endif -%}
-          {%- if data.page.impressum -%}
+          {%- if data.global.legal -%}
           <div class="col s6 l12 center-align">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="color:{{ data.page.acc1_color }};">Impressum</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="background-color:{{ data.page.acc1_color }};">Legal</a>
             <div id="modal2" class="modal">
               <div class="modal-content text-darken-4">
                 <h4>Impressum</h4>
-                <p>{{ data.page.impressum }}</p>
+                <p>{{ data.global.legal }}</p>
               </div>
             </div>
           </div>

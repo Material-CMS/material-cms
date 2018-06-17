@@ -1,1 +1,44 @@
 {% extends 'widgetBase.html' %}
+<div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
+  <div data-slideshow-items>
+    {%- block items -%}
+      {%- for entry in data.widget._pieces -%}
+        {# Works whether there's a relationship in the join or not. Normally there always #}
+        {# is for slideshows, but just in case someone really hates cropping... -Tom #}
+        {%- set image = entry.item or entry -%}
+        {%- set relationship = entry.relationship -%}
+        <div data-slideshow-item  class="apos-slideshow-item {% if loop.first %} apos-current {% endif %} {% block itemClass %} {% endblock %}" style="background-image: url({{ apos.attachments.url(image.attachment,{ size: data.options.size, crop: relationship }) }}) {%- if apos.attachments.hasFocalPoint(relationship) -%}; background-position:{{ apos.attachments.focalPointToBackgroundPosition(relationship) }} {%- endif -%}">
+          <div class="card-image">
+            <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}" data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}" />
+            {%- block title -%}<h5 class="card-title truncate hide-on-small-only">{{ image.title }}</h5>{%- endblock -%}
+          </div>
+          {%- block description -%}
+            {%- if image.description -%}
+              <div class="card-content">
+                <p>{{ image.description | nlbr }}</p>
+              </div>
+            {%- endif -%}
+          {%- endblock -%}
+          {%- block credit -%}
+            {%- if image.credit -%}
+              {%- if image.creditUrl -%}
+                <div class="card-action">
+                  <a href="{{ image.creditUrl }}">
+              {%- endif -%}
+              {{ image.credit }}
+              {%- if image.creditUrl -%}
+                  </a>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endblock -%}
+        </div>
+      {%- endfor -%}
+    {%- endblock -%}
+  </div>
+</div>
+{% block arrows %}
+  {% if data.widget._pieces.length > 1 %}
+    <a href="#" data-next class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
+  {% endif %}
+{% endblock %}
