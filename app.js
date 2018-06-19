@@ -31,8 +31,8 @@ var apos = require('apostrophe')({
     },
     'apostrophe-optimizer': {
       enable: true,
-      stats: false,
-      debug: false
+      stats: true,
+      debug: true
     },
     'apostrophe-favicons': {},
     'apostrophe-favicons-global': {
