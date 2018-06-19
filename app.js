@@ -30,7 +30,7 @@ var apos = require('apostrophe')({
       excludeTypes: []
     },
     'apostrophe-optimizer': {
-      enable: false,
+      enable: true,
       stats: true,
       debug: true
     },
