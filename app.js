@@ -43,6 +43,13 @@ var apos = require('apostrophe')({
         }
       }
     },
+    // Serve Attacments over SSL only
+    'apostrophe-attachments': {
+      uploadfs: {
+        https: true
+      }
+    },
+
     //Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
   }
