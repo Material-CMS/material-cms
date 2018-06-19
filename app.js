@@ -30,9 +30,9 @@ var apos = require('apostrophe')({
       excludeTypes: []
     },
     'apostrophe-optimizer': {
-      enable: false,
-      stats: false,
-      debug: false
+      enable: true,
+      stats: true,
+      debug: true
     },
     'apostrophe-favicons': {},
     'apostrophe-favicons-global': {
