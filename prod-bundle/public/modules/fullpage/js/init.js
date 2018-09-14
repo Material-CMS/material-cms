@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // Fullpage Initialization
   $('#fullpage').fullpage({
     //Navigation
     menu: '.nav-activator',
@@ -10,7 +11,6 @@ $(document).ready(function() {
     showActiveTooltip: false,
     slidesNavigation: false,
     slidesNavPosition: 'bottom',
-
     //Scrolling
     css3: true,
     scrollingSpeed: 600,
@@ -38,12 +38,10 @@ $(document).ready(function() {
     touchSensitivity: 15,
     normalScrollElementTouchThreshold: 5,
     bigSectionsDestination: null,
-
     //Accessibility
     keyboardScrolling: true,
     animateAnchor: true,
     recordHistory: true,
-
     //Design
     controlArrows: true,
     verticalCentered: true,
@@ -59,20 +57,14 @@ $(document).ready(function() {
       percentage: 62,
       property: 'translate'
     },
-
     //Custom selectors
     sectionSelector: '.section',
     slideSelector: '.slide',
-
     lazyLoading: false,
-
-    //events
-    onLeave: function(index, nextIndex, direction){},
-    afterLoad: function(anchorLink, index){},
-    afterRender: function(){},
-    afterResize: function(){},
-    afterResponsive: function(isResponsive){},
-    afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-    onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+    //Lazy loading for all hadditional sections
+    afterRender: function(){
+      var $animated = $('.animated');
+  		$animated.addClass('in');
+	   }
   });
 });

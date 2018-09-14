@@ -8,8 +8,8 @@
 {{ favicons.renderLinks(apos, data.global) }}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
-{% block beforeMain %}
 
+{% block beforeMain %}
 <div class="nav">
   <nav style="background-color:{{ data.page.nav_color }};">
     <div class="nav-wrapper z-depth-2">
@@ -32,10 +32,6 @@
     </ul>
   </nav>
 </div>
-
-
-
-
 {% endblock %}
 
 {% block main %}
@@ -82,7 +78,7 @@
   </div>
 
   {%- if data.page.section2_active -%}
-  <div class="section" style="background-color:{{ data.page.sec2_color }};">
+  <div class="section animated" style="background-color:{{ data.page.sec2_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
@@ -130,7 +126,7 @@
   {%- endif -%}
 
   {%- if data.page.section3_active -%}
-  <div class="section" style="background-color:{{ data.page.sec3_color }};">
+  <div class="section animated" style="background-color:{{ data.page.sec3_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
@@ -178,7 +174,7 @@
   {%- endif -%}
 
   {%- if data.page.section4_active -%}
-  <div class="section" style="background-color:{{ data.page.sec4_color }};">
+  <div class="section animated" style="background-color:{{ data.page.sec4_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section4', {
@@ -227,7 +223,7 @@
 {% endblock %}
 
 {% block afterMain %}
-  <div class="section fp-auto-height" style="background-color:{{ data.page.sec5_color }};">
+  <div class="section fp-auto-height animated" style="background-color:{{ data.page.sec5_color }};">
     <footer class="page-footer">
       <div class="container">
         <div class="row">
