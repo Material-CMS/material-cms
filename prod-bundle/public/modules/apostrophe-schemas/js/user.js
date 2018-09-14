@@ -181,6 +181,22 @@ apos.define('apostrophe-schemas', {
       });
     };
 
+    self.returnToError = function($el, schema, errorPath, error, callback) {
+      var first = errorPath.shift();
+      var $field = self.findField($el, first);
+      var field = _.find(schema, { name: first });
+      if (!field) {
+        return setImmediate(callback);
+      }
+      var fieldType = self.fieldTypes[field.type];
+      if (fieldType.returnToError) {
+        return fieldType.returnToError(first, $field, $el, field, errorPath, error, callback);
+      } else {
+        self.showError($el, self.error(field, error));
+      }
+      return callback(null);
+    };
+
     // Create a valid error object to be reported from a converter.
     // You can also report a string in which case self.convert creates
     // one of these for you. The object is nice if you want to extend it
@@ -191,8 +207,19 @@ apos.define('apostrophe-schemas', {
         field: field,
         type: type
       };
-      if (type === 'required') {
-        error.message = 'Required';
+      switch (type) {
+        case 'required':
+          error.message = 'Required';
+          break;
+        case 'min':
+          error.message = 'Min. permitted value is: ' + field.min;
+          break;
+        case 'max':
+          error.message = 'Max. permitted value is: ' + field.max;
+          break;
+        case 'invalid':
+          error.message = 'Value is not valid';
+          break;
       }
       return error;
     };
@@ -291,7 +318,7 @@ apos.define('apostrophe-schemas', {
       $fieldset.addClass('apos-error');
       $fieldset.addClass('apos-error--' + apos.utils.cssName(error.type));
       if (error.message) {
-        $fieldset.find('label').attr('data-apos-error-message', error.message);
+        $fieldset.find('label:first').attr('data-apos-error-message', error.message);
       }
       // makes it easy to do more with particular types of errors
       apos.emit('schemaError', $fieldset, error);
@@ -565,13 +592,18 @@ apos.define('apostrophe-schemas', {
             } else if (!choice.value) {
               if ((!val) || (val === '0')) {
                 show = true;
-              } else {
               }
             } else {
               if (val && (val !== '0')) {
                 show = true;
               }
             }
+          } else if (field.type === 'checkboxes') {
+            _.each($field || [], function(checkbox) {
+              if (checkbox.checked && checkbox.value === choice.value && choice.showFields) {
+                show = true;
+              }
+            });
           } else {
             // type select
             if (val === choice.value) {
@@ -642,8 +674,16 @@ apos.define('apostrophe-schemas', {
         setArray(data[name]);
 
         $button.on('click', function() {
+          var $fieldset = self.findFieldset($el, name);
           // Mimicking .getTool from docs . . .
-          apos.create('apostrophe-array-editor-modal', {field: field, arrayItems: $field.data('apos-array'), action: options.action, save: setArray}, function(err) {
+          apos.create('apostrophe-array-editor-modal', {
+            field: field,
+            arrayItems: $field.data('apos-array'),
+            action: options.action,
+            save: setArray,
+            error: $fieldset.data('error'),
+            errorPath: $fieldset.data('errorPath')
+          }, function(err) {
             if (err) {
               apos.utils.error(err);
             }
@@ -651,11 +691,19 @@ apos.define('apostrophe-schemas', {
         });
         return setImmediate(callback);
       },
+      returnToError: function(name, $field, $el, field, errorPath, error, callback) {
+        var $fieldset = self.findFieldset($el, name);
+        $fieldset.data('error', error);
+        $fieldset.data('errorPath', errorPath);
+        var $button = self.findSafeInFieldset($el, name, '[data-apos-edit-array]');
+        $button.click();
+      },
       convert: function(data, name, $field, $el, field, callback) {
         if ($field.data('apos-array')) {
           data[name] = $field.data('apos-array');
         }
-        if ((field.required) && (!data[name])) {
+        // Confirm that the widget is truly empty.
+        if ((field.required) && (!data[name]) && (!data[name][0])) {
           return callback('required');
         }
         return setImmediate(callback);
@@ -864,12 +912,12 @@ apos.define('apostrophe-schemas', {
         err = self.error(field, 'required');
         return setImmediate(_.partial(callback, err));
       }
-      if (field.max && (data[name].length > field.max)) {
+      if (data[name] && field.max && (data[name].length > field.max)) {
         err = self.error(field, 'max');
         err.message = 'Maximum of ' + field.max + ' characters';
         return setImmediate(_.partial(callback, err));
       }
-      if (field.min && (data[name].length < field.min)) {
+      if (data[name] && field.min && (data[name].length < field.min)) {
         err = self.error(field, 'min');
         err.message = 'Minimum of ' + field.min + ' characters';
         return setImmediate(_.partial(callback, err));
@@ -958,8 +1006,9 @@ apos.define('apostrophe-schemas', {
     self.addFieldType({
       name: 'checkboxes',
       populate: function(data, name, $field, $el, field, callback) {
+        var $fieldset = self.findFieldset($el, name);
         for (var c in data[name]) {
-          $el.find('input[name="' + name + '"][value="' + data[name][c] + '"]').prop('checked', true);
+          self.findSafe($fieldset, 'input[name="' + name + '"][value="' + data[name][c] + '"]', '.apos-field').prop('checked', true);
         }
         return setImmediate(callback);
       },
@@ -1039,10 +1088,13 @@ apos.define('apostrophe-schemas', {
         if (field.required && (!(data[name] && data[name].length))) {
           return setImmediate(_.partial(callback, 'required'));
         }
-        if ((field.max !== undefined) && (data[name] > field.max)) {
+        if (data[name] && isNaN(parseFloat(data[name]))) {
+          return setImmediate(_.partial(callback, 'invalid'));
+        }
+        if (data[name] && field.max !== undefined && parseInt(data[name], 10) > field.max) {
           return setImmediate(_.partial(callback, 'max'));
         }
-        if ((field.min !== undefined) && (data[name] < field.min)) {
+        if (data[name] && field.min !== undefined && parseInt(data[name], 10) < field.min) {
           return setImmediate(_.partial(callback, 'min'));
         }
         return setImmediate(callback);
@@ -1060,10 +1112,13 @@ apos.define('apostrophe-schemas', {
         if (field.required && (!(data[name] && data[name].length))) {
           return setImmediate(_.partial(callback, 'required'));
         }
-        if ((field.max !== undefined) && (data[name] > field.max)) {
+        if (data[name] && isNaN(parseFloat(data[name]))) {
+          return setImmediate(_.partial(callback, 'invalid'));
+        }
+        if (data[name] && field.max !== undefined && parseFloat(data[name]) > field.max) {
           return setImmediate(_.partial(callback, 'max'));
         }
-        if ((field.min !== undefined) && (data[name] < field.min)) {
+        if (data[name] && field.min !== undefined && parseFloat(data[name]) < field.min) {
           return setImmediate(_.partial(callback, 'min'));
         }
         return setImmediate(callback);
@@ -1079,10 +1134,12 @@ apos.define('apostrophe-schemas', {
     self.addFieldType({
       name: 'date',
       populate: function(data, name, $field, $el, field, callback) {
+        // Never good here, breaks calendar UI
+        $field.attr('autocomplete', 'off');
         $field.val(data[name]);
-        apos.ui.enhanceDate($field);
+        apos.ui.enhanceDate($field, field.pikadayOptions || {});
         if (field.legacy) {
-          apos.ui.enhanceDate(self.findField($el, field.legacy));
+          apos.ui.enhanceDate(self.findField($el, field.legacy), field.pikadayOptions || {});
         }
         return setImmediate(callback);
       },
