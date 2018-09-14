@@ -205,6 +205,9 @@ apos.define('apostrophe-areas-editor', {
       self.$el.find('[data-apos-dropdown]').removeClass('apos-active');
       self.$el.find('.apos-area-controls').removeClass('apos-active');
       self.$el.removeClass('apos-context-content-menu-active');
+      // It is now OK to show this again without worrying about
+      // menu interactions being suppressed due to stacking order issues. -Tom
+      $('.apos-context-menu-container').removeClass('apos-content-menu-active');
     };
 
     self.dismissContextContentMenuKeyEvent = function (e) {
@@ -327,6 +330,7 @@ apos.define('apostrophe-areas-editor', {
       var data = apos.areas.getWidgetData($widget);
       apos.areas.setWidgetData($widget, data);
       $old.replaceWith($widget);
+      $widget.parent('[data-apos-widget-wrapper]').attr('class', $wrapper.attr('class'));
       self.fixInsertedWidgetDotPaths($widget);
       apos.emit('enhance', $widget);
     };
@@ -404,7 +408,10 @@ apos.define('apostrophe-areas-editor', {
       return $('[data-apos-area]').filter(function() {
         var editor = $(this).data('editor');
         if ((editor && !editor.limitReached()) || ($widget.data('areaEditor') === editor)) {
-          if (_.has(editor.options.widgets, $widget.attr('data-apos-widget'))) {
+          var movableOptionKey = [$widget.attr('data-apos-widget'), 'controls', 'movable'];
+          var hasWidget = _.has(editor.options.widgets, $widget.attr('data-apos-widget'));
+
+          if (hasWidget && (_.has(editor.options.widgets, movableOptionKey) ? _.get(editor.options.widgets, movableOptionKey) : true)) {
             return true;
           }
         }
@@ -421,11 +428,13 @@ apos.define('apostrophe-areas-editor', {
       self.$selected = $widget;
       var type = self.$selected.attr('data-apos-widget');
       var data = apos.areas.getWidgetData($widget);
+      data._errorPath = $widget.data('errorPath');
+      data._error = $widget.data('error');
       var originalData = _.clone(data);
       var options = self.options.widgets[type] || {};
 
       apos.areas.getWidgetManager(type).edit(
-        apos.areas.getWidgetData($widget),
+        data,
         options,
         function(data, callback) {
           $.jsonCall(self.action + '/render-widget',
@@ -563,10 +572,12 @@ apos.define('apostrophe-areas-editor', {
         // Get rid of the hardcoded position provided by jquery UI draggable,
         // but don't remove the position: relative without which we can't see the
         // element move when we try to drag it again later
-        $item.css('top', '0');
-        $item.css('left', '0');
-        $item.css('width', 'auto');
-        $item.css('height', 'auto');
+        $item.css({
+          'height': '',
+          'left': '',
+          'top': '',
+          'width': ''
+        });
         $(event.target).after($item);
         self.disableDroppables();
         self.reRenderWidget($item);
@@ -703,7 +714,61 @@ apos.define('apostrophe-areas-editor', {
               $(window).off('beforeunload');
               window.location.reload(true);
             } else {
-              apos.notify('An error occurred saving the document.', { type: 'error' });
+              if (result.status !== 'error') {
+                // The server is telling us that validation constraints
+                // are unmet. How is that possible? Because the browser
+                // was not enforcing them at one point, or because
+                // the constraints were added later. Open the most relevant
+                // widget's modal via the provided dot path
+                var path = result.status.split(/\./);
+                var $el = self.$el;
+                var $lastWidget;
+                var failing = false;
+                var unconsumed = [];
+
+                // Last element is the error name, not part of the path.
+                var errorName = path.pop();
+
+                _.each(path, function(c) {
+                  if (failing) {
+                    // Once we've found the widget that needs fixing, push the
+                    // rest of the path into `unconsumed`,
+                    // e.g., field name, array item number
+                    unconsumed.push(c);
+                  } else {
+                    if (c.match(/^\d+$/)) {
+                      $el = $el.findSafe('[data-apos-widget]', '[data-apos-widget]').eq(parseInt(c));
+                      if ($el.length) {
+                        $lastWidget = $el;
+                      } else {
+                        unconsumed.push(c);
+                        failing = true;
+                      }
+                    } else {
+                      // console.log('within ', $el[0], ' looking for: ' + '[data-apos-area][data-dot-path$=".' + c + '"]');
+                      $el = $el.findSafe('[data-apos-area][data-dot-path$=".' + c + '"]', '[data-apos-widget]');
+                      if (!$el[0]) {
+                        unconsumed.push(c);
+                        failing = true;
+                      }
+                    }
+                  }
+                });
+                if ($lastWidget.length) {
+                  var $area = $lastWidget.closest('[data-apos-area]');
+                  // console.log('trying to edit:');
+                  // console.log($area[0]);
+                  // console.log($lastWidget[0]);
+                  $lastWidget.data('errorPath', unconsumed);
+                  $lastWidget.data('error', errorName);
+                  $area.data('editor').editWidget($lastWidget);
+                  apos.notify('Incomplete or incorrect information was provided. Please review.');
+                } else {
+                  apos.notify('An error occurred saving the document.', { type: 'error' });
+                }
+              } else {
+                apos.notify('An error occurred saving the document.', { type: 'error' });
+              }
               return callback && callback(result.status);
             }
             return;
