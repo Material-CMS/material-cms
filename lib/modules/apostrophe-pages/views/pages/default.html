@@ -1,13 +1,25 @@
 {% extends "layout.html" %}
 {% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
 {% block extraHead %}
-{% if data.piece %}{% if data.piece.seoTitle %}{% set title = data.piece.seoTitle %}{% else %}{% set title = data.piece.title %}{% endif %}
-{% else %}{% if data.page.seoTitle %}{% set title = data.page.seoTitle %}{% else %}{% set title = data.page.title %}{% endif %}{% endif %}
+{% if data.piece %}
+  {% if data.piece.seoTitle %}
+    {% set title = data.piece.seoTitle %}
+  {% else %}
+    {% set title = data.piece.title %}
+  {% endif %}
+{% else %}
+  {% if data.page.seoTitle %}
+    {% set title = data.page.seoTitle %}
+  {% else %}
+    {% set title = data.page.title %}
+  {% endif %}
+{% endif %}
 {% include "apostrophe-seo:view.html" %}
 {% include "apostrophe-open-graph:view.html" %}
 {{ favicons.renderLinks(apos, data.global) }}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
+
 {% block beforeMain %}
 <div class="nav">
   <nav style="background-color:{{ data.page.nav_color }};">
@@ -15,26 +27,27 @@
       <a href="{{ data.page._url }}" class="brand-logo"><h1 style="color:{{ data.page.acc1_color }};">{{ data.page.title }}</h1></a>
       <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons" style="color:{{ data.page.acc1_color }};">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
-        <li data-menuanchor="page01" class="active" ><a href="#page01" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
-        {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
-        {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
-        {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
-        <li data-menuanchor="page05"><a href="#page05" style="color:{{ data.page.acc1_color }};">Contact</a></li>
+        <li data-menuanchor="{{ data.page.section1_title }}" class="active"><a href="#{{ data.page.section1_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
+        {%- if data.page.section2_active -%}<li data-menuanchor="{{ data.page.section2_title }}"><a href="#{{ data.page.section2_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
+        {%- if data.page.section3_active -%}<li data-menuanchor="{{ data.page.section3_title }}"><a href="#{{ data.page.section3_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
+        {%- if data.page.section4_active -%}<li data-menuanchor="{{ data.page.section4_title }}"><a href="#{{ data.page.section4_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
+        <li data-menuanchor="contact"><a href="#contact" style="color:{{ data.page.acc1_color }};">Contact</a></li>
       </ul>
     </div>
     <ul class="nav-activator sidenav" id="mobile">
-      <li data-menuanchor="page01" class="active" ><a href="#page01" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
-      {%- if data.page.section2_active -%}<li data-menuanchor="page02"><a href="#page02" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
-      {%- if data.page.section3_active -%}<li data-menuanchor="page03" ><a href="#page03" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
-      {%- if data.page.section4_active -%}<li data-menuanchor="page04" ><a href="#page04" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
-      <li data-menuanchor="page05"><a href="#page05" style="color:{{ data.page.acc1_color }};">Contact</a></li>
+      <li data-menuanchor="{{ data.page.section1_title }}" class="active"><a href="#{{ data.page.section1_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
+      {%- if data.page.section2_active -%}<li data-menuanchor="{{ data.page.section2_title }}"><a href="#{{ data.page.section2_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
+      {%- if data.page.section3_active -%}<li data-menuanchor="{{ data.page.section3_title }}"><a href="#{{ data.page.section3_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
+      {%- if data.page.section4_active -%}<li data-menuanchor="{{ data.page.section4_title }}"><a href="#{{ data.page.section4_title }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
+      <li data-menuanchor="contact"><a href="#contact" style="color:{{ data.page.acc1_color }};">Contact</a></li>
     </ul>
   </nav>
 </div>
 {% endblock %}
+
 {% block main %}
-<div id="fullpage" class="glass">
-  <div class="section" style="background-color:{{ data.page.sec1_color }};">
+<div id="fullpage" class="glass" style="background-color:{{ data.page.sec1_color }};">
+  <div class="section" data-anchor="{{ data.page.section1_title }}" style="background-color:{{ data.page.sec1_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section1', {
@@ -74,8 +87,9 @@
       }) }}
     </div>
   </div>
+
   {%- if data.page.section2_active -%}
-  <div class="section" style="background-color:{{ data.page.sec2_color }};">
+  <div class="section animated" data-anchor="{{ data.page.section2_title }}" style="background-color:{{ data.page.sec2_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
@@ -121,8 +135,9 @@
     </div>
   </div>
   {%- endif -%}
+
   {%- if data.page.section3_active -%}
-  <div class="section" style="background-color:{{ data.page.sec3_color }};">
+  <div class="section animated" data-anchor="{{ data.page.section3_title }}" style="background-color:{{ data.page.sec3_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
@@ -168,8 +183,9 @@
     </div>
   </div>
   {%- endif -%}
+
   {%- if data.page.section4_active -%}
-  <div class="section" style="background-color:{{ data.page.sec4_color }};">
+  <div class="section animated" data-anchor="{{ data.page.section4_title }}" style="background-color:{{ data.page.sec4_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section4', {
@@ -215,64 +231,72 @@
     </div>
   </div>
   {%- endif -%}
-  {% endblock %}
+{% endblock %}
+
 {% block afterMain %}
-<div class="section fp-auto-height" style="background-color:{{ data.page.sec5_color }};">
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l8 s12">
-          <form action="{{ data.global.arn }}" method="post">
-            <input type="hidden" name="_to" value="{{ data.global.mailto }}">
-            <input type="text" name="_honeypot" value="" style="display:none">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">account_circle</i>
-              <input placeholder="Ihr Name" type="text" tabindex="1" required>
-            </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">email</i>
-              <input placeholder="Ihre Email" type="email" name="usermail" tabindex="2" required>
-            </div>
-            <div class="input-field col s9 l10">
-              <i class="material-icons prefix" >message</i>
-              <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
-            </div>
-            <div class="input-field col s3 l2">
-              <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:{{ data.page.acc1_color }};">Submit<i class="material-icons right">send</i></button>
-            </div>
-          </form>
-        </div>
-        <div class="col l3 offset-l1 s12 valign-wrapper">
-          {%- if data.global.privacy -%}
-          <div class="col s6 l12 center-align">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="background-color:{{ data.page.acc1_color }};">Privacy</a>
-            <div id="modal1" class="modal">
-              <div class="modal-content text-darken-4">
-                <h4>Privacy</h4>
-                <p>{{ data.global.privacy }}</p>
+  <div data-anchor="contact" class="section fp-auto-height animated" style="background-color:{{ data.page.sec5_color }};">
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <form action="{{ data.global.arn }}" method="post">
+              <input type="hidden" name="_to" value="{{ data.global.mailto }}">
+              <input type="text" name="_honeypot" value="" style="display:none">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input placeholder="Ihr Name" type="text" tabindex="1" required>
               </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input placeholder="Ihre Email" type="email" name="usermail" tabindex="2" required>
               </div>
-            </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix" >message</i>
+                <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
+              </div>
+              <div class="input-field col s4  m4 offset-m1">
+                <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:{{ data.page.acc1_color }};">Send</button>
+              </div>
+              {%- if data.global.privacy -%}
+              <div class="margin-top col s5 m4">
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="background-color:{{ data.page.acc1_color }};">Privacy</a>
+                <div id="modal1" class="modal">
+                  <div class="modal-content text-darken-4">
+                    <h4>Privacy</h4>
+                    <p>{{ data.global.privacy }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                  </div>
+                </div>
+              </div>
+              {%- endif -%}
+              {%- if data.global.legal -%}
+              <div class="margin-top col s3 m3">
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="background-color:{{ data.page.acc1_color }};">Legal</a>
+                <div id="modal2" class="modal">
+                  <div class="modal-content text-darken-4">
+                    <h4>Impressum</h4>
+                    <p>{{ data.global.legal }}</p>
+                  </div>
+                </div>
+              </div>
+              {%- endif -%}
+            </form>
           </div>
-          {%- endif -%}
-          {%- if data.global.legal -%}
-          <div class="col s6 l12 center-align">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="background-color:{{ data.page.acc1_color }};">Legal</a>
-            <div id="modal2" class="modal">
-              <div class="modal-content text-darken-4">
-                <h4>Impressum</h4>
-                <p>{{ data.global.legal }}</p>
-              </div>
-            </div>
-          </div>
-          {%- endif -%}
         </div>
       </div>
-    </div>
-  </footer>
-</div>
+      <div class="footer-copyright">
+        <div class="container">
+          {%- if data.global.legal -%}
+            © {{ data.global.creation_date }} {{ data.global.copyright }}
+          {%- endif -%}
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 {% endblock %}
+
 </div>
