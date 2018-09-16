@@ -4,11 +4,11 @@
   padding-bottom: 0;
 }
 //Lazy loading for additional sections
-.animated {
+.section:not(:first-child) {
 	visibility: hidden;
 	opacity: 0;
 }
-.animated.in {
+.section:not(:first-child).in {
 	visibility: visible;
 	opacity: 1;
 }

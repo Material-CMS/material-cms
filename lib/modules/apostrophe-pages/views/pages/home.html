@@ -89,7 +89,7 @@
   </div>
 
   {%- if data.page.section2_active -%}
-  <div class="section animated" data-anchor="{{ data.page.section2_title }}" style="background-color:{{ data.page.sec2_color }};">
+  <div class="section" data-anchor="{{ data.page.section2_title }}" style="background-color:{{ data.page.sec2_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
@@ -137,7 +137,7 @@
   {%- endif -%}
 
   {%- if data.page.section3_active -%}
-  <div class="section animated" data-anchor="{{ data.page.section3_title }}" style="background-color:{{ data.page.sec3_color }};">
+  <div class="section" data-anchor="{{ data.page.section3_title }}" style="background-color:{{ data.page.sec3_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
@@ -185,7 +185,7 @@
   {%- endif -%}
 
   {%- if data.page.section4_active -%}
-  <div class="section animated" data-anchor="{{ data.page.section4_title }}" style="background-color:{{ data.page.sec4_color }};">
+  <div class="section" data-anchor="{{ data.page.section4_title }}" style="background-color:{{ data.page.sec4_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section4', {
@@ -234,7 +234,7 @@
 {% endblock %}
 
 {% block afterMain %}
-  <div data-anchor="contact" class="section fp-auto-height animated" style="background-color:{{ data.page.sec5_color }};">
+  <div data-anchor="contact" class="section fp-auto-height" style="background-color:{{ data.page.sec5_color }};">
     <footer class="page-footer">
       <div class="container">
         <div class="row">
@@ -291,7 +291,7 @@
         <div class="container">
           {%- if data.global.legal -%}
             © {{ data.global.creation_date }} {{ data.global.copyright }}
-          {%- endif -%}  
+          {%- endif -%}
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
       </div>

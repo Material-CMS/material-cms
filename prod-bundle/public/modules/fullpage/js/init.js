@@ -29,7 +29,7 @@ $(document).ready(function() {
     offsetSections: false,
     resetSliders: false,
     fadingEffect: false,
-    normalScrollElements: '.apos-manage-grid-view , .apos-modal-slideable , .apos-modal-content , .sidenav',
+    normalScrollElements: '.apos-manage-grid-view , .apos-modal-slideable , .apos-modal-content',
     scrollOverflow: false,
     scrollOverflowReset: false,
     scrollOverflowOptions: null,
@@ -61,7 +61,7 @@ $(document).ready(function() {
     lazyLoading: false,
     //Lazy loading for all hadditional sections
     afterRender: function(){
-      var $animated = $('.animated');
+      var $animated = $('.section:not(:first-child)');
   		$animated.addClass('in');
 	   }
   });
