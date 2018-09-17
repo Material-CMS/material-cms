@@ -109,10 +109,6 @@ apos.define('apostrophe-attachments', {
         url: self.action + '/upload',
         start: function (e) {
           busy(true);
-          apos.emit('attachmentUploadStarted', {
-            $fieldset: $fieldset,
-            field: field
-          });
         },
         // Even on an error we should note we're not spinning anymore
         always: function (e, data) {
@@ -121,12 +117,7 @@ apos.define('apostrophe-attachments', {
         done: function (e, data) {
           var extensions;
           if (data.result.status !== 'ok') {
-            apos.notify(data.result.status, { type: 'error' });
-            apos.emit('attachmentUploadError', {
-              $fieldset: $fieldset,
-              field: field,
-              status: data.result.status
-            });
+            apos.notify(data.result.status);
             return;
           }
           var file = data.result.file;
@@ -152,10 +143,6 @@ apos.define('apostrophe-attachments', {
               return;
             }
           }
-          apos.emit('attachmentUploadSuccess', {
-            $fieldset: $fieldset,
-            field: field
-          });
           self.updateExisting($fieldset, file, field);
         },
         add: function(e, data) {
@@ -174,8 +161,7 @@ apos.define('apostrophe-attachments', {
 
     self.convert = function(data, name, $field, $el, field, callback) {
       var $fieldset = apos.schemas.findFieldset($el, name);
-      var $uploaderButton = $fieldset.find('[data-apos-uploader-target]');
-      if ($uploaderButton.attr('data-busy') === '1') {
+      if ($fieldset.attr('data-busy') === '1') {
         // If upload is in progress stay busy until this upload
         // completes. Other file attachment fields may be doing
         // the same dance.

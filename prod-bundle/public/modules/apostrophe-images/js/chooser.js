@@ -24,7 +24,6 @@ apos.define('apostrophe-images-chooser', {
           if (choice.width && (withinOnePercent(choice.width / choice.height, aspectRatio))) {
             return setImmediate(callback);
           }
-
           return async.series([ retrieve, crop ], callback);
 
           function retrieve(callback) {
@@ -39,9 +38,6 @@ apos.define('apostrophe-images-chooser', {
           }
 
           function crop(callback) {
-            if (!apos.attachments.options.croppable[attachment.extension]) {
-              return callback(null);
-            }
             var width = attachment.width;
             var height = attachment.width / aspectRatio;
             var left = 0;

@@ -3,7 +3,7 @@
 @import 'components/help.less';
 
 .apos-required {
-  label:first-of-type::after {
+  label::after {
     content: ' *';
     color: @apos-base;
   }
@@ -14,19 +14,12 @@
 /////////////////////////////
 .apos-error
 {
-  input {
-    &:first-of-type:not(.apos-field-input-radio) {
-      .apos-glow(@apos-red);
-    }
-  }
+  input { .apos-glow(@apos-red); }
   label {
-    &:first-of-type {
-      color: @apos-red;
-    }
-    &:first-of-type::after {
+    color: @apos-red;
+    &::after {
       margin-left: 10px;
       content: "(" attr(data-apos-error-message) ")";
-      color: inherit;
     }
   }
 }
@@ -43,7 +36,7 @@
 
 .apos-error--required
 {
-  label:first-of-type::after
+  label:after
   {
     color: @apos-red;
   }

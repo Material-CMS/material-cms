@@ -64,7 +64,7 @@ apos.define('apostrophe-pages', {
 
     self.reorganize = function() {
       apos.create('apostrophe-pages-reorganize',
-        _.pick(self.options, 'action', 'deleteFromTrash', 'trashInSchema', 'batchOperations')
+        _.pick(self.options, 'action', 'deleteFromTrash', 'trashInSchema')
       );
     };
 
