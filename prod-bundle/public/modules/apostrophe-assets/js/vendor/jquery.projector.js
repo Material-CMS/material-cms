@@ -200,13 +200,13 @@
             var tallest = 0;
             findItems().each(function() {
               var $item = $(this);
-              if ($item.outerHeight() > tallest) {
-                tallest = $item.outerHeight();
+              if ($item.height() > tallest) {
+                tallest = $item.height();
               }
             });
 
             if (!noHeight) {
-              $items.outerHeight(tallest);
+              $items.height(tallest);
             }
 
           });

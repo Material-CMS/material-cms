@@ -224,7 +224,6 @@ apos.define('apostrophe-ui', {
     // Freel free to override this method to change the UI.
 
     self.globalLock = function() {
-      self.globalLockAt = Date.now();
       var $freezer = $('<div class="apos-global-busy"></div>');
       $('body').append($freezer);
       $freezer.focus(); // focus adds a tick before triggering the active transition
@@ -236,21 +235,11 @@ apos.define('apostrophe-ui', {
     // Freel free to override this method to change the UI.
 
     self.globalUnlock = function() {
-      var elapsed = Date.now() - self.globalLockAt;
       var $freezer = $('.apos-global-busy');
       $freezer.removeClass('active');
-      $('body').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+      $('body').bind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
         $freezer.remove();
       });
-      // As a fallback, remove on a timer. Wait for as long as we were locked
-      // or 0.5 seconds, whichever is shortest. This covers the longest
-      // possible time for the transition without interfering with the
-      // transition. The use case is situations where the transition never fires,
-      // which has been documented when the busy spinner only appears for a very
-      // short time. -Tom
-      setTimeout(function() {
-        $freezer.remove();
-      }, Math.min(elapsed, 0.5));
     };
 
     // Simple progress display. Enables a progress display
@@ -444,9 +433,10 @@ apos.define('apostrophe-ui', {
 
       $(function() {
         self.ajaxInfiniteScrollHandler();
-        $(window).on('scroll', _.throttle(function() {
-          self.ajaxInfiniteScrollHandler();
-        }, 200));
+      });
+
+      $(window).on('scroll', function(event) {
+        self.ajaxInfiniteScrollHandler();
       });
     };
 
@@ -460,8 +450,7 @@ apos.define('apostrophe-ui', {
         if ($el.data('aposSeen')) {
           return;
         }
-        var scrollElement = document.scrollingElement || document.documentElement;
-        var scrollBottom = scrollElement.scrollTop + $(window).height();
+        var scrollBottom = $('html, body').scrollTop() + $(window).height();
         var top = $el.offset().top;
         if (top - self.infiniteScrollOffset <= scrollBottom) {
           $el.data('aposSeen', 1);
@@ -608,8 +597,7 @@ apos.define('apostrophe-ui', {
             // the replacement algorithm changes the scrolling position,
             // which is good for pagination but bad for appending, so make
             // a note of the old scrolling position
-            var scrollElement = document.scrollingElement || document.documentElement;
-            oldTop = scrollElement.scrollTop;
+            oldTop = $('html, body').scrollTop();
             $appending = $new.find('[data-apos-ajax-append]');
             $appending.prepend($appendTo.contents());
           }

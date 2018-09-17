@@ -19,14 +19,8 @@ apos.define('apostrophe-admin-bar', {
 
     self.enhance = function() {
       var $bar = $('[data-apos-admin-bar]');
-      var isHomepage = $('[data-apos-level="0"]').length;
-      if ((options.openOnHomepageLoad && isHomepage) || options.openOnLoad) {
-        $bar.css('overflow', 'visible');
-        $bar.addClass('apos-active');
-      } else {
-        $bar.css('overflow', 'hidden');
-      }
       var $dropdowns = $bar.find('[data-apos-dropdown]');
+      $bar.css('overflow', 'visible');
 
       // on transitionend, turn overflow on so we can see dropdowns!
       $bar.on('transitionend webkitTransitionEnd oTransitionEnd', function() {
@@ -60,19 +54,13 @@ apos.define('apostrophe-admin-bar', {
 
     };
 
-    self.collapse = function($bar) {
-      if (!$bar.hasClass('apos-admin-bar--clicked')) {
-        $bar.css('overflow', '');
-        $bar.removeClass('apos-active');
-      }
-    };
-
     self.autoCollapse = function ($bar) {
-      if (typeof options.closeDelay === 'number' && options.closeDelay > 0) {
-        setTimeout(function () {
-          self.collapse($bar);
-        }, options.closeDelay);
-      }
+      setTimeout(function () {
+        if (!$bar.hasClass('apos-admin-bar--clicked')) {
+          $bar.css('overflow', '');
+          $bar.removeClass('apos-active');
+        }
+      }, 3000);
     };
 
     apos.adminBar = self;
