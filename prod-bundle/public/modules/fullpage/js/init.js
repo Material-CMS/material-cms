@@ -1,14 +1,11 @@
 $(document).ready(function() {
   // Fullpage Initialization
   $('#fullpage').fullpage({
+    //License
+    licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+    scrollBar: true,
     //Navigation
     menu: '.nav-activator',
-    navigation: false,
-    navigationPosition: 'right',
-    navigationTooltips: ['slide01', 'slide02'],
-    showActiveTooltip: false,
-    slidesNavigation: false,
-    slidesNavPosition: 'bottom',
     //Scrolling
     css3: true,
     scrollingSpeed: 600,
@@ -57,12 +54,11 @@ $(document).ready(function() {
     },
     //Custom selectors
     sectionSelector: '.section',
-    slideSelector: '.slide',
     lazyLoading: false,
     //Lazy loading for all hadditional sections
     afterRender: function(){
       var $animated = $('.section:not(:first-child)');
   		$animated.addClass('in');
-	   }
+    }
   });
 });

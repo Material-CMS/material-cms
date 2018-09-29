@@ -13,7 +13,7 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.67.0",
+    "apostrophe": "^2.68.1",
     "apostrophe-favicons": "^1.0.14",
     "apostrophe-open-graph": "^1.1.4",
     "apostrophe-optimizer": "^2.0.1",
