@@ -348,78 +348,66 @@ apos.define('apostrophe-pieces-manager-modal', {
     // asking for user confirmation.
 
     self.batchTrash = function() {
-      if (self.choices.length > 0) {
-        return self.batchSimple(
-          'trash',
-          'Are you sure you want to trash ' + self.choices.length + ' item' + (self.choices.length !== 1 ? 's' : '') + '?',
-          {}
-        );
-      }
+      return self.batchSimple(
+        'trash',
+        "Are you sure you want to trash " + self.choices.length + " item(s)?",
+        {}
+      );
     };
 
     // Rescues all selected items (`self.choices`) from the trash, after
     // asking for user confirmation.
 
     self.batchRescue = function() {
-      if (self.choices.length > 0) {
-        return self.batchSimple(
-          'rescue',
-          'Are you sure you want to rescue ' + self.choices.length + ' item' + (self.choices.length !== 1 ? 's' : '') + ' from the trash?',
-          {}
-        );
-      }
+      return self.batchSimple(
+        'rescue',
+        "Are you sure you want to rescue " + self.choices.length + " item(s) from the trash?",
+        {}
+      );
     };
 
     // Publishes all selected items (`self.choices`), after asking for
     // user confirmation.
 
     self.batchPublish = function() {
-      if (self.choices.length > 0) {
-        return self.batchSimple(
-          'publish',
-          'Are you sure you want to publish ' + self.choices.length + ' item' + (self.choices.length !== 1 ? 's' : '') + '?',
-          {}
-        );
-      }
+      return self.batchSimple(
+        'publish',
+        "Are you sure you want to publish " + self.choices.length + " items?",
+        {}
+      );
     };
 
     // Unpublishes all selected items (`self.choices`), after asking for
     // user confirmation.
 
     self.batchUnpublish = function() {
-      if (self.choices.length > 0) {
-        return self.batchSimple(
-          'unpublish',
-          'Are you sure you want to unpublish ' + self.choices.length + ' item' + (self.choices.length !== 1 ? 's' : '') + '?',
-          {}
-        );
-      }
+      return self.batchSimple(
+        'unpublish',
+        "Are you sure you want to unpublish " + self.choices.length + " items?",
+        {}
+      );
     };
 
     // Tags all selected items (`self.choices`), after asking for
     // user confirmation.
 
     self.batchTag = function() {
-      if (self.choices.length > 0) {
-        return self.batchSimple(
-          'tag',
-          'Are you sure you want to tag ' + self.choices.length + ' item' + (self.choices.length !== 1 ? 's' : '') + '?',
-          {}
-        );
-      }
+      return self.batchSimple(
+        'tag',
+        "Are you sure you want to tag " + self.choices.length + " items?",
+        {}
+      );
     };
 
     // Untags all selected items (`self.choices`), after asking for
     // user confirmation.
 
     self.batchUntag = function() {
-      if (self.choices.length > 0) {
-        return self.batchSimple(
-          'untag',
-          'Are you sure you want to untag ' + self.choices.length + ' item' + (self.choices.length !== 1 ? 's' : '') + '?',
-          {}
-        );
-      }
+      return self.batchSimple(
+        'untag',
+        "Are you sure you want to untag " + self.choices.length + " items?",
+        {}
+      );
     };
 
     // Carry out a named batch operation, such as `trash`, displaying the
@@ -499,13 +487,7 @@ apos.define('apostrophe-pieces-manager-modal', {
           }
           if (result.jobId) {
             return jobs.progress(result.jobId, {
-              success: function(result) {
-                if (options.success) {
-                  return options.success(result, callback);
-                } else {
-                  return callback(null);
-                }
-              },
+              success: options.success,
               change: self.options.name
             });
           }

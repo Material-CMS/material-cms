@@ -386,10 +386,6 @@ apos.define('apostrophe-modal', {
       apos.emit('enhance', self.$el);
 
       if (self.$view) {
-        // Remove elements that are inappropriate in a view and
-        // can cause problems for regression testing selectors
-        self.$el.find('[data-modal-breadcrumb]').remove();
-        self.$el.find('[data-modal-controls]').remove();
         // Append ourselves to the appropriate placeholder div
         self.$view.append(self.$el);
         // Make sure the parent can enumerate it as a view
@@ -424,9 +420,6 @@ apos.define('apostrophe-modal', {
 
     self.slideIn = function() {
 
-      if (!self.slid) {
-        self.slid = true;
-      }
       self.$slideableAncestorEl = self.getSlideableAncestorEl();
       if (!self.$slideableAncestorEl) {
         return self.stackPush();
@@ -460,16 +453,6 @@ apos.define('apostrophe-modal', {
       // we need a gap of time to trigger the transition
       setImmediate(function() {
         $wrapper.find('[data-modal-content]').removeClass('apos-modal-slide-current');
-        var fired = false;
-        $content.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-          if (fired) {
-            // Has been seen firing twice in nightwatch tests, in spite of `one`
-            return;
-          } else {
-            fired = true;
-          }
-          self.indicateCurrentModal(true);
-        });
         $content.addClass('apos-modal-slide-current');
       });
 
@@ -506,33 +489,6 @@ apos.define('apostrophe-modal', {
 
       self.$el.show();
       self.$el.removeClass('apos-modal-stack-push');
-
-      // To simplify regression testing
-      self.indicateCurrentModal(true);
-    };
-
-    // For ease of browser regression testing, make sure the current modal
-    // and its proxies such as $instructions, $modalFilters, etc.
-    // all have the data-apos-modal-current attribute, and
-    // that nothing else does.
-
-    self.indicateCurrentModal = function(adding) {
-      if (adding) {
-        apos.modalSupport.all.push(self);
-      } else {
-        var top = apos.modalSupport.getLatestModal();
-        if (top !== self) {
-          apos.utils.error('Types do not match in indicateCurrentModal');
-        }
-        apos.modalSupport.all.pop();
-      }
-      $('body [data-apos-modal-current]').removeAttr('data-apos-modal-current');
-      var latest = apos.modalSupport.getLatestModal();
-      if (latest) {
-        _.each([ latest.$el, latest.$controls, latest.$modalFilters, latest.$instructions ], function($el) {
-          $el.attr('data-apos-modal-current', latest.__meta.name);
-        });
-      }
     };
 
     // Calculates the appropriate modal body height by subtracting
@@ -894,14 +850,7 @@ apos.define('apostrophe-modal', {
 
       // On transition end, remove previous current slide and refresh
       // modal breadcrumbs and controls
-      var fired = false;
-      self.$el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-        if (fired) {
-          // Has been seen firing twice in Nightwatch tests
-          return;
-        } else {
-          fired = true;
-        }
+      self.$el.bind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
         self.$el.remove();
         self.$slideableAncestorEl.data('aposModal').refreshBreadcrumb();
         self.$controls.hide();
@@ -911,7 +860,6 @@ apos.define('apostrophe-modal', {
         self.$instructions.hide();
         self.$previousInstructions.show();
         self.afterHideWrapper();
-        self.indicateCurrentModal(false);
       });
     };
 
@@ -942,7 +890,7 @@ apos.define('apostrophe-modal', {
       self.$el.addClass('apos-modal-stack-push');
 
       // Remove elements on transition end.
-      self.$el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+      self.$el.bind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
         $blackout.remove();
         self.$el.remove();
 
@@ -952,7 +900,6 @@ apos.define('apostrophe-modal', {
           self.disableGlobalEvents();
         }
         self.afterHideWrapper();
-        self.indicateCurrentModal(false);
       });
     };
 
@@ -1007,8 +954,9 @@ apos.define('apostrophe-modal', {
       var $firstElm = self.$el.find('.apos-modal-body form fieldset:first input');
 
       if ($firstElm.length) {
-        self.$el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+        self.$el.bind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
           $firstElm.focus();
+          self.$el.unbind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
         });
       }
     };
@@ -1032,26 +980,11 @@ apos.define('apostrophe-modal', {
 // documentation.
 
 apos.modalSupport = {
-  // jQuery objects for freestanding modals
   stack: [],
   initialized: false,
-  // Depth of the stack (above)
   depth: 0,
-  // All non-view modals, including slides and freestanding;
-  // also set up as a stack, with the newest at the end.
-  // The objects are actual modal objects (`apostrophe-modal`),
-  // NOT jQuery objects
-  all: [],
-  // Returns jQuery object
   getTopModalOrBody: function() {
     return $(apos.modalSupport.stack.length ? apos.modalSupport.stack[apos.modalSupport.stack.length - 1] : 'body');
-  },
-  // Returns actual apostrophe-modal object, including latest slide (not views)
-  getLatestModal: function() {
-    if (!apos.modalSupport.all.length) {
-      return null;
-    }
-    return apos.modalSupport.all[apos.modalSupport.all.length - 1];
   },
   closeTopModal: function() {
     var topModal = apos.modalSupport.getTopModalOrBody();
