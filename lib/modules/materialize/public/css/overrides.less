@@ -15,6 +15,27 @@ nav {
 
   ul { li { a { font-size: 1.4rem; } } }
 }
+//Flow Text is huge in default settings!
+@media(min-width: 600px) {
+.flow-text {
+  font-size: 1.25rem !important;
+  }
+}
+@media(min-width: 700px) {
+.flow-text {
+  font-size: 1.3rem !important;
+  }
+}
+@media(min-width: 800px) {
+.flow-text {
+  font-size: 1.35rem !important;
+  }
+}
+@media(min-width: 1000px) {
+.flow-text {
+  font-size: 1.4rem !important;
+  }
+}
 // Admin Bar Overrides
 .apos-ui .apos-admin-bar {
   top: 80px;
@@ -44,6 +65,16 @@ margin-bottom: 0;
   }
   h5 {
     font-size: 1rem;
+  }
+}
+@media(min-width: 1000px) {
+  .collapsible {
+    h4 {
+      font-size: 1.35rem;
+    }
+    h5 {
+      font-size: 1.2rem;
+    }
   }
 }
 .collapsible-body {
