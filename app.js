@@ -14,9 +14,9 @@ var apos = require('apostrophe')({
     'materialize': {},
     'texts': {},
     'texts-widgets': {},
+    'card-widgets': {},
     'double-widgets': {},
     'materialize-video-widgets': {},
-    'materialize-card-widgets': {},
     'materialize-events': {},
     'materialize-events-widgets': {},
 
@@ -50,7 +50,7 @@ var apos = require('apostrophe')({
         https: true
       }
     },
-    
+
     //Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
   }
