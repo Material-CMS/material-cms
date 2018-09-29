@@ -19,18 +19,9 @@ apos.define('apostrophe-versions-editor', {
         var $version = $toggle.closest('[data-version]');
         var currentId = $version.attr('data-version');
         var oldId = $version.attr('data-previous');
-        var $versionContent = $version.find('[data-changes]');
-        var noChanges = self.$el.find('[data-no-changes]').attr('data-no-changes');
-        if ($versionContent.html() !== '') {
-          $versionContent.html('');
-        } else {
-          self.html('compare', { oldId: oldId, currentId: currentId }, function(html) {
-            if (html && html.trim() === '') {
-              html = noChanges;
-            }
-            $versionContent.html(html);
-          });
-        }
+        self.html('compare', { oldId: oldId, currentId: currentId }, function(html) {
+          $version.find('[data-changes]').html(html);
+        });
         return false;
       });
       self.$el.on('click', '[data-apos-revert]', function() {

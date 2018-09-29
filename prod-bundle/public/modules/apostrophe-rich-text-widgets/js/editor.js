@@ -35,22 +35,10 @@ apos.define('apostrophe-rich-text-widgets-editor', {
 
       self.toolbar = self.options.toolbar || [];
 
-      if (!self.defaultStyle) {
-        if (self.options.defaultElement) {
-          // eslint-disable-next-line new-cap
-          self.defaultStyle = new CKEDITOR.style({
-            element: self.options.defaultElement
-          });
-        } else if (self.styles.length) {
-          var defaultStyle = _.find(self.styles, {
-            name: self.options.defaultStyle
-          });
-
-          if (defaultStyle) {
-            // eslint-disable-next-line new-cap
-            self.defaultStyle = new CKEDITOR.style(defaultStyle);
-          }
-        }
+      if (self.options.defaultElement) {
+        self.defaultElement = self.options.defaultElement;
+      } else if (self.styles.length) {
+        self.defaultElement = self.styles[0].element;
       }
 
       // This will allow loading of extra plugins for each editor
@@ -111,14 +99,15 @@ apos.define('apostrophe-rich-text-widgets-editor', {
       });
 
       self.ckeditorInstance.on('instanceReady', function(event) {
-        self.ckeditorInstance.focus();
-
-        if (self.ckeditorInstance.getData() === '') {
-          if (self.defaultStyle) {
-            self.ckeditorInstance.applyStyle(self.defaultStyle);
-          }
+        // This should not be necessary, but without the &nbsp; we are unable to
+        // focus on an "empty" rich text after first clicking away an then clicking back.
+        // And without the call to focus() people have to double click for no
+        // apparent reason
+        if (self.$richText.html() === "" || self.$richText.html() === ' ') {
+          var emptyState = '<' + (self.defaultElement || 'div') + '>&nbsp;</' + (self.defaultElement || 'div') + '>';
+          self.$richText.html(emptyState);
         }
-
+        self.ckeditorInstance.focus();
         self.$richText.data('aposRichTextState', 'started');
         self.$widget.trigger('aposRichTextStarted');
       });
@@ -135,7 +124,6 @@ apos.define('apostrophe-rich-text-widgets-editor', {
       // make sure there is a blur event before
       // the destruction takes place
       var data = self.ckeditorInstance.getData();
-      self.ckeditorInstance.focusManager.blur(true);
       self.ckeditorInstance.destroy();
       self.ckeditorInstance = null;
       self.$richText.removeAttr('contenteditable');

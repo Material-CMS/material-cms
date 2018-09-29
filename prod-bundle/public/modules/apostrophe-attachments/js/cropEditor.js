@@ -32,7 +32,7 @@ apos.define('apostrophe-attachments-crop-editor', {
           viewMode: 1,
           // This is a bad idea, it prevents starting a new crop
           dragMode: 'crop',
-          autoCrop: true,
+          autoCrop: false,
           cropmove: function(e) {
             self.testMinimumSize(e);
           },
