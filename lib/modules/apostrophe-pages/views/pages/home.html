@@ -27,27 +27,27 @@
       <a href="{{ data.page._url }}" class="brand-logo"><h1 style="color:{{ data.page.acc1_color }};">{{ data.page.title }}</h1></a>
       <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons" style="color:{{ data.page.acc1_color }};">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
-                                            <li data-menuanchor="{{ data.page.section1_title | lower }}" class="active"><a href="#{{ data.page.section1_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
-        {%- if data.page.section2_active -%}<li data-menuanchor="{{ data.page.section2_title | lower }}"><a href="#{{ data.page.section2_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
-        {%- if data.page.section3_active -%}<li data-menuanchor="{{ data.page.section3_title | lower }}"><a href="#{{ data.page.section3_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
-        {%- if data.page.section4_active -%}<li data-menuanchor="{{ data.page.section4_title | lower }}"><a href="#{{ data.page.section4_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
-                                            <li data-menuanchor="contact"><a href="#contact" style="color:{{ data.page.acc1_color }};">Contact</a></li>
+                                            <li class="active"><a href="#{{ data.page.section1_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
+        {%- if data.page.section2_active -%}<li><a href="#{{ data.page.section2_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
+        {%- if data.page.section3_active -%}<li><a href="#{{ data.page.section3_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
+        {%- if data.page.section4_active -%}<li><a href="#{{ data.page.section4_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
+                                            <li><a href="#contact" style="color:{{ data.page.acc1_color }};">Contact</a></li>
       </ul>
     </div>
     <ul class="nav-activator sidenav" id="mobile">
-                                          <li data-menuanchor="{{ data.page.section1_title | lower }}" class="active"><a href="#{{ data.page.section1_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
-      {%- if data.page.section2_active -%}<li data-menuanchor="{{ data.page.section2_title | lower }}"><a href="#{{ data.page.section2_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
-      {%- if data.page.section3_active -%}<li data-menuanchor="{{ data.page.section3_title | lower }}"><a href="#{{ data.page.section3_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
-      {%- if data.page.section4_active -%}<li data-menuanchor="{{ data.page.section4_title | lower }}"><a href="#{{ data.page.section4_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
-                                          <li data-menuanchor="contact"><a href="#contact" style="color:{{ data.page.acc1_color }};">Contact</a></li>
+                                          <li><a href="#{{ data.page.section1_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</a></li>
+      {%- if data.page.section2_active -%}<li><a href="#{{ data.page.section2_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</a></li>{% endif %}
+      {%- if data.page.section3_active -%}<li><a href="#{{ data.page.section3_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</a></li>{% endif %}
+      {%- if data.page.section4_active -%}<li><a href="#{{ data.page.section4_title | lower }}" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</a></li>{% endif %}
+                                          <li><a href="#contact" style="color:{{ data.page.acc1_color }};">Contact</a></li>
     </ul>
   </nav>
 </div>
 {% endblock %}
 
 {% block main %}
-<div id="fullpage" class="glass" style="background-color:{{ data.page.sec1_color }};">
-  <div class="section" data-anchor="{{ data.page.section1_title | lower }}" style="background-color:{{ data.page.sec1_color }};">
+<div class="section-wrapper" style="background-color:{{ data.page.sec1_color }};">
+  <div class="section" id="{{ data.page.section1_title | lower }}" style="background-color:{{ data.page.sec1_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section1', {
@@ -92,7 +92,7 @@
   </div>
 
   {%- if data.page.section2_active -%}
-  <div class="section" data-anchor="{{ data.page.section2_title | lower }}" style="background-color:{{ data.page.sec2_color }};">
+  <div class="section" id="{{ data.page.section2_title | lower }}" style="background-color:{{ data.page.sec2_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
@@ -142,7 +142,7 @@
   {%- endif -%}
 
   {%- if data.page.section3_active -%}
-  <div class="section" data-anchor="{{ data.page.section3_title | lower }}" style="background-color:{{ data.page.sec3_color }};">
+  <div class="section" id="{{ data.page.section3_title | lower }}" style="background-color:{{ data.page.sec3_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
@@ -192,7 +192,7 @@
   {%- endif -%}
 
   {%- if data.page.section4_active -%}
-  <div class="section" data-anchor="{{ data.page.section4_title | lower }}" style="background-color:{{ data.page.sec4_color }};">
+  <div class="section" id="{{ data.page.section4_title | lower }}" style="background-color:{{ data.page.sec4_color }};">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section4', {
@@ -243,7 +243,7 @@
 {% endblock %}
 
 {% block afterMain %}
-  <div data-anchor="contact" class="section fp-auto-height" style="background-color:{{ data.page.sec5_color }};">
+  <div class="section" id="contact" style="background-color:{{ data.page.sec5_color }};">
     <footer class="page-footer">
       <div class="container">
         <div class="row">
