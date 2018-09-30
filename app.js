@@ -7,7 +7,7 @@ var apos = require('apostrophe')({
   modules: {
 
     //Style modules
-    'fullpage': {},
+    'smartscroll': {},
     'apostrophe-video-widgets': {},
     'apostrophe-favicons': {},
     'background-widgets': {},
