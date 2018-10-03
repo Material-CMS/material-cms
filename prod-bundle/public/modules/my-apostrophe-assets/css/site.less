@@ -30,10 +30,6 @@ html, body {
   padding-top: 0;
   padding-bottom: 0;
 }
-//Footer Height
-.section:nth-child(6n+5) {
-  height: 51vh;
-}
 //Header
  .header {
    position: absolute;
@@ -41,3 +37,12 @@ html, body {
    width: 100%;
    top: 10vh;
  }
+//Footer
+.section:nth-child(6n+5) {
+  height: 52vh;
+}
+@media(max-width: 500px) {
+  .section:nth-child(6n+5) {
+    height: 64vh;
+  }
+}
