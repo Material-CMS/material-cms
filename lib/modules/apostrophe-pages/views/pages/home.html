@@ -244,67 +244,69 @@
 
 {% block afterMain %}
   <div class="section" id="contact" style="background-color:{{ data.page.sec5_color }};">
-    <footer class="page-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <form action="{{ data.global.arn }}" method="post">
-              <input type="hidden" name="_to" value="{{ data.global.mailto }}">
-              <input type="text" name="_honeypot" value="" style="display:none">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">account_circle</i>
-                <input placeholder="Ihr Name" type="text" tabindex="1" required>
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <input placeholder="Ihre Email" type="email" name="usermail" tabindex="2" required>
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix" >message</i>
-                <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
-              </div>
-              <div class="input-field col s4  m4 offset-m1">
-                <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:{{ data.page.acc1_color }};">Send</button>
-              </div>
-              {%- if data.global.privacy -%}
-              <div class="margin-top col s5 m4">
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="background-color:{{ data.page.acc1_color }};">Privacy</a>
-                <div id="modal1" class="modal">
-                  <div class="modal-content text-darken-4">
-                    <h4>Privacy</h4>
-                    <p>{{ data.global.privacy }}</p>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    <div class="bottom">
+      <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+              <form action="{{ data.global.arn }}" method="post">
+                <input type="hidden" name="_to" value="{{ data.global.mailto }}">
+                <input type="text" name="_honeypot" value="" style="display:none">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input placeholder="Ihr Name" type="text" tabindex="1" required>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">email</i>
+                  <input placeholder="Ihre Email" type="email" name="usermail" tabindex="2" required>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix" >message</i>
+                  <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
+                </div>
+                <div class="input-field col s4  m4 offset-m1">
+                  <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:{{ data.page.acc1_color }};">Send</button>
+                </div>
+                {%- if data.global.privacy -%}
+                <div class="margin-top col s5 m4">
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="background-color:{{ data.page.acc1_color }};">Privacy</a>
+                  <div id="modal1" class="modal">
+                    <div class="modal-content text-darken-4">
+                      <h4>Privacy</h4>
+                      <p>{{ data.global.privacy }}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              {%- endif -%}
-              {%- if data.global.legal -%}
-              <div class="margin-top col s3 m3">
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="background-color:{{ data.page.acc1_color }};">Legal</a>
-                <div id="modal2" class="modal">
-                  <div class="modal-content text-darken-4">
-                    <h4>Impressum</h4>
-                    <p>{{ data.global.legal }}</p>
+                {%- endif -%}
+                {%- if data.global.legal -%}
+                <div class="margin-top col s3 m3">
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="background-color:{{ data.page.acc1_color }};">Legal</a>
+                  <div id="modal2" class="modal">
+                    <div class="modal-content text-darken-4">
+                      <h4>Impressum</h4>
+                      <p>{{ data.global.legal }}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              {%- endif -%}
-            </form>
+                {%- endif -%}
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-          {%- if data.global.legal -%}
-            © {{ data.global.creation_date }} {{ data.global.copyright }}
-          {%- endif -%}
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        <div class="footer-copyright">
+          <div class="container">
+            {%- if data.global.legal -%}
+              © {{ data.global.creation_date }} {{ data.global.copyright }}
+            {%- endif -%}
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
 {% endblock %}
 
