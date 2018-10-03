@@ -21,10 +21,23 @@ html, body {
    margin: 0;
    padding: 0;
 }
-//Smartscroll sectionScroll
+//Sections Height
 .section {
+  position: relative;
+  display: flex;
+  align-items: center;
   height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
 }
+//Footer Height
 .section:nth-child(6n+5) {
   height: 51vh;
 }
+//Header
+ .header {
+   position: absolute;
+   text-align: center;
+   width: 100%;
+   top: 10vh;
+ }
