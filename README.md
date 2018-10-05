@@ -15,7 +15,7 @@ Still in alpha but most main functions for building amazing fullpage, materializ
 git clone https://github.com/felixlberg/fullpage-cms
 # cd into the new project
 cd fullpage-cms
-# Install our dependencies (most notably, Apostrophe)
+# Install dependencies
 npm install
 # Add an admin user to the admin group; prompts for password
 node app.js apostrophe-users:add admin admin

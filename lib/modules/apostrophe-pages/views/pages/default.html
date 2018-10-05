@@ -47,7 +47,12 @@
 
 {% block main %}
 <div class="section-wrapper" style="background-color:{{ data.page.sec1_color }};">
-  <div class="section" id="{{ data.page.section1_title | lower }}" style="background-color:{{ data.page.sec1_color }};">
+  <div class="section" id="{{ data.page.section1_title | lower }}" style="
+    background-color:{{ data.page.sec1_color }};
+    {%- if data.page._image_sec1.attachment -%}
+      background-image: url({{ apos.attachments.url(data.page._image_sec1.attachment, { size: data.options.size or 'full' }) }})
+    {% endif %}
+  ">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section1_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section1', {
@@ -92,7 +97,12 @@
   </div>
 
   {%- if data.page.section2_active -%}
-  <div class="section" id="{{ data.page.section2_title | lower }}" style="background-color:{{ data.page.sec2_color }};">
+  <div class="section" id="{{ data.page.section2_title | lower }}" style="
+    background-color:{{ data.page.sec2_color }};
+    {%- if data.page._image_sec2.attachment -%}
+      background-image: url({{ apos.attachments.url(data.page._image_sec2.attachment, { size: data.options.size or 'full' }) }})
+    {% endif %}
+  ">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section2_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section2', {
@@ -142,7 +152,12 @@
   {%- endif -%}
 
   {%- if data.page.section3_active -%}
-  <div class="section" id="{{ data.page.section3_title | lower }}" style="background-color:{{ data.page.sec3_color }};">
+  <div class="section" id="{{ data.page.section3_title | lower }}" style="
+    background-color:{{ data.page.sec3_color }};
+    {%- if data.page._image_sec3.attachment -%}
+      background-image: url({{ apos.attachments.url(data.page._image_sec3.attachment, { size: data.options.size or 'full' }) }})
+    {% endif %}
+  ">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section3_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section3', {
@@ -192,7 +207,12 @@
   {%- endif -%}
 
   {%- if data.page.section4_active -%}
-  <div class="section" id="{{ data.page.section4_title | lower }}" style="background-color:{{ data.page.sec4_color }};">
+  <div class="section" id="{{ data.page.section4_title | lower }}" style="
+    background-color:{{ data.page.sec4_color }};
+    {%- if data.page._image_sec4.attachment -%}
+      background-image: url({{ apos.attachments.url(data.page._image_sec4.attachment, { size: data.options.size or 'full' }) }})
+    {% endif %}
+  ">
     <div class="header"><h3 class="center-align" style="color:{{ data.page.acc1_color }};">{{ data.page.section4_title }}</h3></div>
     <div class="main-content container">
       {{ apos.area(data.page, 'section4', {
