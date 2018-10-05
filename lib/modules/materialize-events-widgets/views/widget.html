@@ -6,16 +6,13 @@
       <li  class="{{ piece.active }}">
 
         <div class="collapsible-header" tabindex="0">
-        {%- if piece.icon -%}<i class="material-icons" style="color:{{ data.page.acc2_color }}">{{ piece.icon }}</i>{%- endif -%}
-
-        <h4 class="truncate">
-          {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
-            {{ piece.title }}
-          {% if piece._url %}</a>{% endif %}
-        </h4>
-
-        <span class="valign-wrapper badge"><h5>{{ piece.start | date('MMM Do') }} at {{ piece.start | date('h:mma') }}</h5></span>
-
+          {%- if piece.icon -%}<i class="material-icons" style="color:{{ data.page.acc2_color }}">{{ piece.icon }}</i>{%- endif -%}
+          <h4 class="truncate">
+            {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
+              {{ piece.title }}
+            {% if piece._url %}</a>{% endif %}
+          </h4>
+          <span class="valign-wrapper badge"><h5>{{ piece.start | date('MMM Do') }} at {{ piece.start | date('h:mma') }}</h5></span>
         </div>
 
         {%- if piece.text -%}

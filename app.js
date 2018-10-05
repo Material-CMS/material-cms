@@ -7,18 +7,16 @@ var apos = require('apostrophe')({
   modules: {
 
     //Style modules
-    'smartscroll': {},
     'apostrophe-video-widgets': {},
     'apostrophe-favicons': {},
-    'background-widgets': {},
-    'materialize': {},
-    'texts': {},
-    'texts-widgets': {},
     'card-widgets': {},
     'double-widgets': {},
+    'materialize': {},
     'materialize-video-widgets': {},
     'materialize-events': {},
     'materialize-events-widgets': {},
+    'texts': {},
+    'texts-widgets': {},
 
     //Production modules
     'apostrophe-seo': {},
