@@ -6,7 +6,7 @@
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="nav-activator right hide-on-med-and-down">
           {% for piece in data.widget._pieces %}
-              <li><a href="#{{ piece.title | lower }}">{{ piece.title }}</a></li>
+              <li><a href="#{{ piece.slug }}">{{ piece.title }}</a></li>
           {% endfor %}
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -17,7 +17,7 @@
 
 <div class="section-wrapper" style="background-color:{{ data.page.sec1_color }};">
   {% for piece in data.widget._pieces %}
-    <div class="section" id="{{ piece.title | lower }}" style="background-color:{{ piece.color }};
+    <div class="section" id="{{ piece.slug }}" style="background-color:{{ piece.color }};
       {%- if piece._image.attachment -%}
         background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
       {% endif %}
