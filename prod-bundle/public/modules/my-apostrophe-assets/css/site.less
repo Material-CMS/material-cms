@@ -1,25 +1,23 @@
 @import "utils/reset.less";
-// Main stuff
-.main-content {
-    .login-link {
-      float: right;
-      color: @apos-white;
-    }
-    .apos-peek {
-      opacity: 1;
-    }
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-.apos-dropdown-items {
-  max-width: inherit!important;
+// Empty Site
+.apos-refreshable {
+
 }
-.apos-dropdown-item {
-  float: left;
-}
-html, body {
-   height: 100%;
-   width: 100%;
-   margin: 0;
-   padding: 0;
+
+// Navigation
+.nav {
+  z-index: 9;
+  display: block;
+  position: fixed;
+  width: 100%;
 }
 //Sections Height
 .section {
@@ -34,23 +32,22 @@ html, body {
   background-position: center;
 }
 //Header
- .header {
-   position: absolute;
-   text-align: center;
-   width: 100%;
-   top: 10vh;
- }
-//Footer
-.section:nth-child(6n+5) {
-  height: 52vh;
+.header {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 1rem;
 }
-@media(max-width: 500px) {
-  .section:nth-child(6n+5) {
-    height: 64vh;
+.header h3 {
+  mix-blend-mode: difference;
+  color: white;
+}
+// Main stuff
+.main-content {
+  .login-link {
+    float: right;
+    color: @apos-white;
   }
-}
-//Admin UI
-.apos-field-color {
-  float: left;
-  clear: right;
+  .apos-peek {
+    opacity: 1;
+  }
 }
