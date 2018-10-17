@@ -1,28 +1,37 @@
 {% extends "layout.html" %}
-
+{# Imports #}
+{% import 'apostrophe-palette-widgets:macros.html' as palette %}
 {% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
 {% block extraHead %}
-{% if data.piece %}
-  {% if data.piece.seoTitle %}
-    {% set title = data.piece.seoTitle %}
+  {# Seo and Open Graph fields #}
+  {% if data.piece %}
+    {% if data.piece.seoTitle %}
+      {% set title = data.piece.seoTitle %}
+    {% else %}
+      {% set title = data.piece.title %}
+    {% endif %}
   {% else %}
-    {% set title = data.piece.title %}
+    {% if data.page.seoTitle %}
+      {% set title = data.page.seoTitle %}
+    {% else %}
+      {% set title = data.page.title %}
+    {% endif %}
   {% endif %}
-{% else %}
-  {% if data.page.seoTitle %}
-    {% set title = data.page.seoTitle %}
-  {% else %}
-    {% set title = data.page.title %}
-  {% endif %}
-{% endif %}
-{% include "apostrophe-seo:view.html" %}
-{% include "apostrophe-open-graph:view.html" %}
-{{ favicons.renderLinks(apos, data.global) }}
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {% include "apostrophe-seo:view.html" %}
+  {% include "apostrophe-open-graph:view.html" %}
+  {# Favicons #}
+  {{ favicons.renderLinks(apos, data.global) }}
+  {# Palette #}
+  {{ palette.stylesheetLink(data.global) }}
+  {{ palette.stylesheetTag() }}
+  {# Material Icons #}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 
 {% block beforeMain %}
-
+  {% if data.user %} <!-- be sure to somehow safegaurd against non-editor situations, as performance could unnecessarily suffer -->
+    {{ palette.palette(data.global, 'palette') }}
+  {% endif %}
 {% endblock %}
 
 {% block main %}

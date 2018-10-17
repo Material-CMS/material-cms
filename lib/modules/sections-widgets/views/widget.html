@@ -1,17 +1,19 @@
-<div class="nav">
-  <nav style="background-color:{{ data.page.nav_color }};">
-    <div class="nav-wrapper z-depth-2">
-      <a href="{{ data.page._url }}" class="brand-logo"><h1>{{ data.page.title }}</h1></a>
-      <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="nav-activator right hide-on-med-and-down">
-        {% for piece in data.widget._pieces %}
-            <li><a href="#{{ piece.title | lower }}">{{ piece.title }}</a></li>
-        {% endfor %}
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
+{%- if data.widget.navigation -%}
+  <div class="nav">
+    <nav style="background-color:{{ data.page.nav_color }};">
+      <div class="nav-wrapper z-depth-2">
+        <a href="{{ data.page._url }}" class="brand-logo"><h1>{{ data.page.title }}</h1></a>
+        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="nav-activator right hide-on-med-and-down">
+          {% for piece in data.widget._pieces %}
+              <li><a href="#{{ piece.title | lower }}">{{ piece.title }}</a></li>
+          {% endfor %}
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+{%- endif -%}
 
 <div class="section-wrapper" style="background-color:{{ data.page.sec1_color }};">
   {% for piece in data.widget._pieces %}

@@ -20,6 +20,33 @@ var apos = require('apostrophe')({
     'texts-widgets': {},
     'video-widgets': {},
 
+    //CSS in context editing
+    'apostrophe-palette-widgets': {},
+    'apostrophe-palette': {},
+    'apostrophe-palette-global': {
+      paletteFields: [
+        {
+          name: 'backgroundColor',
+          label: 'Background color of the website',
+          help: 'Section Colors Override this!',
+          type: 'color',
+          selector: 'body',
+          property: 'background-color',
+        },
+        {
+          name: 'headerBottomPadding',
+          label: 'space between image header and widget',
+          type: 'range',
+          selector: ['.header'],
+          property: ['padding-bottom'],
+          min: 0,
+          max: 10,
+          step: 0.1,
+          unit: 'rem',
+        }
+      ]
+    },
+    
     //Production modules
     'apostrophe-seo': {},
     'apostrophe-open-graph': {},
