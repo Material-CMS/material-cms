@@ -3,44 +3,16 @@
    {% for piece in data.widget._pieces %}
     <div class="card">
       <div class="card-content">
-        {%- if piece.title -%}<span class="card-title"><h5 class="truncate">{{ piece.title }}</h5></span>{%- endif -%}
+
+        {%- if piece.title -%}
+          <span class="card-title"><h5 class="truncate">{{ piece.title }}</h5></span>
+        {%- endif -%}
 
         {%- if piece.text -%}
           <p class="flow-text">{{ piece.text }}</p>
         {%- endif -%}
 
       </div>
-      {%- if piece.text1 -%}
-      <div class="card-tabs">
-        <ul class="tabs tabs-fixed-width">
-          {%- if piece.tab1-%}
-            <li class="tab"><a href="#{{ piece.tab1_choice }}" style="color:{{ data.page.acc2_color }};">{{ piece.tab1 }}</a></li>
-          {%- elif piece.icon1 -%}
-            <li class="tab"><a href="#{{ piece.tab1_choice }}" style="color:{{ data.page.acc2_color }};"><i class="material-icons">{{ piece.icon1 }}</i></a></li>
-          {%- endif -%}
-
-          {%- if piece.tab2 -%}
-            <li class="tab"><a href="#{{ piece.tab2_choice }}" style="color:{{ data.page.acc2_color }};">{{ piece.tab2 }}</a></li>
-          {%- elif piece.icon2 -%}
-            <li class="tab"><a href="#{{ piece.tab2_choice }}" style="color:{{ data.page.acc2_color }};"><i class="material-icons">{{ piece.icon2 }}</i></a></li>
-          {%- endif -%}
-
-          {%- if piece.tab3 -%}
-            <li class="tab"><a href="#{{ piece.tab3_choice }}" style="color:{{ data.page.acc2_color }};">{{ piece.tab3 }}</a></li>
-          {%- elif piece.icon3 -%}
-            <li class="tab"><a href="#{{ piece.tab3_choice }}" style="color:{{ data.page.acc2_color }};"><i class="material-icons">{{ piece.icon3 }}</i></a></li>
-          {%- endif -%}
-        </ul>
-      </div>
-      {%- endif -%}
-    {%- if piece.text1 -%}
-      <div class="card-content grey lighten-4">
-        <div id="{{ piece.tab1_choice }}">{{ piece.text1 }}</div>
-
-        {%- if piece.text2 -%}<div id="{{ piece.tab2_choice }}">{{ piece.text2 }}</div>{%- endif -%}
-        {%- if piece.text3 -%}<div id="{{ piece.tab3_choice }}">{{ piece.text3 }}</div>{%- endif -%}
-      </div>
-    {%- endif -%}
     </div>
    {% endfor %}
   </div>

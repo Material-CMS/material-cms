@@ -4,17 +4,17 @@
       {{ apos.area(data.widget, 'cardLeft', {
         limit: 2,
         widgets: {
-          'materialize-events': {
+          'card': {
+            minSize: [ 700, 350 ],
+            aspectRatio: [ 2, 1 ],
+            size: 'full',
             controls: {
               movable: false,
               removable: true,
               position: 'top-right'
             }
           },
-          'card': {
-            minSize: [ 700, 350 ],
-            aspectRatio: [ 2, 1 ],
-            size: 'full',
+          'events': {
             controls: {
               movable: false,
               removable: true,
@@ -28,7 +28,7 @@
               position: 'top-right'
             }
           },
-          'apostrophe-video': {
+          'video': {
             controls: {
               movable: false,
               removable: true,
