@@ -11,12 +11,14 @@ var apos = require('apostrophe')({
     'apostrophe-favicons': {},
     'card-widgets': {},
     'double-widgets': {},
+    'events': {},
+    'events-widgets': {},
     'materialize': {},
-    'materialize-video-widgets': {},
-    'materialize-events': {},
-    'materialize-events-widgets': {},
+    'sections': {},
+    'sections-widgets': {},
     'texts': {},
     'texts-widgets': {},
+    'video-widgets': {},
 
     //Production modules
     'apostrophe-seo': {},
