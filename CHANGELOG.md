@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Sub widgets / joinByOne for texts-widgets
 
+## [0.5.1] - 2018-10-14
+### Added
+- Section navigation activation selector for testing
+- Apostrophe-palette for in context css editing
+
 ## [0.5.0] - 2018-10-14
 ### Added
 - Sections widget for infinite creation of section ( beware performance right now no infinite scrolling ).
