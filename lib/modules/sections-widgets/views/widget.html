@@ -1,30 +1,37 @@
-{%- if data.widget.navigation -%}
+{%- if data.widget.navSetting -%}
   <div class="nav">
-    <nav style="background-color:{{ data.page.nav_color }};">
+    <nav>
       <div class="nav-wrapper z-depth-2">
-        <a href="{{ data.page._url }}" class="brand-logo"><h1>{{ data.page.title }}</h1></a>
+        <a href="{{ data.page._url }}" class="brand-logo"><h1 class="navtext">{{ data.page.title }}</h1></a>
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="nav-activator right hide-on-med-and-down">
           {% for piece in data.widget._pieces %}
-              <li><a href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+              <li><a class="navtext" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
           {% endfor %}
-          <li><a href="#contact">Contact</a></li>
+          <li><a class="navtext" href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
   </div>
 {%- endif -%}
 
-<div class="section-wrapper" style="background-color:{{ data.page.sec1_color }};">
+<div class="section-wrapper">
+
   {% for piece in data.widget._pieces %}
-    <div class="section" id="{{ piece.slug }}" style="background-color:{{ piece.color }};
-      {%- if piece._image.attachment -%}
-        background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
+    <div class="section"
+      id="{{ piece.slug }}"
+      {%- if piece._image.attachment  -%}
+        style="background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})"
+      {%- elif piece.color -%}
+        style="background-color:{{ piece.color }}"
       {% endif %}
-    ">
+    >
       <div class="main-content container">
+
         {%- if piece.title -%}
-          <div class="header"><h3>{{ piece.title }}</h3></div>
+          <div class="header">
+            <h3>{{ piece.title }}</h3>
+          </div>
         {%- endif -%}
 
         {{ apos.area(piece, 'a', {
@@ -139,4 +146,5 @@
       </footer>
     </div>
   </div>
+
 </div>
