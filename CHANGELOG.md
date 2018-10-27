@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Sub widgets / joinByOne for texts-widgets
+- Testing and debugging mechanism
+- Video locals files
+- more widget types
+- Apostrophe architecture contact form, right now its ses
+
+## [0.5.2] - 2018-10-27
+### Fixed
+- Section navigation
 
 ## [0.5.1] - 2018-10-14
 ### Added

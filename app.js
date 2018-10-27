@@ -28,17 +28,31 @@ var apos = require('apostrophe')({
         {
           name: 'backgroundColor',
           label: 'Background color of the website',
-          help: 'Section Colors Override this!',
+          help: 'Section Colors override this!',
           type: 'color',
           selector: 'body',
           property: 'background-color',
         },
         {
+          name: 'navColor',
+          label: 'Colors of Navigation',
+          type: 'color',
+          selector: 'nav',
+          property: 'background-color',
+        },
+        {
+          name: 'headerColor',
+          label: 'Colors of Header Texts',
+          type: 'color',
+          selector: ['.header', '.navtext'],
+          property: 'color',
+        },
+        {
           name: 'headerBottomPadding',
           label: 'space between image header and widget',
           type: 'range',
-          selector: ['.header'],
-          property: ['padding-bottom'],
+          selector: '.header',
+          property: 'padding-bottom',
           min: 0,
           max: 10,
           step: 0.1,
@@ -46,7 +60,7 @@ var apos = require('apostrophe')({
         }
       ]
     },
-    
+
     //Production modules
     'apostrophe-seo': {},
     'apostrophe-open-graph': {},
