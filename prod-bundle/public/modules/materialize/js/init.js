@@ -1,5 +1,8 @@
-//Materialize Components javascript initialization
+// Materialize Components get initialized here javascript
+// you cann insert component specific options here
+// jquery init is also possible look further materialize documentation
 $(document).ready(function() {
+
   // Sidenav
   var sidenavs = document.querySelectorAll('.sidenav');
   for (var i = 0; i < sidenavs.length; i++) {
@@ -8,25 +11,37 @@ $(document).ready(function() {
       preventScrolling: true
     });
   }
+
   // Collapsibles
   var collapsibles = document.querySelectorAll('.collapsible');
   for (var i = 0; i < collapsibles.length; i++) {
     M.Collapsible.init(collapsibles[i], {
-      // draggable: true,
+      // example-option: true
     });
   }
+
   // Modals
   var modals = document.querySelectorAll('.modal');
   for (var i = 0; i < modals.length; i++) {
     M.Modal.init(modals[i], {
-      // draggable: true,
+      // example-option: true
     });
   }
+
   // Tabs
   var tabs = document.querySelectorAll('.tabs');
   for (var i = 0; i < tabs.length; i++) {
     M.Tabs.init(tabs[i], {
-      // draggable: true,
+      // example-option: true
     });
   }
+
+  // Material Box
+  var materialboxes = document.querySelectorAll('.materialboxed');
+  for (var i = 0; i < materialboxes.length; i++) {
+    M.Materialbox.init(materialboxes[i], {
+      // example-option: true
+    });
+  }
+
 });
