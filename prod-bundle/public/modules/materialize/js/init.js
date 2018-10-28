@@ -44,4 +44,12 @@ $(document).ready(function() {
     });
   }
 
+  // Slides
+  var slides = document.querySelectorAll('.slider');
+  for (var i = 0; i < slides.length; i++) {
+    M.Slider.init(slides[i], {
+      // example-option: true
+    });
+  }
+
 });
