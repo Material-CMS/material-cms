@@ -22,9 +22,19 @@
                     <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
                       data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}
                     " />
+                  {%- if data.widget.title -%}
                     {%- block title -%}
-                      <h5 class="card-title truncate hide-on-small-only">{{ image.title }}</h5>
+                    <span class="card-title">
+                      <h5 class=" accent-color truncate hide-on-small-only"
+                        {%- if data.widget.color -%}
+                          style="color:{{ data.widget.color }}"
+                        {% endif %}
+                      >
+                        {{ image.title }}
+                      </h5>
+                    </span>
                     {%- endblock -%}
+                  {%- endif -%}
                   </div>
                 {%- block description -%}
                   {%- if image.description -%}

@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Video locals files
 - More widget types
 - Apostrophe architecture contact form, right now its amazon ses
+- Better rendering with srcset
+- Integrate apostrophe-i18n Module for multilingual support
+- Apply Accent Color mechanics to materialize  active items
+
+### Fixed
+- Fire onScroll event only in section-wrapper
+
+## [0.5.4 ] - 2018-10-29
+### Added
+- Color Picker for Card Title
+- Modular Slide Widgets as Section Widgets or as Page Widgets
 
 ## [0.5.3] - 2018-10-28
 ### Fixed
@@ -21,10 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Text widget add image
-- Text widget Header color chooser with fallback to text-color class
+- Text widget Header color chooser with fallback to accent-color class
 - Images now use Material Box ( Lightbox plugin )
 - Projection filters for Pieces widgets
-- Section Header color chooser with fallback to text-color class
+- Section Header color chooser with fallback to accent-color class
 
 ## [0.5.1] - 2018-10-14
 ### Added

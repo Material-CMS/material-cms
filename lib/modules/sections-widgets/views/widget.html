@@ -2,22 +2,21 @@
   <nav>
     <div class="nav-wrapper z-depth-2">
       <a href="{{ data.page._url }}" class="brand-logo"><h1 class="navtext">{{ data.page.title }}</h1></a>
-      <a class="text-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
+      <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
         {% for piece in data.widget._pieces %}
-          <li><a class="text-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+          <li><a class="accent-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
         {% endfor %}
-        <li><a class="text-color flow-text scroll" href="#contact">Contact</a></li>
+        <li><a class="accent-color flow-text scroll" href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
   <ul class="sidenav" id="mobile">
     {% for piece in data.widget._pieces %}
-      <li><a class="text-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+      <li><a class="accent-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
     {% endfor %}
   </ul>
 </div>
-
 
 <div class="section-wrapper">
 
@@ -30,63 +29,84 @@
         style="background-color:{{ piece.color }}"
       {% endif %}
     >
-      <div class="main-content container">
 
-        {%- if piece.title -%}
-          <div class="header">
-            <h3 class="text-color"
-              {%- if piece.titleColor -%}
-                style="color:{{ piece.titleColor }}"
-              {% endif %}
-            >
-              {{ piece.title }}
-            </h3>
-          </div>
-        {%- endif -%}
+      {%- if piece.preferences  -%}
+        <div class="slide-content">
 
-        {{ apos.area(piece, 'a', {
-          limit: 2,
-          widgets: {
-            'card': {
-             minSize: [ 700, 350 ],
-             aspectRatio: [ 2, 1 ],
-             size: 'full',
-              controls: {
-                removable: true,
-                position: 'top-right'
-              }
-            },
-            'double': {
-              controls: {
-                movable: false,
-                removable: true,
-                position: 'top-right'
-              }
-            },
-            'events': {
-              controls: {
-                movable: false,
-                removable: true,
-                position: 'top-right'
-              }
-            },
-            'texts': {
-              controls: {
-                movable: false,
-                removable: true,
-                position: 'top-right'
-              }
-            },
-            'video': {
-              controls: {
-                movable: false,
-                removable: true,
-                position: 'top-right'
+          {{ apos.singleton(piece, 'sl', 'slides', {
+            limit: 1,
+            addLabel: 'Add Slide',
+            editLabel: 'Change Slide',
+            controls: {
+              movable: false,
+              removable: true,
+              position: 'top-left'
+            }
+          }) }}
+
+        </div>
+
+      {%- else -%}
+        <div class="main-content container">
+
+          {%- if piece.title -%}
+            <div class="header">
+              <h3 class="accent-color"
+                {%- if piece.titleColor -%}
+                  style="color:{{ piece.titleColor }}"
+                {% endif %}
+              >
+                {{ piece.title }}
+              </h3>
+            </div>
+          {%- endif -%}
+
+          {{ apos.area(piece, 'a', {
+            limit: 2,
+            widgets: {
+              'card': {
+               minSize: [ 700, 350 ],
+               aspectRatio: [ 2, 1 ],
+               size: 'full',
+                controls: {
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'double': {
+                controls: {
+                  movable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'events': {
+                controls: {
+                  movable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                controls: {
+                  movable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'video': {
+                controls: {
+                  movable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
               }
             }
-          }
-        }) }}
-      </div>
+          }) }}
+        </div>
+
+      {% endif %}
+
     </div>
   {% endfor %}
 
