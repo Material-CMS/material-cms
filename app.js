@@ -3,10 +3,9 @@ var path = require('path');
 var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
   baseUrl: process.env.BASE_URL,
-
   modules: {
-
-    //Style modules
+    // All Important Stuff!
+    // Style Modules
     'apostrophe-video-widgets': {},
     'apostrophe-favicons': {},
     'card-widgets': {},
@@ -16,11 +15,13 @@ var apos = require('apostrophe')({
     'materialize': {},
     'sections': {},
     'sections-widgets': {},
+    'slides': {},
+    'slides-widgets': {},
     'texts': {},
     'texts-widgets': {},
     'video-widgets': {},
 
-    //CSS in context editing
+    // CSS in context editing
     'apostrophe-palette-widgets': {},
     'apostrophe-palette': {},
     'apostrophe-palette-global': {
@@ -50,8 +51,7 @@ var apos = require('apostrophe')({
           label: 'Accent Color',
           type: 'color',
           selector: [
-            '.text-color',
-            '.card-image',
+            '.accent-color'
           ],
           property: 'color',
         },
@@ -69,7 +69,7 @@ var apos = require('apostrophe')({
       ]
     },
 
-    //Production modules
+    // Production Modules
     'apostrophe-seo': {},
     'apostrophe-open-graph': {},
     'apostrophe-global': {
@@ -100,7 +100,9 @@ var apos = require('apostrophe')({
       }
     },
 
-    //Templates
+    // Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
+
+  // << End of Modules
   }
 });

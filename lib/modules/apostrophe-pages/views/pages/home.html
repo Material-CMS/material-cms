@@ -39,14 +39,27 @@
 {% block main %}
 
   {# s = Section widget Data, section = Section widget itself #}
-  {{ apos.singleton(data.page, 's', 'sections', {
+  {{ apos.area(data.page, 's', {
     limit: 1,
-    addLabel: 'Add Sections',
-    editLabel: 'Change Sections',
-    controls: {
-      movable: false,
-      removable: true,
-      position: 'top-left'
+    widgets: {
+      'sections': {
+        addLabel: 'Add Sections',
+        editLabel: 'Change Sections',
+        controls: {
+          movable: false,
+          removable: true,
+          position: 'top-left'
+        }
+      },
+      'slides': {
+        addLabel: 'Add Slide',
+        editLabel: 'Change Slide',
+        controls: {
+          movable: false,
+          removable: true,
+          position: 'top-left'
+        }
+      }
     }
   }) }}
 
