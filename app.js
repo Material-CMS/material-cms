@@ -28,23 +28,31 @@ var apos = require('apostrophe')({
         {
           name: 'backgroundColor',
           label: 'Background color of the website',
-          help: 'Section Colors override this!',
           type: 'color',
           selector: 'body',
           property: 'background-color',
         },
         {
-          name: 'navColor',
-          label: 'Colors of Navigation',
+          name: 'mainColor',
+          label: 'Main Color',
           type: 'color',
-          selector: 'nav',
+          selector: [
+            'nav',
+            '.card',
+            '.card-content',
+            '.collapsible-body',
+            '.collapsible-header'
+          ],
           property: 'background-color',
         },
         {
-          name: 'headerColor',
-          label: 'Colors of Header Texts',
+          name: 'accentColor',
+          label: 'Accent Color',
           type: 'color',
-          selector: ['.header', '.navtext'],
+          selector: [
+            '.text-color',
+            '.card-image',
+          ],
           property: 'color',
         },
         {

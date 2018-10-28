@@ -1,19 +1,23 @@
-{%- if data.widget.navSetting -%}
-  <div class="nav">
-    <nav>
-      <div class="nav-wrapper z-depth-2">
-        <a href="{{ data.page._url }}" class="brand-logo"><h1 class="navtext">{{ data.page.title }}</h1></a>
-        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="nav-activator right hide-on-med-and-down">
-          {% for piece in data.widget._pieces %}
-              <li><a class="navtext" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
-          {% endfor %}
-          <li><a class="navtext" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-{%- endif -%}
+<div class="nav">
+  <nav>
+    <div class="nav-wrapper z-depth-2">
+      <a href="{{ data.page._url }}" class="brand-logo"><h1 class="navtext">{{ data.page.title }}</h1></a>
+      <a class="text-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
+      <ul class="nav-activator right hide-on-med-and-down">
+        {% for piece in data.widget._pieces %}
+          <li><a class="text-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+        {% endfor %}
+        <li><a class="text-color flow-text scroll" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <ul class="sidenav" id="mobile">
+    {% for piece in data.widget._pieces %}
+      <li><a class="text-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
 
 <div class="section-wrapper">
 
@@ -30,7 +34,13 @@
 
         {%- if piece.title -%}
           <div class="header">
-            <h3>{{ piece.title }}</h3>
+            <h3 class="text-color"
+              {%- if piece.titleColor -%}
+                style="color:{{ piece.titleColor }}"
+              {% endif %}
+            >
+              {{ piece.title }}
+            </h3>
           </div>
         {%- endif -%}
 
