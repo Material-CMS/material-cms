@@ -3,20 +3,16 @@ $(function() {
   // JQuery and lodash (_) are both included with Apostrophe, so no need to
   // worry about including them on your own.
 
-  //Navigation
+  // Smoothscroll navigation
+
+  // Trigger onScroll event at scroll
   $(document).on("scroll", onScroll);
-  //Smoothscroll
-  $('a[href^="#"]').on('click', function (e) {
+
+  // Navigation click function jumps to clicked section
+  $('.scroll[href^="#"]').on('click', function (e) {
       e.preventDefault();
       $(document).off("scroll");
-      //Add active classes on click
-      $('a').each(function () {
-          $(this).parent('li').removeClass('active');
-      })
-      $(this).parent('li').addClass('active');
-      //Jump to section
-      var target = this.hash,
-          menu = target;
+      var target = this.hash;
       $target = $(target);
       $('html, body').stop().animate({
           'scrollTop': $target.offset().top+2
@@ -26,10 +22,10 @@ $(function() {
       });
   });
 
-  //Scroll listener
+  // Set fullpage anchors
   function onScroll(event){
       var scrollPos = $(document).scrollTop();
-      $('.nav-activator li a').each(function () {
+      $('.scroll').each(function () {
           var currLink = $(this);
           var refElement = $(currLink.attr("href"));
           if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
@@ -38,14 +34,14 @@ $(function() {
               var target = this.hash;
               history.replaceState(null, null, target );
           }
-          else{
+          else {
             currLink.parent('li').removeClass("active");
           }
       });
   }
 
   // Fullpage Scroll Options, Init
-  //Options passing to Smartscroll
+  // options passing to Smartscroll
   var options = {
     mode: "set", // "vp", "set"
     autoHash: false,

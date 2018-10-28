@@ -1,10 +1,11 @@
-## Apostrophe CMS, Fullpage.js & Materialize CSS
+## Apostrophe CMS & Materialize CSS and lots of modifications!
 
 ----
 
-### This is my approach to integrate materialize.css into the Apostrophe CMS.
+### Apostrophe CMS with material design features, production modules, widgets.
 
-Still in alpha but most main functions for building amazing fullpage, materialized content is working. You have 4 basic widgets but by their flexibility you got thousands of different possiblities to style your page.
+
+You can build a fully working content management system in 10 Minutes and modify your website with fullpage, materialized content.
 
 ![Screenshot](screenshot.jpg)
 
@@ -25,8 +26,8 @@ mpm start
 
 ----
 
-For more documentation on Apostrophe CMS, visit the [Apostrophe documentation site](http://apostrophecms.com).
+For more documentation on Apostrophe CMS, visit [Apostrophe CMS](http://apostrophecms.com).
 
-For more documentation on Materialize CSS, visit the [Materialize repository](https://github.com/Dogfalo/materialize)
+For more infos about Materialize , visit [Materialize](https://materializecss.com/).
 
 ----

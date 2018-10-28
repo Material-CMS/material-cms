@@ -29,9 +29,11 @@
 {% endblock %}
 
 {% block beforeMain %}
+
   {% if data.user %}
     {{ palette.palette(data.global, 'palette') }}
   {% endif %}
+
 {% endblock %}
 
 {% block main %}
