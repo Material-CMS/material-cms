@@ -9,12 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sub widgets / joinByOne for texts-widgets
 - Testing and debugging mechanism
 - Video locals files
-- more widget types
-- Apostrophe architecture contact form, right now its ses
+- More widget types
+- Apostrophe architecture contact form, right now its amazon ses
 
-## [0.5.2] - 2018-10-27
+## [0.5.3] - 2018-10-28
 ### Fixed
 - Section navigation
+- Removed useless function in site.js navigation module
+- HTML cleaning
+- Double widget wrong widget names
+
+### Added
+- Text widget add image
+- Text widget Header color chooser with fallback to text-color class
+- Images now use Material Box ( Lightbox plugin )
+- Projection filters for Pieces widgets
+- Section Header color chooser with fallback to text-color class
 
 ## [0.5.1] - 2018-10-14
 ### Added
@@ -23,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.0] - 2018-10-14
 ### Added
-- Sections widget for infinite creation of section ( beware performance right now no infinite scrolling ).
+- Sections-widget for infinite creation of section ( beware performance right now no infinite scrolling ).
 
 ### Changed
 - Widget naming convention to purpose only.

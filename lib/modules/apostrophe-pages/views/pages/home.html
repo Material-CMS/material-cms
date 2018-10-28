@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block beforeMain %}
-  {% if data.user %} <!-- be sure to somehow safegaurd against non-editor situations, as performance could unnecessarily suffer -->
+  {% if data.user %}
     {{ palette.palette(data.global, 'palette') }}
   {% endif %}
 {% endblock %}

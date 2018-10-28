@@ -1,49 +1,61 @@
 <div class="row">
   <div class="col s12 m12">
     <div class="card">
-      <div class="card-image">
-        <div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
-          <div data-slideshow-items>
-            {%- block items -%}
-              {%- for entry in data.widget._pieces -%}
-                {%- set image = entry.item or entry -%}
-                {%- set relationship = entry.relationship -%}
-                <div data-slideshow-item  class="apos-slideshow-item {% if loop.first %} apos-current {% endif %} {% block itemClass %} {% endblock %}" style="background-image: url({{ apos.attachments.url(image.attachment,{ size: data.options.size, crop: relationship }) }}) {%- if apos.attachments.hasFocalPoint(relationship) -%}; background-position:{{ apos.attachments.focalPointToBackgroundPosition(relationship) }} {%- endif -%}">
+      <div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
+        <div class="materialboxed" data-slideshow-items>
+          {%- block items -%}
+            {%- for entry in data.widget._pieces -%}
+              {%- set image = entry.item or entry -%}
+              {%- set relationship = entry.relationship -%}
+                <div data-slideshow-item
+                  class="apos-slideshow-item{% if loop.first %} apos-current{% endif %}{% block itemClass %}{% endblock %} apos-slideshow-item--{{ image.attachment.extension }}"
+                  style="background-image:
+                    url({{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }})
+                    {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                      ; background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
+                    {%- endif -%}
+                    {%- if data.options.aspectRatio and (image.attachment.extension == 'svg') -%}
+                      ; width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
+                    {%- endif -%}
+                  ">
                   <div class="card-image">
-                    <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}" data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}" />
-                    {%- block title -%}<h5 class="card-title truncate hide-on-small-only">{{ image.title }}</h5>{%- endblock -%}
+                    <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
+                      data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}
+                    " />
+                    {%- block title -%}
+                      <h5 class="card-title truncate hide-on-small-only">{{ image.title }}</h5>
+                    {%- endblock -%}
                   </div>
-                  {%- block description -%}
-                    {%- if image.description -%}
-                      <div class="card-content">
-                        <p class="flow-text">{{ image.description | nlbr }}</p>
+                {%- block description -%}
+                  {%- if image.description -%}
+                    <div class="card-content">
+                      <p class="flow-text">{{ image.description | nlbr }}</p>
+                    </div>
+                  {%- endif -%}
+                {%- endblock -%}
+                {%- block credit -%}
+                  {%- if image.credit -%}
+                    {%- if image.creditUrl -%}
+                      <div class="card-action">
+                        <a href="{{ image.creditUrl }}">
+                    {%- endif -%}
+                    {{ image.credit }}
+                    {%- if image.creditUrl -%}
+                        </a>
                       </div>
                     {%- endif -%}
-                  {%- endblock -%}
-                  {%- block credit -%}
-                    {%- if image.credit -%}
-                      {%- if image.creditUrl -%}
-                        <div class="card-action">
-                          <a href="{{ image.creditUrl }}">
-                      {%- endif -%}
-                      {{ image.credit }}
-                      {%- if image.creditUrl -%}
-                          </a>
-                        </div>
-                      {%- endif -%}
-                    {%- endif -%}
-                  {%- endblock -%}
-                </div>
-              {%- endfor -%}
-            {%- endblock -%}
-          </div>
+                  {%- endif -%}
+                {%- endblock -%}
+              </div>
+            {%- endfor -%}
+          {%- endblock -%}
         </div>
-        {% block arrows %}
-          {% if data.widget._pieces.length > 1 %}
-            <a href="#" data-next class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
-          {% endif %}
-        {% endblock %}
       </div>
+      {% block arrows %}
+        {% if data.widget._pieces.length > 1 %}
+          <a href="#" data-next class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
+        {% endif %}
+      {% endblock %}
     </div>
   </div>
 </div>
