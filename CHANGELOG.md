@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Footer widget in section widget which pulls values from global doc
 - Dynamic choices for section widget based on select fields
+- Pieces widgets get slug as ID
+- Horizontal card layout for text widgets
 
 ## [0.5.4 ] - 2018-10-29
 ### Added

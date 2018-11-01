@@ -3,7 +3,7 @@
     <ul class="collapsible hoverable">
 
       {% for piece in data.widget._pieces %}
-      <li  class="{{ piece.active }}">
+      <li class="{{ piece.active }}">
 
         <div class="collapsible-header" tabindex="0">
           {%- if piece.icon -%}<i class="material-icons" style="color:{{ data.page.acc2_color }}">{{ piece.icon }}</i>{%- endif -%}
