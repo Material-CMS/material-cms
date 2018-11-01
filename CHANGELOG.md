@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pieces widgets get slug as ID
 - Horizontal card layout for text widgets
 
+### Changed
+- Moved navigation and fullpage init and vendor scripts to sections
+
 ## [0.5.4 ] - 2018-10-29
 ### Added
 - Color picker for card title
