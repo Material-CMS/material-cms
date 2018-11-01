@@ -18,10 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.5.5 ] - 2018-11-01
+### Added
+- Footer widget in section widget which pulls values from global doc
+- Dynamic choices for section widget based on select fields
+
 ## [0.5.4 ] - 2018-10-29
 ### Added
-- Color Picker for Card Title
-- Modular Slide Widgets as Section Widgets or as Page Widgets
+- Color picker for card title
+- Modular slide widgets as section widgets or as page widgets
 
 ## [0.5.3] - 2018-10-28
 ### Fixed
