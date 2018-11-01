@@ -12,6 +12,7 @@ var apos = require('apostrophe')({
     'double-widgets': {},
     'events': {},
     'events-widgets': {},
+    'footer-widgets':{},
     'materialize': {},
     'sections': {},
     'sections-widgets': {},
