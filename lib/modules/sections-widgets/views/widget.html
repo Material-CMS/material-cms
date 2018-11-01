@@ -37,10 +37,11 @@
         <div class="slide-content">
           {{ apos.singleton(piece, 'sl', 'slides', {
             limit: 1,
-            addLabel: 'Add Slide',
-            editLabel: 'Change Slide',
+            addLabel: 'Add Slide Widget',
+            editLabel: 'Select Slide Widget',
             controls: {
               movable: false,
+              cloneable: false,
               removable: true,
               position: 'top-right'
             }
@@ -88,34 +89,35 @@
                aspectRatio: [ 2, 1 ],
                size: 'full',
                 controls: {
+                  cloneable: false,
                   removable: true,
                   position: 'top-right'
                 }
               },
               'double': {
                 controls: {
-                  movable: false,
+                  cloneable: false,
                   removable: true,
                   position: 'top-right'
                 }
               },
               'events': {
                 controls: {
-                  movable: false,
+                  cloneable: false,
                   removable: true,
                   position: 'top-right'
                 }
               },
               'texts': {
                 controls: {
-                  movable: false,
+                  cloneable: false,
                   removable: true,
                   position: 'top-right'
                 }
               },
               'video': {
                 controls: {
-                  movable: false,
+                  cloneable: false,
                   removable: true,
                   position: 'top-right'
                 }
