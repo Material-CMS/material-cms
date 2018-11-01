@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Moved navigation and fullpage init and vendor scripts to sections
+- Main widgets now movable and not cloneable
 
 ## [0.5.4 ] - 2018-10-29
 ### Added
