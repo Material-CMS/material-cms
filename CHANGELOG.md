@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.5.6 ] - 2018-11-07
+### Added
+- Dynamic tab navigation
+- Dropdown Implementation
+- Copyright variables at navigation
+
 ## [0.5.5 ] - 2018-11-01
 ### Added
 - Footer widget in section widget which pulls values from global doc

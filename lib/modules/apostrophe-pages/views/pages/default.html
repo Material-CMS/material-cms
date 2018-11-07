@@ -38,22 +38,13 @@
 
 {% block main %}
 
-  {# s = Sections or Slides Data #}
+  {# s = Sections Data #}
   {{ apos.area(data.page, 's', {
     limit: 1,
     widgets: {
       'sections': {
         addLabel: 'Add Sections',
         editLabel: 'Change Sections',
-        controls: {
-          movable: false,
-          removable: true,
-          position: 'top-left'
-        }
-      },
-      'slides': {
-        addLabel: 'Add Slide',
-        editLabel: 'Change Slide',
         controls: {
           movable: false,
           removable: true,
