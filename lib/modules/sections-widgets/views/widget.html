@@ -60,14 +60,14 @@
   {# Sidenav #}
   <ul class="sidenav" id="mobile">
     {% for piece in data.widget._pieces %}
-      <li><a class="accent-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+      <li><a class="accent-color flow-text anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
     {% endfor %}
   </ul>
 
   {# Dropdown #}
   <ul class="dropdown-content" id="desktop">
     {% for piece in data.widget._pieces %}
-      <li><a class="accent-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+      <li><a class="accent-color flow-text anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
     {% endfor %}
   </ul>
 </div>

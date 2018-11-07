@@ -4,6 +4,7 @@ var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
   baseUrl: process.env.BASE_URL,
   modules: {
+    
     // All Important Stuff!
     // Style Modules
     'apostrophe-video-widgets': {},
