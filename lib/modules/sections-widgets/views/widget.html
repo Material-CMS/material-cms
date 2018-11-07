@@ -1,26 +1,78 @@
 <div class="nav">
+
+  {# Main Nav #}
   <nav>
     <div class="nav-wrapper z-depth-2">
-      <a href="{{ data.page._url }}" class="brand-logo"><h1 class="accent-color">{{ data.page.title }}</h1></a>
+      <a class="brand-logo" href="#">
+        <h1 class="accent-color">
+          {% if data.global.copyright %}
+            {{ data.global.copyright }}
+          {% else %}
+            {{ data.home.title }}
+          {% endif %}
+        </h1>
+      </a>
       <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
 
-        {% for piece in data.widget._pieces %}
-          <li><a class="accent-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+        {# Home Active #}
+        <li
+          {% if data.page._children[0] %}
+            class="active"
+          {% endif %}
+        >
+          <a href="{{ data.home._url }}" data-target="desktop" class="accent-color flow-text
+            {% if data.page._children[0] %}
+              dropdown-trigger
+            {% endif %}
+          ">
+            {{ data.home.title }}
+            {% if data.page._children[0] %}
+              <i class="material-icons left">arrow_drop_down</i>
+            {% endif %}
+          </a>
+        </li>
+
+        {# Home Cildren Active #}
+        {% for tab in data.home._children %}
+          <li
+            {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+              class="active"
+            {% endif %}
+          >
+            <a href="{{ tab._url }}" data-target="desktop" class="accent-color flow-text
+              {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+                dropdown-trigger
+              {% endif %}
+            ">
+              {{ tab.title }}
+              {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+                <i class="material-icons left">arrow_drop_down</i>
+              {% endif %}
+            </a>
+          </li>
         {% endfor %}
 
       </ul>
     </div>
   </nav>
-  <ul class="sidenav" id="mobile">
 
+  {# Sidenav #}
+  <ul class="sidenav" id="mobile">
     {% for piece in data.widget._pieces %}
       <li><a class="accent-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
     {% endfor %}
+  </ul>
 
+  {# Dropdown #}
+  <ul class="dropdown-content" id="desktop">
+    {% for piece in data.widget._pieces %}
+      <li><a class="accent-color flow-text scroll" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+    {% endfor %}
   </ul>
 </div>
 
+{# Sections #}
 <div class="section-wrapper">
 
   {% for piece in data.widget._pieces %}

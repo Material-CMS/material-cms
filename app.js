@@ -45,16 +45,18 @@ var apos = require('apostrophe')({
             '.collapsible-body',
             '.collapsible-header'
           ],
-          property: 'background-color',
+          property: 'background-color'
         },
         {
           name: 'accentColor',
           label: 'Accent Color',
           type: 'color',
           selector: [
-            '.accent-color'
+            '.accent-color',
+            '.dropdown-content li > a',
+            '.slider .indicators .indicator-item.active'
           ],
-          property: 'color',
+          property: ['color', 'background-color']
         },
         {
           name: 'headerBottomPadding',
@@ -65,7 +67,7 @@ var apos = require('apostrophe')({
           min: 0,
           max: 10,
           step: 0.1,
-          unit: 'rem',
+          unit: 'rem'
         }
       ]
     },
