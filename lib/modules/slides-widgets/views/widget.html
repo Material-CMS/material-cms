@@ -5,20 +5,20 @@
       <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}">
       <div class="caption {{ piece.caption }}">
         {%- if piece.title -%}
-          <h3 class="accent-color"
+          <h3 class="accent-color" style="
             {%- if piece.titleColor -%}
-              style="color:{{ piece.titleColor }}"
+              color:{{ piece.titleColor }}
             {% endif %}
-          >
+          ">
             {{ piece.title }}
           </h3>
         {%- endif -%}
         {%- if piece.slogan -%}
-          <h5 class="accent-color"
+          <h5 class="accent-color" style="
             {%- if piece.titleColor -%}
-              style="color:{{ piece.titleColor }}"
+              color:{{ piece.titleColor }}
             {% endif %}
-          >
+          ">
             {{ piece.slogan }}
           </h5>
         {%- endif -%}

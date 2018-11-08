@@ -70,6 +70,7 @@
       <li><a class="accent-color flow-text anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
     {% endfor %}
   </ul>
+
 </div>
 
 {# Sections #}
@@ -77,13 +78,13 @@
 
   {% for piece in data.widget._pieces %}
 
-    <div id="{{ piece.slug }}" class="section"
+    <div id="{{ piece.slug }}" class="section" style="
       {%- if piece._image.attachment  -%}
-        style="background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})"
+        background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
       {%- elif piece.color -%}
-        style="background-color:{{ piece.color }}"
+        background-color:{{ piece.color }}
       {% endif %}
-    >
+    ">
       {# Slide #}
       {%- if piece.preferences == 'slideOn' -%}
         <div class="slide-content">
@@ -104,11 +105,11 @@
       {%- elif piece.preferences == 'footerOn' -%}
         {%- if piece.title -%}
           <div class="header">
-            <h3 class="accent-color"
+            <h3 class="accent-color" style="
               {%- if piece.titleColor -%}
-                style="color:{{ piece.titleColor }}"
+                color:{{ piece.titleColor }}
               {% endif %}
-            >
+            ">
               {{ piece.title }}
             </h3>
           </div>
@@ -123,11 +124,11 @@
 
           {%- if piece.title -%}
             <div class="header">
-              <h3 class="accent-color"
+              <h3 class="accent-color" style="
                 {%- if piece.titleColor -%}
-                  style="color:{{ piece.titleColor }}"
+                  color:{{ piece.titleColor }}
                 {% endif %}
-              >
+              ">
                 {{ piece.title }}
               </h3>
             </div>

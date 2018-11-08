@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 - Apply Accent Color mechanics to materialize  active items
+- Full GDPR Compliance with cookie chooser and privacy opt in for
+
 
 ### Fixed
 - Fire onScroll event only in section-wrapper
@@ -23,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dynamic tab navigation
 - Dropdown Implementation
 - Copyright variables at navigation
+
+### Fixed
+- Html Errors because of missing empty spaces by nunjucks
+
 
 ## [0.5.5 ] - 2018-11-01
 ### Added

@@ -13,11 +13,11 @@
 
           {%- if piece.title -%}
             <span class="card-title">
-              <h5 class="accent-color"
+              <h5 class="accent-color" style="
                 {%- if piece.color -%}
-                  style="color:{{ piece.color }}"
+                  color:{{ piece.color }}
                 {% endif %}
-              >
+              ">
                 {{ piece.title }}
               </h5>
             </span>
