@@ -61,11 +61,11 @@
           {%- endblock -%}
         </div>
       </div>
-      {% block arrows %}
-        {% if data.widget._pieces.length > 1 %}
-          <a href="#" data-next class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
-        {% endif %}
-      {% endblock %}
     </div>
+    {% block arrows %}
+      {% if data.widget._pieces.length > 1 %}
+        <a href="#" data-next class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
+      {% endif %}
+    {% endblock %}
   </div>
 </div>

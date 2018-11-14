@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {# Imports #}
-{% import 'apostrophe-palette-widgets:macros.html' as palette %}
 {% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
+{% import 'apostrophe-palette-widgets:macros.html' as palette %}
 {% block extraHead %}
   {# Seo and Open Graph fields #}
   {% if data.piece %}
@@ -33,7 +33,7 @@
   {% if data.user %}
     {{ palette.palette(data.global, 'palette') }}
   {% endif %}
-  
+
 {% endblock %}
 
 {% block main %}

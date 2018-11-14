@@ -8,7 +8,7 @@ $(function() {
     // Trigger onScroll event at scroll
     $(document).on("scroll", onScroll);
     // Navigation click function jumps to clicked section
-    $('.scroll[href^="#"]').on('click', function (e) {
+    $('.anchor[href^="#"]').on('click', function (e) {
         e.preventDefault();
         $(document).off("scroll");
         var target = this.hash;
@@ -24,7 +24,7 @@ $(function() {
     // Set fullpage anchors
     function onScroll(event){
         var scrollPos = $(document).scrollTop();
-        $('.scroll').each(function () {
+        $('.anchor').each(function () {
             var target = this.hash;
             var currLink = $(this);
             var refElement = $(currLink.attr("href"));
