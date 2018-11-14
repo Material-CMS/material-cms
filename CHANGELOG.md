@@ -20,6 +20,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.5.7 ] - 2018-11-14
+### Added
+- Roundness for all elements in palette
+
+### Fixed
+- Workaround for 'pieceIds' of undefined error, fixed apostrophe-favicons at 1.0.14
+
 ## [0.5.6 ] - 2018-11-07
 ### Added
 - Dynamic tab navigation

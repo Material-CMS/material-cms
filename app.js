@@ -4,7 +4,7 @@ var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
   baseUrl: process.env.BASE_URL,
   modules: {
-    
+
     // All Important Stuff!
     // Style Modules
     'apostrophe-video-widgets': {},
@@ -58,6 +58,23 @@ var apos = require('apostrophe')({
             '.slider .indicators .indicator-item.active'
           ],
           property: ['color', 'background-color']
+        },
+        {
+          name: 'borderRadius',
+          label: 'Round Corners',
+          type: 'range',
+          selector: [
+            '.card',
+            '.collapsible',
+            '.collapsible-header',
+            '.collapsible-body',
+            '.hoverable',
+          ],
+          property: 'border-radius',
+          min: 0,
+          max: 50,
+          step: 1,
+          unit: 'px'
         },
         {
           name: 'headerBottomPadding',
