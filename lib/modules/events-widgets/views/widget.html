@@ -1,13 +1,32 @@
 <div class="row">
   <div class="col s12 m12">
-    <ul class="collapsible">
+    <ul class="collapsible" style="
+      {%- if piece.backColor-%}
+        background-color:{{ piece.backColor }}
+      {% endif %}
+    ">
 
       {% for piece in data.widget._pieces %}
-      <li class="{{ piece.active }}">
-
-        <div class="collapsible-header">
-          {%- if piece.icon -%}<i class="material-icons" style="color:{{ data.page.acc2_color }}">{{ piece.icon }}</i>{%- endif -%}
-          <h4 class="truncate">
+      <li {% if piece.active %} class="{{ piece.active }}" {% endif %}>
+        <div class="collapsible-header" style="
+          {%- if piece.backColor-%}
+            background-color:{{ piece.backColor }}
+          {% endif %}
+        ">
+          {%- if piece.icon -%}
+            <i class="material-icons accent-color" style="
+              {%- if piece.titleColor-%}
+                color:{{ piece.titleColor }}
+              {% endif %}
+            ">
+              {{ piece.icon }}
+            </i>
+          {%- endif -%}
+          <h4 class="truncate" style="
+            {%- if piece.titleColor-%}
+              color:{{ piece.titleColor }}
+            {% endif %}
+          ">
             {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
               {{ piece.title }}
             {% if piece._url %}</a>{% endif %}
@@ -16,8 +35,18 @@
         </div>
 
         {%- if piece.text -%}
-        <div class="collapsible-body z-depth-2">
-          <p class="flow-text">{{ piece.text }}</p>
+        <div class="collapsible-body" style="
+          {%- if piece.backColor-%}
+            background-color:{{ piece.backColor }}
+          {% endif %}
+        ">
+          <p class="flow-text" style="
+            {%- if piece.backColor-%}
+              color:{{ piece.titleColor }}
+            {% endif %}
+          ">
+            {{ piece.text }}
+          </p>
         </div>
         {%- endif -%}
 

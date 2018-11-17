@@ -1,7 +1,11 @@
 <div class="row">
   <div class="col s12 m12">
    {% for piece in data.widget._pieces %}
-    <div class="card horizontal">
+    <div class="card horizontal" style="
+      {%- if piece.backColor-%}
+        background-color:{{ piece.backColor }}
+      {% endif %}
+    ">
 
       {%- if piece._image -%}
       <div class="card-image hide-on-small-only">
@@ -9,13 +13,17 @@
       </div>
       {%- endif -%}
       <div class="card-stacked">
-        <div class="card-content">
+        <div class="card-content" style="
+          {%- if piece.backColor-%}
+            background-color:{{ piece.backColor }}
+          {% endif %}
+        ">
 
           {%- if piece.title -%}
             <span class="card-title">
               <h5 class="accent-color" style="
-                {%- if piece.color -%}
-                  color:{{ piece.color }}
+                {%- if piece.titleColor -%}
+                  color:{{ piece.titleColor }}
                 {% endif %}
               ">
                 {{ piece.title }}
