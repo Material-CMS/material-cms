@@ -1,9 +1,14 @@
-## Apostrophe CMS & Materialize CSS and lots of modifications!
+## Material CMS
 
 ----
 
-### Apostrophe CMS with material design features, production modules, widgets.
+### Ultra fast CMS with material design, reusable widgets.
 
+**🧠 Developer Ready**
+**🐳 Dockerfile**
+**💻📲 Mobile Ready**
+**🔖 OnePage Navigation**
+**⚫️ Material Design**
 
 You can build a fully working content management system in 10 Minutes and modify your website with fullpage, materialized content.
 
