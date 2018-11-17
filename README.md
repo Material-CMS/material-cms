@@ -1,5 +1,6 @@
 ## Material CMS
 
+[![Build Status](https://travis-ci.org/felixlberg/fullpage-cms.svg?branch=master)](https://travis-ci.org/felixlberg/fullpage-cms)
 ----
 
 ### Ultra fast CMS with material design, reusable widgets.
