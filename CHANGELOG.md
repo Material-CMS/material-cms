@@ -15,10 +15,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integrate apostrophe-i18n Module for multilingual support
 - Apply Accent Color mechanics to materialize  active items
 - Full GDPR Compliance with cookie chooser and privacy opt in for
-
+- Templating system for colors
 
 ### Fixed
 - Fire onScroll event only in section-wrapper
+
+## [0.5.8 ] - 2018-11-17
+### Added
+- Better Color Overrides for future templates
+
+### Fixed
+- Missing default schema for sections default appearance
+- Missing color overrides for materialize form and slides
+- Collapsible roundness
 
 ## [0.5.7 ] - 2018-11-14
 ### Added

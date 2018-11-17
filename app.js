@@ -49,15 +49,18 @@ var apos = require('apostrophe')({
           property: 'background-color'
         },
         {
+          name: 'navColor',
+          label: 'Nav Color',
+          type: 'color',
+          selector: 'nav',
+          property: 'background-color'
+        },
+        {
           name: 'accentColor',
           label: 'Accent Color',
           type: 'color',
-          selector: [
-            '.accent-color',
-            '.dropdown-content li > a',
-            '.slider .indicators .indicator-item.active'
-          ],
-          property: ['color', 'background-color']
+          selector: '.accent-color',
+          property: 'color'
         },
         {
           name: 'borderRadius',
@@ -66,9 +69,6 @@ var apos = require('apostrophe')({
           selector: [
             '.card',
             '.collapsible',
-            '.collapsible-header',
-            '.collapsible-body',
-            '.hoverable',
           ],
           property: 'border-radius',
           min: 0,

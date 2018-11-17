@@ -90,8 +90,6 @@
         <div class="slide-content">
           {{ apos.singleton(piece, 'sl', 'slides', {
             limit: 1,
-            addLabel: 'Add Slide Widget',
-            editLabel: 'Select Slide Widget',
             controls: {
               movable: false,
               cloneable: false,
@@ -184,3 +182,6 @@
   {% endfor %}
 
 </div>
+<style>
+  .dropdown-content li > a { color: {{ data.global.accentColor }} }
+</style>

@@ -4,7 +4,7 @@
     <div class="card horizontal">
 
       {%- if piece._image -%}
-      <div class="card-image">
+      <div class="card-image hide-on-small-only">
         <img width="100%" src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}">
       </div>
       {%- endif -%}
