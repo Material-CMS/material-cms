@@ -17,12 +17,12 @@
             <i class="material-icons prefix" >message</i>
             <textarea class="materialize-textarea" placeholder="Put your message in here..." type="text" name="message" tabindex="4" required></textarea>
           </div>
-          <div class="input-field col s4  m4 offset-m1">
-            <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:{{ data.page.acc1_color }};">Send</button>
+          <div class="input-field col s4 m4 offset-m1">
+            <button class="btn waves-effect waves-light" type="submit" name="action" tabindex="5" style="color:{{ data.global.mainColor }}; background-color:{{ data.global.accentColor }};">Send</button>
           </div>
           {%- if data.global.privacy -%}
           <div class="margin-top col s5 m4">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1" style="background-color:{{ data.page.acc1_color }};">Privacy</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Privacy</a>
             <div id="modal1" class="modal">
               <div class="modal-content text-darken-4">
                 <h4>Privacy</h4>
@@ -37,7 +37,7 @@
           {%- endif -%}
           {%- if data.global.legal -%}
           <div class="margin-top col s3 m3">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal2" style="background-color:{{ data.page.acc1_color }};">Legal</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Legal</a>
             <div id="modal2" class="modal">
               <div class="modal-content text-darken-4">
                 <h4>Impressum</h4>
@@ -59,3 +59,10 @@
     </div>
   </div>
 </footer>
+<style>
+  .btn { color:{{ data.global.mainColor }};  background-color:{{ data.global.accentColor }} }
+  .btn:hover { background-color:{{ data.global.accentColor }}; filter: brightness(130%) }
+  .input-field .prefix.active { color:{{ data.global.accentColor }} }
+  .input-field input:focus { border-bottom-color:{{ data.global.accentColor }} !important; box-shadow:0 1px 0 0 {{ data.global.accentColor }} !important }
+  textarea:focus { border-bottom-color:{{ data.global.accentColor }} !important; box-shadow:0 1px 0 0 {{ data.global.accentColor }} !important }
+</style>

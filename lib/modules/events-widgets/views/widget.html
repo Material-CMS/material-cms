@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col s12 m12">
-    <ul class="collapsible z-depth-0">
+    <ul class="collapsible">
 
       {% for piece in data.widget._pieces %}
       <li class="{{ piece.active }}">
 
-        <div class="collapsible-header z-depth-2 hoverable">
+        <div class="collapsible-header">
           {%- if piece.icon -%}<i class="material-icons" style="color:{{ data.page.acc2_color }}">{{ piece.icon }}</i>{%- endif -%}
           <h4 class="truncate">
             {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
