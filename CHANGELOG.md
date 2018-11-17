@@ -11,30 +11,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Video locals files
 - More widget types
 - Apostrophe architecture contact form, right now its amazon ses
-- Better rendering with srcset
+- Better Image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
-- Apply Accent Color mechanics to materialize  active items
 - Full GDPR Compliance with cookie chooser and privacy opt in for
 - Templating system for colors
 
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.5.9 ] - 2018-11-18
+### Added
+- Background Colors for Events and Texts
+
 ## [0.5.8 ] - 2018-11-17
 ### Added
+- Navbar independent color for apostrophe-palette-global in app.js
+- Apply Accent Color mechanics to materialize active items
 - Better Color Overrides for future templates
 
 ### Fixed
 - Missing default schema for sections default appearance
 - Missing color overrides for materialize form and slides
 - Collapsible roundness
+- Other small Fixes
+- pieceIds of undefined error, fixed by vendor in apostrophe-favicons at 1.0.16
 
 ## [0.5.7 ] - 2018-11-14
 ### Added
 - Roundness for all elements in palette
 
 ### Fixed
-- Workaround for 'pieceIds' of undefined error, fixed apostrophe-favicons at 1.0.14
+- Workaround for pieceIds of undefined error, fixed apostrophe-favicons at 1.0.14
 
 ## [0.5.6 ] - 2018-11-07
 ### Added

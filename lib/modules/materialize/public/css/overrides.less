@@ -47,6 +47,8 @@ nav {
 }
 // Collapsible
 .collapsible {
+  border-top: inherit;
+  overflow: hidden;
   border-right: 0;
   border-left: 0;
   h4 {
@@ -58,7 +60,6 @@ nav {
 }
 @media(min-width: 1000px) {
   .collapsible {
-    overflow: hidden;
     h4 {
       font-size: 1.35rem;
     }
@@ -67,7 +68,11 @@ nav {
     }
   }
 }
+.collapsible-header {
+  border-bottom: inherit;
+}
 .collapsible-body {
+  border-bottom: inherit;
   background-color: #ffffff;
 }
 // Modal
