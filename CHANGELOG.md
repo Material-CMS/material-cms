@@ -19,15 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
-## [0.5.9 ] - 2018-11-18
-### Added
-- Background Colors for Events and Texts
-
 ## [0.5.8 ] - 2018-11-17
 ### Added
 - Navbar independent color for apostrophe-palette-global in app.js
 - Apply Accent Color mechanics to materialize active items
 - Better Color Overrides for future templates
+- Background Colors for Events and Texts
 
 ### Fixed
 - Missing default schema for sections default appearance
