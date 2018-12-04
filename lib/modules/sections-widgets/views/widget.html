@@ -77,7 +77,7 @@
 <div class="section-wrapper">
 
   {% for piece in data.widget._pieces %}
-
+      {# Background settings #}
     <div id="{{ piece.slug }}" class="section" style="
       {%- if piece._image.attachment  -%}
         background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
@@ -88,7 +88,7 @@
       {# Slide #}
       {%- if piece.preferences == 'slideOn' -%}
         <div class="slide-content">
-          {{ apos.singleton(piece, 'sl', 'slides', {
+          {{ apos.singleton(piece, 'content', 'slides', {
             limit: 1,
             controls: {
               movable: false,
@@ -101,17 +101,35 @@
 
       {# Footer #}
       {%- elif piece.preferences == 'footerOn' -%}
-        {%- if piece.title -%}
-          <div class="header">
-            <h3 class="accent-color" style="
-              {%- if piece.titleColor -%}
-                color:{{ piece.titleColor }}
-              {% endif %}
-            ">
-              {{ piece.title }}
-            </h3>
-          </div>
-        {%- endif -%}
+        <div class="main-content container">
+
+          {%- if piece.title -%}
+            <div class="header">
+              <h3 class="accent-color" style="
+                {%- if piece.titleColor -%}
+                  color:{{ piece.titleColor }}
+                {% endif %}
+              ">
+                {{ piece.title }}
+              </h3>
+            </div>
+          {%- endif -%}
+
+          {{ apos.area(piece, 'content', {
+            limit: 2,
+            widgets: {
+              'contact-form': {
+                controls: {
+                  movable: false,
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
+            }
+          }) }}
+
+        </div>
         <div class="bottom-content">
           {% include "footer-widgets:widget.html" %}
         </div>
@@ -132,7 +150,7 @@
             </div>
           {%- endif -%}
 
-          {{ apos.area(piece, 'a', {
+          {{ apos.area(piece, 'content', {
             limit: 2,
             widgets: {
               'card': {

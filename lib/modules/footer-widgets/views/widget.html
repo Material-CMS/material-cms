@@ -1,24 +1,21 @@
-<div class="container">
-  {{ apos.area(piece, 'a', {
-    limit: 2,
-    widgets: {
-      'contact-form': {
-        controls: {
-          cloneable: false,
-          removable: true,
-          position: 'top-right'
-        }
-      }
-    }
-  }) }}
-</div>
 <footer class="page-footer">
   <div class="footer-copyright">
     <div class="container">
+
       {%- if data.global.legal -%}
         © {{ data.global.creation_date }} {{ data.global.copyright }}
       {%- endif -%}
-    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+
+      {%- if data.global.legal -%}
+        <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-2">Legal</a>
+        <div id="modal-2" class="modal">
+          <div class="modal-content text-darken-4">
+            <h4>Legal Info</h4>
+            <p>{{ data.global.legal }}</p>
+          </div>
+        </div>
+      {%- endif -%}
+      
     </div>
   </div>
 </footer>
