@@ -3,7 +3,21 @@
   <div class="col s12">
     <form class="contact-form" data-contact-form>
       {{ schemas.fields(data.schema, { tabs: false }) }}
-      <button class="btn waves-effect waves-light" type="submit" name="action" tabindex="5">Send</button>
+
+      {%- if data.global.privacy -%}
+        <a class="btn waves-effect waves-light modal-trigger" href="#modal1">Send</a>
+        <div id="modal1" class="modal">
+          <div class="modal-content text-darken-4">
+            <h4>Privacy</h4>
+            <p>{{ data.global.privacy }}</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="btn-flat modal-close waves-effect waves-red">Disagree</a>
+            <button class="btn waves-effect waves-light" type="submit" name="action" tabindex="5">Send</button>
+          </div>
+        </div>
+      {%- endif -%}
+
       <div class="thank-you" data-thank-you>
         <h4>Thank you for getting in touch! We'll respond soon.</h4>
       </div>
