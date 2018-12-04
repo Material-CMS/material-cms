@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.6.1 ] - 2018-12-05
+### Added
+- Legal info and privacy consent
+
+### Fixed
+- Small fixes
+
 ## [0.6.0 ] - 2018-12-04
 ### Added
 - Apostrophe architecture contact form
