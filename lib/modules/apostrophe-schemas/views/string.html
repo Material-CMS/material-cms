@@ -1,0 +1,13 @@
+{%- import "macros.html" as schemas -%}
+{% if data.style %}
+  <div class="row">
+    <div class="input-field col s12" data-name="{{ data.name }}">
+      <i class="material-icons prefix">{{ data.style }}</i>
+      <input placeholder="{{ data.label }}" id="{{ data.name }}" type="text" name="{{ data.name }}" />
+      <label class="active" for="{{ data.name }}">{{ data.label }}</label>
+    </div>
+  </div>
+{% else %}
+  {# Normal way #}
+  {{ schemas.string(data) }}
+{% endif %}

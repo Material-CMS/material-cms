@@ -10,7 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Testing and debugging mechanism
 - Video locals files
 - More widget types
-- Apostrophe architecture contact form, right now its amazon ses
 - Better Image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 - Full GDPR Compliance with cookie chooser and privacy opt in for
@@ -18,6 +17,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fire onScroll event only in section-wrapper
+
+## [0.6.0 ] - 2018-12-04
+### Added
+- Apostrophe architecture contact form
+- Custom apostrophe string schema variable for passing style values as material icons
+
+## [0.5.9 ] - 2018-11-24
+### Fixed
+- Inline accent color implementation for input strings on front.
+
+### Removed
+- Footer input field prepared for next dynamic contact form widgets
 
 ## [0.5.8 ] - 2018-11-17
 ### Added
