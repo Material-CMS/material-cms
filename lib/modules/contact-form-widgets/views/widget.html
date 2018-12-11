@@ -5,8 +5,8 @@
       {{ schemas.fields(data.schema, { tabs: false }) }}
 
       {%- if data.global.privacy -%}
-        <a class="btn waves-effect waves-light modal-trigger" href="#modal1">Send</a>
-        <div id="modal1" class="modal">
+        <a class="btn waves-effect waves-light modal-trigger" href="#modal-1">Send</a>
+        <div id="modal-1" class="modal">
           <div class="modal-content text-darken-4">
             <h4>Privacy</h4>
             <p>{{ data.global.privacy }}</p>
@@ -19,7 +19,15 @@
       {%- endif -%}
 
       <div class="thank-you" data-thank-you>
-        <h4>Thank you for getting in touch! We'll respond soon.</h4>
+        {{ apos.singleton(data.widget, 'thankYouMessage', 'texts', {
+          limit: 1,
+          controls: {
+            movable: false,
+            cloneable: false,
+            removable: true,
+            position: 'top-right'
+          }
+        }) }}
       </div>
     </form>
     <style>
