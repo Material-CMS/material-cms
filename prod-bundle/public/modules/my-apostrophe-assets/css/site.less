@@ -22,6 +22,28 @@ body {
     opacity: 1;
   }
 }
+.apos-ui {
+  .apos-field-input-checkbox-indicator,
+  .apos-form-checkbox-indicator {
+    border: inherit;
+  }
+  .apos-manage-grid-view .apos-manage-grid-piece.apos-focus .apos-field-input-checkbox-indicator,
+  .apos-field-input-checkbox:checked + .apos-field-input-checkbox-indicator,
+  .apos-form-checkbox-input:checked ~ .apos-form-checkbox-indicator {
+    background: inherit;
+  }
+  .apos-schema-groups {
+    .apos-schema-group-inner {
+      .input-field {
+        margin-top: 14.5px;
+      }
+      i {
+        font-family: Material Icons;
+        line-height: 1;
+      }
+    }
+  }
+}
 // Admin Bar
 .apos-ui .apos-admin-bar {
   top: 80px;
