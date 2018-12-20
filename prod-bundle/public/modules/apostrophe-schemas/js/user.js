@@ -154,15 +154,18 @@ apos.define('apostrophe-schemas', {
         }
         var $fieldset = self.findFieldset($el, field.name);
 
-        if ($fieldset.hasClass('apos-hidden')) {
-          // If this field is hidden by toggleHiddenFields, the user is not expected to
-          // populate it, even if it would otherwise be required. This allows showFields to
-          // function as intended, and as seen in A2 0.5
-          return setImmediate(callback);
-        }
-
         return self.fieldTypes[field.type].convert(data, field.name, $field, $el, field, function(err) {
           if (err) {
+            if ($fieldset.hasClass('apos-hidden')) {
+              // If this field is hidden by toggleHiddenFields, the user is not expected to
+              // populate it, even if it would otherwise be required. This allows showFields to
+              // function as intended, and as seen in A2 0.5. However if the converter
+              // succeeds we do allow that to complete so that data is not lost if,
+              // for instance, an option with a great deal of completed configuration
+              // is temporarily toggled off via showFields. Just let it go.
+              return setImmediate(callback);
+            }
+
             // error can be an object, with field and type properties
             // (and room for expansion), or it can be a simple string,
             // in which case we invoke self.error to make an error object
@@ -319,6 +322,10 @@ apos.define('apostrophe-schemas', {
 
     self.showError = function($el, error) {
       var $fieldset = self.findFieldset($el, error.field.name);
+      var type = self.fieldTypes[error.field.type];
+      if (type.showError) {
+        return type.showError($fieldset, error);
+      }
       $fieldset.addClass('apos-error');
       $fieldset.addClass('apos-error--' + apos.utils.cssName(error.type));
       if (error.message) {
@@ -452,11 +459,16 @@ apos.define('apostrophe-schemas', {
       };
     };
 
+    // Return a new object with all default settings
+    // defined in the schema
     self.newInstance = function(schema) {
       var def = {};
       _.each(schema, function(field) {
+        var fieldType = self.fieldTypes[field.type];
         if (field.def !== undefined) {
           def[field.name] = field.def;
+        } else if (fieldType.getDefault) {
+          def[field.name] = fieldType.getDefault();
         }
       });
       return def;
@@ -740,6 +752,56 @@ apos.define('apostrophe-schemas', {
           return callback('required');
         }
         return setImmediate(callback);
+      },
+      contextualConvert: function(data, name, $el, field) {
+        // We cannot call getWidgetData here because of recursion
+        var existingData = JSON.parse($el.attr('data') || '{}');
+        if (!existingData) {
+          return;
+        }
+        var dotPath = existingData.__dotPath;
+        var docId = existingData.__docId;
+        if (!dotPath && docId) {
+          return;
+        }
+        existingData = existingData[name];
+        if (!existingData) {
+          return;
+        }
+        // Contextually convert any areas
+        // that are fields of this array field
+        _.each(field.schema, function(sub) {
+          if ((sub.type !== 'area') && (sub.type !== 'singleton')) {
+            return;
+          }
+          var n = 0;
+          while (true) {
+            var selector = '[data-apos-area][data-doc-id="' + docId + '"][data-dot-path="' + dotPath + '.' + name + '.' + n + '.' + sub.name + '"]';
+            var $area = $el.find(selector);
+            if (!$area.length) {
+              break;
+            }
+            var editor = $area.data('editor');
+            if (editor) {
+              if (existingData[n]) {
+                existingData[n][sub.name] = {
+                  type: 'area',
+                  items: editor.serialize()
+                };
+              }
+            }
+            n++;
+          }
+        });
+        data[name] = existingData;
+      },
+      // Always returns true because it is designed to work nondestructively
+      // with fields that don't turn out to be contextual
+      contextualIsPresent: function($el, field) {
+        return true;
+      },
+      getDefault: function() {
+        return [];
       }
     });
 
@@ -757,7 +819,65 @@ apos.define('apostrophe-schemas', {
           data[name] = {};
         }
         var $fieldset = self.findFieldset($el, name);
-        self.convert($fieldset, field.schema, data[name], callback);
+        self.convert($fieldset, field.schema, data[name], function(errors) {
+          var err = null;
+          if (errors) {
+            $fieldset.data('nestedErrors', errors);
+            err = 'invalid';
+          }
+          return callback(err);
+        });
+      },
+      showError: function($fieldset, err) {
+        var nestedErrors = $fieldset.data('nestedErrors');
+        $fieldset.data('nestedErrors', null);
+        self.showError($fieldset, nestedErrors[0]);
+      },
+      contextualConvert: function(data, name, $el, field) {
+        // We cannot call getWidgetData here because of recursion
+        var existingData = JSON.parse($el.attr('data') || '{}');
+        if (!existingData) {
+          return;
+        }
+        var dotPath = existingData.__dotPath;
+        var docId = existingData.__docId;
+        if (!dotPath && docId) {
+          return;
+        }
+        existingData = existingData[name];
+        if (!existingData) {
+          return;
+        }
+        // Contextually convert any areas
+        // that are fields of this array field
+        _.each(field.schema, function(sub) {
+          if ((sub.type !== 'area') && (sub.type !== 'singleton')) {
+            return;
+          }
+          var selector = '[data-apos-area][data-doc-id="' + docId + '"][data-dot-path="' + dotPath + '.' + name + '.' + sub.name + '"]';
+          var $area = $el.find(selector);
+          if (!$area.length) {
+            return;
+          }
+          var editor = $area.data('editor');
+          if (editor) {
+            if (existingData) {
+              existingData[sub.name] = {
+                type: 'area',
+                items: editor.serialize()
+              };
+            }
+          }
+        });
+        data[name] = existingData;
+      },
+      // Always returns true because it is designed to work nondestructively
+      // with fields that don't turn out to be contextual
+      contextualIsPresent: function($el, field) {
+        return true;
+      },
+      getDefault: function() {
+        return {};
       }
     });
 
