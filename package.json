@@ -24,7 +24,6 @@
     "apostrophe-seo": "^1.1.2",
     "apostrophe-site-map": "^2.4.5",
     "core-js": "^2.6.1",
-    "material-design-icons": "^3.0.1",
     "mozjpeg": "^6.0.1"
   }
 }
