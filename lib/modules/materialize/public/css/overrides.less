@@ -1,10 +1,16 @@
+//Material Icons
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
 // Navigation
 nav {
   .brand-logo {
     height: 100%;
-    padding-top: 0.7rem;
-    padding-left: 0.7rem;
-    h1 { font-size: 2.4rem; }
+    padding-top: 0.8rem;
+    padding-left: 0.8rem;
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 0 0;
+    }
   }
 }
 // Floating Slidshow Button
@@ -107,10 +113,18 @@ nav {
 // Floating Action Button
 .btn-floating {
   overflow: visible;
+
+  i {
+    line-height: 40px;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+  }
 }
 // Tooltip
 .btn-floating:hover .mobile-fab-tip {
-    display: flex;
+  display: flex;
 }
 .mobile-fab-tip {
   display: none;

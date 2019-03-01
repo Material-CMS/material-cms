@@ -1,49 +1,43 @@
 {% import 'apostrophe-ui:components/dropdowns.html' as dropdowns with context -%}
 
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large red">
-    <i class="large material-icons">mode_edit</i>
-  </a>
-  <div>
-    <ul>
-      {% for item in data.items %}
-        <li >
-          {% if item.menu %}
-            {# Please do not remove data-apos-admin-bar-dropdown as nightwatch tests require it. -Tom #}
-            <div class="apos-dropdown apos-dropdown--admin apos-dropdown--down" data-apos-dropdown="down" data-apos-actionable data-apos-dropdown-name="{{ item.items[0].name }}">
-          {% endif %}
-          <div class="btn-floating"
-            {%- if not item.menu %} data-apos-admin-bar-item="{{ item.name }}"{%- endif -%}
-          >
-          <a href="#" class="btn-floating mobile-fab-tip modal-trigger">{{ __(item.label | d('')) }}</a>
-          {%- if item.options.href -%}
-            <a class="btn-floating" href="{{ apos.prefix }}{{ item.options.href }}">
-          {%- endif -%}
-          {%- if item.options.href -%}
-            </a>
-          {%- endif -%}
-          <i class="material-icons">mode_edit</i>
-          </div>
-          {% if item.menu %}
-            <ul class="apos-dropdown-items" data-apos-dropdown-items>
-              {% for subItem in item.items %}
-                <li class="apos-dropdown-item" data-apos-admin-bar-item="{{ subItem.name }}">
-                  {%- if subItem.options.href -%}
-                    <a class="btn-floating red" href="{{ apos.prefix }}{{ subItem.options.href }}">
-                  {%- endif -%}
-                  {{ __(subItem.label | d('')) }}
-                  {%- if subItem.options.href -%}
-                    </a>
-                  {%- endif -%}
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-          {% if item.menu %}
-            </div>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
+<a class='dropdown-trigger btn red admin-bar' href='#' data-target='dropdown1'>Admin</a>
+
+<ul id='dropdown1' class='dropdown-content'>
+  {% for item in data.items %}
+    <li >
+      {% if item.menu %}
+        {# Please do not remove data-apos-admin-bar-dropdown as nightwatch tests require it. -Tom #}
+        <div class="apos-dropdown apos-dropdown--admin apos-dropdown--down" data-apos-dropdown="down" data-apos-actionable data-apos-dropdown-name="{{ item.items[0].name }}">
+      {% endif %}
+      <a
+        {%- if not item.menu %} data-apos-admin-bar-item="{{ item.name }}"{%- endif -%}
+      >
+        {%- if item.options.href -%}
+          <a href="{{ apos.prefix }}{{ item.options.href }}">
+        {%- endif -%}
+          {{ __(item.label | d('')) }}
+        {%- if item.options.href -%}
+          </a>
+        {%- endif -%}
+      </a>
+      {% if item.menu %}
+        <ul class="apos-dropdown-items" data-apos-dropdown-items>
+          {% for subItem in item.items %}
+            <li class="apos-dropdown-item" data-apos-admin-bar-item="{{ subItem.name }}">
+              {%- if subItem.options.href -%}
+                <a href="{{ apos.prefix }}{{ subItem.options.href }}">
+              {%- endif -%}
+              {{ __(subItem.label | d('')) }}
+              {%- if subItem.options.href -%}
+                </a>
+              {%- endif -%}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if item.menu %}
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

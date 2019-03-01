@@ -10,13 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Testing and debugging mechanism
 - Video locals files
 - More widget types
-- Better Image rendering with srcset
+- Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
-- Full GDPR Compliance with cookie chooser and privacy opt in for
+- Full GDPR compliance with cookie chooser and privacy opt in for
 - Templating system for colors
+- Apostrophe-pages menu with materialize tooltips
 
 ### Fixed
 - Fire onScroll event only in section-wrapper
+
+## [0.6.3 ] - 2019-01-3
+### Added
+- Materialize adminBar and apostrophe-pages menu
+
+### Fixed
+- Lots of Admin UI fixes
 
 ## [0.6.2 ] - 2018-12-20
 ### Added
