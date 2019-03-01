@@ -422,9 +422,28 @@ apos.define('apostrophe-pieces-manager-modal', {
       }
     };
 
+    self.batchPermissions = function() {
+      if (self.choices.length > 0) {
+        return self.batchSimple(
+          'permissions',
+          false,
+          {
+            dataSource: self.getBatchPermissions
+          }
+        );
+      }
+    };
+
+    self.getBatchPermissions = function(data, callback) {
+      self.options.manager.launchBatchPermissionsModal(data, callback);
+    };
+
     // Carry out a named batch operation, such as `trash`, displaying the
     // provided prompt and, if confirmed by the user, invoking the
     // corresponding verb in this module's API.
+    //
+    // If `confirmationPrompt` is falsy, no prompt is displayed. Often
+    // appropriate if `options.dataSource` presents another chance to cancel.
     //
     // `options.dataSource` can be used to specify a function
     // to be invoked to gather more input before calling the API.
@@ -444,7 +463,7 @@ apos.define('apostrophe-pieces-manager-modal', {
 
       var operation = self.batchOperations[operationName];
 
-      if (!confirm(confirmationPrompt)) {
+      if (confirmationPrompt && (!confirm(confirmationPrompt))) {
         return;
       }
 
@@ -560,10 +579,7 @@ apos.define('apostrophe-pieces-manager-modal', {
 
     self.enableCheckboxEvents = function() {
 
-      if (!$.contains(self.$el[0], self.$filters[0])) {
-        self.$filters.on('change', 'input[type="checkbox"][name="select-all"]', selectAllHandler);
-      }
-      self.$el.on('change', 'input[type="checkbox"][name="select-all"]', selectAllHandler);
+      self.onElOrFilters('change', 'input[type="checkbox"][name="select-all"]', selectAllHandler);
       function selectAllHandler(e) {
         var checked = $(this).prop('checked');
         var $pieces = self.$el.find('[data-piece]');
@@ -637,16 +653,28 @@ apos.define('apostrophe-pieces-manager-modal', {
     };
 
     self.enableSelectEverything = function() {
-      self.$el.add(self.$filters).on('change', 'input[name="select-everything"]', function() {
+      self.onElOrFilters('change', 'input[name="select-everything"]', function() {
         var checked = $(this).prop('checked');
         if (checked) {
-          _.each(self.allIds, function(id) {
-            self.addChoice(id);
-          });
+          self.checkEverythingChoices();
         } else {
           self.clearEverythingChoices();
         }
       });
+    };
+
+    // Execute `fn` when the event `e` fires on the delegated selector `sel`.
+    // If `self.$filters` is contained in `self.$el` the delegation is done
+    // via `self.$el`, otherwise via `self.$filters`.
+    self.onElOrFilters = function(e, sel, fn) {
+      // A simple .and() should solve this problem, but that gives us double
+      // event firing, for reasons that are unclear - event delegation bug
+      // in jQuery? -Tom
+      if (!$.contains(self.$el[0], self.$filters[0])) {
+        self.$filters.on(e, sel, fn);
+      } else {
+        self.$el.on(e, sel, fn);
+      }
     };
 
     self.addChoice = function(id) {
@@ -688,26 +716,40 @@ apos.define('apostrophe-pieces-manager-modal', {
       self.reflectChoiceCount();
     };
 
+    // When the "select everything" checkbox is checked,
+    // we select all of the content
+
+    self.checkEverythingChoices = function() {
+      _.each(self.allIds, function(id) {
+        self.addChoiceToState(id);
+      });
+      var ids = self.getVisibleChoiceIds();
+      _.each(ids, function(id) {
+        self.reflectChoiceInCheckbox(id);
+      });
+
+      self.reflectChoiceCount();
+    };
+
     // When the "select everything" checkbox is cleared,
     // we go back to selecting just the current page
     // of content
     self.clearEverythingChoices = function() {
-      var $pieces = self.$el.find('[data-piece]');
-
       self.clearChoices();
 
-      var ids = $pieces.map(function() {
-        if ($(this).find('input[type="checkbox"]').is(':checked')) {
-          return $(this).attr('data-piece');
-        }
-      }).get();
-
-      _.each(ids, function(id) {
+      _.each(self.getVisibleChoiceIds(), function(id) {
         self.addChoice(id);
       });
 
       self.reflectChoiceCount();
+    };
 
+    // Get the ids of the currently visible choices (not necessarily checked)
+    self.getVisibleChoiceIds = function() {
+      var $pieces = self.$el.find('[data-piece]');
+      return $pieces.map(function() {
+        return $(this).attr('data-piece');
+      }).get();
     };
 
     self.refreshSelectEverything = function() {
@@ -800,11 +842,11 @@ apos.define('apostrophe-pieces-manager-modal', {
     // `self.beforeList`. Called by `refresh`.
 
     self.getListOptions = function(options) {
-      var listOptions = _.assign({}, options);
-
-      _.extend(listOptions, self.currentFilters);
-      listOptions.sort = self.sort;
-      listOptions.search = self.search;
+      var listOptions = _.assign({ filters: {} }, options);
+      var filters = listOptions.filters;
+      _.extend(filters, self.currentFilters);
+      filters.sort = self.sort;
+      filters.search = self.search;
       listOptions.manageView = self.viewName;
       self.beforeList(listOptions);
 

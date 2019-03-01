@@ -227,6 +227,13 @@ apos.define('apostrophe-schemas', {
         case 'taken':
           error.message = 'Already taken';
           break;
+        case 'mandatory':
+          if (typeof (field.mandatory) === 'string') {
+            error.message = field.mandatory;
+          } else {
+            error.message = 'Consent is required to continue';
+          }
+          break;
       }
       return error;
     };
@@ -651,7 +658,7 @@ apos.define('apostrophe-schemas', {
             });
           } else {
             // type select
-            if (val === choice.value) {
+            if (val === choice.value.toString()) {
               show = true;
             }
           }
@@ -1175,9 +1182,9 @@ apos.define('apostrophe-schemas', {
       },
       convert: function(data, name, $field, $el, field, callback) {
         data[name] = $field.val();
-        // Seems odd but sometimes used to mandate an "I agree" box
-        if (field.required && !data[name]) {
-          return setImmediate(_.partial(callback, 'required'));
+        // `mandatory` property used for consent checks (I agree)
+        if (field.mandatory && (!data[name] || data[name] === '0')) {
+          return setImmediate(_.partial(callback, 'mandatory'));
         }
         return setImmediate(callback);
       }
@@ -1190,6 +1197,7 @@ apos.define('apostrophe-schemas', {
         for (var c in data[name]) {
           self.findSafe($fieldset, 'input[name="' + name + '"][value="' + data[name][c] + '"]', '.apos-field').prop('checked', true);
         }
+        self.enableShowFields(data, name, $field, $el, field);
         return setImmediate(callback);
       },
       convert: function(data, name, $field, $el, field, callback) {
@@ -1300,6 +1308,33 @@ apos.define('apostrophe-schemas', {
         }
         if (data[name] && field.min !== undefined && parseFloat(data[name]) < field.min) {
           return setImmediate(_.partial(callback, 'min'));
+        }
+        return setImmediate(callback);
+      }
+    });
+
+    self.addFieldType({
+      name: 'email',
+      populate: function(data, name, $field, $el, field, callback) {
+        $field.val(data[name]);
+        return setImmediate(callback);
+      },
+      convert: function(data, name, $field, $el, field, callback) {
+
+        data[name] = $field.val();
+
+        if (!data[name].length) {
+          if (field.required) {
+            return setImmediate(_.partial(callback, 'required'));
+          }
+          return setImmediate(callback);
+        }
+
+        // regex source: https://emailregex.com/
+        // eslint-disable-next-line no-useless-escape
+        var matches = data[name].match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        if (!matches) {
+          return setImmediate(_.partial(callback, 'invalid'));
         }
         return setImmediate(callback);
       }
