@@ -11,7 +11,7 @@
 **🔖 OnePage Navigation**
 **⚫️ Material Design**
 
-You can build a fully working content management system in 10 Minutes and modify your website with fullpage, materialized content.
+You can build a your content management system in 10 Minutes and modify your website with fullpage scroll, materialized content, six different widgets, thousands of different possibility's trough reusable content and layered settings.
 
 ![Screenshot](screenshot.jpg)
 
@@ -28,6 +28,7 @@ npm install
 node app.js apostrophe-users:add admin admin
 # Go go go!
 mpm start
+# Open Browser "http://localhost:3000/login" to login as with your created user and add first content
 ````
 
 ----
