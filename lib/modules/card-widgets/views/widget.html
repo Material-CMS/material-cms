@@ -64,8 +64,13 @@
     </div>
     {% block arrows %}
       {% if data.widget._pieces.length > 1 %}
-        <a href="#" data-next class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
+        <a href="#" data-next class="btn-floating halfway-fab"><i class="material-icons">arrow_forward</i></a>
       {% endif %}
     {% endblock %}
+    <style>
+      .btn-floating { color:{{ data.global.mainColor }};  background-color:{{ data.global.accentColor }} }
+      .btn-floating:hover { background-color:{{ data.global.accentColor }}; filter: brightness(130%) }
+      .btn-floating:focus { background-color:{{ data.global.accentColor }}; }
+    </style>
   </div>
 </div>
