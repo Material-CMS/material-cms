@@ -5,8 +5,6 @@
         limit: 2,
         widgets: {
           'card': {
-            minSize: [ 700, 350 ],
-            aspectRatio: [ 2, 1 ],
             size: 'full',
             controls: {
               cloneable: false,
@@ -43,17 +41,15 @@
       {{ apos.area(data.widget, 'cardRight', {
         limit: 2,
         widgets: {
-          'events': {
+          'card': {
+            size: 'full',
             controls: {
               cloneable: false,
               removable: true,
               position: 'top-right'
             }
           },
-          'card': {
-            minSize: [ 700, 350 ],
-            aspectRatio: [ 2, 1 ],
-            size: 'full',
+          'events': {
             controls: {
               cloneable: false,
               removable: true,
