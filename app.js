@@ -80,7 +80,7 @@ var apos = require('apostrophe')({
         },
         {
           name: 'headerBottomPadding',
-          label: 'space between image header and widget',
+          label: 'Space between image header and widget',
           type: 'range',
           selector: '.header',
           property: 'padding-bottom',
@@ -88,6 +88,19 @@ var apos = require('apostrophe')({
           max: 10,
           step: 0.1,
           unit: 'rem'
+        },
+        {
+          name: 'marginCards',
+          label: 'Space Bottom',
+          type: 'range',
+          selector: '.margin',
+          property: [
+            'margin-bottom'
+          ],
+          min: 0,
+          max: 50,
+          step: 1,
+          unit: 'px'
         }
       ]
     },
