@@ -19,7 +19,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
-## [0.6.3 ] - 2019-01-3
+## [0.7.0 ] - 2019-03-06
+### Added
+- Partly changed admin ui to Materialize
+- Better mobile section height
+- Sections can now be connected
+
+## [0.6.3 ] - 2019-01-03
 ### Added
 - Materialize adminBar and apostrophe-pages menu
 
