@@ -1,6 +1,7 @@
 ## Material CMS
 
 [![Build Status](https://travis-ci.org/felixlberg/fullpage-cms.svg?branch=master)](https://travis-ci.org/felixlberg/fullpage-cms)
+
 ----
 
 ### Ultra fast CMS with material design, reusable widgets.
@@ -28,7 +29,7 @@ npm install
 node app.js apostrophe-users:add admin admin
 # Go go go!
 mpm start
-# Open Browser "http://localhost:3000/login" to login as with your created user and add first content
+# Open Browser "http://localhost:3000/login" to login with your user to add first content
 ````
 
 ----
