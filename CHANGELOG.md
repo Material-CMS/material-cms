@@ -6,24 +6,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Sub widgets / joinByOne for texts-widgets
+- Tabs for texts-widgets
 - Testing and debugging mechanism
 - Video locals files
 - More widget types
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
-- Full GDPR compliance with cookie chooser and privacy opt in for
-- Templating system for colors
-- Apostrophe-pages menu with materialize tooltips
 
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.7.1 ] - 2019-03-07
+### Added
+- Apostrophe-rich-text-widgets for text widgets, legal and privacy
+- GDPR compliance for email sending
+- Own radius class for border radius palette
+
+### Fixed
+- Lot of UI fixes
+- Mobile height
+
 ## [0.7.0 ] - 2019-03-06
 ### Added
+- Templating system for colors
 - Partly changed admin ui to Materialize
 - Better mobile section height
 - Sections can now be connected
+- Apostrophe-pages menu with materialize tooltips
 
 ## [0.6.3 ] - 2019-01-03
 ### Added

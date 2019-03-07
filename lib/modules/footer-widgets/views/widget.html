@@ -6,16 +6,32 @@
         © {{ data.global.creation_date }} {{ data.global.copyright }}
       {%- endif -%}
 
+      {%- if data.global.privacy -%}
+        <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-1">privacy</a>
+        <div id="modal-1" class="modal">
+          <div class="modal-content text-darken-4">
+            <h4>Privacy</h4>
+            {{ apos.area(data.global, 'privacy', {
+              edit: false,
+              widgets: { 'apostrophe-rich-text': { } }
+            }) }}
+          </div>
+        </div>
+      {%- endif -%}
+
       {%- if data.global.legal -%}
         <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-2">Legal</a>
         <div id="modal-2" class="modal">
           <div class="modal-content text-darken-4">
             <h4>Legal Info</h4>
-            <p>{{ data.global.legal }}</p>
+            {{ apos.area(data.global, 'legal', {
+              edit: false,
+              widgets: { 'apostrophe-rich-text': { } }
+            }) }}
           </div>
         </div>
       {%- endif -%}
-      
+
     </div>
   </div>
 </footer>

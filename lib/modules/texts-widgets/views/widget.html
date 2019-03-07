@@ -1,43 +1,51 @@
 <div class="row margin">
   <div class="col s12 m12">
-   {% for piece in data.widget._pieces %}
-    <div class="card horizontal" style="
-      {%- if piece.backColor-%}
-        background-color:{{ piece.backColor }}
-      {% endif %}
-    ">
+    <div class="radius">
+     {% for piece in data.widget._pieces %}
+      <div class="card horizontal" style="
+        {%- if piece.backColor-%}
+          background-color:{{ piece.backColor }}
+        {% endif %}
+      ">
 
-      {%- if piece._image -%}
-      <div class="card-image hide-on-small-only">
-        <img width="100%" src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}">
-      </div>
-      {%- endif -%}
-      <div class="card-stacked">
-        <div class="card-content" style="
-          {%- if piece.backColor-%}
-            background-color:{{ piece.backColor }}
-          {% endif %}
-        ">
+        {%- if piece._image -%}
+        <div class="card-image hide-on-small-only">
+          <img width="100%" src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}">
+        </div>
+        {%- endif -%}
+        <div class="card-stacked">
+          <div class="card-content" style="
+            {%- if piece.backColor-%}
+              background-color:{{ piece.backColor }}
+            {% endif %}
+          ">
 
-          {%- if piece.title -%}
-            <span class="card-title">
-              <h5 class="accent-color" style="
-                {%- if piece.titleColor -%}
-                  color:{{ piece.titleColor }}
-                {% endif %}
-              ">
-                {{ piece.title }}
-              </h5>
-            </span>
-          {%- endif -%}
+            {%- if piece.title -%}
+              <span class="card-title">
+                <h5 class="accent-color" style="
+                  {%- if piece.titleColor -%}
+                    color:{{ piece.titleColor }}
+                  {% endif %}
+                ">
+                  {{ piece.title }}
+                </h5>
+              </span>
+            {%- endif -%}
 
-          {%- if piece.text -%}
-            <p class="flow-text">{{ piece.text }}</p>
-          {%- endif -%}
+            {%- if piece.text -%}
+                {{ apos.area(piece, 'text', {
+                  edit: false,
+                  widgets: { 'apostrophe-rich-text': { } }
+                }) }}
+            {%- endif -%}
 
+          </div>
         </div>
       </div>
-    </div>
-   {% endfor %}
+     {% endfor %}
+     <style>
+       blockquote { border-left-color:{{ data.global.accentColor }} !important; }
+     </style>
+   </div>
   </div>
 </div>
