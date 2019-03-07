@@ -69,8 +69,7 @@ var apos = require('apostrophe')({
           label: 'Round Corners',
           type: 'range',
           selector: [
-            '.card',
-            '.collapsible',
+            '.radius'
           ],
           property: 'border-radius',
           min: 0,

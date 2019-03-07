@@ -1,72 +1,74 @@
 <div class="row margin">
   <div class="col s12 m12">
-    <div class="card">
-      <div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
-        <div class="materialboxed" data-slideshow-items>
-          {%- block items -%}
-            {%- for entry in data.widget._pieces -%}
-              {%- set image = entry.item or entry -%}
-              {%- set relationship = entry.relationship -%}
-                <div data-slideshow-item
-                  class="apos-slideshow-item{% if loop.first %} apos-current{% endif %}{% block itemClass %}{% endblock %} apos-slideshow-item--{{ image.attachment.extension }}"
-                  style="background-image:
-                    url({{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }})
-                    {%- if apos.attachments.hasFocalPoint(relationship) -%}
-                      ; background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
+    <div class="radius">
+      <div class="card">
+        <div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
+          <div class="materialboxed" data-slideshow-items>
+            {%- block items -%}
+              {%- for entry in data.widget._pieces -%}
+                {%- set image = entry.item or entry -%}
+                {%- set relationship = entry.relationship -%}
+                  <div data-slideshow-item
+                    class="apos-slideshow-item{% if loop.first %} apos-current{% endif %}{% block itemClass %}{% endblock %} apos-slideshow-item--{{ image.attachment.extension }}"
+                    style="background-image:
+                      url({{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }})
+                      {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                        ; background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
+                      {%- endif -%}
+                      {%- if data.options.aspectRatio and (image.attachment.extension == 'svg') -%}
+                        ; width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
+                      {%- endif -%}
+                    ">
+                    <div class="card-image">
+                      <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
+                        data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}
+                      " />
+                    {%- if data.widget.title -%}
+                      {%- block title -%}
+                      <span class="card-title">
+                        <h5 class=" accent-color truncate hide-on-small-only"
+                          {%- if data.widget.color -%}
+                            style="color:{{ data.widget.color }}"
+                          {% endif %}
+                        >
+                          {{ image.title }}
+                        </h5>
+                      </span>
+                      {%- endblock -%}
                     {%- endif -%}
-                    {%- if data.options.aspectRatio and (image.attachment.extension == 'svg') -%}
-                      ; width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
-                    {%- endif -%}
-                  ">
-                  <div class="card-image">
-                    <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
-                      data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}
-                    " />
-                  {%- if data.widget.title -%}
-                    {%- block title -%}
-                    <span class="card-title">
-                      <h5 class=" accent-color truncate hide-on-small-only"
-                        {%- if data.widget.color -%}
-                          style="color:{{ data.widget.color }}"
-                        {% endif %}
-                      >
-                        {{ image.title }}
-                      </h5>
-                    </span>
-                    {%- endblock -%}
-                  {%- endif -%}
-                  </div>
-                {%- block description -%}
-                  {%- if image.description -%}
-                    <div class="card-content">
-                      <p class="flow-text">{{ image.description | nlbr }}</p>
                     </div>
-                  {%- endif -%}
-                {%- endblock -%}
-                {%- block credit -%}
-                  {%- if image.credit -%}
-                    {%- if image.creditUrl -%}
-                      <div class="card-action">
-                        <a href="{{ image.creditUrl }}">
-                    {%- endif -%}
-                    {{ image.credit }}
-                    {%- if image.creditUrl -%}
-                        </a>
+                  {%- block description -%}
+                    {%- if image.description -%}
+                      <div class="card-content">
+                        <p class="flow-text">{{ image.description | nlbr }}</p>
                       </div>
                     {%- endif -%}
-                  {%- endif -%}
-                {%- endblock -%}
-              </div>
-            {%- endfor -%}
-          {%- endblock -%}
+                  {%- endblock -%}
+                  {%- block credit -%}
+                    {%- if image.credit -%}
+                      {%- if image.creditUrl -%}
+                        <div class="card-action">
+                          <a href="{{ image.creditUrl }}">
+                      {%- endif -%}
+                      {{ image.credit }}
+                      {%- if image.creditUrl -%}
+                          </a>
+                        </div>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endblock -%}
+                </div>
+              {%- endfor -%}
+            {%- endblock -%}
+          </div>
         </div>
       </div>
     </div>
-    {% block arrows %}
-      {% if data.widget._pieces.length > 1 %}
-        <a href="#" data-next class="btn-floating halfway-fab"><i class="material-icons">arrow_forward</i></a>
-      {% endif %}
-    {% endblock %}
+      {% block arrows %}
+        {% if data.widget._pieces.length > 1 %}
+          <a href="#" data-next class="btn-floating halfway-fab"><i class="material-icons">arrow_forward</i></a>
+        {% endif %}
+      {% endblock %}
     <style>
       .btn-floating { color:{{ data.global.mainColor }};  background-color:{{ data.global.accentColor }} }
       .btn-floating:hover { background-color:{{ data.global.accentColor }}; filter: brightness(130%) }

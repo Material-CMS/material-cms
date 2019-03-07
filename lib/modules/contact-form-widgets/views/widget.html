@@ -5,11 +5,14 @@
       {{ schemas.fields(data.schema, { tabs: false }) }}
 
       {%- if data.global.privacy -%}
-        <a class="btn waves-effect waves-light modal-trigger" href="#modal-1">Send</a>
-        <div id="modal-1" class="modal">
+        <a class="btn waves-effect waves-light modal-trigger" href="#modal-3">Send</a>
+        <div id="modal-3" class="modal modal-fixed-footer">
           <div class="modal-content text-darken-4">
             <h4>Privacy</h4>
-            <p>{{ data.global.privacy }}</p>
+            {{ apos.area(data.global, 'privacy', {
+              edit: false,
+              widgets: { 'apostrophe-rich-text': { } }
+            }) }}
           </div>
           <div class="modal-footer">
             <a href="#!" class="btn-flat modal-close waves-effect waves-red">Disagree</a>
