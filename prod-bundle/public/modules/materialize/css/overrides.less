@@ -14,7 +14,7 @@ nav {
 }
 // Container
 .main-content.container {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 // Flow Text is huge in default settings!
 @media(min-width: 600px) {
@@ -41,17 +41,20 @@ nav {
 .row {
   margin-bottom: 0;
 }
+// Radius Overflow
+.radius {
+  overflow: hidden;
+}
 // Card
 .card {
-  overflow: hidden;
   margin: 0 0 0 0;
 }
 .card-title {
   font-size: 1.64rem !important;
   font-weight: 300 !important;
 }
-.materialboxed div {
-  height: inherit !important;
+.card .card-action {
+  background-color: white;
 }
 // Floating Slidshow Button
 .btn-floating.halfway-fab {
@@ -103,21 +106,6 @@ nav {
     color: #000000 !important;
   }
 }
-// Footer
-.bottom-content{
-  position: absolute;
-  width:100%;
-  bottom: 0;
-}
-.page-footer {
-  background-color: inherit;
-}
-.apos-ui .apos-field-input {
-  height: inherit;
-}
-.margin-top {
-  margin-top: 1rem;
-}
 // Slides
 .slider.fullscreen {
   height: 100vh;
@@ -148,4 +136,27 @@ nav {
 	border-radius: 2px;
 	color: #FFF;
   width: 100px;
+}
+// Footer
+.footer-copyright {
+   div {
+     a {
+       padding-left: 10px;
+       padding-right: 10px;
+     }
+   }
+}
+.bottom-content{
+  position: absolute;
+  width:100%;
+  bottom: 0;
+}
+.page-footer {
+  background-color: inherit;
+}
+.apos-ui .apos-field-input {
+  height: inherit;
+}
+.margin-top {
+  margin-top: 1rem;
 }
