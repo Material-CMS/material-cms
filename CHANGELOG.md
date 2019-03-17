@@ -16,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.7.2 ] - 2019-03-17
+### Added
+- All css files get pushed by apostrophe-assets
+- Updated apostrophe to v2.83
+- Button icons
+
+### Fixed
+- Button color schema and css
+- Bugfixes
+
 ## [0.7.1 ] - 2019-03-07
 ### Added
 - Apostrophe-rich-text-widgets for text widgets, legal and privacy

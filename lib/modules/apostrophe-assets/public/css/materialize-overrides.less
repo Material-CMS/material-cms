@@ -1,5 +1,12 @@
-//Material Icons
+// Material Icons
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+// Navigation Wrapper
+.nav {
+  z-index: 9;
+  display: block;
+  position: fixed;
+  width: 100%;
+}
 // Navigation
 nav {
   .brand-logo {
@@ -12,9 +19,34 @@ nav {
     }
   }
 }
+// Sections Height
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media(max-width: 400px) {
+  .section {
+    height: inherit;
+  }
+}
 // Container
 .main-content.container {
     margin-bottom: 4rem;
+}
+// Container Radius Overflow
+.radius {
+  overflow: hidden;
+}
+// Grid
+.row {
+  margin-bottom: 0;
 }
 // Flow Text is huge in default settings!
 @media(min-width: 600px) {
@@ -37,15 +69,15 @@ nav {
     font-size: 1.4rem !important;
   }
 }
-// Grid
-.row {
-  margin-bottom: 0;
+// Slides
+.slider.fullscreen {
+  height: 100vh;
 }
-// Radius Overflow
-.radius {
-  overflow: hidden;
+.slide-content{
+  height: 100vh;
+  width:  100%;
 }
-// Card
+// Cards
 .card {
   margin: 0 0 0 0;
 }
@@ -56,11 +88,11 @@ nav {
 .card .card-action {
   background-color: white;
 }
-// Floating Slidshow Button
+// Cards Slidshow Button
 .btn-floating.halfway-fab {
   right: 50px;
 }
-// Collapsible
+// Collapsibles
 .collapsible {
   margin: 0 0 0 0;
   border-top: inherit;
@@ -96,7 +128,7 @@ nav {
 .material-icons {
   font-family: Material Icons !important;
 }
-// Modal
+// Modals
 .modal {
   top: auto !important;
   bottom: 5% !important;
@@ -106,14 +138,9 @@ nav {
     color: #000000 !important;
   }
 }
-// Slides
-.slider.fullscreen {
-  height: 100vh;
-}
 // Floating Action Button
 .btn-floating {
   overflow: visible;
-
   i {
     line-height: 40px;
     font-family: 'Material Icons';
@@ -122,29 +149,31 @@ nav {
     font-size: 24px;
   }
 }
-// Tooltip
-.btn-floating:hover .mobile-fab-tip {
-  display: flex;
-}
+// Tooltips
 .mobile-fab-tip {
-  display: none;
 	position: fixed;
-	right: 50px;
-	padding:0px 0.5rem;
+	right: 85px;
+	padding:0.5rem 0.5rem !important;
 	text-align: right;
 	background-color: #323232;
 	border-radius: 2px;
 	color: #FFF;
-  width: 100px;
+	width:auto;
+}
+.btn-pages:hover {
+
+  .mobile-fab-tip {
+    display: none !important;
+  }
 }
 // Footer
 .footer-copyright {
-   div {
-     a {
-       padding-left: 10px;
-       padding-right: 10px;
-     }
+  div {
+   a {
+     padding-left: 10px;
+     padding-right: 10px;
    }
+  }
 }
 .bottom-content{
   position: absolute;
@@ -154,9 +183,9 @@ nav {
 .page-footer {
   background-color: inherit;
 }
-.apos-ui .apos-field-input {
-  height: inherit;
-}
 .margin-top {
   margin-top: 1rem;
+}
+.apos-ui .apos-field-input {
+  height: inherit;
 }
