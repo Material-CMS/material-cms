@@ -14,7 +14,7 @@
 
 You can build a your content management system in 10 Minutes and modify your website with fullpage scroll, materialized content, six different widgets, thousands of different possibility's trough reusable content and layered settings.
 
-![Screenshot](screenshot.jpg)
+![Screenshot](screenshot.png)
 
 ### Installing instructions
 
