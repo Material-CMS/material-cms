@@ -77,17 +77,6 @@ var apos = require('apostrophe')({
           unit: 'px'
         },
         {
-          name: 'headerBottomPadding',
-          label: 'Space between image header and widget',
-          type: 'range',
-          selector: '.header',
-          property: 'padding-bottom',
-          min: 0,
-          max: 10,
-          step: 0.1,
-          unit: 'rem'
-        },
-        {
           name: 'marginCards',
           label: 'Space Bottom',
           type: 'range',

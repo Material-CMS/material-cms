@@ -16,6 +16,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.7.3 ] - 2019-04-27
+### Added
+- Materialize as components for better performance and bugfixes
+- Updated apostrophe@2.88.1
+- Updated apostrophe-favicons@1.1.2
+- Updated apostrophe-palette@2.0.20
+- Updated apostrophe-site-map@2.5.1
+- Replaced smartscroll with other scroll jack script
+
+### Fixed
+- Button color schema and css
+- Materialize TypeError
+- Rearranged fields
+
 ## [0.7.2 ] - 2019-03-17
 ### Added
 - All css files get pushed by apostrophe-assets

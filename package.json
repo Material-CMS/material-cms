@@ -17,13 +17,13 @@
   "author": "P'unk Avenue, Felix Langenberg",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.83.1",
-    "apostrophe-favicons": "^1.0.16",
+    "apostrophe": "^2.88.1",
+    "apostrophe-favicons": "^1.1.2",
     "apostrophe-open-graph": "^1.1.4",
     "apostrophe-optimizer": "^2.0.2",
-    "apostrophe-palette": "^2.0.17",
+    "apostrophe-palette": "^2.0.20",
     "apostrophe-seo": "^1.1.3",
-    "apostrophe-site-map": "^2.4.7",
+    "apostrophe-site-map": "^2.5.1",
     "core-js": "^2.6.5",
     "mozjpeg": "^6.0.1"
   }
