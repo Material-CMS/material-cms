@@ -103,11 +103,11 @@
       {%- elif piece.preferences == 'footerOn' -%}
         <div class="main-content container">
 
-          {%- if piece.title -%}
+          {%- if piece.header == true -%}
             <div class="header">
               <h3 class="accent-color" style="
-                {%- if piece.titleColor -%}
-                  color:{{ piece.titleColor }}
+                {%- if piece.headerColor -%}
+                  color:{{ piece.headerColor }}
                 {% endif %}
               ">
                 {{ piece.title }}
@@ -138,11 +138,11 @@
       {%- else -%}
         <div class="main-content container">
 
-          {%- if piece.title -%}
+          {%- if piece.header == true -%}
             <div class="header">
               <h3 class="accent-color" style="
-                {%- if piece.titleColor -%}
-                  color:{{ piece.titleColor }}
+                {%- if piece.headerColor -%}
+                  color:{{ piece.headerColor }}
                 {% endif %}
               ">
                 {{ piece.title }}
@@ -205,8 +205,5 @@
 
     </div>
   {% endfor %}
-
+<div id="topbtn" onclick="goTop()">&#8593;</div>
 </div>
-<style>
-  .dropdown-content li > a { color: {{ data.global.accentColor }} }
-</style>
