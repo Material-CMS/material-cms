@@ -35,13 +35,23 @@ nav {
     height: inherit;
   }
 }
+// Header
+.header {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 1rem;
+}
 // Container
-.main-content.container {
+.main-content {
+    width: 100vw;
     top: 5rem;
     position: relative;
-    display: flex;
-    align-items: center;
     margin-bottom: 4rem;
+}
+.container {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
 }
 // Container Radius Overflow
 .radius {
@@ -90,6 +100,9 @@ nav {
 }
 .card .card-action {
   background-color: white;
+}
+.card.horizontal .card-image img {
+  height: 100%;
 }
 // Cards Slidshow Button
 .btn-floating.halfway-fab {
