@@ -2,7 +2,7 @@
   <ul class="slides">
     {% for piece in data.widget._pieces %}
     <li>
-      <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}">
+      <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'max' }) }}" alt="{{ piece._image.description or piece._image.title }}">
       <div class="caption {{ piece.caption }}">
         {%- if piece.title -%}
           <h3 class="accent-color" style="

@@ -10,7 +10,8 @@
 
         {%- if piece._image -%}
         <div class="card-image hide-on-small-only">
-          <img width="100%" src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}">
+          <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'one-third' }) }}" alt="{{ piece._image.description or piece._image.title }}"
+          >
         </div>
         {%- endif -%}
         <div class="card-stacked">
