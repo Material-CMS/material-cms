@@ -77,16 +77,15 @@ apos.define('apostrophe-areas-editor', {
     };
 
     self.registerClickHandlers = function() {
-
       self.link('apos-add-item', self.startAutosavingHandler(self.addItem));
       self.link('apos-edit-item', self.startAutosavingHandler(self.editItem));
       self.link('apos-move-item', self.startAutosavingHandler(self.moveItem));
       self.link('apos-trash-item', self.startAutosavingHandler(self.trashItem));
       self.link('apos-clone-item', self.startAutosavingHandler(self.cloneItem));
-
     };
 
     self.registerEventHandlers = function() {
+
       self.$body.on('aposCloseMenus', function() {
         self.dismissContextContentMenu();
       });
@@ -192,22 +191,29 @@ apos.define('apostrophe-areas-editor', {
       self.removeAreaControls($widget);
 
       var $wrapper = $widget.parent('[data-apos-widget-wrapper]');
-      var $remover = self.fromTemplate('[data-apos-undo-remove-widget]');
-      $remover.find('[data-apos-widget-type-label]').text(apos.areas.getWidgetManager($widget.attr('data-apos-widget')).label);
-      $wrapper.replaceWith(
-        $remover
-      );
-      $remover.on('click', function() {
-        $remover.replaceWith($wrapper);
+      var $undoer = self.fromTemplate('[data-apos-undo-remove-widget]');
+      $undoer.find('[data-apos-widget-type-label]').text(apos.areas.getWidgetManager($widget.attr('data-apos-widget')).label);
+      $wrapper.before($undoer).detach();
+      var undoerTimeout;
+      $undoer.on('click', function() {
+        $undoer.replaceWith($wrapper);
         self.checkEmptyAreas();
         self.respectLimit();
+        clearTimeout(undoerTimeout);
         return false;
       });
       self.checkEmptyAreas();
       self.respectLimit();
-      setTimeout(function() {
-        $remover.fadeOut(function() {
-          $remover.remove();
+      undoerTimeout = setTimeout(function() {
+        $undoer.fadeOut(function() {
+          $undoer.remove();
+          // It is unclear how to drop all jQuery data associated
+          // with a detached (rather than removed) element, so
+          // add it back hidden for a moment and use remove, which
+          // definitely cleans up those things
+          $wrapper.hide();
+          $('body').append($wrapper);
+          $wrapper.remove();
         });
       }, 7000);
       apos.emit('widgetTrashed', $widget);
@@ -372,6 +378,7 @@ apos.define('apostrophe-areas-editor', {
       self.enhanceWidgetControls($widget);
       $widget.parent('[data-apos-widget-wrapper]').attr('class', $wrapper.attr('class'));
       self.fixInsertedWidgetDotPaths($widget);
+      $widget.data('areaEditor', self);
       apos.emit('enhance', $widget);
     };
 
@@ -504,8 +511,10 @@ apos.define('apostrophe-areas-editor', {
       self.$selected = $widget;
       var type = self.$selected.attr('data-apos-widget');
       var options = self.options.widgets[type] || {};
+      // Recursively set new widget ids for this widget and its descendants
+      // with the same docId
+      newIds($widget);
       var data = apos.areas.getWidgetData($widget);
-      delete data._id;
       $.jsonCall(self.action + '/render-widget',
         {
           dataType: 'html'
@@ -524,6 +533,22 @@ apos.define('apostrophe-areas-editor', {
           self.checkEmptyAreas();
         }
       );
+      function newIds($widget) {
+        var id = apos.utils.generateId();
+        $widget.attr('data-apos-widget-id', id);
+        var data = apos.areas.getWidgetData($widget);
+        data._id = id;
+        var docId = data.__docId;
+        apos.areas.setWidgetData($widget, data);
+        var $descendants = $widget.find('[data-apos-widget]');
+        $descendants.each(function() {
+          var $widget = $(this);
+          var data = apos.areas.getWidgetData($widget);
+          if (data.__docId === docId) {
+            newIds($(this));
+          }
+        });
+      }
     };
 
     self.checkEmptyAreas = function() {
@@ -620,25 +645,40 @@ apos.define('apostrophe-areas-editor', {
           'top': '',
           'width': ''
         });
-        $(event.target).after($item);
+        var $oldWidget = $item.find('[data-apos-widget]');
+        var oldEditor = self;
+        var $newArea = $(event.target).closest('[data-apos-area]');
+        var newEditor = $newArea.data('editor');
+        $oldWidget.data('areaEditor', newEditor);
         self.disableDroppables();
-        self.reRenderWidget($item);
-        self.changeOwners($item);
+        oldEditor.startAutosavingThen(function() {
+          $(event.target).after($item);
+          newEditor.startAutosavingThen(function() {
+            newEditor.reRenderWidget($item, function(err) {
+              if (err) {
+                apos.notify('An error occurred.', { type: 'error' });
+                return;
+              }
+              newEditor.respectLimit();
+            });
+          });
+        });
         self.checkEmptyAreas();
       }
     };
 
     // Get the server to re-render a widget for us, applying the
-    // options appropriate to its new context at area
-    // TODO: we should prevent input during this time
-    self.reRenderWidget = function($wrapper) {
+    // options appropriate to its new area for instance. The callback
+    // is optional.
+
+    self.reRenderWidget = function($wrapper, callback) {
       self.stopEditingRichText();
       var $widget = $wrapper.find('[data-apos-widget]');
       var type = $widget.attr('data-apos-widget');
       var data = apos.areas.getWidgetData($widget, true);
       var originalData = _.clone(data);
       var options = self.options.widgets[type] || {};
-
+      apos.ui.globalBusy(true);
       return $.jsonCall(self.action + '/render-widget',
         {
           dataType: 'html'
@@ -649,13 +689,18 @@ apos.define('apostrophe-areas-editor', {
           options: options,
           type: type
         }, function(html) {
+          apos.ui.globalBusy(false);
           // This rather intense code works around
           // various situations in which jquery is
           // picky about HTML
           var $newWidget = $($.parseHTML($.trim(html), null, true));
           self.replaceWidget($widget, $newWidget);
+          return callback && callback(null);
           // TODO should this take a callback?
           // return callback(null);
+        }, function(err) {
+          apos.ui.globalBusy(false);
+          return callback && callback(err);
         }
       );
     };
@@ -821,20 +866,9 @@ apos.define('apostrophe-areas-editor', {
       );
     };
 
-    // Take an item that might belong to a different
-    // area and make it ours. Implicitly starts
-    // autosaving both affected areas
-
+    // For bc only. Working version of this logic is inside
+    // the drop handler.
     self.changeOwners = function($item) {
-      var $widget = $item.find('[data-apos-widget]');
-      var oldEditor = $widget.data('areaEditor');
-      var newEditor = self;
-      oldEditor.startAutosavingThen(function() {
-        newEditor.startAutosavingThen(function() {
-          $item.find('[data-apos-widget]').data('areaEditor', self);
-          self.respectLimit();
-        });
-      });
     };
 
     self.respectLimit = function() {

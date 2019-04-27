@@ -1,6 +1,7 @@
 // Materialize Components get initialized here javascript
 // you cann insert component specific options here
 // jquery init is also possible look further materialize documentation
+
 $(document).ready(function() {
 
   // Sidenav
