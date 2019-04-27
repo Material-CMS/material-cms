@@ -16,9 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fire onScroll event only in section-wrapper
 
+## [0.7.4 ] - 2019-04-27
+### Added
+- Materialize as components for better performance
+- Babel for transpiling materialize components to es5
+- build directory for es5 components
+- scr directory for source es6 components
+- anime.min.js as static vendor script
+
 ## [0.7.3 ] - 2019-04-27
 ### Added
-- Materialize as components for better performance and bugfixes
 - Updated apostrophe@2.88.1
 - Updated apostrophe-favicons@1.1.2
 - Updated apostrophe-palette@2.0.20
