@@ -33,14 +33,28 @@
               </span>
             {%- endif -%}
 
-            {%- if piece.text -%}
-                {{ apos.area(piece, 'text', {
+            {%- if piece.description -%}
+                {{ apos.area(piece, 'description', {
                   edit: false,
                   widgets: { 'apostrophe-rich-text': { } }
                 }) }}
             {%- endif -%}
-
           </div>
+
+          {%- if piece.text -%}
+            <div class="card-action">
+              <a class="waves-effect waves-light btn modal-trigger" href="#{{ piece.slug }}">more</a>
+              <div id="{{ piece.slug }}" class="modal">
+                <div class="modal-content">
+                  {{ apos.area(piece, 'text', {
+                    edit: false,
+                    widgets: { 'apostrophe-rich-text': { } }
+                  }) }}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+
         </div>
       </div>
      {% endfor %}
