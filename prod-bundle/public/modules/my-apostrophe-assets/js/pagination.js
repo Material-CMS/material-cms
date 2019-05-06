@@ -8,23 +8,31 @@ $(function() {
         $target = $(target);
         $('html, body').stop().animate({
             'scrollTop': $target.offset().top+2
-        }, 500, 'swing', function () {
+        }, 300, 'swing', function () {
             window.location.hash = target;
         });
+    });
+
+    // Scroll down button jumps to next section
+    $('.scroll-down').click(function(){
+        var nextSection = $(this).closest('.section').next('.section');
+        $('html, body').animate({
+           scrollTop: $(nextSection).offset().top
+        }, 300);
     });
 
     // Set anchors when scroll
     var scrolling = false;
     $( window ).scroll( function() {
-      scrolling = true;
+        scrolling = true;
     });
 
     // Throtteling function to prevent brwoser flooding
     setInterval( function() {
-      if ( scrolling ) {
-      scrolling = false;
-      var scrollPos = $(document).scrollTop();
-        $('.anchor').each(function () {
+        if ( scrolling ) {
+        scrolling = false;
+        var scrollPos = $(document).scrollTop();
+          $('.anchor').each(function () {
             var target = this.hash;
             var currLink = $(this);
             var refElement = $(currLink.attr("href"));
@@ -45,10 +53,9 @@ $(function() {
             else {
                currLink.parent('li').removeClass("active");
             }
-        });
-      }
-
-  }, 250 );
+          });
+        }
+    }, 250 );
 
 //End of $(function()
 });

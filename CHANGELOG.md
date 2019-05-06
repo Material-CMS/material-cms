@@ -13,8 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 
+## [0.7.6 ] - 2019-05-06
+
+### Added
+- Page Down Button
+- Fullpage scroll now with css scroll-snap only ( no js )
+
 ### Fixed
-- Fire onScroll event only in section-wrapper
+- Lots of UI fixes
+- Pagination script now works seamlessly
 
 ## [0.7.5 ] - 2019-05-03
 
