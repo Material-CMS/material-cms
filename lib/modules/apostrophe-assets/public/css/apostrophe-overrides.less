@@ -7,11 +7,26 @@ body {
 }
 // Empty widget area
 .apos-empty {
-  position: relative;
   width: 100%;
-  min-width: 250px;
-  margin-left: auto;
-  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+// Empty widget area
+.slide-content {
+  .apos-empty {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.main-content {
+  .apos-empty {
+    position: relative;
+  }
 }
 .apos-area-widgets,
 .apos-area-widget {
@@ -43,6 +58,23 @@ body {
     background: inherit;
   }
 }
+.apos-ui .apos-button--in-context {
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  border: 2px solid #F44336;
+}
+.apos-ui .apos-button--in-context:hover {
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  border: 2px solid #F44336;
+  color: #F44336;
+}
+.apos-ui .apos-button--in-group:hover {
+  color: #F44336;
+}
+.apos-ui .apos-buttons {
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  border: 2px solid #F44336;
+}
+
 // Admin Bar
 .admin-bar {
   position: fixed;

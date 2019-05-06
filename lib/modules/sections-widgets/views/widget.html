@@ -121,7 +121,7 @@
 
   {% for piece in data.widget._pieces %}
       {# Background settings #}
-    <div id="{{ piece.slug }}" class="section" style="
+    <div id="{{ piece.slug }}" class="section page" style="
       {%- if piece._image.attachment  -%}
         background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
       {%- elif piece.color -%}
@@ -251,6 +251,9 @@
               }) }}
             </div>
           </div>
+          <a class="scroll-down btn-floating btn-large hide-on-small-only">
+            <i class="material-icons">arrow_downward</i>
+          </a>
         </div>
       {% endif %}
 
