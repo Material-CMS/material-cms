@@ -5,13 +5,21 @@ body {
   margin: 0;
   padding: 0;
 }
+// Box shadow mixin
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
+}
 // Empty widget area
-.apos-empty {
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.apos-refreshable {
+  .apos-empty {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 // Empty widget area
 .slide-content {
@@ -26,8 +34,12 @@ body {
 .main-content {
   .apos-empty {
     position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
   }
 }
+fieldset
 .apos-area-widgets,
 .apos-area-widget {
   width: 100%;
@@ -58,12 +70,14 @@ body {
     background: inherit;
   }
 }
+// Apos button
+
 .apos-ui .apos-button--in-context {
-  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  .box-shadow(none);
   border: 2px solid #F44336;
 }
 .apos-ui .apos-button--in-context:hover {
-  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  .box-shadow(none);
   border: 2px solid #F44336;
   color: #F44336;
 }
@@ -71,10 +85,28 @@ body {
   color: #F44336;
 }
 .apos-ui .apos-buttons {
-  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  .box-shadow(none);
   border: 2px solid #F44336;
 }
-
+.apos-ui .apos-button--major {
+  background-color: #F44336;
+}
+.apos-ui .apos-button--circular {
+  padding: 16px;
+  font-size: 14px;
+}
+.apos-ui .apos-dropdown.apos-dropdown--area-controls > .apos-button {
+  .box-shadow(none);
+  border: 0;
+  color: #ffffff;
+  top: -12px;
+}
+.apos-ui .apos-button--inline {
+  border: 0;
+}
+.apos-ui .apos-button--inline:hover {
+  border: 0;
+}
 // Admin Bar
 .admin-bar {
   position: fixed;
