@@ -115,7 +115,17 @@ var apos = require('apostrophe')({
         }
       }
     },
-
+    'apostrophe-email': {
+      nodemailer: {
+        host: process.env.EMAIL_SMTP,
+        port: 465,
+        secure: true, // upgrade later with STARTTLS
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PW
+        }
+      }
+    },
     // Serve Attacments over SSL only
     'apostrophe-attachments': {
       uploadfs: {
