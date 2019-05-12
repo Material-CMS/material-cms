@@ -2,7 +2,6 @@
 <div class="row">
   <div class="col s12">
     <form class="contact-form" data-contact-form>
-      {{ data.global.emailTo }}
       {{ schemas.fields(data.schema, { tabs: false }) }}
 
       {%- if data.global.privacy -%}

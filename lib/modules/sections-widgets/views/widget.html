@@ -24,6 +24,7 @@
         {% if data.widget.i18nNav == true %}
           <i class="accent-color material-icons left">language</i>
         {% endif %}
+
         {# Home Active #}
         <li
           {% if data.page._children[0] %}
@@ -41,6 +42,7 @@
             {% endif %}
           </a>
         </li>
+
         {# Home Cildren Active #}
         {% for tab in data.home._children %}
           <li
