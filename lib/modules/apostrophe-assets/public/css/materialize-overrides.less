@@ -1,12 +1,10 @@
 // Material Icons
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-// Smooth scroll
-body {
-  scroll-snap-type:mandatory;
-  scroll-snap-points-y:repeat(100vh);
-  scroll-behavior:smooth;
-}
 // Navigation Wrapper
+
+body {
+  scroll-behavior: smooth;
+}
 .nav {
   z-index: 9;
   display: block;
@@ -33,7 +31,7 @@ nav {
 .section {
   position: relative;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 0;
   padding-bottom: 0;
   background-size: cover;
@@ -45,13 +43,15 @@ nav {
     align-items: center;
     width: 100vw;
     position: relative;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
 }
 // Header
 .header {
   position: absolute;
   text-align: center;
   width: 100%;
-  top: 5rem;
+  top: 3.7rem;
 }
 // Container
 .container {
