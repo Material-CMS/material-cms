@@ -10,7 +10,7 @@ $(function() {
          // {code:'es', path: 'es' }
        ]
      })
-     
+
     // Navigation click function jumps to clicked section
     $('.anchor[href^="#"]').on('click', function (e) {
         e.preventDefault();
