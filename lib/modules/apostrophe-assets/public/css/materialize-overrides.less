@@ -187,21 +187,19 @@ nav {
   }
 }
 // Tooltips
-.mobile-fab-tip {
+.fab-tip {
+  display: none;
 	position: fixed;
 	right: 85px;
-	padding:0.5rem 0.5rem !important;
+	padding: 0.5rem 0.5rem !important;
 	text-align: right;
 	background-color: #323232;
 	border-radius: 2px;
 	color: #FFF;
-	width:auto;
+	width: auto;
 }
-.btn-pages:hover {
-
-  .mobile-fab-tip {
-    display: none !important;
-  }
+.tip:hover ~ .fab-tip {
+  display: inline-block;
 }
 // Footer
 .footer-copyright {
