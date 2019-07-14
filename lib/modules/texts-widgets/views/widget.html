@@ -1,6 +1,10 @@
 <div class="row margin">
   <div class="col s12 m12">
-    <div class="radius">
+    <div class="radius
+      {%- if data.widget.shadowOn == true -%}
+        z-depth-1
+      {% endif %}
+    ">
     {% for piece in data.widget._pieces %}
       <div class="card horizontal" style="
         {%- if piece.backColor-%}

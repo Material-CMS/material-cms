@@ -1,6 +1,10 @@
 <div class="row margin">
   <div class="col s12 m12">
-    <div class="radius">
+    <div class="radius
+    {%- if data.widget.shadowOn == true -%}
+      z-depth-1
+    {% endif %}
+    ">
       <ul class="collapsible" style="
         {%- if piece.backColor-%}
           background-color:{{ piece.backColor }}
@@ -55,6 +59,6 @@
         {% endfor %}
 
       </ul>
-    </div>  
+    </div>
   </div>
 </div>
