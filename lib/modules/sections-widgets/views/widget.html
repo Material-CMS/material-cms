@@ -320,9 +320,23 @@
           </div>
         {%- endif -%}
 
-          <a class="scroll-down btn-floating btn-large hide-on-small-only">
-            <i class="material-icons">arrow_downward</i>
-          </a>
+        {%- if data.widget.buttonOn == true -%}
+          <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+              <li>
+                <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
+                <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
+              </li>
+              <li>
+                <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
+                <a class="btn-floating fab-tip">{{ data.global.email }}</a>
+              </li>
+            </ul>
+          </div>
+        {%- endif -%}
 
         </div>
       {% endif %}
