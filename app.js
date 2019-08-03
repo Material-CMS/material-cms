@@ -5,6 +5,11 @@ var apos = require('apostrophe')({
   baseUrl: process.env.BASE_URL,
   modules: {
 
+    'apostrophe-assets': {
+    // Remove slashes above for on the run minify assets
+    //  minify: true
+    },
+
     // All Important Stuff!
     // Style Modules
     'apostrophe-video-widgets': {},
