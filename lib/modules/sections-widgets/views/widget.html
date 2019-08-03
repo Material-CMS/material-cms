@@ -32,12 +32,12 @@
           {% endif %}
         >
           <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text
-            {% if data.page._children[0] %}
+            {% if data.page and (data.page._children[0] or data.home._id == data.page._id) %}
               dropdown-trigger
             {% endif %}
           ">
             {{ data.home.title }}
-            {% if data.page._children[0] %}
+            {% if data.page and (data.page._children[0] or data.home._id == data.page._id) %}
               <i class="material-icons left">arrow_drop_down</i>
             {% endif %}
           </a>
