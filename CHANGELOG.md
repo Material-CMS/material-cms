@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 
+## [0.7.7 ] - 2019-08-03
+
+### Added
+- apostrophe 2.93
+
+### Fixed
+- arranged fields for global
+
 ## [0.7.7 ] - 2019-07-14
 
 ### Added
