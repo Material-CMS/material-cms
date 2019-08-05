@@ -15,6 +15,8 @@ var apos = require('apostrophe')({
     'apostrophe-video-widgets': {},
     'apostrophe-favicons': {},
     'card-widgets': {},
+    'carousels': {},
+    'carousels-widgets': {},
     'contact-form': {},
     'contact-form-widgets': {},
     'double-widgets': {},
