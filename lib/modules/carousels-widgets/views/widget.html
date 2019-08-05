@@ -1,0 +1,13 @@
+<div class="carousel">
+  {% for piece in data.widget._pieces %}
+    <a class="carousel-item">
+      {{ apos.area(piece, 'carousel', {
+        edit: false,
+        widgets: {
+          'apostrophe-rich-text': { },
+          'card': { }
+        }
+      }) }}
+    </a>
+  {% endfor %}
+</div>
