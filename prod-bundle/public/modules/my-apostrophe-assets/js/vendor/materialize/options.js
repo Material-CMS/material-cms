@@ -27,7 +27,7 @@ $(document).ready(function() {
   var carousels = document.querySelectorAll('.carousel');
   for (var i = 0; i < carousels.length; i++) {
     M.Carousel.init(carousels[i], {
-      // example-option: true
+      indicators: true
     });
   }
 
