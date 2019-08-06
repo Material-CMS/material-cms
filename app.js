@@ -5,9 +5,9 @@ var apos = require('apostrophe')({
   baseUrl: process.env.BASE_URL,
   modules: {
 
+    // If ENV variable prod is set, minification on the run
     'apostrophe-assets': {
-    // Remove slashes above for on the run minify assets
-    //  minify: true
+      minify: (process.env.ENV === 'prod')
     },
 
     // All Important Stuff!
