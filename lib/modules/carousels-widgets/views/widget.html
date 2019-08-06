@@ -1,4 +1,8 @@
-<div class="carousel">
+<div class="carousel
+  {% if data.widget.carouselSlideOn %}
+    carousel-slider
+  {% endif %}
+">
   {% for piece in data.widget._pieces %}
     <a class="carousel-item">
       {{ apos.area(piece, 'carousel', {
