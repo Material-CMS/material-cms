@@ -13,21 +13,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 
+## [0.7.8 ] - 2019-08-11
+
+### Added
+- Huge improvements for text widgets
+
+### Fixed
+- Carousel widgets UI fixes
+
 ## [0.7.7 ] - 2019-08-03
 
 ### Added
-- apostrophe 2.93
+- Apostrophe 2.93
 
 ### Fixed
-- arranged fields for global
-- no dropdown bug when single page
+- Arranged fields for global
+- No dropdown bug when single page
 
 ## [0.7.7 ] - 2019-07-14
 
 ### Added
-- shadow activator for all images
+- Shadow activator for all images
 - Contact button
-- apostrophe 2.92.1
+- Apostrophe 2.92.1
 
 ### Fixed
 - small fixes
