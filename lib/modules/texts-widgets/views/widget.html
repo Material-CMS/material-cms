@@ -45,7 +45,7 @@
             {%- endif -%}
           </div>
 
-          {%- if piece.text.items[0] or piece.extraLink.items[0] -%}
+          {%- if piece.text.items[0] or piece.extraLink -%}
             <div class="card-action">
               {%- if piece.text.items[0] -%}
                 <a class="waves-effect waves-light btn modal-trigger" href="#{{ piece.slug }}">
@@ -64,7 +64,7 @@
                   </div>
                 </div>
               {%- endif -%}
-              {%- if piece.linkText.items[0] -%}
+              {%- if piece.extraLink -%}
                 <a class="btn-flat right-link" href="{{ piece.extraLink }}" target="_blank">
                   {% if piece.linkText %}
                     {{ piece.linkText }}
