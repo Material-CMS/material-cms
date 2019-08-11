@@ -6,78 +6,90 @@
       {% endif %}
     ">
     {% for piece in data.widget._pieces %}
-      <div class="card horizontal z-depth-0" style="
+    <div class="card horizontal z-depth-0" style="
         {%- if piece.backColor-%}
           background-color:{{ piece.backColor }}
         {% endif %}
       ">
 
       {%- if piece._image -%}
-        <div class="card-image hide-on-small-only">
-          <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'one-third' }) }}" alt="{{ piece._image.description or piece._image.title }}">
+      <div class="row">
+        <div class="col s12 m2">
+          <div class="card-image">
+            <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'one-third' }) }}" alt="{{ piece._image.description or piece._image.title }}">
+          </div>
         </div>
-      {%- endif -%}
+        {%- endif -%}
 
-        <div class="card-stacked">
-          <div class="card-content" style="
-            {%- if piece.backColor-%}
-              background-color:{{ piece.backColor }}
-            {% endif %}
-          ">
+        {%- if piece._image -%}
+        <div class="col s12 m10">
+        {%- endif -%}
 
-            {%- if piece.title -%}
-              <span class="card-title">
-                <h5 class="accent-color" style="
-                  {%- if piece.titleColor -%}
-                    color:{{ piece.titleColor }}
-                  {% endif %}
-                ">
-                  {{ piece.title }}
-                </h5>
-              </span>
-            {%- endif -%}
+          <div class="card-stacked">
+            <div class="card-content" style="
+              {%- if piece.backColor-%}
+                background-color:{{ piece.backColor }}
+              {% endif %}
+            ">
 
-            {%- if piece.description.items[0] -%}
-              {{ apos.area(piece, 'description', {
-                edit: false,
-                widgets: { 'apostrophe-rich-text': { } }
-              }) }}
+              {%- if piece.title -%}
+                <span class="card-title">
+                  <h5 class="accent-color" style="
+                    {%- if piece.titleColor -%}
+                      color:{{ piece.titleColor }}
+                    {% endif %}
+                  ">
+                    {{ piece.title }}
+                  </h5>
+                </span>
+              {%- endif -%}
+
+              {%- if piece.description.items[0] -%}
+                {{ apos.area(piece, 'description', {
+                  edit: false,
+                  widgets: { 'apostrophe-rich-text': { } }
+                }) }}
+              {%- endif -%}
+            </div>
+
+            {%- if piece.text.items[0] or piece.extraLink -%}
+              <div class="card-action">
+                {%- if piece.text.items[0] -%}
+                  <a class="waves-effect waves-light btn modal-trigger" href="#{{ piece.slug }}">
+                    {% if piece.buttonText %}
+                      {{ piece.buttonText }}
+                    {%- else -%}
+                      more
+                    {%- endif -%}
+                  </a>
+                  <div id="{{ piece.slug }}" class="modal">
+                    <div class="modal-content">
+                      {{ apos.area(piece, 'text', {
+                        edit: false,
+                        widgets: { 'apostrophe-rich-text': { } }
+                      }) }}
+                    </div>
+                  </div>
+                {%- endif -%}
+                {%- if piece.extraLink -%}
+                  <a class="btn-flat right-link" href="{{ piece.extraLink }}" target="_blank">
+                    {% if piece.linkText %}
+                      {{ piece.linkText }}
+                    {%- else -%}
+                      link
+                    {%- endif -%}
+                  </a>
+                {%- endif -%}
+              </div>
             {%- endif -%}
           </div>
 
-          {%- if piece.text.items[0] or piece.extraLink -%}
-            <div class="card-action">
-              {%- if piece.text.items[0] -%}
-                <a class="waves-effect waves-light btn modal-trigger" href="#{{ piece.slug }}">
-                  {% if piece.buttonText %}
-                    {{ piece.buttonText }}
-                  {%- else -%}
-                    more
-                  {%- endif -%}
-                </a>
-                <div id="{{ piece.slug }}" class="modal">
-                  <div class="modal-content">
-                    {{ apos.area(piece, 'text', {
-                      edit: false,
-                      widgets: { 'apostrophe-rich-text': { } }
-                    }) }}
-                  </div>
-                </div>
-              {%- endif -%}
-              {%- if piece.extraLink -%}
-                <a class="btn-flat right-link" href="{{ piece.extraLink }}" target="_blank">
-                  {% if piece.linkText %}
-                    {{ piece.linkText }}
-                  {%- else -%}
-                    link
-                  {%- endif -%}
-                </a>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
-
+      {%- if piece._image -%}
         </div>
       </div>
+      {%- endif -%}
+
+    </div>
     {% endfor %}
       <style> blockquote { border-left-color:{{ data.global.accentColor }} !important; } </style>
     </div>
