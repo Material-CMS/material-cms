@@ -45,19 +45,36 @@
             {%- endif -%}
           </div>
 
-        {%- if piece.text.items[0] -%}
-          <div class="card-action">
-            <a class="waves-effect waves-light btn modal-trigger" href="#{{ piece.slug }}">more</a>
-            <div id="{{ piece.slug }}" class="modal">
-              <div class="modal-content">
-                {{ apos.area(piece, 'text', {
-                  edit: false,
-                  widgets: { 'apostrophe-rich-text': { } }
-                }) }}
-              </div>
+          {%- if piece.text.items[0] or piece.extraLink.items[0] -%}
+            <div class="card-action">
+              {%- if piece.text.items[0] -%}
+                <a class="waves-effect waves-light btn modal-trigger" href="#{{ piece.slug }}">
+                  {% if piece.buttonText %}
+                    {{ piece.buttonText }}
+                  {%- else -%}
+                    more
+                  {%- endif -%}
+                </a>
+                <div id="{{ piece.slug }}" class="modal">
+                  <div class="modal-content">
+                    {{ apos.area(piece, 'text', {
+                      edit: false,
+                      widgets: { 'apostrophe-rich-text': { } }
+                    }) }}
+                  </div>
+                </div>
+              {%- endif -%}
+              {%- if piece.text.items[0] -%}
+                <a class="btn-flat right-link" href="{{ piece.extraLink }}" target="_blank">
+                  {% if piece.linkText %}
+                    {{ piece.linkText }}
+                  {%- else -%}
+                    link
+                  {%- endif -%}
+                </a>
+              {%- endif -%}
             </div>
-          </div>
-        {%- endif -%}
+          {%- endif -%}
 
         </div>
       </div>
