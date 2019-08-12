@@ -11,51 +11,54 @@
             background-color:{{ data.widget.backColor }}
           {% endif %}
         ">
+        <div class="card-content">
 
-        {%- if data.widget.title -%}
-          <span class="card-title">
-            <h5 class="accent-color" style="
-              {%- if data.widget.titleColor -%}
-                color:{{ data.widget.titleColor }}
-              {% endif %}
-            ">
-              {{ data.widget.title }}
-            </h5>
-          </span>
-        {%- endif -%}
+          {%- if data.widget.title -%}
+            <span class="card-title">
+              <h5 class="accent-color" style="
+                {%- if data.widget.titleColor -%}
+                  color:{{ data.widget.titleColor }}
+                {% endif %}
+              ">
+                {{ data.widget.title }}
+              </h5>
+            </span>
+          {%- endif -%}
 
-        <div class="carousel
-          {% if data.widget.carouselSlideOn %}
-            carousel-slider
-          {% endif %}
-        ">
-          {% for piece in data.widget._pieces %}
+          <div class="carousel
+            {% if data.widget.carouselSlideOn %}
+              carousel-slider
+            {% endif %}
+          ">
+            {% for piece in data.widget._pieces %}
 
-            <a class="carousel-item">
+              <a class="carousel-item">
 
-              {%- if piece.titleOn -%}
-                <span class="card-title">
-                  <h5 class="accent-color" style="
-                    {%- if piece.titleColor -%}
-                      color:{{ piece.titleColor }}
-                    {% endif %}
-                  ">
-                    {{ piece.title }}
-                  </h5>
-                </span>
-              {%- endif -%}
+                {%- if piece.titleOn -%}
+                  <span class="card-title">
+                    <h5 class="accent-color" style="
+                      {%- if piece.titleColor -%}
+                        color:{{ piece.titleColor }}
+                      {% endif %}
+                    ">
+                      {{ piece.title }}
+                    </h5>
+                  </span>
+                {%- endif -%}
 
-              {{ apos.area(piece, 'carousel', {
-                edit: false,
-                widgets: {
-                  'apostrophe-rich-text': { },
-                  'card': { }
-                }
-              }) }}
+                {{ apos.area(piece, 'carousel', {
+                  edit: false,
+                  widgets: {
+                    'apostrophe-rich-text': { },
+                    'card': { }
+                  }
+                }) }}
 
-            </a>
+              </a>
 
-          {% endfor %}
+            {% endfor %}
+
+          </div>
         </div>
 
       </div>
