@@ -1,7 +1,6 @@
 ## Material CMS
 
-[![Build Status](https://travis-ci.org/felixlberg/fullpage-cms.svg?branch=master)](https://travis-ci.org/felixlberg/fullpage-cms)
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c0434c9aea0f469db3b19c3476dc18f6)](https://www.codacy.com/app/felixlberg/fullpage-cms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=felixlberg/fullpage-cms&amp;utm_campaign=Badge_Grade)
 ----
 
 ### Ultra fast CMS with material design, reusable widgets.
