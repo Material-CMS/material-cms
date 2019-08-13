@@ -1,0 +1,260 @@
+// Material Icons
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+// Navigation Wrapper
+
+body {
+  scroll-behavior: smooth;
+}
+.nav {
+  z-index: 9;
+  display: block;
+  position: fixed;
+  width: 100%;
+}
+// Navigation
+nav {
+  .brand-logo {
+    height: 100%;
+    padding-top: 0.8rem;
+    padding-left: 0.8rem;
+    h1 {
+      font-size: 2.2rem;
+      margin: 0 0 0 0;
+    }
+  }
+  .nav-activator {
+    padding-right: 0.8rem;
+  }
+  .i18n {
+    font-size: 14px;
+  }
+}
+// Sections
+.section {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.main-content {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    position: relative;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+// Header
+.header {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 3.7rem;
+}
+// Container
+.container {
+  display: flex;
+  align-items: center;
+}
+.footer-container {
+  width: 100%;
+}
+// Widgets
+.widgets-container {
+  width: 100%;
+}
+// Container Radius Overflow
+.radius {
+  overflow: hidden;
+}
+// Grid
+.row {
+  margin-bottom: 0;
+}
+// Down Button
+.scroll-down.btn-floating {
+  display: none;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: inherit;
+}
+// Flow Text is huge in default settings!
+@media(min-width: 600px) {
+  .flow-text {
+    font-size: 1.25rem !important;
+  }
+}
+@media(min-width: 700px) {
+  .flow-text {
+    font-size: 1.3rem !important;
+  }
+}
+@media(min-width: 800px) {
+  .flow-text {
+    font-size: 1.35rem !important;
+  }
+}
+@media(min-width: 1000px) {
+  .flow-text {
+    font-size: 1.4rem !important;
+  }
+}
+// Slides
+.slider.fullscreen {
+  height: 100vh;
+}
+.slide-content{
+  height: 100vh;
+  width:  100%;
+}
+// Cards
+.card {
+  margin: 0 0 0 0;
+}
+.card-title {
+  font-size: 1.64rem !important;
+  font-weight: 300 !important;
+}
+.card .card-action {
+  background-color: white;
+}
+.card .card-action .right-link {
+  float: right;
+  margin-right: 0 !important;
+}
+.card.horizontal .card-image {
+  padding-top: 24px;
+  max-width: 100%;
+}
+.card.horizontal .card-image img {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media(max-width: 500px) {
+  .no-padding-mobile {
+    padding: inherit !important;
+  }
+}
+// Cards Slidshow Button
+.btn-floating.halfway-fab {
+  right: 50px;
+}
+// Carousels
+.carousel {
+  .carousel-item {
+    cursor: pointer;
+    p {
+      color: rgba(0,0,0,0.87);
+    }
+  }
+  .indicator-item {
+    filter: brightness(50%)
+  }
+}
+// Collapsibles
+.collapsible {
+  margin: 0 0 0 0;
+  border-top: inherit;
+  overflow: hidden;
+  border-right: 0;
+  border-left: 0;
+  h4 {
+    margin: 0 0 0 0;
+    font-size: 1.2rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+}
+@media(min-width: 1000px) {
+  .collapsible {
+    h4 {
+      font-size: 1.35rem;
+    }
+    h5 {
+      font-size: 1.2rem;
+    }
+  }
+}
+.collapsible-header {
+  border-bottom: inherit;
+}
+.collapsible-body {
+  border-bottom: inherit;
+  background-color: #ffffff;
+}
+// Icons
+.material-icons {
+  font-family: Material Icons !important;
+}
+// Modals
+.modal {
+  top: auto !important;
+  bottom: 5% !important;
+}
+.modal-content {
+  h4,p {
+    color: #000000 !important;
+  }
+}
+// Floating Action Button
+.btn-floating {
+  overflow: visible;
+  i {
+    line-height: 40px;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+  }
+}
+// Tooltips
+.fab-tip {
+  display: none;
+	position: fixed;
+	right: 85px;
+	padding: 0.5rem 0.5rem !important;
+	text-align: center;
+	background-color: #323232;
+	border-radius: 2px;
+	color: #FFF;
+	width: auto;
+  line-height: inherit;
+}
+.tip:hover ~ .fab-tip {
+  display: inline-block;
+}
+// Footer
+.footer-copyright {
+  div {
+   a {
+     padding-left: 10px;
+     padding-right: 10px;
+   }
+  }
+}
+.bottom-content{
+  position: absolute;
+  width:100%;
+  bottom: 0;
+}
+@media(max-width: 400px) {
+  .bottom-content{
+    bottom: -14px;
+  }
+}
+.page-footer {
+  background-color: inherit;
+}
+.margin-top {
+  margin-top: 1rem;
+}
+.apos-ui .apos-field-input {
+  height: inherit;
+}
