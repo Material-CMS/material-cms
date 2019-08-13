@@ -32,7 +32,11 @@
           ">
             {% for piece in data.widget._pieces %}
 
-              <a class="carousel-item">
+              <a class="carousel-item"
+                {% if data.widget.carouselSlideSmaller %}
+                  style="width:80%;"
+                {% endif %}
+              >
 
                 {%- if piece.titleOn -%}
                   <span class="card-title">
