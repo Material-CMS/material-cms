@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 
+## [0.7.9 ] - 2019-08-14
+
+### Added
+- Added side image for sections
+- Carousel title and other improvements
+
+### Fixed
+- Small fixes
+
 ## [0.7.8 ] - 2019-08-11
 
 ### Added
