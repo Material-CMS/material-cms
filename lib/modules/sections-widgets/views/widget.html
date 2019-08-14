@@ -137,6 +137,19 @@
         background-color:{{ piece.color }}
       {% endif %}
     ">
+
+      {# Small Side Image #}
+      {%- if piece._sideImage -%}
+        <div class="side-image"
+          {% if piece.sideImageRight %}
+            style="right:0;"
+          {% endif %}
+        >
+          <img src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
+            alt="{{ piece._sideImage.description or piece._sideImage.title }}">
+        </div>
+      {% endif %}
+
       {# Slide #}
       {%- if piece.preferences == 'slideOn' -%}
         <div class="slide-content">
