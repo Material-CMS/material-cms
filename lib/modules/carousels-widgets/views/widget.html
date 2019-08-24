@@ -26,14 +26,14 @@
           {%- endif -%}
 
           <div class="carousel
-            {% if data.widget.carouselSlideOn %}
+            {% if data.widget.preferences == 'carouselSlideOn' %}
               carousel-slider
             {% endif %}
           ">
             {% for piece in data.widget._pieces %}
 
               <a class="carousel-item"
-                {% if data.widget.carouselSlideSmaller %}
+                {% if data.widget.carouselSlideSmaller and data.widget.preferences == 'carouselSlideOn' %}
                   style="width:90%;padding-left:8%;padding-right:8%;"
                 {% endif %}
 
