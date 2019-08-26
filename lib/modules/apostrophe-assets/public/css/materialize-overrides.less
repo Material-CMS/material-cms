@@ -132,18 +132,58 @@ nav {
   float: right;
   margin-right: 0 !important;
 }
+// Horizontal Card Height Overrides
 .card.horizontal .card-image {
-  padding-top: 24px;
   max-width: 100%;
 }
-.card.horizontal .card-image img {
-  margin-left: auto;
-  margin-right: auto;
+.card.horizontal .height-100 {
+  padding: 0;
 }
-@media(max-width: 500px) {
-  .no-padding-mobile {
-    padding: inherit !important;
+.card.horizontal .card-image .col {
+  padding: 0;
+}
+.card.horizontal .card-image .margin {
+  margin: 0;
+}
+.card.horizontal .height-100,
+.card.horizontal .card-stacked,
+.card.horizontal .card-image,
+.card.horizontal .card-image .apos-area,
+.card.horizontal .card-image .apos-area-widget-wrapper,
+.card.horizontal .card-image .apos-area-widget,
+.card.horizontal .card-image .row,
+.card.horizontal .card-image .col,
+.card.horizontal .card-image .radius,
+.card.horizontal .card-image .card,
+.card.horizontal .card-image .apos-slideshow,
+.card.horizontal .card-image .material-placeholder,
+.card.horizontal .card-image .materialboxed,
+.card.horizontal .card-image .apos-slideshow-item {
+  height: 100% !important;
+}
+@media(max-width: 600px) {
+  .card.horizontal .height-100 {
+    height: inherit !important;
   }
+  .card.horizontal .card-image,
+  .card.horizontal .card-image .apos-area,
+  .card.horizontal .card-image .apos-area-widget-wrapper,
+  .card.horizontal .card-image .apos-area-widget,
+  .card.horizontal .card-image .row,
+  .card.horizontal .card-image .col,
+  .card.horizontal .card-image .radius,
+  .card.horizontal .card-image .card,
+  .card.horizontal .card-image .apos-slideshow,
+  .card.horizontal .card-image .material-placeholder,
+  .card.horizontal .card-image .materialboxed,
+  .card.horizontal .card-image .apos-slideshow-item  {
+    height: 50vh !important;
+  }
+}
+.card.horizontal .apos-slideshow-item {
+  background-size: cover;
+  max-width: 100%;
+  min-height: 400px;
 }
 // Cards Slidshow Button
 .btn-floating.halfway-fab {
