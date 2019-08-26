@@ -6,6 +6,14 @@ var apos = require('apostrophe')({
   modules: {
 
     // All Important Stuff!
+    // Custom Image size
+    'apostrophe-attachments': {
+      addImageSizes: [{
+        name: 'side',
+        width: 380,
+        height: 600
+      }]
+    },
     // Style Modules
     'apostrophe-video-widgets': {},
     'apostrophe-favicons': {},

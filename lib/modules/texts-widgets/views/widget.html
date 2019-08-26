@@ -12,17 +12,23 @@
         {% endif %}
       ">
 
-      {%- if piece._image -%}
+      {%- if piece.sideImage -%}
       <div class="row">
-        <div class="col s12 m2">
+        <div class="height-100 col s12 m3">
           <div class="card-image">
-            <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'one-third' }) }}" alt="{{ piece._image.description or piece._image.title }}">
+            {{ apos.area(piece, 'sideImage', {
+              edit: false,
+              widgets: { 'card': {
+                noHeight: true,
+                focalPoint: true
+              } }
+            }) }}
           </div>
         </div>
         {%- endif -%}
 
-        {%- if piece._image -%}
-        <div class="col s12 m10">
+        {%- if piece.sideImage -%}
+        <div class="height-100 col s12 m9">
         {%- endif -%}
 
           <div class="card-stacked">
@@ -84,7 +90,7 @@
             {%- endif -%}
           </div>
 
-      {%- if piece._image -%}
+      {%- if piece.sideImage -%}
         </div>
       </div>
       {%- endif -%}
