@@ -12,7 +12,7 @@
         {% endif %}
       ">
 
-      {%- if piece.sideImage -%}
+      {%- if piece.sideImage.items[0] -%}
       <div class="row">
         <div class="height-100 col s12 m3">
           <div class="card-image">
@@ -27,7 +27,7 @@
         </div>
         {%- endif -%}
 
-        {%- if piece.sideImage -%}
+        {%- if piece.sideImage.items[0] -%}
         <div class="height-100 col s12 m9">
         {%- endif -%}
 
@@ -90,7 +90,7 @@
             {%- endif -%}
           </div>
 
-      {%- if piece.sideImage -%}
+      {%- if piece.sideImage.items[0] -%}
         </div>
       </div>
       {%- endif -%}
