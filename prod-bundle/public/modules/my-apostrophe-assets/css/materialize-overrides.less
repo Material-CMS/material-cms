@@ -117,13 +117,6 @@ nav {
   height: 100vh;
   width:  100%;
 }
-// Images
-.card .materialboxed.active {
-  .card-content {
-    display: none;
-  }
-
-}
 // Cards
 .card {
   margin: 0 0 0 0;
@@ -132,12 +125,21 @@ nav {
   font-size: 1.64rem !important;
   font-weight: 300 !important;
 }
+.card .btn-floating.halfway-fab {
+  right: 50px;
+}
 .card .card-action {
   background-color: white;
 }
 .card .card-action .right-link {
   float: right;
   margin-right: 0 !important;
+}
+.card .materialboxed.active {
+  .card-content,
+  .card-action {
+    display: none;
+  }
 }
 // Horizontal Card Height Overrides
 .card.horizontal .card-image {
@@ -194,10 +196,6 @@ nav {
   background-size: cover;
   max-width: 100%;
   min-height: 400px;
-}
-// Cards Slidshow Button
-.btn-floating.halfway-fab {
-  right: 50px;
 }
 // Carousels
 .carousel {
