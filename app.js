@@ -16,7 +16,6 @@ var apos = require('apostrophe')({
     },
     // Style Modules
     'apostrophe-video-widgets': {},
-    'apostrophe-favicons': {},
     'card-widgets': {},
     'carousels': {},
     'carousels-widgets': {},
