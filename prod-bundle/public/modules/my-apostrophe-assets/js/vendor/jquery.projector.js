@@ -94,6 +94,12 @@
           return false;
         });
 
+        findSafe($el, '.materialboxed').click(function() {
+          if(pauseOnClick){
+            pause();
+          }
+          return false;
+        });
 
         initializeSiblings();
 
