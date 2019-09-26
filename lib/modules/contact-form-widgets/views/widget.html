@@ -34,22 +34,26 @@
       </div>
     </form>
     <style>
-      .input-field .prefix.active {
+      .input-field .prefix{
         color:{{ data.global.accentColor }};
+      }
+      .input-field .prefix.active {
         filter: brightness(50%)
+      }
+      .input-field input {
+        border-bottom-color:{{ data.global.mainColor }} !important;
+        box-shadow:0 1px 0 0 {{ data.global.mainColor }} !important;
       }
       .input-field input:focus {
         border-bottom-color:{{ data.global.accentColor }} !important;
         box-shadow:0 1px 0 0 {{ data.global.accentColor }} !important;
         filter: brightness(50%)
       }
+      .input-field input[type=text] + label {
+        color:{{ data.global.mainColor }} !important;
+      }
       .input-field input[type=text]:focus + label {
         color:{{ data.global.accentColor }} !important;
-        filter: brightness(50%)
-      }
-      textarea:focus {
-        border-bottom-color:{{ data.global.accentColor }} !important;
-        box-shadow:0 1px 0 0 {{ data.global.accentColor }} !important;
         filter: brightness(50%)
       }
     </style>
