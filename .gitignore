@@ -16,4 +16,3 @@ node_modules
 .jshintrc
 /public/js/_site-compiled.js
 build
-prod-bundle
