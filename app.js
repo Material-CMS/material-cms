@@ -6,6 +6,10 @@ var apos = require('apostrophe')({
   modules: {
 
     // All Important Stuff!
+    // Minify Assets with prod. env
+    'apostrophe-assets': {
+      minify: (process.env.ENV === 'prod')
+    },
     // Custom Image size
     'apostrophe-attachments': {
       addImageSizes: [{
