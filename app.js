@@ -36,7 +36,6 @@ var apos = require('apostrophe')({
     'texts': {},
     'texts-widgets': {},
     'video-widgets': {},
-
     // CSS in context editing
     'apostrophe-palette-widgets': {},
     'apostrophe-palette': {},
@@ -104,7 +103,6 @@ var apos = require('apostrophe')({
         }
       ]
     },
-
     // Production Modules
     'apostrophe-seo': {},
     'apostrophe-open-graph': {},
@@ -145,10 +143,9 @@ var apos = require('apostrophe')({
         https: true
       }
     },
-
     // Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
-
+    
   // << End of Modules
   }
 });
