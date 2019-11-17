@@ -4,13 +4,8 @@ var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
   baseUrl: process.env.BASE_URL,
   modules: {
-
-    // All Important Stuff!
-    // Minify Assets with prod. env
-    'apostrophe-assets': {
-      minify: (process.env.ENV === 'prod')
-    },
-    // Custom Image size
+    // Custom Custom Image Size Example
+    /*
     'apostrophe-attachments': {
       addImageSizes: [{
         name: 'side',
@@ -18,7 +13,12 @@ var apos = require('apostrophe')({
         height: 600
       }]
     },
-    // Style Modules
+    */
+    // Minify Assets with prod. env
+    'apostrophe-assets': {
+      minify: (process.env.ENV === 'prod')
+    },
+    // Custom Modules
     'apostrophe-video-widgets': {},
     'card-widgets': {},
     'carousels': {},
@@ -145,7 +145,7 @@ var apos = require('apostrophe')({
     },
     // Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
-    
+
   // << End of Modules
   }
 });
