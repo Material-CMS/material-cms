@@ -18,7 +18,7 @@
   "author": "P'unk Avenue, Felix Langenberg",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.99.0",
+    "apostrophe": "^2.100.1",
     "apostrophe-favicons": "^1.1.5",
     "apostrophe-open-graph": "^1.1.5",
     "apostrophe-optimizer": "^2.0.2",
