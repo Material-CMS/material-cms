@@ -18,6 +18,10 @@ var apos = require('apostrophe')({
     'apostrophe-assets': {
       minify: (process.env.ENV === 'prod')
     },
+    // Minify Html
+    'apostrophe-templates': {
+      minify: true
+    },
     // Custom Modules
     'apostrophe-video-widgets': {},
     'card-widgets': {},

@@ -26,6 +26,7 @@
     "apostrophe-seo": "^1.1.4",
     "apostrophe-site-map": "^2.5.1",
     "core-js": "^2.6.10",
+    "html-minifier": "^4.0.0",
     "mozjpeg": "^6.0.1"
   },
   "devDependencies": {
