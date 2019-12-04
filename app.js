@@ -10,7 +10,7 @@ var apos = require('apostrophe')({
     },
     // Minify Html
     'apostrophe-templates': {
-      minify: true
+      minify: (process.env.ENV === 'prod')
     },
     // Custom Modules
     'apostrophe-video-widgets': {},
