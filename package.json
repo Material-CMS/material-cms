@@ -18,18 +18,19 @@
   "author": "P'unk Avenue, Felix Langenberg",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.100.1",
+    "apostrophe": "^2.100.2",
     "apostrophe-favicons": "^1.1.5",
     "apostrophe-open-graph": "^1.1.5",
     "apostrophe-optimizer": "^2.0.2",
     "apostrophe-palette": "^2.0.23",
-    "apostrophe-seo": "^1.1.4",
+    "apostrophe-seo": "^1.2.0",
     "apostrophe-site-map": "^2.5.1",
     "core-js": "^2.6.10",
     "html-minifier": "^4.0.0",
     "mozjpeg": "^6.0.1"
   },
   "devDependencies": {
+    "apostrophe-profiler": "^2.1.1",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0"
   }

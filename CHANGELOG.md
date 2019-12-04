@@ -7,11 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Tabs for texts-widgets
-- Testing and debugging mechanism
 - Video locals files
 - More widget types
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
+
+## [0.8.0 ] - 2019-12-04
+
+### Added
+- Apostrophe-core 2.100.2
+- Html minification with apostrophe-templates & html-minifier
+- Testing and debugging mechanism apostrophe-profiler
+- other updated apostrophe modules
+- Separate cloud branch with prod-bundle for deployment at heroku (must be merged regularly)
+
+### Fixed
+- UI Fixes
+- Updates
 
 ## [0.7.9 ] - 2019-08-14
 
