@@ -4,14 +4,6 @@ var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
   baseUrl: process.env.BASE_URL,
   modules: {
-    // Minify Assets with prod. env
-    'apostrophe-assets': {
-      minify: (process.env.ENV === 'prod')
-    },
-    // Minify Html
-    'apostrophe-templates': {
-      minify: (process.env.ENV === 'prod')
-    },
     // Custom Modules
     'apostrophe-video-widgets': {},
     'card-widgets': {},
