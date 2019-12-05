@@ -1,6 +1,6 @@
 {
   "name": "fullpage-cms",
-  "version": "0.1.2",
+  "version": "0.8.0",
   "description": "Fullpage CMS - fullpage and materialized based on Apostrophe CMS",
   "main": "app.js",
   "engines": {
