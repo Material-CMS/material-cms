@@ -16,6 +16,16 @@ module.exports = {
       // There is legacy support for host, port, name, user and password options,
       // but this is not necessary. They can all go in the uri option like this:
       // mongodb://user:password@host:port/dbname
-    }
+    },
+    // Minify Html
+    'apostrophe-templates': {
+      minify: (process.env.ENV === 'prod') // minify: true
+    },
+    // Minify Assets
+    'apostrophe-assets': {
+      minify: (process.env.ENV === 'prod') // minify: true
+    },
+    // DB performance test tool
+    'apostrophe-profiler': {}
   }
 };
