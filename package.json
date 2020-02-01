@@ -27,7 +27,9 @@
     "apostrophe-site-map": "^2.5.1",
     "core-js": "^2.6.11",
     "html-minifier": "^4.0.0",
-    "mozjpeg": "^6.0.1"
+    "mozjpeg": "^6.0.1",
+    "nodemailer": "^6.4.2",
+    "nodemailer-smtp-transport": "^2.7.4"
   },
   "devDependencies": {
     "apostrophe-profiler": "^2.1.1",

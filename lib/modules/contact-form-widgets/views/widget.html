@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col s12">
     <form class="contact-form" data-contact-form>
+      
       {{ schemas.fields(data.schema, { tabs: false }) }}
 
       {%- if data.global.privacy -%}
@@ -9,10 +10,12 @@
         <div id="modal-3" class="modal modal-fixed-footer">
           <div class="modal-content text-darken-4">
             <h4>Privacy</h4>
+
             {{ apos.area(data.global, 'privacy', {
               edit: false,
               widgets: { 'apostrophe-rich-text': { } }
             }) }}
+
           </div>
           <div class="modal-footer">
             <a href="#!" class="btn-flat modal-close waves-effect waves-red">Disagree</a>
@@ -22,15 +25,12 @@
       {%- endif -%}
 
       <div class="thank-you" data-thank-you>
-        {{ apos.singleton(data.widget, 'thankYouMessage', 'texts', {
-          limit: 1,
-          controls: {
-            movable: false,
-            cloneable: false,
-            removable: true,
-            position: 'top-right'
-          }
-        }) }}
+
+          {{ apos.area(data.global, 'thankYouMessage', {
+            edit: false,
+            widgets: { 'apostrophe-rich-text': { } }
+          }) }}
+
       </div>
     </form>
     <style>
