@@ -11,6 +11,11 @@ body {
 	-moz-box-shadow:    @string;
 	box-shadow:         @string;
 }
+// Colors
+@white: #ffffff;
+@black: #000000;
+@button-color: #F44336;
+@button-color-hover: darken(@button-color, 10%);
 // Empty widget area
 .apos-refreshable {
   .apos-empty {
@@ -48,7 +53,7 @@ fieldset
 .main-content {
   .login-link {
     float: right;
-    color: @apos-white;
+    color: @white;
   }
   .apos-peek {
     opacity: 1;
@@ -71,43 +76,81 @@ fieldset
   }
 }
 .admin-bar li > a {
-  color: #000;
+  color: @black;
 }
 // Apos button
-.apos-ui .apos-button--in-context {
-  .box-shadow(none);
-  border: 2px solid #F44336;
-}
-.apos-ui .apos-button--in-context:hover {
-  .box-shadow(none);
-  border: 2px solid #F44336;
-  color: #F44336;
-}
-.apos-ui .apos-button--in-group:hover {
-  color: #F44336;
-}
-.apos-ui .apos-buttons {
-  .box-shadow(none);
-  border: 2px solid #F44336;
-}
-.apos-ui .apos-button--major {
-  background-color: #F44336;
-}
-.apos-ui .apos-button--circular {
-  padding: 16px;
-  font-size: 14px;
-}
-.apos-ui .apos-dropdown.apos-dropdown--area-controls > .apos-button {
-  .box-shadow(none);
-  border: 0;
-  color: #ffffff;
-  top: -12px;
-}
-.apos-ui .apos-button--inline {
-  border: 0;
-}
-.apos-ui .apos-button--inline:hover {
-  border: 0;
+.apos-ui {
+
+  .apos-button:hover,
+  .apos-button:focus {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  .apos-button--in-context {
+    .box-shadow(none);
+    border-color: @button-color;
+  }
+  .apos-button--in-context:hover {
+    .box-shadow(none);
+    border-color: @button-color;
+    color: @button-color;
+  }
+  .apos-button--in-group:hover {
+    color: #F44336;
+  }
+  .apos-buttons {
+    .box-shadow(none);
+    border-color: @button-color;
+  }
+  .apos-button--major {
+    background-color: @button-color;
+  }
+  .apos-button--circular {
+    padding: 16px;
+    font-size: 14px;
+  }
+  .apos-dropdown.apos-dropdown--area-controls > .apos-button {
+    .box-shadow(none);
+    border: 0;
+    color: #ffffff;
+    top: -12px;
+  }
+  .apos-button--inline {
+    border: 0;
+  }
+  .apos-button--inline:hover {
+    border: 0;
+  }
+  .apos-manage-tag-add {
+    color: @black;
+  }
+  .apos-manage-tag-add:hover {
+    color: @button-color;
+  }
+  input[type="text"]:not(.browser-default):focus:not([readonly]){
+    border-bottom-color: @button-color;
+  }
+  [type="checkbox"]:checked + span:not(.lever)::before {
+    border-right-color: @button-color;
+    border-bottom-color: @button-color;
+  }
+  .apos-manage-grid-view {
+    .apos-manage-grid-piece:hover::before,
+    .apos-manage-grid-piece.apos-focus::before {
+      border-color: @button-color;
+    }
+    .apos-manage-grid-piece .apos-manage-grid-piece-controls .apos-button i {
+      color: @button-color;
+    }
+  }
+  .apos-table {
+    .apos-manage-column--forward,
+    .apos-manage-column--backward,
+    .apos-manage-column--sortable:hover
+    th a:hover,
+    td a:hover {
+      color: @button-color;
+    }
+  }
 }
 // Admin Bar
 .admin-bar {

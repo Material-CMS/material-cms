@@ -31,6 +31,26 @@ mpm start
 # Open Browser "http://localhost:3000/login" to login with your user to add first content
 ````
 
+### Email sending
+
+To send customer requests wit smtp email, copy `local.example.js` to add the following to `data/local.js` ther you can put in your pivate config.
+
+````
+'apostrophe-email': {
+  nodemailer: {
+    host: 'SMTP SERVER',
+    port: 587,
+    secure: false, // true if 465
+    auth: {
+        user: 'USER',
+        pass: 'XXXXX'
+    }
+  }
+}
+````
+
+
+
 ### Materialize components ES6
 
 Materialize is written in ECMAScript 6. The version of Uglify in use in Apostrophe 2.x does not necessarily support ES6 syntax! So if you want to add new materialize components you need to run `npm build` in project folder and copy the desired files from the created build folder to `lib/apostrophe-assets/vendor/materialize/components`.
