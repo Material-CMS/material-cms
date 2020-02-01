@@ -81,9 +81,36 @@ fieldset
 // Apos button
 .apos-ui {
 
-  .apos-button:hover,
-  .apos-button:focus {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  .apos-modal-content,
+  .apos-modal-controls,
+  .apos-fieldset-row {
+    .apos-button--major:hover,
+    .apos-button--major:focus,
+    .apos-control.apos-button:hover,
+    .apos-control.apos-button:focus,
+    .apos-array-save-item.apos-button:hover,
+    .apos-array-save-item.apos-button:focus,
+    .apos-button.apos-button--action:hover,
+    .apos-button.apos-button--action:focus {
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+  }
+  .apos-fieldset-row {
+    .apos-button {
+      border-color: @button-color;
+    }
+  }
+  .apos-button--action {
+    border-color: @button-color;
+  }
+  .apos-array-save-item.apos-button {
+    border-color: @button-color;
+  }
+  .apos-modal-breadcrumb .apos-modal-breadcrumb-item {
+    border-color: @button-color !important;
+  }
+  .apos-chooser-choice:hover {
+    background-color: @button-color;
   }
   .apos-button--in-context {
     .box-shadow(none);
@@ -143,11 +170,9 @@ fieldset
     }
   }
   .apos-table {
-    .apos-manage-column--forward,
-    .apos-manage-column--backward,
-    .apos-manage-column--sortable:hover
     th a:hover,
-    td a:hover {
+    td a:hover,
+    .apos-manage-column:hover {
       color: @button-color;
     }
   }

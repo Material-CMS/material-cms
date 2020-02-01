@@ -20,6 +20,19 @@
           i18n
         {% endif %}
       ">
+
+        {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+        {% for name in data.widget.links %}
+         <li>
+           <a class="accent-color" href="{{ name.url }}">
+             {% if name.icon %}
+                <i class="material-icons left">{{ name.icon }}</i>
+             {% endif %}
+             {{ name.name }}
+           </a>
+         </li>
+         {% endfor %}
+
         {# Language Switch #}
         {% if data.widget.i18nNav == true %}
           <i class="accent-color material-icons left">language</i>
@@ -76,6 +89,18 @@
   {# Sidenav #}
   <ul class="sidenav" id="mobile">
 
+    {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+    {% for name in data.widget.links %}
+     <li>
+       <a class="accent-color" href="{{ name.url }}">
+         {% if name.icon %}
+            <i class="material-icons left">{{ name.icon }}</i>
+         {% endif %}
+         {{ name.name }}
+       </a>
+     </li>
+     {% endfor %}
+
     {# Home Active #}
     <li
       {% if data.page._children[0] %}
@@ -117,7 +142,7 @@
     {# Dropdown Mobile #}
     <ul class="dropdown-content" id="mobile-dropdown">
       {% for piece in data.widget._pieces %}
-        <li><a class="accent-color flow-text anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+        <li><a class="accent-color flow-text sidenav-close anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
       {% endfor %}
     </ul>
 
