@@ -12,6 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 
+## [0.8.1 ] - 2020-01-02
+
+### Added
+- New Nodemailer varables and settings for contact form sending
+- Additional links in navigation
+- Links array on widget level use this for easy future implementation of arrays without join or area ( example in sections-widgets/widget.html line:24 )
+
+### Fixed
+- Small fixes
+- Admin UI Color fixes
+
 ## [0.8.0 ] - 2019-12-04
 
 ### Added
