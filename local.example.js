@@ -2,7 +2,6 @@
 // if you are deploying in production. Then copy to
 // data/local.js. That folder is shared by all
 // deployments in our stagecoach recipe
-
 module.exports = {
   modules: {
     'apostrophe-assets': {
@@ -26,6 +25,19 @@ module.exports = {
       minify: (process.env.ENV === 'prod') // minify: true
     },
     // DB performance test tool
-    'apostrophe-profiler': {}
+    'apostrophe-profiler': {
+    },
+    // Email Settings for nodemailer
+    'apostrophe-email': {
+      nodemailer: {
+        host: 'SMTP_SERVER', // or use: process.env.SMTP_SERVER
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'SMTP_USER', // or use: process.env.SMTP_USER
+            pass: 'SMTP_PW' // or use: process.env.SMTP_PW
+        }
+      }
+    }
   }
 };
