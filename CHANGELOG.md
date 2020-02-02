@@ -11,8 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - More widget types
 - Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
+- Infinite scroll module with Ajax
 
-## [0.8.1 ] - 2020-01-02
+## [0.9.0 ] - 2020-01-02
 
 ### Added
 - New Nodemailer varables and settings for contact form sending
