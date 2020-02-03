@@ -90,6 +90,10 @@ var apos = require('apostrophe')({
       ]
     },
     // Production Modules
+    'apostrophe-caches-redis': {},
+    'apostrophe-caches': {
+      redis: {}
+    },
     'apostrophe-seo': {},
     'apostrophe-open-graph': {},
     'apostrophe-global': {
@@ -99,7 +103,7 @@ var apos = require('apostrophe')({
       excludeTypes: []
     },
     'apostrophe-optimizer': {
-      enable: true,
+      enable: false,
       stats: false,
       debug: false
     },

@@ -9,16 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tabs for texts-widgets
 - Video locals files
 - More widget types
-- Better image rendering with srcset
 - Integrate apostrophe-i18n Module for multilingual support
 - Infinite scroll module with Ajax
+
+### Fixed
+- Checkboxes in modal for pages are not clickable (seem to have no event)
+
+## [0.9.1 ] - 2020-03-02
+
+### Added
+- Redis with apostrophe-caches-redis for better performance uncomment
+
+### fixed
+- Deactivated apostrophe-optimizer for non cloud version
 
 ## [0.9.0 ] - 2020-01-02
 
 ### Added
-- New Nodemailer varables and settings for contact form sending
+- New Nodemailer variables and settings for contact form sending
 - Additional links in navigation
 - Links array on widget level use this for easy future implementation of arrays without join or area ( example in sections-widgets/widget.html line:24 )
+- Better image rendering with srcset
 
 ### Fixed
 - Small fixes

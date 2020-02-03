@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "apostrophe": "^2.101.1",
+    "apostrophe-caches-redis": "^2.1.2",
     "apostrophe-favicons": "^1.1.5",
     "apostrophe-open-graph": "^1.1.5",
     "apostrophe-optimizer": "^2.0.2",
@@ -29,7 +30,9 @@
     "html-minifier": "^4.0.0",
     "mozjpeg": "^6.0.1",
     "nodemailer": "^6.4.2",
-    "nodemailer-smtp-transport": "^2.7.4"
+    "nodemailer-smtp-transport": "^2.7.4",
+    "redis": "^2.8.0",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "apostrophe-profiler": "^2.1.1",
