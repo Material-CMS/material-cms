@@ -1,6 +1,48 @@
+{% extends "layout.html" %}
+
+{# Imports #}
+{% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
+{% import 'apostrophe-palette-widgets:macros.html' as palette %}
+
+{# Seo and Open Graph fields #}
+{% if data.page.seoTitle %}
+  {% set title = data.page.seoTitle %}
+{% else %}
+  {% set title = data.page.title %}
+{% endif %}
+
+{# Page Title depends on variables above #}
+{% block title %}{{ title }}{% endblock %}
+
+{# Additional header elements #}
+{% block extraHead %}
+
+  {# Includes #}
+  {% include "apostrophe-seo:view.html" %}
+  {% include "apostrophe-open-graph:view.html" %}
+
+  {# Favicons #}
+  {{ favicons.renderLinks(apos, data.global) }}
+
+  {# Palette #}
+  {{ palette.stylesheetLink(data.global) }}
+  {{ palette.stylesheetTag() }}
+{% endblock %}
+
+{# Insert Palette #}
+{% block beforeMain %}
+  {% if data.user %}
+    {{ palette.palette(data.global, 'palette') }}
+  {% endif %}
+{% endblock %}
+
+{# Main Block #}
+{% block main %}
+
+{# Navigation #}
 <div class="nav">
 
-  {# Main Nav #}
+  {# Dekstop #}
   <nav>
     <div class="nav-wrapper z-depth-2">
       <a class="brand-logo" href="#">
@@ -10,37 +52,25 @@
           {% else %}
             {% set title = data.home.title %}
           {% endif %}
-          {# Page Title depends on variables above #}
+
+          {# Page title depends on variables above #}
           {{ title }}
         </h1>
       </a>
       <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
 
-        {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
-        {% if data.widget.links[0] %}
-          {% for name in data.widget.links %}
-           <li>
-             <a class="accent-color" href="{{ name.url }}">
-               {% if name.icon %}
-                  <i class="material-icons left">{{ name.icon }}</i>
-               {% endif %}
-               {{ name.name }}
-             </a>
-           </li>
-          {% endfor %}
-        {% elif data.page.links[0] %}
-          {% for name in data.page.links %}
-           <li>
-             <a class="accent-color" href="{{ name.url }}">
-               {% if name.icon %}
-                  <i class="material-icons left">{{ name.icon }}</i>
-               {% endif %}
-               {{ name.name }}
-             </a>
-           </li>
-          {% endfor %}
-        {% endif %}
+      {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+      {% for name in data.page.links %}
+       <li>
+         <a class="accent-color" href="{{ name.url }}">
+           {% if name.icon %}
+              <i class="material-icons left">{{ name.icon }}</i>
+           {% endif %}
+           {{ name.name }}
+         </a>
+       </li>
+       {% endfor %}
 
         {# Home Active #}
         <li
@@ -85,16 +115,16 @@
 
   {# Dropdown Desktop #}
   <ul class="dropdown-content" id="desktop-dropdown">
-    {% for piece in data.widget._pieces %}
-      <li><a class="accent-color flow-text anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+    {% for section in data.pieces %}
+      <li><a class="accent-color flow-text anchor" href="#{{ section.slug }}">{{ section.title }}</a></li>
     {% endfor %}
   </ul>
 
-  {# Sidenav #}
+  {# Mobile #}
   <ul class="sidenav" id="mobile">
 
     {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
-    {% for name in data.widget.links %}
+    {% for name in data.page.links %}
      <li>
        <a class="accent-color" href="{{ name.url }}">
          {% if name.icon %}
@@ -145,8 +175,8 @@
 
     {# Dropdown Mobile #}
     <ul class="dropdown-content" id="mobile-dropdown">
-      {% for piece in data.widget._pieces %}
-        <li><a class="accent-color flow-text sidenav-close anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+      {% for section in data.pieces %}
+        <li><a class="accent-color flow-text sidenav-close anchor" href="#{{ section.slug }}">{{ section.title }}</a></li>
       {% endfor %}
     </ul>
 
@@ -157,32 +187,32 @@
 {# Sections #}
 <div class="section-wrapper">
 
-  {% for piece in data.widget._pieces %}
+  {% for section in data.pieces %}
       {# Background settings #}
-    <div id="{{ piece.slug }}" class="section page" style="
-      {%- if piece._image.attachment  -%}
-        background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
-      {%- elif piece.color -%}
-        background-color:{{ piece.color }}
+    <div id="{{ section.slug }}" class="section page" style="
+      {%- if section._image.attachment  -%}
+        background-image: url({{ apos.attachments.url(section._image.attachment, { size: data.options.size or 'full' }) }})
+      {%- elif section.color -%}
+        background-color:{{ section.color }}
       {% endif %}
     ">
 
       {# Small Side Image #}
-      {%- if piece._sideImage -%}
+      {%- if section._sideImage -%}
         <div class="side-image"
-          {% if piece.sideImageRight %}
+          {% if section.sideImageRight %}
             style="right:0;"
           {% endif %}
         >
-          <img src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
-            alt="{{ piece._sideImage.description or piece._sideImage.title }}">
+          <img src="{{ apos.attachments.url(section._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
+            alt="{{ section._sideImage.description or section._sideImage.title }}">
         </div>
       {% endif %}
 
       {# Slide #}
-      {%- if piece.preferences == 'slideOn' -%}
+      {%- if section.preferences == 'slideOn' -%}
         <div class="slide-content">
-          {{ apos.singleton(piece, 'content', 'slides', {
+          {{ apos.singleton(section, 'content', 'slides', {
             limit: 1,
             controls: {
               movable: false,
@@ -194,49 +224,49 @@
         </div>
 
       {# Footer #}
-      {%- elif piece.preferences == 'footerOn' -%}
+      {%- elif section.preferences == 'footerOn' -%}
         <div class="main-content">
 
-        {%- if piece.headerOn == true and piece.cardOn == false -%}
+        {%- if section.headerOn == true and section.cardOn == false -%}
           <div class="header">
-            <a href="{{ piece._url }}">
+            <a href="{{ section._url }}">
               <h3 class="accent-color" style="
-                {%- if piece.headerColor -%}
-                  color:{{ piece.headerColor }}
+                {%- if section.headerColor -%}
+                  color:{{ section.headerColor }}
                 {% endif %}
               ">
-                {{ piece.title }}
+                {{ section.title }}
               </h3>
             </a>
           </div>
         {%- endif -%}
 
-        {%- if piece.container == 'on' -%}
+        {%- if section.container == 'on' -%}
           <div class="container">
         {%- endif -%}
 
             <div class="widgets-container">
 
-            {%- if piece.cardOn == true -%}
+            {%- if section.cardOn == true -%}
               <div class="card">
                 <div class="card-content">
             {% endif %}
 
-              {%- if piece.cardOn and piece.headerOn == true -%}
+              {%- if section.cardOn and section.headerOn == true -%}
                 <div class="card-title">
-                  <a href="{{ piece._url }}">
+                  <a href="{{ section._url }}">
                     <h3 class="accent-color" style="
-                      {%- if piece.headerColor -%}
-                        color:{{ piece.headerColor }}
+                      {%- if section.headerColor -%}
+                        color:{{ section.headerColor }}
                       {% endif %}
                     ">
-                      {{ piece.title }}
+                      {{ section.title }}
                     </h3>
                   </a>
                 </div>
               {%- endif -%}
 
-                {{ apos.area(piece, 'content', {
+                {{ apos.area(section, 'content', {
                   limit: 1,
                   widgets: {
                     'contact-form': {
@@ -250,13 +280,13 @@
                   }
                 }) }}
 
-            {%- if piece.cardOn == true -%}
+            {%- if section.cardOn == true -%}
                 </div>
               </div>
             {% endif %}
 
             </div>
-        {%- if piece.container == 'on' -%}
+        {%- if section.container == 'on' -%}
           </div>
         {%- endif -%}
 
@@ -270,48 +300,44 @@
       {%- else -%}
         <div class="main-content">
 
-          {%- if piece.headerOn == true and piece.cardOn == false -%}
+          {%- if section.headerOn == true and section.cardOn == false -%}
             <div class="header">
-              <a href="{{ piece._url }}">
-
-                <h3 class="accent-color" style="
-                  {%- if piece.headerColor -%}
-                    color:{{ piece.headerColor }}
-                  {% endif %}
-                ">
-                  {{ piece.title }}
-                </h3>
-
-              </a>
+              <h3 class="accent-color" style="
+                {%- if section.headerColor -%}
+                  color:{{ section.headerColor }}
+                {% endif %}
+              ">
+                {{ section.title }}
+              </h3>
             </div>
           {%- endif -%}
 
-        {%- if piece.container == 'on' -%}
+        {%- if section.container == 'on' -%}
           <div class="container">
         {%- endif -%}
 
             <div class="widgets-container">
 
-              {%- if piece.cardOn == true -%}
+              {%- if section.cardOn == true -%}
                 <div class="card">
                   <div class="card-content no-padding-mobile">
               {% endif %}
 
-                {%- if piece.cardOn and piece.headerOn == true -%}
+                {%- if section.cardOn and section.headerOn == true -%}
                   <div class="card-title">
-                    <a href="{{ piece._url }}">
-                      <h3 class="accent-color" style="
-                        {%- if piece.headerColor -%}
-                          color:{{ piece.headerColor }}
-                        {% endif %}
-                      ">
-                        {{ piece.title }}
-                      </h3>
-                    </a>
+                  <a href="{{ section._url }}">
+                    <h3 class="accent-color" style="
+                      {%- if section.headerColor -%}
+                        color:{{ section.headerColor }}
+                      {% endif %}
+                    ">
+                      {{ section.title }}
+                    </h3>
+                  </a>
                   </div>
                 {%- endif -%}
 
-                  {{ apos.area(piece, 'content', {
+                  {{ apos.area(section, 'content', {
                     limit: 2,
                     widgets: {
                       'card': {
@@ -367,49 +393,14 @@
                       }
                     }
                   }) }}
-              {%- if piece.cardOn == true -%}
+              {%- if section.cardOn == true -%}
                   </div>
                 </div>
               {% endif %}
 
             </div>
 
-        {%- if piece.container == 'on' -%}
-          </div>
-        {%- endif -%}
-
-        {# Contact Button #}
-        {%- if data.widget.buttonOn == true -%}
-          <div class="fixed-action-btn">
-            <a class="btn-floating btn-large">
-              <i class="large material-icons">person</i>
-            </a>
-            <ul>
-              {%- if data.global.phone -%}
-              <li>
-                <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
-                <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
-              </li>
-              {%- endif -%}
-              {%- if data.global.email -%}
-              <li>
-                <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
-                <a class="btn-floating fab-tip">{{ data.global.email }}</a>
-              </li>
-              {%- endif -%}
-              {%- if data.global.facebook -%}
-              <li>
-                <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
-                <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
-              </li>
-              {%- endif -%}
-              {%- if data.global.linkedin-%}
-              <li>
-                <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
-                <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
-              </li>
-              {%- endif -%}
-            </ul>
+        {%- if section.container == 'on' -%}
           </div>
         {%- endif -%}
 
@@ -418,4 +409,76 @@
 
     </div>
   {% endfor %}
+
+  {# Contact Button #}
+  {%- if data.page.buttonOn == true -%}
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large">
+        <i class="large material-icons">person</i>
+      </a>
+      <ul>
+        {%- if data.global.phone -%}
+        <li>
+          <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
+          <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
+        </li>
+        {%- endif -%}
+        {%- if data.global.email -%}
+        <li>
+          <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
+          <a class="btn-floating fab-tip">{{ data.global.email }}</a>
+        </li>
+        {%- endif -%}
+        {%- if data.global.facebook -%}
+        <li>
+          <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
+          <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
+        </li>
+        {%- endif -%}
+        {%- if data.global.linkedin-%}
+        <li>
+          <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
+          <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
+        </li>
+        {%- endif -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
 </div>
+
+{% endblock %}
+
+{% block afterMain %}
+
+  {# Setting accentColor for apostrophe-palette #}
+  <style>
+    .btn {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }}
+    }
+    .btn-floating {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }}
+    }
+    .btn-floating:hover {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }};
+    }
+    .scroll-down.btn-floating:focus {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }}
+    }
+    .btn:hover {
+      background-color:{{ data.global.accentColor }};
+      filter: brightness(130%)
+    }
+    .btn:focus {
+      background-color:{{ data.global.accentColor }};
+    }
+    .nav .dropdown-content li > a {
+      color: {{ data.global.accentColor }}
+    }
+  </style>
+
+{% endblock %}
