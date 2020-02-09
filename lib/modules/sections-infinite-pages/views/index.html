@@ -1,0 +1,216 @@
+{% extends "layout.html" %}
+
+{# Imports #}
+{% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
+{% import 'apostrophe-palette-widgets:macros.html' as palette %}
+
+{# Seo and Open Graph fields #}
+{% if data.page.seoTitle %}
+  {% set title = data.page.seoTitle %}
+{% else %}
+  {% set title = data.page.title %}
+{% endif %}
+
+{# Page Title depends on variables above #}
+{% block title %}{{ title }}{% endblock %}
+
+{# Additional header elements #}
+{% block extraHead %}
+
+  {# Includes #}
+  {% include "apostrophe-seo:view.html" %}
+  {% include "apostrophe-open-graph:view.html" %}
+
+  {# Favicons #}
+  {{ favicons.renderLinks(apos, data.global) }}
+
+  {# Palette #}
+  {{ palette.stylesheetLink(data.global) }}
+  {{ palette.stylesheetTag() }}
+{% endblock %}
+
+{# Insert Palette #}
+{% block beforeMain %}
+  {% if data.user %}
+    {{ palette.palette(data.global, 'palette') }}
+  {% endif %}
+{% endblock %}
+
+{# Main Block #}
+{% block main %}
+
+{# Navigation #}
+<div class="nav">
+
+  {# Dekstop #}
+  <nav>
+    <div class="nav-wrapper z-depth-2">
+      <a class="brand-logo" href="#">
+        <h1 class="accent-color">
+          {% if data.page.seoTitle %}
+            {% set title = data.home.seoTitle %}
+          {% else %}
+            {% set title = data.home.title %}
+          {% endif %}
+
+          {# Page title depends on variables above #}
+          {{ title }}
+        </h1>
+      </a>
+      <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
+      <ul class="nav-activator right hide-on-med-and-down">
+
+      {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+      {% for name in data.page.links %}
+       <li>
+         <a class="accent-color" href="{{ name.url }}">
+           {% if name.icon %}
+              <i class="material-icons left">{{ name.icon }}</i>
+           {% endif %}
+           {{ name.name }}
+         </a>
+       </li>
+       {% endfor %}
+
+        {# Home Active #}
+        <li
+          {% if data.page._children[0] %}
+            class="active"
+          {% endif %}
+        >
+          <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ data.home.title }}</a>
+        </li>
+
+        {# Home Cildren Active #}
+        {% for tab in data.home._children %}
+          <li
+            {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+              class="active"
+            {% endif %}
+          >
+            <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ tab.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  {# Mobile #}
+  <ul class="sidenav" id="mobile">
+
+    {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+    {% for name in data.page.links %}
+     <li>
+       <a class="accent-color" href="{{ name.url }}">
+         {% if name.icon %}
+            <i class="material-icons left">{{ name.icon }}</i>
+         {% endif %}
+         {{ name.name }}
+       </a>
+     </li>
+     {% endfor %}
+
+    {# Home Active #}
+    <li
+      {% if data.page._children[0] %}
+        class="active"
+      {% endif %}
+    >
+      <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ data.home.title }}</a>
+    </li>
+
+    {# Home Cildren Active #}
+    {% for tab in data.home._children %}
+      <li
+        {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+          class="active"
+        {% endif %}
+      >
+        <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ tab.title }}</a>
+      </li>
+    {% endfor %}
+
+  </ul>
+
+</div>
+
+{# Sections #}
+<div class="section-wrapper">
+
+  {# Include Sections with Ajax #}
+  <div data-apos-ajax-context="people">
+    {% include "indexAjax.html" %}
+  </div>
+
+  {# Contact Button #}
+  {%- if data.page.buttonOn == true -%}
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large">
+        <i class="large material-icons">person</i>
+      </a>
+      <ul>
+        {%- if data.global.phone -%}
+        <li>
+          <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
+          <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
+        </li>
+        {%- endif -%}
+        {%- if data.global.email -%}
+        <li>
+          <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
+          <a class="btn-floating fab-tip">{{ data.global.email }}</a>
+        </li>
+        {%- endif -%}
+        {%- if data.global.facebook -%}
+        <li>
+          <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
+          <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
+        </li>
+        {%- endif -%}
+        {%- if data.global.linkedin-%}
+        <li>
+          <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
+          <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
+        </li>
+        {%- endif -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% endblock %}
+
+{% block afterMain %}
+
+  {# Setting accentColor for apostrophe-palette #}
+  <style>
+    .btn {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }}
+    }
+    .btn-floating {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }}
+    }
+    .btn-floating:hover {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }};
+    }
+    .scroll-down.btn-floating:focus {
+      color:{{ data.global.mainColor }};
+      background-color:{{ data.global.accentColor }}
+    }
+    .btn:hover {
+      background-color:{{ data.global.accentColor }};
+      filter: brightness(130%)
+    }
+    .btn:focus {
+      background-color:{{ data.global.accentColor }};
+    }
+    .nav .dropdown-content li > a {
+      color: {{ data.global.accentColor }}
+    }
+  </style>
+
+{% endblock %}
