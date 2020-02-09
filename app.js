@@ -4,6 +4,8 @@ var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
   baseUrl: process.env.BASE_URL,
   modules: {
+    // Ordering Module for Pieces
+    'apostrophe-pieces-orderings-bundle': {},
     // Custom Modules
     'apostrophe-video-widgets': {},
     'card-widgets': {},
@@ -15,7 +17,13 @@ var apos = require('apostrophe')({
     'events': {},
     'events-widgets': {},
     'footer-widgets':{},
-    'sections': {},
+    'sections': {
+      orderings: true
+    },
+    'sections-orderings': { extend: 'apostrophe-pieces-orderings' },
+    'sections-pages': {
+      orderings: true
+    },
     'sections-widgets': {},
     'slides': {},
     'slides-widgets': {},

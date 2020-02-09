@@ -24,6 +24,7 @@
     "apostrophe-open-graph": "^1.1.5",
     "apostrophe-optimizer": "^2.0.2",
     "apostrophe-palette": "^2.0.23",
+    "apostrophe-pieces-orderings-bundle": "^2.1.1",
     "apostrophe-seo": "^1.2.1",
     "apostrophe-site-map": "^2.5.1",
     "core-js": "^2.6.11",
