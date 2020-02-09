@@ -114,13 +114,15 @@
 
           {%- if section.headerOn == true and section.cardOn == false -%}
             <div class="header">
-              <h3 class="accent-color" style="
-                {%- if section.headerColor -%}
-                  color:{{ section.headerColor }}
-                {% endif %}
-              ">
-                {{ section.title }}
-              </h3>
+              <a href="{{ section._url }}">
+                <h3 class="accent-color" style="
+                  {%- if section.headerColor -%}
+                    color:{{ section.headerColor }}
+                  {% endif %}
+                ">
+                  {{ section.title }}
+                </h3>
+              </a>
             </div>
           {%- endif -%}
 
