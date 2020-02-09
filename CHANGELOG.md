@@ -19,11 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Redis with apostrophe-caches-redis for better performance uncomment
-- apostrophe-palette-global for better CSS palette options
-- apostrophe-pieces-orderings-bundle for Section Orderings
+- Apostrophe-palette-global for better CSS palette options
+- Apostrophe-pieces-orderings-bundle for Section Orderings
 
 ### fixed
 - Deactivated apostrophe-optimizer for non cloud version
+- Apos-reorganaze-tree checkboxes
 
 ## [0.9.0 ] - 2020-01-02
 
