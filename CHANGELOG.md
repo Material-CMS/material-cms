@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Redis with apostrophe-caches-redis for better performance uncomment
 - Apostrophe-palette-global for better CSS palette options
 - Apostrophe-pieces-orderings-bundle for Section Orderings
+- Section-pages for display section pieces as page
+- Infinite-section-pages for display pieces as page with Ajax infinite scroll
 
 ### fixed
 - Deactivated apostrophe-optimizer for non cloud version
