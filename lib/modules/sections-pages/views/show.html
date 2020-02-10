@@ -39,7 +39,99 @@
 {# Main Block #}
 {% block main %}
 
-{# Sections #}
+{# Dekstop #}
+<nav>
+  <div class="nav-wrapper z-depth-2">
+    <a class="brand-logo" href="{{ data.home._url }}">
+      <h1 class="accent-color">
+        {% if data.page.seoTitle %}
+          {% set title = data.home.seoTitle %}
+        {% else %}
+          {% set title = data.home.title %}
+        {% endif %}
+
+        {# Page title depends on variables above #}
+        {{ title }}
+      </h1>
+    </a>
+    <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
+    <ul class="nav-activator right hide-on-med-and-down">
+
+    {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+    {% for name in data.page.links %}
+     <li>
+       <a class="accent-color" href="{{ name.url }}">
+         {% if name.icon %}
+            <i class="material-icons left">{{ name.icon }}</i>
+         {% endif %}
+         {{ name.name }}
+       </a>
+     </li>
+     {% endfor %}
+
+      {# Home Active #}
+      <li
+        {% if data.page._children[0] %}
+          class="active"
+        {% endif %}
+      >
+        <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ data.home.title }}</a>
+      </li>
+
+      {# Home Cildren Active #}
+      {% for tab in data.home._children %}
+        <li
+          {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+            class="active"
+          {% endif %}
+        >
+          <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ tab.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{# Mobile #}
+<ul class="sidenav" id="mobile">
+
+  {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+  {% for name in data.page.links %}
+   <li>
+     <a class="accent-color" href="{{ name.url }}">
+       {% if name.icon %}
+          <i class="material-icons left">{{ name.icon }}</i>
+       {% endif %}
+       {{ name.name }}
+     </a>
+   </li>
+   {% endfor %}
+
+  {# Home Active #}
+  <li
+    {% if data.page._children[0] %}
+      class="active"
+    {% endif %}
+  >
+    <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ data.home.title }}</a>
+  </li>
+
+  {# Home Cildren Active #}
+  {% for tab in data.home._children %}
+    <li
+      {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+        class="active"
+      {% endif %}
+    >
+      <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ tab.title }}</a>
+    </li>
+  {% endfor %}
+
+</ul>
+
+</div>
+
+{# Section #}
 <div class="section-wrapper">
 
   {# Background settings #}
