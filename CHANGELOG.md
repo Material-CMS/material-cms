@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Infinite scroll module with Ajax
 
 ### Fixed
-- Checkboxes in modal for pages are not clickable (seem to have no event)
+- Image widget round corners when section is full card & full card round corners
 
 ## [0.9.1 ] - 2020-03-01
 
@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Apostrophe-pieces-orderings-bundle for Section Orderings
 - Section-pages for display section pieces as page
 - Infinite-section-pages for display pieces as page with Ajax infinite scroll
+- People as pieces with pages and widget
 
 ### fixed
 - Deactivated apostrophe-optimizer for non cloud version
