@@ -2,7 +2,6 @@ var path = require('path');
 
 var apos = require('apostrophe')({
   shortName: 'fullpage-cms',
-  baseUrl: process.env.BASE_URL,
   modules: {
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
@@ -51,7 +50,8 @@ var apos = require('apostrophe')({
       seoGoogleFields: true
     },
     'apostrophe-site-map': {
-      excludeTypes: []
+      excludeTypes: ['apostrophe-global'],
+      childPageDepth: 3
     },
     'apostrophe-optimizer': {
       enable: false,
