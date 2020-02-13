@@ -3,6 +3,7 @@
 // data/local.js. That folder is shared by all
 // deployments in our stagecoach recipe
 module.exports = {
+  baseUrl: 'http://localhost:3000',
   modules: {
     'apostrophe-assets': {
       // Set to true for full CSS and JS minify, on staging and production servers
