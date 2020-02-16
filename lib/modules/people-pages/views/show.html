@@ -61,7 +61,6 @@
       <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
 
-      {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
       {% for name in data.page.links %}
        <li>
          <a class="accent-color" href="{{ name.url }}">
