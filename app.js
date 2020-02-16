@@ -40,6 +40,11 @@ var apos = require('apostrophe')({
     'apostrophe-palette': {},
     'apostrophe-palette-global': {},
     // Production Modules
+    'apostrophe-db': {
+      connect: {
+        useUnifiedTopology: true
+      }
+    },
     'apostrophe-caches-redis': {},
     'apostrophe-caches': {
       redis: {}
