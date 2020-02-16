@@ -10,14 +10,14 @@
           {% else %}
             {% set title = data.home.title %}
           {% endif %}
-          {# Page Title depends on variables above #}
+          {# Page title depends on variables above #}
           {{ title }}
         </h1>
       </a>
       <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
       <ul class="nav-activator right hide-on-med-and-down">
 
-        {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+        {# Links Array Widget #}
         {% if data.widget.links[0] %}
           {% for name in data.widget.links %}
            <li>
@@ -29,6 +29,8 @@
              </a>
            </li>
           {% endfor %}
+
+        {# Links Array Page #}
         {% elif data.page.links[0] %}
           {% for name in data.page.links %}
            <li>
