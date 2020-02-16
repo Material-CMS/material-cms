@@ -350,12 +350,28 @@ nav {
   list-style-type: inherit;
 }
 // Footer
-.footer-copyright {
-  div {
-   a {
-     padding-left: 10px;
-     padding-right: 10px;
-   }
+.page-footer {
+  .footer-copyright {
+    .footer-container {
+      div {
+       a {
+         padding-left: 10px;
+         padding-right: 10px;
+       }
+      }
+      .center {
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+      @media(max-width: 600px) {
+        .copyright-center {
+          display: flex;
+          align-items: center;
+          justify-content: center
+        }
+      }
+    }
   }
 }
 .bottom-content{

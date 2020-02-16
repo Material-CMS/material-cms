@@ -1,41 +1,53 @@
 <footer class="page-footer">
-  <div class="footer-copyright">
+  <div class="footer-copyright"
+    {%- if piece.smallFooter -%}
+      style="padding:0"
+    {%- endif -%}
+  >
     <div class="footer-container">
+      <div class="row">
 
-      {%- if data.global.legal -%}
-        © {{ data.global.creation_date }} {{ data.global.copyright }}
-      {%- endif -%}
+        <div class="col s12 m3 push-m6 l1 push-l10 center">
+          {%- if data.global.privacy -%}
+            <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-1" rel="nofollow"><p>Privacy</p></a>
+            <div id="modal-1" class="modal">
+              <div class="modal-content text-darken-4">
 
-      {%- if data.global.privacy -%}
-        <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-1">privacy</a>
-        <div id="modal-1" class="modal">
-          <div class="modal-content text-darken-4">
-            <!--googleoff: index-->
-            <h4>Privacy</h4>
-            {{ apos.area(data.global, 'privacy', {
-              edit: false,
-              widgets: { 'apostrophe-rich-text': { } }
-            }) }}
-            <!--googleon: index-->
-          </div>
+                <h4>Privacy</h4>
+                {{ apos.area(data.global, 'privacy', {
+                  edit: false,
+                  widgets: { 'apostrophe-rich-text': { } }
+                }) }}
+
+              </div>
+            </div>
+          {%- endif -%}
         </div>
-      {%- endif -%}
 
-      {%- if data.global.legal -%}
-        <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-2">Legal</a>
-        <div id="modal-2" class="modal">
-          <div class="modal-content text-darken-4">
-            <!--googleoff: index-->
-            <h4>Legal Info</h4>
-            {{ apos.area(data.global, 'legal', {
-              edit: false,
-              widgets: { 'apostrophe-rich-text': { } }
-            }) }}
-            <!--googleon: index-->
-          </div>
+        <div class="col s12 m3 push-m6 l1 push-l10 center">
+          {%- if data.global.legal -%}
+            <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-2" rel="nofollow"><p>Legal</p></a>
+            <div id="modal-2" class="modal">
+              <div class="modal-content text-darken-4">
+
+                <h4>Legal Info</h4>
+                {{ apos.area(data.global, 'legal', {
+                  edit: false,
+                  widgets: { 'apostrophe-rich-text': { } }
+                }) }}
+
+              </div>
+            </div>
+          {%- endif -%}
         </div>
-      {%- endif -%}
 
+        <div class="col s12 m6 pull-m6 l10 pull-l2 copyright-center">
+          {%- if data.global.legal -%}
+            <p> © {{ data.global.creation_date }} {{ data.global.copyright }} </p>
+          {%- endif -%}
+        </div>
+
+      </div>
     </div>
   </div>
 </footer>
