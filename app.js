@@ -55,7 +55,9 @@ var apos = require('apostrophe')({
       seoGoogleFields: true
     },
     'apostrophe-site-map': {
-      excludeTypes: ['apostrophe-global'],
+      excludeTypes: [
+        'apostrophe-global'
+      ],
       childPageDepth: 3
     },
     'apostrophe-optimizer': {
