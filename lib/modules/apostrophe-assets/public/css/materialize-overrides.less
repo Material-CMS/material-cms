@@ -289,6 +289,44 @@ body {
 .material-icons {
   font-family: Material Icons !important;
 }
+// gallery
+.gallery {
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    .col {
+      -ms-flex: 25%; /* IE10 */
+      flex: 25%;
+      max-width: 25%;
+      padding: .75rem;
+      img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+      }
+    }
+
+
+    /*
+    @media(max-width: 992px) {
+      .col:nth-child(6) {
+        background-color: red;
+        clear: left;
+      }
+    }
+    @media(min-width: 992px) {
+      .col:nth-child(8) {
+        background-color: red;
+        clear: left;
+      }
+    }
+    */
+
+
+  }
+}
 .icon {
   display: block;
   background-position: center;

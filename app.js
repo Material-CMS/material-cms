@@ -16,6 +16,8 @@ var apos = require('apostrophe')({
     'events': {},
     'events-widgets': {},
     'footer-widgets':{},
+    'galleries':{},
+    'galleries-pages': {},
     'people': {},
     'people-pages': {},
     'people-widgets': {},
