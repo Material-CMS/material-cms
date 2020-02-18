@@ -2,7 +2,6 @@
 
   {% for piece in data.pieces %}
     <div class="gallery">
-
       <div class="header">
         <a href="{{ piece._url }}">
           <h3 class="accent-color" style="
@@ -17,34 +16,18 @@
           </h3>
         </a>
       </div>
-
         <div class="images">
           {% for _image in piece._images %}
-            <img class="materialboxed" src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
+
+            <img src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
+              data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}"
               alt="{{ _image.description or _image.title }}" width="100%">
           {% endfor %}
         </div>
-
-
     </div>
   {% endfor %}
-
 </div>
 
 {% if data.currentPage < data.totalPages %}
   <a data-apos-ajax-infinite-scroll href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
 {% endif %}
-
-{% block afterMain %}
-  {# Temporaly workaround because materialized components won't get injected the normal way in data-apos-ajax-append #}
-  <script>
-    // Material Box
-    var materialboxes = document.querySelectorAll('.materialboxed');
-    for (var i = 0; i < materialboxes.length; i++) {
-      M.Materialbox.init(materialboxes[i], {
-        // example-option: true
-      });
-    }
-
-  </script>
-{% endblock %}
