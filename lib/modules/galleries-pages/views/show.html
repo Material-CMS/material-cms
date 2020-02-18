@@ -134,44 +134,38 @@
 
 </div>
 <div class="main-content">
-
     <div class="pages-container">
 
       <div class="container">
-
         <div class="gallery">
-
           <div class="row margin">
 
-            <div class="header">
-              <h3 class="accent-color" style="
-                {%- if data.piece.headerColor -%}
-                  color:{{ data.piece.headerColor }}
-                {% endif %}
-              ">
-                {{ data.piece.title }}
-              </h3>
-            </div>
+              <div class="header">
+                <h3 class="accent-color" style="
+                  {%- if data.piece.headerColor -%}
+                    color:{{ data.piece.headerColor }}
+                  {% endif %}
+                ">
+                  {{ data.piece.title }}
+                </h3>
+              </div>
 
-            {% for _image in data.piece._images %}
-              <div class="col s6 m3">
-                <div class="card">
-                  <div class="card-image material-placeholder">
-                    <img class="materialboxed responsive-img" src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
-                      alt="{{ _image.description or _image.title }}" width="100%">
-                  </div>
+          {% for _image in data.piece._images %}
+            <div class="col s6 m3">
+              <div class="card">
+                <div class="card-image material-placeholder">
+                  <img class="materialboxed responsive-img" src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
+                    alt="{{ _image.description or _image.title }}" width="100%">
                 </div>
               </div>
-            {% endfor %}
+            </div>
+          {% endfor %}
 
           </div>
-
         </div>
-
       </div>
 
     </div>
-
 </div>
 
 {% endblock %}

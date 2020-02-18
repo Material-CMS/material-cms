@@ -293,44 +293,35 @@ body {
 .material-icons {
   font-family: Material Icons !important;
 }
-// gallery
+// Gallery
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+.materialboxed {
+  float: left;
+}
+// Gallery
 .gallery {
-  .row {
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-    .col {
-      -ms-flex: 25%; /* IE10 */
-      flex: 25%;
-      max-width: 25%;
-      padding: .75rem;
-      img {
-        margin-top: 8px;
-        vertical-align: middle;
-        width: 100%;
-      }
+  .images {
+    display:inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 0;
+    -webkit-column-count: 5;
+    -webkit-column-gap: .75rem;
+    -moz-column-count: 5;
+    -moz-column-gap: .75rem;
+    column-count: 5;
+    column-gap: .75rem;
+    img {
+      padding-bottom: .75rem;
+      width: 100% !important;
+      height: auto !important;
     }
-
-
-    /*
-    @media(max-width: 992px) {
-      .col:nth-child(6) {
-        background-color: red;
-        clear: left;
-      }
-    }
-    @media(min-width: 992px) {
-      .col:nth-child(8) {
-        background-color: red;
-        clear: left;
-      }
-    }
-    */
-
-
   }
 }
+
 .icon {
   display: block;
   background-position: center;
@@ -425,6 +416,7 @@ body {
     }
   }
 }
+// Different Stuff
 .margin-top {
   margin-top: 1rem;
 }

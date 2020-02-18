@@ -17,3 +17,4 @@ node_modules
 /public/js/_site-compiled.js
 build
 prod-bundle
+/.atom

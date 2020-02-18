@@ -2,32 +2,30 @@
 
   {% for piece in data.pieces %}
     <div class="gallery">
-      <div class="row margin">
 
-        <div class="header">
-          <a href="{{ piece._url }}">
-            <h3 class="accent-color" style="
-              {%- if piece.headerColor -%}
-                color:{{ piece.headerColor }}
-              {% endif %}
-            ">
-              {{ piece.title }}
-            </h3>
-          </a>
+      <div class="header">
+        <a href="{{ piece._url }}">
+          <h3 class="accent-color" style="
+            {%- if piece.headerColor -%}
+              color:{{ piece.headerColor }}
+            {% endif %}
+            {%- if piece.headerCenter -%}
+              text-align: center;
+            {% endif %}
+          ">
+            {{ piece.title }}
+          </h3>
+        </a>
+      </div>
+
+        <div class="images">
+          {% for _image in piece._images %}
+            <img class="materialboxed" src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
+              alt="{{ _image.description or _image.title }}" width="100%">
+          {% endfor %}
         </div>
 
-        {% for _image in piece._images %}
-          <div class="col s6 m3">
-            <div class="card">
-              <div class="card-image">
-                <img class="materialboxed responsive-img" src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
-                  alt="{{ _image.description or _image.title }}" width="100%">
-              </div>
-            </div>
-          </div>
-        {% endfor %}
 
-      </div>
     </div>
   {% endfor %}
 
@@ -47,5 +45,6 @@
         // example-option: true
       });
     }
+
   </script>
 {% endblock %}
