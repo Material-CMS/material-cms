@@ -100,15 +100,15 @@
 
     {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
     {% for name in data.page.links %}
-     <li>
-       <a class="accent-color" href="{{ name.url }}">
-         {% if name.icon %}
-            <i class="material-icons left">{{ name.icon }}</i>
-         {% endif %}
-         {{ name.name }}
-       </a>
-     </li>
-     {% endfor %}
+    <li>
+      <a class="accent-color" href="{{ name.url }}">
+        {% if name.icon %}
+          <i class="material-icons left">{{ name.icon }}</i>
+        {% endif %}
+        {{ name.name }}
+      </a>
+    </li>
+    {% endfor %}
 
     {# Home Active #}
     <li
@@ -134,20 +134,16 @@
 
 </div>
 <div class="main-content">
-
-    <div class="pages-container">
-
-      <div class="container">
-
-        {# Include Galleries with Ajax #}
-        <div data-apos-ajax-context="galleries">
-          {% include "indexAjax.html" %}
-        </div>
-
+  <div class="pages-container">
+    <div class="container">
+      {# Include Galleries with Ajax #}
+      <div data-apos-ajax-context="galleries">
+        {% include "indexAjax.html" %}
       </div>
-
     </div>
-
+  </div>
 </div>
 
 {% endblock %}
+
+<link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet"> 

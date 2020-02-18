@@ -2,23 +2,24 @@
   <ul class="slides">
     {% for piece in data.widget._pieces %}
     <li>
-      <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'max' }) }}" alt="{{ piece._image.description or piece._image.title }}">
+      <img src="{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'max' }) }}"
+      alt="{{ piece._image.description or piece._image.title }}">
       <div class="caption {{ piece.caption }}">
         {%- if piece.title -%}
-          <h3 class="accent-color" style="
-            {%- if piece.titleColor -%}
-              color:{{ piece.titleColor }}
+          <h3 class="accent-color"
+            {% if piece.titleColor %}
+              style="color:{{ piece.titleColor }}"
             {% endif %}
-          ">
+          >
             {{ piece.title }}
           </h3>
         {%- endif -%}
         {%- if piece.slogan -%}
-          <h5 class="accent-color" style="
-            {%- if piece.titleColor -%}
-              color:{{ piece.titleColor }}
+          <h5 class="accent-color"
+            {% if piece.titleColor %}
+              style="color:{{ piece.titleColor }}"
             {% endif %}
-          ">
+          >
             {{ piece.slogan }}
           </h5>
         {%- endif -%}
