@@ -16,15 +16,24 @@ var apos = require('apostrophe')({
     'events': {},
     'events-widgets': {},
     'footer-widgets':{},
-    'galleries':{},
-    'galleries-pages': {},
+    'galleries':{
+      orderings: true
+    },
+    'galleries-orderings': { 
+      extend: 'apostrophe-pieces-orderings'
+    },
+    'galleries-pages': {
+      orderings: true
+    },
     'people': {},
     'people-pages': {},
     'people-widgets': {},
     'sections': {
       orderings: true
     },
-    'sections-orderings': { extend: 'apostrophe-pieces-orderings' },
+    'sections-orderings': {
+      extend: 'apostrophe-pieces-orderings'
+    },
     'sections-infinite-pages': {
       orderings: true
     },
