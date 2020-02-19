@@ -2,6 +2,7 @@
 
   {% for piece in data.pieces %}
     <div class="gallery">
+
       <div class="header">
         <a href="{{ piece._url }}">
           <h3 class="accent-color" style="
@@ -16,16 +17,28 @@
           </h3>
         </a>
       </div>
-        <div class="images">
-          {% for _image in piece._images %}
 
-            <img src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
-              data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}"
-              alt="{{ _image.description or _image.title }}" width="100%">
-          {% endfor %}
-        </div>
+      <div class="images" style="
+        {%- if piece.columnCount == '5' -%}
+          column-count: 5;
+        {%- elif piece.columnCount == '4' -%}
+          column-count: 4;
+        {%- elif piece.columnCount == '3' -%}
+          column-count: 3;
+        {% else %}
+          column-count: 5;
+        {% endif %}
+      ">
+        {% for _image in piece._images %}
+          <img src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
+            data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}"
+            alt="{{ _image.description or _image.title }}" width="100%">
+        {% endfor %}
+      </div>
+
     </div>
   {% endfor %}
+  
 </div>
 
 {% if data.currentPage < data.totalPages %}
