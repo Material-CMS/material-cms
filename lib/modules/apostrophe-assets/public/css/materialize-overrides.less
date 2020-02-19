@@ -1,7 +1,17 @@
 // Material Icons
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-// Navigation Wrapper
 
+// Box shadow mixin
+.column-count (@string) {
+	-webkit-column-count: @string;
+	-moz-column-count:    @string;
+	column-count:         @string;
+}
+.column-gap (@string) {
+	-webkit-column-gap: @string;
+	-moz-column-gap:    @string;
+	column-gap:         @string;
+}
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -308,16 +318,16 @@ body {
     margin-right: auto;
     margin-left: auto;
     line-height: 0;
-    -webkit-column-count: 5;
-    -webkit-column-gap: .75rem;
-    -moz-column-count: 5;
-    -moz-column-gap: .75rem;
-    column-count: 5;
     column-gap: .75rem;
     img {
       padding-bottom: .75rem;
       width: 100% !important;
       height: auto !important;
+    }
+  }
+  @media(max-width: 600px) {
+    .images {
+      column-count: 1 !important;
     }
   }
 }
