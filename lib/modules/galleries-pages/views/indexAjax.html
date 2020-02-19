@@ -30,15 +30,25 @@
         {% endif %}
       ">
         {% for _image in piece._images %}
-          <img src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
-            data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}"
-            alt="{{ _image.description or _image.title }}" width="100%">
+        <div class="card" data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}">
+          <div class="card-image">
+            <img
+              src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
+              alt="{{ _image.description or _image.title }}" width="100%"
+            >
+          </div>
+          {%- if _image.description -%}
+            <div class="card-content">
+              <p class="flow-text">{{ _image.description }}</p>
+            </div>
+          {%- endif -%}
+        </div>
         {% endfor %}
       </div>
 
     </div>
   {% endfor %}
-  
+
 </div>
 
 {% if data.currentPage < data.totalPages %}
