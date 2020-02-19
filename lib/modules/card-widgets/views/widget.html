@@ -7,15 +7,16 @@
     ">
       <div class="card z-depth-0">
         <div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
-          <div class="materialboxed" data-slideshow-items>
+          <div class="slideshow-items" data-slideshow-items>
             {%- block items -%}
               {%- for entry in data.widget._pieces -%}
                 {%- set image = entry.item or entry -%}
                 {%- set relationship = entry.relationship -%}
-                  <div data-slideshow-item
+                  <div
+                    data-slideshow-item
                     class="apos-slideshow-item{% if loop.first %} apos-current{% endif %}{% block itemClass %}{% endblock %} apos-slideshow-item--{{ image.attachment.extension }}"
                     style="background-image:
-                      url({{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }})
+                      url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }})
                       {%- if apos.attachments.hasFocalPoint(relationship) -%}
                         ; background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
                       {%- endif -%}
@@ -23,10 +24,11 @@
                         ; width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
                       {%- endif -%}
                     ">
-                    <div class="card-image">
-                      <img alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
-                        data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}{% endblock %}
-                      " />
+                    <div class="card-image" data-featherlight="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}">
+                      <img
+                        data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}{% endblock %}"
+                        alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
+                      >
                     {%- if data.widget.title -%}
                       {%- block title -%}
                       <span class="card-title">
