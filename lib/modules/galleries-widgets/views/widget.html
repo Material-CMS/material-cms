@@ -22,18 +22,22 @@
          {%- endif -%}
 
                 <div class="card-title">
-                  <a href="{{ piece._url }}">
-                    <h4 class="accent-color" style="
-                      {%- if piece.titleColor -%}
-                        color:{{ piece.titleColor }}
-                      {% endif %}
-                      {%- if piece.titleCenter -%}
-                        text-align: center;
-                      {% endif %}
-                    ">
-                      {{ piece.title }}
-                    </h4>
-                  </a>
+                  {% if piece._url %}
+                    <a href="{{ piece._url }}">
+                  {%- endif -%}
+                      <h4 class="accent-color" style="
+                        {%- if piece.titleColor -%}
+                          color:{{ piece.titleColor }}
+                        {% endif %}
+                        {%- if piece.titleCenter -%}
+                          text-align: center;
+                        {% endif %}
+                      ">
+                        {{ piece.title }}
+                      </h4>
+                  {% if piece._url %}
+                    </a>
+                  {%- endif -%}
                 </div>
 
                 <div class="gallery">

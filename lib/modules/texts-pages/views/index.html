@@ -60,7 +60,7 @@
         <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
         <ul class="nav-activator right hide-on-med-and-down">
 
-        {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+        {# Links array page #}
         {% for name in data.page.links %}
          <li>
            <a class="accent-color" href="{{ name.url }}">
@@ -100,24 +100,24 @@
 
       {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
       {% for name in data.page.links %}
-       <li>
-         <a class="accent-color" href="{{ name.url }}">
-           {% if name.icon %}
+        <li>
+          <a class="accent-color" href="{{ name.url }}">
+            {% if name.icon %}
               <i class="material-icons left">{{ name.icon }}</i>
-           {% endif %}
-           {{ name.name }}
-         </a>
-       </li>
-       {% endfor %}
+            {% endif %}
+            {{ name.name }}
+          </a>
+        </li>
+      {% endfor %}
 
       {# Home Active #}
-      <li
-        {% if data.page._children[0] %}
-          class="active"
-        {% endif %}
-      >
-        <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ data.home.title }}</a>
-      </li>
+        <li
+          {% if data.page._children[0] %}
+            class="active"
+          {% endif %}
+        >
+          <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ data.home.title }}</a>
+        </li>
 
       {# Home Cildren Active #}
       {% for tab in data.home._children %}
@@ -133,6 +133,7 @@
     </ul>
 
   </div>
+
   <div class="main-content">
 
     <div class="pages-container">
@@ -143,18 +144,10 @@
           <div class="col s12 m12">
             <div class="radius">
 
-                <ul class="collection z-depth-0" style="
-                  {%- if piece.backColor-%}
-                    background-color:{{ piece.backColor }}
-                  {% endif %}
-                ">
-
-                  {# Include People with Ajax #}
-                  <div data-apos-ajax-context="people">
-                    {% include "indexAjax.html" %}
-                  </div>
-
-                </ul>
+              {# Include Galleries with Ajax #}
+              <div data-apos-ajax-context="texts">
+                {% include "indexAjax.html" %}
+              </div>
 
             </div>
           </div>
@@ -165,30 +158,30 @@
     </div>
 
     {# Contact Button #}
-    {%- if data.page.buttonOn == true -%}
+    {% if data.page.buttonOn == true %}
       <div class="fixed-action-btn">
         <a class="btn-floating btn-large">
           <i class="large material-icons">person</i>
         </a>
         <ul>
-          {%- if data.global.phone -%}
+          {% if data.global.phone %}
           <li>
             <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
             <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
           </li>
-          {%- endif -%}
-          {%- if data.global.email -%}
+          {% endif %}
+          {% if data.global.email %}
           <li>
             <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
             <a class="btn-floating fab-tip">{{ data.global.email }}</a>
           </li>
-          {%- endif -%}
-          {%- if data.global.facebook -%}
+          {% endif %}
+          {% if data.global.facebook %}
           <li>
             <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
             <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
           </li>
-          {%- endif -%}
+          {% endif %}
           {% if data.global.instagram %}
           <li>
             <a class="btn-floating tip" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
@@ -209,7 +202,7 @@
           {% endif %}
         </ul>
       </div>
-    {%- endif -%}
+    {% endif %}
 
   </div>
 
