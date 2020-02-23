@@ -5,14 +5,15 @@
         z-depth-1
       {% endif %}
     ">
+
     {% for piece in data.widget._pieces %}
     <div class="card horizontal z-depth-0" style="
-        {%- if piece.backColor-%}
+        {% if piece.backColor%}
           background-color:{{ piece.backColor }}
         {% endif %}
       ">
 
-      {%- if piece.sideImage.items[0] -%}
+      {% if piece.sideImage.items[0] %}
       <div class="row">
         <div class="height-100 col s12 m3">
           <div class="card-image">
@@ -25,75 +26,136 @@
             }) }}
           </div>
         </div>
-        {%- endif -%}
+        {% endif %}
 
-        {%- if piece.sideImage.items[0] -%}
+        {% if piece.sideImage.items[0] %}
         <div class="height-100 col s12 m9">
-        {%- endif -%}
+        {% endif %}
 
           <div class="card-stacked">
             <div class="card-content" style="
-              {%- if piece.backColor-%}
+              {% if piece.backColor%}
                 background-color:{{ piece.backColor }}
               {% endif %}
             ">
 
-              {%- if piece.title -%}
-                <span class="card-title">
-                  <h4 class="accent-color" style="
-                    {%- if piece.titleColor -%}
-                      color:{{ piece.titleColor }}
-                    {% endif %}
-                  ">
-                    {{ piece.title }}
-                  </h4>
-                </span>
-              {%- endif -%}
+              {% if piece.title %}
+                {% if piece._url %}
+                  <a href="{{ piece._url }}">
+                {% endif %}
+                    <h4 class="accent-color card-title" style="
+                      {% if piece.titleColor %}
+                        color:{{ piece.titleColor }}
+                      {% endif %}
+                    ">
+                      {{ piece.title }}
+                    </h4>
+                {% if piece._url %}
+                  </a>
+                {% endif %}
+              {% endif %}
 
-              {%- if piece.description.items[0] -%}
+              {% if piece.description.items[0] %}
                 {{ apos.area(piece, 'description', {
                   edit: false,
                   widgets: { 'apostrophe-rich-text': { } }
                 }) }}
-              {%- endif -%}
+              {% endif %}
             </div>
 
-            {%- if piece.text.items[0] or piece.extraLink -%}
-              <div class="card-action">
-                {%- if piece.text.items[0] -%}
-                  <a class="waves-effect waves-light btn modal-trigger" href="#{{ piece.slug }}">
-                    {% if piece.buttonText %}
-                      {{ piece.buttonText }}
-                    {%- else -%}
-                      more
-                    {%- endif -%}
-                  </a>
-                  <div id="{{ piece.slug }}" class="modal">
-                    <div class="modal-content">
+            {% if piece.text.items[0] or piece.extraLink %}
+
+              {% if piece._url and piece.blogOn == true %}
+
+                <div class="card-action collapsible z-depth-0" style="
+                  {% if piece.backColor%}
+                    background-color:{{ piece.backColor }}
+                  {% endif %}
+                ">
+                  <div class="collapsible-header">
+                    <div class="row">
+
+                      <div class="col s12">
+                        {% if piece._url %}
+                          <a href="{{ piece._url }}">
+                        {% endif %}
+                            <div class="btn waves-effect">
+                              {% if piece.buttonText %}
+                                {{ piece.buttonText }}
+                              {% else %}
+                                read
+                              {% endif %}
+                            </div>
+                        {% if piece._url %}
+                          </a>
+                        {% endif %}
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              {% else %}
+
+                <ul class="card-action collapsible z-depth-0" style="
+                  {% if piece.backColor%}
+                    background-color:{{ piece.backColor }}
+                  {% endif %}
+                ">
+                  <li>
+
+                    <div class="collapsible-header">
+                      <div class="row">
+
+                        {% if piece.text.items[0] %}
+
+                          <div class="col s12 m6">
+                            <div class="btn waves-effect">
+                              {% if piece.buttonText %}
+                                {{ piece.buttonText }}
+                              {% else %}
+                                more
+                              {% endif %}
+                            </div>
+                          </div>
+
+                        {% endif %}
+
+                        {% if piece.extraLink %}
+                          <div class="col s12 m6">
+                            <a class="btn-flat" href="{{ piece.extraLink }}" target="_blank">
+                              {% if piece.linkText %}
+                                {{ piece.linkText }}
+                              {% else %}
+                                link
+                              {% endif %}
+                            </a>
+                          </div>
+                        {% endif %}
+
+                      </div>
+                    </div>
+
+                    <div class="collapsible-body">
                       {{ apos.area(piece, 'text', {
                         edit: false,
                         widgets: { 'apostrophe-rich-text': { } }
                       }) }}
                     </div>
-                  </div>
-                {%- endif -%}
-                {%- if piece.extraLink -%}
-                  <a class="btn-flat right-link" href="{{ piece.extraLink }}" target="_blank">
-                    {% if piece.linkText %}
-                      {{ piece.linkText }}
-                    {%- else -%}
-                      link
-                    {%- endif -%}
-                  </a>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
+
+                  </li>
+                </ul>
+
+              {% endif %}
+
+            {% endif %}
+
           </div>
 
-      {%- if piece.sideImage.items[0] -%}
+      {% if piece.sideImage.items[0] %}
         </div>
       </div>
-      {%- endif -%}
+      {% endif %}
 
     </div>
     {% endfor %}

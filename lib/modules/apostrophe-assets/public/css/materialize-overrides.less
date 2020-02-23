@@ -9,7 +9,6 @@ body {
 // Typo
 h4 {
   font-size: 1.64rem !important;
-  font-weight: 300 !important;
 }
 // Flow Text is huge in default settings!
 @media(min-width: 600px) {
@@ -84,10 +83,10 @@ h4 {
     width: 100%;
     max-height: 100%;
 }
-// Header
+// Title
 .section-wrapper{
   .main-content {
-    .header {
+    .title {
       position: absolute;
       text-align: center;
       width: 100%;
@@ -154,16 +153,15 @@ h4 {
 	.btn-floating.halfway-fab {
 	  right: 50px;
 	}
-	.card-action {
-	  background-color: white;
-		.right-link {
-			float: right;
-			margin-right: 0 !important;
-		}
-	}
 }
 // Horizontal Card Height Overrides
 .card.horizontal {
+  .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    margin-right: 0 !important;
+  }
+  .card-action {
+    background-color: white;
+  }
 	.height-100 {
 		padding: 0;
 		height: 100% !important;
@@ -247,6 +245,23 @@ h4 {
   border-left: 0;
 	.collapsible-header {
 	  border-bottom: inherit;
+    a {
+      float: right;
+    }
+    .row {
+      width: 100%;
+    }
+    .col {
+      margin: .4rem 0 .4rem 0;
+    }
+    @media(max-width: 600px) {
+      a {
+        float: none;
+      }
+      .col {
+        text-align: center;
+      }
+    }
 	}
 	.collapsible-body {
 	  border-bottom: inherit;

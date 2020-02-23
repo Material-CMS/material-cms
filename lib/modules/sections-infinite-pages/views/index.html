@@ -39,26 +39,64 @@
 {# Main Block #}
 {% block main %}
 
-{# Navigation #}
-<div class="nav">
+  {# Navigation #}
+  <div class="nav">
 
-  {# Dekstop #}
-  <nav>
-    <div class="nav-wrapper z-depth-2">
-      <a class="brand-logo" href="{{ data.home._url }}">
-        <h1 class="accent-color">
-          {% if data.page.seoTitle %}
-            {% set title = data.home.seoTitle %}
-          {% else %}
-            {% set title = data.home.title %}
-          {% endif %}
+    {# Dekstop #}
+    <nav>
+      <div class="nav-wrapper z-depth-2">
+        <a class="brand-logo" href="{{ data.home._url }}">
+          <h1 class="accent-color">
+            {% if data.page.seoTitle %}
+              {% set title = data.home.seoTitle %}
+            {% else %}
+              {% set title = data.home.title %}
+            {% endif %}
 
-          {# Page title depends on variables above #}
-          {{ title }}
-        </h1>
-      </a>
-      <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
-      <ul class="nav-activator right hide-on-med-and-down">
+            {# Page title depends on variables above #}
+            {{ title }}
+          </h1>
+        </a>
+        <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
+        <ul class="nav-activator right hide-on-med-and-down">
+
+        {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
+        {% for name in data.page.links %}
+         <li>
+           <a class="accent-color" href="{{ name.url }}">
+             {% if name.icon %}
+                <i class="material-icons left">{{ name.icon }}</i>
+             {% endif %}
+             {{ name.name }}
+           </a>
+         </li>
+         {% endfor %}
+
+          {# Home Active #}
+          <li
+            {% if data.page._children[0] %}
+              class="active"
+            {% endif %}
+          >
+            <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ data.home.title }}</a>
+          </li>
+
+          {# Home Cildren Active #}
+          {% for tab in data.home._children %}
+            <li
+              {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+                class="active"
+              {% endif %}
+            >
+              <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ tab.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+
+    {# Mobile #}
+    <ul class="sidenav" id="mobile">
 
       {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
       {% for name in data.page.links %}
@@ -72,124 +110,86 @@
        </li>
        {% endfor %}
 
-        {# Home Active #}
-        <li
-          {% if data.page._children[0] %}
-            class="active"
-          {% endif %}
-        >
-          <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ data.home.title }}</a>
-        </li>
-
-        {# Home Cildren Active #}
-        {% for tab in data.home._children %}
-          <li
-            {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-              class="active"
-            {% endif %}
-          >
-            <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ tab.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </nav>
-
-  {# Mobile #}
-  <ul class="sidenav" id="mobile">
-
-    {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
-    {% for name in data.page.links %}
-     <li>
-       <a class="accent-color" href="{{ name.url }}">
-         {% if name.icon %}
-            <i class="material-icons left">{{ name.icon }}</i>
-         {% endif %}
-         {{ name.name }}
-       </a>
-     </li>
-     {% endfor %}
-
-    {# Home Active #}
-    <li
-      {% if data.page._children[0] %}
-        class="active"
-      {% endif %}
-    >
-      <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ data.home.title }}</a>
-    </li>
-
-    {# Home Cildren Active #}
-    {% for tab in data.home._children %}
+      {# Home Active #}
       <li
-        {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+        {% if data.page._children[0] %}
           class="active"
         {% endif %}
       >
-        <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ tab.title }}</a>
+        <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ data.home.title }}</a>
       </li>
-    {% endfor %}
 
-  </ul>
+      {# Home Cildren Active #}
+      {% for tab in data.home._children %}
+        <li
+          {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+            class="active"
+          {% endif %}
+        >
+          <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ tab.title }}</a>
+        </li>
+      {% endfor %}
 
-</div>
+    </ul>
 
-{# Sections #}
-<div class="section-wrapper">
-
-  {# Include Sections with Ajax #}
-  <div data-apos-ajax-context="people">
-    {% include "indexAjax.html" %}
   </div>
 
-  {# Contact Button #}
-  {%- if data.page.buttonOn == true -%}
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large">
-        <i class="large material-icons">person</i>
-      </a>
-      <ul>
-        {%- if data.global.phone -%}
-        <li>
-          <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
-          <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
-        </li>
-        {%- endif -%}
-        {%- if data.global.email -%}
-        <li>
-          <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
-          <a class="btn-floating fab-tip">{{ data.global.email }}</a>
-        </li>
-        {%- endif -%}
-        {%- if data.global.facebook -%}
-        <li>
-          <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
-          <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
-        </li>
-        {%- endif -%}
-        {% if data.global.instagram %}
-        <li>
-          <a class="btn-floating tip" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
-          <a class="btn-floating fab-tip">{{ data.global.instagram | replace("https://www.instagram.com/", "" ) }}</a>
-        </li>
-        {% endif %}
-        {% if data.global.linkedin %}
-        <li>
-          <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
-          <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
-        </li>
-        {% endif %}
-        {% if data.global.twitter %}
-        <li>
-          <a class="btn-floating tip" href="{{ data.global.twitter }}" target="_blank"><i class="icon twitter"></i></a>
-          <a class="btn-floating fab-tip">{{ data.global.twitter | replace("https://twitter.com/", "" ) }}</a>
-        </li>
-        {% endif %}
-      </ul>
-    </div>
-  {%- endif -%}
+  {# Sections #}
+  <div class="section-wrapper">
 
-</div>
+    {# Include Sections with Ajax #}
+    <div data-apos-ajax-context="people">
+      {% include "indexAjax.html" %}
+    </div>
+
+    {# Contact Button #}
+    {%- if data.page.buttonOn == true -%}
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large">
+          <i class="large material-icons">person</i>
+        </a>
+        <ul>
+          {%- if data.global.phone -%}
+          <li>
+            <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
+            <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
+          </li>
+          {%- endif -%}
+          {%- if data.global.email -%}
+          <li>
+            <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
+            <a class="btn-floating fab-tip">{{ data.global.email }}</a>
+          </li>
+          {%- endif -%}
+          {%- if data.global.facebook -%}
+          <li>
+            <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
+            <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
+          </li>
+          {%- endif -%}
+          {% if data.global.instagram %}
+          <li>
+            <a class="btn-floating tip" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
+            <a class="btn-floating fab-tip">{{ data.global.instagram | replace("https://www.instagram.com/", "" ) }}</a>
+          </li>
+          {% endif %}
+          {% if data.global.linkedin %}
+          <li>
+            <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
+            <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
+          </li>
+          {% endif %}
+          {% if data.global.twitter %}
+          <li>
+            <a class="btn-floating tip" href="{{ data.global.twitter }}" target="_blank"><i class="icon twitter"></i></a>
+            <a class="btn-floating fab-tip">{{ data.global.twitter | replace("https://twitter.com/", "" ) }}</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    {%- endif -%}
+
+  </div>
 
 {% endblock %}
 

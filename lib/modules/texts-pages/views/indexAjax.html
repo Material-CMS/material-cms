@@ -1,0 +1,154 @@
+<div data-apos-ajax-append>
+
+  {% for piece in data.pieces %}
+  <div class="card horizontal z-depth-0" style="
+      {% if piece.backColor%}
+        background-color:{{ piece.backColor }}
+      {% endif %}
+    ">
+
+    {% if piece.sideImage.items[0] %}
+    <div class="row">
+      <div class="height-100 col s12 m3">
+        <div class="card-image">
+          {{ apos.area(piece, 'sideImage', {
+            edit: false,
+            widgets: { 'card': {
+              noHeight: true,
+              focalPoint: true
+            } }
+          }) }}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if piece.sideImage.items[0] %}
+      <div class="height-100 col s12 m9">
+      {% endif %}
+
+        <div class="card-stacked">
+          <div class="card-content" style="
+            {% if piece.backColor%}
+              background-color:{{ piece.backColor }}
+            {% endif %}
+          ">
+
+            {% if piece.title %}
+              <a href="{{ piece._url }}">
+                <h4 class="accent-color card-title" style="
+                  {% if piece.titleColor %}
+                    color:{{ piece.titleColor }}
+                  {% endif %}
+                ">
+                  {{ piece.title }}
+                </h4>
+              </a>
+            {% endif %}
+
+            {% if piece.description.items[0] %}
+              {{ apos.area(piece, 'description', {
+                edit: false,
+                widgets: { 'apostrophe-rich-text': { } }
+              }) }}
+            {% endif %}
+
+          </div>
+
+          {% if piece.text.items[0] or piece.extraLink %}
+
+            {% if piece.text.items[0] and piece.blogOn == true %}
+
+              <div class="card-action collapsible z-depth-0" style="
+                {% if piece.backColor%}
+                  background-color:{{ piece.backColor }}
+                {% endif %}
+              ">
+                <div class="collapsible-header">
+                  <div class="row">
+
+                    <div class="col s12">
+                      <a href="{{ piece._url }}">
+                        <div class="btn waves-effect">
+                          {% if piece.buttonText %}
+                            {{ piece.buttonText }}
+                          {% else %}
+                            read
+                          {% endif %}
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            {% else %}
+
+              <ul class="card-action collapsible z-depth-0" style="
+                {% if piece.backColor%}
+                  background-color:{{ piece.backColor }}
+                {% endif %}
+              ">
+                <li>
+
+                  <div class="collapsible-header">
+                    <div class="row">
+
+                      {% if piece.text.items[0] %}
+
+                        <div class="col s12 m6">
+                          <div class="btn waves-effect">
+                            {% if piece.buttonText %}
+                              {{ piece.buttonText }}
+                            {% else %}
+                              more
+                            {% endif %}
+                          </div>
+                        </div>
+
+                      {% endif %}
+
+                      {% if piece.extraLink %}
+                        <div class="col s12 m6">
+                          <a class="btn-flat" href="{{ piece.extraLink }}" target="_blank">
+                            {% if piece.linkText %}
+                              {{ piece.linkText }}
+                            {% else %}
+                              link
+                            {% endif %}
+                          </a>
+                        </div>
+                      {% endif %}
+
+                    </div>
+                  </div>
+
+                  <div class="collapsible-body">
+                    {{ apos.area(piece, 'text', {
+                      edit: false,
+                      widgets: { 'apostrophe-rich-text': { } }
+                    }) }}
+                  </div>
+
+                </li>
+              </ul>
+
+            {% endif %}
+
+          {% endif %}
+
+        </div>
+
+    {% if piece.sideImage.items[0] %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+
+</div>
+
+{% if data.currentPage < data.totalPages %}
+  <a data-apos-ajax-infinite-scroll href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
+{% endif %}

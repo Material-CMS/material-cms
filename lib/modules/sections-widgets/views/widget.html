@@ -200,16 +200,20 @@
         <div class="main-content">
 
         {% if piece.titleOn == true and piece.cardOn == false %}
-          <div class="header">
-            <a href="{{ piece._url }}">
-              <h3 class="accent-color" style="
-                {% if piece.titleColor %}
-                  color:{{ piece.titleColor }}
-                {% endif %}
-              ">
-                {{ piece.title }}
-              </h3>
-            </a>
+          <div class="title">
+            {% if piece._url %}
+              <a href="{{ piece._url }}">
+            {% endif %}
+                <h3 class="accent-color" style="
+                  {% if piece.titleColor %}
+                    color:{{ piece.titleColor }}
+                  {% endif %}
+                ">
+                  {{ piece.title }}
+                </h3>
+            {% if piece._url %}
+              </a>
+            {% endif %}
           </div>
         {% endif %}
 
@@ -226,15 +230,19 @@
 
               {% if piece.cardOn and piece.titleOn == true %}
                 <div class="card-title">
-                  <a href="{{ piece._url }}">
-                    <h3 class="accent-color" style="
-                      {% if piece.titleColor %}
-                        color:{{ piece.titleColor }}
-                      {% endif %}
-                    ">
-                      {{ piece.title }}
-                    </h3>
-                  </a>
+                  {% if piece._url %}
+                    <a href="{{ piece._url }}">
+                  {% endif %}
+                      <h3 class="accent-color" style="
+                        {% if piece.titleColor %}
+                          color:{{ piece.titleColor }}
+                        {% endif %}
+                      ">
+                        {{ piece.title }}
+                      </h3>
+                  {% if piece._url %}
+                    </a>
+                  {% endif %}
                 </div>
               {% endif %}
 
@@ -273,18 +281,20 @@
         <div class="main-content">
 
           {% if piece.titleOn == true and piece.cardOn == false %}
-            <div class="header">
-              <a href="{{ piece._url }}">
-
-                <h3 class="accent-color" style="
-                  {% if piece.titleColor %}
-                    color:{{ piece.titleColor }}
-                  {% endif %}
-                ">
-                  {{ piece.title }}
-                </h3>
-
-              </a>
+            <div class="title">
+              {% if piece._url %}
+                <a href="{{ piece._url }}">
+              {% endif %}
+                  <h3 class="accent-color" style="
+                    {% if piece.titleColor %}
+                      color:{{ piece.titleColor }}
+                    {% endif %}
+                  ">
+                    {{ piece.title }}
+                  </h3>
+              {% if piece._url %}
+                </a>
+              {% endif %}
             </div>
           {% endif %}
 
@@ -301,15 +311,19 @@
 
                 {% if piece.cardOn and piece.titleOn == true %}
                   <div class="card-title">
-                    <a href="{{ piece._url }}">
-                      <h3 class="accent-color" style="
-                        {% if piece.titleColor %}
-                          color:{{ piece.titleColor }}
-                        {% endif %}
-                      ">
-                        {{ piece.title }}
-                      </h3>
-                    </a>
+                    {% if piece._url %}
+                      <a href="{{ piece._url }}">
+                    {% endif %}
+                        <h3 class="accent-color" style="
+                          {% if piece.titleColor %}
+                            color:{{ piece.titleColor }}
+                          {% endif %}
+                        ">
+                          {{ piece.title }}
+                        </h3>
+                    {% if piece._url %}
+                      </a>
+                    {% endif %}
                   </div>
                 {% endif %}
 
