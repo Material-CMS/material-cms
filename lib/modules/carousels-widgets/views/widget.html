@@ -14,15 +14,15 @@
         <div class="card-content">
 
           {%- if data.widget.title -%}
-            <span class="card-title">
-              <h5 class="accent-color" style="
+            <div class="card-title">
+              <h4 class="accent-color" style="
                 {%- if data.widget.titleColor -%}
                   color:{{ data.widget.titleColor }}
                 {% endif %}
               ">
                 {{ data.widget.title }}
-              </h5>
-            </span>
+              </h4>
+            </div>
           {%- endif -%}
 
           <div class="carousel
@@ -41,7 +41,7 @@
 
                 {%- if piece.titleOn -%}
                   <span class="card-title">
-                    <h5 class="accent-color" style="
+                    <h4 class="accent-color" style="
                       {%- if piece.titleColor -%}
                         color:{{ piece.titleColor }}
                       {% endif %}
@@ -50,7 +50,7 @@
                       {% endif %}
                     ">
                       {{ piece.title }}
-                    </h5>
+                    </h4>
                   </span>
                 {%- endif -%}
 

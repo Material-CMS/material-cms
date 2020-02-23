@@ -18,11 +18,9 @@
             alt="{{ piece._thumbnail.description or piece._thumbnail.title }}">
           {% endif %}
 
-          <h4 class="accent-color title">
-            {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
-            {{ piece.title }}
-            {% if piece._url %}</a>{% endif %}
-          </h4>
+          {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
+            <h4 class="accent-color title">{{ piece.title }}</h4>
+          {% if piece._url %}</a>{% endif %}
 
           {{ apos.area(piece, 'body', {
             edit: false,

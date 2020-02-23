@@ -5,6 +5,33 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
+// Typo
+h4 {
+  font-size: 1.64rem !important;
+  font-weight: 300 !important;
+}
+// Flow Text is huge in default settings!
+@media(min-width: 600px) {
+  .flow-text {
+    font-size: 1.25rem !important;
+  }
+}
+@media(min-width: 700px) {
+  .flow-text {
+    font-size: 1.3rem !important;
+  }
+}
+@media(min-width: 800px) {
+  .flow-text {
+    font-size: 1.35rem !important;
+  }
+}
+@media(min-width: 1000px) {
+  .flow-text {
+    font-size: 1.4rem !important;
+  }
+}
 // Navigation
 .nav {
   z-index: 9;
@@ -68,6 +95,16 @@ body {
     }
   }
 }
+// Pages
+.pages-container {
+  width: 100%;
+  .row {
+    width: 100%;
+  }
+  .show-card-image {
+    max-width: 20rem !important;
+  }
+}
 // Container
 .container {
   display: flex;
@@ -81,23 +118,6 @@ body {
   width: 100%;
   .gallery {
     margin-bottom: 3.7rem;
-  }
-}
-// Pages
-.pages-container {
-  width: 100%;
-  .show-card-image {
-    max-width: 20rem !important;
-  }
-  .collection {
-    border: 1px solid #e0e0e0;
-    .collection-item.avatar {
-      padding-left: 132px;
-    }
-    .circle {
-      width: 90px !important;
-      height: 90px !important;
-    }
   }
 }
 // Container Radius Overflow
@@ -117,27 +137,6 @@ body {
   transform: translate(-50%);
   background-color: inherit;
 }
-// Flow Text is huge in default settings!
-@media(min-width: 600px) {
-  .flow-text {
-    font-size: 1.25rem !important;
-  }
-}
-@media(min-width: 700px) {
-  .flow-text {
-    font-size: 1.3rem !important;
-  }
-}
-@media(min-width: 800px) {
-  .flow-text {
-    font-size: 1.35rem !important;
-  }
-}
-@media(min-width: 1000px) {
-  .flow-text {
-    font-size: 1.4rem !important;
-  }
-}
 // Slides
 .slider.fullscreen {
   height: 100vh;
@@ -152,10 +151,6 @@ body {
   .card-image{
     cursor: pointer;
   }
-	.card-title {
-	  font-size: 1.64rem !important;
-	  font-weight: 300 !important;
-	}
 	.btn-floating.halfway-fab {
 	  right: 50px;
 	}
@@ -279,6 +274,14 @@ body {
 .collection {
   margin: 0;
   border: none;
+  border: 1px solid #e0e0e0;
+  .collection-item.avatar {
+    padding-left: 132px;
+  }
+  .circle {
+    width: 90px !important;
+    height: 90px !important;
+  }
 }
 // Double Widgets
 .double {
