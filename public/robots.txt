@@ -1,0 +1,6 @@
+User-agent: *
+
+Disallow: /modules/footer-widgets/legal
+Disallow: /modules/footer-widgets/privacy
+
+Allow: /
