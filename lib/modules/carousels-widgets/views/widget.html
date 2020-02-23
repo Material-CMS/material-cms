@@ -45,6 +45,9 @@
                       {%- if piece.titleColor -%}
                         color:{{ piece.titleColor }}
                       {% endif %}
+                      {%- if piece.titleCenter -%}
+                        text-align: center;
+                      {% endif %}
                     ">
                       {{ piece.title }}
                     </h5>

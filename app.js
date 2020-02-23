@@ -19,12 +19,13 @@ var apos = require('apostrophe')({
     'galleries':{
       orderings: true
     },
-    'galleries-orderings': { 
+    'galleries-orderings': {
       extend: 'apostrophe-pieces-orderings'
     },
     'galleries-pages': {
       orderings: true
     },
+    'galleries-widgets': {},
     'people': {},
     'people-pages': {},
     'people-widgets': {},
