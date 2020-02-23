@@ -173,11 +173,11 @@
   {%- elif data.piece.preferences == 'footerOn' -%}
     <div class="main-content">
 
-    {%- if data.piece.headerOn == true and data.piece.cardOn == false -%}
+    {%- if data.piece.titleOn == true and data.piece.cardOn == false -%}
       <div class="header">
         <h3 class="accent-color" style="
-          {%- if data.piece.headerColor -%}
-            color:{{ data.piece.headerColor }}
+          {%- if data.piece.titleColor -%}
+            color:{{ data.piece.titleColor }}
           {% endif %}
         ">
           {{ data.piece.title }}
@@ -196,11 +196,11 @@
             <div class="card-content">
         {% endif %}
 
-          {%- if data.piece.cardOn and data.piece.headerOn == true -%}
+          {%- if data.piece.cardOn and data.piece.titleOn == true -%}
             <div class="card-title">
               <h3 class="accent-color" style="
-                {%- if data.piece.headerColor -%}
-                  color:{{ data.piece.headerColor }}
+                {%- if data.piece.titleColor -%}
+                  color:{{ data.piece.titleColor }}
                 {% endif %}
               ">
                 {{ data.piece.title }}
@@ -242,11 +242,11 @@
   {%- else -%}
     <div class="main-content">
 
-      {%- if data.piece.headerOn == true and data.piece.cardOn == false -%}
+      {%- if data.piece.titleOn == true and data.piece.cardOn == false -%}
         <div class="header">
           <h3 class="accent-color" style="
-            {%- if data.piece.headerColor -%}
-              color:{{ data.piece.headerColor }}
+            {%- if data.piece.titleColor -%}
+              color:{{ data.piece.titleColor }}
             {% endif %}
           ">
             {{ data.piece.title }}
@@ -265,11 +265,11 @@
               <div class="card-content no-padding-mobile">
           {% endif %}
 
-            {%- if data.piece.cardOn and data.piece.headerOn == true -%}
+            {%- if data.piece.cardOn and data.piece.titleOn == true -%}
               <div class="card-title">
                 <h3 class="accent-color" style="
-                  {%- if data.piece.headerColor -%}
-                    color:{{ data.piece.headerColor }}
+                  {%- if data.piece.titleColor -%}
+                    color:{{ data.piece.titleColor }}
                   {% endif %}
                 ">
                   {{ data.piece.title }}

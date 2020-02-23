@@ -1,54 +1,75 @@
 <div data-apos-ajax-append>
-
   {% for piece in data.pieces %}
-    <div class="gallery">
 
-      <div class="header">
-        <a href="{{ piece._url }}">
-          <h3 class="accent-color" style="
-            {%- if piece.headerColor -%}
-              color:{{ piece.headerColor }}
-            {% endif %}
-            {%- if piece.headerCenter -%}
-              text-align: center;
+    {% if piece.container == 'on' %}
+      <div class="container  margin">
+    {%- endif -%}
+
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="radius
+            {% if data.widget.shadowOn == true %}
+              z-depth-1
             {% endif %}
           ">
-            {{ piece.title }}
-          </h3>
-        </a>
-      </div>
+            {% if piece.cardOn == true %}
+              <div class="card">
+                <div class="card-content no-padding-mobile">
+            {% endif %}
 
-      <div class="images" style="
-        {%- if piece.columnCount == '5' -%}
-          column-count: 5;
-        {%- elif piece.columnCount == '4' -%}
-          column-count: 4;
-        {%- elif piece.columnCount == '3' -%}
-          column-count: 3;
-        {% else %}
-          column-count: 5;
-        {% endif %}
-      ">
-        {% for _image in piece._images %}
-        <div class="card" data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}">
-          <div class="card-image">
-            <img
-              src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
-              alt="{{ _image.description or _image.title }}" width="100%"
-            >
+              <div class="gallery">
+
+                <div class="header">
+                  <a href="{{ piece._url }}">
+                    <h3 class="accent-color" style="
+                      {%- if piece.titleColor -%}
+                        color:{{ piece.titleColor }}
+                      {% endif %}
+                      {%- if piece.titleCenter -%}
+                        text-align: center;
+                      {% endif %}
+                    ">
+                      {{ piece.title }}
+                    </h3>
+                  </a>
+                </div>
+
+                <div class="images" style="
+                  {%- if piece.columnCount == '5' -%}
+                    column-count: 5;
+                  {%- elif piece.columnCount == '4' -%}
+                    column-count: 4;
+                  {%- elif piece.columnCount == '3' -%}
+                    column-count: 3;
+                  {% else %}
+                    column-count: 5;
+                  {% endif %}
+                ">
+                  {% for _image in piece._images %}
+                    <img
+                      class="z-depth-2"
+                      src="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'one-third' }) }}"
+                      data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}"
+                      alt="{{ _image.description or _image.title }}" width="100%"
+                    >
+                  {% endfor %}
+                </div>
+
+              </div>
+
+            {% if piece.cardOn == true %}
+                </div>
+              </div>
+            {% endif %}
           </div>
-          {%- if _image.description -%}
-            <div class="card-content">
-              <p class="flow-text">{{ _image.description }}</p>
-            </div>
-          {%- endif -%}
         </div>
-        {% endfor %}
       </div>
 
+    {% if piece.container == 'on' %}
     </div>
-  {% endfor %}
+    {% endif %}
 
+  {% endfor %}
 </div>
 
 {% if data.currentPage < data.totalPages %}

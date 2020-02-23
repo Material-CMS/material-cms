@@ -167,12 +167,24 @@
           <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
         </li>
         {%- endif -%}
-        {%- if data.global.linkedin-%}
+        {% if data.global.instagram %}
+        <li>
+          <a class="btn-floating tip" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
+          <a class="btn-floating fab-tip">{{ data.global.instagram | replace("https://www.instagram.com/", "" ) }}</a>
+        </li>
+        {% endif %}
+        {% if data.global.linkedin %}
         <li>
           <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
           <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
         </li>
-        {%- endif -%}
+        {% endif %}
+        {% if data.global.twitter %}
+        <li>
+          <a class="btn-floating tip" href="{{ data.global.twitter }}" target="_blank"><i class="icon twitter"></i></a>
+          <a class="btn-floating fab-tip">{{ data.global.twitter | replace("https://twitter.com/", "" ) }}</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   {%- endif -%}

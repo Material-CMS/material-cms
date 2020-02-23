@@ -39,12 +39,12 @@
       {%- elif section.preferences == 'footerOn' -%}
         <div class="main-content">
 
-        {%- if section.headerOn == true and section.cardOn == false -%}
+        {%- if section.titleOn == true and section.cardOn == false -%}
           <div class="header">
             <a href="{{ section._url }}">
               <h3 class="accent-color" style="
-                {%- if section.headerColor -%}
-                  color:{{ section.headerColor }}
+                {%- if section.titleColor -%}
+                  color:{{ section.titleColor }}
                 {% endif %}
               ">
                 {{ section.title }}
@@ -64,12 +64,12 @@
                 <div class="card-content">
             {% endif %}
 
-              {%- if section.cardOn and section.headerOn == true -%}
+              {%- if section.cardOn and section.titleOn == true -%}
                 <div class="card-title">
                   <a href="{{ section._url }}">
                     <h3 class="accent-color" style="
-                      {%- if section.headerColor -%}
-                        color:{{ section.headerColor }}
+                      {%- if section.titleColor -%}
+                        color:{{ section.titleColor }}
                       {% endif %}
                     ">
                       {{ section.title }}
@@ -112,12 +112,12 @@
       {%- else -%}
         <div class="main-content">
 
-          {%- if section.headerOn == true and section.cardOn == false -%}
+          {%- if section.titleOn == true and section.cardOn == false -%}
             <div class="header">
               <a href="{{ section._url }}">
                 <h3 class="accent-color" style="
-                  {%- if section.headerColor -%}
-                    color:{{ section.headerColor }}
+                  {%- if section.titleColor -%}
+                    color:{{ section.titleColor }}
                   {% endif %}
                 ">
                   {{ section.title }}
@@ -137,12 +137,12 @@
                   <div class="card-content no-padding-mobile">
               {% endif %}
 
-                {%- if section.cardOn and section.headerOn == true -%}
+                {%- if section.cardOn and section.titleOn == true -%}
                   <div class="card-title">
                   <a href="{{ section._url }}">
                     <h3 class="accent-color" style="
-                      {%- if section.headerColor -%}
-                        color:{{ section.headerColor }}
+                      {%- if section.titleColor -%}
+                        color:{{ section.titleColor }}
                       {% endif %}
                     ">
                       {{ section.title }}
@@ -191,7 +191,21 @@
                           position: 'top-right'
                         }
                       },
+                      'galleries': {
+                        controls: {
+                          cloneable: false,
+                          removable: true,
+                          position: 'top-right'
+                        }
+                      },
                       'carousels': {
+                        controls: {
+                          cloneable: false,
+                          removable: true,
+                          position: 'top-right'
+                        }
+                      },
+                      'people': {
                         controls: {
                           cloneable: false,
                           removable: true,

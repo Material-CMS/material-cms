@@ -162,15 +162,15 @@
   {% for piece in data.widget._pieces %}
       {# Background settings #}
     <div id="{{ piece.slug }}" class="section page" style="
-      {%- if piece._image.attachment  -%}
+      {% if piece._image.attachment  %}
         background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
-      {%- elif piece.color -%}
+      {% elif piece.color %}
         background-color:{{ piece.color }}
       {% endif %}
     ">
 
       {# Small Side Image #}
-      {%- if piece._sideImage -%}
+      {% if piece._sideImage %}
         <div class="side-image"
           {% if piece.sideImageRight %}
             style="right:0;"
@@ -182,7 +182,7 @@
       {% endif %}
 
       {# Slide #}
-      {%- if piece.preferences == 'slideOn' -%}
+      {% if piece.preferences == 'slideOn' %}
         <div class="slide-content">
           {{ apos.singleton(piece, 'content', 'slides', {
             limit: 1,
@@ -196,47 +196,47 @@
         </div>
 
       {# Footer #}
-      {%- elif piece.preferences == 'footerOn' -%}
+      {% elif piece.preferences == 'footerOn' %}
         <div class="main-content">
 
-        {%- if piece.headerOn == true and piece.cardOn == false -%}
+        {% if piece.titleOn == true and piece.cardOn == false %}
           <div class="header">
             <a href="{{ piece._url }}">
               <h3 class="accent-color" style="
-                {%- if piece.headerColor -%}
-                  color:{{ piece.headerColor }}
+                {% if piece.titleColor %}
+                  color:{{ piece.titleColor }}
                 {% endif %}
               ">
                 {{ piece.title }}
               </h3>
             </a>
           </div>
-        {%- endif -%}
+        {% endif %}
 
-        {%- if piece.container == 'on' -%}
+        {% if piece.container == 'on' %}
           <div class="container">
-        {%- endif -%}
+        {% endif %}
 
             <div class="widgets-container">
 
-            {%- if piece.cardOn == true -%}
+            {% if piece.cardOn == true %}
               <div class="card">
                 <div class="card-content">
             {% endif %}
 
-              {%- if piece.cardOn and piece.headerOn == true -%}
+              {% if piece.cardOn and piece.titleOn == true %}
                 <div class="card-title">
                   <a href="{{ piece._url }}">
                     <h3 class="accent-color" style="
-                      {%- if piece.headerColor -%}
-                        color:{{ piece.headerColor }}
+                      {% if piece.titleColor %}
+                        color:{{ piece.titleColor }}
                       {% endif %}
                     ">
                       {{ piece.title }}
                     </h3>
                   </a>
                 </div>
-              {%- endif -%}
+              {% endif %}
 
                 {{ apos.area(piece, 'content', {
                   limit: 1,
@@ -252,15 +252,15 @@
                   }
                 }) }}
 
-            {%- if piece.cardOn == true -%}
+            {% if piece.cardOn == true %}
                 </div>
               </div>
             {% endif %}
 
             </div>
-        {%- if piece.container == 'on' -%}
+        {% if piece.container == 'on' %}
           </div>
-        {%- endif -%}
+        {% endif %}
 
         </div>
 
@@ -269,16 +269,16 @@
         </div>
 
       {# Main Widgets #}
-      {%- else -%}
+      {% else %}
         <div class="main-content">
 
-          {%- if piece.headerOn == true and piece.cardOn == false -%}
+          {% if piece.titleOn == true and piece.cardOn == false %}
             <div class="header">
               <a href="{{ piece._url }}">
 
                 <h3 class="accent-color" style="
-                  {%- if piece.headerColor -%}
-                    color:{{ piece.headerColor }}
+                  {% if piece.titleColor %}
+                    color:{{ piece.titleColor }}
                   {% endif %}
                 ">
                   {{ piece.title }}
@@ -286,32 +286,32 @@
 
               </a>
             </div>
-          {%- endif -%}
+          {% endif %}
 
-        {%- if piece.container == 'on' -%}
+        {% if piece.container == 'on' %}
           <div class="container">
-        {%- endif -%}
+        {% endif %}
 
             <div class="widgets-container">
 
-              {%- if piece.cardOn == true -%}
+              {% if piece.cardOn == true %}
                 <div class="card">
                   <div class="card-content no-padding-mobile">
               {% endif %}
 
-                {%- if piece.cardOn and piece.headerOn == true -%}
+                {% if piece.cardOn and piece.titleOn == true %}
                   <div class="card-title">
                     <a href="{{ piece._url }}">
                       <h3 class="accent-color" style="
-                        {%- if piece.headerColor -%}
-                          color:{{ piece.headerColor }}
+                        {% if piece.titleColor %}
+                          color:{{ piece.titleColor }}
                         {% endif %}
                       ">
                         {{ piece.title }}
                       </h3>
                     </a>
                   </div>
-                {%- endif -%}
+                {% endif %}
 
                   {{ apos.area(piece, 'content', {
                     limit: 2,
@@ -353,6 +353,13 @@
                           position: 'top-right'
                         }
                       },
+                      'galleries': {
+                        controls: {
+                          cloneable: false,
+                          removable: true,
+                          position: 'top-right'
+                        }
+                      },
                       'carousels': {
                         controls: {
                           cloneable: false,
@@ -376,51 +383,63 @@
                       }
                     }
                   }) }}
-              {%- if piece.cardOn == true -%}
+              {% if piece.cardOn == true %}
                   </div>
                 </div>
               {% endif %}
 
             </div>
 
-        {%- if piece.container == 'on' -%}
+        {% if piece.container == 'on' %}
           </div>
-        {%- endif -%}
+        {% endif %}
 
         {# Contact Button #}
-        {%- if data.widget.buttonOn == true -%}
+        {% if data.widget.buttonOn == true %}
           <div class="fixed-action-btn">
             <a class="btn-floating btn-large">
               <i class="large material-icons">person</i>
             </a>
             <ul>
-              {%- if data.global.phone -%}
+              {% if data.global.phone %}
               <li>
                 <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
                 <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
               </li>
-              {%- endif -%}
-              {%- if data.global.email -%}
+              {% endif %}
+              {% if data.global.email %}
               <li>
                 <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
                 <a class="btn-floating fab-tip">{{ data.global.email }}</a>
               </li>
-              {%- endif -%}
-              {%- if data.global.facebook -%}
+              {% endif %}
+              {% if data.global.facebook %}
               <li>
                 <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
                 <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
               </li>
-              {%- endif -%}
-              {%- if data.global.linkedin-%}
+              {% endif %}
+              {% if data.global.instagram %}
+              <li>
+                <a class="btn-floating tip" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
+                <a class="btn-floating fab-tip">{{ data.global.instagram | replace("https://www.instagram.com/", "" ) }}</a>
+              </li>
+              {% endif %}
+              {% if data.global.linkedin %}
               <li>
                 <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
                 <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
               </li>
-              {%- endif -%}
+              {% endif %}
+              {% if data.global.twitter %}
+              <li>
+                <a class="btn-floating tip" href="{{ data.global.twitter }}" target="_blank"><i class="icon twitter"></i></a>
+                <a class="btn-floating fab-tip">{{ data.global.twitter | replace("https://twitter.com/", "" ) }}</a>
+              </li>
+              {% endif %}
             </ul>
           </div>
-        {%- endif -%}
+        {% endif %}
 
         </div>
       {% endif %}
