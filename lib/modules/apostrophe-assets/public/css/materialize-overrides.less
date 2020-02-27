@@ -292,9 +292,12 @@ h4 {
 .collection {
   margin: 0;
   border: none;
-  border: 1px solid #e0e0e0;
   .collection-item.avatar {
     padding-left: 132px;
+    .title {
+      position: inherit;
+      text-align: inherit;
+    }
   }
   .circle {
     width: 90px !important;
@@ -434,6 +437,16 @@ h4 {
 .margin-top {
   margin-top: 1rem;
 }
-.apos-ui .apos-field-input {
-  height: inherit;
+.apos-ui {
+  .apos-dropdown.apos-dropdown--area-controls {
+    .apos-dropdown-items {
+      max-width: 100%;
+      .apos-dropdown-item {
+        float: left;
+      }
+    }
+  }
+  .apos-field-input {
+    height: inherit;
+  }
 }
