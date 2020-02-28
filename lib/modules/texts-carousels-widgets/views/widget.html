@@ -1,0 +1,55 @@
+<div class="row margin">
+  <div class="col s12 m12">
+    <div class="radius
+      {% if data.widget.shadowOn == true %}
+        z-depth-1
+      {% endif %}
+    ">
+
+      <div class="card">
+        <div class="card-stacked">
+          <div class="card-content carousel carousel-slider" style="
+            {% if piece.backColor%}
+              background-color:{{ piece.backColor }}
+            {% endif %}
+          ">
+
+            {% for piece in data.widget._pieces %}
+              <div class="carousel-item z-depth-0" style="
+                  {% if piece.backColor%}
+                    background-color:{{ piece.backColor }}
+                  {% endif %}
+                ">
+                  {% if piece.title %}
+                    {% if piece._url %}
+                      <a href="{{ piece._url }}">
+                    {% endif %}
+                        <h4 class="accent-color card-title" style="
+                          {% if piece.titleColor %}
+                            color:{{ piece.titleColor }}
+                          {% endif %}
+                        ">
+                          {{ piece.title }}
+                        </h4>
+                    {% if piece._url %}
+                      </a>
+                    {% endif %}
+                  {% endif %}
+
+                  {% if piece.description.items[0] %}
+                    {{ apos.area(piece, 'description', {
+                      edit: false,
+                      widgets: { 'apostrophe-rich-text': { } }
+                    }) }}
+                  {% endif %}
+                </div>
+
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

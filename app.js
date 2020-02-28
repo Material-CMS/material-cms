@@ -8,8 +8,6 @@ var apos = require('apostrophe')({
     // Custom Modules
     'apostrophe-video-widgets': {},
     'card-widgets': {},
-    'carousels': {},
-    'carousels-widgets': {},
     'contact-form': {},
     'contact-form-widgets': {},
     'double-widgets': {},
@@ -50,6 +48,7 @@ var apos = require('apostrophe')({
     'texts-orderings': {
       extend: 'apostrophe-pieces-orderings'
     },
+    'texts-carousels-widgets': {},
     'texts-widgets': {},
     'texts-pages': {
       orderings: true
