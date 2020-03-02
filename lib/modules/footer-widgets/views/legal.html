@@ -1,4 +1,33 @@
-{{ apos.area(data.global, 'legal', {
-  edit: false,
-  widgets: { 'apostrophe-rich-text': { } }
-}) }}
+{% block extraHead %}
+
+  <meta name="robots" content="noindex" />
+
+{% endblock %}
+
+{% block main %}
+
+  {{ apos.area(data.global, 'legal', {
+    edit: false,
+    widgets: { 'apostrophe-rich-text': { } }
+  }) }}
+
+{% endblock %}
+
+{% block afterMain %}
+
+  <style>
+    p {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen-Sans,
+        Ubuntu,
+        Cantarell,
+        "Helvetica Neue",
+        sans-serif;
+    }
+  </style>
+
+{% endblock %}
