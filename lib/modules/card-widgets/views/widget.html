@@ -31,7 +31,7 @@
                       >
                     {%- if data.widget.title -%}
                       {%- block title -%}
-                      <span class="card-title">
+                      <span class="card-title {{ image.align }}">
                         <h4 class=" accent-color truncate hide-on-small-only"
                           {%- if data.widget.color -%}
                             style="color:{{ data.widget.color }}"

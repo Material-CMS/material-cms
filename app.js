@@ -40,8 +40,7 @@ var apos = require('apostrophe')({
       orderings: true
     },
     'sections-widgets': {},
-    'slides': {},
-    'slides-widgets': {},
+    'slider-widgets':{},
     'texts': {
       orderings: true
     },

@@ -158,7 +158,7 @@
   {# Slide #}
   {%- if data.piece.preferences == 'slideOn' -%}
     <div class="slide-content">
-      {{ apos.singleton(data.piece, 'content', 'slides', {
+      {{ apos.singleton(data.piece, 'content', 'slider', {
         limit: 1,
         controls: {
           movable: false,
