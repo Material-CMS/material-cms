@@ -1,0 +1,44 @@
+
+<div class="slider fullscreen">
+  <ul class="slides">
+
+    {%- block items -%}
+      {%- for entry in data.widget._pieces -%}
+        {%- set image = entry.item or entry -%}
+        {%- set relationship = entry.relationship -%}
+
+        <li>
+          <img
+            data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}{% endblock %}"
+            alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
+          >
+
+          <div class="caption {{ image.align }}">
+
+            {%- block title -%}
+              <h3 class=" accent-color truncate hide-on-small-only"
+                {%- if data.widget.color -%}
+                  style="color:{{ data.widget.color }}"
+                {% endif %}
+              >
+                {{ image.title }}
+              </h3>
+            {%- endblock -%}
+
+            {%- block description -%}
+              {%- if image.description -%}
+                <p class="flow-text">{{ image.description | nlbr }}</p>
+              {%- endif -%}
+            {%- endblock -%}
+          </div>
+        </li>
+
+      {%- endfor -%}
+    {%- endblock -%}
+
+  </ul>
+</div>
+
+<style>
+  .slider .indicators .indicator-item.active { background-color:{{ data.global.accentColor }} }
+</style>
