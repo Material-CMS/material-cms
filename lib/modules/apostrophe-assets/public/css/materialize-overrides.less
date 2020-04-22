@@ -111,6 +111,9 @@ h4 {
 .container {
   display: flex;
   align-items: center;
+  .widgets-container {
+    padding: 0;
+  }
 }
 .footer-container {
   width: 100%;
@@ -118,6 +121,10 @@ h4 {
 // Widgets
 .widgets-container {
   width: 100%;
+  padding: 0 .75rem;
+  .col {
+    padding: 0;
+  }
   .gallery {
     margin-bottom: 3.7rem;
   }
@@ -237,8 +244,8 @@ h4 {
     display: inline-block;
     width:90% !important;
     height: auto !important;
-    padding-left:8%;
-    padding-right:8%;
+//    padding-left:8%;
+//    padding-right:8%;
     cursor: pointer;
     p {
       color: rgba(0,0,0,0.87);
@@ -449,7 +456,7 @@ h4 {
 .apos-ui {
   .apos-dropdown.apos-dropdown--area-controls {
     .apos-dropdown-items {
-      max-width: 100%;
+      max-width: 92%;
       .apos-dropdown-item {
         float: left;
       }

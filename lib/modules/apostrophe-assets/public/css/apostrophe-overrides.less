@@ -22,6 +22,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: @white;
+    .box-shadow(0 0 4px 2px rgba(0,0,0,0.16));
   }
 }
 // Empty widget area
@@ -42,10 +44,11 @@ body {
     transform: translate(0, 0);
   }
 }
-fieldset
-.apos-area-widgets,
-.apos-area-widget {
-  width: 100%;
+fieldset {
+  .apos-area-widgets,
+  .apos-area-widget {
+    width: 100%;
+  }
 }
 // Admin UI
 .main-content {
@@ -57,12 +60,21 @@ fieldset
     opacity: 1;
   }
 }
+.apos-area-controls {
+  .apos-area-divider {
+    .box-shadow(none);
+    background-color: @button-color;
+  }
+}
 .apos-area-widgets {
   .apos-peek {
     opacity: 1;
   }
 }
 .apos-ui {
+  .apos-dropdown-items{
+    
+  }
   .apos-field-input-checkbox-indicator,
   .apos-form-checkbox-indicator {
     border: inherit;
