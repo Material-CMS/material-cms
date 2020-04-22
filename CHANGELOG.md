@@ -10,10 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Video locals files
 - More widget types
 - Integrate apostrophe-i18n Module for multilingual support
-- Infinite gallery piece, page and widget with Ajax
 
 ### Fixed
 - Image widget round corners when section is full card & full card round corners
+
+## [0.9.2 ] - 2020-04-22
+
+### Added
+- New text-carousel-widget
+- New slider-widget
+- Infinite gallery piece, page and widget with Ajax
+- Updated apostrophe to 2.106.2 & apostrophe-seo to 1.2.4
+
+### fixed
+- Contact form
+- Exclude legal & privacy info from search engine indexing
 
 ## [0.9.1 ] - 2020-03-01
 
