@@ -7,26 +7,33 @@
       {% endif %}
     ">
 
-    {% if piece.sideImage.items[0] %}
-    <div class="row">
-      <div class="height-100 col s12 m3">
-        <div class="card-image">
-          {{ apos.area(piece, 'sideImage', {
-            edit: false,
-            widgets: { 'card': {
-              noHeight: true,
-              focalPoint: true
-            } }
-          }) }}
-        </div>
-      </div>
-      {% endif %}
+    {% if piece.blogOn == true %}
+
+    {% else %}
 
       {% if piece.sideImage.items[0] %}
-      <div class="height-100 col s12 m9">
+      <div class="row">
+        <div class="height-100 col s12 m3">
+          <div class="card-image">
+            {{ apos.area(piece, 'sideImage', {
+              edit: false,
+              widgets: { 'card': {
+                noHeight: true,
+                focalPoint: true
+              } }
+            }) }}
+          </div>
+        </div>
       {% endif %}
 
+        {% if piece.sideImage.items[0] %}
+        <div class="height-100 col s12 m9">
+        {% endif %}
+
+    {% endif %}
+
         <div class="card-stacked">
+
           <div class="card-content" style="
             {% if piece.backColor%}
               background-color:{{ piece.backColor }}
@@ -139,10 +146,16 @@
 
         </div>
 
+  {% if piece.blogOn == true %}
+
+  {% else %}
+
     {% if piece.sideImage.items[0] %}
       </div>
     </div>
     {% endif %}
+
+  {% endif %}
 
   </div>
   {% endfor %}
