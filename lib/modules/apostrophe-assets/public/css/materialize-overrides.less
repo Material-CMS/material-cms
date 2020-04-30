@@ -73,6 +73,7 @@ h4 {
     display: flex;
     align-items: center;
     width: 100vw;
+    min-height: 100vh;
     position: relative;
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -314,6 +315,10 @@ h4 {
   border: none;
   .collection-item.avatar {
     padding-left: 132px;
+    .circle {
+      top: 50%;
+      transform: translate(0, -50%);
+    }
     .title {
       position: static;
       text-align: inherit;
@@ -377,8 +382,10 @@ h4 {
 .modal {
   top: auto !important;
   bottom: 5% !important;
+  overflow: hidden;
 }
 .modal-content {
+  padding: 24px 0 !important;
   h4,p {
     color: #000000 !important;
   }

@@ -135,6 +135,7 @@
 </div>
 
 <div class="main-content">
+
   <div class="pages-container">
 
     {% if data.piece.container == 'on' %}
@@ -191,6 +192,11 @@
     {% endif %}
 
   </div>
+
+  <div class="bottom-content">
+    {% include "footer-widgets:widget.html" %}
+  </div>
+  
 </div>
 
 {% endblock %}

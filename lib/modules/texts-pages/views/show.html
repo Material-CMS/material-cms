@@ -150,24 +150,31 @@
                   {% endif %}
                 ">
 
-                {% if data.piece.sideImage.items[0] %}
-                <div class="row">
-                  <div class="height-100 col s12 m3">
-                    <div class="card-image">
-                      {{ apos.area(data.piece, 'sideImage', {
-                        edit: false,
-                        widgets: { 'card': {
-                          noHeight: true,
-                          focalPoint: true
-                        } }
-                      }) }}
-                    </div>
-                  </div>
-                  {% endif %}
+                {% if data.piece.blogOn == true %}
+
+                {% else %}
 
                   {% if data.piece.sideImage.items[0] %}
-                  <div class="height-100 col s12 m9">
+                  <div class="row">
+                    <div class="height-100 col s12 m3">
+                      <div class="card-image">
+                        {{ apos.area(data.piece, 'sideImage', {
+                          edit: false,
+                          widgets: { 'card': {
+                            noHeight: true,
+                            focalPoint: true
+                          } }
+                        }) }}
+                      </div>
+                    </div>
                   {% endif %}
+
+                    {% if data.piece.sideImage.items[0] %}
+                    <div class="height-100 col s12 m9">
+                    {% endif %}
+
+                  {% endif %}
+
 
                     <div class="card-stacked">
                       <div class="card-content" style="
@@ -224,9 +231,15 @@
 
                     </div>
 
-                {% if data.piece.sideImage.items[0] %}
+                {% if data.piece.blogOn == true %}
+
+                {% else %}
+
+                  {% if data.piece.sideImage.items[0] %}
+                    </div>
                   </div>
-                </div>
+                  {% endif %}
+
                 {% endif %}
 
               </div>
@@ -285,6 +298,10 @@
         </ul>
       </div>
     {% endif %}
+
+    <div class="bottom-content">
+      {% include "footer-widgets:widget.html" %}
+    </div>
 
   </div>
 
