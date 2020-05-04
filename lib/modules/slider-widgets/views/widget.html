@@ -16,21 +16,30 @@
           <div class="caption {{ image.align }}">
 
             {%- block title -%}
-              <h3 class=" accent-color truncate hide-on-small-only"
-                {%- if data.widget.titleColor -%}
-                  style="color:{{ data.widget.titleColor }}"
+              <h3 class="accent-color truncate hide-on-small-only"
+                {%- if image.titleColor -%}
+                  style="color:{{ image.titleColor }}"
                 {% endif %}
               >
                 {{ image.title }}
               </h3>
+              <a class="fab-tip">{{ image.title }}</a>
             {%- endblock -%}
 
             {%- block description -%}
               {%- if image.description -%}
-                <p class="flow-text">{{ image.description | nlbr }}</p>
+                <p class="flow-text"
+                  {%- if image.descriptionColor -%}
+                    style="color:{{ image.descriptionColor }}"
+                  {% endif %}
+                >
+                  {{ image.description | nlbr }}
+                </p>
               {%- endif -%}
             {%- endblock -%}
+
           </div>
+
         </li>
 
       {%- endfor -%}
