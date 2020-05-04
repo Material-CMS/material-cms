@@ -1,13 +1,25 @@
 <div data-apos-ajax-append>
 
   {% for piece in data.pieces %}
-  <div class="card horizontal z-depth-0" style="
+  <div class="card z-depth-0 {% if piece.blogOn == true %}blog{% else %}horizontal{% endif %}" style="
       {% if piece.backColor%}
         background-color:{{ piece.backColor }}
       {% endif %}
     ">
 
     {% if piece.blogOn == true %}
+
+      {% if piece.topImage.items[0] %}
+        <div class="card-image">
+          {{ apos.area(piece, 'topImage', {
+            edit: false,
+            widgets: { 'card': {
+              noHeight: true,
+              focalPoint: true
+            } }
+          }) }}
+        </div>
+      {% endif %}
 
     {% else %}
 
