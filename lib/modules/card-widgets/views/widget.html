@@ -32,9 +32,11 @@
                     {%- if data.widget.title -%}
                       {%- block title -%}
                       <span class="card-title {{ image.align }}">
-                        <h4 class=" accent-color truncate hide-on-small-only"
-                          {%- if data.widget.color -%}
-                            style="color:{{ data.widget.color }}"
+                        <h4 class="accent-color truncate hide-on-small-only"
+                          {%- if data.widget.titleColor -%}
+                            style="color:{{ data.widget.titleColor }}"
+                          {%- elif image.titleColor -%}
+                            style="color:{{ image.titleColor }}"
                           {% endif %}
                         >
                           {{ image.title }}
@@ -46,7 +48,15 @@
                   {%- block description -%}
                     {%- if image.description -%}
                       <div class="card-content">
-                        <p class="flow-text">{{ image.description | nlbr }}</p>
+                        <p class="flow-text"
+                          {%- if data.widget.descriptionColor -%}
+                            style="color:{{ data.widget.descriptionColor }}"
+                          {%- elif image.descriptionColor -%}
+                            style="color:{{ image.descriptionColor }}"
+                          {% endif %}
+                        >
+                          {{ image.description | nlbr }}
+                        </p>
                       </div>
                     {%- endif -%}
                   {%- endblock -%}
