@@ -246,6 +246,9 @@
     .nav .dropdown-content li > a {
       color: {{ data.global.accentColor }}
     }
+    {% if data.global.additionalStyles %}
+      {{ data.global.additionalStyles }}
+    {% endif %}
   </style>
 
 {% endblock %}
