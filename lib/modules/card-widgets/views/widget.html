@@ -62,15 +62,15 @@
                   {%- endblock -%}
                   {%- block credit -%}
                     {%- if image.credit -%}
-                      {%- if image.creditUrl -%}
-                        <div class="card-action">
-                          <a href="{{ image.creditUrl }}">
-                      {%- endif -%}
-                      {{ image.credit }}
-                      {%- if image.creditUrl -%}
-                          </a>
-                        </div>
-                      {%- endif -%}
+                      <div class="card-action">
+                        {%- if image.creditUrl -%}
+                            <a href="{{ image.creditUrl }}" target="_blank">
+                        {%- endif -%}
+                              <span>{{ image.credit }}</span>
+                        {%- if image.creditUrl -%}
+                            </a>
+                        {%- endif -%}
+                      </div>
                     {%- endif -%}
                   {%- endblock -%}
                 </div>

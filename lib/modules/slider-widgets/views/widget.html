@@ -23,7 +23,6 @@
               >
                 {{ image.title }}
               </h3>
-              <a class="fab-tip">{{ image.title }}</a>
             {%- endblock -%}
 
             {%- block description -%}
@@ -39,6 +38,20 @@
             {%- endblock -%}
 
           </div>
+
+          {%- block credit -%}
+            {%- if image.credit -%}
+              <div class="credit">
+                {%- if image.creditUrl -%}
+                    <a href="{{ image.creditUrl }}" target="_blank">
+                {%- endif -%}
+                      <span>{{ image.credit }}</span>
+                {%- if image.creditUrl -%}
+                    </a>
+                {%- endif -%}
+            </div>
+            {%- endif -%}
+          {%- endblock -%}
 
         </li>
 

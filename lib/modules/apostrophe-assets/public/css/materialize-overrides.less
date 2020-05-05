@@ -148,11 +148,24 @@ h4 {
   background-color: inherit;
 }
 // Slides
-.slide-content{
+.slide-content {
   height: 100vh;
   width:  100%;
   h3 {
     line-height: 4rem;
+  }
+  .credit {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 16px 24px;
+    span {
+      color: #ffab40;
+      margin-right: 24px;
+      -webkit-transition: color .3s ease;
+      transition: color .3s ease;
+      text-transform: uppercase
+    }
   }
 }
 .slider.fullscreen {
@@ -168,6 +181,15 @@ h4 {
     width: 100%;
     h4 {
       line-height: 2rem;
+    }
+  }
+  .card-action {
+    span {
+      color: #ffab40;
+      margin-right: 24px;
+      -webkit-transition: color .3s ease;
+      transition: color .3s ease;
+      text-transform: uppercase
     }
   }
 	.btn-floating.halfway-fab {
@@ -188,7 +210,7 @@ h4 {
 }
 // Horizontal Card Height Overrides
 .card.horizontal {
-  .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  .card-action a {
     margin-right: 0 !important;
   }
   .card-action {
