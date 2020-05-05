@@ -56,6 +56,9 @@
 {% block afterMain %}
   {# Setting accentColor for apostrophe-palette #}
   <style>
+    {% if data.global.additionalStyles %}
+      {{ data.global.additionalStyles }}
+    {% endif %}
     .btn {
       color:{{ data.global.mainColor }};
       background-color:{{ data.global.accentColor }}

@@ -125,7 +125,9 @@
         {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
           class="active"
         {% endif %}
-      >
+      >    {% if data.global.additionalStyles %}
+      {{ data.global.additionalStyles }}
+    {% endif %}
         <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ tab.title }}</a>
       </li>
     {% endfor %}
@@ -207,6 +209,9 @@
 
   {# Setting accentColor for apostrophe-palette #}
   <style>
+    {% if data.global.additionalStyles %}
+      {{ data.global.additionalStyles }}
+    {% endif %}
     .btn {
       color:{{ data.global.mainColor }};
       background-color:{{ data.global.accentColor }}

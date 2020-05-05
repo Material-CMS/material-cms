@@ -2,10 +2,10 @@
 <div class="slider fullscreen">
   <ul class="slides">
 
-    {%- block items -%}
-      {%- for entry in data.widget._pieces -%}
-        {%- set image = entry.item or entry -%}
-        {%- set relationship = entry.relationship -%}
+    {% block items %}
+      {% for entry in data.widget._pieces %}
+        {% set image = entry.item or entry %}
+        {% set relationship = entry.relationship %}
 
         <li>
           <img
@@ -15,48 +15,48 @@
 
           <div class="caption {{ image.align }}">
 
-            {%- block title -%}
+            {% block title %}
               <h3 class="accent-color truncate hide-on-small-only"
-                {%- if image.titleColor -%}
+                {% if image.titleColor %}
                   style="color:{{ image.titleColor }}"
                 {% endif %}
               >
                 {{ image.title }}
               </h3>
-            {%- endblock -%}
+            {% endblock %}
 
-            {%- block description -%}
-              {%- if image.description -%}
+            {% block description %}
+              {% if image.description %}
                 <p class="flow-text"
-                  {%- if image.descriptionColor -%}
+                  {% if image.descriptionColor %}
                     style="color:{{ image.descriptionColor }}"
                   {% endif %}
                 >
                   {{ image.description | nlbr }}
                 </p>
-              {%- endif -%}
-            {%- endblock -%}
+              {% endif %}
+            {% endblock %}
 
           </div>
 
-          {%- block credit -%}
-            {%- if image.credit -%}
+          {% block credit %}
+            {% if image.credit %}
               <div class="credit">
-                {%- if image.creditUrl -%}
+                {% if image.creditUrl %}
                     <a href="{{ image.creditUrl }}" target="_blank">
-                {%- endif -%}
+                {% endif %}
                       <span>{{ image.credit }}</span>
-                {%- if image.creditUrl -%}
+                {% if image.creditUrl %}
                     </a>
-                {%- endif -%}
+                {% endif %}
             </div>
-            {%- endif -%}
-          {%- endblock -%}
+            {% endif %}
+          {% endblock %}
 
         </li>
 
-      {%- endfor -%}
-    {%- endblock -%}
+      {% endfor %}
+    {% endblock %}
 
   </ul>
 </div>
