@@ -14,13 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Image widget round corners when section is full card & full card round corners
 
-## [0.9.3 ] - 2020-05-06
+## [0.9.3 ] - 2020-05-07
 
 ### Added
 - Share buttons widgets
+- Contact button widgets as include
 - Better palette styles include mechanism
-
-
+- Palette styles as styles.html
+- Updated apostrophe to 2.106.3 & apostrophe-site-map to 2.5.3
 
 ## [0.9.2 ] - 2020-04-22
 

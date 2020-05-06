@@ -407,51 +407,8 @@
           </div>
         {% endif %}
 
-        {# Contact Button #}
-        {% if data.widget.buttonOn == true %}
-          <div class="fixed-action-btn">
-            <a class="btn-floating btn-large">
-              <i class="large material-icons">person</i>
-            </a>
-            <ul>
-              {% if data.global.phone %}
-              <li>
-                <a class="btn-floating tip" href="tel:{{ data.global.phone }}"><i class="material-icons">local_phone</i></a>
-                <a class="btn-floating fab-tip">{{ data.global.phone }}</a>
-              </li>
-              {% endif %}
-              {% if data.global.email %}
-              <li>
-                <a class="btn-floating tip" href="mailto:{{ data.global.email }}"><i class="material-icons">email</i></a>
-                <a class="btn-floating fab-tip">{{ data.global.email }}</a>
-              </li>
-              {% endif %}
-              {% if data.global.facebook %}
-              <li>
-                <a class="btn-floating tip" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
-                <a class="btn-floating fab-tip">{{ data.global.facebook | replace("https://www.facebook.com/", "" ) }}</a>
-              </li>
-              {% endif %}
-              {% if data.global.instagram %}
-              <li>
-                <a class="btn-floating tip" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
-                <a class="btn-floating fab-tip">{{ data.global.instagram | replace("https://www.instagram.com/", "" ) }}</a>
-              </li>
-              {% endif %}
-              {% if data.global.linkedin %}
-              <li>
-                <a class="btn-floating tip" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
-                <a class="btn-floating fab-tip">{{ data.global.linkedin | replace("https://www.linkedin.com/in/", "" ) }}</a>
-              </li>
-              {% endif %}
-              {% if data.global.twitter %}
-              <li>
-                <a class="btn-floating tip" href="{{ data.global.twitter }}" target="_blank"><i class="icon twitter"></i></a>
-                <a class="btn-floating fab-tip">{{ data.global.twitter | replace("https://twitter.com/", "" ) }}</a>
-              </li>
-              {% endif %}
-            </ul>
-          </div>
+        {% if data.page.buttonOn == true %}
+          {% include "btn-widgets:widget.html" %}
         {% endif %}
 
         </div>
