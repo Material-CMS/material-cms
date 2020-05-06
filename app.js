@@ -10,6 +10,7 @@ var apos = require('apostrophe')({
     'card-widgets': {},
     'contact-form': {},
     'contact-form-widgets': {},
+    'btn-widgets':{},
     'double-widgets': {},
     'events': {},
     'events-widgets': {},
