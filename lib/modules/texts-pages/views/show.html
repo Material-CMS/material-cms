@@ -189,8 +189,7 @@
                     <div class="height-100 col s12 m9">
                     {% endif %}
 
-                  {% endif %}
-
+                {% endif %}
 
                     <div class="card-stacked">
                       <div class="card-content" style="
@@ -209,7 +208,8 @@
                           </h4>
                         {% endif %}
 
-                        {% if data.piece.description.items[0] %}
+                        {% if data.piece.text.items[0] %}
+
                           {{ apos.area(data.piece, 'text', {
                             edit: false,
                             widgets: { 'apostrophe-rich-text': { } }
@@ -217,17 +217,17 @@
                         {% endif %}
                       </div>
 
-                      {% if data.piece.extraLink %}
+                        <div class="card-action z-depth-0" style="
+                          {% if data.piece.backColor%}
+                            background-color:{{ data.piece.backColor }}
+                          {% endif %}
+                        ">
 
-                          <div class="card-action z-depth-0" style="
-                            {% if data.piece.backColor%}
-                              background-color:{{ data.piece.backColor }}
-                            {% endif %}
-                          ">
+                          <div class="row">
 
-                            <div class="row">
+                            {% if data.piece.extraLink %}
 
-                              <div class="col s12 center-align">
+                              <div class="col s6">
                                 <a class="btn-flat" href="{{ data.piece.extraLink }}" target="_blank">
                                   {% if data.piece.linkText %}
                                     {{ data.piece.linkText }}
@@ -237,11 +237,21 @@
                                 </a>
                               </div>
 
+                            {% endif %}
+
+                            <div class="right-align col
+                              {% if data.piece.extraLink %}
+                                s6
+                              {% else %}
+                                s12
+                              {% endif %}
+                            ">
+                              {% include "share-widgets:widget.html" %}
                             </div>
 
                           </div>
 
-                      {% endif %}
+                        </div>
 
                     </div>
 
@@ -323,37 +333,6 @@
 
 {% block afterMain %}
 
-  {# Setting accentColor for apostrophe-palette #}
-  <style>
-    .btn {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }}
-    }
-    .btn-floating {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }}
-    }
-    .btn-floating:hover {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }};
-    }
-    .scroll-down.btn-floating:focus {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }}
-    }
-    .btn:hover {
-      background-color:{{ data.global.accentColor }};
-      filter: brightness(130%)
-    }
-    .btn:focus {
-      background-color:{{ data.global.accentColor }};
-    }
-    .nav .dropdown-content li > a {
-      color: {{ data.global.accentColor }}
-    }
-    {% if data.global.additionalStyles %}
-      {{ data.global.additionalStyles }}
-    {% endif %}
-  </style>
+  {% include "apostrophe-assets:styles.html" %}
 
 {% endblock %}
