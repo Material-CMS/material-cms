@@ -355,37 +355,6 @@
 
 {% block afterMain %}
 
-  {# Setting accentColor for apostrophe-palette #}
-  <style>
-    .btn {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }}
-    }
-    .btn-floating {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }}
-    }
-    .btn-floating:hover {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }};
-    }
-    .scroll-down.btn-floating:focus {
-      color:{{ data.global.mainColor }};
-      background-color:{{ data.global.accentColor }}
-    }
-    .btn:hover {
-      background-color:{{ data.global.accentColor }};
-      filter: brightness(130%)
-    }
-    .btn:focus {
-      background-color:{{ data.global.accentColor }};
-    }
-    .nav .dropdown-content li > a {
-      color: {{ data.global.accentColor }}
-    }
-    {% if data.global.additionalStyles %}
-      {{ data.global.additionalStyles }}
-    {% endif %}
-  </style>
-
+  {% include "apostrophe-assets:styles.html" %}
+  
 {% endblock %}

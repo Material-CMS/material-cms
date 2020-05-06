@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Image widget round corners when section is full card & full card round corners
 
+## [0.9.3 ] - 2020-05-06
+
+### Added
+- Share buttons widgets
+- Better palette styles include mechanism
+
+
+
 ## [0.9.2 ] - 2020-04-22
 
 ### Added
