@@ -198,52 +198,15 @@
       {% elif piece.preferences == 'footerOn' %}
         <div class="main-content">
 
-        {% if piece.titleOn == true and piece.cardOn == false %}
-          <div class="title">
-            {% if piece._url %}
-              <a href="{{ piece._url }}">
-            {% endif %}
-                <h3 class="accent-color" style="
-                  {% if piece.titleColor %}
-                    color:{{ piece.titleColor }}
-                  {% endif %}
-                ">
-                  {{ piece.title }}
-                </h3>
-            {% if piece._url %}
-              </a>
-            {% endif %}
-          </div>
-        {% endif %}
-
         {% if piece.container == 'on' %}
           <div class="container">
         {% endif %}
 
             <div class="widgets-container">
 
-            {% if piece.cardOn == true %}
-              <div class="card">
-                <div class="card-content">
+            {% if piece.glueWidgets == true %}
+              <div class="glue-container">
             {% endif %}
-
-              {% if piece.cardOn and piece.titleOn == true %}
-                <div class="card-title">
-                  {% if piece._url %}
-                    <a href="{{ piece._url }}">
-                  {% endif %}
-                      <h3 class="accent-color" style="
-                        {% if piece.titleColor %}
-                          color:{{ piece.titleColor }}
-                        {% endif %}
-                      ">
-                        {{ piece.title }}
-                      </h3>
-                  {% if piece._url %}
-                    </a>
-                  {% endif %}
-                </div>
-              {% endif %}
 
                 {{ apos.area(piece, 'content', {
                   limit: 1,
@@ -259,8 +222,7 @@
                   }
                 }) }}
 
-            {% if piece.cardOn == true %}
-                </div>
+            {% if piece.glueWidgets == true %}
               </div>
             {% endif %}
 
@@ -279,52 +241,15 @@
       {% else %}
         <div class="main-content">
 
-          {% if piece.titleOn == true and piece.cardOn == false %}
-            <div class="title">
-              {% if piece._url %}
-                <a href="{{ piece._url }}">
-              {% endif %}
-                  <h3 class="accent-color" style="
-                    {% if piece.titleColor %}
-                      color:{{ piece.titleColor }}
-                    {% endif %}
-                  ">
-                    {{ piece.title }}
-                  </h3>
-              {% if piece._url %}
-                </a>
-              {% endif %}
-            </div>
-          {% endif %}
-
         {% if piece.container == 'on' %}
           <div class="container">
         {% endif %}
 
             <div class="widgets-container">
 
-              {% if piece.cardOn == true %}
-                <div class="card">
-                  <div class="card-content no-padding-mobile">
+              {% if piece.glueWidgets == true %}
+                <div class="glue-container">
               {% endif %}
-
-                {% if piece.cardOn and piece.titleOn == true %}
-                  <div class="card-title">
-                    {% if piece._url %}
-                      <a href="{{ piece._url }}">
-                    {% endif %}
-                        <h3 class="accent-color" style="
-                          {% if piece.titleColor %}
-                            color:{{ piece.titleColor }}
-                          {% endif %}
-                        ">
-                          {{ piece.title }}
-                        </h3>
-                    {% if piece._url %}
-                      </a>
-                    {% endif %}
-                  </div>
-                {% endif %}
 
                   {{ apos.area(piece, 'content', {
                     limit: 2,
@@ -396,8 +321,7 @@
                       }
                     }
                   }) }}
-              {% if piece.cardOn == true %}
-                  </div>
+              {% if piece.glueWidgets == true %}
                 </div>
               {% endif %}
 

@@ -1,6 +1,5 @@
 // Material Icons
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -75,8 +74,7 @@ h4 {
     width: 100vw;
     min-height: 100vh;
     position: relative;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 64px;
 }
 .side-image {
     height: 100%;
@@ -112,6 +110,7 @@ h4 {
 .container {
   display: flex;
   align-items: center;
+  margin: auto auto;
   .widgets-container {
     padding: 0;
   }
@@ -123,11 +122,15 @@ h4 {
 .widgets-container {
   width: 100%;
   padding: 0 .75rem;
-  .col {
-    padding: 0;
-  }
-  .gallery {
-    margin-bottom: 3.7rem;
+  margin: 64px 0 0 0;
+  .widget {
+    padding:0 0 64px 0;
+    .col {
+      padding: 0;
+    }
+    .gallery {
+      margin-bottom: 3.7rem;
+    }
   }
 }
 // Container Radius Overflow
@@ -211,6 +214,22 @@ h4 {
   cursor: pointer;
   vertical-align: middle;
 }
+// Glue Container
+
+.glue-container {
+	.apos-area-widget-wrapper:nth-child(1) .widget {
+		padding-bottom: 0;
+	}
+	.apos-area-widget-wrapper:nth-child(1) .radius {
+		border-bottom-left-radius: inherit;
+		border-bottom-right-radius: inherit;
+	}
+	.apos-area-widget-wrapper:nth-child(2) .radius {
+		border-top-left-radius: inherit;
+		border-top-right-radius: inherit;
+	}
+}
+
 // Blog Card
 .card.blog {
   .row {
@@ -240,9 +259,12 @@ h4 {
 		.col {
 		  padding: 0;
 		}
-		.margin {
+		.row {
 		  margin: 0;
 		}
+    .row.widget {
+      padding: 0;
+    }
 		.radius {
 	  	border-radius: 0 !important;
 		}

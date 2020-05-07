@@ -1,4 +1,4 @@
-<div class="row margin">
+<div class="row widget">
   <div class="col s12 m12">
     <div class="radius
       {% if data.widget.shadowOn == true %}
@@ -15,7 +15,7 @@
 
       {% if piece.sideImage.items[0] %}
       <div class="row">
-        <div class="height-100 col s12 m3">
+        <div class="height-100 col s12{% if piece.sideImageLeft == true %} m3 push-m9{% else %} m3{% endif %}">
           <div class="card-image">
             {{ apos.area(piece, 'sideImage', {
               edit: false,
@@ -29,7 +29,7 @@
         {% endif %}
 
         {% if piece.sideImage.items[0] %}
-        <div class="height-100 col s12 m9">
+        <div class="height-100 col s12{% if piece.sideImageLeft == true %} m9 pull-m3{% else %} m9{% endif %}">
         {% endif %}
 
           <div class="card-stacked">
