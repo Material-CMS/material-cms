@@ -18,6 +18,7 @@
 {% block extraHead %}
 
   {# Includes #}
+  {% include "apostrophe-assets:styles.html" %}
   {% include "apostrophe-seo:view.html" %}
   {% include "apostrophe-open-graph:view.html" %}
 
@@ -159,11 +160,5 @@
 
 {% import 'apostrophe-pager:macros.html' as pager with context %}
 {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
-
-{% endblock %}
-
-{% block afterMain %}
-
-  {% include "apostrophe-assets:styles.html" %}
 
 {% endblock %}

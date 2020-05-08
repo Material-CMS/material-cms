@@ -99,11 +99,17 @@ h4 {
 // Pages
 .pages-container {
   width: 100%;
+  margin: 4rem 0 9rem 0;
   .row {
     width: 100%;
   }
   .show-card-image {
     max-width: 20rem !important;
+  }
+}
+@media(max-width: 600px) {
+  .pages-container {
+    margin: 4rem 0 16rem 0;
   }
 }
 // Container
@@ -178,7 +184,9 @@ h4 {
 .card {
   margin: 0 0 0 0;
   .card-image {
-    cursor: pointer;
+    .card-image {
+      cursor: pointer;
+    }
   }
   .card-title {
     width: 100%;
