@@ -17,6 +17,11 @@ You can build a your content management system in 10 Minutes and modify your web
 
 ### Installing instructions
 
+# Install Dependencies
+- nodejs
+- redis-server
+- mongodb
+
 ````
 # clone repository
 git clone https://github.com/felixlberg/fullpage-cms
