@@ -20,6 +20,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block extraHead %}
+  {% include "apostrophe-assets:styles.html" %}
   {% include "apostrophe-seo:view.html" %}
   {% include "apostrophe-open-graph:view.html" %}
   {# Favicons #}
@@ -51,10 +52,4 @@
       }
     }
   }) }}
-{% endblock %}
-
-{% block afterMain %}
-
-  {% include "apostrophe-assets:styles.html" %}
-  
 {% endblock %}

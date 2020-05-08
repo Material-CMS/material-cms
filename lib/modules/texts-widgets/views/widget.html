@@ -97,19 +97,21 @@
 
               {% else %}
 
-                <ul class="card-action collapsible z-depth-0" style="
-                  {% if piece.backColor%}
+                <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
+                  {% if piece.backColor %}
                     background-color:{{ piece.backColor }}
                   {% endif %}
                 ">
                   <li>
 
+                  {% if piece.text.items[0] %}
                     <div class="collapsible-header">
+                  {% endif %}
+
                       <div class="row">
 
                         {% if piece.text.items[0] %}
-
-                          <div class="col s12 m6 left-align">
+                          <div class="left-align col s12 m6">
                             <div class="btn waves-effect">
                               {% if piece.buttonText %}
                                 {{ piece.buttonText }}
@@ -118,11 +120,10 @@
                               {% endif %}
                             </div>
                           </div>
-
                         {% endif %}
 
                         {% if piece.extraLink %}
-                          <div class="col s12 m6 left-align">
+                          <div class="col s12{% if piece.text.items <= 1 %} m12 center-align{% else %} m6 right-align{% endif %}">
                             <a class="btn-flat" href="{{ piece.extraLink }}" target="_blank">
                               {% if piece.linkText %}
                                 {{ piece.linkText }}
@@ -134,7 +135,10 @@
                         {% endif %}
 
                       </div>
+
+                  {% if piece.text.items[0] %}
                     </div>
+                  {% endif %}
 
                     <div class="collapsible-body">
                       {{ apos.area(piece, 'text', {

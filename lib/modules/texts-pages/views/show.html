@@ -18,6 +18,7 @@
 {% block extraHead %}
 
   {# Includes #}
+  {% include "apostrophe-assets:styles.html" %}
   {% include "apostrophe-seo:view.html" %}
   {% include "apostrophe-open-graph:view.html" %}
 
@@ -281,11 +282,5 @@
     </div>
 
   </div>
-
-{% endblock %}
-
-{% block afterMain %}
-
-  {% include "apostrophe-assets:styles.html" %}
 
 {% endblock %}
