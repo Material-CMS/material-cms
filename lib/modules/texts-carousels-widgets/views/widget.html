@@ -20,21 +20,6 @@
                     background-color:{{ piece.backColor }}
                   {% endif %}
                 ">
-                  {% if piece.title %}
-                    {% if piece._url %}
-                      <a href="{{ piece._url }}">
-                    {% endif %}
-                        <h4 class="accent-color card-title" style="
-                          {% if piece.titleColor %}
-                            color:{{ piece.titleColor }}
-                          {% endif %}
-                        ">
-                          {{ piece.title }}
-                        </h4>
-                    {% if piece._url %}
-                      </a>
-                    {% endif %}
-                  {% endif %}
 
                   {% if piece.description.items[0] %}
                     {{ apos.area(piece, 'description', {
