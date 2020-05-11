@@ -1,9 +1,9 @@
-## Material CMS
+# Material CMS
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c0434c9aea0f469db3b19c3476dc18f6)](https://www.codacy.com/app/felixlberg/fullpage-cms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=felixlberg/fullpage-cms&amp;utm_campaign=Badge_Grade)
 ----
 
-### Ultra fast CMS with material design, reusable widgets.
+## Ultra fast CMS with material design, reusable widgets.
 
 **🧠 Developer Ready**
 **🐳 Dockerfile**
@@ -15,9 +15,9 @@ You can build a your content management system in 10 Minutes and modify your web
 
 ![Screenshot](screenshot.png)
 
-### Installing instructions
+## Installing instructions
 
-# Install Dependencies
+### Install Dependencies
 - nodejs
 - redis-server
 - mongodb
@@ -53,6 +53,8 @@ To send customer requests wit smtp email, copy `local.example.js` to add the fol
   }
 }
 ````
+
+## Development
 
 ### Materialize components ES6
 

@@ -1,13 +1,24 @@
 <div class="row widget">
   <div class="col s12 m12">
     <div class="radius
-      {% if data.widget.shadowOn == true %}
+      {% if data.global.shadow == true %}
         z-depth-1
       {% endif %}
     ">
 
       <div class="card">
         <div class="card-stacked">
+          <div class="card-content">
+            {% if data.widget.title %}
+              <h4 class="accent-color card-title" style="
+                {% if data.widget.titleColor %}
+                  color:{{ data.widget.titleColor }}
+                {% endif %}
+              ">
+                {{ data.widget.title }}
+              </h4>
+            {% endif %}
+          </div>
           <div class="card-content carousel carousel-slider" style="
             {% if piece.backColor%}
               background-color:{{ piece.backColor }}
