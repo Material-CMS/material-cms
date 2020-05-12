@@ -41,231 +41,147 @@
 {# Main Block #}
 {% block main %}
 
-{# Navigation #}
-<div class="nav">
+  {# Navigation #}
+  {% include "nav-widgets:nav-default.html" %}
 
-  {# Dekstop #}
-  <nav>
-    <div class="nav-wrapper z-depth-2">
-      <a class="brand-logo" href="{{ data.home._url }}">
-        <h1 class="accent-color">
-          {% if data.home.seoTitle %}
-            {% set title = data.home.seoTitle %}
-          {% else %}
-            {% set title = data.home.title %}
-          {% endif %}
+  {# Main Content #}
+  <div class="main-content">
 
-          {# Page title depends on variables above #}
-          {{ title }}
-        </h1>
-      </a>
-      <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
-      <ul class="nav-activator right hide-on-med-and-down">
+    <div class="container">
+      <div class="pages-container">
 
-      {% for name in data.page.links %}
-       <li>
-         <a class="accent-color" href="{{ name.url }}">
-           {% if name.icon %}
-              <i class="material-icons left">{{ name.icon }}</i>
-           {% endif %}
-           {{ name.name }}
-         </a>
-       </li>
-       {% endfor %}
-
-        {# Home Active #}
-        <li
-          {% if data.page._children[0] %}
-            class="active"
-          {% endif %}
-        >
-          <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ data.home.title }}</a>
-        </li>
-
-        {# Home Cildren Active #}
-        {% for tab in data.home._children %}
-          <li
-            {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-              class="active"
-            {% endif %}
-          >
-            <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text">{{ tab.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </nav>
-
-  {# Mobile #}
-  <ul class="sidenav" id="mobile">
-
-    {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
-    {% for name in data.page.links %}
-     <li>
-       <a class="accent-color" href="{{ name.url }}">
-         {% if name.icon %}
-            <i class="material-icons left">{{ name.icon }}</i>
-         {% endif %}
-         {{ name.name }}
-       </a>
-     </li>
-     {% endfor %}
-
-    {# Home Active #}
-    <li
-      {% if data.page._children[0] %}
-        class="active"
-      {% endif %}
-    >
-      <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ data.home.title }}</a>
-    </li>
-
-    {# Home Cildren Active #}
-    {% for tab in data.home._children %}
-      <li
-        {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-          class="active"
-        {% endif %}
-      >
-        <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light">{{ tab.title }}</a>
-      </li>
-    {% endfor %}
-
-  </ul>
-
-</div>
-
-<div class="main-content">
-
-  <div class="container">
-    <div class="pages-container">
-
-      <div class="row">
-        <div class="col s12">
-          <div class="radius
-            {% if data.global.shadow == true %}
-              z-depth-1
-            {% endif %}
-          ">
-
-            <div class="card people z-depth-0" style="
-                {% if piece.backColor%}
-                  background-color:{{ piece.backColor }}
-                {% endif %}
-              ">
-
-              {%- if data.piece.topImage.items[0] or data.piece._thumbnail -%}
-                <div class="card-image">
+        <div class="row">
+          <div class="col s12">
+            <div class="radius
+              {% if data.global.shadow == true %}
+                z-depth-1
               {% endif %}
+            ">
 
-                {% if data.piece.topImage.items[0] %}
-                  {% set topImage = apos.images.first(data.piece.topImage) %}
-                  <img
-                    src="{{ apos.attachments.url(topImage , { size: data.options.size or 'full' }) }}"
-                    alt="{{ topImage .description or topImage .title }}">
-                {% endif %}
-
-                {%- if data.piece._thumbnail -%}
-                    <div class="btn-floating halfway-fab grey">
-                      <img class="circle"
-                        src="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
-                        data-featherlight="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
-                        alt="{{ data.piece._thumbnail.description or data.piece._thumbnail.title }}">
-                    </div>
-                {% endif %}
-
-              {%- if data.piece.topImage.items[0] or data.piece._thumbnail -%}
-                </div>
-              {% endif %}
-
-              <div class="card-stacked">
-
-                <div class="card-content" style="
+              <div class="card people z-depth-0" style="
                   {% if piece.backColor%}
                     background-color:{{ piece.backColor }}
                   {% endif %}
                 ">
 
-                  {% if data.piece.title %}
-                    <h4 class="accent-color card-title" style="
-                      {% if piece.titleColor %}
-                        color:{{ piece.titleColor }}
-                      {% endif %}
-                    ">
-                      {{ data.piece.title }}
-                    </h4>
-                  {% endif %}
-
-                  {% if data.piece.body.items[0] %}
-                    {{ apos.area(data.piece, 'body', {
-                      edit: false,
-                      widgets: {
-                        'apostrophe-rich-text': {}
-                      }
-                    }) }}
-                  {% endif %}
-                </div>
-
-                {% if data.piece.email or data.piece.phone %}
-
-                    <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
-                      {% if piece.backColor %}
-                        background-color:{{ piece.backColor }}
-                      {% endif %}
-                    ">
-                      <li>
-
-                        <div class="row">
-
-                          {% if data.piece.email %}
-                            <div class="col m6 left-align hide-on-small-only">
-                              <a class="btn-flat" href="mailto:{{ data.piece.email }}">
-                                {{ data.piece.email }}
-                              </a>
-                            </div>
-                            <div class="col s12 center-align hide-on-med-and-up">
-                              <a class="btn-flat" href="mailto:{{ data.piece.email }}">
-                                {{ data.piece.email }}
-                              </a>
-                            </div>
-                          {% endif %}
-
-                          {% if data.piece.phone  %}
-                            <div class="col m6 right-align hide-on-small-only">
-                              <a class="btn-flat" href="tel:{{ data.piece.phone }}">
-                                {{ data.piece.phone }}
-                              </a>
-                            </div>
-                            <div class="col s12 center-align hide-on-med-and-up">
-                              <a class="btn-flat" href="tel:{{ data.piece.phone }}">
-                                {{ data.piece.phone }}
-                              </a>
-                            </div>
-                          {% endif %}
-
-                        </div>
-
-                      </li>
-                    </ul>
-
+                {%- if data.piece.topImage.items[0] or data.piece._thumbnail -%}
+                  <div class="card-image">
                 {% endif %}
+
+                  {% if data.piece.topImage.items[0] %}
+                    {% set topImage = apos.images.first(data.piece.topImage) %}
+                    <img
+                      src="{{ apos.attachments.url(topImage , { size: data.options.size or 'full' }) }}"
+                      alt="{{ topImage .description or topImage .title }}">
+                  {% endif %}
+
+                  {%- if data.piece._thumbnail -%}
+                      <div class="btn-floating halfway-fab grey">
+                        <img class="circle"
+                          src="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+                          data-featherlight="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
+                          alt="{{ data.piece._thumbnail.description or data.piece._thumbnail.title }}">
+                      </div>
+                  {% endif %}
+
+                {%- if data.piece.topImage.items[0] or data.piece._thumbnail -%}
+                  </div>
+                {% endif %}
+
+                <div class="card-stacked">
+
+                  <div class="card-content" style="
+                    {% if piece.backColor%}
+                      background-color:{{ piece.backColor }}
+                    {% endif %}
+                  ">
+
+                    {% if data.piece.title %}
+                      <h4 class="accent-color card-title" style="
+                        {% if piece.titleColor %}
+                          color:{{ piece.titleColor }}
+                        {% endif %}
+                      ">
+                        {{ data.piece.title }}
+                      </h4>
+                    {% endif %}
+
+                    {% if data.piece.body.items[0] %}
+                      {{ apos.area(data.piece, 'body', {
+                        edit: false,
+                        widgets: {
+                          'apostrophe-rich-text': {}
+                        }
+                      }) }}
+                    {% endif %}
+                  </div>
+
+                  {% if data.piece.email or data.piece.phone %}
+
+                      <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
+                        {% if piece.backColor %}
+                          background-color:{{ piece.backColor }}
+                        {% endif %}
+                      ">
+                        <li>
+
+                          <div class="row">
+
+                            {% if data.piece.email %}
+                              <div class="col m6 left-align hide-on-small-only">
+                                <a class="btn-flat" href="mailto:{{ data.piece.email }}">
+                                  {{ data.piece.email }}
+                                </a>
+                              </div>
+                              <div class="col s12 center-align hide-on-med-and-up">
+                                <a class="btn-flat" href="mailto:{{ data.piece.email }}">
+                                  {{ data.piece.email }}
+                                </a>
+                              </div>
+                            {% endif %}
+
+                            {% if data.piece.phone  %}
+                              <div class="col m6 right-align hide-on-small-only">
+                                <a class="btn-flat" href="tel:{{ data.piece.phone }}">
+                                  {{ data.piece.phone }}
+                                </a>
+                              </div>
+                              <div class="col s12 center-align hide-on-med-and-up">
+                                <a class="btn-flat" href="tel:{{ data.piece.phone }}">
+                                  {{ data.piece.phone }}
+                                </a>
+                              </div>
+                            {% endif %}
+
+                          </div>
+
+                        </li>
+                      </ul>
+
+                  {% endif %}
+
+                </div>
 
               </div>
 
             </div>
-
           </div>
         </div>
+
       </div>
-
     </div>
-  </div>
 
-  <div class="bottom-content">
-    {% include "footer-widgets:widget.html" %}
-  </div>
+    {# Contact Button #}
+    {% if data.page.buttonOn == true %}
+      {% include "btn-widgets:widget.html" %}
+    {% endif %}
 
-</div>
+    {# Footer #}
+    <div class="bottom-content">
+      {% include "footer-widgets:widget.html" %}
+    </div>
+
+  </div>
 
 
 {% endblock %}

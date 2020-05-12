@@ -41,8 +41,9 @@
 {% block main %}
 
   {# Navigation #}
-  {% include "nav.html" %}
+  {% include "nav-widgets:nav-default.html" %}
 
+  {# Main Content #}
   <div class="main-content">
 
     <div class="pages-container">
@@ -54,10 +55,12 @@
 
     </div>
 
+    {# Contact Button #}
     {% if data.page.buttonOn == true %}
       {% include "btn-widgets:widget.html" %}
     {% endif %}
 
+    {# Footer #}
     <div class="bottom-content">
       {% include "footer-widgets:widget.html" %}
     </div>

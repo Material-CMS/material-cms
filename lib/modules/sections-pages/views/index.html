@@ -41,7 +41,7 @@
 {% block main %}
 
   {# Navigation #}
-  {% include "nav.html" %}
+  {% include "nav-widgets:nav-dropdown.html" %}
 
   {# Sections #}
   <div class="section-wrapper">
@@ -239,6 +239,7 @@
       </div>
     {% endfor %}
 
+    {# Contact Button #}
     {% if data.page.buttonOn == true %}
       {% include "btn-widgets:widget.html" %}
     {% endif %}
