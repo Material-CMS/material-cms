@@ -1,35 +1,106 @@
 <div data-apos-ajax-append>
 
   {% for piece in data.pieces %}
-  <li class="collection-item avatar">
 
-    {%- if piece._thumbnail -%}
-      <img class="circle" src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
-      alt="{{ piece._thumbnail.description or piece._thumbnail.title }}">
+    {%- if piece.topImage.items[0] or piece._thumbnail -%}
+      <div class="card-image">
     {% endif %}
 
-    {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
-      <h4 class="accent-color title">{{ piece.title }}</h4>
-    {% if piece._url %}</a>{% endif %}
+      {% if piece.topImage.items[0] %}
+        {% set topImage = apos.images.first(piece.topImage) %}
+        <img
+          src="{{ apos.attachments.url(topImage , { size: data.options.size or 'full' }) }}"
+          alt="{{ topImage .description or topImage .title }}">
+      {% endif %}
 
-    {{ apos.area(piece, 'body', {
-      edit: false,
-      widgets: { 'apostrophe-rich-text': {} }
-    }) }}
+      {%- if piece._thumbnail -%}
+          <div class="btn-floating halfway-fab grey">
+            <img class="circle"
+              src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+              data-featherlight="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
+              alt="{{ piece._thumbnail.description or piece._thumbnail.title }}">
+          </div>
+      {% endif %}
 
-    {% if piece.email %}
-      <a href="mailto:{{ piece.email }}">
-        <p>{{ piece.email }}</p>
-      </a>
+    {%- if piece.topImage.items[0] or piece._thumbnail -%}
+      </div>
     {% endif %}
 
-    {% if piece.phone %}
-      <a href="tel:{{ piece.phone }}">
-        <p>{{ piece.phone }}</p>
-      </a>
-    {% endif %}
+    <div class="card-stacked">
 
-  </li>
+      <div class="card-content" style="
+        {% if piece.backColor%}
+          background-color:{{ piece.backColor }}
+        {% endif %}
+      ">
+
+        {% if piece.title %}
+          {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
+            <h4 class="accent-color card-title" style="
+              {% if piece.titleColor %}
+                color:{{ piece.titleColor }}
+              {% endif %}
+            ">
+              {{ piece.title }}
+            </h4>
+          {% if piece._url %}</a>{% endif %}
+        {% endif %}
+
+        {% if piece.body.items[0] %}
+          {{ apos.area(piece, 'body', {
+            edit: false,
+            widgets: {
+              'apostrophe-rich-text': {}
+            }
+          }) }}
+        {% endif %}
+      </div>
+
+      {% if piece.email or piece.phone %}
+
+          <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
+            {% if piece.backColor %}
+              background-color:{{ piece.backColor }}
+            {% endif %}
+          ">
+            <li>
+
+              <div class="row">
+
+                {% if piece.email %}
+                  <div class="col m6 left-align hide-on-small-only">
+                    <a class="btn-flat" href="mailto:{{ piece.email }}">
+                      {{ piece.email }}
+                    </a>
+                  </div>
+                  <div class="col s12 center-align hide-on-med-and-up">
+                    <a class="btn-flat" href="mailto:{{ piece.email }}">
+                      {{ piece.email }}
+                    </a>
+                  </div>
+                {% endif %}
+
+                {% if piece.phone  %}
+                  <div class="col m6 right-align hide-on-small-only">
+                    <a class="btn-flat" href="tel:{{ piece.phone }}">
+                      {{ piece.phone }}
+                    </a>
+                  </div>
+                  <div class="col s12 center-align hide-on-med-and-up">
+                    <a class="btn-flat" href="tel:{{ piece.phone }}">
+                      {{ piece.phone }}
+                    </a>
+                  </div>
+                {% endif %}
+
+              </div>
+
+            </li>
+          </ul>
+
+      {% endif %}
+
+    </div>
   {% endfor %}
 
 </div>
