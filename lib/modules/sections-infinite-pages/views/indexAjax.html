@@ -196,23 +196,3 @@
 {% if data.currentPage < data.totalPages %}
   <a data-apos-ajax-infinite-scroll href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
 {% endif %}
-
-{% block afterMain %}
-  {# Temporaly workaround because materialized components won't get injected the normal way in data-apos-ajax-append #}
-  <script>
-    // Collapsibles
-    var collapsibles = document.querySelectorAll('.collapsible');
-    for (var i = 0; i < collapsibles.length; i++) {
-      M.Collapsible.init(collapsibles[i], {
-        // example-option: true
-      });
-    }
-    // Carousel
-    var carousels = document.querySelectorAll('.carousel');
-    for (var i = 0; i < carousels.length; i++) {
-      M.Carousel.init(carousels[i], {
-        indicators: true
-      });
-    }
-  </script>
-{% endblock %}
