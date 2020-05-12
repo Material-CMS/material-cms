@@ -136,42 +136,120 @@
 </div>
 
 <div class="main-content">
+
   <div class="container">
     <div class="pages-container">
 
       <div class="row">
         <div class="col s12">
-          <div class="card horizontal">
+          <div class="radius
+            {% if data.global.shadow == true %}
+              z-depth-1
+            {% endif %}
+          ">
 
-            <div class="card-image">
-                {%- if data.piece._thumbnail -%}
-                  <img
-                    class="show-card-image"
-                    src="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
-                    data-featherlight="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
-                    alt="{{ data.piece._thumbnail.description or data.piece._thumbnail.title }}">
+            <div class="card people z-depth-0" style="
+                {% if piece.backColor%}
+                  background-color:{{ piece.backColor }}
                 {% endif %}
-            </div>
-            <div class="card-stacked">
+              ">
 
-              <div class="card-content">
-                  <h4 class="accent-color card-title">{{ data.piece.title }}</h4>
+              {%- if data.piece.topImage.items[0] or data.piece._thumbnail -%}
+                <div class="card-image">
+              {% endif %}
 
-                  {{ apos.area(data.piece, 'body', {
-                    widgets: { 'apostrophe-rich-text': {} }
-                  }) }}
+                {% if data.piece.topImage.items[0] %}
+                  {% set topImage = apos.images.first(data.piece.topImage) %}
+                  <img
+                    src="{{ apos.attachments.url(topImage , { size: data.options.size or 'full' }) }}"
+                    alt="{{ topImage .description or topImage .title }}">
+                {% endif %}
 
-                  {% if data.piece.email %}
-                    <a href="mailto:{{ data.piece.email }}">
-                      <p>{{ data.piece.email }}</p>
-                    </a>
+                {%- if data.piece._thumbnail -%}
+                    <div class="btn-floating halfway-fab grey">
+                      <img class="circle"
+                        src="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+                        data-featherlight="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
+                        alt="{{ data.piece._thumbnail.description or data.piece._thumbnail.title }}">
+                    </div>
+                {% endif %}
+
+              {%- if data.piece.topImage.items[0] or data.piece._thumbnail -%}
+                </div>
+              {% endif %}
+
+              <div class="card-stacked">
+
+                <div class="card-content" style="
+                  {% if piece.backColor%}
+                    background-color:{{ piece.backColor }}
+                  {% endif %}
+                ">
+
+                  {% if data.piece.title %}
+                    <h4 class="accent-color card-title" style="
+                      {% if piece.titleColor %}
+                        color:{{ piece.titleColor }}
+                      {% endif %}
+                    ">
+                      {{ data.piece.title }}
+                    </h4>
                   {% endif %}
 
-                  {% if data.piece.phone %}
-                    <a href="tel:{{ data.piece.phone }}">
-                      <p>{{ data.piece.phone }}</p>
-                    </a>
+                  {% if data.piece.body.items[0] %}
+                    {{ apos.area(data.piece, 'body', {
+                      edit: false,
+                      widgets: {
+                        'apostrophe-rich-text': {}
+                      }
+                    }) }}
                   {% endif %}
+                </div>
+
+                {% if data.piece.email or data.piece.phone %}
+
+                    <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
+                      {% if piece.backColor %}
+                        background-color:{{ piece.backColor }}
+                      {% endif %}
+                    ">
+                      <li>
+
+                        <div class="row">
+
+                          {% if data.piece.email %}
+                            <div class="col m6 left-align hide-on-small-only">
+                              <a class="btn-flat" href="mailto:{{ data.piece.email }}">
+                                {{ data.piece.email }}
+                              </a>
+                            </div>
+                            <div class="col s12 center-align hide-on-med-and-up">
+                              <a class="btn-flat" href="mailto:{{ data.piece.email }}">
+                                {{ data.piece.email }}
+                              </a>
+                            </div>
+                          {% endif %}
+
+                          {% if data.piece.phone  %}
+                            <div class="col m6 right-align hide-on-small-only">
+                              <a class="btn-flat" href="tel:{{ data.piece.phone }}">
+                                {{ data.piece.phone }}
+                              </a>
+                            </div>
+                            <div class="col s12 center-align hide-on-med-and-up">
+                              <a class="btn-flat" href="tel:{{ data.piece.phone }}">
+                                {{ data.piece.phone }}
+                              </a>
+                            </div>
+                          {% endif %}
+
+                        </div>
+
+                      </li>
+                    </ul>
+
+                {% endif %}
+
               </div>
 
             </div>
@@ -188,5 +266,6 @@
   </div>
 
 </div>
+
 
 {% endblock %}

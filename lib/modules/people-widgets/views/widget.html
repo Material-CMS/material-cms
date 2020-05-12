@@ -5,21 +5,22 @@
         z-depth-1
       {% endif %}
     ">
-      <ul class="collection z-depth-0" style="
+      <ul class="card collection z-depth-0" style="
         {%- if piece.backColor-%}
           background-color:{{ piece.backColor }}
         {% endif %}
       ">
+
         {% for piece in data.widget._pieces %}
         <li class="collection-item avatar">
 
           {%- if piece._thumbnail -%}
-            <img class="circle" src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+            <img class="circle grey" src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
             alt="{{ piece._thumbnail.description or piece._thumbnail.title }}">
           {% endif %}
 
           {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
-            <h4 class="accent-color title">{{ piece.title }}</h4>
+            <h4 class="accent-color card-title">{{ piece.title }}</h4>
           {% if piece._url %}</a>{% endif %}
 
           {{ apos.area(piece, 'body', {
@@ -27,16 +28,30 @@
             widgets: { 'apostrophe-rich-text': {} }
           }) }}
 
-          {% if piece.email %}
-            <a href="mailto:{{ piece.email }}">
-              <p>{{ piece.email }}</p>
-            </a>
+          {% if piece.email or piece.phone %}
+            <div class="card-action">
+              <div class="row">
           {% endif %}
 
-          {% if piece.phone %}
-            <a href="tel:{{ piece.phone }}">
-              <p>{{ piece.phone }}</p>
-            </a>
+              {% if piece.email %}
+                <div class="col s12{% if piece.phone %} m6 left-align{% else %} m12 center-align{% endif %}">
+                  <a class="btn-flat" href="mailto:{{ piece.email }}">
+                    <p>{{ piece.email }}</p>
+                  </a>
+                </div>
+              {% endif %}
+
+              {% if piece.phone %}
+                <div class="col s12{% if piece.email %} m6 right-align{% else %} m12 center-align{% endif %}">
+                  <a class="btn-flat" href="tel:{{ piece.phone }}">
+                    <p>{{ piece.phone }}</p>
+                  </a>
+                </div>
+              {% endif %}
+
+          {% if piece.email or piece.phone %}
+              </div>
+            </div>
           {% endif %}
 
         </li>
