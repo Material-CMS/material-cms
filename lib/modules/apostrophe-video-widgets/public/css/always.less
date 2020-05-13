@@ -1,13 +1,10 @@
-.apos-video-player
-{
+.apos-video-player {
   position: relative;
-  margin: 1rem 0 1rem 0;
-  
+  margin: 1rem 0;
   iframe {
     margin-bottom: -3px;
   }
-  .apos-video-thumbnail-title
-  {
+  .apos-video-thumbnail-title {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -18,24 +15,24 @@
     font-weight: normal;
     color: white;
     font-size: 16px;
-    text-shadow: 0px 0px 2px black;
+    text-shadow: 0 0 2px black;
   }
-  .apos-video-thumbnail
-  {
+  .apos-video-thumbnail {
     width: 100%;
   }
-  .apos-video-busy-indicator
-  {
+  .apos-video-busy-indicator {
     display: none;
   }
-  &.apos-oembed-busy .apos-video-busy-indicator
-  {
+  &.apos-oembed-busy .apos-video-busy-indicator {
     display: block;
     margin: auto;
     position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     width: 16px;
     height: 11px;
-    background-image: url('/modules/apostrophe-oembed/images/busy.gif')
+    background-image: url("/modules/apostrophe-oembed/images/busy.gif");
   }
 }

@@ -1,20 +1,19 @@
-html,
-body {
+body,
+html {
   margin: 0;
   padding: 0;
 }
 // Box shadow mixin
 .box-shadow (@string) {
-	-webkit-box-shadow: @string;
-	-moz-box-shadow:    @string;
-	box-shadow:         @string;
+  -webkit-box-shadow: @string;
+  -moz-box-shadow: @string;
+  box-shadow: @string;
 }
 // Colors
 @white: #ffffff;
 @black: #000000;
 @button-color: #F44336;
-@button-color-hover: darken(@button-color, 10%);
-// Empty widget area
+@button-color-hover: darken(@button-color, 10%); // Empty widget area
 .apos-refreshable {
   .apos-empty {
     width: 100%;
@@ -45,8 +44,8 @@ body {
   }
 }
 fieldset {
-  .apos-area-widgets,
-  .apos-area-widget {
+  .apos-area-widget,
+  .apos-area-widgets {
     width: 100%;
   }
 }
@@ -72,16 +71,14 @@ fieldset {
   }
 }
 .apos-ui {
-  .apos-dropdown-items{
-
-  }
+  .apos-dropdown-items {}
   .apos-field-input-checkbox-indicator,
   .apos-form-checkbox-indicator {
     border: inherit;
   }
-  .apos-manage-grid-view .apos-manage-grid-piece.apos-focus .apos-field-input-checkbox-indicator,
   .apos-field-input-checkbox:checked + .apos-field-input-checkbox-indicator,
-  .apos-form-checkbox-input:checked ~ .apos-form-checkbox-indicator {
+  .apos-form-checkbox-input:checked ~ .apos-form-checkbox-indicator,
+  .apos-manage-grid-view .apos-manage-grid-piece.apos-focus .apos-field-input-checkbox-indicator {
     background: inherit;
   }
 }
@@ -90,17 +87,17 @@ fieldset {
 }
 // Apos button
 .apos-ui {
+  .apos-fieldset-row,
   .apos-modal-content,
-  .apos-modal-controls,
-  .apos-fieldset-row {
-    .apos-button--major:hover,
-    .apos-button--major:focus,
-    .apos-control.apos-button:hover,
-    .apos-control.apos-button:focus,
-    .apos-array-save-item.apos-button:hover,
+  .apos-modal-controls {
     .apos-array-save-item.apos-button:focus,
+    .apos-array-save-item.apos-button:hover,
+    .apos-button--major:focus,
+    .apos-button--major:hover,
+    .apos-button.apos-button--action:focus,
     .apos-button.apos-button--action:hover,
-    .apos-button.apos-button--action:focus {
+    .apos-control.apos-button:focus,
+    .apos-control.apos-button:hover {
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
   }
@@ -165,7 +162,7 @@ fieldset {
   .apos-manage-tag-add:hover {
     color: @button-color;
   }
-  input[type="text"]:not(.browser-default):focus:not([readonly]){
+  input[type="text"]:not(.browser-default):focus:not([readonly]) {
     border-bottom-color: @button-color;
   }
   [type="checkbox"]:checked + span:not(.lever)::before {
@@ -190,8 +187,8 @@ fieldset {
     }
   }
   .apos-manage-grid-view {
-    .apos-manage-grid-piece:hover::before,
-    .apos-manage-grid-piece.apos-focus::before {
+    .apos-manage-grid-piece.apos-focus::before,
+    .apos-manage-grid-piece:hover::before {
       border-color: @button-color;
     }
     .apos-manage-grid-piece .apos-manage-grid-piece-controls .apos-button i {
@@ -199,9 +196,9 @@ fieldset {
     }
   }
   .apos-table {
-    th a:hover,
+    .apos-manage-column:hover,
     td a:hover,
-    .apos-manage-column:hover {
+    th a:hover {
       color: @button-color;
     }
   }
