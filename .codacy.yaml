@@ -19,4 +19,5 @@ languages:
 exclude_paths:
   - 'src/**'
   - '**.min.js'
+  - '**.min.css'
   - 'CHANGELOG.md'
