@@ -71,7 +71,6 @@ fieldset {
   }
 }
 .apos-ui {
-  .apos-dropdown-items {}
   .apos-field-input-checkbox-indicator,
   .apos-form-checkbox-indicator {
     border: inherit;
@@ -98,7 +97,7 @@ fieldset {
     .apos-button.apos-button--action:hover,
     .apos-control.apos-button:focus,
     .apos-control.apos-button:hover {
-      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
   }
   .apos-schema-tabs {
@@ -131,7 +130,7 @@ fieldset {
     color: @button-color;
   }
   .apos-button--in-group:hover {
-    color: #F44336;
+    color: #f44336;
   }
   .apos-buttons {
     .box-shadow(none);
@@ -147,7 +146,7 @@ fieldset {
   .apos-dropdown.apos-dropdown--area-controls > .apos-button {
     .box-shadow(none);
     border: 0;
-    color: #ffffff;
+    color: #fff;
     top: -12px;
   }
   .apos-button--inline {
@@ -165,7 +164,7 @@ fieldset {
   input[type="text"]:not(.browser-default):focus:not([readonly]) {
     border-bottom-color: @button-color;
   }
-  [type="checkbox"]:checked + span:not(.lever)::before {
+  [type="checkbox"]:checked + span:not(.lever):before {
     border-right-color: @button-color;
     border-bottom-color: @button-color;
   }
@@ -187,8 +186,8 @@ fieldset {
     }
   }
   .apos-manage-grid-view {
-    .apos-manage-grid-piece.apos-focus::before,
-    .apos-manage-grid-piece:hover::before {
+    .apos-manage-grid-piece.apos-focus:before,
+    .apos-manage-grid-piece:hover:before {
       border-color: @button-color;
     }
     .apos-manage-grid-piece .apos-manage-grid-piece-controls .apos-button i {
