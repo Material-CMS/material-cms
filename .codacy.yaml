@@ -18,6 +18,7 @@ languages:
       - '-css.resource'
 exclude_paths:
   - 'src/**'
+  - '**/vendor/**'
   - '**.min.js'
   - '**.min.css'
   - 'CHANGELOG.md'
