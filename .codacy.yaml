@@ -1,0 +1,22 @@
+---
+engines:
+ rubocop:
+   exclude_paths:
+     - config/engines.yml
+ duplication:
+   exclude_paths:
+     - config/engines.yml
+ metric:
+   exclude_paths:
+     - config/engines.yml
+ coverage:
+   exclude_paths:
+     - config/engines.yml
+languages:
+  css:
+    extensions:
+      - '-css.resource'
+exclude_paths:
+  - 'src/**'
+  - '**.min.js'
+  - 'CHANGELOG.md'
