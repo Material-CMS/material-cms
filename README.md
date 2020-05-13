@@ -22,7 +22,7 @@ You can build a your content management system in 10 Minutes and modify your web
 - redis-server
 - mongodb
 
-````
+````bash
 # clone repository
 git clone https://github.com/felixlberg/fullpage-cms
 # cd into the new project
@@ -40,7 +40,7 @@ mpm start
 
 To send customer requests wit smtp email, copy `local.example.js` to add the following to `data/local.js` ther you can put in your pivate config.
 
-````
+````javascript
 'apostrophe-email': {
   nodemailer: {
     host: 'SMTP SERVER',
