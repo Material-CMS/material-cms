@@ -1,5 +1,6 @@
 // Material Icons
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@material-icons: Material Icons, sans-serif;
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -449,7 +450,7 @@ h4 {
 }
 // Icons
 .material-icons {
-  font-family: Material Icons !important;
+  font-family: @material-icons !important;
 }
 // Gallery
 .gallery {
@@ -510,7 +511,7 @@ h4 {
   overflow: visible;
   i {
     line-height: 40px;
-    font-family: 'Material Icons';
+    font-family: @material-icons;
     font-weight: normal;
     font-style: normal;
     font-size: 24px;
