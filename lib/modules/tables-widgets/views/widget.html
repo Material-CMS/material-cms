@@ -31,23 +31,19 @@
               <tbody>
                 {% for piece in data.widget._pieces %}
                   <tr>
-                    {% for name in piece.tableBodys %}
-                      {% if name.name %}
-                        <th>{{ name.name }}</th>
+                    {% for text in piece.tableObjects %}
+                      {% if text.text %}
+                        <th>{{ text.text }}</th>
                       {% endif %}
-                      {% if name.date %}
-                        <th>{{ name.date }}</th>
+                      {% if text.date %}
+                        <th>{{ text.date }}</th>
                       {% endif %}
-                      {% if name.image.items[0] %}
-                        <th>
-                          {{ apos.area(name, 'image', {
-                              edit: false,
-                              widgets: {
-                                'apostrophe-images': {
-                                  size: 'one-six'
-                                }
-                              }
-                            }) }}
+                      {% if text._image %}
+                        <th class="table-image">
+                          <img
+                            src="{{ apos.attachments.url(text._image.attachment, { size: data.options.size or 'one-sixth' }) }}"
+                            alt="{{ text._image.description or text._image.title }}"
+                          >
                         </th>
                       {% endif %}
                     {% endfor %}
