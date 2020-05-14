@@ -1,0 +1,67 @@
+<div class="row widget">
+  <div class="col s12 m12">
+    <div class="radius
+      {% if data.page.shadow == true %}
+        z-depth-1
+      {% endif %}
+    ">
+
+      <div class="card z-depth-0" style="
+          {% if piece.backColor%}
+            background-color:{{ piece.backColor }}
+          {% endif %}
+        ">
+
+        <div class="card-stacked">
+          <div class="card-content" style="
+              {% if piece.backColor%}
+                background-color:{{ piece.backColor }}
+              {% endif %}
+            ">
+
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  {% for name in data.widget.tableHeaders %}
+                    <th>{{ name.name }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for piece in data.widget._pieces %}
+                  <tr>
+                    {% for name in piece.tableBodys %}
+                      {% if name.name %}
+                        <th>{{ name.name }}</th>
+                      {% endif %}
+                      {% if name.date %}
+                        <th>{{ name.date }}</th>
+                      {% endif %}
+                      {% if name.image.items[0] %}
+                        <th>
+                          {{ apos.area(name, 'image', {
+                              edit: false,
+                              widgets: {
+                                'apostrophe-images': {
+                                  size: 'one-six'
+                                }
+                              }
+                            }) }}
+                        </th>
+                      {% endif %}
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
