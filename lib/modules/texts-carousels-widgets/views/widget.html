@@ -49,3 +49,20 @@
     </div>
   </div>
 </div>
+<style>
+  {% if data.widget.carouselHeight == 'small' %}
+    .carousel {
+      height: 15rem;
+      perspective: 20rem;
+    }
+    .carousel-item {
+      top: 50% !important;
+    }
+  {% endif %}
+  {% if data.widget.carouselHeight == 'big' %}
+    .carousel {
+      height: 35rem;
+      perspective: 40rem;
+    }
+  {% endif %}
+</style>
