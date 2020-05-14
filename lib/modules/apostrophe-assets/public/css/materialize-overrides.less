@@ -341,15 +341,19 @@ h4 {
   .apos-slideshow-item {
     background-size: cover;
     max-width: 100%;
-    min-height: 400px;
+    min-height: 25rem;
   }
 }
 // Carousels
 .carousel {
+  height: 25rem;
+  perspective: 31.25rem;
   display: block;
   .carousel-item {
+    top: 5rem !important;
     display: inline-block;
     width: 90% !important;
+    min-height: 25rem !important;
     height: auto !important;
     cursor: pointer;
     p {
