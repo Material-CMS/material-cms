@@ -15,8 +15,11 @@
         <li class="collection-item avatar">
 
           {%- if piece._thumbnail -%}
-            <img class="circle grey" src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
-            alt="{{ piece._thumbnail.description or piece._thumbnail.title }}">
+            <img
+              class="circle grey"
+              src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+              alt="{{ piece._thumbnail.description or piece._thumbnail.title }}"
+            >
           {% endif %}
 
           {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
