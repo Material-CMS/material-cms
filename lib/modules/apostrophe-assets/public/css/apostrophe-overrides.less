@@ -7,7 +7,7 @@
 // Colors
 @white: #ffffff;
 @black: #000000;
-@button-color: #F44336;
+@button-color: #f44336;
 @button-color-hover: darken(@button-color, 10%); // Empty widget area
 .apos-refreshable {
   .apos-empty {
@@ -67,7 +67,7 @@ fieldset {
 }
 .apos-ui {
   .apos-required label:first-of-type:after {
-    color: #f44336;
+    color: @button-color;
   }
   .apos-field-input-checkbox-indicator,
   .apos-form-checkbox-indicator {
@@ -130,7 +130,7 @@ fieldset {
     color: @button-color;
   }
   .apos-button--in-group:hover {
-    color: #f44336;
+    color: @button-color;
   }
   .apos-buttons {
     .box-shadow(none);
