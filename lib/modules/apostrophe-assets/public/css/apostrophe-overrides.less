@@ -22,7 +22,7 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: @white;
-    .box-shadow(0 0 4px 2px rgba(0,0,0,0.16));
+    .box-shadow(0 0 4px 2px rgba(0, 0, 0, 0.16));
   }
 }
 // Empty widget area
@@ -71,6 +71,9 @@ fieldset {
   }
 }
 .apos-ui {
+  .apos-required label:first-of-type:after {
+    color: #F44336;
+  }
   .apos-field-input-checkbox-indicator,
   .apos-form-checkbox-indicator {
     border: inherit;
@@ -89,6 +92,8 @@ fieldset {
   .apos-fieldset-row,
   .apos-modal-content,
   .apos-modal-controls {
+    .apos-field-input-select:focus,
+    .apos-field-input-select:hover,
     .apos-array-save-item.apos-button:focus,
     .apos-array-save-item.apos-button:hover,
     .apos-button--major:focus,
@@ -163,6 +168,7 @@ fieldset {
   }
   input[type="text"]:not(.browser-default):focus:not([readonly]) {
     border-bottom-color: @button-color;
+    box-shadow: 0 1px 0 0 @button-color;
   }
   [type="checkbox"]:checked + span:not(.lever):before {
     border-right-color: @button-color;
@@ -189,9 +195,18 @@ fieldset {
     .apos-manage-grid-piece.apos-focus:before,
     .apos-manage-grid-piece:hover:before {
       border-color: @button-color;
-    }
-    .apos-manage-grid-piece .apos-manage-grid-piece-controls .apos-button i {
-      color: @button-color;
+  }
+    .apos-manage-grid-piece {
+      .apos-manage-grid-piece-controls {
+        .apos-button {
+          i {
+            color: @button-color;
+          }
+        }
+      }
+      .apos-manage-grid-piece-label {
+        padding-left: 35px;
+      }
     }
   }
   .apos-table {
