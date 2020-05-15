@@ -44,7 +44,15 @@ var apos = require('apostrophe')({
     'sections-widgets': {},
     'share-widgets':{},
     'slider-widgets':{},
-    'tables': {},
+    'tables': {
+      orderings: true
+    },
+    'tables-orderings': {
+      extend: 'apostrophe-pieces-orderings'
+    },
+    'tables-pages': {
+      orderings: true
+    },
     'tables-widgets': {},
     'texts': {
       orderings: true
@@ -52,11 +60,11 @@ var apos = require('apostrophe')({
     'texts-orderings': {
       extend: 'apostrophe-pieces-orderings'
     },
-    'texts-carousels-widgets': {},
-    'texts-widgets': {},
     'texts-pages': {
       orderings: true
     },
+    'texts-carousels-widgets': {},
+    'texts-widgets': {},
     'video-widgets': {},
     // CSS in context editing
     'apostrophe-palette-widgets': {},

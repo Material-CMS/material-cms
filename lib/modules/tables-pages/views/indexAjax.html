@@ -1,0 +1,49 @@
+<div data-apos-ajax-append>
+
+  <tbody>
+    {% for piece in data.pieces %}
+      <tr>
+
+        {% if piece.titleAsObject == true %}
+          <th>
+            {% if piece._url %}
+              <a href="{{ piece._url }}" class="accent-color" style="
+                  {% if piece.titleColor %}
+                    color:{{ piece.titleColor }}
+                  {% endif %}
+                ">
+            {% endif %}
+              {{ piece.title }}
+            {% if piece._url %}
+              </a>
+            {% endif %}
+          </th>
+        {% endif %}
+
+        {% for text in piece.tableRowObjects %}
+          {% if text.text %}
+            <th>{{ text.text }}</th>
+          {% endif %}
+          {% if text.date %}
+            <th>{{ text.date }}</th>
+          {% endif %}
+          {% if text._image %}
+            <th class="table-image">
+              <img
+                src="{{ apos.attachments.url(text._image.attachment, { size: data.options.size or 'one-sixth' }) }}"
+                data-featherlight="{{ apos.attachments.url( text._image.attachment, { size: data.options.size or 'one-third' }) }}"
+                alt="{{ text._image.description or text._image.title }}"
+              >
+            </th>
+          {% endif %}
+        {% endfor %}
+
+      </tr>
+    {% endfor %}
+  </tbody>
+
+</div>
+
+{% if data.currentPage < data.totalPages %}
+  <a data-apos-ajax-infinite-scroll href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
+{% endif %}
