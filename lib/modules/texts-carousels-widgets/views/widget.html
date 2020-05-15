@@ -10,27 +10,27 @@
         <div class="card-stacked">
           <div class="card-content">
             {% if data.widget.title %}
-              <h4 class="accent-color card-title" style="
+              <h4 class="accent-color card-title"
                 {% if data.widget.titleColor %}
-                  color:{{ data.widget.titleColor }}
+                  style="color:{{ data.widget.titleColor }}"
                 {% endif %}
-              ">
+              >
                 {{ data.widget.title }}
               </h4>
             {% endif %}
           </div>
-          <div class="card-content carousel carousel-slider" style="
+          <div class="card-content carousel carousel-slider"
             {% if piece.backColor%}
-              background-color:{{ piece.backColor }}
+               style="background-color:{{ piece.backColor }}"
             {% endif %}
-          ">
+          >
 
             {% for piece in data.widget._pieces %}
-              <div class="carousel-item z-depth-0" style="
+              <div class="carousel-item z-depth-0"
                   {% if piece.backColor%}
-                    background-color:{{ piece.backColor }}
+                     style="background-color:{{ piece.backColor }}"
                   {% endif %}
-                ">
+                >
 
                   {% if piece.description.items[0] %}
                     {{ apos.area(piece, 'description', {

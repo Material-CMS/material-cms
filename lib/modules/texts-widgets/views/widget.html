@@ -7,11 +7,11 @@
     ">
 
     {% for piece in data.widget._pieces %}
-    <div class="card horizontal z-depth-0" style="
+    <div class="card horizontal z-depth-0"
         {% if piece.backColor%}
-          background-color:{{ piece.backColor }}
+           style="background-color:{{ piece.backColor }}"
         {% endif %}
-      ">
+      >
 
       {% if piece.sideImage.items[0] %}
       <div class="row">
@@ -35,21 +35,21 @@
         {% endif %}
 
           <div class="card-stacked">
-            <div class="card-content" style="
+            <div class="card-content"
               {% if piece.backColor%}
-                background-color:{{ piece.backColor }}
+                style="background-color:{{ piece.backColor }}"
               {% endif %}
-            ">
+            >
 
               {% if piece.title %}
                 {% if piece._url %}
                   <a href="{{ piece._url }}">
                 {% endif %}
-                    <h4 class="accent-color card-title" style="
+                    <h4 class="accent-color card-title"
                       {% if piece.titleColor %}
-                        color:{{ piece.titleColor }}
+                         style="color:{{ piece.titleColor }}"
                       {% endif %}
-                    ">
+                    >
                       {{ piece.title }}
                     </h4>
                 {% if piece._url %}
@@ -69,11 +69,11 @@
 
               {% if piece._url and piece.blogOn == true %}
 
-                <div class="card-action collapsible z-depth-0" style="
+                <div class="card-action collapsible z-depth-0"
                   {% if piece.backColor%}
-                    background-color:{{ piece.backColor }}
+                    style="background-color:{{ piece.backColor }}"
                   {% endif %}
-                ">
+                >
                   <div class="collapsible-header">
                     <div class="row">
 
@@ -99,11 +99,11 @@
 
               {% else %}
 
-                <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
+                <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}"
                   {% if piece.backColor %}
-                    background-color:{{ piece.backColor }}
+                     style="background-color:{{ piece.backColor }}"
                   {% endif %}
-                ">
+                >
                   <li>
 
                   {% if piece.text.items[0] %}

@@ -12,7 +12,8 @@
 {% endif %}
 
 {# Page Title depends on variables above #}
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}
+{% endblock %}
 
 {# Additional header elements #}
 {% block extraHead %}
@@ -57,14 +58,9 @@
               {% endif %}
             ">
 
-              <div class="card z-depth-0 {% if data.piece.blogOn == true %}blog{% else %}horizontal{% endif %}" style="
-                  {% if data.piece.backColor%}
-                    background-color:{{ data.piece.backColor }}
-                  {% endif %}
-                ">
+              <div class="card z-depth-0 {% if data.piece.blogOn == true %}blog{% else %}horizontal{% endif %}" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
 
                 {% if data.piece.blogOn == true %}
-
                   {% if data.piece.topImage.items[0] %}
                     <div class="card-image">
                       {{ apos.area(data.piece, 'topImage', {
@@ -76,8 +72,9 @@
                       }) }}
                     </div>
                   {% endif %}
+                {% endif %}
 
-                {% else %}
+                {% if data.piece.blogOn == false %}
 
                   {% if data.piece.sideImage.items[0] %}
                     <div class="row">
@@ -92,82 +89,77 @@
                           }) }}
                         </div>
                       </div>
+                    {% endif %}
+
                   {% endif %}
 
-                {% endif %}
-
-                {% if data.piece.sideImage.items[0] %}
-                  <div class="height-100 col s12 m9">
-                {% endif %}
+                  {% if data.piece.sideImage.items[0] %}
+                    <div class="height-100 col s12 m9">
+                    {% endif %}
 
                     <div class="card-stacked">
-                      <div class="card-content" style="
-                        {% if data.piece.backColor%}
-                          background-color:{{ data.piece.backColor }}
-                        {% endif %}
-                      ">
+
+                      <div class="card-content" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
 
                         {% if data.piece.title %}
-                          <h4 class="accent-color card-title" style="
-                            {% if data.piece.titleColor %}
-                              color:{{ data.piece.titleColor }}
-                            {% endif %}
-                          ">
+                          <h4 class="accent-color card-title" {% if data.piece.titleColor %} style="color:{{ data.piece.titleColor }}" {% endif %}>
                             {{ data.piece.title }}
                           </h4>
                         {% endif %}
 
                         {% if data.piece.text.items[0] %}
-
                           {{ apos.area(data.piece, 'text', {
                             edit: false,
                             widgets: { 'apostrophe-rich-text': { } }
                           }) }}
+                        {% elif data.piece.description.items[0] %}
+                          {{ apos.area(data.piece, 'description', {
+                            edit: false,
+                            widgets: { 'apostrophe-rich-text': { } }
+                          }) }}
                         {% endif %}
+
                       </div>
 
-                        <div class="card-action z-depth-0" style="
-                          {% if data.piece.backColor%}
-                            background-color:{{ data.piece.backColor }}
-                          {% endif %}
-                        ">
+                      <div class="card-action z-depth-0" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
 
-                          <div class="row">
+                        <div class="row">
 
-                            {% if data.piece.extraLink %}
+                          {% if data.piece.extraLink %}
 
-                              <div class="col s6">
-                                <a class="btn-flat" href="{{ data.piece.extraLink }}" target="_blank">
-                                  {% if data.piece.linkText %}
-                                    {{ data.piece.linkText }}
-                                  {% else %}
-                                    link
-                                  {% endif %}
-                                </a>
-                              </div>
-
-                            {% endif %}
-
-                            <div class="right-align col
-                              {% if data.piece.extraLink %}
-                                s6
-                              {% else %}
-                                s12
-                              {% endif %}
-                            ">
-                              {% include "share-widgets:widget.html" %}
+                            <div class="col s6">
+                              <a class="btn-flat" href="{{ data.piece.extraLink }}" target="_blank">
+                                {% if data.piece.linkText %}
+                                  {{ data.piece.linkText }}
+                                {% else %}
+                                  link
+                                {% endif %}
+                              </a>
                             </div>
 
+                          {% endif %}
+
+                          <div
+                            class="right-align col
+                            {% if data.piece.extraLink %}
+                              s6
+                            {% else %}
+                              s12
+                            {% endif %}
+                          ">
+                            {% include "share-widgets:widget.html" %}
                           </div>
 
                         </div>
 
+                      </div>
+
                     </div>
 
-              {% if data.piece.sideImage.items[0] %}
+                    {% if data.piece.sideImage.items[0] %}
+                    </div>
                   </div>
-                </div>
-              {% endif %}
+                {% endif %}
 
               </div>
 

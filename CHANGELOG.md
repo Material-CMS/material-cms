@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Apostrophe-forms
 - Materialize parallax page
 - Materialize tab widget
+- Add description text to text-show page when not blog
 
 ### Fixed
 - Form Thank You Message on widget level and with English placeholder
