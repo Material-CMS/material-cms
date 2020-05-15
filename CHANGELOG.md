@@ -8,11 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Tabs for texts-widgets
 - Video locals files
-- More widget types
 - Integrate apostrophe-i18n Module for multilingual support
 
-### Fixed
-- Image widget round corners when section is full card & full card round corners
+## [0.9.4 ] - 2020-05-15
+
+### Added
+- Tables, table-widgets, table-pages
+- Transparence for widgets
+- Partials as includes
+- Text widgets side image left
+- Glue widgets
+- Codacy configuration file
+- New People widget
+- Additional user Styles
+- Image credit for slider
+
+### Removed
+- Whole section full card functions
+
+### fixed
+- Lots of UI fixes
+- Regroup all Sections
+- Code formatting and cleaning
 
 ## [0.9.3 ] - 2020-05-07
 
