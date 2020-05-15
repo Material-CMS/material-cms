@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tabs for texts-widgets
 - Video locals files
 - Integrate apostrophe-i18n Module for multilingual support
+- Apostrophe-forms
+- Materialize parallax page
+- Materialize tab widget
+
+### Fixed
+- Form Thank You Message on widget level and with English placeholder
 
 ## [0.9.4 ] - 2020-05-15
 
