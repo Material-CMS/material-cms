@@ -19,36 +19,72 @@
               {% endif %}
             ">
 
-            <table class="responsive-table">
+            {% if data.widget.title %}
+              <h4 class="accent-color card-title" style="
+                  {% if data.widget.titleColor %}
+                    color:{{ data.widget.titleColor }}
+                  {% endif %}
+                ">
+                {{ data.widget.title }}
+              </h4>
+            {% endif %}
+
+            <table class="highlight responsive-table">
+
               <thead>
                 <tr>
-                  {% for name in data.widget.tableHeaders %}
-                    <th>{{ name.name }}</th>
+                  {% for text in data.widget.tableHeaders %}
+                    <th class="flow-text">{{ text.text }}</th>
                   {% endfor %}
                 </tr>
               </thead>
 
               <tbody>
+
                 {% for piece in data.widget._pieces %}
                   <tr>
-                    {% for text in piece.tableObjects %}
+
+                    {% if piece.titleAsObject == true %}
+                      <th>
+                        {% if piece._url %}
+                          <a href="{{ piece._url }}" class="btn-flat flow-text" style="
+                              {% if piece.titleColor %}
+                                color:{{ piece.titleColor }}
+                              {% endif %}
+                            ">
+                        {% endif %}
+                          {{ piece.title }}
+                        {% if piece._url %}
+                          </a>
+                        {% endif %}
+                      </th>
+                    {% endif %}
+
+                    {% for text in piece.tableRowObjects %}
+
                       {% if text.text %}
-                        <th>{{ text.text }}</th>
+                        <th class="flow-text">{{ text.text }}</th>
                       {% endif %}
+
                       {% if text.date %}
-                        <th>{{ text.date }}</th>
+                        <th class="flow-text">{{ text.date }}</th>
                       {% endif %}
+
                       {% if text._image %}
                         <th class="table-image">
                           <img
                             src="{{ apos.attachments.url(text._image.attachment, { size: data.options.size or 'one-sixth' }) }}"
+                            data-featherlight="{{ apos.attachments.url( text._image.attachment, { size: data.options.size or 'one-third' }) }}"
                             alt="{{ text._image.description or text._image.title }}"
                           >
                         </th>
                       {% endif %}
+
                     {% endfor %}
+
                   </tr>
                 {% endfor %}
+
               </tbody>
 
             </table>
