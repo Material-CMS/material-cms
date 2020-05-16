@@ -6,25 +6,25 @@
       {% endif %}
     ">
 
-      <div class="card z-depth-0" style="
+      <div class="card z-depth-0"
           {% if piece.backColor%}
-            background-color:{{ piece.backColor }}
+            style="background-color:{{ piece.backColor }}"
           {% endif %}
-        ">
+        >
 
         <div class="card-stacked">
-          <div class="card-content" style="
+          <div class="card-content"
               {% if piece.backColor%}
-                background-color:{{ piece.backColor }}
+                style="background-color:{{ piece.backColor }}"
               {% endif %}
-            ">
+            >
 
             {% if data.widget.title %}
-              <h4 class="accent-color card-title" style="
+              <h4 class="accent-color card-title"
                   {% if data.widget.titleColor %}
-                    color:{{ data.widget.titleColor }}
+                    style="color:{{ data.widget.titleColor }}"
                   {% endif %}
-                ">
+                >
                 {{ data.widget.title }}
               </h4>
             {% endif %}
@@ -47,11 +47,11 @@
                     {% if piece.titleAsObject == true %}
                       <th>
                         {% if piece._url %}
-                          <a href="{{ piece._url }}" class="btn-flat flow-text" style="
+                          <a href="{{ piece._url }}" class="btn-flat flow-text"
                               {% if piece.titleColor %}
-                                color:{{ piece.titleColor }}
+                                style="color:{{ piece.titleColor }}"
                               {% endif %}
-                            ">
+                            >
                         {% endif %}
                           {{ piece.title }}
                         {% if piece._url %}
