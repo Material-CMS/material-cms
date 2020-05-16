@@ -5,11 +5,11 @@
         z-depth-1
       {% endif %}
     ">
-      <ul class="card collection z-depth-0" style="
+      <ul class="card collection z-depth-0"
         {%- if piece.backColor-%}
-          background-color:{{ piece.backColor }}
+          style="background-color:{{ piece.backColor }}"
         {% endif %}
-      ">
+      >
 
         {% for piece in data.widget._pieces %}
         <li class="collection-item avatar">

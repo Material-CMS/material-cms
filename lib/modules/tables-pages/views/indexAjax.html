@@ -7,11 +7,11 @@
         {% if piece.titleAsObject == true %}
           <th>
             {% if piece._url %}
-              <a href="{{ piece._url }}" class="accent-color" style="
+              <a href="{{ piece._url }}" class="accent-color"
                   {% if piece.titleColor %}
-                    color:{{ piece.titleColor }}
+                    style="color:{{ piece.titleColor }}"
                   {% endif %}
-                ">
+                >
             {% endif %}
               {{ piece.title }}
             {% if piece._url %}
