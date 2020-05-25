@@ -86,7 +86,7 @@
         {% elif section.preferences == 'footerOn' %}
           <div class="main-content">
 
-          {% if section.titleOn == true %}
+          {% if section.titleShow == true %}
             <div class="title">
               <a href="{{ section._url }}">
                 <h3 class="accent-color" style="
@@ -136,7 +136,7 @@
         {% else %}
           <div class="main-content">
 
-            {% if section.titleOn == true %}
+            {% if section.titleShow == true %}
               <div class="title">
                 <a href="{{ section._url }}">
                   <h3 class="accent-color" style="
@@ -156,7 +156,7 @@
 
               <div class="widgets-container">
 
-                {% if piece.glueWidgets == true %}
+                {% if section.glueWidgets == true %}
                   <div class="glue-container">
                 {% endif %}
 

@@ -85,7 +85,7 @@
     {% elif data.piece.preferences == 'footerOn' %}
       <div class="main-content">
 
-      {% if data.piece.titleOn == true %}
+      {% if data.piece.titleShow == true %}
         <div class="title">
           <h3 class="accent-color" style="
             {% if data.piece.titleColor %}
@@ -133,7 +133,7 @@
     {% else %}
       <div class="main-content">
 
-        {% if data.piece.titleOn == true %}
+        {% if data.piece.titleShow == true %}
           <div class="title">
             <h3 class="accent-color" style="
               {% if data.piece.titleColor %}
@@ -151,7 +151,7 @@
 
           <div class="widgets-container">
 
-            {% if piece.glueWidgets == true %}
+            {% if section.glueWidgets == true %}
               <div class="glue-container">
             {% endif %}
 
