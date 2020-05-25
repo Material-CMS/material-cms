@@ -13,10 +13,13 @@
         <div class="card-image">
           {{ apos.area(piece, 'topImage', {
             edit: false,
-            widgets: { 'card': {
-              noHeight: true,
-              focalPoint: true
-            } }
+            widgets: {
+              'card': {
+                noHeight: true,
+                focalPoint: true
+              },
+              'apostrophe-video': {}
+            }
           }) }}
         </div>
       {% endif %}

@@ -6,7 +6,6 @@ var apos = require('apostrophe')({
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
     // Custom Modules
-    'apostrophe-video-widgets': {},
     'card-widgets': {},
     'contact-form': {},
     'contact-form-widgets': {},
@@ -66,10 +65,12 @@ var apos = require('apostrophe')({
     'texts-carousels-widgets': {},
     'texts-widgets': {},
     'video-widgets': {},
+
     // CSS in context editing
     'apostrophe-palette-widgets': {},
     'apostrophe-palette': {},
     'apostrophe-palette-global': {},
+
     // Production Modules
     'apostrophe-db': {
       connect: {
