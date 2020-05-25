@@ -5,7 +5,7 @@
       <tr>
 
         {% if piece.titleAsObject == true %}
-          <th>
+          <th class="flow-text">
             {% if piece._url %}
               <a href="{{ piece._url }}" class="accent-color"
                   {% if piece.titleColor %}
@@ -22,10 +22,10 @@
 
         {% for text in piece.tableRowObjects %}
           {% if text.text %}
-            <th>{{ text.text }}</th>
+            <th class="flow-text">{{ text.text }}</th>
           {% endif %}
           {% if text.date %}
-            <th>{{ text.date }}</th>
+            <th class="flow-text">{{ text.date }}</th>
           {% endif %}
           {% if text._image %}
             <th class="table-image">

@@ -25,8 +25,15 @@ var apos = require('apostrophe')({
     },
     'galleries-widgets': {},
     'nav-widgets': {},
-    'people': {},
-    'people-pages': {},
+    'people': {
+      ordering: true
+    },
+    'people-orderings': {
+      extend: 'apostrophe-pieces-orderings'
+    },
+    'people-pages': {
+      orderings: true
+    },
     'people-widgets': {},
     'sections': {
       orderings: true
