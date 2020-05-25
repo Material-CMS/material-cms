@@ -20,6 +20,39 @@
     .box-shadow(0 0 4px 2px rgba(0, 0, 0, 0.16));
   }
 }
+// Video player
+.apos-video-player {
+  position: relative;
+  .apos-video-thumbnail-title {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 1em;
+    left: 1em;
+    z-index: 2;
+    color: @white;
+    font-size: 16px;
+    text-shadow: 0 0 2px black;
+  }
+  .apos-video-thumbnail {
+    width: 100%;
+  }
+  .apos-video-busy-indicator {
+    display: none;
+  }
+  &.apos-oembed-busy .apos-video-busy-indicator {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 11px;
+    background-image: url("/modules/apostrophe-oembed/images/busy.gif");
+  }
+}
 // Empty widget area
 .slide-content {
   .apos-empty {

@@ -113,7 +113,6 @@ h4 {
 // Widgets
 .widgets-container {
   width: 100%;
-  padding: 0 0.75rem;
   margin: 64px 0 0;
   .widget {
     margin: 0 0 64px;
@@ -130,9 +129,6 @@ h4 {
   display: flex;
   align-items: center;
   margin: auto;
-  .widgets-container {
-    padding: 0;
-  }
 }
 .footer-container {
   width: 100%;
@@ -189,6 +185,14 @@ h4 {
     width: 100%;
     h4 {
       line-height: 2rem;
+    }
+  }
+  .card-content {
+    .apos-area-widget-wrapper {
+      margin: 1.52rem 0 .912rem;
+    }
+    .apos-area-widget-wrapper:first-child {
+      margin: 0;
     }
   }
   .card-action {
@@ -458,6 +462,9 @@ h4 {
 }
 // Gallery
 .gallery {
+  .radius {
+    margin-bottom: 0.75rem;
+  }
   .images {
     display: inline-block;
     margin-right: auto;
@@ -466,7 +473,6 @@ h4 {
     column-gap: 0.75rem;
     img {
       cursor: pointer;
-      margin-bottom: 0.75rem;
       width: 100% !important;
       height: auto !important;
     }
@@ -527,6 +533,9 @@ table {
     .table-image {
       width: auto;
       max-width: 6rem;
+      img {
+        width: 100%;
+      }
     }
   }
 }

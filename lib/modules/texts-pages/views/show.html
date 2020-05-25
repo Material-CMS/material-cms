@@ -145,7 +145,11 @@
                               s12
                             {% endif %}
                           ">
-                            {% include "share-widgets:widget.html" %}
+
+                            {% if data.piece.blogOn == true %}
+                              {% include "share-widgets:widget.html" %}
+                            {% endif %}
+
                           </div>
 
                         </div>
