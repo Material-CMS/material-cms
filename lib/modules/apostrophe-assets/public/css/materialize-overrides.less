@@ -13,6 +13,10 @@ iframe {
 h4 {
   font-size: 1.64rem !important;
 }
+.row {
+  margin-left: inherit !important;
+  margin-right: inherit !important;
+}
 // Flow Text is huge in default settings!
 @media (min-width: 600px) {
   .flow-text {
@@ -198,6 +202,9 @@ h4 {
   .card-action {
     a {
       margin-right: 0 !important;
+    }
+    p {
+      margin: 0;
     }
   }
   .btn-floating.halfway-fab {
@@ -462,19 +469,24 @@ h4 {
 }
 // Gallery
 .gallery {
+  overflow: visible;
   .radius {
     margin-bottom: 0.75rem;
   }
   .images {
+    width: 100%;
     display: inline-block;
     margin-right: auto;
     margin-left: auto;
-    line-height: 0;
     column-gap: 0.75rem;
-    img {
-      cursor: pointer;
-      width: 100% !important;
-      height: auto !important;
+    .card {
+      .card-image {
+        img {
+          cursor: pointer;
+          width: 100% !important;
+          height: auto !important;
+        }
+      }
     }
   }
   @media (max-width: 600px) {

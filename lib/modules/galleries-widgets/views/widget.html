@@ -8,67 +8,104 @@
 
       {% for piece in data.widget._pieces %}
 
-        {% if piece.cardOn == true %}
-          <div class="card z-depth-0" style="
-              {%- if piece.backColor-%}
-                background-color:{{ piece.backColor }}
-              {% endif %}
-            ">
-              <div class="card-content no-padding-mobile" style="
-                  {%- if piece.backColor-%}
-                    background-color:{{ piece.backColor }}
+        <div class="card z-depth-0" style="
+          {% if piece.backColor%}
+            background-color:{{ piece.backColor }}
+          {% endif %}
+        ">
+          <div class="card-content no-padding-mobile" style="
+            {% if piece.backColor%}
+              background-color:{{ piece.backColor }}
+            {% endif %}
+          ">
+
+            <div class="card-title">
+              {% if piece._url %}
+                <a href="{{ piece._url }}">
+                {% endif %}
+                <h4
+                  class="accent-color"
+                  style="
+                  {% if piece.titleColor %}
+                    color:{{ piece.titleColor }}
+                  {% endif %}
+                  {% if piece.titleCenter %}
+                    text-align: center;
                   {% endif %}
                 ">
-         {%- endif -%}
+                  {{ piece.title }}
+                </h4>
+                {% if piece._url %}
+                </a>
+              {% endif %}
+            </div>
 
-                <div class="card-title">
-                  {% if piece._url %}
-                    <a href="{{ piece._url }}">
-                  {%- endif -%}
-                      <h4 class="accent-color" style="
-                        {%- if piece.titleColor -%}
-                          color:{{ piece.titleColor }}
-                        {% endif %}
-                        {%- if piece.titleCenter -%}
-                          text-align: center;
-                        {% endif %}
-                      ">
-                        {{ piece.title }}
-                      </h4>
-                  {% if piece._url %}
-                    </a>
-                  {%- endif -%}
-                </div>
+            <div class="gallery">
 
-                <div class="gallery">
+              <div class="images"
+                style="
+                  {% if piece.columnCount == '5' %}
+                    column-count: 5;
+                  {% elif piece.columnCount == '4' %}
+                    column-count: 4;
+                  {% elif piece.columnCount == '3' %}
+                    column-count: 3;
+                  {% else %}
+                    column-count: 5;
+                  {% endif %}"
+                >
 
-                  <div class="images" style="
-                    {%- if piece.columnCount == '5' -%}
-                      column-count: 5;
-                    {%- elif piece.columnCount == '4' -%}
-                      column-count: 4;
-                    {%- elif piece.columnCount == '3' -%}
-                      column-count: 3;
-                    {% else %}
-                      column-count: 5;
-                    {% endif %}
-                  ">
-                    {% for _image in piece._images %}
+                {% for _image in piece._images %}
+                <div class="radius
+                  {% if data.page.shadow == true %}
+                    z-depth-2
+                  {% endif %}
+                ">
+
+                  <div class="card">
+                    <div class="card-image">
                       <img
-                        class="z-depth-2"
                         src="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'one-third' }) }}"
                         data-featherlight="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'full' }) }}"
-                        alt="{{ _image.description or _image.title }}" width="100%"
+                        alt="{{ _image.description or _image.title }}"
+                        width="100%"
                       >
-                    {% endfor %}
+                    </div>
+
+                    {% if _image.description and piece.columnCount == '3' %}
+                      <div class="card-content">
+                        <p class="flow-text"
+                          {% if image.descriptionColor %}
+                            style="color:{{ _image.descriptionColor }}"
+                          {% endif %}
+                        >
+                          {{ _image.description }}
+                        </p>
+                      </div>
+                    {% endif %}
+
+                    {% if _image.credit and piece.columnCount == '3' %}
+                      <div class="card-action center-align flow-text">
+                        {% if _image.creditUrl %}
+                            <a class="btn-flat" href="{{ _image.creditUrl }}">
+                        {% endif %}
+                              <p>{{ _image.credit }}</p>
+                        {% if _image.creditUrl %}
+                            </a>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    </div>
                   </div>
+                {% endfor %}
 
-                </div>
+              </div>
 
-        {% if piece.cardOn == true %}
             </div>
+
           </div>
-        {% endif %}
+        </div>
 
       {% endfor %}
 
