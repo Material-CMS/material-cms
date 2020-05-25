@@ -1,7 +1,7 @@
 <div data-apos-ajax-append>
 
   {% for piece in data.pieces %}
-  <div class="card z-depth-0 {% if piece.blogOn == true %}blog{% else %}horizontal{% endif %}"
+  <div class="card z-depth-0 {% if piece.blogOn == true %} blog {% else %} horizontal {% endif %}"
       {% if piece.backColor%}
         style="background-color:{{ piece.backColor }}"
       {% endif %}
