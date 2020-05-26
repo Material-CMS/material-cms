@@ -1,6 +1,14 @@
 // Material Icons
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @material-icons: Material Icons, sans-serif;
+// Mixins
+.transition (@prop: all, @time: 1s, @ease: linear) {
+    -webkit-transition: @prop @time @ease;
+    -moz-transition: @prop @time @ease;
+    -o-transition: @prop @time @ease;
+    -ms-transition: @prop @time @ease;
+    transition: @prop @time @ease;
+}
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -169,8 +177,7 @@ h4 {
     span {
       color: #ffab40;
       margin-right: 24px;
-      -webkit-transition: color 0.3s ease;
-      transition: color 0.3s ease;
+      .transition(color, 0.3s, ease);
       text-transform: uppercase;
     }
   }
@@ -179,7 +186,7 @@ h4 {
   height: 100vh;
 }
 // Cards
-.card {
+.card {transition
   background-color: inherit;
   margin: 0;
   .card-image {
@@ -222,8 +229,7 @@ h4 {
   line-height: 40px;
   padding: 0;
   background-color: #26a69a;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
+  .transition(background-color, 0.3s, ease);
   cursor: pointer;
   vertical-align: middle;
 }
@@ -476,12 +482,14 @@ h4 {
     display: inline-block;
     margin-right: auto;
     margin-left: auto;
-    column-gap: 1.5rem;
-    -moz-column-gap: 1.5rem;
     -webkit-column-gap: 1.5rem;
+    -moz-column-gap: 1.5rem;
+    column-gap: 1.5rem;
     .images-container {
-      display: block;
+      -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
       break-inside: avoid;
+      display: block;
       padding: .55rem 0;
       .radius {
         margin: .20rem 0;
@@ -499,6 +507,8 @@ h4 {
   }
   @media (max-width: 600px) {
     .images {
+      -webkit-column-count: 1 !important;
+      -moz-column-count: 1 !important;
       column-count: 1 !important;
     }
   }
@@ -541,7 +551,7 @@ table {
   .btn-flat {
     color:#ffab40;
     text-transform: none;
-    transition: filter .3s ease;
+    .transition(filter, .3s, ease);
   }
   .btn-flat:hover {
     filter: brightness(130%);
