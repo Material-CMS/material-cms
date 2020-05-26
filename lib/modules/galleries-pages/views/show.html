@@ -67,7 +67,7 @@
                   <div class="title">
                     <h3 class="accent-color" style="
                       {% if data.piece.titleColor %}
-                        color:{{ data.piece.titleColor }}
+                        color:{{ data.piece.titleColor }};
                       {% endif %}
                       {% if data.piece.titleCenter %}
                         text-align: center;
@@ -115,15 +115,15 @@
                                 width="100%"
                               >
 
-                              {% if data.piece.titleShow == true and data.piece.columnCount == '3' %}
+                              {% if data.piece.imagesTitleShow == true and data.piece.columnCount == '3' %}
                                 <span class="card-title
-                                  {% if data.piece.titleCenter %}
+                                  {% if data.piece.imagesTitleCenter %}
                                    center-align
                                   {% endif %}"
                                 >
                                   <h4 class="accent-color truncate hide-on-small-only"
-                                    {%- if data.piece.titleColor -%}
-                                      style="color:{{ data.piece.titleColor}}"
+                                    {%- if data.piece.imagesTitleColor -%}
+                                      style="color:{{ data.piece.imagesTitleColor}}"
                                     {% endif %}
                                   >
                                     {{ _image.title }}
