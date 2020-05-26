@@ -7,8 +7,9 @@
 // Colors
 @white: #ffffff;
 @black: #000000;
-@button-color: #f44336;
-@button-color-hover: darken(@button-color, 10%); // Empty widget area
+@green: #008000;
+@red: #f44336;
+@red-hover: darken(@red, 10%); // Empty widget area
 .apos-refreshable {
   .apos-empty {
     width: 100%;
@@ -77,6 +78,11 @@ fieldset {
     width: 100%;
   }
 }
+// Spinner
+.apos-global-busy:after {
+  color: @red;
+}
+
 // Admin UI
 .main-content {
   .login-link {
@@ -90,7 +96,7 @@ fieldset {
 .apos-area-controls {
   .apos-area-divider {
     .box-shadow(none);
-    background-color: @button-color;
+    background-color: @red;
   }
 }
 .apos-area-widgets {
@@ -100,7 +106,7 @@ fieldset {
 }
 .apos-ui {
   .apos-required label:first-of-type:after {
-    color: @button-color;
+    color: @red;
   }
   .apos-field-input-checkbox-indicator,
   .apos-form-checkbox-indicator {
@@ -125,6 +131,7 @@ fieldset {
   .apos-modal-controls {
     .apos-field-input-select:focus,
     .apos-field-input-select:hover,
+    .apos-field-input-textarea:focus,
     .apos-array-save-item.apos-button:focus,
     .apos-array-save-item.apos-button:hover,
     .apos-button--major:focus,
@@ -136,44 +143,60 @@ fieldset {
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
   }
+  .apos-reorganize-tree {
+    .jqtree-tree {
+      .jqtree-moving {
+        background-color: @green !important;
+      }
+      .jqtree-border {
+        border-color: @green;
+      }
+      .jqtree-line {
+        background-color: @green !important;
+      }
+      .jqtree-circle {
+        border-color: @green;
+      }
+    }
+  }
   .apos-schema-tabs {
     z-index: 999;
   }
   .apos-fieldset-row {
     .apos-button {
-      border-color: @button-color;
+      border-color: @red;
     }
   }
   .apos-button--action {
-    border-color: @button-color;
+    border-color: @red;
   }
   .apos-array-save-item.apos-button {
-    border-color: @button-color;
+    border-color: @red;
   }
   .apos-modal-breadcrumb .apos-modal-breadcrumb-item {
-    border-color: @button-color !important;
+    border-color: @red !important;
   }
   .apos-chooser-choice:hover {
-    background-color: @button-color;
+    background-color: @red;
   }
   .apos-button--in-context {
     .box-shadow(none);
-    border-color: @button-color;
+    border-color: @red;
   }
   .apos-button--in-context:hover {
     .box-shadow(none);
-    border-color: @button-color;
-    color: @button-color;
+    border-color: @red;
+    color: @red;
   }
   .apos-button--in-group:hover {
-    color: @button-color;
+    color: @red;
   }
   .apos-buttons {
     .box-shadow(none);
-    border-color: @button-color;
+    border-color: @red;
   }
   .apos-button--major {
-    background-color: @button-color;
+    background-color: @red;
   }
   .apos-button--circular {
     padding: 16px;
@@ -195,15 +218,18 @@ fieldset {
     color: @black;
   }
   .apos-manage-tag-add:hover {
-    color: @button-color;
+    color: @red;
   }
   input[type="text"]:not(.browser-default):focus:not([readonly]) {
-    border-bottom-color: @button-color;
-    box-shadow: 0 1px 0 0 @button-color;
+    border-bottom-color: @red;
+    box-shadow: 0 1px 0 0 @red;
   }
   [type="checkbox"]:checked + span:not(.lever):before {
-    border-right-color: @button-color;
-    border-bottom-color: @button-color;
+    border-right-color: @red;
+    border-bottom-color: @red;
+  }
+  .apos-reorganize-published--true {
+    background-color: @green;
   }
   .apos-reorganize-tree-header {
     [type="checkbox"] {
@@ -225,13 +251,13 @@ fieldset {
   .apos-manage-grid-view {
     .apos-manage-grid-piece.apos-focus:before,
     .apos-manage-grid-piece:hover:before {
-      border-color: @button-color;
+      border-color: @red;
   }
     .apos-manage-grid-piece {
       .apos-manage-grid-piece-controls {
         .apos-button {
           i {
-            color: @button-color;
+            color: @red;
           }
         }
       }
@@ -244,7 +270,7 @@ fieldset {
     .apos-manage-column:hover,
     td a:hover,
     th a:hover {
-      color: @button-color;
+      color: @red;
     }
   }
 }
