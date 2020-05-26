@@ -22,7 +22,7 @@
                 <a href="{{ piece._url }}">
                   <h3 class="accent-color" style="
                     {% if piece.titleColor %}
-                      color:{{ piece.titleColor }}
+                      color:{{ piece.titleColor }};
                     {% endif %}
                     {% if piece.titleCenter %}
                       text-align: center;
@@ -71,15 +71,15 @@
                             width="100%"
                           >
 
-                          {% if piece.titleShow == true and piece.columnCount == '3' %}
+                          {% if piece.imagesTitleShow == true and piece.columnCount == '3' %}
                             <span class="card-title
-                              {% if piece.titleCenter %}
+                              {% if piece.imagesTitleCenter %}
                                center-align
                               {% endif %}"
                             >
                               <h4 class="accent-color truncate hide-on-small-only"
-                                {%- if piece.titleColor -%}
-                                  style="color:{{ piece.titleColor }}"
+                                {%- if piece.imagesTitleColor -%}
+                                  style="color:{{ piece.imagesTitleColor}}"
                                 {% endif %}
                               >
                                 {{ _image.title }}
