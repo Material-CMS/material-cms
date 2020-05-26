@@ -200,6 +200,7 @@ h4 {
     }
   }
   .card-action {
+    margin: 0;
     a {
       margin-right: 0 !important;
     }
@@ -470,21 +471,28 @@ h4 {
 // Gallery
 .gallery {
   overflow: visible;
-  .radius {
-    margin-bottom: 0.75rem;
-  }
   .images {
     width: 100%;
     display: inline-block;
     margin-right: auto;
     margin-left: auto;
-    column-gap: 0.75rem;
-    .card {
-      .card-image {
-        img {
-          cursor: pointer;
-          width: 100% !important;
-          height: auto !important;
+    column-gap: 1.5rem;
+    -moz-column-gap: 1.5rem;
+    -webkit-column-gap: 1.5rem;
+    .images-container {
+      display: block;
+      break-inside: avoid;
+      padding: .55rem 0;
+      .radius {
+        margin: .20rem 0;
+      }
+      .card {
+        .card-image {
+          img {
+            cursor: pointer;
+            width: 100% !important;
+            height: auto !important;
+          }
         }
       }
     }
