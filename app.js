@@ -94,8 +94,11 @@ var apos = require('apostrophe')({
       seoGoogleFields: true
     },
     'apostrophe-site-map': {
+      noPriority: true,
       excludeTypes: [
-        'apostrophe-global'
+        'apostrophe-global',
+        'contact-form'
+
       ],
       childPageDepth: 3
     },

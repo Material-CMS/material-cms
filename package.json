@@ -18,7 +18,7 @@
   "author": "Felix Langenberg",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.106.3",
+    "apostrophe": "^2.107.0",
     "apostrophe-caches-redis": "^2.1.2",
     "apostrophe-favicons": "^1.1.5",
     "apostrophe-open-graph": "^1.1.5",
