@@ -9,6 +9,99 @@
     -ms-transition: @prop @time @ease;
     transition: @prop @time @ease;
 }
+.flex() {
+    display: -webkit-box;
+    display: -moz-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display:flex;
+}
+.flex-align-items(@alignStyle) {
+    -ms-flex-align:@alignStyle;
+    -webkit-align-items:@alignStyle;
+     align-items: @alignStyle;
+}
+.flex-justify(@justifyStyle) {
+    .ms-flex-justify(@justifyStyle);
+    -webkit-justify-content: @justifyStyle;
+    justify-content: @justifyStyle;
+}
+.ms-flex-justify(@msJustify) {
+    & when (@msJustify = space-between) {
+        -ms-flex-pack: justify;
+    }
+    & when (@msJustify = space-around) {
+        -ms-flex-pack: distribute;
+    }
+    & when (@msJustify = flex-end) {
+        -ms-flex-pack: end;
+    }
+    & when (@msJustify = flex-start) {
+        -ms-flex-pack: start;
+    }
+    & when (@msJustify = center) {
+        -ms-flex-pack: center;
+    }
+}
+.border-radius(@radius) {
+  -webkit-border-radius:   @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.border-radius(top-left, @radius) {
+  -webkit-border-top-left-radius: @radius;
+  -moz-border-radius-topleft: @radius;
+  border-top-left-radius: @radius;
+}
+.border-radius(top-right, @radius) {
+  -webkit-border-top-right-radius: @radius;
+  -moz-border-radius-topright: @radius;
+  border-top-right-radius: @radius;
+}
+.border-radius(bottom-right, @radius) {
+  -webkit-border-bottom-right-radius: @radius;
+  -moz-border-radius-topright: @radius;
+  border-bottom-right-radius: @radius;
+}
+.border-radius(bottom-left, @radius) {
+  -webkit-border-bottom-left-radius: @radius;
+  -moz-border-radius-bottomleft: @radius;
+  border-bottom-left-radius: @radius;
+}
+.border-radius(top, @radius) {
+  .border-radius(top-right, @radius);
+  .border-radius(top-left, @radius);
+}
+.border-radius(bottom, @radius) {
+  .border-radius(bottom-right, @radius);
+  .border-radius(bottom-left, @radius);
+}
+.border-radius(left, @radius) {
+  .border-radius(top-left, @radius);
+  .border-radius(bottom-left, @radius);
+}
+.border-radius(right, @radius) {
+  .border-radius(top-right, @radius);
+  .border-radius(bottom-right, @radius);
+}
+.translate(@x; @y) {
+-webkit-transform: translate(@x, @y);
+  -ms-transform: translate(@x, @y);
+   -o-transform: translate(@x, @y);
+      transform: translate(@x, @y);
+}
+.object-fit(@fit){
+  -o-object-fit: @fit;
+     object-fit: @fit;
+  font-family: 'object-fit: @{fit}';
+}
+.perspective (@value) {
+	-webkit-perspective: 	@value;
+	-moz-perspective: 	@value;
+	-ms-perspective: 	@value;
+	perspective: 		@value;
+}
+// Basics
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -72,8 +165,8 @@ h4 {
 }
 // Sections
 .section {
+  .flex();
   position: relative;
-  display: flex;
   min-height: 100vh;
   padding-top: 0;
   padding-bottom: 0;
@@ -82,8 +175,8 @@ h4 {
   background-position: center;
 }
 .main-content {
-  display: flex;
-  align-items: center;
+  .flex();
+  .flex-align-items(center);
   width: 100vw;
   min-height: 100vh;
   position: relative;
@@ -138,8 +231,8 @@ h4 {
 }
 // Container
 .container {
-  display: flex;
-  align-items: center;
+  .flex();
+  .flex-align-items(center);
   margin: auto;
 }
 .footer-container {
@@ -152,15 +245,6 @@ h4 {
 // Grid
 .row {
   margin-bottom: 0;
-}
-// Down Button
-.scroll-down.btn-floating {
-  display: none;
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translate(-50%);
-  background-color: inherit;
 }
 // Slides
 .slide-content {
@@ -241,12 +325,10 @@ h4 {
     margin-bottom: 0;
   }
   .apos-area-widget-wrapper:nth-child(1) .radius {
-    border-bottom-left-radius: inherit;
-    border-bottom-right-radius: inherit;
+    .border-radius(bottom, inherit)
   }
   .apos-area-widget-wrapper:nth-child(2) .radius {
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
+    .border-radius(top, inherit)
   }
 }
 // Card People
@@ -256,26 +338,26 @@ h4 {
     .btn-floating {
       width: 10rem;
       height: 10rem;
-      transform: translate(0, 34%);
+      .translate(0; 34%);
       @media (max-width: 992px) {
         width: 8rem;
         height: 8rem;
-        transform: translate(0, 30%);
+        .translate(0; 30%);
       }
       @media (max-width: 600px) {
         width: 6rem;
         height: 6rem;
-        transform: translate(0, 26%);
+        .translate(0; 26%);
       }
     }
     img {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: inherit;
+      .flex();
+      .flex-align-items(center);
+      .flex-justify(center);
+      .border-radius(inherit);
+      .object-fit(cover);
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
   }
   .card-action {
@@ -289,7 +371,7 @@ h4 {
     .col {
       padding: 0;
       .radius {
-        border-radius: 0 !important;
+        .border-radius(0) !important;
       }
     }
   }
@@ -315,7 +397,7 @@ h4 {
       padding: 0;
     }
     .radius {
-      border-radius: 0 !important;
+      .border-radius(0) !important;
     }
   }
   .card-stacked {
@@ -366,9 +448,9 @@ h4 {
 }
 // Carousels
 .carousel {
-  height: 25rem;
-  perspective: 31.25rem;
+  .perspective(31.25rem);
   display: block;
+  height: 25rem;
   .carousel-item {
     top: 5rem !important;
     display: inline-block;
@@ -453,7 +535,7 @@ h4 {
       line-height: 6.3rem;
       text-align: center;
       top: 50%;
-      transform: translate(0, -50%);
+      .translate(0; -50%);
     }
     .title {
       position: static;
@@ -470,7 +552,7 @@ h4 {
 }
 // Double Widgets
 .double {
-  display: flex;
+  .flex();
 }
 // Icons
 .material-icons {
@@ -592,7 +674,7 @@ table {
   padding: 0.5rem 0.5rem !important;
   text-align: center;
   background-color: #323232;
-  border-radius: 2px;
+  .border-radius(2px);
   color: #fff;
   width: auto;
   line-height: 25px;
@@ -626,15 +708,15 @@ table {
             }
           }
           .center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            .flex();
+            .flex-align-items(center);
+            .flex-justify(center);
           }
           @media (max-width: 600px) {
             .copyright-center {
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              .flex();
+              .flex-align-items(center);
+              .flex-justify(center);
             }
           }
         }
@@ -660,6 +742,6 @@ table {
     height: inherit;
   }
   .radius {
-    border-radius: 0 !important;
+    .border-radius(0)!important;
   }
 }
