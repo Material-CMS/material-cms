@@ -157,10 +157,44 @@ fieldset {
       .jqtree-circle {
         border-color: @green;
       }
+      .apos-reorganize-controls {
+        a:hover {
+          color: @red;
+        }
+      }
     }
   }
   .apos-schema-tabs {
     z-index: 999;
+  }
+  .apos-schema-groups {
+    .apos-schema-group-inner {
+      .input-field {
+        margin: 1rem 0;
+        input {
+          border-bottom-color: #9e9e9e !important;
+        }
+        input:focus {
+          border-bottom-color:@red !important;
+          box-shadow:0 1px 0 0 @red !important;
+          filter: brightness(100%)
+        }
+        input,
+        input + label {
+          margin-left: 0;
+        }
+        input + label {
+          color: #a9a9a9 !important;
+        }
+        input:focus + label {
+          color: @red !important;
+          filter: brightness(100%)
+        }
+        i {
+          display: none;
+        }
+      }
+    }
   }
   .apos-fieldset-row {
     .apos-button {
