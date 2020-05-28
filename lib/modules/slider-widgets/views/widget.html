@@ -3,14 +3,17 @@
   <ul class="slides">
 
     {% block items %}
+
       {% for entry in data.widget._pieces %}
         {% set image = entry.item or entry %}
         {% set relationship = entry.relationship %}
 
         <li>
           <img
-            data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}{% endblock %}"
-            alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
+            data-image src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
+            srcset="{{ apos.images.srcset(image.attachment) }}"
+            sizes="{{ data.options.sizesAttr or '100vw' }}"
+            alt="{{ image.title }}"
           >
 
           <div class="caption {{ image.align }}">
