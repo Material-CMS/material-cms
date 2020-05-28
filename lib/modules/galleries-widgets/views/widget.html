@@ -78,7 +78,8 @@
                             <div class="card-image">
 
                               <img
-                                src="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'one-third' }) }}"
+                                srcset="{{ apos.images.srcset(_image.attachment) }}"
+                                sizes="(min-width:1200px)20vw, 40vw"
                                 data-featherlight="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'full' }) }}"
                                 alt="{{ _image.description or _image.title }}"
                                 width="100%"
@@ -134,7 +135,7 @@
                   </div>
 
                 </div>
-                
+
               </div>
             </div>
 
