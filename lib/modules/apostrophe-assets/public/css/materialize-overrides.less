@@ -268,6 +268,13 @@ h4 {
 }
 .slider.fullscreen {
   height: 100vh;
+  .slides {
+    li {
+      img {
+        width: initial;
+      }
+    }
+  }
 }
 // Cards
 .card {transition
@@ -466,6 +473,7 @@ h4 {
     .indicator-item {
       height: 16px;
       width: 16px;
+      -webkit-filter: brightness(50%);
       filter: brightness(50%);
     }
   }
@@ -638,6 +646,7 @@ table {
     .transition(filter, .3s, ease);
   }
   .btn-flat:hover {
+    -webkit-filter: brightness(130%);
     filter: brightness(130%);
   }
   .flow-text {
