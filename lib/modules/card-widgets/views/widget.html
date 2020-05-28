@@ -16,12 +16,12 @@
                     data-slideshow-item
                     class="apos-slideshow-item{% if loop.first %} apos-current{% endif %}{% block itemClass %}{% endblock %} apos-slideshow-item--{{ image.attachment.extension }}"
                     style="background-image:
-                      url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }})
+                      url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }});
                       {%- if apos.attachments.hasFocalPoint(relationship) -%}
-                        ; background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
+                        background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
                       {%- endif -%}
                       {%- if data.options.aspectRatio and (image.attachment.extension == 'svg') -%}
-                        ; width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
+                        width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
                       {%- endif -%}
                     ">
                     <div class="card-image" data-featherlight="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}">
