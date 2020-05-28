@@ -8,15 +8,17 @@
         {% set image = entry.item or entry %}
         {% set relationship = entry.relationship %}
 
-        <li style="background-image:
-          url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }});
+        <li style="
+          background-image:
+            url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'one-half', crop: relationship }) }});
           {%- if apos.attachments.hasFocalPoint(relationship) -%}
             background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
           {%- endif -%}
           {%- if data.options.aspectRatio and (image.attachment.extension == 'svg') -%}
             width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
           {%- endif -%}
-        ">
+        "
+        sizes="{{ data.options.sizesAttr' or '100vw' }}">
           <img
             data-image src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
             srcset="{{ apos.images.srcset(image.attachment) }}"
@@ -66,14 +68,29 @@
 
         </li>
 
+        <style>
+          .slider .indicators .indicator-item.active {
+            background-color: {{data.global.accentColor}}
+          }
+          @media (min-width: 600px) {
+          .slider .slides li {
+              background-image: url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'two-thirds', crop: relationship }) }}) !important;
+            }
+          }
+          @media (min-width: 1000px) {
+            .slider .slides li {
+                background-image: url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}) !important;
+              }
+          }
+          @media (min-width: 2000px) {
+            .slider .slides li {
+                background-image: url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'max', crop: relationship }) }}) !important;
+              }
+          }
+        </style>
+
       {% endfor %}
     {% endblock %}
 
   </ul>
 </div>
-
-<style>
-  .slider .indicators .indicator-item.active {
-    background-color: {{data.global.accentColor}}
-  }
-</style>
