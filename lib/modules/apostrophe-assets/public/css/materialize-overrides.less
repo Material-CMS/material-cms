@@ -182,6 +182,11 @@ h4 {
   position: relative;
   padding-top: 64px;
 }
+@media (max-width: 600px) {
+  .main-content {
+    padding-top: 0;
+  }
+}
 .side-image {
   height: 100%;
   position: absolute;
@@ -717,10 +722,15 @@ table {
 .apos-rich-text ul li {
   list-style-type: inherit;
 }
+// Contact form
 .contact-form {
   .thank-you {
-    // later gets hoisted out and becomes visible
     display: none;
+  }
+}
+@media (max-width: 600px) {
+  .contact-form {
+    margin-bottom: 10rem;
   }
 }
 // Footer
