@@ -11,8 +11,6 @@
         <li>
           <img
             data-image src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
-            srcset="{{ apos.images.srcset(image.attachment) }}"
-            sizes="{{ data.options.sizesAttr or '100vw' }}"
             alt="{{ image.title }}"
           >
 

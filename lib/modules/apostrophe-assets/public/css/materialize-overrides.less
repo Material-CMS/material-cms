@@ -268,16 +268,9 @@ h4 {
 }
 .slider.fullscreen {
   height: 100vh;
-  .slides {
-    li {
-      img {
-        width: initial;
-      }
-    }
-  }
 }
 // Cards
-.card {transition
+.card {
   background-color: inherit;
   margin: 0;
   .card-image {
@@ -297,6 +290,28 @@ h4 {
     }
     .apos-area-widget-wrapper:first-child {
       margin: 0;
+    }
+  }
+  @media (max-width: 600px) {
+    .card-content.no-padding-mobile {
+      padding: 0;
+      .row {
+        .col {
+          padding: 0;
+          .gallery {
+            .images {
+              margin-bottom: -.45rem;
+              .images-container {
+                padding: 0;
+                .radius {
+                  .border-radius(inherit);
+                  margin: 0;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
   .card-action {
