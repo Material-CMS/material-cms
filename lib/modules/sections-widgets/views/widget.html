@@ -28,6 +28,9 @@
       {% if piece.preferences == 'slideOn' %}
         <div class="slide-content">
           {{ apos.singleton(piece, 'content', 'slider', {
+            sizesAttr: '(min-width: 1024px) 50vw, 100vw',
+            noHeight: true,
+            focalPoint: true,
             controls: {
               movable: false,
               cloneable: false,

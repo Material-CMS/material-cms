@@ -8,9 +8,19 @@
         {% set image = entry.item or entry %}
         {% set relationship = entry.relationship %}
 
-        <li>
+        <li style="background-image:
+          url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }});
+          {%- if apos.attachments.hasFocalPoint(relationship) -%}
+            background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
+          {%- endif -%}
+          {%- if data.options.aspectRatio and (image.attachment.extension == 'svg') -%}
+            width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
+          {%- endif -%}
+        ">
           <img
             data-image src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
+            srcset="{{ apos.images.srcset(image.attachment) }}"
+            sizes="{{ data.options.sizesAttr' or '100vw' }}"
             alt="{{ image.title }}"
           >
 
