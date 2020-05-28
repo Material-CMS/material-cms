@@ -80,66 +80,66 @@
     {% endfor %}
   </ul>
 
-  {# Mobile #}
-  <ul class="sidenav" id="mobile">
+</div>
 
-    {# Links array on widget level #}
-    {% for name in data.page.links %}
-     <li>
-       <a class="accent-color" href="{{ name.url }}">
-         {% if name.icon %}
-            <i class="material-icons left">{{ name.icon }}</i>
-         {% endif %}
-         {{ name.name }}
-       </a>
-     </li>
-     {% endfor %}
+{# Mobile #}
+<ul class="sidenav" id="mobile">
 
-    {# Home Active #}
-    <li
+  {# Links array on widget level #}
+  {% for name in data.page.links %}
+   <li>
+     <a class="accent-color" href="{{ name.url }}">
+       {% if name.icon %}
+          <i class="material-icons left">{{ name.icon }}</i>
+       {% endif %}
+       {{ name.name }}
+     </a>
+   </li>
+   {% endfor %}
+
+  {# Home Active #}
+  <li
+    {% if data.page._children[0] %}
+      class="active"
+    {% endif %}
+  >
+    <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light
       {% if data.page._children[0] %}
+        dropdown-trigger
+      {% endif %}
+    ">
+      {{ data.home.title }}
+      {% if data.page._children[0] %}
+        <i class="material-icons right">arrow_drop_down</i>
+      {% endif %}
+    </a>
+  </li>
+
+  {# Home Cildren Active #}
+  {% for tab in data.home._children %}
+    <li
+      {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
         class="active"
       {% endif %}
     >
-      <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light
-        {% if data.page._children[0] %}
+      <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light
+        {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
           dropdown-trigger
         {% endif %}
       ">
-        {{ data.home.title }}
-        {% if data.page._children[0] %}
+        {{ tab.title }}
+        {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
           <i class="material-icons right">arrow_drop_down</i>
         {% endif %}
       </a>
     </li>
+  {% endfor %}
 
-    {# Home Cildren Active #}
-    {% for tab in data.home._children %}
-      <li
-        {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-          class="active"
-        {% endif %}
-      >
-        <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light
-          {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-            dropdown-trigger
-          {% endif %}
-        ">
-          {{ tab.title }}
-          {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-            <i class="material-icons right">arrow_drop_down</i>
-          {% endif %}
-        </a>
-      </li>
+  {# Dropdown Mobile #}
+  <ul class="dropdown-content" id="mobile-dropdown">
+    {% for section in data.pieces %}
+      <li><a class="accent-color flow-text sidenav-close anchor" href="#{{ section.slug }}">{{ section.title }}</a></li>
     {% endfor %}
-
-    {# Dropdown Mobile #}
-    <ul class="dropdown-content" id="mobile-dropdown">
-      {% for section in data.pieces %}
-        <li><a class="accent-color flow-text sidenav-close anchor" href="#{{ section.slug }}">{{ section.title }}</a></li>
-      {% endfor %}
-    </ul>
-
   </ul>
 
-</div>
+</ul>
