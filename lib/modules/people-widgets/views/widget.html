@@ -26,10 +26,10 @@
             <h4 class="accent-color card-title">{{ piece.title }}</h4>
           {% if piece._url %}</a>{% endif %}
 
-          {{ apos.area(piece, 'body', {
-            edit: false,
-            widgets: { 'apostrophe-rich-text': {} }
-          }) }}
+            {{ apos.area(piece, 'body', {
+              edit: false,
+              widgets: { 'apostrophe-rich-text': {} }
+            }) }}
 
           {% if piece.email or piece.phone %}
             <div class="card-action">
