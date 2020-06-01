@@ -18,6 +18,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Form Thank You Message on widget level and with English placeholder
 
+## [0.9.5 ] - 2020-06-01
+
+### Added
+- Modern Images with srcset
+- Added apostrope 2.107.0
+- Less mixins for better compatibility for old browsers
+
+### Removed
+- Whole section cards features
+
+### fixed
+- Navbar mobile overlay problem
+- Gallery fixes
+- Contact form UI fixes
+- Admin UI Colors
+
+
 ## [0.9.4 ] - 2020-05-15
 
 ### Added
