@@ -72,6 +72,8 @@
       <div class="slide-content">
         {{ apos.singleton(data.piece, 'content', 'slider', {
           limit: 1,
+          size: 'full',
+          sizesAttr: '(max-width:600px) 120vw, 58vw',
           controls: {
             movable: false,
             cloneable: false,
@@ -159,8 +161,9 @@
                   limit: 2,
                   widgets: {
                     'card': {
+                     size: 'two-thirds',
                      aspectRatio: [ 2, 1 ],
-                     size: 'full',
+                     sizesAttr: '(max-width:600px) 50vw, 40vw',
                       controls: {
                         cloneable: false,
                         removable: true,

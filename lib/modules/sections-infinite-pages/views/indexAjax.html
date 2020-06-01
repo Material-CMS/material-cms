@@ -112,12 +112,14 @@
                 <div class="glue-container">
               {% endif %}
 
-                  {{ apos.area(section, 'content', {
+              {{ apos.area(section, 'content', {
                     limit: 2,
                     widgets: {
                       'card': {
-                       aspectRatio: [ 2, 1 ],
-                       size: 'full',
+                        size: 'two-thirds',
+                        aspectRatio: [ 2, 1 ],
+                        sizesAttr: '(max-width:600px) 50vw, 40vw',
+                        size: 'full',
                         controls: {
                           cloneable: false,
                           removable: true,

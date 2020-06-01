@@ -9,10 +9,10 @@
         {% set relationship = entry.relationship %}
 
         <li>
-
           <img data-image
-            srcset="{{ apos.images.srcset(image.attachment) }}"
-            sizes="(max-width:600px) 120vw, 58vw"
+            src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
+            srcset="{{ apos.images.srcset(image.attachment, realtionship) }}"
+            sizes="{{ data.options.sizesAttr or '100vw' }}"
             alt="{{ image.title }}"
             {%- if apos.attachments.hasFocalPoint(relationship) -%}
               style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
