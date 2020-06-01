@@ -65,10 +65,14 @@
                     <div class="card-image">
                       {{ apos.area(data.piece, 'topImage', {
                         edit: false,
-                        widgets: { 'card': {
-                          noHeight: true,
-                          focalPoint: true
-                        } }
+                        widgets: {
+                          'card': {
+                            size: 'one-half',
+                            sizesAttr: '(max-width:600px) 50vw, 40vw',
+                            noHeight: true,
+                            focalPoint: true
+                          }
+                        }
                       }) }}
                     </div>
                   {% endif %}
@@ -81,10 +85,14 @@
                         <div class="card-image">
                           {{ apos.area(data.piece, 'sideImage', {
                             edit: false,
-                            widgets: { 'card': {
-                              noHeight: true,
-                              focalPoint: true
-                            } }
+                            widgets: {
+                              'card': {
+                                size: 'one-half',
+                                sizesAttr: '(max-width:600px) 50vw, 30vw',
+                                noHeight: true,
+                                focalPoint: true
+                              }
+                            }
                           }) }}
                         </div>
                       </div>

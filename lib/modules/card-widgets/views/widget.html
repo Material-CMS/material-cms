@@ -6,28 +6,25 @@
     {% endif %}
     ">
       <div class="card z-depth-0">
-        <div class="apos-slideshow{% block outerClass %}{% endblock %}" data-slideshow>
+        <div class="apos-slideshow">
           <div class="slideshow-items" data-slideshow-items>
             {%- block items -%}
               {%- for entry in data.widget._pieces -%}
                 {%- set image = entry.item or entry -%}
                 {%- set relationship = entry.relationship -%}
-                  <div
-                    data-slideshow-item
+                  <div data-slideshow-item
                     class="apos-slideshow-item{% if loop.first %} apos-current{% endif %}{% block itemClass %}{% endblock %} apos-slideshow-item--{{ image.attachment.extension }}"
-                    style="background-image:
-                      url({{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }});
-                      {%- if apos.attachments.hasFocalPoint(relationship) -%}
-                        background-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}
-                      {%- endif -%}
-                      {%- if data.options.aspectRatio and (image.attachment.extension == 'svg') -%}
-                        width: 100%; padding-bottom: {{ 100 * data.options.aspectRatio[1] / data.options.aspectRatio[0] }}%; background-size: contain
-                      {%- endif -%}
-                    ">
-                    <div class="card-image" data-featherlight="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}">
-                      <img
-                        data-image src="{% block imgSrc %}{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}{% endblock %}"
-                        alt="{% block imgAlt %}{{ image.title }}{% endblock %}"
+                  >
+                    <div class="card-image">
+                      <img data-image
+                        data-featherlight="{{ apos.attachments.url(image.attachment, { size: 'full', crop: relationship }) }}"
+                        src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
+                        srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
+                        sizes="{{ data.options.sizesAttr or '100vw' }}"
+                        alt="{{ image.title }}"
+                        {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                          style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+                        {%- endif -%}
                       >
                     {%- if data.widget.title -%}
                       {%- block title -%}

@@ -279,7 +279,7 @@ h4 {
       max-width: 100%;
       height: 100vh;
       img {
-        object-fit: cover;
+        .object-fit(cover);
       }
     }
   }
@@ -290,6 +290,10 @@ h4 {
   margin: 0;
   .card-image {
     cursor: pointer;
+    img {
+      .object-fit(cover);
+      visibility: visible;
+    }
   }
   .card-title {
     pointer-events: none;
@@ -427,6 +431,11 @@ h4 {
   }
   .card-image {
     max-width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      .object-fit(cover);
+    }
     .col {
       padding: 0;
     }

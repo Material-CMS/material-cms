@@ -2,7 +2,7 @@
 
   {% for piece in data.pieces %}
 
-    {%- if piece.topImage.items[0] or piece._thumbnail -%}
+    {% if piece.topImage.items[0] or piece._thumbnail %}
       <div class="card-image">
     {% endif %}
 
@@ -10,19 +10,23 @@
         {% set topImage = apos.images.first(piece.topImage) %}
         <img
           src="{{ apos.attachments.url(topImage , { size: data.options.size or 'full' }) }}"
-          alt="{{ topImage .description or topImage .title }}">
+          srcset="{{ apos.images.srcset(topImage.attachment, relationship ) }}"
+          sizes="(max-width:600px) 50vw, 40vw"
+          alt="{{ topImage.title }}">
       {% endif %}
 
-      {%- if piece._thumbnail -%}
+      {% if piece._thumbnail %}
           <div class="btn-floating halfway-fab grey">
             <img class="circle"
+              data-featherlight="{{ apos.attachments.url(piece._thumbnail.attachment, { size: 'full', crop: relationship }) }}"
               src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
-              data-featherlight="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
-              alt="{{ piece._thumbnail.description or piece._thumbnail.title }}">
+              srcset="{{ apos.images.srcset(piece._thumbnail.attachment) }}"
+              sizes="{{ '10vw' }}"
+              alt="{{  piece._thumbnail.title }}">
           </div>
       {% endif %}
 
-    {%- if piece.topImage.items[0] or piece._thumbnail -%}
+    {% if piece.topImage.items[0] or piece._thumbnail %}
       </div>
     {% endif %}
 
