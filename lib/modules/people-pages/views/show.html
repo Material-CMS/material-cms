@@ -71,15 +71,19 @@
                   {% if data.piece.topImage.items[0] %}
                     {% set topImage = apos.images.first(data.piece.topImage) %}
                     <img
-                      src="{{ apos.attachments.url(topImage , { size: data.options.size or 'full' }) }}"
-                      alt="{{ topImage .description or topImage .title }}">
+                      src="{{ apos.attachments.url(topImage , { size: data.options.size or 'two-thirds' }) }}"
+                      srcset="{{ apos.images.srcset(topImage.attachment, relationship ) }}"
+                      sizes="(max-width:600px) 50vw, 40vw"
+                      alt="{{ topImage .title }}">
                   {% endif %}
 
                   {%- if data.piece._thumbnail -%}
                       <div class="btn-floating halfway-fab grey">
                         <img class="circle"
-                          src="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
                           data-featherlight="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'full' }) }}"
+                          src="{{ apos.attachments.url(data.piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+                          srcset="{{ apos.images.srcset(data.piece._thumbnail.attachment) }}"
+                          sizes="{{ '10vw' }}"
                           alt="{{ data.piece._thumbnail.description or data.piece._thumbnail.title }}">
                       </div>
                   {% endif %}
