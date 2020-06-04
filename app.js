@@ -60,6 +60,7 @@ var apos = require('apostrophe')({
       orderings: true
     },
     'tables-widgets': {},
+    'tabs-widgets': {},
     'texts': {
       orderings: true
     },

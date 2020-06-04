@@ -496,7 +496,7 @@ h4 {
   }
 }
 // Carousels
-.carousel {
+.card-content.carousel {
   .perspective(31.25rem);
   display: block;
   height: 25rem;
@@ -740,6 +740,30 @@ table {
 .apos-rich-text ul,
 .apos-rich-text ul li {
   list-style-type: inherit;
+}
+// Tabs
+.tab-container {
+  .no-radius-bottom {
+    .border-radius(bottom, inherit)
+  }
+  .apos-area {
+    .radius {
+      .border-radius(top, inherit)
+    }
+  }
+  .tabs {
+    .tab {
+      a {
+        -webkit-filter: opacity(10%);
+        filter: opacity(10%);
+      }
+      h2 {
+        .translate(0, -160%);
+        pointer-events: none;
+        margin: 0;
+      }
+    }
+  }
 }
 // Contact form
 .contact-form {
