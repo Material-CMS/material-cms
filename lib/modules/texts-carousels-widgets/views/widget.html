@@ -51,17 +51,23 @@
 </div>
 <style>
   {% if data.widget.carouselHeight == 'small' %}
-    .carousel {
+    .card-content.carousel {
       height: 15rem;
+      -webkit-perspective: 	20rem;
+      -moz-perspective: 	20rem;;
+      -ms-perspective: 	20rem;
       perspective: 20rem;
     }
-    .carousel-item {
+    .card-content.carousel .carousel-item {
       top: 50% !important;
     }
   {% endif %}
   {% if data.widget.carouselHeight == 'big' %}
-    .carousel {
+    .card-content.carousel {
       height: 35rem;
+      -webkit-perspective: 	40rem;
+      -moz-perspective: 	40rem;
+      -ms-perspective: 	40rem;
       perspective: 40rem;
     }
   {% endif %}
