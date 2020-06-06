@@ -41,9 +41,6 @@ var apos = require('apostrophe')({
     'sections-orderings': {
       extend: 'apostrophe-pieces-orderings'
     },
-    'sections-infinite-pages': {
-      orderings: true
-    },
     'sections-pages': {
       orderings: true
     },
