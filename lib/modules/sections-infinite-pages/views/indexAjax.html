@@ -3,7 +3,7 @@
       {# Background settings #}
     <div id="{{ section.slug }}" class="section page" style="
       {% if section._image.attachment  %}
-        background-image: url({{ apos.attachments.url(section._image.attachment, { size: data.options.size or 'full' }) }})
+        background-image: url("{{ apos.attachments.url(section._image.attachment, { size: data.options.size or 'full' }) }}")
       {% elif section.color %}
         background-color:{{ section.color }}
       {% endif %}
