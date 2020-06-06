@@ -6,7 +6,7 @@
       {# Background settings #}
     <div id="{{ piece.slug }}" class="section page" style="
       {% if piece._image.attachment  %}
-        background-image: url({{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }})
+        background-image: url("{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}")
       {% elif piece.color %}
         background-color:{{ piece.color }}
       {% endif %}
@@ -19,8 +19,12 @@
             style="right:0;"
           {% endif %}
         >
-          <img src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
-            alt="{{ piece._sideImage.description or piece._sideImage.title }}">
+          <img
+            src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
+            srcset="{{ apos.images.srcset(piece._sideImage.attachment) }}"
+            sizes="(max-width:600px) 50vw, 40vw"
+            alt="{{ piece._sideImage.description or piece._sideImage.title }}"
+          >
         </div>
       {% endif %}
 

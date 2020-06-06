@@ -63,8 +63,12 @@
               style="right:0;"
             {% endif %}
           >
-            <img src="{{ apos.attachments.url(section._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
-              alt="{{ section._sideImage.description or section._sideImage.title }}">
+            <img
+              src="{{ apos.attachments.url(section._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
+              srcset="{{ apos.images.srcset(section._sideImage.attachment) }}"
+              sizes="(max-width:600px) 50vw, 40vw"
+              alt="{{ section._sideImage.description or section._sideImage.title }}"
+            >
           </div>
         {% endif %}
 
