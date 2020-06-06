@@ -9,10 +9,11 @@
       {% if piece.topImage.items[0] %}
         {% set topImage = apos.images.first(piece.topImage) %}
         <img
-          src="{{ apos.attachments.url(topImage , { size: data.options.size or 'two-thirds' }) }}"
-          srcset="{{ apos.images.srcset(topImage.attachment, relationship ) }}"
+          src="{{ apos.attachments.url(topImage, { size: data.options.size or 'two-thirds' }) }}"
+          srcset="{{ apos.images.srcset(topImage, relationship ) }}"
           sizes="(max-width:600px) 50vw, 40vw"
-          alt="{{ topImage.title }}">
+          alt="{{ topImage.title }}"
+          >
       {% endif %}
 
       {% if piece._thumbnail %}
