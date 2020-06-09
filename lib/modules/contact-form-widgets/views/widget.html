@@ -1,7 +1,7 @@
 {% import "apostrophe-schemas:macros.html" as schemas %}
 <div class="row widget">
   <div class="col s12">
-    <form class="contact-form" data-contact-form>
+    <form class="contact-form" onkeydown="return event.key != 'Enter';" data-contact-form>
 
       {# Inject Shemas #}
       {{ schemas.fields(data.schema, {
