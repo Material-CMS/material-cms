@@ -74,7 +74,7 @@
                          style="color:{{ piece.titleColor }}"
                       {% endif %}
                     >
-                      {{ piece.title }}
+                      {{ piece.title  | replace("Blog - ", "" )  }}
                     </h4>
                 {% if piece._url %}
                   </a>
