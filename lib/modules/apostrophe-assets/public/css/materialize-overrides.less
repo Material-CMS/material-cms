@@ -353,6 +353,15 @@ h4 {
   }
   .card-action {
     margin: 0;
+    .row.widget {
+      margin: 2rem 0;
+      .radius {
+        .border-radius(inherit);
+        .apos-slideshow-item {
+          min-height: inherit;
+        }
+      }
+    }
     a {
       margin-right: 0 !important;
     }
@@ -516,12 +525,31 @@ h4 {
   display: block;
   height: 25rem;
   .carousel-item {
-    top: 5rem !important;
     display: inline-block;
     width: 90% !important;
     min-height: 25rem !important;
     height: auto !important;
     cursor: pointer;
+    .apos-area {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      .apos-area-widget-wrapper {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        .apos-area-widget {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          .apos-rich-text {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
     p {
       color: rgba(0, 0, 0, 0.87);
     }

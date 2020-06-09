@@ -156,7 +156,16 @@
                   <div class="collapsible-body">
                     {{ apos.area(piece, 'text', {
                       edit: false,
-                      widgets: { 'apostrophe-rich-text': { } }
+                      widgets: {
+                        'apostrophe-rich-text': {},
+                        'apostrophe-video': {},
+                        'card': {
+                          size: 'one-half',
+                          sizesAttr: '(max-width:600px) 50vw, 25vw',
+                          noHeight: true,
+                          focalPoint: true
+                        }
+                      }
                     }) }}
                   </div>
 

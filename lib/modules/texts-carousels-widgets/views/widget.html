@@ -50,6 +50,12 @@
   </div>
 </div>
 <style>
+  {% if data.widget.carouselHeight == 'medium' %}
+    .card-content.carousel .carousel-item .apos-area .apos-area-widget-wrapper .apos-area-widget .apos-rich-text {
+      display: table-cell;
+      vertical-align: middle
+    }
+  {% endif %}
   {% if data.widget.carouselHeight == 'small' %}
     .card-content.carousel {
       height: 15rem;
