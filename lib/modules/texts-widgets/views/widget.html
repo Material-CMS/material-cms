@@ -8,10 +8,7 @@
 
     {% for piece in data.widget._pieces %}
     <div
-      class="card z-depth-0
-          {% if piece.blogOn == false %} horizontal{% endif %}
-          {% if piece.blogOn == true %} blog{% endif %}
-        "
+      class="card z-depth-0{% if piece.blogOn == false %} horizontal{% endif %}{% if piece.blogOn == true %} blog{% endif %}"
         {% if piece.backColor%}
            style="background-color:{{ piece.backColor }}"
         {% endif %}

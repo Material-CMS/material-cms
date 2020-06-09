@@ -3,14 +3,24 @@
 <div class="section-wrapper">
 
   {% for piece in data.widget._pieces %}
-      {# Background settings #}
+
     <div id="{{ piece.slug }}" class="section page" style="
-      {% if piece._image.attachment  %}
-        background-image: url("{{ apos.attachments.url(piece._image.attachment, { size: data.options.size or 'full' }) }}")
-      {% elif piece.color %}
+      {% if piece.color %}
         background-color:{{ piece.color }}
       {% endif %}
     ">
+
+      {# Background Image #}
+      {% if piece._backgroundImage %}
+        <div class="background-image">
+          <img
+            src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+            srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
+            sizes="(max-width:600px) 50vw, 40vw"
+            alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
+          >
+        </div>
+      {% endif %}
 
       {# Small Side Image #}
       {% if piece._sideImage %}
