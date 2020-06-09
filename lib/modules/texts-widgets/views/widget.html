@@ -170,8 +170,14 @@
                       {{ apos.area(piece, 'text', {
                         edit: false,
                         widgets: {
+                          'apostrophe-rich-text': {},
                           'apostrophe-video': {},
-                          'apostrophe-rich-text': {}
+                          'card': {
+                            size: 'one-half',
+                            sizesAttr: '(max-width:600px) 50vw, 25vw',
+                            noHeight: true,
+                            focalPoint: true
+                          }
                         }
                       }) }}
                     </div>
