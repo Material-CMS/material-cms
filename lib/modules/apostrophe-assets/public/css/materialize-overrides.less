@@ -389,7 +389,13 @@ h4 {
 // Card People
 .card.people {
   .card-image {
-    height: 6rem;
+    height: 7rem;
+    @media (max-width: 992px) {
+      height: 6rem;
+    }
+    @media (max-width: 600px) {
+      height: 4.5rem;
+    }
     .btn-floating {
       width: 10rem;
       height: 10rem;
