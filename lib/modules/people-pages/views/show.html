@@ -65,7 +65,11 @@
                 ">
 
                 {%- if data.piece.topImage.items[0] or data.piece._thumbnail -%}
-                  <div class="card-image">
+                  <div class="card-image"
+                    {% if data.piece.topImage.items[0] %}
+                      style="height: 100%"
+                    {% endif %}
+                  >
                 {% endif %}
 
                   {% if data.piece.topImage.items[0] %}

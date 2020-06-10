@@ -3,7 +3,11 @@
   {% for piece in data.pieces %}
 
     {% if piece.topImage.items[0] or piece._thumbnail %}
-      <div class="card-image">
+      <div class="card-image"
+        {% if piece.topImage.items[0] %}
+          style="height: 100%"
+        {% endif %}
+      >
     {% endif %}
 
       {% if piece.topImage.items[0] %}
@@ -17,14 +21,14 @@
       {% endif %}
 
       {% if piece._thumbnail %}
-          <div class="btn-floating halfway-fab grey">
-            <img class="circle"
-              data-featherlight="{{ apos.attachments.url(piece._thumbnail.attachment, { size: 'full', crop: relationship }) }}"
-              src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
-              srcset="{{ apos.images.srcset(piece._thumbnail.attachment) }}"
-              sizes="{{ '10vw' }}"
-              alt="{{  piece._thumbnail.title }}">
-          </div>
+        <div class="btn-floating halfway-fab grey">
+          <img class="circle"
+            data-featherlight="{{ apos.attachments.url(piece._thumbnail.attachment, { size: 'full', crop: relationship }) }}"
+            src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+            srcset="{{ apos.images.srcset(piece._thumbnail.attachment) }}"
+            sizes="{{ '10vw' }}"
+            alt="{{  piece._thumbnail.title }}">
+        </div>
       {% endif %}
 
     {% if piece.topImage.items[0] or piece._thumbnail %}
