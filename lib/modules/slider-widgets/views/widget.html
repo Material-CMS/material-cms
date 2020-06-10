@@ -22,7 +22,7 @@
 
           <div class="caption {{ image.align }}">
 
-            {% block title %}
+            {% if data.widget.title == true %}
               <h3 class="accent-color truncate hide-on-small-only"
                 {% if image.titleColor %}
                   style="color:{{ image.titleColor }}"
@@ -30,35 +30,31 @@
               >
                 {{ image.title }}
               </h3>
-            {% endblock %}
+            {% endif %}
 
-            {% block description %}
-              {% if image.description %}
-                <p class="flow-text"
-                  {% if image.descriptionColor %}
-                    style="color:{{ image.descriptionColor }}"
-                  {% endif %}
-                >
-                  {{ image.description | nlbr }}
-                </p>
-              {% endif %}
-            {% endblock %}
+            {% if image.description %}
+              <p class="flow-text"
+                {% if image.descriptionColor %}
+                  style="color:{{ image.descriptionColor }}"
+                {% endif %}
+              >
+                {{ image.description | nlbr }}
+              </p>
+            {% endif %}
 
           </div>
 
-          {% block credit %}
-            {% if image.credit %}
-              <div class="credit">
-                {% if image.creditUrl %}
-                    <a href="{{ image.creditUrl }}" target="_blank">
-                {% endif %}
-                      <span>{{ image.credit }}</span>
-                {% if image.creditUrl %}
-                    </a>
-                {% endif %}
-            </div>
-            {% endif %}
-          {% endblock %}
+          {% if image.credit %}
+            <div class="credit">
+              {% if image.creditUrl %}
+                  <a href="{{ image.creditUrl }}" target="_blank">
+              {% endif %}
+                    <span>{{ image.credit }}</span>
+              {% if image.creditUrl %}
+                  </a>
+              {% endif %}
+          </div>
+          {% endif %}
 
         </li>
 
