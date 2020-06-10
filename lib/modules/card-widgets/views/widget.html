@@ -27,6 +27,7 @@
                         {%- endif -%}
                       >
                     {%- if data.widget.title -%}
+
                       {%- block title -%}
                       <span class="card-title {{ image.align }}">
                         <h4 class="accent-color truncate hide-on-small-only"
@@ -42,6 +43,7 @@
                       {%- endblock -%}
                     {%- endif -%}
                     </div>
+
                   {%- block description -%}
                     {%- if image.description -%}
                       <div class="card-content">
@@ -57,19 +59,21 @@
                       </div>
                     {%- endif -%}
                   {%- endblock -%}
+
                   {%- block credit -%}
                     {%- if image.credit -%}
-                      <div class="card-action center-align flow-text">
+                      <div class="credit">
                         {%- if image.creditUrl -%}
-                            <a class="btn-flat" href="{{ image.creditUrl }}" target="_blank">
+                            <a href="{{ image.creditUrl }}" target="_blank">
                         {%- endif -%}
-                              <p>{{ image.credit }}</p>
+                              <span>{{ image.credit }}</span>
                         {%- if image.creditUrl -%}
                             </a>
                         {%- endif -%}
                       </div>
                     {%- endif -%}
                   {%- endblock -%}
+
                 </div>
               {%- endfor -%}
             {%- endblock -%}
