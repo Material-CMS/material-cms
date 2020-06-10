@@ -120,20 +120,20 @@ var apos = require('apostrophe')({
         https: true
       }
     },
-    // Templates
-    'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
-
-    // Other Example Options
-    // Custom Custom Image Size Example
-    /*
+    // Allow svgs
     'apostrophe-attachments': {
+      svgImages: true,
+      /*
       addImageSizes: [{
         name: 'side',
         width: 380,
         height: 600
       }]
+      */
     },
-    */
+
+    // Templates
+    'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
 
   // << End of Modules
   }
