@@ -363,7 +363,7 @@ h4 {
         }
       }
     }
-    a {
+    a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
       margin-right: 0 !important;
     }
     p {
@@ -373,20 +373,6 @@ h4 {
   .btn-floating.halfway-fab {
     right: 50px;
   }
-}
-.btn-radius {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  padding: 0;
-  background-color: #26a69a;
-  .transition(background-color, 0.3s, ease);
-  cursor: pointer;
-  vertical-align: middle;
 }
 // Glue Container
 .glue-container {
@@ -691,6 +677,22 @@ h4 {
     }
   }
 }
+// Share Icons
+.btn-radius {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 .3rem;
+  z-index: 1;
+  width: 2.857rem;
+  height: 2.857rem;
+  line-height: 2.857rem;
+  padding: 0;
+  background-color: #26a69a;
+  .transition(background-color, 0.3s, ease);
+  cursor: pointer;
+  vertical-align: middle;
+}
 .icon {
   display: block;
   background-position: center;
@@ -698,6 +700,9 @@ h4 {
   background-size: 45%;
   width: 100%;
   height: 100%;
+}
+.icon.pinterest {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gR2VuZXJhdG9yOiBHcmF2aXQuaW8gLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgc3R5bGU9Imlzb2xhdGlvbjppc29sYXRlIiB2aWV3Qm94PSIwIDAgNTEwIDUxMCIgd2lkdGg9IjUxMHB0IiBoZWlnaHQ9IjUxMHB0Ij48cGF0aCBkPSIgTSA0NTkgMCBMIDUxIDAgQyAyMi45NSAwIDAgMjIuOTUgMCA1MSBMIDAgNDU5IEMgMCA0ODcuMDUgMjIuOTUgNTEwIDUxIDUxMCBMIDQ1OSA1MTAgQyA0ODcuMDUgNTEwIDUxMCA0ODcuMDUgNTEwIDQ1OSBMIDUxMCA1MSBDIDUxMCAyMi45NSA0ODcuMDUgMCA0NTkgMCBaICBNIDI4MC41IDM2Mi4xIEMgMjYwLjEgMzYyLjEgMjM5LjcgMzU0LjQ1MSAyMjYuOTUgMzM5LjE1MSBMIDIwMS40NSA0MjAuNzUxIEwgMTk4LjkgNDI1Ljg1MSBMIDE5OC45IDQyNS44NTEgQyAxOTMuOCA0MzMuNTAxIDE4Ni4xNSA0MzguNjAxIDE3NS45NSA0MzguNjAxIEMgMTYwLjY1IDQzOC42MDEgMTQ3LjkgNDI1Ljg1MSAxNDcuOSA0MTAuNTUxIEMgMTQ3LjkgNDA4LjAwMSAxNDcuOSA0MDguMDAxIDE0Ny45IDQwOC4wMDEgTCAxNDcuOSA0MDguMDAxIEwgMTUwLjQ1IDQwMi45MDEgTCAxOTYuMzUgMjYwLjEgQyAxOTYuMzUgMjYwLjEgMTkxLjI1IDI0NC44IDE5MS4yNSAyMjEuODUgQyAxOTEuMjUgMTc4LjUgMjE0LjIgMTY1Ljc1IDIzNC42IDE2NS43NSBDIDI1Mi40NSAxNjUuNzUgMjcwLjMgMTczLjQgMjcwLjMgMTk4LjkgQyAyNzAuMyAyMzIuMDUgMjQ3LjM1IDI0OS45IDI0Ny4zNSAyNzUuNCBDIDI0Ny4zNSAyOTMuMjUgMjYyLjY1IDMwOC41NDkgMjgwLjUgMzA4LjU0OSBDIDMzOS4xNSAzMDguNTQ5IDM2Mi4xIDI2Mi42NSAzNjIuMSAyMjEuODQ5IEMgMzYyLjEgMTY1Ljc0OSAzMTMuNjUxIDExOS44NDkgMjU1IDExOS44NDkgQyAxOTYuMzUgMTE5Ljg0OSAxNDcuOSAxNjUuNzQ5IDE0Ny45IDIyMS44NDkgQyAxNDcuOSAyMzkuNjk5IDE1MyAyNTQuOTk5IDE2MC42NSAyNzAuMjk5IEMgMTYzLjIgMjc1LjQgMTYzLjIgMjc3Ljk0OSAxNjMuMiAyODMuMDQ5IEMgMTYzLjIgMjk4LjM0OSAxNTMgMzA4LjU0OSAxMzcuNyAzMDguNTQ5IEMgMTI3LjUgMzA4LjU0OSAxMTkuODUgMzAzLjQ0OSAxMTQuNzUgMjk1Ljc5OSBDIDEwMiAyNzIuODQ5IDk0LjM1IDI0Ny4zNDkgOTQuMzUgMjE5LjI5OSBDIDk0LjM1IDEzNS4xNDkgMTY1Ljc1IDY2LjI5OSAyNTIuNDUgNjYuMjk5IEMgMzM5LjE1IDY2LjI5OSA0MTAuNTUgMTM1LjE0OSA0MTAuNTUgMjE5LjI5OSBDIDQxMy4xIDI5MC43IDM3Mi4zIDM2Mi4xIDI4MC41IDM2Mi4xIFogIiBmaWxsPSJyZ2IoMjU1LDI1NSwyNTUpIi8+PC9zdmc+");
 }
 .icon.facebook {
   background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhLS0gR2VuZXJhdG9yOiBHcmF2aXQuaW8gLS0+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0iaXNvbGF0aW9uOmlzb2xhdGUiIHZpZXdCb3g9IjAgMCA0OCA0OCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4Ij48ZGVmcz48Y2xpcFBhdGggaWQ9Il9jbGlwUGF0aF9PdThheGs1NXFvR1B3Tjh4SjR2ZWlWdU5Wd0NUdVdPdSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4Ii8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI19jbGlwUGF0aF9PdThheGs1NXFvR1B3Tjh4SjR2ZWlWdU5Wd0NUdVdPdSkiPjxwYXRoIGQ9IiBNIDQzLjIgMCBMIDQuOCAwIEMgMi4xNiAwIDAgMi4xNiAwIDQuOCBMIDAgNDMuMiBDIDAgNDUuODQgMi4xNiA0OCA0LjggNDggTCA0My4yIDQ4IEMgNDUuODQgNDggNDggNDUuODQgNDggNDMuMiBMIDQ4IDQuOCBDIDQ4IDIuMTYgNDUuODQgMCA0My4yIDAgWiAgTSA0MC44IDQuOCBMIDQwLjggMTIgTCAzNiAxMiBDIDM0LjU2IDEyIDMzLjYgMTIuOTYgMzMuNiAxNC40IEwgMzMuNiAxOS4yIEwgNDAuOCAxOS4yIEwgNDAuOCAyNi40IEwgMzMuNiAyNi40IEwgMzMuNiA0My4yIEwgMjYuNCA0My4yIEwgMjYuNCAyNi40IEwgMjEuNiAyNi40IEwgMjEuNiAxOS4yIEwgMjYuNCAxOS4yIEwgMjYuNCAxMy4yIEMgMjYuNCA4LjY0IDMwLjI0IDQuOCAzNC44IDQuOCBMIDQwLjggNC44IFogIiBmaWxsPSJyZ2IoMjU1LDI1NSwyNTUpIi8+PC9nPjwvc3ZnPg==");
