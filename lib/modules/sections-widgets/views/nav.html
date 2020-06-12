@@ -4,7 +4,11 @@
   <nav>
     <div class="nav-wrapper z-depth-2">
       <a class="brand-logo hide-on-small-only" href="#">
-        <h1 class="accent-color">
+        <h1 class="accent-color"
+          {% if data.global.navTextColor %}
+            style="color: {{ data.global.navTextColor }}"
+          {% endif %}
+        >
           {% if data.page.seoTitle %}
             {% set title = data.home.seoTitle %}
           {% else %}
@@ -14,14 +18,26 @@
           {{ title }}
         </h1>
       </a>
-      <a class="accent-color sidenav-trigger" href="#" data-target="mobile"><i class="material-icons">menu</i></a>
+
+      <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
+        {% if data.global.navTextColor %}
+          style="color: {{ data.global.navTextColor }}"
+        {% endif %}
+      >
+        <i class="material-icons">menu</i>
+      </a>
+
       <ul class="nav-activator right hide-on-med-and-down">
 
         {# Links Array Widget #}
         {% if data.widget.links[0] %}
           {% for name in data.widget.links %}
            <li>
-             <a class="accent-color" href="{{ name.url }}">
+             <a href="{{ name.url }}" class="accent-color"
+               {% if data.global.navTextColor %}
+                 style="color: {{ data.global.navTextColor }}"
+               {% endif %}
+             >
                {% if name.icon %}
                   <i class="material-icons left">{{ name.icon }}</i>
                {% endif %}
@@ -34,7 +50,11 @@
         {% elif data.page.links[0] %}
           {% for name in data.page.links %}
            <li>
-             <a class="accent-color" href="{{ name.url }}">
+             <a href="{{ name.url }}" class="accent-color"
+               {% if data.global.navTextColor %}
+                 style="color: {{ data.global.navTextColor }}"
+               {% endif %}
+             >
                {% if name.icon %}
                   <i class="material-icons left">{{ name.icon }}</i>
                {% endif %}
@@ -53,8 +73,11 @@
           <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text
             {% if data.page and (data.page._children[0] or data.home._id == data.page._id) %}
               dropdown-trigger
+            {% endif %}"
+            {% if data.global.navTextColor %}
+              style="color: {{ data.global.navTextColor }}"
             {% endif %}
-          ">
+          >
             {{ data.home.title }}
             {% if data.page and (data.page._children[0] or data.home._id == data.page._id) %}
               <i class="material-icons left">arrow_drop_down</i>
@@ -72,8 +95,11 @@
             <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text
               {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
                 dropdown-trigger
+              {% endif %}"
+              {% if data.global.navTextColor %}
+                style="color: {{ data.global.navTextColor }}"
               {% endif %}
-            ">
+            >
               {{ tab.title }}
               {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
                 <i class="material-icons left">arrow_drop_down</i>
@@ -89,7 +115,15 @@
   {# Dropdown Desktop #}
   <ul class="dropdown-content" id="desktop-dropdown">
     {% for piece in data.widget._pieces %}
-      <li><a class="accent-color flow-text anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+      <li>
+        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor"
+          {% if data.global.navTextColor %}
+            style="color: {{ data.global.navTextColor }}"
+          {% endif %}
+        >
+          {{ piece.title }}
+        </a>
+      </li>
     {% endfor %}
   </ul>
 
@@ -99,7 +133,11 @@
     {# Links array on widget level (use for easy future implementation of arrays withoit join or area) #}
     {% for name in data.widget.links %}
      <li>
-       <a class="accent-color" href="{{ name.url }}">
+       <a href="{{ name.url }}" class="accent-color"
+         {% if data.global.navTextColor %}
+           style="color: {{ data.global.navTextColor }}"
+         {% endif %}
+       >
          {% if name.icon %}
             <i class="material-icons left">{{ name.icon }}</i>
          {% endif %}
@@ -117,8 +155,11 @@
       <a href="{{ data.home._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light
         {% if data.page._children[0] %}
           dropdown-trigger
+        {% endif %}"
+        {% if data.global.navTextColor %}
+          style="color: {{ data.global.navTextColor }}"
         {% endif %}
-      ">
+      >
         {{ data.home.title }}
         {% if data.page._children[0] %}
           <i class="material-icons right">arrow_drop_down</i>
@@ -136,8 +177,11 @@
         <a href="{{ tab._url }}" data-target="mobile-dropdown" class="accent-color flow-text waves-effect waves-light
           {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
             dropdown-trigger
+          {% endif %}"
+          {% if data.global.navTextColor %}
+            style="color: {{ data.global.navTextColor }}"
           {% endif %}
-        ">
+        >
           {{ tab.title }}
           {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
             <i class="material-icons right">arrow_drop_down</i>
@@ -149,7 +193,15 @@
     {# Dropdown Mobile #}
     <ul class="dropdown-content" id="mobile-dropdown">
       {% for piece in data.widget._pieces %}
-        <li><a class="accent-color flow-text sidenav-close anchor" href="#{{ piece.slug }}">{{ piece.title }}</a></li>
+        <li>
+          <a href="#{{ piece.slug }}" class="accent-color flow-text sidenav-close anchor"
+            {% if data.global.navTextColor %}
+              style="color: {{ data.global.navTextColor }}"
+            {% endif %}
+          >
+            {{ piece.title }}
+          </a>
+        </li>
       {% endfor %}
     </ul>
 
