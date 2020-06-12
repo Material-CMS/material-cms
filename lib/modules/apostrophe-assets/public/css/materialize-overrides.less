@@ -296,6 +296,7 @@ h4 {
       height: 100vh;
       img {
         .object-fit(cover);
+        margin-top: 64px;
       }
     }
   }
@@ -376,7 +377,7 @@ h4 {
 }
 // Glue Container
 .glue-container-2 {
-  .apos-area-widget-wrapper .widget {
+  .apos-area-widget-wrapper:nth-child(1) .widget {
     margin-bottom: 0;
   }
   .apos-area-widget-wrapper:nth-child(1) .radius {
@@ -387,7 +388,8 @@ h4 {
   }
 }
 .glue-container-3 {
-  .apos-area-widget-wrapper .widget {
+  .apos-area-widget-wrapper:nth-child(1) .widget,
+  .apos-area-widget-wrapper:nth-child(2) .widget {
     margin-bottom: 0;
   }
   .apos-area-widget-wrapper:nth-child(1) .radius {
