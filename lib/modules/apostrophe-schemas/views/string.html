@@ -1,13 +1,21 @@
 {%- import "macros.html" as schemas -%}
-{% if data.style %}
+{% if data.inputName == true %}
   <div class="input-field col s12" data-name="{{ data.name }}">
-    <i class="material-icons prefix">{{ data.style }}</i>
-    <input placeholder="{{ data.label }}" id="{{ data.name }}" type="text" name="{{ data.name }}" />
-    <label class="active" for="{{ data.name }}">{{ data.label }}</label>
+    <i class="material-icons prefix">account_circle</i>
+    <input placeholder="{{ data.global.contactFormName or data.label }}" id="{{ data.name }}" type="text" name="{{ data.name }}" onkeydown="return event.key != 'Enter';" />
+    <label class="active" for="{{ data.name }}">{{ data.global.contactFormName or data.label }}</label>
   </div>
-{% elif data.style and data.text %}
+{% elif data.inputEmail == true %}
   <div class="input-field col s12" data-name="{{ data.name }}">
-    <textarea name="{{ data.name }}" id="{{ data.name }}" >Enter text here...</textarea>
+    <i class="material-icons prefix">email</i>
+    <input placeholder="{{ data.global.contactFormEmail or data.label }}" id="{{ data.name }}" type="email" name="{{ data.name }}" onkeydown="return event.key != 'Enter';" />
+    <label class="active" for="{{ data.name }}">{{ data.global.contactFormEmail or data.label }}</label>
+  </div>
+{% elif data.text == true %}
+  <div class="input-field col s12" data-name="{{ data.name }}">
+    <i class="material-icons prefix">edit</i>
+    <textarea placeholder="{{ data.global.contactFormBody or data.label }}" class="materialize-textarea" id="{{ data.name }}" name="{{ data.name }}"></textarea>
+    <label class="active" for="{{ data.name }}">{{ data.global.contactFormBody or data.label }}</label>
   </div>
 {% else %}
   {# Normal way #}
