@@ -780,14 +780,16 @@ table {
 }
 
 // Floating Action Button
-.btn-floating {
-  overflow: visible;
-  i {
-    line-height: 40px;
-    font-family: @material-icons;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
+.fixed-action-btn {
+  z-index: 99;
+  .btn-floating {
+    overflow: visible;
+    i {
+      font-family: @material-icons;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+    }
   }
 }
 // Floating Action Button Tooltips
