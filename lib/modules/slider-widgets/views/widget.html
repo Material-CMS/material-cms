@@ -11,8 +11,8 @@
         <li>
           <img data-image
             src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
-            data-srcset="{{ apos.images.srcset(image.attachment, realtionship) }}"
-            srcset="{{ apos.images.srcset(image.attachment, realtionship) }}"
+            data-srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
+            srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
             sizes="{{ data.options.sizesAttr or '100vw' }}"
             alt="{{ image.title }}"
             {%- if apos.attachments.hasFocalPoint(relationship) -%}
