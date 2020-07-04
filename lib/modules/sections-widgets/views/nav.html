@@ -116,7 +116,7 @@
   <ul class="dropdown-content" id="desktop-dropdown">
     {% for piece in data.widget._pieces %}
       <li>
-        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor"
+        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor truncate"
           {% if data.global.navTextColor %}
             style="color: {{ data.global.navTextColor }}"
           {% endif %}
@@ -194,7 +194,7 @@
     <ul class="dropdown-content" id="mobile-dropdown">
       {% for piece in data.widget._pieces %}
         <li>
-          <a href="#{{ piece.slug }}" class="accent-color flow-text sidenav-close anchor"
+          <a href="#{{ piece.slug }}" class="accent-color flow-text sidenav-close anchor truncate"
             {% if data.global.navTextColor %}
               style="color: {{ data.global.navTextColor }}"
             {% endif %}
