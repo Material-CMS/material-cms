@@ -9,11 +9,11 @@
 
         <div class="col s12 m3 push-m6 l2 push-l9 center">
           {%- if data.global.privacy -%}
-            <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-1" rel="nofollow"><p>Privacy</p></a>
+            <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-1" rel="nofollow"><p>{{ data.global.footerPrivacy or 'Privacy' }}</p></a>
             <div id="modal-1" class="modal">
               <div class="modal-content text-darken-4">
 
-                <h4>Privacy</h4>
+                <h4>{{ data.global.footerPrivacy or 'Privacy' }}</h4>
                 <iframe src="/modules/footer-widgets/privacy" width="100%" height="500px"></iframe >
 
               </div>
@@ -21,13 +21,13 @@
           {%- endif -%}
         </div>
 
-        <div class="col s12 m3 push-m5 l2 push-l8 center">
+        <div class="col s12 m3 push-m6 l2 push-l8 center">
           {%- if data.global.legal -%}
-            <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-2" rel="nofollow"><p>Legal</p></a>
+            <a class="grey-text text-lighten-4 right modal-trigger" href="#modal-2" rel="nofollow"><p>{{ data.global.footerLegal or 'Legal' }}</p></a>
             <div id="modal-2" class="modal">
               <div class="modal-content text-darken-4">
 
-                <h4>Legal Info</h4>
+                <h4>{{ data.global.footerLegal or 'Legal Info' }}</h4>
                 <iframe src="/modules/footer-widgets/legal" width="100%" height="500px"></iframe >
 
               </div>
