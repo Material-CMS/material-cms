@@ -6,17 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Tabs for texts-widgets
 - Video locals files
-- Integrate apostrophe-i18n Module for multilingual support
 - Apostrophe-forms
 - Materialize parallax page
 - Materialize tab widget
 - Add description text to text-show page when not blog
-- Remove slider indicator intems when only one image
+- Rename Project to Material-CMS
+
+## [0.9.6 ] - 2021-04-02
+
+### Added
+- One & two column gallery
+- apostrophe core v2.114.0
+- Rename Project to Material-CMS
 
 ### Fixed
-- Form Thank You Message on widget level and with English placeholder
+- Remove slider indicator items when only one image
+- Small admin UI fixes
 
 ## [0.9.5 ] - 2020-06-01
 
@@ -28,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Whole section cards features
 
-### fixed
+### Fixed
 - Navbar mobile overlay problem
 - Gallery fixes
 - Contact form UI fixes
@@ -51,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Whole section full card functions
 
-### fixed
+### Fixed
 - Lots of UI fixes
 - Regroup all Sections
 - Code formatting and cleaning
@@ -73,7 +79,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Infinite gallery piece, page and widget with Ajax
 - Updated apostrophe to 2.106.2 & apostrophe-seo to 1.2.4
 
-### fixed
+### Fixed
 - Contact form
 - Exclude legal & privacy info from search engine indexing
 
@@ -87,7 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Infinite-section-pages for display pieces as page with Ajax infinite scroll
 - People as pieces with pages and widget
 
-### fixed
+### Fixed
 - Deactivated apostrophe-optimizer for non cloud version
 - Apos-reorganaze-tree checkboxes
 
@@ -261,14 +267,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Missing color overrides for materialize form and slides
 - Collapsible roundness
 - Other small Fixes
-- pieceIds of undefined error, fixed by vendor in apostrophe-favicons at 1.0.16
+- pieceIds of undefined error, Fixed by vendor in apostrophe-favicons at 1.0.16
 
 ## [0.5.7 ] - 2018-11-14
 ### Added
 - Roundness for all elements in palette
 
 ### Fixed
-- Workaround for pieceIds of undefined error, fixed apostrophe-favicons at 1.0.14
+- Workaround for pieceIds of undefined error, Fixed apostrophe-favicons at 1.0.14
 
 ## [0.5.6 ] - 2018-11-07
 ### Added
