@@ -18,7 +18,10 @@ You can build a your content management system in 10 Minutes and modify your web
 ## Installing instructions
 
 ### Install Dependencies
-- nodejs
+- git
+- make
+- g++
+- nodejs (better nvm)
 - redis-server
 - mongodb
 
