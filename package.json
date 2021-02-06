@@ -3,10 +3,6 @@
   "version": "0.9.6",
   "description": "Material CMS - materialized CMS with clever designed widgets based on Apostrophe CMS",
   "main": "app.js",
-  "engines": {
-    "node": "8.12.0",
-    "npm": "6.4.1"
-  },
   "scripts": {
     "start": "node app.js",
     "build": "babel src -d build"
