@@ -102,7 +102,7 @@
                                 width="100%"
                               >
 
-                              {% if piece.imagesTitleShow == true and piece.columnCount == '3' %}
+                              {% if piece.imagesTitleShow == true and piece.columnCount <= '3' %}
                                 <span class="card-title
                                   {% if piece.imagesTitleCenter %}
                                     center-align
@@ -120,7 +120,7 @@
 
                             </div>
 
-                            {% if _image.description and piece.columnCount == '3' %}
+                            {% if _image.description and piece.columnCount <= '3' %}
                               <div class="card-content">
                                 <p class="flow-text"
                                   {% if image.descriptionColor %}
@@ -132,7 +132,7 @@
                               </div>
                             {% endif %}
 
-                            {% if _image.credit and piece.columnCount == '3' %}
+                            {% if _image.credit and piece.columnCount <= '3' %}
                               <div class="card-action center-align flow-text">
                                 {% if _image.creditUrl %}
                                     <a class="btn-flat" href="{{ _image.creditUrl }}">
