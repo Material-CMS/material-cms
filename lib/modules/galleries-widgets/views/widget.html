@@ -52,7 +52,7 @@
                     {% endif %}"
                 >
 
-                  <div class="images"
+                  <div class="images{% if piece.columnCount == '2' %} column-count-3{% endif %}"
                     style="
                       {% if piece.columnCount == '5' %}
                         -webkit-column-count: 5;
@@ -70,12 +70,10 @@
                         -webkit-column-count: 2;
                         -moz-column-count: 2;
                         column-count: 2;
-                        max-width: 42rem;
                       {% elif piece.columnCount == '1' %}
-                        -webkit-column-count: 1;
-                        -moz-column-count: 1;
-                        column-count: 1;
-                        max-width: 20rem;
+                        -webkit-column-count: 3;
+                        -moz-column-count: 3;
+                        column-count: 3;
                       {% else %}
                         -webkit-column-count: 5;
                         -moz-column-count: 5;
@@ -84,6 +82,7 @@
                     >
 
                     {% for _image in piece._images %}
+                      {% if piece.columnCount == '1' %}<div class="images-container"></div>{% endif %}
                       <div class="images-container">
                         <div class="radius
                           {% if piece.imagesShadow %}
@@ -147,6 +146,7 @@
                             </div>
                           </div>
                         </div>
+                        {% if piece.columnCount == '1' %}<div class="images-container"></div>{% endif %}
                       {% endfor %}
 
                   </div>
@@ -158,7 +158,6 @@
 
           </div>
         </div>
-
       {% endfor %}
 
     </div>
