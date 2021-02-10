@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Materialize tab widget
 - Add description text to text-show page when not blog
 - Rename Project to Material-CMS
+- Font color for text and Palette
+- Make more button of card to Card Reveal
+- Add link color for palette and options for UPPERCASE text
+
+## [0.9.7 ] - Unreleased
+
+### Removed
+- Unessesary javascript trough lean front end
 
 ## [0.9.6 ] - 2021-04-02
 
