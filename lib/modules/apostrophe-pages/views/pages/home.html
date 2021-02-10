@@ -20,6 +20,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block extraHead %}
+{% include "apostrophe-assets:cdn.html" %}
   {% include "apostrophe-assets:styles.html" %}
   {% include "apostrophe-seo:view.html" %}
   {% include "apostrophe-open-graph:view.html" %}
@@ -28,7 +29,6 @@
   {# Palette #}
   {{ palette.stylesheetLink(data.global) }}
   {{ palette.stylesheetTag() }}
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 {% endblock %}
 
 {% block beforeMain %}
