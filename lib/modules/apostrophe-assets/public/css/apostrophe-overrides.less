@@ -9,6 +9,10 @@
 @black: #000000;
 @green: #008000;
 @red: #f44336;
+@purple: #9c27b0;
+@yellow: #fdd835;
+@orange: #e65100;
+@blue: #2196f3;
 @red-hover: darken(@red, 10%); // Empty widget area
 .apos-refreshable {
   .apos-empty {
@@ -105,6 +109,10 @@ fieldset {
     opacity: 1;
   }
 }
+.admin-bar li > a {
+  color: @black;
+}
+// Apos button
 .apos-ui {
   .apos-required label:first-of-type:after {
     color: @red;
@@ -118,12 +126,6 @@ fieldset {
   .apos-manage-grid-view .apos-manage-grid-piece.apos-focus .apos-field-input-checkbox-indicator {
     background: inherit;
   }
-}
-.admin-bar li > a {
-  color: @black;
-}
-// Apos button
-.apos-ui {
   .apos-button:focus {
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
   }
@@ -169,6 +171,19 @@ fieldset {
     z-index: 999;
   }
   .apos-schema-groups {
+    // Two Column Schema Groups add here
+    .apos-schema-group[data-apos-group="images"],
+    .apos-schema-group[data-apos-group="colors"],
+    .apos-schema-group[data-apos-group="options"] {
+      .apos-schema-group-inner {
+        .apos-field {
+          width: 50%;
+          padding: 0 15px;
+          float: left;
+          min-height: 191px;
+        }
+      }
+    }
     .apos-schema-group-inner {
       .input-field {
         margin: 1rem 0;
@@ -237,9 +252,10 @@ fieldset {
     border-color: @red;
   }
   .apos-button--major {
-    background-color: @red;
+    background-color: @green;
   }
   .apos-button--circular {
+    background-color: @red;
     padding: 16px;
     font-size: 14px;
   }
@@ -315,6 +331,29 @@ fieldset {
       color: @red;
     }
   }
+  .btn-admin {
+    z-index: 999;
+    .insert {
+      background-color: @purple;
+    }
+    .copy{
+      background-color: @green;
+    }
+    .update {
+      background-color: @yellow;
+    }
+    .versions {
+      background-color: @orange;
+    }
+    .reorganize {
+      background-color: @blue;
+    }
+  }
+}// <-- end of apos-ui
+// Cke Editor
+.cke_inner {
+  border-color: @red !important;
+  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.5) !important;
 }
 // Admin Bar
 .admin-bar {
@@ -324,7 +363,8 @@ fieldset {
   z-index: 999;
   transform: translate(-50%);
   .btn.btn-large {
-    color: white;
+    color: @white;
+    background-color: @red;
   }
 }
 .apos-ui .apos-admin-bar {
@@ -335,9 +375,6 @@ fieldset {
 }
 .sidenav-overlay {
   z-index: 7;
-}
-.btn-admin {
-  z-index: 999;
 }
 // Admin Widget UI
 /*
