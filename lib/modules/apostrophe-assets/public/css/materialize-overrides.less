@@ -580,7 +580,11 @@ h4 {
   overflow: hidden;
   border-right: 0;
   border-left: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   .collapsible-header {
+    padding-left: 24px;
+    padding-right: 24px;
     background-color: inherit;
     border-bottom: inherit;
     a {
@@ -600,6 +604,9 @@ h4 {
         text-align: center;
       }
     }
+  }
+  .collapsible-header:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
   .collapsible-body {
     border-bottom: inherit;
