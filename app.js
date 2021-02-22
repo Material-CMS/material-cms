@@ -5,9 +5,6 @@ var apos = require('apostrophe')({
   modules: {
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
-    'apostrophe-assets': {
-      lean: true
-    },
     // Custom Modules
     'card-widgets': {},
     'contact-form': {},
@@ -60,7 +57,6 @@ var apos = require('apostrophe')({
       orderings: true
     },
     'tables-widgets': {},
-    'tabs-widgets': {},
     'texts': {
       orderings: true
     },
