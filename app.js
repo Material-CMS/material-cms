@@ -47,6 +47,7 @@ var apos = require('apostrophe')({
     'sections-widgets': {},
     'share-widgets':{},
     'slider-widgets':{},
+    'swiper-widgets':{},
     'tables': {
       orderings: true
     },
@@ -112,6 +113,13 @@ var apos = require('apostrophe')({
           windows: false
         }
       }
+    },
+    // Lean frontend
+    'apostrophe-assets': {
+      lean: true
+    },
+    'apostrophe-video-widgets': {
+      player: true
     },
     // Serve Attacments over SSL only
     'apostrophe-attachments': {

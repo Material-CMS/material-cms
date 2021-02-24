@@ -74,6 +74,14 @@
                       removable: true,
                       position: 'top-right'
                     }
+                  },
+                  'apostrophe-forms': {
+                    controls: {
+                      movable: false,
+                      cloneable: false,
+                      removable: true,
+                      position: 'top-right'
+                    }
                   }
                 }
               }) }}
@@ -112,6 +120,7 @@
                     widgets: {
                       'card': {
                         size: 'one-half',
+                        limit: 1,
                         aspectRatio: [ 2, 1 ],
                         sizesAttr: '(max-width:600px) 50vw, 40vw',
                         controls: {
@@ -170,6 +179,13 @@
                         }
                       },
                       'tables': {
+                        controls: {
+                          cloneable: false,
+                          removable: true,
+                          position: 'top-right'
+                        }
+                      },
+                      'swiper': {
                         controls: {
                           cloneable: false,
                           removable: true,

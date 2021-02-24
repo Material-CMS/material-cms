@@ -1,0 +1,39 @@
+<div class="row widget">
+  <div class="col s12 m12">
+    <div class="radius {% if data.page.shadow %} z-depth-1 {% endif %}">
+
+      <!-- Slider main container -->
+      <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+
+          {% for swiper in data.widget.swipers %}
+          <div class="swiper-slide">
+            {{ apos.area(swiper, 'swiper', {
+              edit: false,
+              widgets: {
+                'card': {
+                  size: 'one-half',
+                  sizesAttr: '(max-width:600px) 50vw, 40vw',
+                  noHeight: true,
+                  focalPoint: true
+                },
+                'texts': {},
+                'video': {}
+              }
+            }) }}
+          </div>
+          {% endfor %}
+
+        </div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

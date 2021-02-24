@@ -357,9 +357,6 @@ h4 {
       margin: 2rem 0;
       .radius {
         .border-radius(inherit);
-        .apos-slideshow-item {
-          min-height: inherit;
-        }
       }
     }
     a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
@@ -490,8 +487,6 @@ h4 {
     .apos-area,
     .apos-area-widget,
     .apos-area-widget-wrapper,
-    .apos-slideshow,
-    .apos-slideshow-item,
     .card,
     .col,
     .material-placeholder,
@@ -510,8 +505,6 @@ h4 {
       .apos-area,
       .apos-area-widget,
       .apos-area-widget-wrapper,
-      .apos-slideshow,
-      .apos-slideshow-item,
       .card,
       .col,
       .material-placeholder,
@@ -521,11 +514,6 @@ h4 {
         height: 50vh !important;
       }
     }
-  }
-  .apos-slideshow-item {
-    background-size: cover;
-    max-width: 100%;
-    min-height: 25rem;
   }
 }
 // Carousels
@@ -605,9 +593,6 @@ h4 {
       }
     }
   }
-  .collapsible-header:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
   .collapsible-body {
     border-bottom: inherit;
     background-color: inherit;
@@ -627,6 +612,13 @@ h4 {
     }
     h5 {
       font-size: 1.2rem;
+    }
+  }
+}
+.events {
+  .collapsible {
+    .collapsible-header:hover {
+      background-color: rgba(0, 0, 0, 0.1);
     }
   }
 }
@@ -788,7 +780,6 @@ table {
     }
   }
 }
-
 // Floating Action Button
 .fixed-action-btn {
   z-index: 99;
@@ -899,6 +890,16 @@ table {
 .margin-top {
   margin-top: 1rem;
 }
+// Swiper Overrides
+.swiper-slide {
+  .radius {
+    border-radius: 0;
+  }
+  .widget {
+    margin: 0;
+  }
+}
+
 // Admin UI Overrides
 .apos-ui {
   .apos-dropdown.apos-dropdown--area-controls {

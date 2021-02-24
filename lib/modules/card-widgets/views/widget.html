@@ -6,17 +6,14 @@
     {% endif %}
     ">
       <div class="card z-depth-0">
-        <div class="apos-slideshow">
-          <div class="slideshow-items" data-slideshow-items>
+
             {%- block items -%}
               {%- for entry in data.widget._pieces -%}
                 {%- set image = entry.item or entry -%}
                 {%- set relationship = entry.relationship -%}
-                  <div data-slideshow-item
-                    class="apos-slideshow-item{% if loop.first %} apos-current{% endif %}{% block itemClass %}{% endblock %} apos-slideshow-item--{{ image.attachment.extension }}"
-                  >
+
                     <div class="card-image">
-                      <img data-image
+                      <img
                         data-featherlight="{{ apos.attachments.url(image.attachment, { size: 'full', crop: relationship }) }}"
                         src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
                         srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
@@ -74,17 +71,10 @@
                     {%- endif -%}
                   {%- endblock -%}
 
-                </div>
               {%- endfor -%}
             {%- endblock -%}
-          </div>
-        </div>
+
       </div>
     </div>
-      {% block arrows %}
-        {% if data.widget._pieces.length > 1 %}
-          <a href="#" data-next class="btn btn-floating halfway-fab"><i class="material-icons">arrow_forward</i></a>
-        {% endif %}
-      {% endblock %}
   </div>
 </div>
