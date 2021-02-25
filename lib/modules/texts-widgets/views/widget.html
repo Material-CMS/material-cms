@@ -69,13 +69,13 @@
                 {% if piece._url %}
                   <a href="{{ piece._url }}">
                 {% endif %}
-                    <h4 class="accent-color card-title"
+                    <h3 class="accent-color card-title{% if piece.titleCenter %} center-align{% endif %}"
                       {% if piece.titleColor %}
                          style="color:{{ piece.titleColor }}"
                       {% endif %}
                     >
                       {{ piece.title  | replace("Blog - ", "" )  }}
-                    </h4>
+                    </h3>
                 {% if piece._url %}
                   </a>
                 {% endif %}

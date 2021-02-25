@@ -65,13 +65,13 @@
 
             {% if piece.title %}
               <a href="{{ piece._url }}">
-                <h4 class="accent-color card-title"
+                <h3 class="accent-color card-title{% if piece.titleCenter %} center-align{% endif %}"
                   {% if piece.titleColor %}
                      style="color:{{ piece.titleColor }}"
                   {% endif %}
                 >
                   {{ piece.title }}
-                </h4>
+                </h3>
               </a>
             {% endif %}
 
