@@ -82,6 +82,11 @@
   .border-radius(top-right, @radius);
   .border-radius(bottom-right, @radius);
 }
+.box-shadow (@string) {
+  -webkit-box-shadow: @string;
+  -moz-box-shadow: @string;
+  box-shadow: @string;
+}
 .translate(@x, @y) {
 -webkit-transform: translate(@x, @y);
   -ms-transform: translate(@x, @y);
@@ -314,14 +319,17 @@ h4 {
     }
   }
   .card-title {
-    pointer-events: none;
-    touch-action: none;
     width: 100%;
     h4 {
       line-height: 2rem;
     }
   }
   .card-content {
+    cursor: pointer;
+    p {
+      pointer-events: none;
+      touch-action: none;
+    }
     .apos-area-widget-wrapper {
       margin: 1.52rem 0 .912rem;
     }
@@ -352,6 +360,17 @@ h4 {
           }
         }
       }
+    }
+  }
+  .card-reveal {
+    width: 101%;
+    height: 101%;
+    background-color: inherit;
+    h4 {
+      pointer-events: none;
+      touch-action: none;
+      margin: 0;
+      padding: 1.5rem 0;
     }
   }
   .card-action {
@@ -896,10 +915,14 @@ table {
 // Swiper Overrides
 .swiper-slide {
   .radius {
+    .box-shadow(none);
     border-radius: 0;
   }
   .widget {
     margin: 0;
+  }
+  .card-action {
+    display: none;
   }
 }
 // Admin UI Overrides

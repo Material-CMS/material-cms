@@ -7,10 +7,10 @@
     ">
       <div class="card z-depth-0">
 
-            {%- block items -%}
-              {%- for entry in data.widget._pieces -%}
-                {%- set image = entry.item or entry -%}
-                {%- set relationship = entry.relationship -%}
+
+              {% for entry in data.widget._pieces %}
+                {% set image = entry.item or entry %}
+                {% set relationship = entry.relationship %}
 
                     <div class="card-image">
                       <img
@@ -19,60 +19,80 @@
                         srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
                         sizes="{{ data.options.sizesAttr or '100vw' }}"
                         alt="{{ image.title }}"
-                        {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                        {% if apos.attachments.hasFocalPoint(relationship) %}
                           style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
-                        {%- endif -%}
+                        {% endif %}
                       >
-                    {%- if data.widget.title -%}
 
-                      {%- block title -%}
-                      <span class="card-title {{ image.align }}">
-                        <h4 class="accent-color truncate hide-on-small-only"
-                          {%- if data.widget.titleColor -%}
-                            style="color:{{ data.widget.titleColor }}"
-                          {%- elif image.titleColor -%}
-                            style="color:{{ image.titleColor }}"
-                          {% endif %}
-                        >
-                          {{ image.title }}
-                        </h4>
-                      </span>
-                      {%- endblock -%}
-                    {%- endif -%}
+                      {% if data.widget.title %}
+                        <span class="card-title {{ image.align }}">
+                          <h4 class="accent-color truncate hide-on-small-only"
+                            {% if data.widget.titleColor %}
+                              style="color:{{ data.widget.titleColor }}"
+                            {% elif image.titleColor %}
+                              style="color:{{ image.titleColor }}"
+                            {% endif %}
+                          >
+                            {{ image.title }}
+                          </h4>
+                        </span>
+                      {% endif %}
+
                     </div>
 
-                  {%- block description -%}
-                    {%- if image.description -%}
-                      <div class="card-content">
+                    {% if image.description %}
+                      <div class="card-content{% if image.revealText %} activator{% endif %}">
                         <p class="flow-text"
-                          {%- if data.widget.descriptionColor -%}
+                          {% if data.widget.descriptionColor %}
                             style="color:{{ data.widget.descriptionColor }}"
-                          {%- elif image.descriptionColor -%}
+                          {% elif image.descriptionColor %}
                             style="color:{{ image.descriptionColor }}"
                           {% endif %}
                         >
                           {{ image.description | nlbr }}
+                          <i class="material-icons right accent-color">more_vert</i>
                         </p>
                       </div>
-                    {%- endif -%}
-                  {%- endblock -%}
 
-                  {%- block credit -%}
-                    {%- if image.credit -%}
+                      {% if image.revealText %}
+                        <div class="card-reveal">
+
+                            <span class="card-title {{ image.align }}">
+                              <h4 class="accent-color truncate hide-on-small-only"
+                                {% if data.widget.titleColor %}
+                                  style="color:{{ data.widget.titleColor }}"
+                                {% elif image.titleColor %}
+                                  style="color:{{ image.titleColor }}"
+                                {% endif %}
+                              >
+                                {{ image.title }}
+                                <i class="material-icons right">close</i>
+                              </h4>
+                            </span>
+
+                            {{ apos.area(image, 'revealText', {
+                              edit: false,
+                              widgets: { 'apostrophe-rich-text': { } }
+                            }) }}
+
+                        </div>
+                      {% endif %}
+
+                    {% endif %}
+
+                    {% if image.credit %}
                       <div class="credit">
-                        {%- if image.creditUrl -%}
+                        {% if image.creditUrl %}
                             <a href="{{ image.creditUrl }}" target="_blank">
-                        {%- endif -%}
+                        {% endif %}
                               <span>{{ image.credit }}</span>
-                        {%- if image.creditUrl -%}
+                        {% if image.creditUrl %}
                             </a>
-                        {%- endif -%}
+                        {% endif %}
                       </div>
-                    {%- endif -%}
-                  {%- endblock -%}
+                    {% endif %}
 
-              {%- endfor -%}
-            {%- endblock -%}
+              {% endfor %}
 
       </div>
     </div>
