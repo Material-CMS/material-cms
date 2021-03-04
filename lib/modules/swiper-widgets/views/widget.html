@@ -1,12 +1,9 @@
 <div class="row widget">
   <div class="col s12 m12">
-    <div class="radius {% if data.page.shadow %} z-depth-1 {% endif %}">
+    <div class="radius {% if data.page.shadow %} z-depth-1{% endif %}">
 
-      <!-- Slider main container -->
-      <div class="swiper-container">
-        <!-- Additional required wrapper -->
+      <div class="swiper-container {{ data.widget._id }}">
         <div class="swiper-wrapper">
-          <!-- Slides -->
 
           {% for swiper in data.widget.swipers %}
           <div class="swiper-slide">
@@ -28,7 +25,6 @@
 
         </div>
 
-        <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
 
@@ -37,3 +33,27 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  var swiper{{ data.widget._id }} = new Swiper('.{{ data.widget._id }}', {
+    loop: {{ data.widget.loop }},
+    speed: {{ data.widget.speed }},
+    autoHeight: {{ data.widget.autoHeight }},
+    effect: '{{ data.widget.effect }}',
+    cubeEffect: {
+      shadow: false,
+    },
+    {% if data.widget.autoplay %}
+      autoplay: {
+        delay: {{ data.widget.delay }},
+        disableOnInteraction: {{ data.widget.disableOnInteraction }},
+      },
+    {% endif %}
+    keyboard: {
+      enabled: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
+  });
+</script>
