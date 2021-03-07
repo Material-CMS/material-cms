@@ -58,7 +58,8 @@
                         <div class="card-reveal">
 
                             <span class="card-title {{ image.align }}">
-                              <h4 class="accent-color truncate hide-on-small-only"
+                              <i class="material-icons close accent-color">close</i>
+                              <h4 class="accent-color"
                                 {% if data.widget.titleColor %}
                                   style="color:{{ data.widget.titleColor }}"
                                 {% elif image.titleColor %}
@@ -66,7 +67,6 @@
                                 {% endif %}
                               >
                                 {{ image.title }}
-                                <i class="material-icons right">close</i>
                               </h4>
                             </span>
 
