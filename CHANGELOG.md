@@ -6,20 +6,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Video locals files
-- Apostrophe-forms
+- Video local files
 - Materialize parallax page
 - Materialize tab widget
 - Add description text to text-show page when not blog
 - Rename Project to Material-CMS
 - Font color for text and Palette
-- Make more button of card to Card Reveal
+- Add card Reveal to card widget
 - Add link color for palette and options for UPPERCASE text
+- Change Nav title to page title
 
 ## [0.9.7 ] - Unreleased
 
+### Added
+- Apostrophe-forms
+- Swiper as widget
+- Hover effects for events-widget
+- Center for text-widget titles
+- Card reveal function
+- Gallery image click to link option
+- Infinite Scroll through external jquery plugin
+- Parallax background image for sections
+
 ### Removed
-- Unessesary javascript trough lean front end
+- Unnecessary javascript trough lean front end
+- apostrophe-image-widgets stop function
+
+### Fixed
+- Admin-ui improvements
 
 ## [0.9.6 ] - 2021-04-02
 

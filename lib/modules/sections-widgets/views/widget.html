@@ -4,6 +4,19 @@
 
   {% for piece in data.widget._pieces %}
 
+    {% if piece._backgroundImage and piece.backgroundImageParallax %}
+      <div class="parallax-container">
+        <div class="parallax">
+          <img
+            src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+            srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
+            sizes="(max-width:600px) 50vw, 60vw"
+            alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
+          >
+        </div>
+      </div>
+    {% endif %}
+
     <div id="{{ piece.slug }}" class="section page" style="
       {% if piece.color %}
         background-color:{{ piece.color }}
@@ -11,7 +24,7 @@
     ">
 
       {# Background Image #}
-      {% if piece._backgroundImage %}
+      {% if piece._backgroundImage and not piece.backgroundImageParallax %}
         <div class="background-image">
           <img
             src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
