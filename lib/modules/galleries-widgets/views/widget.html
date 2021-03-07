@@ -92,14 +92,21 @@
 
                           <div class="card">
                             <div class="card-image">
-
-                              <img
-                                srcset="{{ apos.images.srcset(_image.attachment) }}"
-                                sizes="(min-width:1200px)20vw, 40vw"
-                                data-featherlight="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'full' }) }}"
-                                alt="{{ _image.description or _image.title }}"
-                                width="100%"
-                              >
+                              {% if piece.imagesKlick == 'link'%}
+                                <a class="anchor" href="{{ _image.creditUrl }}">
+                              {% endif %}
+                                  <img
+                                    srcset="{{ apos.images.srcset(_image.attachment) }}"
+                                    sizes="(min-width:1200px)20vw, 40vw"
+                                    alt="{{ _image.description or _image.title }}"
+                                    width="100%"
+                                    {% if piece.imagesKlick == 'lightbox' %}
+                                      data-featherlight="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'full' }) }}"
+                                    {% endif %}
+                                  >
+                              {% if piece.imagesKlick == 'link'%}
+                                </a>
+                              {% endif %}
 
                               {% if piece.imagesTitleShow == true and piece.columnCount <= '3' %}
                                 <span class="card-title
@@ -134,7 +141,7 @@
                             {% if _image.credit and piece.columnCount <= '3' %}
                               <div class="card-action center-align flow-text">
                                 {% if _image.creditUrl %}
-                                    <a class="btn-flat" href="{{ _image.creditUrl }}">
+                                    <a class="btn-flat anchor" href="{{ _image.creditUrl }}">
                                 {% endif %}
                                       <p>{{ _image.credit }}</p>
                                 {% if _image.creditUrl %}
