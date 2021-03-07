@@ -138,7 +138,20 @@ var apos = require('apostrophe')({
       }]
       */
     },
-
+    // Forms
+    'apostrophe-forms': {
+      disableBaseStyles: true,
+      optionLabelPosition: 'last'
+    },
+    'apostrophe-forms-widgets': {},
+    'apostrophe-forms-text-field-widgets': {},
+    'apostrophe-forms-textarea-field-widgets': {},
+    'apostrophe-forms-file-field-widgets': {},
+    'apostrophe-forms-select-field-widgets': {},
+    'apostrophe-forms-radio-field-widgets': {},
+    'apostrophe-forms-checkboxes-field-widgets': {},
+    'apostrophe-forms-boolean-field-widgets': {},
+    'apostrophe-forms-conditional-widgets': {},
     // Templates
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') }
 
