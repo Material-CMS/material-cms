@@ -1,119 +1,130 @@
-<div data-apos-ajax-append>
+<div class="content">
 
-  {% for piece in data.pieces %}
+  <div class="pagination">
+    {% import 'apostrophe-pager:macros.html' as pager with context %}
+    {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+  </div>
 
-    {% if piece.topImage.items[0] or piece._thumbnail %}
-      <div class="card-image"
-        {% if piece.topImage.items[0] %}
-          style="height: 100%"
-        {% endif %}
-      >
-    {% endif %}
+  <div data-apos-ajax-append>
 
-      {% if piece.topImage.items[0] %}
-        {% set topImage = apos.images.first(piece.topImage) %}
-        <img
-          src="{{ apos.attachments.url(topImage, { size: data.options.size or 'two-thirds' }) }}"
-          srcset="{{ apos.images.srcset(topImage, relationship ) }}"
-          sizes="(max-width:600px) 50vw, 40vw"
-          alt="{{ topImage.title }}"
-          >
+    {% for piece in data.pieces %}
+
+      {% if piece.topImage.items[0] or piece._thumbnail %}
+        <div class="card-image"
+          {% if piece.topImage.items[0] %}
+            style="height: 100%"
+          {% endif %}
+        >
       {% endif %}
 
-      {% if piece._thumbnail %}
-        <div class="btn-floating halfway-fab grey">
-          <img class="circle"
-            data-featherlight="{{ apos.attachments.url(piece._thumbnail.attachment, { size: 'full', crop: relationship }) }}"
-            src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
-            srcset="{{ apos.images.srcset(piece._thumbnail.attachment) }}"
-            sizes="{{ '10vw' }}"
-            alt="{{  piece._thumbnail.title }}">
+        {% if piece.topImage.items[0] %}
+          {% set topImage = apos.images.first(piece.topImage) %}
+          <img
+            src="{{ apos.attachments.url(topImage, { size: data.options.size or 'two-thirds' }) }}"
+            srcset="{{ apos.images.srcset(topImage, relationship ) }}"
+            sizes="(max-width:600px) 50vw, 40vw"
+            alt="{{ topImage.title }}"
+            >
+        {% endif %}
+
+        {% if piece._thumbnail %}
+          <div class="btn-floating halfway-fab grey">
+            <img class="circle"
+              data-featherlight="{{ apos.attachments.url(piece._thumbnail.attachment, { size: 'full', crop: relationship }) }}"
+              src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+              srcset="{{ apos.images.srcset(piece._thumbnail.attachment) }}"
+              sizes="{{ '10vw' }}"
+              alt="{{  piece._thumbnail.title }}">
+          </div>
+        {% endif %}
+
+      {% if piece.topImage.items[0] or piece._thumbnail %}
         </div>
       {% endif %}
 
-    {% if piece.topImage.items[0] or piece._thumbnail %}
-      </div>
-    {% endif %}
+      <div class="card-stacked">
 
-    <div class="card-stacked">
+        <div class="card-content" style="
+          {% if piece.backColor%}
+            background-color:{{ piece.backColor }}
+          {% endif %}
+        ">
 
-      <div class="card-content" style="
-        {% if piece.backColor%}
-          background-color:{{ piece.backColor }}
-        {% endif %}
-      ">
+          {% if piece.title %}
+            {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
+              <h4 class="accent-color card-title" style="
+                {% if piece.titleColor %}
+                  color:{{ piece.titleColor }}
+                {% endif %}
+              ">
+                {{ piece.title }}
+              </h4>
+            {% if piece._url %}</a>{% endif %}
+          {% endif %}
 
-        {% if piece.title %}
-          {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
-            <h4 class="accent-color card-title" style="
-              {% if piece.titleColor %}
-                color:{{ piece.titleColor }}
+          {% if piece.body.items[0] %}
+            {{ apos.area(piece, 'body', {
+              edit: false,
+              widgets: {
+                'apostrophe-rich-text': {}
+              }
+            }) }}
+          {% endif %}
+        </div>
+
+        {% if piece.email or piece.phone %}
+
+            <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
+              {% if piece.backColor %}
+                background-color:{{ piece.backColor }}
               {% endif %}
             ">
-              {{ piece.title }}
-            </h4>
-          {% if piece._url %}</a>{% endif %}
+              <li>
+
+                <div class="row">
+
+                  {% if piece.email %}
+                    <div class="col m6 left-align hide-on-small-only">
+                      <a class="btn-flat" href="mailto:{{ piece.email }}">
+                        {{ piece.email }}
+                      </a>
+                    </div>
+                    <div class="col s12 center-align hide-on-med-and-up">
+                      <a class="btn-flat" href="mailto:{{ piece.email }}">
+                        {{ piece.email }}
+                      </a>
+                    </div>
+                  {% endif %}
+
+                  {% if piece.phone  %}
+                    <div class="col m6 right-align hide-on-small-only">
+                      <a class="btn-flat" href="tel:{{ piece.phone }}">
+                        {{ piece.phone }}
+                      </a>
+                    </div>
+                    <div class="col s12 center-align hide-on-med-and-up">
+                      <a class="btn-flat" href="tel:{{ piece.phone }}">
+                        {{ piece.phone }}
+                      </a>
+                    </div>
+                  {% endif %}
+
+                </div>
+
+              </li>
+            </ul>
+
         {% endif %}
 
-        {% if piece.body.items[0] %}
-          {{ apos.area(piece, 'body', {
-            edit: false,
-            widgets: {
-              'apostrophe-rich-text': {}
-            }
-          }) }}
-        {% endif %}
       </div>
+    {% endfor %}
 
-      {% if piece.email or piece.phone %}
+  </div>
 
-          <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}" style="
-            {% if piece.backColor %}
-              background-color:{{ piece.backColor }}
-            {% endif %}
-          ">
-            <li>
-
-              <div class="row">
-
-                {% if piece.email %}
-                  <div class="col m6 left-align hide-on-small-only">
-                    <a class="btn-flat" href="mailto:{{ piece.email }}">
-                      {{ piece.email }}
-                    </a>
-                  </div>
-                  <div class="col s12 center-align hide-on-med-and-up">
-                    <a class="btn-flat" href="mailto:{{ piece.email }}">
-                      {{ piece.email }}
-                    </a>
-                  </div>
-                {% endif %}
-
-                {% if piece.phone  %}
-                  <div class="col m6 right-align hide-on-small-only">
-                    <a class="btn-flat" href="tel:{{ piece.phone }}">
-                      {{ piece.phone }}
-                    </a>
-                  </div>
-                  <div class="col s12 center-align hide-on-med-and-up">
-                    <a class="btn-flat" href="tel:{{ piece.phone }}">
-                      {{ piece.phone }}
-                    </a>
-                  </div>
-                {% endif %}
-
-              </div>
-
-            </li>
-          </ul>
-
-      {% endif %}
-
+  {% if data.currentPage < data.totalPages %}
+    <div class="pagination">
+      <a class="btn next"  href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
     </div>
-  {% endfor %}
+  {% endif %}
 
 </div>
-
-{% if data.currentPage < data.totalPages %}
-  <a data-apos-ajax-infinite-scroll href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
-{% endif %}

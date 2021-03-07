@@ -1,193 +1,204 @@
-<div data-apos-ajax-append>
+<div class="content">
 
-  {% for piece in data.pieces %}
-  <div class="card z-depth-0 {% if piece.blogOn == true %} blog {% else %} horizontal {% endif %}"
-      {% if piece.backColor%}
-        style="background-color:{{ piece.backColor }}"
-      {% endif %}
-    >
+  <div class="pagination">
+    {% import 'apostrophe-pager:macros.html' as pager with context %}
+    {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+  </div>
 
-    {% if piece.blogOn == true %}
+  <div data-apos-ajax-append>
 
-      {% if piece.topImage.items[0] %}
-        <div class="card-image">
-          {{ apos.area(piece, 'topImage', {
-            edit: false,
-            widgets: {
-              'card': {
-                size: 'one-half',
-                sizesAttr: '(max-width:600px) 50vw, 40vw',
-                noHeight: true,
-                focalPoint: true
-              },
-              'apostrophe-video': {}
-            }
-          }) }}
-        </div>
-      {% endif %}
+    {% for piece in data.pieces %}
+    <div class="card z-depth-0 {% if piece.blogOn == true %} blog {% else %} horizontal {% endif %}"
+        {% if piece.backColor%}
+          style="background-color:{{ piece.backColor }}"
+        {% endif %}
+      >
 
-    {% endif %}
+      {% if piece.blogOn == true %}
 
-    {% if piece.blogOn == false %}
-
-      {% if piece.sideImage.items[0] %}
-      <div class="row">
-        <div class="height-100 col s12 m3">
+        {% if piece.topImage.items[0] %}
           <div class="card-image">
-            {{ apos.area(piece, 'sideImage', {
+            {{ apos.area(piece, 'topImage', {
               edit: false,
               widgets: {
                 'card': {
                   size: 'one-half',
-                  sizesAttr: '(max-width:600px) 50vw, 30vw',
+                  sizesAttr: '(max-width:600px) 50vw, 40vw',
                   noHeight: true,
                   focalPoint: true
-                }
+                },
+                'apostrophe-video': {}
               }
             }) }}
           </div>
-        </div>
-      {% endif %}
-
-        {% if piece.sideImage.items[0] %}
-        <div class="height-100 col s12 m9">
         {% endif %}
 
-    {% endif %}
+      {% endif %}
 
-        <div class="card-stacked">
+      {% if piece.blogOn == false %}
 
-          <div class="card-content"
-            {% if piece.backColor%}
-               style="background-color:{{ piece.backColor }}"
-            {% endif %}
-          >
+        {% if piece.sideImage.items[0] %}
+        <div class="row">
+          <div class="height-100 col s12 m3">
+            <div class="card-image">
+              {{ apos.area(piece, 'sideImage', {
+                edit: false,
+                widgets: {
+                  'card': {
+                    size: 'one-half',
+                    sizesAttr: '(max-width:600px) 50vw, 30vw',
+                    noHeight: true,
+                    focalPoint: true
+                  }
+                }
+              }) }}
+            </div>
+          </div>
+        {% endif %}
 
-            {% if piece.title %}
-              <a href="{{ piece._url }}">
-                <h3 class="accent-color card-title{% if piece.titleCenter %} center-align{% endif %}"
-                  {% if piece.titleColor %}
-                     style="color:{{ piece.titleColor }}"
+          {% if piece.sideImage.items[0] %}
+          <div class="height-100 col s12 m9">
+          {% endif %}
+
+      {% endif %}
+
+          <div class="card-stacked">
+
+            <div class="card-content"
+              {% if piece.backColor%}
+                 style="background-color:{{ piece.backColor }}"
+              {% endif %}
+            >
+
+              {% if piece.title %}
+                <a href="{{ piece._url }}">
+                  <h3 class="accent-color card-title{% if piece.titleCenter %} center-align{% endif %}"
+                    {% if piece.titleColor %}
+                       style="color:{{ piece.titleColor }}"
+                    {% endif %}
+                  >
+                    {{ piece.title }}
+                  </h3>
+                </a>
+              {% endif %}
+
+              {% if piece.description.items[0] %}
+                {{ apos.area(piece, 'description', {
+                  edit: false,
+                  widgets: { 'apostrophe-rich-text': { } }
+                }) }}
+              {% endif %}
+
+            </div>
+
+            {% if piece.text.items[0] or piece.extraLink %}
+
+              {% if piece.text.items[0] and piece.blogOn == true %}
+
+                <div class="card-action collapsible z-depth-0"
+                  {% if piece.backColor%}
+                     style="background-color:{{ piece.backColor }}"
                   {% endif %}
                 >
-                  {{ piece.title }}
-                </h3>
-              </a>
-            {% endif %}
-
-            {% if piece.description.items[0] %}
-              {{ apos.area(piece, 'description', {
-                edit: false,
-                widgets: { 'apostrophe-rich-text': { } }
-              }) }}
-            {% endif %}
-
-          </div>
-
-          {% if piece.text.items[0] or piece.extraLink %}
-
-            {% if piece.text.items[0] and piece.blogOn == true %}
-
-              <div class="card-action collapsible z-depth-0"
-                {% if piece.backColor%}
-                   style="background-color:{{ piece.backColor }}"
-                {% endif %}
-              >
-                <div class="collapsible-header">
-                  <div class="row">
-
-                    <div class="col s12">
-                      <a href="{{ piece._url }}">
-                        <div class="btn waves-effect">
-                          {% if piece.buttonText %}
-                            {{ piece.buttonText }}
-                          {% else %}
-                            read
-                          {% endif %}
-                        </div>
-                      </a>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-            {% else %}
-
-              <ul class="card-action collapsible z-depth-0"
-                {% if piece.backColor%}
-                   style="background-color:{{ piece.backColor }}"
-                {% endif %}
-              >
-                <li>
-
                   <div class="collapsible-header">
                     <div class="row">
 
-                      {% if piece.text.items[0] %}
-
-                        <div class="col s12 m6">
+                      <div class="col s12">
+                        <a href="{{ piece._url }}">
                           <div class="btn waves-effect">
                             {% if piece.buttonText %}
                               {{ piece.buttonText }}
                             {% else %}
-                              more
+                              read
                             {% endif %}
                           </div>
-                        </div>
-
-                      {% endif %}
-
-                      {% if piece.extraLink %}
-                        <div class="col s12 m6">
-                          <a class="btn-flat" href="{{ piece.extraLink }}" target="_blank">
-                            {% if piece.linkText %}
-                              {{ piece.linkText }}
-                            {% else %}
-                              link
-                            {% endif %}
-                          </a>
-                        </div>
-                      {% endif %}
+                        </a>
+                      </div>
 
                     </div>
                   </div>
+                </div>
 
-                  <div class="collapsible-body">
-                    {{ apos.area(piece, 'text', {
-                      edit: false,
-                      widgets: {
-                        'apostrophe-rich-text': {},
-                        'apostrophe-video': {},
-                        'card': {
-                          size: 'one-half',
-                          sizesAttr: '(max-width:600px) 50vw, 25vw',
-                          noHeight: true,
-                          focalPoint: true
+              {% else %}
+
+                <ul class="card-action collapsible z-depth-0"
+                  {% if piece.backColor%}
+                     style="background-color:{{ piece.backColor }}"
+                  {% endif %}
+                >
+                  <li>
+
+                    <div class="collapsible-header">
+                      <div class="row">
+
+                        {% if piece.text.items[0] %}
+
+                          <div class="col s12 m6">
+                            <div class="btn waves-effect">
+                              {% if piece.buttonText %}
+                                {{ piece.buttonText }}
+                              {% else %}
+                                more
+                              {% endif %}
+                            </div>
+                          </div>
+
+                        {% endif %}
+
+                        {% if piece.extraLink %}
+                          <div class="col s12 m6">
+                            <a class="btn-flat" href="{{ piece.extraLink }}" target="_blank">
+                              {% if piece.linkText %}
+                                {{ piece.linkText }}
+                              {% else %}
+                                link
+                              {% endif %}
+                            </a>
+                          </div>
+                        {% endif %}
+
+                      </div>
+                    </div>
+
+                    <div class="collapsible-body">
+                      {{ apos.area(piece, 'text', {
+                        edit: false,
+                        widgets: {
+                          'apostrophe-rich-text': {},
+                          'apostrophe-video': {},
+                          'card': {
+                            size: 'one-half',
+                            sizesAttr: '(max-width:600px) 50vw, 25vw',
+                            noHeight: true,
+                            focalPoint: true
+                          }
                         }
-                      }
-                    }) }}
-                  </div>
+                      }) }}
+                    </div>
 
-                </li>
-              </ul>
+                  </li>
+                </ul>
+
+              {% endif %}
 
             {% endif %}
 
-          {% endif %}
+          </div>
 
+      {% if piece.sideImage.items[0] %}
         </div>
-
-    {% if piece.sideImage.items[0] %}
       </div>
+      {% endif %}
+
     </div>
-    {% endif %}
+    {% endfor %}
 
   </div>
-  {% endfor %}
+
+  {% if data.currentPage < data.totalPages %}
+    <div class="pagination">
+      <a class="btn next"  href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
+    </div>
+  {% endif %}
 
 </div>
-
-{% if data.currentPage < data.totalPages %}
-  <a data-apos-ajax-infinite-scroll href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
-{% endif %}

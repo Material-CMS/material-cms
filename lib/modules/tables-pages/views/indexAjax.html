@@ -1,49 +1,60 @@
-<div data-apos-ajax-append>
+<div class="content">
 
-  <tbody>
-    {% for piece in data.pieces %}
-      <tr>
+  <div class="pagination">
+    {% import 'apostrophe-pager:macros.html' as pager with context %}
+    {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+  </div>
 
-        {% if piece.titleAsObject == true %}
-          <th class="flow-text">
-            {% if piece._url %}
-              <a href="{{ piece._url }}" class="accent-color"
-                  {% if piece.titleColor %}
-                    style="color:{{ piece.titleColor }}"
-                  {% endif %}
-                >
-            {% endif %}
-              {{ piece.title }}
-            {% if piece._url %}
-              </a>
-            {% endif %}
-          </th>
-        {% endif %}
+  <div data-apos-ajax-append>
 
-        {% for text in piece.tableRowObjects %}
-          {% if text.text %}
-            <th class="flow-text">{{ text.text }}</th>
-          {% endif %}
-          {% if text.date %}
-            <th class="flow-text">{{ text.date }}</th>
-          {% endif %}
-          {% if text._image %}
-            <th class="table-image">
-              <img
-                src="{{ apos.attachments.url(text._image.attachment, { size: data.options.size or 'one-sixth' }) }}"
-                data-featherlight="{{ apos.attachments.url( text._image.attachment, { size: data.options.size or 'one-third' }) }}"
-                alt="{{ text._image.description or text._image.title }}"
-              >
+    <tbody>
+      {% for piece in data.pieces %}
+        <tr>
+
+          {% if piece.titleAsObject == true %}
+            <th class="flow-text">
+              {% if piece._url %}
+                <a href="{{ piece._url }}" class="accent-color"
+                    {% if piece.titleColor %}
+                      style="color:{{ piece.titleColor }}"
+                    {% endif %}
+                  >
+              {% endif %}
+                {{ piece.title }}
+              {% if piece._url %}
+                </a>
+              {% endif %}
             </th>
           {% endif %}
-        {% endfor %}
 
-      </tr>
-    {% endfor %}
-  </tbody>
+          {% for text in piece.tableRowObjects %}
+            {% if text.text %}
+              <th class="flow-text">{{ text.text }}</th>
+            {% endif %}
+            {% if text.date %}
+              <th class="flow-text">{{ text.date }}</th>
+            {% endif %}
+            {% if text._image %}
+              <th class="table-image">
+                <img
+                  src="{{ apos.attachments.url(text._image.attachment, { size: data.options.size or 'one-sixth' }) }}"
+                  data-featherlight="{{ apos.attachments.url( text._image.attachment, { size: data.options.size or 'one-third' }) }}"
+                  alt="{{ text._image.description or text._image.title }}"
+                >
+              </th>
+            {% endif %}
+          {% endfor %}
+
+        </tr>
+      {% endfor %}
+    </tbody>
+
+  </div>
+
+  {% if data.currentPage < data.totalPages %}
+    <div class="pagination">
+      <a class="btn next"  href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
+    </div>
+  {% endif %}
 
 </div>
-
-{% if data.currentPage < data.totalPages %}
-  <a data-apos-ajax-infinite-scroll href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
-{% endif %}

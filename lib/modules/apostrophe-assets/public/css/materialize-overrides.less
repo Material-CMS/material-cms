@@ -312,7 +312,7 @@ h4 {
   background-color: inherit;
   margin: 0;
   .card-image {
-    max-height: 80vh;
+    max-height: 100vh;
     cursor: pointer;
     img {
       width: 100%;
@@ -374,11 +374,19 @@ h4 {
     width: 101%;
     height: 101%;
     background-color: inherit;
-    h4 {
+    .material-icons.close {
+      position: absolute;
+      right: 25px;
+      top: 50px;
       pointer-events: none;
       touch-action: none;
+    }
+    h4 {
+      width: 90%;
       margin: 0;
       padding: 1.5rem 0;
+      pointer-events: none;
+      touch-action: none;
     }
   }
   .card-action {
@@ -716,6 +724,10 @@ h4 {
             width: 100% !important;
             height: auto !important;
           }
+          span {
+            pointer-events: none;
+            touch-action: none;
+          }
         }
       }
     }
@@ -725,6 +737,9 @@ h4 {
       -webkit-column-count: 1 !important;
       -moz-column-count: 1 !important;
       column-count: 1 !important;
+      .images-container {
+        margin-bottom: 3rem;
+      }
     }
   }
   @media (min-width: 600px) {
@@ -866,6 +881,7 @@ table {
       h2 {
         .translate(0, -160%);
         pointer-events: none;
+        touch-action: none;
         margin: 0;
       }
     }
@@ -914,6 +930,21 @@ table {
         }
       }
     }
+  }
+}
+// Infinite content
+.content {
+  .apos-ui {
+    .apos-pager {
+      height: 100%;
+      font-size: 18px;
+    }
+  }
+  .pagination {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 // Different Stuff

@@ -23,6 +23,13 @@
   .nav .dropdown-content li > a {
     color: {{ data.global.accentColor }};
   }
+  [type="checkbox"]:checked + span:not(.lever)::before {
+    border-right-color: {{ data.global.accentColor }};
+    border-bottom-color: {{ data.global.accentColor }};
+  }
+  .apos-pager-number a {
+    color: {{ data.global.accentColor }};
+  }
   {% if data.global.additionalStyles %}
     {{ data.global.additionalStyles }}
   {% endif %}
