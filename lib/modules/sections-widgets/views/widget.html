@@ -5,8 +5,32 @@
 
   {% for piece in data.widget._pieces %}
 
+    {# Parallax Container #}
     {% if piece._backgroundImage and piece.backgroundImageParallax %}
       <div class="parallax-container">
+
+        {# Shape Fill Top #}
+        {% if piece.shapeFillTop %}
+          <div class="custom-shape-divider top">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              {% if piece.shapeFillTopInvert %}
+                style="transform: rotateY(180deg)"
+              {% endif %}
+            >
+                <path
+                  class="shape-fill"
+                  style="fill:{{ data.global.backgroundColor}}"
+                  d="{{ piece.shapeFillTop }}"
+                ></path>
+            </svg>
+          </div>
+        {% endif %}
+
+        {# Parallax Image #}
         <div class="parallax">
           <img
             src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
@@ -15,9 +39,32 @@
             alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
           >
         </div>
+
+        {# Shape Fill Bottom #}
+        {% if piece.shapeFillBottom %}
+          <div class="custom-shape-divider bottom">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              {% if piece.shapeFillBottomInvert %}
+                style="transform: rotateY(180deg)"
+              {% endif %}
+              >
+                <path
+                  class="shape-fill"
+                  style="fill:{{ data.global.backgroundColor}}"
+                  d="{{ piece.shapeFillBottom}}"
+                ></path>
+            </svg>
+          </div>
+        {% endif %}
+
       </div>
     {% endif %}
 
+    {# Section #}
     <div id="{{ piece.slug }}" class="section page" style="
       {% if piece.color %}
         background-color:{{ piece.color }}
