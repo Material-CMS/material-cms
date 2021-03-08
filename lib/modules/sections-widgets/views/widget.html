@@ -23,8 +23,16 @@
             >
                 <path
                   class="shape-fill"
-                  style="fill:{{ data.global.backgroundColor}}"
                   d="{{ piece.shapeFillTop }}"
+                  {% if piece.color %}
+                    style="fill:{{ piece.color }}"
+                  {% else %}
+                    {% if data.global.backgroundColor %}
+                      style="fill:{{ data.global.backgroundColor }}"
+                    {% else %}
+                      style="fill:#fff"
+                    {% endif %}
+                  {% endif %}
                 ></path>
             </svg>
           </div>
@@ -54,8 +62,16 @@
               >
                 <path
                   class="shape-fill"
-                  style="fill:{{ data.global.backgroundColor}}"
                   d="{{ piece.shapeFillBottom}}"
+                  {% if piece.color %}
+                    style="fill:{{ piece.color }}"
+                  {% else %}
+                    {% if data.global.backgroundColor %}
+                      style="fill:{{ data.global.backgroundColor }}"
+                    {% else %}
+                      style="fill:#fff"
+                    {% endif %}
+                  {% endif %}
                 ></path>
             </svg>
           </div>
@@ -65,11 +81,13 @@
     {% endif %}
 
     {# Section #}
-    <div id="{{ piece.slug }}" class="section page" style="
+    <div
+      id="{{ piece.slug }}"
+      class="section page"
       {% if piece.color %}
-        background-color:{{ piece.color }}
+        style="background-color:{{ piece.color }}"
       {% endif %}
-    ">
+    >
 
       {# Background Image #}
       {% if piece._backgroundImage and not piece.backgroundImageParallax %}
