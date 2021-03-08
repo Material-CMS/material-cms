@@ -275,7 +275,12 @@
                       }
                     }
                   }) }}
-              {% if piece.glueWidgets == true %}
+
+              {% if piece.glueWidgets == true and piece.content.items.length == 2 %}
+                </div>
+              {% endif %}
+
+              {% if piece.glueWidgets == true and piece.content.items.length == 3 %}
                 </div>
               {% endif %}
 
