@@ -7,8 +7,6 @@ var apos = require('apostrophe')({
     'apostrophe-pieces-orderings-bundle': {},
     // Custom Modules
     'card-widgets': {},
-    'contact-form': {},
-    'contact-form-widgets': {},
     'btn-widgets':{},
     'double-widgets': {},
     'events': {},

@@ -78,7 +78,7 @@
         {% endif %}
 
             <div class="widgets-container">
-              
+
               {% if piece.header %}
                 <h1 class="section-header
                   {% if piece.headerAlign == 'left' %}
@@ -96,14 +96,6 @@
               {{ apos.area(piece, 'content', {
                 limit: 1,
                 widgets: {
-                  'contact-form': {
-                    controls: {
-                      movable: false,
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
                   'apostrophe-forms': {
                     controls: {
                       movable: false,
