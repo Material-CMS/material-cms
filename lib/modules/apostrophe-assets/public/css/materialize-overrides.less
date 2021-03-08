@@ -152,20 +152,28 @@ h4 {
   position: fixed;
   width: 100%;
   nav {
+    .nav-activator {
+      padding-right: 0.8rem;
+    }
     .brand-logo {
+      .flex();
+      .flex-align-items(center);
+      width: 15%;
       height: 100%;
-      padding-top: 0.8rem;
       padding-left: 0.8rem;
+      img {
+        max-height: 46px;
+      }
       h1 {
         font-size: 2.2rem;
         margin: 0;
       }
     }
-    .nav-activator {
-      padding-right: 0.8rem;
-    }
-    .i18n {
-      font-size: 14px;
+    @media (max-width: 992px) {
+      .brand-logo {
+        .flex-justify(center);
+        padding-left: 0;
+      }
     }
   }
 }

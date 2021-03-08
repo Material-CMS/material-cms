@@ -1,23 +1,25 @@
+{% set pieces = data.widget._pieces or data.pieces %}
 <div class="nav">
-
   {# Dekstop #}
   <nav>
     <div class="nav-wrapper z-depth-2">
-      <a class="brand-logo hide-on-small-only" href="{{ data.home._url }}">
-        <h1 class="accent-color"
-          {% if data.global.navTextColor %}
-            style="color: {{ data.global.navTextColor }}"
-          {% endif %}
-          >
-          {% if data.home.seoTitle %}
-            {% set title = data.home.seoTitle %}
-          {% else %}
-            {% set title = data.home.title %}
-          {% endif %}
+      <a class="brand-logo" href="{{ data.home._url }}">
 
-          {# Page title depends on variables above #}
-          {{ title }}
-        </h1>
+        {% if data.global._logo %}
+          <img
+            src="{{ apos.attachments.url(data.global._logo.attachment, { size: 'full' }) }}"
+            alt="{{ global._logo.description }}"
+          >
+        {% else %}
+          <h1 class="accent-color"
+            {% if data.global.navTextColor %}
+              style="color: {{ data.global.navTextColor }}"
+            {% endif %}
+            >
+            {{ data.home.title }}
+          </h1>
+        {% endif %}
+
       </a>
 
       <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
@@ -30,21 +32,40 @@
 
       <ul class="nav-activator right hide-on-med-and-down">
 
-      {# Links array on widget level #}
-      {% for name in data.page.links %}
-       <li>
-         <a href="{{ name.url }}" class="accent-color"
-           {% if data.global.navTextColor %}
-             style="color: {{ data.global.navTextColor }}"
-           {% endif %}
-         >
-           {% if name.icon %}
-              <i class="material-icons left">{{ name.icon }}</i>
-           {% endif %}
-           {{ name.name }}
-         </a>
-       </li>
-       {% endfor %}
+        {# Links Array Widget #}
+        {% if data.widget.links[0] %}
+          {% for name in data.widget.links %}
+           <li>
+             <a href="{{ name.url }}" class="accent-color"
+               {% if data.global.navTextColor %}
+                 style="color: {{ data.global.navTextColor }}"
+               {% endif %}
+             >
+               {% if name.icon %}
+                  <i class="material-icons left">{{ name.icon }}</i>
+               {% endif %}
+               {{ name.name }}
+             </a>
+           </li>
+          {% endfor %}
+
+        {# Links Array Page #}
+        {% elif data.page.links[0] %}
+          {% for name in data.page.links %}
+           <li>
+             <a href="{{ name.url }}" class="accent-color"
+               {% if data.global.navTextColor %}
+                 style="color: {{ data.global.navTextColor }}"
+               {% endif %}
+             >
+               {% if name.icon %}
+                  <i class="material-icons left">{{ name.icon }}</i>
+               {% endif %}
+               {{ name.name }}
+             </a>
+           </li>
+          {% endfor %}
+        {% endif %}
 
         {# Home Active #}
         <li
@@ -89,46 +110,67 @@
             </a>
           </li>
         {% endfor %}
+
       </ul>
 
     </div>
   </nav>
 
-  {# Dropdown Desktop #}
-  <ul class="dropdown-content" id="desktop-dropdown">
-    {% for section in data.pieces %}
-      <li>
-        <a href="#{{ section.slug }}" class="accent-color flow-text anchor"
-          {% if data.global.navTextColor %}
-            style="color: {{ data.global.navTextColor }}"
-          {% endif %}
-        >
-          {{ section.title }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+      {# Dropdown Desktop #}
+      <ul class="dropdown-content" id="desktop-dropdown">
+        {% for section in pieces %}
+          <li>
+            <a href="#{{ section.slug }}" class="accent-color flow-text anchor truncate"
+              {% if data.global.navTextColor %}
+                style="color: {{ data.global.navTextColor }}"
+              {% endif %}
+            >
+              {{ section.title }}
+            </a>
+          </li>
+        {% endfor %}
+
+      </ul>
 
 </div>
 
 {# Mobile #}
 <ul class="sidenav" id="mobile">
 
-  {# Links array on widget level #}
-  {% for name in data.page.links %}
-   <li>
-     <a href="{{ name.url }}" class="accent-color"
-       {% if data.global.navTextColor %}
-         style="color: {{ data.global.navTextColor }}"
-       {% endif %}
-     >
-       {% if name.icon %}
-          <i class="material-icons left">{{ name.icon }}</i>
-       {% endif %}
-       {{ name.name }}
-     </a>
-   </li>
-   {% endfor %}
+  {# Links Array Widget #}
+  {% if data.widget.links[0] %}
+    {% for name in data.widget.links %}
+     <li>
+       <a href="{{ name.url }}" class="accent-color"
+         {% if data.global.navTextColor %}
+           style="color: {{ data.global.navTextColor }}"
+         {% endif %}
+       >
+         {% if name.icon %}
+            <i class="material-icons left">{{ name.icon }}</i>
+         {% endif %}
+         {{ name.name }}
+       </a>
+     </li>
+    {% endfor %}
+
+  {# Links Array Page #}
+  {% elif data.page.links[0] %}
+    {% for name in data.page.links %}
+     <li>
+       <a href="{{ name.url }}" class="accent-color"
+         {% if data.global.navTextColor %}
+           style="color: {{ data.global.navTextColor }}"
+         {% endif %}
+       >
+         {% if name.icon %}
+            <i class="material-icons left">{{ name.icon }}</i>
+         {% endif %}
+         {{ name.name }}
+       </a>
+     </li>
+    {% endfor %}
+  {% endif %}
 
   {# Home Active #}
   <li
@@ -176,7 +218,7 @@
 
   {# Dropdown Mobile #}
   <ul class="dropdown-content" id="mobile-dropdown">
-    {% for section in data.pieces %}
+    {% for section in pieces %}
       <li>
         <a href="#{{ section.slug }}" class="accent-color flow-text sidenav-close anchor"
           {% if data.global.navTextColor %}
