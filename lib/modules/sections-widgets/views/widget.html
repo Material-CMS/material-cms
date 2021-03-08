@@ -5,38 +5,10 @@
 
   {% for piece in data.widget._pieces %}
 
+
     {# Parallax Container #}
     {% if piece._backgroundImage and piece.backgroundImageParallax %}
       <div class="parallax-container">
-
-        {# Shape Fill Top #}
-        {% if piece.shapeFillTop %}
-          <div class="custom-shape-divider top">
-            <svg
-              data-name="Layer 1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1200 120"
-              preserveAspectRatio="none"
-              {% if piece.shapeFillTopInvert %}
-                style="transform: rotateY(180deg)"
-              {% endif %}
-            >
-                <path
-                  class="shape-fill"
-                  d="{{ piece.shapeFillTop }}"
-                  {% if piece.color %}
-                    style="fill:{{ piece.color }}"
-                  {% else %}
-                    {% if data.global.backgroundColor %}
-                      style="fill:{{ data.global.backgroundColor }}"
-                    {% else %}
-                      style="fill:#fff"
-                    {% endif %}
-                  {% endif %}
-                ></path>
-            </svg>
-          </div>
-        {% endif %}
 
         {# Parallax Image #}
         <div class="parallax">
@@ -47,35 +19,6 @@
             alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
           >
         </div>
-
-        {# Shape Fill Bottom #}
-        {% if piece.shapeFillBottom %}
-          <div class="custom-shape-divider bottom">
-            <svg
-              data-name="Layer 1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1200 120"
-              preserveAspectRatio="none"
-              {% if piece.shapeFillBottomInvert %}
-                style="transform: rotateY(180deg)"
-              {% endif %}
-              >
-                <path
-                  class="shape-fill"
-                  d="{{ piece.shapeFillBottom}}"
-                  {% if piece.color %}
-                    style="fill:{{ piece.color }}"
-                  {% else %}
-                    {% if data.global.backgroundColor %}
-                      style="fill:{{ data.global.backgroundColor }}"
-                    {% else %}
-                      style="fill:#fff"
-                    {% endif %}
-                  {% endif %}
-                ></path>
-            </svg>
-          </div>
-        {% endif %}
 
       </div>
     {% endif %}
@@ -89,99 +32,128 @@
       {% endif %}
     >
 
-      {# Background Image #}
-      {% if piece._backgroundImage and not piece.backgroundImageParallax %}
-        <div class="background-image">
-          <img
-            src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
-            srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
-            sizes="(max-width:600px) 50vw, 40vw"
-            alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
-          >
-        </div>
-      {% endif %}
-
-      {# Small Side Image #}
-      {% if piece._sideImage %}
-        <div class="side-image"
-          {% if piece.sideImageRight %}
-            style="right:0;"
+    {# Shape Fill Top #}
+    {% if piece.shapeFillTop %}
+      <div class="custom-shape-divider top">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          {% if piece.shapeFillTopInvert %}
+            style="transform: rotateY(180deg)"
           {% endif %}
         >
-          <img
-            src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
-            srcset="{{ apos.images.srcset(piece._sideImage.attachment) }}"
-            sizes="(max-width:600px) 50vw, 40vw"
-            alt="{{ piece._sideImage.description or piece._sideImage.title }}"
-          >
+            <path
+              class="shape-fill"
+              d="{{ piece.shapeFillTop }}"
+              {% if piece.color %}
+                style="fill:{{ piece.color }}"
+              {% else %}
+                {% if data.global.backgroundColor %}
+                  style="fill:{{ data.global.backgroundColor }}"
+                {% else %}
+                  style="fill:#fff"
+                {% endif %}
+              {% endif %}
+            ></path>
+        </svg>
+      </div>
+    {% endif %}
+
+    {# Background Image #}
+    {% if piece._backgroundImage and not piece.backgroundImageParallax %}
+      <div class="background-image">
+        <img
+          src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+          srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
+          sizes="(max-width:600px) 50vw, 40vw"
+          alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
+        >
+      </div>
+    {% endif %}
+
+    {# Small Side Image #}
+    {% if piece._sideImage %}
+      <div class="side-image"
+        {% if piece.sideImageRight %}
+          style="right:0;"
+        {% endif %}
+      >
+        <img
+          src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
+          srcset="{{ apos.images.srcset(piece._sideImage.attachment) }}"
+          sizes="(max-width:600px) 50vw, 40vw"
+          alt="{{ piece._sideImage.description or piece._sideImage.title }}"
+        >
+      </div>
+    {% endif %}
+
+    {# Slide #}
+    {% if piece.preferences == 'slideOn' %}
+      <div class="slide-content">
+        {{ apos.singleton(piece, 'content', 'slider', {
+          size: 'full',
+          sizesAttr: '(max-width:600px) 120vw, 58vw',
+          noHeight: true,
+          focalPoint: true,
+          controls: {
+            movable: false,
+            cloneable: false,
+            removable: true,
+            position: 'top-right'
+          }
+        }) }}
+      </div>
+
+    {# Footer #}
+    {% elif piece.preferences == 'footerOn' %}
+      <div class="main-content">
+
+      {% if piece.container == 'on' %}
+        <div class="container">
+      {% endif %}
+
+          <div class="widgets-container">
+
+            {% if piece.header %}
+              <h1 class="section-header
+                {% if piece.headerAlign == 'left' %}
+                  left-align
+                {% elif piece.headerAlign == 'center' %}
+                  center-align
+                {% elif piece.headerAlign == 'right' %}
+                  right-align
+                {% endif %}
+              ">
+                {{ piece.header }}
+              </h1>
+            {% endif %}
+
+            {{ apos.area(piece, 'content', {
+              limit: 1,
+              widgets: {
+                'apostrophe-forms': {
+                  controls: {
+                    movable: false,
+                    cloneable: false,
+                    removable: true,
+                    position: 'top-right'
+                  }
+                }
+              }
+            }) }}
+          </div>
+
+      {% if piece.container == 'on' %}
         </div>
       {% endif %}
 
-      {# Slide #}
-      {% if piece.preferences == 'slideOn' %}
-        <div class="slide-content">
-          {{ apos.singleton(piece, 'content', 'slider', {
-            size: 'full',
-            sizesAttr: '(max-width:600px) 120vw, 58vw',
-            noHeight: true,
-            focalPoint: true,
-            controls: {
-              movable: false,
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          }) }}
-        </div>
+      </div>
 
-      {# Footer #}
-      {% elif piece.preferences == 'footerOn' %}
-        <div class="main-content">
-
-        {% if piece.container == 'on' %}
-          <div class="container">
-        {% endif %}
-
-            <div class="widgets-container">
-
-              {% if piece.header %}
-                <h1 class="section-header
-                  {% if piece.headerAlign == 'left' %}
-                    left-align
-                  {% elif piece.headerAlign == 'center' %}
-                    center-align
-                  {% elif piece.headerAlign == 'right' %}
-                    right-align
-                  {% endif %}
-                ">
-                  {{ piece.header }}
-                </h1>
-              {% endif %}
-
-              {{ apos.area(piece, 'content', {
-                limit: 1,
-                widgets: {
-                  'apostrophe-forms': {
-                    controls: {
-                      movable: false,
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  }
-                }
-              }) }}
-            </div>
-
-        {% if piece.container == 'on' %}
-          </div>
-        {% endif %}
-
-        </div>
-
-        <div class="bottom-content">
-          {% include "footer-widgets:widget.html" %}
-        </div>
+      <div class="bottom-content">
+        {% include "footer-widgets:widget.html" %}
+      </div>
 
       {# Main Widgets #}
       {% else %}
@@ -317,6 +289,35 @@
           {% include "btn-widgets:widget.html" %}
         {% endif %}
 
+        </div>
+      {% endif %}
+
+      {# Shape Fill Bottom #}
+      {% if piece.shapeFillBottom %}
+        <div class="custom-shape-divider bottom">
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            {% if piece.shapeFillBottomInvert %}
+              style="transform: rotateY(180deg)"
+            {% endif %}
+            >
+              <path
+                class="shape-fill"
+                d="{{ piece.shapeFillBottom}}"
+                {% if piece.color %}
+                  style="fill:{{ piece.color }}"
+                {% else %}
+                  {% if data.global.backgroundColor %}
+                    style="fill:{{ data.global.backgroundColor }}"
+                  {% else %}
+                    style="fill:#fff"
+                  {% endif %}
+                {% endif %}
+              ></path>
+          </svg>
         </div>
       {% endif %}
 
