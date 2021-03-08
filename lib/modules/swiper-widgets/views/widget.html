@@ -34,28 +34,28 @@
   </div>
 </div>
 <script type="text/javascript">
-window.addEventListener('load', function () {
-  var swiper{{ data.widget._id }} = new Swiper('.{{ data.widget._id }}', {
-    loop: {{ data.widget.loop }},
-    speed: {{ data.widget.speed }},
-    autoHeight: {{ data.widget.autoHeight }},
-    effect: '{{ data.widget.effect }}',
-    cubeEffect: {
-      shadow: false,
-    },
-    {% if data.widget.autoplay %}
-      autoplay: {
-        delay: {{ data.widget.delay }},
-        disableOnInteraction: {{ data.widget.disableOnInteraction }},
+  window.addEventListener('load', function () {
+    var swiper{{ data.widget._id }} = new Swiper('.{{ data.widget._id }}', {
+      loop: {{ data.widget.loop }},
+      speed: {{ data.widget.speed }},
+      autoHeight: {{ data.widget.autoHeight }},
+      effect: '{{ data.widget.effect }}',
+      cubeEffect: {
+        shadow: false,
       },
-    {% endif %}
-    keyboard: {
-      enabled: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    }
+      {% if data.widget.autoplay %}
+        autoplay: {
+          delay: {{ data.widget.delay }},
+          disableOnInteraction: {{ data.widget.disableOnInteraction }},
+        },
+      {% endif %}
+      keyboard: {
+        enabled: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }
+    });
   });
-});
 </script>
