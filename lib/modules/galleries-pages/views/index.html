@@ -17,8 +17,11 @@
 {# Additional header elements #}
 {% block extraHead %}
 
+  {# Palette #}
+  {{ palette.stylesheetLink(data.global) }}
+  {{ palette.stylesheetTag() }}
+  
   {# Includes #}
-  {% include "apostrophe-assets:cdn.html" %}
   {% include "apostrophe-assets:styles.html" %}
   {% include "apostrophe-seo:view.html" %}
   {% include "apostrophe-open-graph:view.html" %}
@@ -26,9 +29,6 @@
   {# Favicons #}
   {{ favicons.renderLinks(apos, data.global) }}
 
-  {# Palette #}
-  {{ palette.stylesheetLink(data.global) }}
-  {{ palette.stylesheetTag() }}
 {% endblock %}
 
 {# Insert Palette #}
