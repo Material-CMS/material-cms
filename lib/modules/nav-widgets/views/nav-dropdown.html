@@ -1,8 +1,31 @@
 {% set pieces = data.widget._pieces or data.pieces %}
 <div class="nav">
+
+  {# Nav Background #}
+  {% if data.widget._backgroundImage %}
+    <div class="nav-background"
+    style="
+      background: linear-gradient({{ data.widget.gradientColorTop or data.global.mainColor}}80,{{ data.widget.gradientColorBottom or data.global.accentColor}}80);
+      background: -webkit-linear-gradient({{ data.widget.gradientColorTop or data.global.mainColor}}80, {{ data.widget.gradientColorBottom or data.global.accentColor}}80);
+    ">
+
+      <div class="parallax-container">
+        <div class="parallax">
+          <img
+            src="{{ apos.attachments.url(data.widget._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+            srcset="{{ apos.images.srcset(data.widget._backgroundImage.attachment) }}"
+            sizes="(max-width:600px) 50vw, 60vw"
+            alt="{{ data.widget._backgroundImage.description or data.widget._backgroundImage.title }}"
+          >
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
   {# Dekstop #}
-  <nav>
-    <div class="nav-wrapper z-depth-2">
+  <nav class="nav-extended">
+
+    <div class="nav-wrapper z-depth-2 pin-top">
       <a class="brand-logo" href="{{ data.home._url }}">
 
         {% if data.page._logo %}
@@ -55,9 +78,10 @@
              </a>
            </li>
           {% endfor %}
+        {% endif %}
 
         {# Links Array Page #}
-        {% elif data.page.links[0] %}
+        {% if data.page.links[0] %}
           {% for name in data.page.links %}
            <li>
              <a href="{{ name.url }}" class="accent-color"
@@ -123,25 +147,24 @@
     </div>
   </nav>
 
-      {# Dropdown Desktop #}
-      <ul class="dropdown-content" id="desktop-dropdown">
-        {% for section in pieces %}
-          <li>
-            <a href="#{{ section.slug }}" class="accent-color flow-text anchor truncate"
-              {% if data.global.navTextColor %}
-                style="color: {{ data.global.navTextColor }}"
-              {% endif %}
-            >
-              {{ section.title }}
-            </a>
-          </li>
-        {% endfor %}
-
-      </ul>
+  {# Dropdown Desktop #}
+  <ul class="dropdown-content" id="desktop-dropdown">
+    {% for section in pieces %}
+      <li>
+        <a href="#{{ section.slug }}" class="accent-color flow-text anchor truncate"
+          {% if data.global.navTextColor %}
+            style="color: {{ data.global.navTextColor }}"
+          {% endif %}
+        >
+          {{ section.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 
 </div>
 
-{# Mobile #}
+{# Mobile Sidenav #}
 <ul class="sidenav" id="mobile">
 
   {# Links Array Widget #}

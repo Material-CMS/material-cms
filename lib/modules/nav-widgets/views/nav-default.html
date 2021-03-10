@@ -1,7 +1,29 @@
 <div class="nav">
 
+  {# Nav Background #}
+  {% if data.widget._backgroundImage %}
+    <div class="nav-background"
+    style="
+      background: linear-gradient({{ data.widget.gradientColorTop or data.global.mainColor}}80,{{ data.widget.gradientColorBottom or data.global.accentColor}}80);
+      background: -webkit-linear-gradient({{ data.widget.gradientColorTop or data.global.mainColor}}80, {{ data.widget.gradientColorBottom or data.global.accentColor}}80);
+    ">
+
+      <div class="parallax-container">
+        <div class="parallax">
+          <img
+            src="{{ apos.attachments.url(data.widget._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+            srcset="{{ apos.images.srcset(data.widget._backgroundImage.attachment) }}"
+            sizes="(max-width:600px) 50vw, 60vw"
+            alt="{{ data.widget._backgroundImage.description or data.widget._backgroundImage.title }}"
+          >
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
   {# Dekstop #}
-  <nav>
+  <nav class="nav-extended">
+
     <div class="nav-wrapper z-depth-2">
       <a class="brand-logo" href="{{ data.home._url }}">
 
@@ -29,7 +51,7 @@
 
       </a>
 
-      <a class="accent-color sidenav-trigger" href="#" data-target="mobile"
+      <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
         {% if data.global.navTextColor %}
           style="color: {{ data.global.navTextColor }}"
         {% endif %}

@@ -146,11 +146,19 @@ h4 {
 }
 // Navigation
 .nav {
-  z-index: 9;
-  display: block;
-  position: fixed;
-  width: 100%;
-  nav {
+   position: relative;
+   display: block;
+   width: 100%;
+   z-index: 9;
+   .nav-background {
+     .parallax-container {
+       height: 24rem;
+     }
+   }
+  .nav-extended {
+    .nav-wrapper {
+      width: 100%;
+    }
     .nav-activator {
       padding-right: 0.8rem;
     }
