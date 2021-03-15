@@ -1,5 +1,10 @@
 
-<div class="slider fullscreen">
+<div
+  class="slider fullscreen"
+  {% if data.widget.sliderHalf %}
+    style="height: 50vh"
+  {%- endif -%}
+  >
   <ul class="slides">
 
     {% block items %}
@@ -15,9 +20,12 @@
             srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
             sizes="{{ data.options.sizesAttr or '100vw' }}"
             alt="{{ image.title }}"
-            {%- if apos.attachments.hasFocalPoint(relationship) -%}
+            {% if data.widget.animated %}
+              class="animated"
+            {% endif %}
+            {% if apos.attachments.hasFocalPoint(relationship) %}
               style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
-            {%- endif -%}
+            {% endif -%}
           >
 
           <div class="caption {{ image.align }}">
@@ -61,15 +69,64 @@
       {% endfor %}
     {% endblock %}
 
+
+
   </ul>
 </div>
-<style>
-{% if data.widget._pieces.length <= 1 %}
-  .slider .indicators {
-    display: none
-  }
+
+{% if data.widget.sliderHalf %}
+<div class="main-content">
+
+  <div class="container">
+
+    {{ apos.area(data.widget, 'sliderExtra', {
+      limit: 3,
+      widgets: {
+        'events': {
+          controls: {
+            cloneable: false,
+            removable: true,
+            position: 'top-right'
+          }
+        },
+        'texts': {
+          controls: {
+            cloneable: false,
+            removable: true,
+            position: 'top-right'
+          }
+        },
+        'texts-carousels': {
+          controls: {
+            cloneable: false,
+            removable: true,
+            position: 'top-right'
+          }
+        },
+        'video': {
+          controls: {
+            cloneable: false,
+            removable: true,
+            position: 'top-right'
+          }
+        }
+      }
+    }) }}
+
+  </div>
+</div>
 {% endif %}
-  .slider .indicators .indicator-item.active {
-    background-color: {{data.global.accentColor}}
+
+<style>
+  .slider .indicators {
+    bottom: {{ data.widget.indicatorsBottom }}px !important
   }
+  .slider .indicators .indicator-item.active {
+    background-color: {{ data.global.accentColor }}
+  }
+  {% if data.widget._pieces.length <= 1 %}
+    .slider .indicators {
+      display: none
+    }
+  {% endif %}
 </style>

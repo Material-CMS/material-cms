@@ -5,9 +5,8 @@
 
   {% for piece in data.widget._pieces %}
 
-
     {# Parallax Container #}
-    {% if piece._backgroundImage and piece.backgroundImageParallax %}
+    {% if piece.preferences == 'default' and (piece._backgroundImage and piece.backgroundImageParallax) %}
       <div class="parallax-container">
 
         {# Parallax Image #}
@@ -32,33 +31,35 @@
       {% endif %}
     >
 
-    {# Shape Fill Top #}
-    {% if piece.shapeFillTop %}
-      <div class="custom-shape-divider top">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          {% if piece.shapeFillTopInvert %}
-            style="transform: rotateY(180deg)"
-          {% endif %}
-        >
-            <path
-              class="shape-fill"
-              d="{{ piece.shapeFillTop }}"
-              {% if piece.color %}
-                style="fill:{{ piece.color }}"
-              {% else %}
-                {% if data.global.backgroundColor %}
-                  style="fill:{{ data.global.backgroundColor }}"
+    {% if piece.preferences == 'default' or piece.preferences == 'footerOn' %}
+      {# Shape Fill Top #}
+      {% if piece.shapeFillTop %}
+        <div class="custom-shape-divider top">
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            {% if piece.shapeFillTopInvert %}
+              style="transform: rotateY(180deg)"
+            {% endif %}
+          >
+              <path
+                class="shape-fill"
+                d="{{ piece.shapeFillTop }}"
+                {% if piece.color %}
+                  style="fill:{{ piece.color }}"
                 {% else %}
-                  style="fill:#fff"
+                  {% if data.global.backgroundColor %}
+                    style="fill:{{ data.global.backgroundColor }}"
+                  {% else %}
+                    style="fill:#fff"
+                  {% endif %}
                 {% endif %}
-              {% endif %}
-            ></path>
-        </svg>
-      </div>
+              ></path>
+          </svg>
+        </div>
+      {% endif %}
     {% endif %}
 
     {# Background Image #}
@@ -297,35 +298,36 @@
         </div>
       {% endif %}
 
-      {# Shape Fill Bottom #}
-      {% if piece.shapeFillBottom %}
-        <div class="custom-shape-divider bottom">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            {% if piece.shapeFillBottomInvert %}
-              style="transform: rotateY(180deg)"
-            {% endif %}
-            >
-              <path
-                class="shape-fill"
-                d="{{ piece.shapeFillBottom}}"
-                {% if piece.color %}
-                  style="fill:{{ piece.color }}"
-                {% else %}
-                  {% if data.global.backgroundColor %}
-                    style="fill:{{ data.global.backgroundColor }}"
+      {% if piece.preferences == 'default' or piece.preferences == 'footerOn' %}
+        {# Shape Fill Bottom #}
+        {% if piece.shapeFillBottom %}
+          <div class="custom-shape-divider bottom">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              {% if piece.shapeFillBottomInvert %}
+                style="transform: rotateY(180deg)"
+              {% endif %}
+              >
+                <path
+                  class="shape-fill"
+                  d="{{ piece.shapeFillBottom}}"
+                  {% if piece.color %}
+                    style="fill:{{ piece.color }}"
                   {% else %}
-                    style="fill:#fff"
+                    {% if data.global.backgroundColor %}
+                      style="fill:{{ data.global.backgroundColor }}"
+                    {% else %}
+                      style="fill:#fff"
+                    {% endif %}
                   {% endif %}
-                {% endif %}
-              ></path>
-          </svg>
-        </div>
+                ></path>
+            </svg>
+          </div>
+        {% endif %}
       {% endif %}
-
     </div>
   {% endfor %}
 </div>
