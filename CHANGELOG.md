@@ -7,14 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Video local files
-- Materialize parallax page
 - Materialize tab widget
 - Add description text to text-show page when not blog
-- Rename Project to Material-CMS
-- Font color for text and Palette
+- Font color for text and palette
 - Add card Reveal to card widget
 - Add link color for palette and options for UPPERCASE text
-- Change Nav title to page title
+- Change nav title to page title
+- One section layout with endless glue widgets
+- Replace slider with swiper
+- Add prefixes to pieces to minimize naming conflicts
+- Fix shape divider bottom for slider
 
 ## [0.9.7 ] - Unreleased
 
