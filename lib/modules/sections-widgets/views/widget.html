@@ -93,6 +93,7 @@
     {# Slide #}
     {% if piece.preferences == 'slideOn' %}
       <div class="slide-content">
+
         {{ apos.singleton(piece, 'content', 'slider', {
           size: 'full',
           sizesAttr: '(max-width:600px) 120vw, 58vw',
@@ -105,6 +106,8 @@
             position: 'top-right'
           }
         }) }}
+
+
       </div>
 
     {# Footer #}

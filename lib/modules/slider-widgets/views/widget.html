@@ -2,7 +2,7 @@
 <div
   class="slider fullscreen"
   {% if data.widget.sliderHalf %}
-    style="height: 50vh"
+    style="height: 50vh; margin-bottom: 8rem;"
   {%- endif -%}
   >
   <ul class="slides">
@@ -76,42 +76,58 @@
 
 {% if data.widget.sliderHalf %}
 <div class="main-content">
-
   <div class="container">
 
-    {{ apos.area(data.widget, 'sliderExtra', {
-      limit: 3,
-      widgets: {
-        'events': {
-          controls: {
-            cloneable: false,
-            removable: true,
-            position: 'top-right'
-          }
-        },
-        'texts': {
-          controls: {
-            cloneable: false,
-            removable: true,
-            position: 'top-right'
-          }
-        },
-        'texts-carousels': {
-          controls: {
-            cloneable: false,
-            removable: true,
-            position: 'top-right'
-          }
-        },
-        'video': {
-          controls: {
-            cloneable: false,
-            removable: true,
-            position: 'top-right'
+    <div class="widgets-container">
+
+      {% if data.widget.header %}
+        <h1 class="section-header
+          {% if data.widget.headerAlign == 'left' %}
+            left-align
+          {% elif data.widget.headerAlign == 'center' %}
+            center-align
+          {% elif data.widget.headerAlign == 'right' %}
+            right-align
+          {% endif %}
+        ">
+          {{ data.widget.header }}
+        </h1>
+      {% endif %}
+
+      {{ apos.area(data.widget, 'sliderExtra', {
+        limit: 3,
+        widgets: {
+          'events': {
+            controls: {
+              cloneable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'texts': {
+            controls: {
+              cloneable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'texts-carousels': {
+            controls: {
+              cloneable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          },
+          'video': {
+            controls: {
+              cloneable: false,
+              removable: true,
+              position: 'top-right'
+            }
           }
         }
-      }
-    }) }}
+      }) }}
+    </div>
 
   </div>
 </div>
