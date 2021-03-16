@@ -1,6 +1,4 @@
-
-<div
-  class="slider fullscreen"
+<div class="slider fullscreen"
   {% if data.widget.sliderHalf %}
     style="height: 50vh"
   {%- endif -%}
@@ -14,23 +12,23 @@
         {% set relationship = entry.relationship %}
 
         <li>
-          <img data-image
-            src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
-            data-srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
-            srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
-            sizes="{{ data.options.sizesAttr or '100vw' }}"
-            alt="{{ image.title }}"
-            {% if data.widget.animated %}
-              class="animated"
-            {% endif %}
-            {% if apos.attachments.hasFocalPoint(relationship) %}
-              style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
-            {% endif -%}
-          >
-
+          <div class="gradient-overlay">
+            <img data-image
+              src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
+              srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
+              sizes="50vw"
+              alt="{{ image.title }}"
+              {% if data.widget.animated %}
+                class="animated"
+              {% endif %}
+              {% if apos.attachments.hasFocalPoint(relationship) %}
+                style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+              {% endif -%}
+            >
+          </div>
           <div class="caption {{ image.align }}">
 
-            {% if data.widget.title == true %}
+            {% if data.widget.title %}
               <h3 class="accent-color truncate hide-on-small-only"
                 {% if image.titleColor %}
                   style="color:{{ image.titleColor }}"
@@ -145,4 +143,11 @@
       display: none
     }
   {% endif %}
+  {% if data.widget.gradientColorTop and data.widget.gradientColorBottom %}
+    .gradient-overlay:after {
+      background: linear-gradient({{ data.widget.gradientColorTop }}80,{{ data.widget.gradientColorBottom }}80);
+      background: -webkit-linear-gradient({{ data.widget.gradientColorTop }}80, {{ data.widget.gradientColorBottom }}80);
+      background: -o-linear-gradient({{ data.widget.gradientColorTop }}80, {{ data.widget.gradientColorBottom }}80);
+    }
+  {% endif -%}
 </style>

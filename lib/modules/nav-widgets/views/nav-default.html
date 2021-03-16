@@ -3,17 +3,21 @@
   {# Nav Background #}
   {% if data.widget._backgroundImage %}
     <div class="nav-background"
-    style="
-      background: linear-gradient({{ data.widget.gradientColorTop or data.global.mainColor}}80,{{ data.widget.gradientColorBottom or data.global.accentColor}}80);
-      background: -webkit-linear-gradient({{ data.widget.gradientColorTop or data.global.mainColor}}80, {{ data.widget.gradientColorBottom or data.global.accentColor}}80);
-    ">
+      {% if data.widget.gradientColorTop and data.widget.gradientColorBottom %}
+        style="
+          background: linear-gradient({{ data.widget.gradientColorTop }}80,{{ data.widget.gradientColorBottom }}80);
+          background: -webkit-linear-gradient({{ data.widget.gradientColorTop }}80, {{ data.widget.gradientColorBottom }}80);
+          background: -o-linear-gradient({{ data.widget.gradientColorTop }}80, {{ data.widget.gradientColorBottom }}80);
+        "
+      {% endif %}
+    >
 
       <div class="parallax-container">
         <div class="parallax">
           <img
             src="{{ apos.attachments.url(data.widget._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
             srcset="{{ apos.images.srcset(data.widget._backgroundImage.attachment) }}"
-            sizes="(max-width:600px) 50vw, 60vw"
+            sizes="50vw"
             alt="{{ data.widget._backgroundImage.description or data.widget._backgroundImage.title }}"
           >
         </div>
