@@ -3,15 +3,47 @@
   {# Nav Background #}
   {% if data.widget._backgroundImage %}
     <div class="nav-background"
-      {% if data.widget.gradientColorTop and data.widget.gradientColorBottom %}
+      {% if data.widget.gradientColorTop or data.widget.gradientColorBottom %}
         style="
-          background: linear-gradient({{ data.widget.gradientColorTop }}80,{{ data.widget.gradientColorBottom }}80);
-          background: -webkit-linear-gradient({{ data.widget.gradientColorTop }}80, {{ data.widget.gradientColorBottom }}80);
-          background: -o-linear-gradient({{ data.widget.gradientColorTop }}80, {{ data.widget.gradientColorBottom }}80);
+          background: linear-gradient(
+            {% if data.widget.gradientColorTop %}
+              {{ data.widget.gradientColorTop }}
+            {% else %}
+              rgba(0, 0, 0, 0)
+            {% endif %},
+            {% if data.widget.gradientColorBottom %}
+              {{ data.widget.gradientColorBottom }}
+            {% else %}
+              rgba(0, 0, 0, 0)
+            {% endif %}
+          );
+          background: -o-linear-gradient(
+            {% if data.widget.gradientColorTop %}
+              {{ data.widget.gradientColorTop }}
+            {% else %}
+              rgba(0, 0, 0, 0)
+            {% endif %},
+            {% if data.widget.gradientColorBottom %}
+              {{ data.widget.gradientColorBottom }}
+            {% else %}
+              rgba(0, 0, 0, 0)
+            {% endif %}
+          );
+          background: -webkit-linear-gradient(
+            {% if data.widget.gradientColorTop %}
+              {{ data.widget.gradientColorTop }}
+            {% else %}
+              rgba(0, 0, 0, 0)
+            {% endif %},
+            {% if data.widget.gradientColorBottom %}
+              {{ data.widget.gradientColorBottom }}
+            {% else %}
+              rgba(0, 0, 0, 0)
+            {% endif %}
+          );
         "
       {% endif %}
     >
-
       <div class="parallax-container">
         <div class="parallax">
           <img
@@ -26,9 +58,17 @@
   {% endif %}
 
   {# Dekstop #}
-  <nav class="nav-extended">
+  <nav class="nav-extended{% if data.widget._backgroundImage %} nav-pushpin{% endif %}"
+    {% if data.global.navColor %}
+      style="height: 64px"
+    {% endif %}
+  >
 
-    <div class="nav-wrapper z-depth-2">
+    <div class="nav-wrapper pin-top{% if data.widget.navShadow %} z-depth-2{% endif %}"
+      {% if data.widget._backgroundImage %}
+        style="position: relative"
+      {% endif %}
+    >
       <a class="brand-logo" href="{{ data.home._url }}">
 
         {% if data.page._logo %}
