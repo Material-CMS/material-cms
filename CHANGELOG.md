@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replace slider with swiper
 - Add prefixes to pieces to minimize naming conflicts
 - Fix shape divider bottom for slider
+- Fix TypeError: Cannot read property 'top' of undefined
+- Hide card-reaveal in swiper
 
 ## [0.9.7 ] - Unreleased
 
@@ -29,6 +31,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Gallery image click to link option
 - Infinite Scroll through external jquery plugin
 - Parallax background image for sections
+- Navigation bg image with gradient overlay and pushpin
+- Half height slider with gradient overlay, kenburns and extra content
+- Section headers
+- Updated dependencies
 
 ### Removed
 - Unnecessary javascript trough lean front end
