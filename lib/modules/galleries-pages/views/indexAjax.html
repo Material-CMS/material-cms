@@ -1,10 +1,10 @@
-<div class="content">
+<div class="ajax-append">
 
   <div class="pagination">
     {% import 'apostrophe-pager:macros.html' as pager with context %}
     {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
   </div>
-  
+
   <div data-apos-ajax-append>
 
     {% for piece in data.pieces %}
