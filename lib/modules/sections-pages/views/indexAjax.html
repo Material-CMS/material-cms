@@ -118,22 +118,25 @@
         {% elif piece.preferences == 'footerOn' %}
           <div class="main-content">
 
-          {% if piece.container == 'on' %}
+          {% if piece.container %}
             <div class="container">
           {% endif %}
 
               <div class="widgets-container">
 
                 {% if piece.header %}
-                  <h1 class="section-header
+                  <h1 class="section-header accent-color
                     {% if piece.headerAlign == 'left' %}
                       left-align
                     {% elif piece.headerAlign == 'center' %}
                       center-align
                     {% elif piece.headerAlign == 'right' %}
                       right-align
+                    {% endif %}"
+                    {% if piece.headerColor %}
+                      style="color: {{ piece.headerColor }}"
                     {% endif %}
-                  ">
+                  >
                     {{ piece.header }}
                   </h1>
                 {% endif %}
@@ -153,7 +156,7 @@
                 }) }}
               </div>
 
-          {% if piece.container == 'on' %}
+          {% if piece.container %}
             </div>
           {% endif %}
 
@@ -168,22 +171,25 @@
 
             <div class="main-content">
 
-            {% if piece.container == 'on' %}
+            {% if piece.container %}
               <div class="container">
             {% endif %}
 
                 <div class="widgets-container">
 
                   {% if piece.header %}
-                    <h1 class="section-header
+                    <h1 class="section-header accent-color
                       {% if piece.headerAlign == 'left' %}
                         left-align
                       {% elif piece.headerAlign == 'center' %}
                         center-align
                       {% elif piece.headerAlign == 'right' %}
                         right-align
+                      {% endif %}"
+                      {% if piece.headerColor %}
+                        style="color: {{ piece.headerColor }}"
                       {% endif %}
-                    ">
+                    >
                       {{ piece.header }}
                     </h1>
                   {% endif %}
@@ -294,7 +300,7 @@
 
                 </div>
 
-            {% if piece.container == 'on' %}
+            {% if piece.container %}
               </div>
             {% endif %}
 

@@ -77,15 +77,18 @@
     <div class="widgets-container">
 
       {% if data.widget.header %}
-        <h1 class="section-header
+        <h1 class="section-header accent-color
           {% if data.widget.headerAlign == 'left' %}
             left-align
           {% elif data.widget.headerAlign == 'center' %}
             center-align
           {% elif data.widget.headerAlign == 'right' %}
             right-align
+          {% endif %}"
+          {% if data.widget.headerColor %}
+            style="color: {{ data.widget.headerColor }}"
           {% endif %}
-        ">
+          >
           {{ data.widget.header }}
         </h1>
       {% endif %}
