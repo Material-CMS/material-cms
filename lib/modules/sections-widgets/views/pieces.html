@@ -1,0 +1,356 @@
+{% set pieces = data.widget._pieces or data.pieces %}
+
+{% for piece in pieces %}
+
+  {# Parallax Container #}
+  {% if piece.preferences == 'default' and (piece._backgroundImage and piece.backgroundImageParallax) %}
+    <div class="parallax-container">
+
+      {# Parallax Image #}
+      <div class="parallax">
+        <img
+          src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+          srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
+          sizes="(max-width:600px) 50vw, 60vw"
+          alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
+        >
+      </div>
+
+    </div>
+  {% endif %}
+
+  {# Section #}
+  <div
+    id="{{ piece.slug }}"
+    class="section page"
+    {% if piece.color %}
+      style="background-color:{{ piece.color }}"
+    {% endif %}
+  >
+
+    {# Shape Fill Top #}
+    {% if piece.shapeFillTop %}
+      <div class="custom-shape-divider top"
+      {% if piece.shapeFillHeight or piece.preferences == 'slideOn' %}
+        style="
+          {% if piece.shapeFillHeight and piece.preferences == 'slideOn' %}
+            top: calc(-{{ piece.shapeFillHeight }}px + 50vh);
+          {% else %}
+            top: -{{ piece.shapeFillHeight }}px;
+          {% endif %}
+        "
+      {% endif %}
+      >
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          {% if piece.shapeFillTopInvert or piece.shapeFillHeight %}
+            style="
+              {% if piece.shapeFillTopInvert %}transform: rotateY(180deg);{% endif %}
+              {% if piece.shapeFillHeight %}height: {{ piece.shapeFillHeight }}px;{% endif %}
+            "
+          {% endif %}
+        >
+            <path
+              class="shape-fill"
+              d="{{ piece.shapeFillTop }}"
+              {% if piece.color %}
+                style="fill:{{ piece.color }}"
+              {% else %}
+                {% if data.global.backgroundColor %}
+                  style="fill:{{ data.global.backgroundColor }}"
+                {% else %}
+                  style="fill:#fff"
+                {% endif %}
+              {% endif %}
+            ></path>
+        </svg>
+      </div>
+    {% endif %}
+
+  {# Background Image #}
+  {% if piece._backgroundImage and not piece.backgroundImageParallax %}
+    <div class="background-image">
+      <img
+        src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+        srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
+        sizes="(max-width:600px) 50vw, 40vw"
+        alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
+      >
+    </div>
+  {% endif %}
+
+  {# Small Side Image #}
+  {% if piece._sideImage %}
+    <div class="side-image"
+      {% if piece.sideImageRight %}
+        style="right:0;"
+      {% endif %}
+    >
+      <img
+        src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
+        srcset="{{ apos.images.srcset(piece._sideImage.attachment) }}"
+        sizes="(max-width:600px) 50vw, 40vw"
+        alt="{{ piece._sideImage.description or piece._sideImage.title }}"
+      >
+    </div>
+  {% endif %}
+
+  {# Footer #}
+  {% if piece.preferences == 'footerOn' %}
+    <div class="main-content">
+
+    {% if piece.container %}
+      <div class="container">
+    {% endif %}
+
+        <div class="widgets-container">
+
+          {% if piece.header %}
+            <h1 class="section-header accent-color
+              {% if piece.headerAlign == 'left' %}
+                left-align
+              {% elif piece.headerAlign == 'center' %}
+                center-align
+              {% elif piece.headerAlign == 'right' %}
+                right-align
+              {% endif %}"
+              {% if piece.headerColor %}
+                style="color: {{ piece.headerColor }}"
+              {% endif %}
+            >
+              {{ piece.header }}
+            </h1>
+          {% endif %}
+
+          {{ apos.area(piece, 'content', {
+            limit: 1,
+            widgets: {
+              'apostrophe-forms': {
+                controls: {
+                  movable: false,
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
+            }
+          }) }}
+        </div>
+
+    {% if piece.container %}
+      </div>
+    {% endif %}
+
+    </div>
+
+    <div class="bottom-content">
+      {% include "footer-widgets:widget.html" %}
+    </div>
+
+    {# Main Widgets #}
+    {% else %}
+
+      {# Slide #}
+      {% if piece.preferences == 'slideOn' %}
+        <div class="slide-content">
+
+          {{ apos.singleton(piece, 'sliderContent', 'slider', {
+            size: 'full',
+            sizesAttr: '(max-width:600px) 120vw, 58vw',
+            noHeight: true,
+            focalPoint: true,
+            controls: {
+              movable: false,
+              cloneable: false,
+              removable: true,
+              position: 'top-right'
+            }
+          }) }}
+
+        </div>
+      {% endif %}
+
+      <div class="main-content{% if piece.preferences == 'slideOn' %} half{% endif %}">
+
+      {% if piece.container %}
+        <div class="container">
+      {% endif %}
+
+          <div class="widgets-container">
+
+            {% if piece.header %}
+              <h1 class="section-header accent-color
+                {% if piece.headerAlign == 'left' %}
+                  left-align
+                {% elif piece.headerAlign == 'center' %}
+                  center-align
+                {% elif piece.headerAlign == 'right' %}
+                  right-align
+                {% endif %}"
+                {% if piece.headerColor %}
+                  style="color: {{ piece.headerColor }}"
+                {% endif %}
+              >
+                {{ piece.header }}
+              </h1>
+            {% endif %}
+
+            {% if piece.glueWidgets == true and piece.content.items.length == 2 %}
+              <div class="glue-container-2">
+            {% endif %}
+
+            {% if piece.glueWidgets == true and piece.content.items.length == 3 %}
+              <div class="glue-container-3">
+            {% endif %}
+
+                {{ apos.area(piece, 'content', {
+                  limit: 3,
+                  widgets: {
+                    'card': {
+                      size: 'one-half',
+                      limit: 1,
+                      noHeight: true,
+                      sizesAttr: '(max-width:600px) 50vw, 40vw',
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'double': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'events': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'texts': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'texts-carousels': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'video': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'galleries': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'people': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'tables': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'swiper': {
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    },
+                    'apostrophe-forms': {
+                      controls: {
+                        movable: false,
+                        cloneable: false,
+                        removable: true,
+                        position: 'top-right'
+                      }
+                    }
+                  }
+                }) }}
+
+            {% if piece.glueWidgets == true and piece.content.items.length == 2 %}
+              </div>
+            {% endif %}
+
+            {% if piece.glueWidgets == true and piece.content.items.length == 3 %}
+              </div>
+            {% endif %}
+
+          </div>
+
+      {% if piece.container %}
+        </div>
+      {% endif %}
+
+      {% if data.page.buttonOn == true %}
+        {% include "btn-widgets:widget.html" %}
+      {% endif %}
+
+      </div>
+    {% endif %}
+
+    {% if piece.shapeFillBottom %}
+      {# Shape Fill Bottom #}
+      {% if piece.shapeFillBottom %}
+        <div class="custom-shape-divider bottom"
+          {% if piece.shapeFillHeight %}
+            style="bottom: -{{ piece.shapeFillHeight }}px"
+          {% endif %}
+        >
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            {% if piece.shapeFillBottomInvert or piece.shapeFillHeight %}
+              style="
+                {% if piece.shapeFillBottomInvert %}transform: rotateY(180deg);{% endif %}
+                {% if piece.shapeFillHeight %}height: {{ piece.shapeFillHeight }}px;{% endif %}
+              "
+            {% endif %}
+            >
+              <path
+                class="shape-fill"
+                d="{{ piece.shapeFillBottom}}"
+                {% if piece.color %}
+                  style="fill:{{ piece.color }}"
+                {% else %}
+                  {% if data.global.backgroundColor %}
+                    style="fill:{{ data.global.backgroundColor }}"
+                  {% else %}
+                    style="fill:#fff"
+                  {% endif %}
+                {% endif %}
+              ></path>
+          </svg>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endfor %}
