@@ -70,68 +70,6 @@
   </ul>
 </div>
 
-{% if data.widget.sliderHalf %}
-<div class="main-content">
-  <div class="container">
-
-    <div class="widgets-container">
-
-      {% if data.widget.header %}
-        <h1 class="section-header accent-color
-          {% if data.widget.headerAlign == 'left' %}
-            left-align
-          {% elif data.widget.headerAlign == 'center' %}
-            center-align
-          {% elif data.widget.headerAlign == 'right' %}
-            right-align
-          {% endif %}"
-          {% if data.widget.headerColor %}
-            style="color: {{ data.widget.headerColor }}"
-          {% endif %}
-          >
-          {{ data.widget.header }}
-        </h1>
-      {% endif %}
-
-      {{ apos.area(data.widget, 'sliderExtra', {
-        limit: 3,
-        widgets: {
-          'events': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
-          'texts': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
-          'texts-carousels': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
-          'video': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          }
-        }
-      }) }}
-    </div>
-
-  </div>
-</div>
-{% endif %}
-
 <style>
   .slider .indicators {
     bottom: {{ data.widget.indicatorsBottom }}px !important

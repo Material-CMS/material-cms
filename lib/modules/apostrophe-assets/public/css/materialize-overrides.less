@@ -238,8 +238,6 @@ h4 {
 }
 // Sections
 .section {
-  .flex();
-  .flex-justify(center);
   position: relative;
   min-height: 100vh;
   padding-top: 0;
@@ -255,7 +253,14 @@ h4 {
   min-height: 100vh;
   position: relative;
   padding-top: 64px;
-	margin-bottom: 8rem;
+	padding-bottom: 64px;
+}
+.main-content.half {
+	width: 100vw;
+	min-height: 50vh;
+	position: relative;
+	padding-top: 0;
+	padding-bottom: 64px;
 }
 // Images
 .background-image {
@@ -306,9 +311,9 @@ h4 {
 // Widgets
 .widgets-container {
   width: 100%;
-  margin: 64px 0 0;
+  margin: 64px 0;
   .widget {
-    margin: 0 0 64px;
+    margin: 0 64px;
     .col {
       padding: 0;
     }
@@ -336,21 +341,10 @@ h4 {
 }
 // Slides
 .slide-content {
-  min-height: 100vh;
+  min-height: 50vh;
   width: 100%;
   h3 {
     line-height: 4rem;
-  }
-  .main-content {
-    min-height: inherit;
-    .container {
-			.widgets-container {
-				margin-top: 0;
-	      .apos-area {
-	        width: 100%
-	      }
-			}
-    }
   }
   .slider.fullscreen {
 		position: relative;

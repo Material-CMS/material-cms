@@ -31,7 +31,7 @@
       {% endif %}
     >
 
-    {% if piece.preferences == 'default' or piece.preferences == 'footerOn' %}
+    {% if piece.shapeFillTop %}
       {# Shape Fill Top #}
       {% if piece.shapeFillTop %}
         <div class="custom-shape-divider top">
@@ -90,28 +90,8 @@
       </div>
     {% endif %}
 
-    {# Slide #}
-    {% if piece.preferences == 'slideOn' %}
-      <div class="slide-content">
-
-        {{ apos.singleton(piece, 'content', 'slider', {
-          size: 'full',
-          sizesAttr: '(max-width:600px) 120vw, 58vw',
-          noHeight: true,
-          focalPoint: true,
-          controls: {
-            movable: false,
-            cloneable: false,
-            removable: true,
-            position: 'top-right'
-          }
-        }) }}
-
-
-      </div>
-
     {# Footer #}
-    {% elif piece.preferences == 'footerOn' %}
+    {% if piece.preferences == 'footerOn' %}
       <div class="main-content">
 
       {% if piece.container %}
@@ -165,7 +145,27 @@
       {# Main Widgets #}
       {% else %}
 
-        <div class="main-content">
+        {# Slide #}
+        {% if piece.preferences == 'slideOn' %}\
+          <div class="slide-content">
+
+            {{ apos.singleton(piece, 'sliderContent', 'slider', {
+              size: 'full',
+              sizesAttr: '(max-width:600px) 120vw, 58vw',
+              noHeight: true,
+              focalPoint: true,
+              controls: {
+                movable: false,
+                cloneable: false,
+                removable: true,
+                position: 'top-right'
+              }
+            }) }}
+
+          </div>
+        {% endif %}
+
+        <div class="main-content{% if piece.preferences == 'slideOn' %} half{% endif %}">
 
         {% if piece.container %}
           <div class="container">
@@ -338,5 +338,6 @@
         {% endif %}
       {% endif %}
     </div>
+    
   {% endfor %}
 </div>
