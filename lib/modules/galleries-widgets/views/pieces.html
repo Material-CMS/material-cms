@@ -1,0 +1,161 @@
+{% set pieces = data.widget._pieces or data.pieces %}
+
+{% for piece in pieces %}
+  <div class="card z-depth-0" style="
+    {% if piece.backColor %}
+      background-color:{{ piece.backColor }}
+    {% endif %}
+  ">
+    <div class="card-content no-padding-mobile" style="
+      {% if piece.backColor%}
+        background-color:{{ piece.backColor }}
+      {% endif %}
+    ">
+
+    <div class="row">
+      <div class="col s12 m12">
+
+        {% if piece.titleShow %}
+          <div class="card-title">
+            {% if piece._url %}
+              <a href="{{ piece._url }}">
+            {% endif %}
+                <h4
+                  class="accent-color"
+                  style="
+                  {% if piece.titleColor %}
+                    color:{{ piece.titleColor }};
+                  {% endif %}
+                  {% if piece.titleCenter %}
+                    text-align: center;
+                  {% endif %}
+                ">
+                  {{ piece.title }}
+                </h4>
+            {% if piece._url %}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+          <div class="gallery"
+            style="
+              {% if piece.columnCount == '1' or piece.columnCount == '2' %}
+                display: flex;
+              {% endif %}"
+          >
+
+            <div class="images{% if piece.columnCount == '2' %} column-count-3{% endif %}"
+              style="
+                {% if piece.columnCount == '5' %}
+                  -webkit-column-count: 5;
+                  -moz-column-count: 5;
+                  column-count: 5;
+                {% elif piece.columnCount == '4' %}
+                  -webkit-column-count: 4;
+                  -moz-column-count: 4;
+                  column-count: 4;
+                {% elif piece.columnCount == '3' %}
+                  -webkit-column-count: 3;
+                  -moz-column-count: 3;
+                  column-count: 3;
+                {% elif piece.columnCount == '2' %}
+                  -webkit-column-count: 2;
+                  -moz-column-count: 2;
+                  column-count: 2;
+                {% elif piece.columnCount == '1' %}
+                  -webkit-column-count: 3;
+                  -moz-column-count: 3;
+                  column-count: 3;
+                {% else %}
+                  -webkit-column-count: 5;
+                  -moz-column-count: 5;
+                  column-count: 5;
+                {% endif %}"
+              >
+
+              {% for _image in piece._images %}
+                {% if piece.columnCount == '1' %}<div class="images-container"></div>{% endif %}
+                <div class="images-container">
+                  <div class="radius
+                    {% if piece.imagesShadow %}
+                      z-depth-1
+                    {% endif %}
+                  ">
+
+                    <div class="card">
+                      <div class="card-image">
+                        {% if piece.imagesKlick == 'link'%}
+                          <a class="anchor" href="{{ _image.creditUrl }}">
+                        {% endif %}
+                            <img
+                              srcset="{{ apos.images.srcset(_image.attachment) }}"
+                              sizes="(min-width:1200px)20vw, 40vw"
+                              alt="{{ _image.description or _image.title }}"
+                              width="100%"
+                              {% if piece.imagesKlick == 'lightbox' %}
+                                data-featherlight="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'full' }) }}"
+                              {% endif %}
+                            >
+                        {% if piece.imagesKlick == 'link'%}
+                          </a>
+                        {% endif %}
+
+                        {% if piece.imagesTitleShow == true and piece.columnCount <= '3' %}
+                          <span class="card-title
+                            {% if piece.imagesTitleCenter %}
+                              center-align
+                            {% endif %}"
+                          >
+                            <h4 class="accent-color truncate"
+                              {%- if piece.imagesTitleColor -%}
+                                style="color:{{ piece.imagesTitleColor }}"
+                              {% endif %}
+                            >
+                              {{ _image.title }}
+                            </h4>
+                          </span>
+                        {% endif %}
+
+                      </div>
+
+                      {% if _image.description and piece.columnCount <= '3' %}
+                        <div class="card-content">
+                          <p class="flow-text"
+                            {% if image.descriptionColor %}
+                              style="color:{{ _image.descriptionColor }}"
+                            {% endif %}
+                          >
+                            {{ _image.description }}
+                          </p>
+                        </div>
+                      {% endif %}
+
+                      {% if _image.credit and piece.columnCount <= '3' %}
+                        <div class="card-action center-align flow-text">
+                          {% if _image.creditUrl %}
+                              <a class="btn-flat" href="{{ _image.creditUrl }}">
+                          {% endif %}
+                                <p>{{ _image.credit }}</p>
+                          {% if _image.creditUrl %}
+                              </a>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+
+                      </div>
+                    </div>
+                  </div>
+                  {% if piece.columnCount == '1' %}<div class="images-container"></div>{% endif %}
+                {% endfor %}
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endfor %}
