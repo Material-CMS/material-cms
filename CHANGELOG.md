@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix TypeError: Cannot read property 'top' of undefined
 - Hide card-reaveal in swiper
 - Text show page fixes
+- Add intro widget for all pages
 
 ## [0.9.7 ] - Unreleased
 
