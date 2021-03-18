@@ -36,10 +36,12 @@
         <div class="custom-shape-divider top"
         {% if piece.shapeFillHeight or piece.preferences == 'slideOn' %}
           style="
-            {% if piece.shapeFillHeight %}top: -{{ piece.shapeFillHeight }}px;{% endif %}
-            {% if piece.preferences == 'slideOn' %}margin-top: 50vh;{% endif %}
-            "
-
+            {% if piece.shapeFillHeight and piece.preferences == 'slideOn' %}
+              top: calc(-{{ piece.shapeFillHeight }}px + 50vh);
+            {% else %}
+              top: -{{ piece.shapeFillHeight }}px;
+            {% endif %}
+          "
         {% endif %}
         >
           <svg
