@@ -31,17 +31,27 @@
       {% endif %}
     >
 
-    {% if piece.shapeFillTop %}
       {# Shape Fill Top #}
       {% if piece.shapeFillTop %}
-        <div class="custom-shape-divider top">
+        <div class="custom-shape-divider top"
+        {% if piece.shapeFillHeight or piece.preferences == 'slideOn' %}
+          style="
+            {% if piece.shapeFillHeight %}top: -{{ piece.shapeFillHeight }}px;{% endif %}
+            {% if piece.preferences == 'slideOn' %}margin-top: 50vh;{% endif %}
+            "
+
+        {% endif %}
+        >
           <svg
             data-name="Layer 1"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
-            {% if piece.shapeFillTopInvert %}
-              style="transform: rotateY(180deg)"
+            {% if piece.shapeFillTopInvert or piece.shapeFillHeight %}
+              style="
+                {% if piece.shapeFillTopInvert %}transform: rotateY(180deg);{% endif %}
+                {% if piece.shapeFillHeight %}height: {{ piece.shapeFillHeight }}px;{% endif %}
+              "
             {% endif %}
           >
               <path
@@ -60,7 +70,6 @@
           </svg>
         </div>
       {% endif %}
-    {% endif %}
 
     {# Background Image #}
     {% if piece._backgroundImage and not piece.backgroundImageParallax %}
@@ -146,7 +155,7 @@
       {% else %}
 
         {# Slide #}
-        {% if piece.preferences == 'slideOn' %}\
+        {% if piece.preferences == 'slideOn' %}
           <div class="slide-content">
 
             {{ apos.singleton(piece, 'sliderContent', 'slider', {
@@ -307,17 +316,24 @@
         </div>
       {% endif %}
 
-      {% if piece.preferences == 'default' or piece.preferences == 'footerOn' %}
+      {% if piece.shapeFillBottom %}
         {# Shape Fill Bottom #}
         {% if piece.shapeFillBottom %}
-          <div class="custom-shape-divider bottom">
+          <div class="custom-shape-divider bottom"
+            {% if piece.shapeFillHeight %}
+              style="bottom: -{{ piece.shapeFillHeight }}px"
+            {% endif %}
+          >
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 1200 120"
               preserveAspectRatio="none"
-              {% if piece.shapeFillBottomInvert %}
-                style="transform: rotateY(180deg)"
+              {% if piece.shapeFillBottomInvert or piece.shapeFillHeight %}
+                style="
+                  {% if piece.shapeFillBottomInvert %}transform: rotateY(180deg);{% endif %}
+                  {% if piece.shapeFillHeight %}height: {{ piece.shapeFillHeight }}px;{% endif %}
+                "
               {% endif %}
               >
                 <path
@@ -338,6 +354,6 @@
         {% endif %}
       {% endif %}
     </div>
-    
+
   {% endfor %}
 </div>

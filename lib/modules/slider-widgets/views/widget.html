@@ -72,7 +72,8 @@
 
 <style>
   .slider .indicators {
-    bottom: {{ data.widget.indicatorsBottom }}px !important
+    {% if data.widget.indicatorsOn %}display: block !important;{% endif %}
+    bottom: {{ data.widget.indicatorsBottom }}px !important;
   }
   .slider .indicators .indicator-item.active {
     background-color: {{ data.global.accentColor }}
