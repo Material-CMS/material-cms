@@ -45,13 +45,14 @@
 {% endblock %}
 
 {% block main %}
+
   {# s = Sections Data #}
   {{ apos.area(data.page, 's', {
     limit: 1,
     widgets: {
       'sections': {
-        addLabel: 'Add Sections & Navigation',
-        editLabel: 'Change Sections & Navigation',
+        addLabel: 'Add Sections',
+        editLabel: 'Change Sections',
         controls: {
           movable: false,
           removable: true,

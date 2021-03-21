@@ -2,42 +2,42 @@
 <div class="nav">
 
   {# Nav Background #}
-  {% if data.widget._backgroundImage %}
+  {% if data.page._navBackgroundImage or data.global._navBackgroundImage %}
     <div class="nav-background"
-      {% if data.widget.gradientColorTop or data.widget.gradientColorBottom %}
+      {% if (data.page.gradientColorTop or data.global.gradientColorTop) or (data.page.gradientColorBottom or data.global.gradientColorBottom) %}
         style="
           background: linear-gradient(
-            {% if data.widget.gradientColorTop %}
-              {{ data.widget.gradientColorTop }}
+            {% if data.page.gradientColorTop or data.global.gradientColorTop %}
+              {{ data.page.gradientColorTop or data.global.gradientColorTop }}
             {% else %}
               rgba(0, 0, 0, 0)
             {% endif %},
-            {% if data.widget.gradientColorBottom %}
-              {{ data.widget.gradientColorBottom }}
+            {% if data.page.gradientColorBottom or data.global.gradientColorBottom %}
+              {{ data.page.gradientColorBottom or data.global.gradientColorBottom }}
             {% else %}
               rgba(0, 0, 0, 0)
             {% endif %}
           );
           background: -o-linear-gradient(
-            {% if data.widget.gradientColorTop %}
-              {{ data.widget.gradientColorTop }}
+            {% if data.page.gradientColorTop or data.global.gradientColorTop %}
+              {{ data.page.gradientColorTop or data.global.gradientColorTop }}
             {% else %}
               rgba(0, 0, 0, 0)
             {% endif %},
-            {% if data.widget.gradientColorBottom %}
-              {{ data.widget.gradientColorBottom }}
+            {% if data.page.gradientColorBottom or data.global.gradientColorBottom %}
+              {{ data.page.gradientColorBottom or data.global.gradientColorBottom }}
             {% else %}
               rgba(0, 0, 0, 0)
             {% endif %}
           );
           background: -webkit-linear-gradient(
-            {% if data.widget.gradientColorTop %}
-              {{ data.widget.gradientColorTop }}
+            {% if data.page.gradientColorTop or data.global.gradientColorTop %}
+              {{ data.page.gradientColorTop or data.global.gradientColorTop }}
             {% else %}
               rgba(0, 0, 0, 0)
             {% endif %},
-            {% if data.widget.gradientColorBottom %}
-              {{ data.widget.gradientColorBottom }}
+            {% if data.page.gradientColorBottom or data.global.gradientColorBottom %}
+              {{ data.page.gradientColorBottom or data.global.gradientColorBottom }}
             {% else %}
               rgba(0, 0, 0, 0)
             {% endif %}
@@ -47,32 +47,41 @@
     >
       <div class="parallax-container">
         <div class="parallax">
-          <img
-            src="{{ apos.attachments.url(data.widget._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
-            srcset="{{ apos.images.srcset(data.widget._backgroundImage.attachment) }}"
-            sizes="50vw"
-            alt="{{ data.widget._backgroundImage.description or data.widget._backgroundImage.title }}"
-          >
+          {% if data.page._navBackgroundImage %}
+            <img
+              src="{{ apos.attachments.url(data.page._navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+              srcset="{{apos.images.srcset(data.page._navBackgroundImage.attachment) }}"
+              sizes="50vw"
+              alt="{{ data.page._navBackgroundImage.title }}"
+            >
+          {% elif data.global._navBackgroundImage %}
+            <img
+              src="{{ apos.attachments.url(data.global._navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+              srcset="{{apos.images.srcset(data.global._navBackgroundImage.attachment) }}"
+              sizes="50vw"
+              alt="{{ data.global._navBackgroundImage.title }}"
+            >
+          {% endif %}
         </div>
       </div>
     </div>
   {% endif %}
 
-  {# Dekstop #}
-  <nav class="nav-extended{% if data.widget._backgroundImage %} nav-pushpin{% endif %}"
+  {# Desktop #}
+  <nav class="nav-extended{% if data.page._navBackgroundImage or data.global._navBackgroundImage %} nav-pushpin{% endif %}"
     {% set regExp = r/^#.*/g %}
     {% if regExp.test(data.global.navColor) %}
       style="height: 64px"
     {% endif %}
   >
 
-    <div class="nav-wrapper pin-top {% if data.widget.navShadow %} z-depth-2{% endif %}"
-      {% if data.widget._backgroundImage %}
+    <div class="nav-wrapper pin-top {% if data.page.navShadow or data.global.navShadow %} z-depth-2{% endif %}"
+      {% if data.page._navBackgroundImage or data.global._navBackgroundImage %}
         style="position: relative"
       {% endif %}
     >
+      {# Brand Logo #}
       <a class="brand-logo" href="{{ data.home._url }}">
-
         {% if data.page._logo %}
           <img
             src="{{ apos.attachments.url(data.page._logo.attachment, { size: 'full' }) }}"
@@ -97,6 +106,7 @@
 
       </a>
 
+      {# Sidenav Trigger #}
       <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
         {% if data.global.navTextColor %}
           style="color: {{ data.global.navTextColor }}"
@@ -107,9 +117,9 @@
 
       <ul class="nav-activator right hide-on-med-and-down">
 
-        {# Links Array Widget #}
-        {% if data.widget.links[0] %}
-          {% for name in data.widget.links %}
+        {# Links Array Page #}
+        {% if data.page.links[0] %}
+          {% for name in data.page.links %}
            <li>
              <a href="{{ name.url }}" class="accent-color"
                {% if data.global.navTextColor %}
@@ -123,11 +133,8 @@
              </a>
            </li>
           {% endfor %}
-        {% endif %}
-
-        {# Links Array Page #}
-        {% if data.page.links[0] %}
-          {% for name in data.page.links %}
+        {% elif data.global.links[0] %}
+          {% for name in data.global.links %}
            <li>
              <a href="{{ name.url }}" class="accent-color"
                {% if data.global.navTextColor %}
@@ -212,25 +219,8 @@
 {# Mobile Sidenav #}
 <ul class="sidenav" id="mobile">
 
-  {# Links Array Widget #}
-  {% if data.widget.links[0] %}
-    {% for name in data.widget.links %}
-     <li>
-       <a href="{{ name.url }}" class="accent-color"
-         {% if data.global.navTextColor %}
-           style="color: {{ data.global.navTextColor }}"
-         {% endif %}
-       >
-         {% if name.icon %}
-            <i class="material-icons left">{{ name.icon }}</i>
-         {% endif %}
-         {{ name.name }}
-       </a>
-     </li>
-    {% endfor %}
-
   {# Links Array Page #}
-  {% elif data.page.links[0] %}
+  {% if data.page.links[0] %}
     {% for name in data.page.links %}
      <li>
        <a href="{{ name.url }}" class="accent-color"
