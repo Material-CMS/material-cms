@@ -7,6 +7,7 @@
 // Colors
 @white: #ffffff;
 @black: #000000;
+@grey: #eeeeee;
 @green: #008000;
 @red: #f44336;
 @purple: #9c27b0;
@@ -372,6 +373,13 @@ fieldset {
   }
   .apos-rich-text {
     color: @black;
+  }
+  .apos-rich-text-widget {
+    min-height: 130px;
+    background-color: @grey;
+    .apos-rich-text {
+      min-height: 130px;
+    }
   }
 }// <-- end of apos-ui
 // Cke Editor
