@@ -1,4 +1,4 @@
-{% set pieces = data.widget._pieces or data.pieces %}
+{% set pieces = data.page.s.items[0]._pieces or data.pieces %}
 <div class="nav">
 
   {# Nav Background #}
@@ -201,14 +201,14 @@
 
   {# Dropdown Desktop #}
   <ul class="dropdown-content" id="desktop-dropdown">
-    {% for section in pieces %}
+    {% for piece in pieces %}
       <li>
-        <a href="#{{ section.slug }}" class="accent-color flow-text anchor truncate"
+        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor truncate"
           {% if data.global.navTextColor %}
             style="color: {{ data.global.navTextColor }}"
           {% endif %}
         >
-          {{ section.title }}
+          {{ piece.title }}
         </a>
       </li>
     {% endfor %}
@@ -283,7 +283,7 @@
 
   {# Dropdown Mobile #}
   <ul class="dropdown-content" id="mobile-dropdown">
-    {% for section in pieces %}
+    {% for section in data.pieces %}
       <li>
         <a href="#{{ section.slug }}" class="accent-color flow-text sidenav-close anchor"
           {% if data.global.navTextColor %}

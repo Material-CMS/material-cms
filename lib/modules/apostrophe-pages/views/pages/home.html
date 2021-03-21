@@ -46,6 +46,13 @@
 
 {% block main %}
 
+  {# Navigation #}
+  {% if data.page.nav == 'default' %}
+    {% include "nav-widgets:nav-default.html" %}
+  {% elif data.page.nav == 'dropdown' %}
+    {% include "nav-widgets:nav-dropdown.html" %}
+  {% endif %}
+
   {# s = Sections Data #}
   {{ apos.area(data.page, 's', {
     limit: 1,

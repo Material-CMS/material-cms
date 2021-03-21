@@ -1,4 +1,3 @@
-{% set pieces = data.widget._pieces or data.pieces %}
 <div class="nav">
 
   {# Nav Background #}
@@ -141,18 +140,12 @@
             class="active"
           {% endif %}
         >
-          <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text
-            {% if data.page and (data.page._children[0] or data.home._id == data.page._id) %}
-              dropdown-trigger
-            {% endif %}"
+          <a href="{{ data.home._url }}" data-target="desktop-dropdown" class="accent-color flow-text"
             {% if data.global.navTextColor %}
               style="color: {{ data.global.navTextColor }}"
             {% endif %}
           >
             {{ data.home.title }}
-            {% if data.page and (data.page._children[0] or data.home._id == data.page._id) %}
-              <i class="material-icons left">arrow_drop_down</i>
-            {% endif %}
           </a>
         </li>
 
@@ -163,18 +156,12 @@
               class="active"
             {% endif %}
           >
-            <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text
-              {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-                dropdown-trigger
-              {% endif %}"
+            <a href="{{ tab._url }}" data-target="desktop-dropdown" class="accent-color flow-text"
               {% if data.global.navTextColor %}
                 style="color: {{ data.global.navTextColor }}"
               {% endif %}
             >
               {{ tab.title }}
-              {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
-                <i class="material-icons left">arrow_drop_down</i>
-              {% endif %}
             </a>
           </li>
         {% endfor %}

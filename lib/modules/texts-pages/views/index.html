@@ -42,7 +42,11 @@
 {% block main %}
 
   {# Navigation #}
-  {% include "nav-widgets:nav-default.html" %}
+  {% if data.page.nav == 'default' %}
+    {% include "nav-widgets:nav-default.html" %}
+  {% elif data.page.nav == 'dropdown' %}
+    {% include "nav-widgets:nav-dropdown.html" %}
+  {% endif %}
 
   {# Main Content #}
   <div class="main-content">
