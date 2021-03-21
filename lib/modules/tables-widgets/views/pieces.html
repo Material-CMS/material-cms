@@ -1,0 +1,43 @@
+{% for piece in data.widget._pieces %}
+  <tr>
+
+    {% if piece.titleAsObject == true %}
+      <th class="flow-text">
+        {% if piece._url %}
+          <a href="{{ piece._url }}" class="btn-flat flow-text"
+              {% if piece.titleColor %}
+                style="color:{{ piece.titleColor }}"
+              {% endif %}
+            >
+        {% endif %}
+          {{ piece.title }}
+        {% if piece._url %}
+          </a>
+        {% endif %}
+      </th>
+    {% endif %}
+
+    {% for text in piece.tableRowObjects %}
+
+      {% if text.text %}
+        <th class="flow-text">{{ text.text }}</th>
+      {% endif %}
+
+      {% if text.date %}
+        <th class="flow-text">{{ text.date }}</th>
+      {% endif %}
+
+      {% if text._image %}
+        <th class="table-image">
+          <img
+            src="{{ apos.attachments.url(text._image.attachment, { size: data.options.size or 'one-sixth' }) }}"
+            data-featherlight="{{ apos.attachments.url( text._image.attachment, { size: data.options.size or 'one-third' }) }}"
+            alt="{{ text._image.description or text._image.title }}"
+          >
+        </th>
+      {% endif %}
+
+    {% endfor %}
+
+  </tr>
+{% endfor %}
