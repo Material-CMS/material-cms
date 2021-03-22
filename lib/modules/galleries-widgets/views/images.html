@@ -1,0 +1,128 @@
+
+{% for _image in piece._images %}
+
+  {% if piece.columnCount == '1' %}
+    <div class="images-container"></div>
+  {% endif %}
+
+  <div class="images-container">
+    <div class="radius
+      {% if piece.imagesShadow %}
+        z-depth-1
+      {% endif %}
+    ">
+
+      <div class="card">
+        <div class="card-image">
+
+          {% if _image.clickAction == 'link'%}
+            <a class="anchor-jump" href="{{ _image.creditUrl }}">
+              <div id="{{ _image._id }}" class="gradient-overlay">
+          {% endif %}
+                <img
+                  srcset="{{ apos.images.srcset(_image.attachment) }}"
+                  sizes="(min-width:1200px)20vw, 40vw"
+                  alt="{{ _image.description or _image.title }}"
+                  width="100%"
+                  {% if piece.imagesKlick == 'lightbox' %}
+                    data-featherlight="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'full' }) }}"
+                  {% endif %}
+                >
+          {% if _image.clickAction == 'link' %}
+                <span class="flow-text">{{ _image.credit }}</span>
+              </div>
+            </a>
+          {% endif %}
+
+          {% if _image.titleShow == true and piece.columnCount <= '4' %}
+            <span class="card-title {{ _image.titleAlign }}">
+              <h4 class="accent-color truncate"
+                {%- if _image.titleColor -%}
+                  style="color:{{ piece.imagesTitleColor }}"
+                {% endif %}
+              >
+                {{  _image.title }}
+              </h4>
+            </span>
+          {% endif %}
+
+        </div>
+
+        {% if _image.description and piece.columnCount <= '3' %}
+          <div class="card-content">
+            <p class="flow-text"
+              {% if _image.descriptionColor %}
+                style="color:{{ _image.descriptionColor }}"
+              {% endif %}
+            >
+              {{ _image.description }}
+            </p>
+          </div>
+        {% endif %}
+
+        {% if _image.credit and _image.clickAction == 'lightbox' %}
+          <div class="card-action center-align flow-text">
+            {% if _image.creditUrl %}
+                <a class="btn-flat anchor-jump" href="{{ _image.creditUrl }}">
+            {% endif %}
+                  <p>{{ _image.credit }}</p>
+            {% if _image.creditUrl %}
+                </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        </div>
+      </div>
+
+      {% if _image.clickAction == 'link' %}
+        <style>
+          #{{ _image._id }}.gradient-overlay:after {
+            display: inline-block !important;
+            background: linear-gradient(
+              {% if _image.gradientColorTop %}
+                {{ _image.gradientColorTop }}
+              {% else %}
+                rgba(0, 0, 0, 0.7)
+              {% endif %},
+              {% if _image.gradientColorBottom %}
+                {{ _image.gradientColorBottom }}
+              {% else %}
+                rgba(0, 0, 0, 0.7)
+              {% endif %}
+            );
+            background: -o-linear-gradient(
+              {% if _image.gradientColorTop %}
+                {{ _image.gradientColorTop }}
+              {% else %}
+                rgba(0, 0, 0, 0.7)
+              {% endif %},
+              {% if _image.gradientColorBottom %}
+                {{ _image.gradientColorBottom }}
+              {% else %}
+                rgba(0, 0, 0, 0.7)
+              {% endif %}
+            );
+            background: -webkit-linear-gradient(
+              {% if _image.gradientColorTop %}
+                {{ _image.gradientColorTop }}
+              {% else %}
+                rgba(0, 0, 0, 0.7)
+              {% endif %},
+              {% if _image.gradientColorBottom %}
+                {{ _image.gradientColorBottom }}
+              {% else %}
+                rgba(0, 0, 0, 0.7)
+              {% endif %}
+            );
+          }
+        </style>
+      {% endif %}
+
+    </div>
+
+    {% if piece.columnCount == '1' %}
+      <div class="images-container"></div>
+    {% endif %}
+
+{% endfor %}

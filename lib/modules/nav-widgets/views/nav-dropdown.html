@@ -203,7 +203,7 @@
   <ul class="dropdown-content" id="desktop-dropdown">
     {% for piece in pieces %}
       <li>
-        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor truncate"
+        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
           {% if data.global.navTextColor %}
             style="color: {{ data.global.navTextColor }}"
           {% endif %}
