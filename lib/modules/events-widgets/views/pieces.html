@@ -1,0 +1,46 @@
+{% for piece in data.widget._pieces %}
+  <li {% if piece.active %} class="{{ piece.active }}" {% endif %}>
+    <div class="collapsible-header"
+      {% if piece.backColor%}
+        style="background-color:{{ piece.backColor }}"
+      {% endif %}
+      >
+      {% if piece.icon %}
+        <i class="material-icons accent-color"
+          {% if piece.titleColor %}
+            style="color:{{ piece.titleColor }}"
+          {% endif %}
+        >
+          {{ piece.icon }}
+        </i>
+      {% endif %}
+      <h4 class="card-title accent-color truncate"
+        {% if piece.titleColor%}
+          style="color:{{ piece.titleColor }}"
+        {% endif %}
+      >
+        {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
+          {{ piece.title }}
+        {% if piece._url %}</a>{% endif %}
+      </h4>
+      <span class="valign-wrapper badge"><h5>{{ piece.start | date('MMM Do') }} at {{ piece.start | date('h:mma') }}</h5></span>
+    </div>
+
+    {% if piece.text %}
+    <div class="collapsible-body"
+      {% if piece.backColor%}
+        style="background-color:{{ piece.backColor }}"
+      {% endif %}
+    >
+      <p class="flow-text"
+        {% if piece.backColor%}
+          style="color:{{ piece.titleColor }}"
+        {% endif %}
+      >
+        {{ piece.text }}
+      </p>
+    </div>
+    {% endif %}
+
+  </li>
+{% endfor %}

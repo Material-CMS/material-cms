@@ -1,70 +1,31 @@
-<div class="row widget">
-  <div class="col s12 m12">
-    <div class="radius
-      {% if data.page.shadow  %}
-        z-depth-1
-      {% endif %}
-    ">
-      <ul class="card collection z-depth-0"
-        {%- if piece.backColor-%}
-          style="background-color:{{ piece.backColor }}"
+{% if data.widget._pieces.length %}
+
+  <div class="row widget">
+    <div class="col s12 m12">
+      <div class="radius
+        {% if data.page.shadow  %}
+          z-depth-1
         {% endif %}
-      >
-
-        {% for piece in data.widget._pieces %}
-        <li class="collection-item avatar">
-
-          {%- if piece._thumbnail -%}
-            <img class="circle grey"
-              src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
-              srcset="{{ apos.images.srcset(piece._thumbnail.attachment) }}"
-              sizes="{{ '8vw' }}"
-              alt="{{ piece._thumbnail.title }}"
-            >
+      ">
+        <ul class="card collection z-depth-0"
+          {%- if piece.backColor-%}
+            style="background-color:{{ piece.backColor }}"
           {% endif %}
+        >
 
-          {% if piece._url %}
-            <a href="{{ piece._url }}">
-          {% endif %}
-              <h4 class="accent-color card-title">{{ piece.title }}</h4>
-          {% if piece._url %}
-            </a>
-          {% endif %}
+          {# Include pieces.html #}
+          {% include "pieces.html" %}
 
-            {{ apos.area(piece, 'body', {
-              edit: false,
-              widgets: { 'apostrophe-rich-text': {} }
-            }) }}
-
-          {% if piece.email or piece.phone %}
-            <div class="card-action">
-              <div class="row">
-          {% endif %}
-
-              {% if piece.email %}
-                <div class="col s12{% if piece.phone %} m6 left-align{% else %} m12 center-align{% endif %}">
-                  <a class="btn-flat" href="mailto:{{ piece.email }}">
-                    <p>{{ piece.email }}</p>
-                  </a>
-                </div>
-              {% endif %}
-
-              {% if piece.phone %}
-                <div class="col s12{% if piece.email %} m6 right-align{% else %} m12 center-align{% endif %}">
-                  <a class="btn-flat" href="tel:{{ piece.phone }}">
-                    <p>{{ piece.phone }}</p>
-                  </a>
-                </div>
-              {% endif %}
-
-          {% if piece.email or piece.phone %}
-              </div>
-            </div>
-          {% endif %}
-
-        </li>
-        {% endfor %}
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+
+{% else %}
+
+  <div class="apos-area apos-empty">
+    <i class="material-icons">clear</i>
+    <p class="flow-text">no people<p>
+  </div>
+
+{% endif %}

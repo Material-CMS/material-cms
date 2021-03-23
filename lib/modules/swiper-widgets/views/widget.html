@@ -1,61 +1,73 @@
-<div class="row widget">
-  <div class="col s12 m12">
-    <div class="radius {% if data.page.shadow %} z-depth-1{% endif %}">
+{% if data.widget[0] %}
 
-      <div class="swiper-container {{ data.widget._id }}">
-        <div class="swiper-wrapper">
+  <div class="row widget">
+    <div class="col s12 m12">
+      <div class="radius {% if data.page.shadow %} z-depth-1{% endif %}">
 
-          {% for swiper in data.widget.swipers %}
-          <div class="swiper-slide">
-            {{ apos.area(swiper, 'swiper', {
-              edit: false,
-              widgets: {
-                'card': {
-                  size: 'one-half',
-                  sizesAttr: '(max-width:600px) 50vw, 40vw',
-                  noHeight: true,
-                  focalPoint: true
-                },
-                'texts': {},
-                'video': {}
-              }
-            }) }}
+        <div class="swiper-container {{ data.widget._id }}">
+          <div class="swiper-wrapper">
+
+            {% for swiper in data.widget.swipers %}
+            <div class="swiper-slide">
+              {{ apos.area(swiper, 'swiper', {
+                edit: false,
+                widgets: {
+                  'card': {
+                    size: 'one-half',
+                    sizesAttr: '(max-width:600px) 50vw, 40vw',
+                    noHeight: true,
+                    focalPoint: true
+                  },
+                  'texts': {},
+                  'video': {}
+                }
+              }) }}
+            </div>
+            {% endfor %}
+
           </div>
-          {% endfor %}
+
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
 
         </div>
 
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-
       </div>
-
     </div>
   </div>
-</div>
-<script type="text/javascript">
-  window.addEventListener('load', function () {
-    var swiper{{ data.widget._id }} = new Swiper('.{{ data.widget._id }}', {
-      loop: {{ data.widget.loop }},
-      speed: {{ data.widget.speed }},
-      autoHeight: {{ data.widget.autoHeight }},
-      effect: '{{ data.widget.effect }}',
-      cubeEffect: {
-        shadow: false,
-      },
-      {% if data.widget.autoplay %}
-        autoplay: {
-          delay: {{ data.widget.delay }},
-          disableOnInteraction: {{ data.widget.disableOnInteraction }},
+
+  <script type="text/javascript">
+    window.addEventListener('load', function () {
+      var swiper{{ data.widget._id }} = new Swiper('.{{ data.widget._id }}', {
+        loop: {{ data.widget.loop }},
+        speed: {{ data.widget.speed }},
+        autoHeight: {{ data.widget.autoHeight }},
+        effect: '{{ data.widget.effect }}',
+        cubeEffect: {
+          shadow: false,
         },
-      {% endif %}
-      keyboard: {
-        enabled: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }
+        {% if data.widget.autoplay %}
+          autoplay: {
+            delay: {{ data.widget.delay }},
+            disableOnInteraction: {{ data.widget.disableOnInteraction }},
+          },
+        {% endif %}
+        keyboard: {
+          enabled: true
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
+      });
     });
-  });
-</script>
+  </script>
+
+{% else %}
+
+  <div class="apos-area apos-empty">
+    <i class="material-icons">clear</i>
+    <p class="flow-text">no swiper<p>
+  </div>
+
+{% endif %}

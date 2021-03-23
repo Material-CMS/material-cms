@@ -1,58 +1,69 @@
-<div class="row widget">
-  <div class="col s12 m12">
-    <div class="radius
-      {% if data.page.shadow %}
-        z-depth-1
-      {% endif %}
-    ">
+{% if data.widget._pieces.length %}
 
-      <div class="card z-depth-0"
-          {% if piece.backColor%}
-            style="background-color:{{ piece.backColor }}"
-          {% endif %}
-        >
+  <div class="row widget">
+    <div class="col s12 m12">
+      <div class="radius
+        {% if data.page.shadow %}
+          z-depth-1
+        {% endif %}
+      ">
 
-        <div class="card-stacked">
-          <div class="card-content"
-              {% if piece.backColor%}
-                style="background-color:{{ piece.backColor }}"
-              {% endif %}
-            >
-
-            {% if data.widget.title %}
-              <h4 class="accent-color card-title"
-                  {% if data.widget.titleColor %}
-                    style="color:{{ data.widget.titleColor }}"
-                  {% endif %}
-                >
-                {{ data.widget.title }}
-              </h4>
+        <div class="card z-depth-0"
+            {% if piece.backColor%}
+              style="background-color:{{ piece.backColor }}"
             {% endif %}
+          >
 
-            <table class="highlight responsive-table">
+          <div class="card-stacked">
+            <div class="card-content"
+                {% if piece.backColor%}
+                  style="background-color:{{ piece.backColor }}"
+                {% endif %}
+              >
 
-              <thead>
-                <tr>
-                  {% for text in data.widget.tableHeaders %}
-                    <th class="flow-text">{{ text.text }}</th>
-                  {% endfor %}
-                </tr>
-              </thead>
+              {% if data.widget.title %}
+                <h4 class="accent-color card-title"
+                    {% if data.widget.titleColor %}
+                      style="color:{{ data.widget.titleColor }}"
+                    {% endif %}
+                  >
+                  {{ data.widget.title }}
+                </h4>
+              {% endif %}
 
-              <tbody>
+              <table class="highlight responsive-table">
 
-                {# Include pieces.html #}
-                {% include "pieces.html" %}
+                <thead>
+                  <tr>
+                    {% for text in data.widget.tableHeaders %}
+                      <th class="flow-text">{{ text.text }}</th>
+                    {% endfor %}
+                  </tr>
+                </thead>
 
-              </tbody>
+                <tbody>
 
-            </table>
+                  {# Include pieces.html #}
+                  {% include "pieces.html" %}
 
+                </tbody>
+
+              </table>
+
+            </div>
           </div>
+
         </div>
 
       </div>
-
     </div>
   </div>
-</div>
+
+{% else %}
+
+  <div class="apos-area apos-empty">
+    <i class="material-icons">clear</i>
+    <p class="flow-text">no Tables<p>
+  </div>
+
+{% endif %}

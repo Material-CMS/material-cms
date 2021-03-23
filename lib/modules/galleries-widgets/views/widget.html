@@ -1,14 +1,25 @@
-<div class="row widget">
-  <div class="col s12 m12">
-    <div class="radius
-      {% if data.page.shadow and data.widget.shadow %}
-        z-depth-1
-      {% endif %}
-    ">
+{% if data.widget._pieces.length %}
 
-      {# Include pieces.html #}
-      {% include "pieces.html" %}
+  <div class="row widget">
+    <div class="col s12 m12">
+      <div class="radius
+        {% if data.page.shadow and data.widget.shadow %}
+          z-depth-1
+        {% endif %}
+      ">
 
+        {# Include pieces.html #}
+        {% include "pieces.html" %}
+
+      </div>
     </div>
   </div>
-</div>
+
+{% else %}
+
+  <div class="apos-area apos-empty">
+    <i class="material-icons">clear</i>
+    <p class="flow-text">no gallery<p>
+  </div>
+  
+{% endif %}

@@ -21,6 +21,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    margin-right: -50%;
     transform: translate(-50%, -50%);
     background-color: @white;
     .box-shadow(0 0 4px 2px rgba(0, 0, 0, .16));
@@ -67,6 +68,7 @@
     position: absolute;
     top: 25%;
     left: 50%;
+    margin-right: -50%;
     transform: translate(-50%, -25%);
   }
 }
@@ -76,6 +78,27 @@
     top: 0;
     left: 0;
     transform: translate(0, 0);
+    .material-icons {
+      position: absolute;
+      color: @red;
+      font-size: 4rem;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+    }
+    .flow-text {
+      position: absolute;
+      color: @black;
+      text-transform: uppercase;
+      bottom: 0;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%);
+    }
+  }
+  .apos-area {
+    min-height: 200px;
   }
 }
 fieldset {
@@ -379,6 +402,9 @@ fieldset {
     background-color: @grey;
     .apos-rich-text {
       min-height: 130px;
+      p {
+        padding: 10px;
+      }
     }
   }
 }// <-- end of apos-ui
@@ -392,6 +418,7 @@ fieldset {
   position: fixed;
   top: 74px;
   left: 50%;
+  margin-right: -50%;
   z-index: 999;
   transform: translate(-50%);
   .btn.btn-large {

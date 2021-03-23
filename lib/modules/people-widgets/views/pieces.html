@@ -1,0 +1,53 @@
+{% for piece in data.widget._pieces %}
+  <li class="collection-item avatar">
+
+    {%- if piece._thumbnail -%}
+      <img class="circle grey"
+        src="{{ apos.attachments.url(piece._thumbnail.attachment, { size: data.options.size or 'one-sixth' }) }}"
+        srcset="{{ apos.images.srcset(piece._thumbnail.attachment) }}"
+        sizes="{{ '8vw' }}"
+        alt="{{ piece._thumbnail.title }}"
+      >
+    {% endif %}
+
+    {% if piece._url %}
+      <a href="{{ piece._url }}">
+    {% endif %}
+        <h4 class="accent-color card-title">{{ piece.title }}</h4>
+    {% if piece._url %}
+      </a>
+    {% endif %}
+
+      {{ apos.area(piece, 'body', {
+        edit: false,
+        widgets: { 'apostrophe-rich-text': {} }
+      }) }}
+
+    {% if piece.email or piece.phone %}
+      <div class="card-action">
+        <div class="row">
+    {% endif %}
+
+        {% if piece.email %}
+          <div class="col s12{% if piece.phone %} m6 left-align{% else %} m12 center-align{% endif %}">
+            <a class="btn-flat" href="mailto:{{ piece.email }}">
+              <p>{{ piece.email }}</p>
+            </a>
+          </div>
+        {% endif %}
+
+        {% if piece.phone %}
+          <div class="col s12{% if piece.email %} m6 right-align{% else %} m12 center-align{% endif %}">
+            <a class="btn-flat" href="tel:{{ piece.phone }}">
+              <p>{{ piece.phone }}</p>
+            </a>
+          </div>
+        {% endif %}
+
+    {% if piece.email or piece.phone %}
+        </div>
+      </div>
+    {% endif %}
+
+  </li>
+{% endfor %}
