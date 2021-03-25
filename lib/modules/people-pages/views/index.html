@@ -46,6 +46,8 @@
     {% include "nav-widgets:nav-default.html" %}
   {% elif data.page.nav == 'dropdown' %}
     {% include "nav-widgets:nav-dropdown.html" %}
+  {% elif data.page.nav == 'manual' %}
+    {% include "nav-widgets:nav-manual.html" %}
   {% endif %}
 
   {# Main Content #}
