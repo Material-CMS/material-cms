@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hide card-reaveal in swiper
 - Text show page fixes
 - Add intro widget for all pages
+- Section background gradient
+- Add shape divider svg file as well
+- Add page background color chooser
+- Add events pages
+- Add nav feature to show pieces of all pages
 
 ## [0.9.7 ] - Unreleased
 
@@ -30,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Infinite Scroll through external jquery plugin
 - Parallax background image for sections
 - Navigation bg image with gradient overlay and pushpin
+- Manual Navigation settings
 - Half height slider with gradient overlay, kenburns and extra content
 - Section headers
 - Updated dependencies
