@@ -108,8 +108,9 @@
 
         <div class="widgets-container">
 
+          {# Header #}
           {% if piece.header %}
-            <h1 class="section-header accent-color
+            <h2 class="section-header accent-color
               {% if piece.headerAlign == 'left' %}
                 left-align
               {% elif piece.headerAlign == 'center' %}
@@ -122,7 +123,7 @@
               {% endif %}
             >
               {{ piece.header }}
-            </h1>
+            </h2>
           {% endif %}
 
           {{ apos.area(piece, 'content', {
@@ -180,9 +181,10 @@
       {% endif %}
 
           <div class="widgets-container">
-
+            
+            {# Header #}
             {% if piece.header %}
-              <h1 class="section-header accent-color
+              <h2 class="section-header accent-color
                 {% if piece.headerAlign == 'left' %}
                   left-align
                 {% elif piece.headerAlign == 'center' %}
@@ -195,7 +197,7 @@
                 {% endif %}
               >
                 {{ piece.header }}
-              </h1>
+              </h2>
             {% endif %}
 
             {% if piece.glueWidgets == true %}
