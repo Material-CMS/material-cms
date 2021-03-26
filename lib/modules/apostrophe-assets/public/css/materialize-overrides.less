@@ -308,7 +308,7 @@ h4 {
   width: 100%;
   margin: 64px 0;
   .widget {
-    margin: 0 64px;
+    margin-bottom: 64px;
     .col {
       padding: 0;
     }
@@ -495,30 +495,18 @@ h4 {
     right: 50px;
   }
 }
-// Glue Container
-.glue-container-2 {
-  .apos-area-widget-wrapper:nth-child(1) .widget {
+// Glue Containers
+.glue-container {
+  .apos-area-widget-wrapper:nth-last-child(n+2) .widget {
     margin-bottom: 0;
   }
-  .apos-area-widget-wrapper:nth-child(1) .radius {
+  .apos-area-widget-wrapper:nth-child(-n+1) .radius {
     .border-radius(bottom, inherit)
   }
-  .apos-area-widget-wrapper:nth-child(2) .radius {
-    .border-radius(top, inherit)
-  }
-}
-.glue-container-3 {
-  .apos-area-widget-wrapper:nth-child(1) .widget,
-  .apos-area-widget-wrapper:nth-child(2) .widget {
-    margin-bottom: 0;
-  }
-  .apos-area-widget-wrapper:nth-child(1) .radius {
-    .border-radius(bottom, inherit)
-  }
-  .apos-area-widget-wrapper:nth-child(2) .radius {
-    .border-radius(inherit)
-  }
-  .apos-area-widget-wrapper:nth-child(3) .radius {
+	.apos-area-widget-wrapper:nth-child(n+2):nth-last-child(n+2) .radius {
+		.border-radius(inherit)
+	}
+  .apos-area-widget-wrapper:nth-last-child(-n+1) .radius {
     .border-radius(top, inherit)
   }
 }

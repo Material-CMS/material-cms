@@ -198,16 +198,11 @@
               </h1>
             {% endif %}
 
-            {% if piece.glueWidgets == true and piece.content.items.length == 2 %}
-              <div class="glue-container-2">
-            {% endif %}
-
-            {% if piece.glueWidgets == true and piece.content.items.length == 3 %}
-              <div class="glue-container-3">
+            {% if piece.glueWidgets == true %}
+              <div class="glue-container">
             {% endif %}
 
                 {{ apos.area(piece, 'content', {
-                  limit: 3,
                   widgets: {
                     'card': {
                       size: 'one-half',
@@ -294,11 +289,7 @@
                   }
                 }) }}
 
-            {% if piece.glueWidgets == true and piece.content.items.length == 2 %}
-              </div>
-            {% endif %}
-
-            {% if piece.glueWidgets == true and piece.content.items.length == 3 %}
+            {% if piece.glueWidgets == true %}
               </div>
             {% endif %}
 
