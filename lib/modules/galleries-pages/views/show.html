@@ -193,7 +193,7 @@
     </div>
 
     {# Contact Button #}
-    {% if data.page.buttonOn == true %}
+    {% if data.global.showContactButton and not data.page.hideContactButton %}
       {% include "btn-widgets:widget.html" %}
     {% endif %}
 

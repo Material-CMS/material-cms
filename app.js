@@ -3,14 +3,22 @@ var path = require('path');
 var apos = require('apostrophe')({
   shortName: 'material-cms',
   modules: {
+    // Lean frontend
+    'apostrophe-assets': {
+       lean: true
+    },
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
     // Custom Modules
     'card-widgets': {},
-    'btn-widgets':{},
+    'btn-widgets':{
+      player: true
+    },
     'double-widgets': {},
     'events': {},
-    'events-widgets': {},
+    'events-widgets': {
+      player: true
+    },
     'footer-widgets':{},
     'galleries':{
       orderings: true
@@ -42,10 +50,16 @@ var apos = require('apostrophe')({
     'sections-pages': {
       orderings: true
     },
-    'sections-widgets': {},
+    'sections-widgets': {
+      player: true
+    },
     'share-widgets':{},
-    'slider-widgets':{},
-    'swiper-widgets':{},
+    'slider-widgets':{
+      player: true
+    },
+    'swiper-widgets':{
+      player: true
+    },
     'tables': {
       orderings: true
     },
@@ -66,7 +80,9 @@ var apos = require('apostrophe')({
       orderings: true
     },
     'texts-carousels-widgets': {},
-    'texts-widgets': {},
+    'texts-widgets': {
+      player: true
+    },
     'video-widgets': {},
 
     // CSS in context editing
@@ -111,10 +127,6 @@ var apos = require('apostrophe')({
           windows: false
         }
       }
-    },
-    // Lean frontend
-    'apostrophe-assets': {
-      lean: true
     },
     'apostrophe-video-widgets': {
       player: true
