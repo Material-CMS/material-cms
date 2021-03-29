@@ -11,10 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add description text to text-show page when not blog
 - Add link color for palette and options for UPPERCASE text
 - Change nav title to page title
-- One section layout with endless glue widgets
 - Replace slider with swiper
-- Add prefixes to pieces to minimize naming conflicts
-- Hide card-reaveal in swiper
+- Hide card-reveal in swiper
 - Text show page fixes
 - Add intro widget for all pages
 - Section background gradient
@@ -22,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add page background color chooser
 - Add events pages
 - Add nav feature to show pieces of all pages
+- Jquery initialization improvements
+- All materialize initialization by always and lean in widget itself
 
 ## [0.9.7 ] - Unreleased
 
@@ -39,6 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Half height slider with gradient overlay, kenburns and extra content
 - Section headers
 - Updated dependencies
+- Add prefixes to pieces to minimize naming conflicts
+- Infinite glue widgets
 
 ### Removed
 - Unnecessary javascript trough lean front end
