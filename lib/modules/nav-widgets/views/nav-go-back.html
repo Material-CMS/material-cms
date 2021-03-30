@@ -64,7 +64,7 @@
     {% endif %}
   >
 
-    <div class="nav-wrapper pin-top{% if data.widget.navShadow %} z-depth-2{% endif %}"
+    <div class="nav-wrapper pin-top{% if data.page.navShadow or data.global.navShadow %} z-depth-2{% endif %}"
       {% if data.widget._backgroundImage %}
         style="position: relative"
       {% endif %}
