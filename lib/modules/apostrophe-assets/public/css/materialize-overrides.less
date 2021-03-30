@@ -168,6 +168,11 @@ h4 {
     font-size: 1.4rem !important;
   }
 }
+// Button
+.btn:hover {
+	-webkit-filter: brightness(90%);
+	filter: brightness(90%);
+}
 // Navigation
 .nav {
    position: relative;
@@ -1024,9 +1029,49 @@ table {
 }
 // Forms
 form {
-  button[type=submit] {
-    margin-top: 2rem;
-  }
+	.apos-area-widget {
+		position: relative;
+		min-height: 3rem;
+	}
+	.apos-area-widget[data-apos-widget="apostrophe-forms-boolean-field"] label {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+	.apos-area-widget[data-apos-widget="apostrophe-forms-file-field"] {
+		.btn {
+			position: absolute;
+			top: 50%;
+			transform: translate(0, -50%);
+		}
+		.file-field {
+			.file-path-wrapper {
+				margin-left: 5.6rem;
+			}
+		}
+	}
+	.material-icons.prefix {
+		position: absolute;
+		width: 3rem;
+		font-size: 2rem;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+	input:not([type]):focus:not([readonly]),
+	input[type="date"]:not(.browser-default):focus:not([readonly]),
+	input[type="datetime-local"]:not(.browser-default):focus:not([readonly]),
+	input[type="datetime"]:not(.browser-default):focus:not([readonly]),
+	input[type="email"]:not(.browser-default):focus:not([readonly]),
+	input[type="number"]:not(.browser-default):focus:not([readonly]),
+	input[type="password"]:not(.browser-default):focus:not([readonly]),
+	input[type="search"]:not(.browser-default):focus:not([readonly]),
+	input[type="tel"]:not(.browser-default):focus:not([readonly]),
+	input[type="text"]:not(.browser-default):focus:not([readonly]),
+	input[type="time"]:not(.browser-default):focus:not([readonly]),
+	input[type="url"]:not(.browser-default):focus:not([readonly]),
+	textarea.materialize-textarea:focus:not([readonly]) {
+		.box-shadow(none);
+	}
   .apos-forms-checkboxes--checkboxes{
     span {
       padding-right: 15px;
@@ -1038,6 +1083,26 @@ form {
     }
     border: none;
   }
+	button[type=submit] {
+		.box-shadow(0 1px 5px 0 rgba(0, 0, 0, 0.2));
+		color: #fff;
+		margin-top: 2rem;
+		text-decoration: none;
+		text-align: center;
+		letter-spacing: 0.5px;
+		-webkit-transition: background-color 0.2s ease-out;
+		transition: background-color 0.2s ease-out;
+		cursor: pointer;
+		border: none;
+		border-radius: 2px;
+		display: inline-block;
+		height: 36px;
+		line-height: 36px;
+		padding: 0 16px;
+		text-transform: uppercase;
+		vertical-align: middle;
+		-webkit-tap-highlight-color: transparent;
+	}
 }
 // Footer
 .bottom-content {

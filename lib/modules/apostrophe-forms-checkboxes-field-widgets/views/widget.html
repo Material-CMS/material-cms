@@ -9,10 +9,22 @@
   {% set checkboxLabel = 'last' %}
 {% endif %}
 
-<fieldset {% if style == 'dropdown' %}data-apos-form-dropdown{% endif %} class="apos-forms-fieldset apos-forms-checkboxes--{{ style }} {{ classPrefix + '__fieldset' if classPrefix }}">
+{% if widget.icon %}
+  <i class="material-icons prefix accent-color">{{ widget.icon}}</i>
+{% endif %}
+
+<fieldset {% if style == 'dropdown' %}data-apos-form-dropdown{% endif %} class="apos-forms-fieldset apos-forms-checkboxes--{{ style }} {{ classPrefix + '__fieldset' if classPrefix }}"
+  {%- if widget.icon -%}
+    style="margin-left: 3rem;"
+  {%- endif -%}
+>
   {% if style == 'checkboxes' %}
-    <legend {% if classPrefix %}class="{{ classPrefix + '__legend' }}"{% endif %}>{{ widget.fieldLabel}}</legend>
-    {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}
+    <legend class="active {{ classPrefix + '__legend' }}">
+      <label>
+        {{ widget.fieldLabel}}
+        {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}
+      </label>
+    </legend>
     {% for choice in widget.choices %}
       {% set choiceId = id + apos.utils.slugify(choice.value) %}
       {% if checkboxLabel == 'first' %}

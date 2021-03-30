@@ -1,0 +1,41 @@
+{# ids must be unique doc-wide #}
+{% set id = apos.utils.generateId() %}
+{% set widget = data.widget %}
+{% set classPrefix = data.widget.classPrefix %}
+{% set radioLabel = module.getOption('optionLabelPosition', 'legacy') %}
+{% if widget.icon %}
+  <i class="material-icons prefix accent-color">{{ widget.icon}}</i>
+{% endif %}
+<fieldset class="apos-forms-fieldset {{ classPrefix + '__fieldset' if classPrefix }}"
+  {%- if widget.icon -%}
+    style="margin-left: 3rem;"
+  {%- endif -%}
+>
+  <legend {% if classPrefix %}class="{{classPrefix + '__legend' }}"{% endif %}>
+    <label>
+      {{ widget.fieldLabel}}
+        {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}
+    </label>
+  </legend>
+  {% for choice in widget.choices %}
+    {% set choiceId = id + apos.utils.slugify(choice.value) %}
+    {% if radioLabel == 'first' %}
+      <label {% if classPrefix %}class="{{classPrefix + '__label' }}"{% endif %} for="{{ choiceId }}">
+        <span>{{ choice.label }}</span>
+        <input {% if classPrefix %}class="{{classPrefix + '__input' }}"{% endif %} type="radio" id="{{ choiceId }}" name="{{ widget.fieldName}}" value="{{ choice.value }}">
+      </label>
+    {% elseif radioLabel == 'last' %}
+      <label {% if classPrefix %}class="{{classPrefix + '__label' }}"{% endif %} for="{{ choiceId }}">
+        <input class="with-gap" {% if classPrefix %}class="{{classPrefix + '__input' }}"{% endif %} type="radio" id="{{ choiceId }}" name="{{ widget.fieldName}}" value="{{ choice.value }}">
+        <span>{{ choice.label }}</span>
+      </label>
+    {% else %}
+      {# Legacy #}
+      <label>
+        <input class="with-gap" {% if classPrefix %}class="{{classPrefix + '__input' }}"{% endif %} type="radio" id="{{ choiceId }}" name="{{ widget.fieldName}}" value="{{ choice.value }}">
+        <span {% if classPrefix %}class="{{classPrefix + '__label' }}"{% endif %} for="{{ choiceId }}">{{ choice.label }}</span>
+      </label>
+    {% endif %}
+  {% endfor %}
+  <p data-apos-input-message="{{ widget.fieldName}}" hidden></p>
+</fieldset>

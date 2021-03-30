@@ -1,37 +1,103 @@
 <style>
+  {% if data.global.textColor %}
+    .nav .flow-text {
+      color:{{ data.global.textColor }};
+    }
+  {% elif data.page.navTextColor %}
+    .nav .flow-text {
+      color:{{ data.page.navTextColor }};
+    }
+  {% else %}
+    .nav .flow-text {
+      color: #000000;
+    }
+  {% endif %}
   .btn {
     {% if data.global.mainColor %}
       color:{{ data.global.mainColor }};
     {% endif %}
     {% if data.global.btnColor %}
-      background-color:{{ data.global.btnColor }};
+      background-color:{{ data.global.btnColor }}
     {% else %}
-      background-color:{{ data.global.accentColor }};
+      background-color:{{ data.global.accentColor }}
     {% endif %}
   }
   .btn:hover {
-    background-color:{{ data.global.accentColor }};
-    -webkit-filter: brightness(130%);
-    filter: brightness(130%);
+    background-color:{{ data.global.accentColor }}
   }
   .btn:focus {
-    background-color:{{ data.global.accentColor }};
+    background-color:{{ data.global.accentColor }}
   }
   .btn-radius {
-    background-color:{{ data.global.btnColor }};
+    background-color:{{ data.global.btnColor }}
   }
   .nav .dropdown-content li > a {
-    color: {{ data.global.accentColor }};
+    color: {{ data.global.accentColor }}
   }
   [type="checkbox"]:checked + span:not(.lever)::before {
     border-right-color: {{ data.global.accentColor }};
-    border-bottom-color: {{ data.global.accentColor }};
+    border-bottom-color: {{ data.global.accentColor }}
   }
   .apos-pager-number a {
-    color: {{ data.global.accentColor }};
+    color: {{ data.global.accentColor }}
+  }
+  blockquote {
+    border-left-color:{{ data.global.accentColor }}
+  }
+  form input:not([type]):focus:not([readonly]),
+  form input[type="date"]:not(.browser-default):focus:not([readonly]),
+  form input[type="datetime-local"]:not(.browser-default):focus:not([readonly]),
+  form input[type="datetime"]:not(.browser-default):focus:not([readonly]),
+  form input[type="email"]:not(.browser-default):focus:not([readonly]),
+  form input[type="number"]:not(.browser-default):focus:not([readonly]),
+  form input[type="password"]:not(.browser-default):focus:not([readonly]),
+  form input[type="search"]:not(.browser-default):focus:not([readonly]),
+  form input[type="tel"]:not(.browser-default):focus:not([readonly]),
+  form input[type="text"]:not(.browser-default):focus:not([readonly]),
+  form input[type="time"]:not(.browser-default):focus:not([readonly]),
+  form input[type="url"]:not(.browser-default):focus:not([readonly]),
+  form textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom-color:{{ data.global.accentColor }}
+  }
+  form input:not([type]):focus:not([readonly]) + label,
+  form input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+  form input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+  form textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: {{ data.global.accentColor }}
+  }
+  form .select-wrapper input.select-dropdown:focus {
+    border-bottom-color:{{ data.global.accentColor }}
+  }
+  form .select-wrapper ul li span {
+    color:{{ data.global.accentColor }}
+  }
+  form .input-field .prefix.active {
+    color: {{ data.global.accentColor }}
+  }
+  [type="radio"]:checked + span::after,
+  [type="radio"].with-gap:checked + span::before,
+  [type="radio"].with-gap:checked + span::after {
+    border-color:{{ data.global.accentColor }}
+  }
+  [type="radio"]:checked + span::after,
+  [type="radio"].with-gap:checked + span::after {
+    background-color: {{ data.global.accentColor }}
+  }
+  form button {
+    background-color: {{ data.global.accentColor }}
   }
   {% if data.global.additionalStyles %}
     {{ data.global.additionalStyles }}
   {% endif %}
 </style>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />

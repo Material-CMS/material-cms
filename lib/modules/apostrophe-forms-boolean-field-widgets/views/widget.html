@@ -2,6 +2,9 @@
 {% set id = apos.utils.generateId() %}
 {% set widget = data.widget %}
 {% set classPrefix = data.widget.classPrefix %}
+{% if widget.icon %}
+  <i class="material-icons prefix accent-color">{{ widget.icon}}</i>
+{% endif %}
 <label for="{{ id }}" class="apos-forms-label {{ classPrefix + '__label' if classPrefix }}">
   <input type="checkbox" id="{{ id }}" class="apos-forms-input {{ classPrefix + '__input' if classPrefix }}"
     name="{{ widget.fieldName}}" value="true"

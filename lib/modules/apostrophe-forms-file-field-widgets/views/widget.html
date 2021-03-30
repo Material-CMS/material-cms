@@ -1,0 +1,28 @@
+{# ids must be unique doc-wide #}
+{% set id = apos.utils.generateId() %}
+{% set widget = data.widget %}
+{% set classPrefix = data.widget.classPrefix %}
+{% if widget.icon %}
+  <i class="material-icons prefix accent-color">{{ widget.icon}}</i>
+{% endif %}
+<div class="file-field input-field"
+  {%- if widget.icon -%}
+    style="margin-left: 3rem;"
+  {%- endif -%}
+>
+  <div class="btn {{ classPrefix + '__input' if classPrefix }}">
+    <span>{{ widget.fieldName }}</span>
+    <input type="file" class="apos-forms-input {{ classPrefix + '__input' if classPrefix }}">
+  </div>
+  <div class="file-path-wrapper">
+    <label for="{{ id }}" class="apos-forms-label {{classPrefix + '__label' if classPrefix }}">
+      {{ widget.fieldLabel}}
+      {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}
+      <span class="apos-forms-label-message {{ classPrefix + '__label-message' if classPrefix }}" data-apos-input-message="{{ widget.fieldName}}" hidden></span>
+      <span class="apos-forms-label-message {{ classPrefix + '__label-message' if classPrefix }}" data-apos-forms-file-spinner hidden>Uploading...</span>
+      <span class="apos-forms-error apos-forms-label-message {{classPrefix + '__error' if classPrefix }} {{ classPrefix + '__label-message' if classPrefix }}" data-apos-forms-file-error role="alert" hidden>An error occurred uploading the file. It may be too large or of an inappropriate type.</span>
+    </label>
+    <input class="validate file-path apos-forms-input {{ classPrefix + '__input' if classPrefix }}" type="text" id="{{ id }}" multiple
+      name="{{ widget.fieldName }}" {% if widget.required %}required{% endif %}>
+  </div>
+</div>
