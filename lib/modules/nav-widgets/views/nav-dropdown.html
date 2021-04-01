@@ -283,14 +283,14 @@
 
   {# Dropdown Mobile #}
   <ul class="dropdown-content" id="mobile-dropdown">
-    {% for section in data.pieces %}
+    {% for piece in pieces %}
       <li>
-        <a href="#{{ section.slug }}" class="accent-color flow-text sidenav-close anchor"
+        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
           {% if data.global.navTextColor %}
             style="color: {{ data.global.navTextColor }}"
           {% endif %}
         >
-          {{ section.title }}
+          {{ piece.title }}
         </a>
       </li>
     {% endfor %}
