@@ -1,35 +1,30 @@
 {% set pieces = data.widget._pieces or data.pieces %}
 
 {% for piece in pieces %}
-  <div class="card z-depth-0" style="
-    {% if piece.backColor %}
-      background-color:{{ piece.backColor }}
+  <div class="card z-depth-0"
+    {% if data.widget.backColor or piece.backColor %}
+      style="background-color:{{ data.widget.backColor or piece.backColor }}"
     {% endif %}
-  ">
-    <div class="card-content no-padding-mobile" style="
-      {% if piece.backColor%}
-        background-color:{{ piece.backColor }}
+  >
+    <div class="card-content"
+      {% if data.widget.backColor or piece.backColor %}
+        style="background-color:{{ data.widget.backColor or piece.backColor }}"
       {% endif %}
-    ">
+    >
 
     <div class="row">
       <div class="col s12 m12">
 
-        {% if piece.titleShow %}
-          <div class="card-title">
+        {% if piece.titleDisplay or data.widget.galleriesTitlesDisplay %}
+          <div class="card-title {{ piece.titleAlign or data.widget.galleriesTitlesAlign }}">
             {% if piece._url %}
               <a href="{{ piece._url }}">
             {% endif %}
-                <h4
-                  class="accent-color"
-                  style="
-                  {% if piece.titleColor %}
-                    color:{{ piece.titleColor }};
+                <h4 class="accent-color"
+                  {% if piece.titleColor or data.widget.galleriesTitlesColor %}
+                    style="color:{{ piece.titleColor or data.widget.galleriesTitlesColor }}"
                   {% endif %}
-                  {% if piece.titleCenter %}
-                    text-align: center;
-                  {% endif %}
-                ">
+                >
                   {{ piece.title }}
                 </h4>
             {% if piece._url %}
@@ -39,43 +34,31 @@
         {% endif %}
 
           <div class="gallery"
-            style="
-              {% if piece.columnCount == '1' or piece.columnCount == '2' %}
-                display: flex;
-              {% endif %}"
+            {% if piece.columnCount == '1' or piece.columnCount == '2' %}
+              style="display: flex"
+            {% endif %}
           >
 
-            <div class="images{% if piece.columnCount == '2' %} column-count-3{% endif %}"
-              style="
+            <div class="images
                 {% if piece.columnCount == '5' %}
-                  -webkit-column-count: 5;
-                  -moz-column-count: 5;
-                  column-count: 5;
+                 column-count-5
                 {% elif piece.columnCount == '4' %}
-                  -webkit-column-count: 4;
-                  -moz-column-count: 4;
-                  column-count: 4;
+                 column-count-4
                 {% elif piece.columnCount == '3' %}
-                  -webkit-column-count: 3;
-                  -moz-column-count: 3;
-                  column-count: 3;
+                 column-count-3
                 {% elif piece.columnCount == '2' %}
-                  -webkit-column-count: 2;
-                  -moz-column-count: 2;
-                  column-count: 2;
+                 column-count-2
                 {% elif piece.columnCount == '1' %}
-                  -webkit-column-count: 3;
-                  -moz-column-count: 3;
-                  column-count: 3;
-                {% else %}
-                  -webkit-column-count: 5;
-                  -moz-column-count: 5;
-                  column-count: 5;
+                 column-count-1
                 {% endif %}"
               >
 
-              {# Include images.html #}
-              {% include "images.html" %}
+              {# Includes #}
+              {% if piece.galleryType == 'links' %}
+                {% include "cards.html" %}
+              {% else %}
+                {% include "images.html" %}
+              {% endif %}
 
             </div>
 

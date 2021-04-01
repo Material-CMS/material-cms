@@ -1,0 +1,127 @@
+{% for item in piece.linkImage.items %}
+
+{% set image = apos.images.first(item) %}
+{% set linkItem = item.clickActionLinkArea.items[0] %}
+
+{% if piece.columnCount == '1' %}
+  <div class="images-container"></div>
+{% endif %}
+
+  <div class="images-container">
+    <div class="radius
+      {% if piece.imagesShadow %}
+        z-depth-1
+      {% endif %}
+    ">
+
+    <div class="card">
+
+      {% if item.clickAction ==  'clickActionLink' %}
+      <a class="anchor-jump" href="{{ linkItem.url or linkItem._page._url }}">
+        <div id="{{ item._id }}" class="gradient-overlay">
+      {% endif %}
+
+          <div class="card-image">
+            <img
+              src="{{ apos.attachments.url(image, { size: data.options.size, crop: relationship }) }}"
+              srcset="{{ apos.images.srcset(image, relationship ) }}"
+              sizes="(min-width:1200px)20vw, 30vw"
+              alt="{{ image.title }}"
+              {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+              {%- endif -%}
+              {% if item.clickAction ==  'clickActionLightbox' %}
+                data-featherlight="{{ apos.attachments.url(image, { size: 'full' }) }}"
+              {% endif %}
+            >
+
+            {% if data.widget.imagesTitlesDisplay or item.titleDisplay %}
+                <span class="card-title {{ item.titleAlign }}">
+                  <h4 class="accent-color truncate hide-on-small-only"
+                    {%- if item.titleColor -%}
+                      style="color:{{ item.titleColor }}"
+                    {%- endif -%}
+                  >
+                    {{ image.title }}
+                  </h4>
+                </span>
+            {% endif %}
+          </div>
+
+      {% if item.clickAction == 'clickActionLink' %}
+          <span class="click-action-link flow-text">{{ linkItem.label or linkItem._page.title }}</span>
+        </div>
+      </a>
+    {% endif %}
+
+      {# TODO stuff above doesn't display, needs fixing #}
+      {% if item.description and piece.columnCount <= '3' %}
+        <div class="card-content">
+          <p class="flow-text">
+            {{ image.description }}
+          </p>
+        </div>
+      {% endif %}
+
+      {% if image.credit %}
+        <div class="card-action center-align flow-text">
+          {% if image.creditUrl %}
+              <a class="btn-flat anchor-jump" href="{{ image.creditUrl }}">
+          {% endif %}
+                <p>{{ image.credit }}</p>
+          {% if image.creditUrl %}
+              </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+{% if piece.columnCount == '1' %}
+  <div class="images-container"></div>
+{% endif %}
+
+<style>
+  #{{ item._id }}.gradient-overlay:after {
+    display: inline-block !important;
+    background: linear-gradient(
+      {% if item.gradientColorTop %}
+        {{ item.gradientColorTop }}
+      {% else %}
+        rgba(0, 0, 0, 0.7)
+      {% endif %},
+      {% if item.gradientColorBottom %}
+        {{ item.gradientColorBottom }}
+      {% else %}
+        rgba(0, 0, 0, 0.7)
+      {% endif %}
+    );
+    background: -o-linear-gradient(
+      {% if item.gradientColorTop %}
+        {{ item.gradientColorTop }}
+      {% else %}
+        rgba(0, 0, 0, 0.7)
+      {% endif %},
+      {% if item.gradientColorBottom %}
+        {{ item.gradientColorBottom }}
+      {% else %}
+        rgba(0, 0, 0, 0.7)
+      {% endif %}
+    );
+    background: -webkit-linear-gradient(
+      {% if item.gradientColorTop %}
+        {{ item.gradientColorTop }}
+      {% else %}
+        rgba(0, 0, 0, 0.7)
+      {% endif %},
+      {% if item.gradientColorBottom %}
+        {{ widget.gradientColorBottom }}
+      {% else %}
+        rgba(0, 0, 0, 0.7)
+      {% endif %}
+    );
+  }
+</style>
+{% endfor %}

@@ -1,41 +1,33 @@
-
 {% for _image in piece._images %}
 
-  {% if piece.columnCount == '1' %}
-    <div class="images-container"></div>
-  {% endif %}
+{% if piece.columnCount == '1' %}
+  <div class="images-container"></div>
+{% endif %}
 
-  <div class="images-container">
+  <div class="images-container
+    {% if piece.forceAspectRatio %}
+      ratio-1-1
+    {% endif %}
+  ">
     <div class="radius
       {% if piece.imagesShadow %}
         z-depth-1
       {% endif %}
     ">
-
       <div class="card">
+
         <div class="card-image">
 
-          {% if _image.clickAction == 'link'%}
-            <a class="anchor-jump" href="{{ _image.creditUrl }}">
-              <div id="{{ _image._id }}" class="gradient-overlay">
-          {% endif %}
-                <img
-                  srcset="{{ apos.images.srcset(_image.attachment) }}"
-                  sizes="(min-width:1200px)20vw, 40vw"
-                  alt="{{ _image.description or _image.title }}"
-                  width="100%"
-                  {% if piece.imagesKlick == 'lightbox' %}
-                    data-featherlight="{{ apos.attachments.url( _image.attachment, { size: data.options.size or 'full' }) }}"
-                  {% endif %}
-                >
-          {% if _image.clickAction == 'link' %}
-                <span class="flow-text">{{ _image.credit }}</span>
-              </div>
-            </a>
-          {% endif %}
+          <img src="{{ apos.attachments.url(_image.attachment, { size: 'one-third', crop: relationship }) }}"
+            srcset="{{ apos.images.srcset(_image.attachment) }}"
+            sizes="(min-width:1200px)20vw, 30vw"
+            alt="{{ _image.title }}"
+            width="100%"
+            data-featherlight="{{ apos.attachments.url( _image.attachment, { size: 'full' }) }}"
+          >
 
-          {% if _image.titleShow == true and piece.columnCount <= '4' %}
-            <span class="card-title {{ _image.titleAlign }}">
+          {% if data.widget.imagesTitlesDisplay and piece.columnCount <= '4' %}
+            <span class="card-title center-align">
               <h4 class="accent-color truncate"
                 {%- if _image.titleColor -%}
                   style="color:{{ piece.imagesTitleColor }}"
@@ -74,50 +66,6 @@
 
         </div>
       </div>
-
-      {% if _image.clickAction == 'link' %}
-        <style>
-          #{{ _image._id }}.gradient-overlay:after {
-            display: inline-block !important;
-            background: linear-gradient(
-              {% if _image.gradientColorTop %}
-                {{ _image.gradientColorTop }}
-              {% else %}
-                rgba(0, 0, 0, 0.7)
-              {% endif %},
-              {% if _image.gradientColorBottom %}
-                {{ _image.gradientColorBottom }}
-              {% else %}
-                rgba(0, 0, 0, 0.7)
-              {% endif %}
-            );
-            background: -o-linear-gradient(
-              {% if _image.gradientColorTop %}
-                {{ _image.gradientColorTop }}
-              {% else %}
-                rgba(0, 0, 0, 0.7)
-              {% endif %},
-              {% if _image.gradientColorBottom %}
-                {{ _image.gradientColorBottom }}
-              {% else %}
-                rgba(0, 0, 0, 0.7)
-              {% endif %}
-            );
-            background: -webkit-linear-gradient(
-              {% if _image.gradientColorTop %}
-                {{ _image.gradientColorTop }}
-              {% else %}
-                rgba(0, 0, 0, 0.7)
-              {% endif %},
-              {% if _image.gradientColorBottom %}
-                {{ _image.gradientColorBottom }}
-              {% else %}
-                rgba(0, 0, 0, 0.7)
-              {% endif %}
-            );
-          }
-        </style>
-      {% endif %}
 
     </div>
 

@@ -31,6 +31,8 @@ var apos = require('apostrophe')({
     },
     'galleries-widgets': {},
     'nav-widgets': {},
+    'link-widgets': {},
+    'page-link-widgets': {},
     'people': {
       ordering: true
     },
