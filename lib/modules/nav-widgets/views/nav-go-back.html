@@ -95,13 +95,13 @@
 
       </a>
 
-      {# Sidenav Trigger #}
-      <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
+      {# Mobile #}
+      <a href="javascript:history.back()" class="accent-color sidenav-trigger"
         {% if data.global.navTextColor %}
           style="color: {{ data.global.navTextColor }}"
         {% endif %}
       >
-        <i class="material-icons">menu</i>
+        <i class="material-icons">arrow_back_ios</i>
       </a>
 
       <ul class="nav-activator right hide-on-med-and-down">
@@ -124,9 +124,3 @@
   </nav>
 
 </div>
-
-{# Mobile #}
-<ul class="sidenav" id="mobile">
-
-
-</ul>
