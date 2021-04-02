@@ -1,6 +1,17 @@
-<div class="section-wrapper">
+{% if data.widget._pieces.length %}
 
-  {# Include pieces.html #}
-  {% include "pieces.html" %}
+  <div class="section-wrapper">
 
-</div>
+    {# Include pieces.html #}
+    {% include "pieces.html" %}
+
+  </div>
+
+{% else %}
+
+  <div class="apos-area apos-empty">
+    <i class="material-icons">clear</i>
+    <p class="flow-text">no sections<p>
+  </div>
+
+{% endif %}
