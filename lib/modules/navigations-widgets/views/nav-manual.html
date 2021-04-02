@@ -1,0 +1,174 @@
+{% set pieces = data.widget._pieces %}
+{% for piece in pieces %}
+  <div class="nav">
+
+    {# Nav Background #}
+    {% if data.widget._navBackgroundImage or data.global._navBackgroundImage %}
+      {% include "nav-bg.html" %}
+    {% endif %}
+
+    {# Desktop #}
+    <nav class="nav-extended{% if data.widget._navBackgroundImage or data.global._navBackgroundImage %} nav-pushpin{% endif %}"
+      {% set regExp = r/^#.*/g %}
+      {% if regExp.test(data.global.navColor) %}
+        style="height: 64px"
+      {% endif %}
+    >
+
+      <div class="nav-wrapper pin-top {% if data.widget.navShadow or data.global.navShadow %} z-depth-2{% endif %}"
+        {% if data.widget._navBackgroundImage or data.global._navBackgroundImage %}
+          style="position: relative"
+        {% endif %}
+      >
+        {# Brand Logo #}
+        <a class="brand-logo" href="{{ data.home._url }}">
+          {% if data.widget._logo %}
+            <img
+              src="{{ apos.attachments.url(data.widget._logo.attachment, { size: 'full' }) }}"
+              alt="{{ data.widget._logo.description }}"
+            >
+          {% else %}
+            {% if data.global._logo %}
+              <img
+                src="{{ apos.attachments.url(data.global._logo.attachment, { size: 'full' }) }}"
+                alt="{{ data.global._logo.description }}"
+              >
+            {% else %}
+              <h1 class="accent-color"
+                {% if data.global.navTextColor %}
+                  style="color: {{ data.global.navTextColor }}"
+                {% endif %}
+                >
+                {{ data.home.title }}
+              </h1>
+            {% endif %}
+          {% endif %}
+
+        </a>
+
+        {# Sidenav Trigger #}
+        <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
+          {% if data.global.navTextColor %}
+            style="color: {{ data.global.navTextColor }}"
+          {% endif %}
+        >
+          <i class="material-icons">menu</i>
+        </a>
+
+        <ul class="nav-activator right hide-on-med-and-down">
+
+          {# Nav Items #}
+          {% for item in piece.linkArea.items %}
+            <li
+              {% if data.page._url == item._page._url %}
+                class="active"
+              {% endif %}
+            >
+              <a
+                class="flow-text{% if item._subpages %} dropdown-trigger-hover{% endif %}"
+                href="{{ item.url or item._page._url }}"
+                {% if item._subpages %}
+                  data-target="{{ item._id }}"
+                {% endif %}
+                {% if data.global.navTextColor %}
+                  style="color: {{ data.global.navTextColor }}"
+                {% endif %}
+              >
+                {{ item.label or item._page.title }}
+
+                {% if item._subpages %}
+                  <i class="material-icons left">arrow_drop_down</i>
+                {% endif %}
+
+              </a>
+
+              {% if item._subpages %}
+                {# Dropdown Desktop #}
+                <ul class="dropdown-content" id="{{ item._id }}">
+                    {% for subpage in item._subpages %}
+                      <li>
+                        <a href="{{ subpage._url }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+                          {% if data.global.navTextColor %}
+                            style="color: {{ data.global.navTextColor }}"
+                          {% endif %}
+                        >
+                          {{ subpage.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+
+            </li>
+
+          {% endfor %}
+
+        </ul>
+
+      </div>
+    </nav>
+
+  </div>
+
+  {# Mobile Sidenav #}
+  <ul class="sidenav" id="mobile">
+
+    {# Links Array Page #}
+    {% if data.page.linksArray[0] %}
+      {% for name in data.page.linksArray %}
+       <li>
+         <a href="{{ name.url }}" class="accent-color"
+           {% if data.global.navTextColor %}
+             style="color: {{ data.global.navTextColor }}"
+           {% endif %}
+         >
+           {% if name.icon %}
+              <i class="material-icons left">{{ name.icon }}</i>
+           {% endif %}
+           {{ name.name }}
+         </a>
+       </li>
+      {% endfor %}
+    {% endif %}
+
+
+    {# Nav Items Mobile  #}
+
+    {% for item in piece.linkArea.items %}
+      <li
+        {% if data.page._url == item._page._url %}
+          class="active"
+        {% endif %}
+      >
+        <a
+          class="flow-text"
+          href="{{ item.url or item._page._url }}"
+          {% if data.global.navTextColor %}
+            style="color: {{ data.global.navTextColor }}"
+          {% endif %}
+        >
+          {{ item.label or item._page.title }}
+
+        </a>
+      </li>
+
+      {% for subpage in item._subpages %}
+        <li
+          {% if data.page._url == subpage._url %}
+            class="active"
+          {% endif %}
+        >
+          <a href="{{ subpage._url }}" class="subpage-link accent-color flow-text anchor-jump anchor-scroll truncate"
+            {% if data.global.navTextColor %}
+              style="color: {{ data.global.navTextColor }}"
+            {% endif %}
+          >
+            {{ subpage.title }}
+          </a>
+        </li>
+      {% endfor %}
+
+    {% endfor %}
+
+  </ul>
+{% endfor %}

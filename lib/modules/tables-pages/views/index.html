@@ -42,13 +42,22 @@
 {% block main %}
 
   {# Navigation #}
-  {% if data.page.nav == 'default' %}
-    {% include "nav-widgets:nav-default.html" %}
-  {% elif data.page.nav == 'dropdown' %}
-    {% include "nav-widgets:nav-dropdown.html" %}
-  {% elif data.page.nav == 'manual' %}
-    {% include "nav-widgets:nav-manual.html" %}
-  {% endif %}
+  {# n = Navigation Data, gets prepopulated by beforeInsert in apostrophe-pages #}
+  {{ apos.area(data.page, 'n', {
+    limit: 1,
+    widgets: {
+      'navigations': {
+        addLabel: 'Add Navigation',
+        editLabel: 'Change Navigation',
+        controls: {
+          movable: false,
+          cloneable: false,
+          removable: true,
+          position: 'top-left'
+        }
+      }
+    }
+  }) }}
 
   {# Main Content #}
   <div class="main-content">

@@ -30,9 +30,13 @@ var apos = require('apostrophe')({
       orderings: true
     },
     'galleries-widgets': {},
-    'nav-widgets': {},
+    'navigations':{},
+    'navigations-widgets': {
+      player: true
+    },
     'link-widgets': {},
-    'page-link-widgets': {},
+    'link-page-widgets': {},
+    'link-subpages-widgets': {},
     'people': {
       ordering: true
     },

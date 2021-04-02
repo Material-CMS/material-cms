@@ -1,0 +1,62 @@
+<div class="nav-background"
+  {% if (data.widget._navBackgroundImage or data.global.gradientColorTop) or (data.widget._navBackgroundImage or data.global.gradientColorBottom) %}
+    style="
+      background: linear-gradient(
+        {% if data.widget.gradientColorTop or data.global.gradientColorTop %}
+          {{ data.widget.gradientColorTop or data.global.gradientColorTop }}
+        {% else %}
+          rgba(0, 0, 0, 0)
+        {% endif %},
+        {% if data.widget.gradientColorBottom or data.global.gradientColorBottom %}
+          {{ data.widget.gradientColorBottom or data.global.gradientColorBottom }}
+        {% else %}
+          rgba(0, 0, 0, 0)
+        {% endif %}
+      );
+      background: -o-linear-gradient(
+        {% if data.widget.gradientColorTop or data.global.gradientColorTop %}
+          {{ data.widget.gradientColorTop or data.global.gradientColorTop }}
+        {% else %}
+          rgba(0, 0, 0, 0)
+        {% endif %},
+        {% if data.widget.gradientColorBottom or data.global.gradientColorBottom %}
+          {{ data.widget.gradientColorBottom or data.global.gradientColorBottom }}
+        {% else %}
+          rgba(0, 0, 0, 0)
+        {% endif %}
+      );
+      background: -webkit-linear-gradient(
+        {% if data.widget.gradientColorTop or data.global.gradientColorTop %}
+          {{ data.widget.gradientColorTop or data.global.gradientColorTop }}
+        {% else %}
+          rgba(0, 0, 0, 0)
+        {% endif %},
+        {% if data.widget.gradientColorBottom or data.global.gradientColorBottom %}
+          {{ data.widget.gradientColorBottom or data.global.gradientColorBottom }}
+        {% else %}
+          rgba(0, 0, 0, 0)
+        {% endif %}
+      );
+    "
+  {% endif %}
+>
+  <div class="parallax-container">
+    <div class="parallax">
+      {% if data.widget._navBackgroundImage %}
+        <img
+          src="{{ apos.attachments.url(data.widget._navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+          srcset="{{apos.images.srcset(data.widget._navBackgroundImage.attachment) }}"
+          sizes="50vw"
+          alt="{{ data.widget._navBackgroundImage.title }}"
+        >
+      {% elif data.global._navBackgroundImage %}
+        <img
+          src="{{ apos.attachments.url(data.global._navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+          srcset="{{apos.images.srcset(data.global._navBackgroundImage.attachment) }}"
+          sizes="50vw"
+          alt="{{ data.global._navBackgroundImage.title }}"
+        >
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -17,14 +17,19 @@
 @red-hover: darken(@red, 10%); // Empty widget area
 .apos-refreshable {
   .apos-empty {
+    .box-shadow(0 0 4px 2px rgba(0, 0, 0, .16));
+  }
+  .apos-empty[data-dot-path="s"] {
     width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    background-color: @white;
-    .box-shadow(0 0 4px 2px rgba(0, 0, 0, .16));
+  }
+  .apos-empty[data-dot-path="n"] {
+    top: 0;
+    height: 64px;
   }
   .fixed-action-btn {
     width: inherit;
@@ -108,6 +113,24 @@ fieldset {
   .apos-area-widget,
   .apos-area-widgets {
     width: 100%;
+  }
+}
+// Manual Nav Fieldset Overrides
+fieldset[data-name="linkArea"] {
+  .apos-area-widgets {
+    .apos-area-widget-wrapper {
+      min-height: 64px;
+      .apos-area-widget {
+        h5 {
+          margin-top: 10px;
+          padding-left: 25px;
+        }
+        .apos-empty {
+          height: 100px;
+          width: 50%;
+        }
+      }
+    }
   }
 }
 // Spinner
