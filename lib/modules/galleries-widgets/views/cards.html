@@ -30,7 +30,7 @@
               {%- if apos.attachments.hasFocalPoint(relationship) -%}
                 style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
               {%- endif -%}
-              {% if item.clickAction ==  'clickActionLightbox' %}
+              {% if piece.clickActionLightbox and item.clickAction == 'clickActionLightbox' %}
                 data-featherlight="{{ apos.attachments.url(image, { size: 'full' }) }}"
               {% endif %}
             >

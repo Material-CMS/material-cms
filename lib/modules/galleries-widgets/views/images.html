@@ -23,7 +23,9 @@
             sizes="(min-width:1200px)20vw, 30vw"
             alt="{{ _image.title }}"
             width="100%"
-            data-featherlight="{{ apos.attachments.url( _image.attachment, { size: 'full' }) }}"
+            {% if piece.clickActionLightbox %}
+              data-featherlight="{{ apos.attachments.url( _image.attachment, { size: 'full' }) }}"
+            {% endif %}
           >
 
           {% if data.widget.imagesTitlesDisplay and piece.columnCount <= '4' %}
