@@ -153,6 +153,22 @@
 
             <ul class="dropdown-content" id="{{ tab._id }}">
 
+              {# Sections of Children of Tabs Dropdown Loop #}
+              {% if data.page._url == tab._url and data.page.s.items[0] %}
+                {% for piece in pieces %}
+                  <li>
+                    <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+                      {% if data.global.navTextColor %}
+                        style="color: {{ data.global.navTextColor }}"
+                      {% endif %}
+                    >
+                      {{ piece.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+                <li class="divider" tabindex="-1"></li>
+              {% endif %}
+
               {# Children of Tabs Dropdown Loop #}
               {% for child in tab._children %}
                 <li
@@ -169,7 +185,7 @@
                   </a>
                 </li>
 
-                {# Sections of Tabs Dropdown Loop #}
+                {# Sections of Children of Tabs Dropdown Loop #}
                 {% if data.page._url == child._url and data.page.s.items[0] %}
                   <li class="divider" tabindex="-1"></li>
                   {% for piece in pieces %}
