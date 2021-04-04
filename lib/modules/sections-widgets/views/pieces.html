@@ -3,7 +3,7 @@
 {% for piece in pieces %}
 
   {# Parallax Container #}
-  {% if piece.preferences == 'default' and (piece._backgroundImage and piece.backgroundImageParallax) %}
+  {% if piece.sectionStyle == 'default' and (piece._backgroundImage and piece.backgroundImageParallax) %}
     <div class="parallax-container">
 
       {# Parallax Image #}
@@ -31,9 +31,9 @@
     {# Shape Fill Top #}
     {% if piece.shapeFillTop %}
       <div class="custom-shape-divider top"
-      {% if piece.shapeFillHeight or piece.preferences == 'slideOn' %}
+      {% if piece.shapeFillHeight or piece.sectionStyle == 'slide' %}
         style="
-          {% if piece.shapeFillHeight and piece.preferences == 'slideOn' %}
+          {% if piece.shapeFillHeight and piece.sectionStyle == 'slide' %}
             top: calc(-{{ piece.shapeFillHeight }}px + 50vh);
           {% else %}
             top: -{{ piece.shapeFillHeight }}px;
@@ -99,7 +99,7 @@
   {% endif %}
 
   {# Footer #}
-  {% if piece.preferences == 'footerOn' %}
+  {% if piece.sectionStyle == 'footer' %}
     <div class="main-content">
 
     {% if piece.container %}
@@ -155,7 +155,7 @@
     {% else %}
 
       {# Slide #}
-      {% if piece.preferences == 'slideOn' %}
+      {% if piece.sectionStyle == 'slide' %}
         <div class="slide-content">
 
           {{ apos.singleton(piece, 'sliderContent', 'slider', {
@@ -174,7 +174,7 @@
         </div>
       {% endif %}
 
-      <div class="main-content{% if piece.preferences == 'slideOn' %} half{% endif %}">
+      <div class="main-content{% if piece.sectionStyle == 'slide' %} half{% endif %}">
 
       {% if piece.container %}
         <div class="container">
