@@ -109,7 +109,7 @@
             {% endif %}
           </a>
 
-          {# Dropdown Home #}
+          {# Sections of Home Loop Dropdown #}
           {% if data.page._url == data.home._url %}
             <ul class="dropdown-content" id="dropdown-home">
 
@@ -130,7 +130,7 @@
 
         </li>
 
-        {# Children Loop #}
+        {# Tabs Loop #}
         {% for tab in data.home._children %}
           <li
             {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
@@ -151,43 +151,12 @@
               {% endif %}
             </a>
 
-            <ul class="dropdown-content" id="{{ tab._id }}">
+            {# Dropdown #}
+            {% if (data.page._url == tab._url and data.page.s.items[0]) or tab._children.length %}
+              <ul class="dropdown-content" id="{{ tab._id }}">
 
-              {# Sections of Children of Tabs Dropdown Loop #}
-              {% if data.page._url == tab._url and data.page.s.items[0] %}
-                {% for piece in pieces %}
-                  <li>
-                    <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
-                      {% if data.global.navTextColor %}
-                        style="color: {{ data.global.navTextColor }}"
-                      {% endif %}
-                    >
-                      {{ piece.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-                <li class="divider" tabindex="-1"></li>
-              {% endif %}
-
-              {# Children of Tabs Dropdown Loop #}
-              {% for child in tab._children %}
-                <li
-                {% if data.page._url == child._url %}
-                  class="active"
-                {% endif %}
-                >
-                  <a href="{{ child._url }}" class="accent-color flow-text truncate"
-                    {% if data.global.navTextColor %}
-                      style="color: {{ data.global.navTextColor }}"
-                    {% endif %}
-                  >
-                    {{ child.title }}
-                  </a>
-                </li>
-
-                {# Sections of Children of Tabs Dropdown Loop #}
-                {% if data.page._url == child._url and data.page.s.items[0] %}
-                  <li class="divider" tabindex="-1"></li>
+                {# Sections of Tabs Loop Dropdown #}
+                {% if data.page._url == tab._url and data.page.s.items[0] %}
                   {% for piece in pieces %}
                     <li>
                       <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
@@ -199,11 +168,45 @@
                       </a>
                     </li>
                   {% endfor %}
+                  <li class="divider" tabindex="-1"></li>
                 {% endif %}
 
-              {% endfor %}
+                {# Children of Tabs Loop Dropdown #}
+                {% for child in tab._children %}
+                  <li
+                  {% if data.page._url == child._url %}
+                    class="active"
+                  {% endif %}
+                  >
+                    <a href="{{ child._url }}" class="accent-color flow-text truncate"
+                      {% if data.global.navTextColor %}
+                        style="color: {{ data.global.navTextColor }}"
+                      {% endif %}
+                    >
+                      {{ child.title }}
+                    </a>
+                  </li>
 
-            </ul>
+                  {# Sections of Children of Tabs Dropdown Loop #}
+                  {% if data.page._url == child._url and data.page.s.items[0] %}
+                    <li class="divider" tabindex="-1"></li>
+                    {% for piece in pieces %}
+                      <li>
+                        <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+                          {% if data.global.navTextColor %}
+                            style="color: {{ data.global.navTextColor }}"
+                          {% endif %}
+                        >
+                          {{ piece.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  {% endif %}
+
+                {% endfor %}
+
+              </ul>
+            {% endif %}
 
           </li>
         {% endfor %}
