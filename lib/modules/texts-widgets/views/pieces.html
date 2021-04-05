@@ -143,7 +143,12 @@
 
                       {% if piece.extraLink %}
                         <div class="col s12{% if piece.text.items <= 1 %} m12 center-align{% else %} m6 right-align{% endif %}">
-                          <a class="btn-flat" href="{{ piece.extraLink }}" target="_blank">
+                          <a
+                            class="btn-flat"
+                            href="{{ piece.extraLink }}"
+                            target="_blank"
+                            style="color:{{ data.global.accentColor }}"
+                          >
                             {% if piece.linkText %}
                               {{ piece.linkText }}
                             {% else %}
