@@ -1,0 +1,46 @@
+{% set piece = data.widget._pieces[0] %}
+{# Nav Items #}
+{% for item in piece.linkArea.items %}
+  <li
+    {% if data.page._url == item._page._url %}
+      class="active"
+    {% endif %}
+  >
+    <a
+      class="flow-text{% if item._subpages %} dropdown-trigger{% endif %}"
+      href="{{ item.url or item._page._url }}"
+      {% if item._subpages %}
+        data-target="{{ item._id }}-mobile"
+      {% endif %}
+      {% if data.global.navTextColor %}
+        style="color: {{ data.global.navTextColor }}"
+      {% endif %}
+    >
+      {{ item.label or item._page.title }}
+
+      {% if item._subpages %}
+        <i class="material-icons left">arrow_drop_down</i>
+      {% endif %}
+
+    </a>
+
+    {% if item._subpages %}
+      {# Dropdown Desktop #}
+      <ul class="dropdown-content" id="{{ item._id }}-mobile">
+          {% for subpage in item._subpages %}
+            <li>
+              <a href="{{ subpage._url }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+                {% if data.global.navTextColor %}
+                  style="color: {{ data.global.navTextColor }}"
+                {% endif %}
+              >
+                {{ subpage.title }}
+              </a>
+            </li>
+          {% endfor %}
+      </ul>
+    {% endif %}
+
+  </li>
+
+{% endfor %}

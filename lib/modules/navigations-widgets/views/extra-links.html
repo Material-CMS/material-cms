@@ -1,0 +1,33 @@
+{# Links Array Page #}
+{% if data.widget.linksArray[0] %}
+  {% for name in data.widget.linksArray %}
+   <li>
+     <a href="{{ name.url }}" class="accent-color"
+       {% if data.widget.navTextColor or data.global.navTextColor %}
+         style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+       {% endif %}
+     >
+       {% if name.icon %}
+          <i class="material-icons left">{{ name.icon }}</i>
+       {% endif %}
+       {{ name.name }}
+     </a>
+   </li>
+  {% endfor %}
+{# Links Array Global #}
+{% elif data.global.linksArray[0] %}
+  {% for name in data.global.linksArray %}
+   <li>
+     <a href="{{ name.url }}" class="accent-color"
+       {% if data.widget.navTextColor or data.global.navTextColor %}
+         style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+       {% endif %}
+     >
+       {% if name.icon %}
+          <i class="material-icons left">{{ name.icon }}</i>
+       {% endif %}
+       {{ name.name }}
+     </a>
+   </li>
+  {% endfor %}
+{% endif %}

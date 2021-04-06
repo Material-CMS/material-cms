@@ -1,0 +1,122 @@
+{% set pieces = data.page.s.items[0]._pieces or data.pieces %}
+{# Home #}
+<li
+  {% if data.page._url == data.home._url %}
+    class="active"
+  {% endif %}
+>
+  <a href="{{ data.home._url }}" data-target="dropdown-desktop" class="flow-text
+    {% if data.page._url == data.home._url %}
+      dropdown-trigger-hover
+    {% endif %}"
+    {% if data.widget.navTextColor or data.global.navTextColor %}
+      style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+    {% endif %}
+  >
+    {{ data.home.title }}
+    {% if data.page._url == data.home._url %}
+      <i class="material-icons left">arrow_drop_down</i>
+    {% endif %}
+  </a>
+
+  {# Sections of Home Loop Dropdown #}
+  {% if data.page._url == data.home._url %}
+    <ul class="dropdown-content" id="dropdown-desktop">
+
+      {% for piece in pieces %}
+        <li>
+          <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+            {% if data.widget.navTextColor or data.global.navTextColor %}
+              style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+            {% endif %}
+          >
+            {{ piece.title }}
+          </a>
+        </li>
+      {% endfor %}
+
+    </ul>
+  {% endif %}
+
+</li>
+
+{# Tabs Loop #}
+{% for tab in data.home._children %}
+  <li
+    {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+      class="active"
+    {% endif %}
+  >
+    <a href="{{ tab._url }}" data-target="{{ tab._id }}" class="flow-text
+      {% if tab._children.length %}
+        dropdown-trigger-hover
+      {% endif %}"
+      {% if data.widget.navTextColor or data.global.navTextColor %}
+        style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+      {% endif %}
+    >
+      {{ tab.title }}
+      {% if tab._children.length %}
+        <i class="material-icons left">arrow_drop_down</i>
+      {% endif %}
+    </a>
+
+    {# Dropdown #}
+    {% if (data.page._url == tab._url and data.page.s.items[0]) or tab._children.length %}
+      <ul class="dropdown-content" id="{{ tab._id }}">
+
+        {# Sections of Tabs Loop Dropdown #}
+        {% if data.page._url == tab._url and data.page.s.items[0] %}
+          {% for piece in pieces %}
+            <li>
+              <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+                {% if data.widget.navTextColor or data.global.navTextColor %}
+                  style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+                {% endif %}
+              >
+                {{ piece.title }}
+              </a>
+            </li>
+          {% endfor %}
+          <li class="divider" tabindex="-1"></li>
+        {% endif %}
+
+        {# Children of Tabs Loop Dropdown #}
+        {% for child in tab._children %}
+          <li
+          {% if data.page._url == child._url %}
+            class="active"
+          {% endif %}
+          >
+            <a href="{{ child._url }}" class="accent-color flow-text truncate"
+              {% if data.widget.navTextColor or data.global.navTextColor %}
+                style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+              {% endif %}
+            >
+              {{ child.title }}
+            </a>
+          </li>
+
+          {# Sections of Children of Tabs Dropdown Loop #}
+          {% if data.page._url == child._url and data.page.s.items[0] %}
+            <li class="divider" tabindex="-1"></li>
+            {% for piece in pieces %}
+              <li>
+                <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+                  {% if data.widget.navTextColor or data.global.navTextColor %}
+                    style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+                  {% endif %}
+                >
+                  {{ piece.title }}
+                </a>
+              </li>
+            {% endfor %}
+          {% endif %}
+
+        {% endfor %}
+
+      </ul>
+    {% endif %}
+
+  </li>
+{% endfor %}

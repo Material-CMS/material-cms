@@ -1,5 +1,101 @@
-{% if data.widget.nav == 'default' %}
-  {% include "nav-default.html" %}
-{% elif data.widget.nav == 'manual' %}
-  {% include "nav-manual.html" %}
-{% endif %}
+<div class="nav">
+
+  {# Nav Background #}
+  {% if data.widget._navBackgroundImage or data.global._navBackgroundImage %}
+    {% include "nav-bg.html" %}
+  {% endif %}
+
+  {# Desktop #}
+  <nav class="nav-extended{% if data.widget._navBackgroundImage or data.global._navBackgroundImage %} nav-pushpin{% endif %}"
+    {% set regExp = r/^#.*/g %}
+    {% if regExp.test(data.global.navColor) %}
+      style="height: 64px"
+    {% endif %}
+  >
+
+    {# Nav Wrapper #}
+    <div class="nav-wrapper pin-top nav-color{% if data.widget.navShadow or data.global.navShadow %} z-depth-2{% endif %}"
+    {% if data.widget.navColor or (data.widget._navBackgroundImage or data.global._navBackgroundImage) %}
+      style="
+        {% if data.widget.navColor %}
+          background-color: {{ data.widget.navColor}};
+        {% endif %}
+        {% if data.widget._navBackgroundImage or data.global._navBackgroundImage %}
+          position: relative;
+        {% endif %}
+      "
+    {% endif %}
+    >
+
+    {# Brand Logo #}
+    <a class="brand-logo" href="{{ data.home._url }}">
+      {% if data.widget._logo %}
+        <img
+          src="{{ apos.attachments.url(data.widget._logo.attachment, { size: 'full' }) }}"
+          alt="{{ data.widget._logo.description }}"
+        >
+      {% else %}
+        {% if data.global._logo %}
+          <img
+            src="{{ apos.attachments.url(data.global._logo.attachment, { size: 'full' }) }}"
+            alt="{{ data.global._logo.description }}"
+          >
+        {% else %}
+          <h1 class="accent-color"
+            {% if data.widget.navTextColor or data.global.navTextColor %}
+              style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+            {% endif %}
+            >
+            {{ data.home.title }}
+          </h1>
+        {% endif %}
+      {% endif %}
+    </a>
+
+      {# Sidenav Trigger #}
+      <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
+        {% if data.global.navTextColor %}
+          style="color: {{ data.global.navTextColor }}"
+        {% endif %}
+      >
+        <i class="material-icons">menu</i>
+      </a>
+
+      <ul class="nav-activator right hide-on-med-and-down">
+
+        {# Extra Links #}
+        {% include "extra-links.html" %}
+
+        {# Include Nav #}
+        {% if data.widget.nav == 'default' %}
+          {% include "auto-desktop.html" %}
+        {% elif data.widget.nav == 'manual' and data.widget._pieces.length %}
+          {% include "manual-desktop.html" %}
+        {% else %}
+          <div class="apos-area apos-empty">
+            <i class="material-icons">clear</i>
+            <p class="flow-text">no navigation<p>
+          </div>
+        {% endif %}
+
+      </ul>
+
+    </div>
+  </nav>
+
+</div>
+
+{# Mobile Sidenav #}
+<ul class="sidenav" id="mobile">
+
+  {# Extra Links #}
+  {% include "extra-links.html" %}
+
+  {# Include Nav #}
+  {% if data.widget.nav == 'default' %}
+    {% include "auto-mobile.html" %}
+  {% elif data.widget.nav == 'manual' %}
+    {% include "manual-mobile.html" %}
+  {% endif %}
+
+</ul>
