@@ -5,7 +5,7 @@ var apos = require('apostrophe')({
   modules: {
     // Lean frontend
     'apostrophe-assets': {
-       lean: true
+        lean: true
     },
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
@@ -19,7 +19,9 @@ var apos = require('apostrophe')({
     'events-widgets': {
       player: true
     },
-    'footer-widgets':{},
+    'footer-widgets':{
+      player : true
+    },
     'galleries':{
       orderings: true
     },

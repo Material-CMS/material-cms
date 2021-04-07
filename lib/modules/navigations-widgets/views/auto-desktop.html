@@ -1,4 +1,4 @@
-{% set pieces = data.page.s.items[0]._pieces or data.pieces %}
+{% set pieces = data.page.sectionArea.items[0]._pieces or data.pieces %}
 {# Home #}
 <li
   {% if data.page._url == data.home._url %}
@@ -62,11 +62,11 @@
     </a>
 
     {# Dropdown #}
-    {% if (data.page._url == tab._url and data.page.s.items[0]) or tab._children.length %}
+    {% if (data.page._url == tab._url and data.page.sectionArea.items[0]) or tab._children.length %}
       <ul class="dropdown-content" id="{{ tab._id }}">
 
         {# Sections of Tabs Loop Dropdown #}
-        {% if data.page._url == tab._url and data.page.s.items[0] %}
+        {% if data.page._url == tab._url and data.page.sectionArea.items[0] %}
           {% for piece in pieces %}
             <li>
               <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
@@ -98,7 +98,7 @@
           </li>
 
           {# Sections of Children of Tabs Dropdown Loop #}
-          {% if data.page._url == child._url and data.page.s.items[0] %}
+          {% if data.page._url == child._url and data.page.sectionArea.items[0] %}
             <li class="divider" tabindex="-1"></li>
             {% for piece in pieces %}
               <li>

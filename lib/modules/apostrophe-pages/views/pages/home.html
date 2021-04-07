@@ -1,54 +1,9 @@
 {% extends "layout.html" %}
 
-{# Imports #}
-{% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
-{% import 'apostrophe-palette-widgets:macros.html' as palette %}
-
-{# Seo and Open Graph fields #}
-{% if data.piece %}
-  {% if data.piece.seoTitle %}
-    {% set title = data.piece.seoTitle %}
-  {% else %}
-    {% set title = data.piece.title %}
-  {% endif %}
-{% else %}
-  {% if data.page.seoTitle %}
-    {% set title = data.page.seoTitle %}
-  {% else %}
-    {% set title = data.page.title %}
-  {% endif %}
-{% endif %}
-
-{# Page Title depends on variables above #}
-{% block title %}{{ title }}{% endblock %}
-
-{% block extraHead %}
-
-  {# Palette #}
-  {{ palette.stylesheetLink(data.global) }}
-  {{ palette.stylesheetTag() }}
-
-  {# Includes #}
-  {% include "apostrophe-assets:styles.html" %}
-  {% include "apostrophe-seo:view.html" %}
-  {% include "apostrophe-open-graph:view.html" %}
-
-  {# Favicons #}
-  {{ favicons.renderLinks(apos, data.global) }}
-
-{% endblock %}
-
-{% block beforeMain %}
-  {% if data.user %}
-    {{ palette.palette(data.global, 'palette') }}
-  {% endif %}
-{% endblock %}
-
 {% block main %}
 
   {# Navigation #}
-  {# n = Navigation Data, gets prepopulated by beforeInsert in apostrophe-pages #}
-  {{ apos.area(data.page, 'n', {
+  {{ apos.area(data.page, 'navigationArea', {
     limit: 1,
     widgets: {
       'navigations': {
@@ -65,8 +20,7 @@
   }) }}
 
   {# Sections #}
-  {# s = Sections Data #}
-  {{ apos.area(data.page, 's', {
+  {{ apos.area(data.page, 'sectionArea', {
     limit: 1,
     widgets: {
       'sections': {
@@ -82,7 +36,7 @@
   }) }}
 
   {# Footer #}
-  {% if not data.page.hideFooter %}
+  {% if data.global.footerArea.items[0] and not data.page.hideFooter %}
     {{ apos.area(data.global, 'footerArea', {
       edit: false,
       widgets: {

@@ -115,8 +115,8 @@
         </div>
 
         <div class="col s12 m6 pull-m6 l8 pull-l4 copyright-center">
-          {%- if data.global.legal -%}
-            <h4 class="text-color"> © {{ data.widget.creation_date }} {{ data.widget.copyright }} </h4>
+          {%- if data.global.creationDate or data.global.copyright -%}
+            <h4 class="text-color"> © {{ data.global.creationDate }} {{ data.global.copyright }} </h4>
           {%- endif -%}
         </div>
 

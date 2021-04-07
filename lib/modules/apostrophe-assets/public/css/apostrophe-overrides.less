@@ -19,24 +19,17 @@
   .apos-empty {
     .box-shadow(0 0 4px 2px rgba(0, 0, 0, .16));
   }
-  .apos-empty[data-dot-path="s"] {
+  .apos-empty[data-dot-path="navigationArea"] {
+    top: 0;
+    height: 64px;
+  }
+  .apos-empty[data-dot-path="sectionArea"] {
     width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-  }
-  .apos-empty[data-dot-path="n"] {
-    top: 0;
-    height: 64px;
-  }
-  .apos-empty[data-dot-path="footer"] {
-    top: 0;
-    height: 92px;
-    .apos-dropdown-items {
-      top: -60px;
-    }
   }
   .fixed-action-btn {
     width: inherit;

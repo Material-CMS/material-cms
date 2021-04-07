@@ -1,29 +1,47 @@
 {# Automatically extends the right outer layout and also handles AJAX siutations #}
 {% extends data.outerLayout %}
 
-{% block title %}
-  {# Create a useful, SEO-friendly title tag based on what we have #}
-  {% if data.piece %}
-    {{ data.piece.title }}
-  {% elseif data.page %}
-    {{ data.page.title }}
+{# Imports #}
+{% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
+{% import 'apostrophe-palette-widgets:macros.html' as palette %}
+
+{# Page Title depends on variables above #}
+{% if data.piece %}
+  {% if data.piece.seoTitle %}
+    {% set title = data.piece.seoTitle %}
   {% else %}
-    {{ apos.log('Looks like you forgot to override the title block in a template that does not have access to an Apostrophe page or piece.') }}
+    {% set title = data.piece.title %}
   {% endif %}
-{% endblock %}
+{% else %}
+  {% if data.page.seoTitle %}
+    {% set title = data.page.seoTitle %}
+  {% else %}
+    {% set title = data.page.title %}
+  {% endif %}
+{% endif %}
+
+{# Actual Title #}
+{% block title %}{{ title }}{% endblock %}
 
 {% block extraHead %}
-  {#
-    This block outputs its contents in the HTML document's <head>.
-    It is a good place to put extra <script> <link> and <meta> tags.
-  #}
+  {# Palette #}
+  {{ palette.stylesheetLink(data.global) }}
+  {{ palette.stylesheetTag() }}
+
+  {# Includes #}
+  {% include "apostrophe-assets:styles.html" %}
+  {% include "apostrophe-seo:view.html" %}
+  {% include "apostrophe-open-graph:view.html" %}
+
+  {# Favicons #}
+  {{ favicons.renderLinks(apos, data.global) }}
 {% endblock %}
 
 {% block beforeMain %}
-  {#
-    We recommend you use the beforeMain block for global page components
-    like headers or navigation.
-  #}
+  {# Inject Apostrophe Palette #}
+  {% if data.user %}
+    {{ palette.palette(data.global, 'palette') }}
+  {% endif %}
 {% endblock %}
 
 {% block main %}
