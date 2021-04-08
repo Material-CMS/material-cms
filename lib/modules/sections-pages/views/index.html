@@ -1,30 +1,9 @@
 {% extends "layout.html" %}
 
-{# Main Block #}
 {% block main %}
 
-  {# Navigation #}
-  {# n = Navigation Data, gets prepopulated by beforeInsert in apostrophe-pages #}
-  {{ apos.area(data.page, 'navigationArea', {
-    limit: 1,
-    widgets: {
-      'navigations': {
-        addLabel: 'Add Navigation',
-        editLabel: 'Change Navigation',
-        controls: {
-          movable: false,
-          cloneable: false,
-          removable: true,
-          position: 'top-left'
-        }
-      }
-    }
-  }) }}
-
-
-  {# Sections #}
   <div class="section-wrapper">
-
+    
     {# Include Galleries with Ajax #}
     <div data-apos-ajax-context="sections">
       {% include "indexAjax.html" %}
@@ -36,28 +15,5 @@
     {% endif %}
 
   </div>
-
-  {# Footer #}
-  {% if not data.page.hideFooter %}
-    {{ apos.area(data.global, 'footerArea', {
-      edit: false,
-      widgets: {
-        'footer': {
-          addLabel: 'Add Footer',
-          editLabel: 'Change Footer',
-          controls: {
-            movable: false,
-            removable: true,
-            position: 'top-left'
-          }
-        }
-      }
-    }) }}
-  {% endif %}
-
-  {# Contact Button #}
-  {% if data.global.showContactButton and not data.page.hideContactButton %}
-    {% include "btn-widgets:widget.html" %}
-  {% endif %}
 
 {% endblock %}
