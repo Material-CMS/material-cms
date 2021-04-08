@@ -1,4 +1,8 @@
-<footer class="page-footer{% if data.widget.bigFooter or data.global.bigFooter  %} nav-color{% endif %}">
+<footer class="page-footer{% if data.widget.bigFooter or data.global.bigFooter  %} nav-color{% endif %}"
+  {% if data.widget.footerColor or data.global.footerColor %}
+    style="background-color: {{ data.widget.footerColor or data.global.footerColor }}"
+  {% endif %}
+>
 
   {% if data.widget.bigFooter or data.global.bigFooter %}
     <div class="container">
@@ -6,7 +10,13 @@
 
         <div class="col m4 s12">
 
-          <h3>{{ data.global.websiteTitle or data.home.title }}</h3>
+          <h3
+          {% if data.widget.footerColor or data.global.footerColor %}
+            style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+          {% endif %}
+          >
+            {{ data.global.websiteTitle or data.home.title }}
+          </h3>
 
           <ul>
             {# Home #}
@@ -63,7 +73,13 @@
         </div>
         <div class="col m4 l3 offset-l1 s12 left-margin">
 
-          <h3>{{ data.widget.aboutTitle or data.global.aboutTitle or 'About' }}</h3>
+          <h3
+            {% if data.widget.footerColor or data.global.footerColor %}
+              style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+            {% endif %}
+          >
+            {{ data.widget.aboutTitle or data.global.aboutTitle or 'About' }}
+          </h3>
 
 
           {% if data.global.phone %}
