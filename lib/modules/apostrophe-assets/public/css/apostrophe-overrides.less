@@ -19,17 +19,21 @@
   .apos-empty {
     .box-shadow(0 0 4px 2px rgba(0, 0, 0, .16));
   }
-  .apos-empty[data-dot-path="navigationArea"] {
-    top: 0;
+  .nav-content {
     height: 64px;
+    .apos-empty {
+      height: 100%;
+    }
   }
-  .apos-empty[data-dot-path="sectionArea"] {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+  .sections-content {
+    min-height: calc(90vh - 64px);
+    position: relative;
+    .apos-empty[data-dot-path="sectionArea"] {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translate(0, -50%)
+    }
   }
   .fixed-action-btn {
     width: inherit;

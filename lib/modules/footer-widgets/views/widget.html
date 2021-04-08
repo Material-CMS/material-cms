@@ -1,82 +1,142 @@
-<footer class="page-footer nav-color">
+<footer class="page-footer{% if data.widget.bigFooter or data.global.bigFooter  %} nav-color{% endif %}">
 
-  <div class="container">
-    <div class="row">
+  {% if data.widget.bigFooter or data.global.bigFooter %}
+    <div class="container">
+      <div class="row">
 
-      <div class="col m6 s12">
+        <div class="col m4 s12">
 
-        <h3>{{ data.global.websiteTitle or data.home.ttitle }}</h3>
+          <h3>{{ data.global.websiteTitle or data.home.title }}</h3>
 
-        <ul>
-          {# Home #}
-          <li>
-            <h4>
-              <a class="accent-color" href="{{ data.home._url }}"
+          <ul>
+            {# Home #}
+            <li>
+              <a class="btn-flat" href="{{ data.home._url }}"
                 {% if data.widget.navTextColor %}
                   style="color: {{ data.widget.navTextColor }}"
                 {% endif %}
               >
-                {{ data.home.title }}
+                <h4 class="accent-color">{{ data.home.title }}</h4>
               </a>
-            </h4>
-          </li>
+            </li>
 
-          {% for tab in data.home._children %}
-            <li>
-              <h4>
-                <a class="accent-color" href="{{ tab._url }}"
+            {% for tab in data.home._children %}
+              <li>
+                <a class="btn-flat" href="{{ tab._url }}"
                   {% if data.widget.navTextColor %}
                     style="color: {{ data.widget.navTextColor }}"
                   {% endif %}
                 >
-                  {{ tab.title }}
+                  <h4 class="accent-color">{{ tab.title }}</h4>
                 </a>
-              </h4>
-            </li>
-          {% endfor %}
+              </li>
+            {% endfor %}
 
-        </ul>
-      </div>
+          </ul>
+        </div>
 
-      <div class="col m4 offset-m2 s12">
+        <div class="col m4 s12">
+          <div class="container">
+            <div class="row">
+              <div class="col s3">
+                {% if data.global.facebook %}
+                  <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
+                {% endif %}
+              </div>
+              <div class="col s3">
+                {% if data.global.instagram %}
+                  <a class="footer-social-icons" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
+                {% endif %}
+              </div>
+              <div class="col s3">
+                {% if data.global.linkedin %}
+                  <a class="footer-social-icons" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
+                {% endif %}
+              </div>
+              <div class="col s3">
+                {% if data.global.twitter %}
+                  <a class="footer-social-icons" href="{{ data.global.twitter }}" target="_blank"><i class="icon twitter"></i></a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col m4 l3 offset-l1 s12 left-margin">
 
-        <h3>{{ data.widget.aboutTitle or 'About' }}</h3>
+          <h3>{{ data.widget.aboutTitle or data.global.aboutTitle or 'About' }}</h3>
 
-        {% if data.global.phone %}
-          <h4>
-            <a class="accent-color" href="tel:{{ data.global.phone }}"
+
+          {% if data.global.phone %}
+            <a class="btn-flat" href="tel:{{ data.global.phone }}"
               {% if data.widget.navTextColor %}
                 style="color: {{ data.widget.navTextColor }}"
               {% endif %}
             >
-              {{ data.global.phone }}
+              <div class="row">
+                <div class="col s3 m2">
+                  <i class="material-icons left accent-color">local_phone</i>
+                </div>
+                <div class="col s9 m10">
+                  <h4>{{ data.global.phone }}</h4>
+                </div>
+              </div>
             </a>
-          </h4>
-        {% endif %}
-        {% if data.global.email %}
-          <h4>
-            <a class="accent-color" href="mailto:{{ data.global.email }}"
+          {% endif %}
+
+          {% if data.global.email %}
+            <a class="btn-flat" href="mailto:{{ data.global.email }}"
               {% if data.widget.navTextColor %}
                 style="color: {{ data.widget.navTextColor }}"
               {% endif %}
             >
-              {{ data.global.email }}
+              <div class="row">
+                <div class="col s3 m2">
+                  <i class="material-icons left accent-color">mail</i>
+                </div>
+                <div class="col s9 m10">
+                  <h4>{{ data.global.email }}</h4>
+                </div>
+              </div>
             </a>
-          </h4>
-        {% endif %}
-        {% if data.global.address %}
-          <h4 class="accent-color"
-            {% if data.widget.navTextColor %}
-              style="color: {{ data.widget.navTextColor }}"
-            {% endif %}
-          >
-            {{ data.global.address | nlbr }}
-          </h4>
-        {% endif %}
-      </div>
+          {% endif %}
 
+          {% if data.global.address or data.global.zip or data.global.city or data.global.country %}
+            <a class="btn-flat address" target=“_blank”
+              href="http://maps.google.com/?q={{ data.global.street }},{{ data.global.zip }},{{ data.global.city }},{{ data.global.country }}"
+              {% if data.widget.navTextColor %}
+                style="color: {{ data.widget.navTextColor }}"
+              {% endif %}
+            >
+              <div class="row">
+                <div class="col s3 m2">
+                  <i class="material-icons left accent-color">location_city</i>
+                </div>
+                <div class="col s9 m10">
+                  <h4>
+                    {% if data.global.street %}
+                      {{ data.global.street }},
+                    {% endif %}
+                    {% if data.global.zip %}
+                      <br/>{{ data.global.zip }},
+                    {% endif %}
+                    {% if data.global.city %}
+                      {{ data.global.city }},
+                    {% endif %}
+                    {% if data.global.country %}
+                      <br/>{{ data.global.country }}
+                    {% endif %}
+                  </h4>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+
+
+        </div>
+
+      </div>
     </div>
-  </div>
+  {% endif %}
 
   <div class="footer-copyright">
     <div class="footer-container">
@@ -85,12 +145,12 @@
         <div class="col s12 m3 push-m6 l2 push-l8 center">
           {%- if data.global.privacy -%}
           <h4>
-            <a class="right modal-trigger accent-color" href="#modal-1" rel="nofollow">{{ data.widget.footerPrivacy or 'Privacy' }}</a>
+            <a class="right modal-trigger accent-color" href="#modal-1" rel="nofollow">{{ data.widget.footerPrivacy or data.global.footerPrivacy or 'Privacy' }}</a>
           <h4>
             <div id="modal-1" class="modal">
               <div class="modal-content text-darken-4">
 
-                <h3>{{ data.global.footerPrivacy or 'Privacy' }}</h3>
+                <h3>{{ data.widget.footerPrivacy or data.global.footerPrivacy or 'Privacy' }}</h3>
                 <iframe src="/modules/footer-widgets/privacy" width="100%" height="500px"></iframe >
 
               </div>
@@ -101,12 +161,12 @@
         <div class="col s12 m3 push-m6 l2 push-l8 center">
           {%- if data.global.legal -%}
             <h4>
-              <a class="right modal-trigger accent-color" href="#modal-2" rel="nofollow">{{ data.widget.footerLegal or 'Legal' }}</a>
+              <a class="right modal-trigger accent-color" href="#modal-2" rel="nofollow">{{ data.widget.footerLegal or data.global.footerLegal or 'Legal' }}</a>
             <h4>
             <div id="modal-2" class="modal">
               <div class="modal-content text-darken-4">
 
-                <h3>{{ data.global.footerLegal or 'Legal Info' }}</h3>
+                <h3>{{ data.global.footerLegal or data.global.footerLegal or 'Legal Info' }}</h3>
                 <iframe src="/modules/footer-widgets/legal" width="100%" height="500px"></iframe >
 
               </div>

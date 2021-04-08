@@ -2,6 +2,7 @@
 
 {% block main %}
 
+  <div class="nav-content">
   {# Navigation #}
   {{ apos.area(data.page, 'navigationArea', {
     limit: 1,
@@ -18,7 +19,9 @@
       }
     }
   }) }}
+  </div>
 
+  <div class="sections-content">
   {# Sections #}
   {{ apos.area(data.page, 'sectionArea', {
     limit: 1,
@@ -34,11 +37,13 @@
       }
     }
   }) }}
+  </div>
 
+  <div class="footer-content">
   {# Footer #}
   {% if data.global.footerArea.items[0] and not data.page.hideFooter %}
-    {{ apos.area(data.global, 'footerArea', {
-      edit: false,
+    {{ apos.area(data.page, 'footerArea', {
+      limit: 1,
       widgets: {
         'footer': {
           addLabel: 'Add Footer',
@@ -52,6 +57,7 @@
       }
     }) }}
   {% endif %}
+  </div>
 
   {# Contact Button #}
   {% if data.global.showContactButton and not data.page.hideContactButton %}

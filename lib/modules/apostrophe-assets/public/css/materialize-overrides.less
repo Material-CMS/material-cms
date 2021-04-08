@@ -158,7 +158,6 @@ h3 {
 h4 {
   font-size: 1.64rem !important;
 }
-
 .row {
   margin-left: inherit !important;
   margin-right: inherit !important;
@@ -1246,23 +1245,112 @@ form {
 }
 // Footer
 .page-footer {
+	padding-top: 0;
   background-color: inherit;
 	h4 {
-		font-size: 1rem !important;
-		margin: 0.2rem 0;
-		line-height: 130%;
+		font-size: 1.1rem !important;
+		margin: 0;
 	}
 	.container {
 		margin-bottom: 1.3rem;
 		.row {
+			.flex();
 			width: 100%;
+			.col {
+				ul {
+					display: table;
+				}
+				h3 {
+					padding: 0 16px;
+				}
+				.btn-flat {
+					.flex();
+					.flex-align-items(center);
+					.row {
+						.col {
+							padding: 0;
+							.material-icons {
+								line-height: 100%;
+								font-size: 1.4rem !important;
+							}
+							h4 {
+								white-space: nowrap;
+								float: left;
+								line-height: 130%;
+								margin: 0;
+								text-transform: none;
+							}
+						}
+					}
+				}
+				.btn-flat.address {
+					height: 6rem;
+				}
+				.container {
+					width: 100%;
+					height: 100%;
+					.row {
+						.flex();
+						.flex-justify(center);
+						.col {
+							padding: 0;
+							.flex();
+				      .flex-align-items(center);
+				      .flex-justify(center);
+							.footer-social-icons {
+								float: left;
+								display: block;
+								height: 3rem;
+								width: 3rem;
+								.icon {
+									background-size: 2.4rem;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	@media (max-width: 600px) {
 		.container {
+			margin-bottom: 0;
 			.row {
+				display: block;
 				.col {
-					text-align: center;
+					margin: 1.3rem 0;
+					h3 {
+						text-align: center;
+					}
+					ul {
+						width: 100%;
+						li {
+							width: 100%;
+							a {
+								position: relative;
+								width: 100%;
+								h4 {
+									position: absolute;
+									left: 50%;
+									margin: 0 -50% 0 0;
+									transform: translate(-50%, 0);
+								}
+							}
+						}
+					}
+					.btn-flat {
+						width: 70%;
+						margin-left: auto;
+						margin-right: auto;
+						padding-left: 10%;
+					}
+					.container {
+						.row {
+							.col {
+								padding: 0 0.75rem;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -1282,6 +1370,7 @@ form {
 	    .row {
 	      .col {
 	        padding: 0;
+					margin-bottom: .3rem;
 	      }
 	      .center {
 	        .flex();
@@ -1313,9 +1402,9 @@ form {
   }
   .pagination {
     height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+		.flex();
+		.flex-align-items(center);
+		.flex-justify(center);
   }
 }
 // Different Stuff
