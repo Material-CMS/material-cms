@@ -6,7 +6,7 @@
   {% endif %}
 >
   <a href="{{ data.home._url }}" data-target="dropdown-desktop" class="flow-text
-    {% if data.page._url == data.home._url %}
+    {% if data.page._url == data.home._url and data.page.sectionArea.items[0] %}
       dropdown-trigger-hover
     {% endif %}"
     {% if data.widget.navTextColor or data.global.navTextColor %}
@@ -14,7 +14,7 @@
     {% endif %}
   >
     {{ data.home.title }}
-    {% if data.page._url == data.home._url %}
+    {% if data.page._url == data.home._url and data.page.sectionArea.items[0] %}
       <i class="material-icons left">arrow_drop_down</i>
     {% endif %}
   </a>

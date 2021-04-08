@@ -54,8 +54,8 @@
 
       {# Sidenav Trigger #}
       <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
-        {% if data.global.navTextColor %}
-          style="color: {{ data.global.navTextColor }}"
+        {% if data.widget.navTextColor or data.global.navTextColor %}
+          style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
         {% endif %}
       >
         <i class="material-icons">menu</i>
