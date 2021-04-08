@@ -19,9 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add shape divider svg file as well
 - Add page background color chooser
 - Add events pages
-- Add nav feature to show pieces of all pages
-- Jquery initialization improvements
 - All materialize initialization by always and lean in widget itself
+- Kenburns for nav background image
+- Add anchor to rich-text-widet options
+- Make nav logo svg only
+- Add link and page-link widgets for extraLink in text-widgets
+- Add aspect-ratio trick with padding 100% to double-widget
 
 ## [0.9.7 ] - Unreleased
 
@@ -41,6 +44,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated dependencies
 - Add prefixes to pieces to minimize naming conflicts
 - Infinite glue widgets
+- Jquery initialization improvements
+- Reworked navigations
+- Reworked galleries
 
 ### Removed
 - Unnecessary javascript trough lean front end
