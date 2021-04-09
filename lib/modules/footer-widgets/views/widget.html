@@ -10,8 +10,8 @@
 
         <div class="col m4 s12">
 
-          <h3
-          {% if data.widget.footerColor or data.global.footerColor %}
+          <h3 class="accent-color"
+          {% if data.widget.footerTextColor or data.global.footerTextColor %}
             style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
           {% endif %}
           >
@@ -21,23 +21,23 @@
           <ul>
             {# Home #}
             <li>
-              <a class="btn-flat" href="{{ data.home._url }}"
-                {% if data.widget.navTextColor %}
-                  style="color: {{ data.widget.navTextColor }}"
+              <a class="btn-flat accent-color" href="{{ data.home._url }}"
+                {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                  style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
                 {% endif %}
               >
-                <h4 class="accent-color">{{ data.home.title }}</h4>
+                <h4>{{ data.home.title }}</h4>
               </a>
             </li>
 
             {% for tab in data.home._children %}
               <li>
-                <a class="btn-flat" href="{{ tab._url }}"
-                  {% if data.widget.navTextColor %}
-                    style="color: {{ data.widget.navTextColor }}"
+                <a class="btn-flat accent-color" href="{{ tab._url }}"
+                  {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                    style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
                   {% endif %}
                 >
-                  <h4 class="accent-color">{{ tab.title }}</h4>
+                  <h4>{{ tab.title }}</h4>
                 </a>
               </li>
             {% endfor %}
@@ -47,34 +47,67 @@
 
         <div class="col m4 s12">
           <div class="container">
-            <div class="row">
-              <div class="col s3">
-                {% if data.global.facebook %}
-                  <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank"><i class="icon facebook"></i></a>
-                {% endif %}
-              </div>
-              <div class="col s3">
-                {% if data.global.instagram %}
-                  <a class="footer-social-icons" href="{{ data.global.instagram }}" target="_blank"><i class="icon instagram"></i></a>
-                {% endif %}
-              </div>
-              <div class="col s3">
-                {% if data.global.linkedin %}
-                  <a class="footer-social-icons" href="{{ data.global.linkedin }}" target="_blank"><i class="icon linkedin"></i></a>
-                {% endif %}
-              </div>
-              <div class="col s3">
-                {% if data.global.twitter %}
-                  <a class="footer-social-icons" href="{{ data.global.twitter }}" target="_blank"><i class="icon twitter"></i></a>
-                {% endif %}
-              </div>
-            </div>
+            {% if data.global.facebook %}
+              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
+                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                	 viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
+                <path d="M0,0v455.73h242.704V279.691h-59.33v-71.864h59.33v-60.353c0-43.893,35.582-79.475,79.475-79.475h62.025v64.622h-44.382
+                   c-13.947,0-25.254,11.307-25.254,25.254v49.953h68.521l-9.47,71.864h-59.051V455.73H455.73V0H0z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if data.global.instagram %}
+              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
+                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                   viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
+                <path d="M0,0v455.731h455.731V0H0z M361.271,163.944c0.104,2.676,0.161,5.362,0.161,8.067c0,108.339-87.831,196.18-196.18,196.18
+                  c-38.568,0-74.545-11.132-104.875-30.368c-0.007-0.001-0.014-0.002-0.02-0.003l0.02,0.003c0,0,0,0,0,0
+                  c59.293,8.843,101.06-28.888,101.06-28.888c-52.832-4.109-63.271-48.077-63.271-48.077c18.667,3.16,30.368-1.272,30.368-1.272
+                  c-59.465-13.912-54.407-68.329-54.407-68.329c13.77,8.228,29.733,8.864,29.733,8.864c-52.509-46.188-19.607-91.105-19.607-91.105
+                  c55.052,66.668,135.975,71.204,141.289,71.423c-1.167-5.011-1.784-10.23-1.784-15.592c0-37.998,30.814-68.803,68.841-68.803
+                  c19.825,0,37.685,8.37,50.25,21.78c3.483-0.977,6.861-2.031,10.088-3.103c19.493-6.501,33.415-13.932,33.415-13.932
+                  c-3.359,20.129-28.176,37.021-29.951,38.207c-0.066,0.047-0.104,0.066-0.104,0.066c0.038,0,0.085-0.009,0.123-0.009
+                  c19.265-1.927,38.948-10.107,38.948-10.107C389.428,141.433,365.19,160.859,361.271,163.944z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if data.global.linkedin %}
+              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
+                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                   viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
+                <path d="M0,0v455.731h455.731V0H0z M139.94,375.963c0,5.804-4.705,10.509-10.509,10.509H84.71c-5.804,0-10.509-4.705-10.509-10.509
+                	V185.18c0-5.804,4.705-10.509,10.509-10.509h44.721c5.804,0,10.509,4.705,10.509,10.509V375.963z M106.998,145.491
+                	c-20.308,0.411-38.155-16.551-38.151-38.188c0-20.985,17.282-38.105,38.408-38.088c20.873,0.017,38.088,17.257,38.043,38.234
+                	C145.248,129.413,127.02,145.969,106.998,145.491z M386.884,382.153c0,2.41-1.954,4.363-4.364,4.362l-57.152-0.014
+                	c-2.409-0.001-4.362-1.954-4.362-4.363V264.331c0-10.183-4.126-19.407-10.802-26.079c-6.764-6.768-16.149-10.916-26.501-10.799
+                	c-20.279,0.229-36.454,17.068-36.454,37.348v117.323c0,2.41-1.954,4.363-4.364,4.362l-57.011-0.014
+                	c-2.409-0.001-4.361-1.954-4.361-4.362V179.034c0-2.409,1.953-4.363,4.363-4.363h55.795c2.409,0,4.363,1.953,4.363,4.363v23.418
+                	c0.005-0.01,0.225,0.018,0.599,0.075c1.078-1.95,2.252-3.839,3.52-5.658c11.628-16.688,30.96-27.606,52.842-27.606h11.47
+                	c39.996,0,72.42,32.423,72.42,72.42V382.153z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if data.global.twitter %}
+              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
+                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                   viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
+                <path d="M0,0v455.731h455.731V0H0z M361.271,163.944c0.104,2.676,0.161,5.362,0.161,8.067c0,108.339-87.831,196.18-196.18,196.18
+                  c-38.568,0-74.545-11.132-104.875-30.368c-0.007-0.001-0.014-0.002-0.02-0.003l0.02,0.003c0,0,0,0,0,0
+                  c59.293,8.843,101.06-28.888,101.06-28.888c-52.832-4.109-63.271-48.077-63.271-48.077c18.667,3.16,30.368-1.272,30.368-1.272
+                  c-59.465-13.912-54.407-68.329-54.407-68.329c13.77,8.228,29.733,8.864,29.733,8.864c-52.509-46.188-19.607-91.105-19.607-91.105
+                  c55.052,66.668,135.975,71.204,141.289,71.423c-1.167-5.011-1.784-10.23-1.784-15.592c0-37.998,30.814-68.803,68.841-68.803
+                  c19.825,0,37.685,8.37,50.25,21.78c3.483-0.977,6.861-2.031,10.088-3.103c19.493-6.501,33.415-13.932,33.415-13.932
+                  c-3.359,20.129-28.176,37.021-29.951,38.207c-0.066,0.047-0.104,0.066-0.104,0.066c0.038,0,0.085-0.009,0.123-0.009
+                  c19.265-1.927,38.948-10.107,38.948-10.107C389.428,141.433,365.19,160.859,361.271,163.944z"/>
+                </svg>
+              </a>
+            {% endif %}
           </div>
         </div>
         <div class="col m4 l3 offset-l1 s12 left-margin">
 
-          <h3
-            {% if data.widget.footerColor or data.global.footerColor %}
+          <h3 class="accent-color"
+            {% if data.widget.footerTextColor or data.global.footerTextColor %}
               style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
             {% endif %}
           >
@@ -84,16 +117,28 @@
 
           {% if data.global.phone %}
             <a class="btn-flat" href="tel:{{ data.global.phone }}"
-              {% if data.widget.navTextColor %}
-                style="color: {{ data.widget.navTextColor }}"
+              {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
               {% endif %}
             >
               <div class="row">
                 <div class="col s3 m2">
-                  <i class="material-icons left accent-color">local_phone</i>
+                  <i class="material-icons left accent-color"
+                    {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                      style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+                    {% endif %}
+                  >
+                    local_phone
+                  </i>
                 </div>
                 <div class="col s9 m10">
-                  <h4>{{ data.global.phone }}</h4>
+                  <h4 class="text-color"
+                    {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                      style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+                    {% endif %}
+                  >
+                    {{ data.global.phone }}
+                  </h4>
                 </div>
               </div>
             </a>
@@ -101,34 +146,51 @@
 
           {% if data.global.email %}
             <a class="btn-flat" href="mailto:{{ data.global.email }}"
-              {% if data.widget.navTextColor %}
-                style="color: {{ data.widget.navTextColor }}"
+              {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
               {% endif %}
             >
               <div class="row">
                 <div class="col s3 m2">
-                  <i class="material-icons left accent-color">mail</i>
+                  <i class="material-icons left accent-color"
+                    {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                      style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+                    {% endif %}
+                  >
+                    mail
+                  </i>
                 </div>
                 <div class="col s9 m10">
-                  <h4>{{ data.global.email }}</h4>
+                  <h4 class="text-color"
+                    {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                      style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+                    {% endif %}
+                  >
+                    {{ data.global.email }}
+                  </h4>
                 </div>
               </div>
             </a>
           {% endif %}
 
           {% if data.global.address or data.global.zip or data.global.city or data.global.country %}
-            <a class="btn-flat address" target=“_blank”
-              href="http://maps.google.com/?q={{ data.global.street }},{{ data.global.zip }},{{ data.global.city }},{{ data.global.country }}"
-              {% if data.widget.navTextColor %}
-                style="color: {{ data.widget.navTextColor }}"
-              {% endif %}
-            >
+            <a class="btn-flat address" target=“_blank” href="http://maps.google.com/?q={{ data.global.street }},{{ data.global.zip }},{{ data.global.city }},{{ data.global.country }}">
               <div class="row">
                 <div class="col s3 m2">
-                  <i class="material-icons left accent-color">location_city</i>
+                  <i class="material-icons left accent-color"
+                    {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                      style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+                    {% endif %}
+                  >
+                    location_city
+                  </i>
                 </div>
                 <div class="col s9 m10">
-                  <h4>
+                  <h4 class="text-color"
+                    {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                      style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+                    {% endif %}
+                  >
                     {% if data.global.street %}
                       {{ data.global.street }},
                     {% endif %}
@@ -161,7 +223,14 @@
         <div class="col s12 m3 push-m6 l2 push-l8 center">
           {%- if data.global.privacy -%}
           <h4>
-            <a class="right modal-trigger accent-color" href="#modal-1" rel="nofollow">{{ data.widget.footerPrivacy or data.global.footerPrivacy or 'Privacy' }}</a>
+            <a href="#modal-1" rel="nofollow"
+              class="right modal-trigger accent-color"
+              {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+              {% endif %}
+            >
+              {{ data.widget.footerPrivacy or data.global.footerPrivacy or 'Privacy' }}
+            </a>
           <h4>
             <div id="modal-1" class="modal">
               <div class="modal-content text-darken-4">
@@ -177,7 +246,14 @@
         <div class="col s12 m3 push-m6 l2 push-l8 center">
           {%- if data.global.legal -%}
             <h4>
-              <a class="right modal-trigger accent-color" href="#modal-2" rel="nofollow">{{ data.widget.footerLegal or data.global.footerLegal or 'Legal' }}</a>
+              <a href="#modal-2" rel="nofollow"
+                class="right modal-trigger accent-color"
+                {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                  style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+                {% endif %}
+              >
+                {{ data.widget.footerLegal or data.global.footerLegal or 'Legal' }}
+              </a>
             <h4>
             <div id="modal-2" class="modal">
               <div class="modal-content text-darken-4">
@@ -192,7 +268,13 @@
 
         <div class="col s12 m6 pull-m6 l8 pull-l4 copyright-center">
           {%- if data.global.creationDate or data.global.copyright -%}
-            <h4 class="text-color"> © {{ data.global.creationDate }} {{ data.global.copyright }} </h4>
+            <h4 class="text-color"
+              {% if data.widget.footerTextColor or data.global.footerTextColor %}
+                style="color: {{ data.widget.footerTextColor or data.global.footerTextColor }}"
+              {% endif %}
+            >
+              © {{ data.global.creationDate }} {{ data.global.copyright }}
+            </h4>
           {%- endif -%}
         </div>
 

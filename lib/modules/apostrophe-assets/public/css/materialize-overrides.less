@@ -151,6 +151,10 @@ body {
 iframe {
   border: none;
 }
+// Colors
+.text-color {
+	color: #000;
+}
 // Typo
 h3 {
   font-size: 1.64rem !important;
@@ -1292,25 +1296,19 @@ form {
 					height: 6rem;
 				}
 				.container {
+					.flex();
+	        .flex-align-items(center);
+	        .flex-justify(center);
 					width: 100%;
 					height: 100%;
-					.row {
+					.footer-social-icons {
 						.flex();
+						.flex-align-items(center);
 						.flex-justify(center);
-						.col {
-							padding: 0;
-							.flex();
-				      .flex-align-items(center);
-				      .flex-justify(center);
-							.footer-social-icons {
-								float: left;
-								display: block;
-								height: 3rem;
-								width: 3rem;
-								.icon {
-									background-size: 2.4rem;
-								}
-							}
+						width: 100%;
+						.radius {
+							margin: .2rem .6rem;
+							min-width: 3rem;
 						}
 					}
 				}
