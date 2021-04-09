@@ -1,53 +1,8 @@
 {% extends "layout.html" %}
 
-{# Imports #}
-{% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
-{% import 'apostrophe-palette-widgets:macros.html' as palette %}
-
-{# Seo and Open Graph fields #}
-{% if data.page.seoTitle %}
-  {% set title = data.page.seoTitle %}
-{% else %}
-  {% set title = data.page.title %}
-{% endif %}
-
-{# Page Title depends on variables above #}
-{% block title %}{{ title }}
-{% endblock %}
-
-{# Additional header elements #}
-{% block extraHead %}
-
-  {# Palette #}
-  {{ palette.stylesheetLink(data.global) }}
-  {{ palette.stylesheetTag() }}
-
-  {# Includes #}
-  {% include "apostrophe-assets:styles.html" %}
-  {% include "apostrophe-seo:view.html" %}
-  {% include "apostrophe-open-graph:view.html" %}
-
-  {# Favicons #}
-  {{ favicons.renderLinks(apos, data.global) }}
-
-{% endblock %}
-
-{# Insert Palette #}
-{% block beforeMain %}
-  {% if data.user %}
-    {{ palette.palette(data.global, 'palette') }}
-  {% endif %}
-{% endblock %}
-
-{# Main Block #}
 {% block main %}
 
-  {# Navigation #}
-  {% include "navigations-widgets:nav-go-back.html" %}
-
-  {# Main Content #}
   <div class="main-content">
-
     <div class="pages-container">
       <div class="container">
 
@@ -139,17 +94,6 @@
 
       </div>
     </div>
-
-    {# Contact Button #}
-    {% if data.global.showContactButton and not data.page.hideContactButton %}
-      {% include "btn-widgets:widget.html" %}
-    {% endif %}
-
-    {# Footer #}
-    <div class="bottom-content">
-      {% include "footer-widgets:widget.html" %}
-    </div>
-
   </div>
 
 {% endblock %}
