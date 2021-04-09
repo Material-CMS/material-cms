@@ -78,22 +78,20 @@
 
   {# Footer #}
   <div class="footer-content">
-    {% if not data.page.hideFooter %}
-      {{ apos.area(data.page, 'footerArea', {
-        limit: 1,
-        widgets: {
-          'footer': {
-            addLabel: 'Add Footer',
-            editLabel: 'Change Footer',
-            controls: {
-              movable: false,
-              removable: true,
-              position: 'top-left'
-            }
+    {{ apos.area(data.page, 'footerArea', {
+      limit: 1,
+      widgets: {
+        'footer': {
+          addLabel: 'Add Footer',
+          editLabel: 'Change Footer',
+          controls: {
+            movable: false,
+            removable: true,
+            position: 'top-left'
           }
         }
-      }) }}
-    {% endif %}
+      }
+    }) }}
   </div>
 
   {# Contact Button #}
