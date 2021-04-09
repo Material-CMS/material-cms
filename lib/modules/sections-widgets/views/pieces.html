@@ -20,11 +20,9 @@
   {% endif %}
 
   {# Section #}
-  <div
-    id="{{ piece.slug }}"
-    class="section page"
+  <div id="{{ piece.slug }}" class="section"
     {% if piece.color %}
-      style="background-color:{{ piece.color }}"
+      style="background-color:{{ piece.color }};"
     {% endif %}
   >
 
@@ -76,7 +74,7 @@
         <img
           src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
           srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
-          sizes="(max-width:600px) 50vw, 40vw"
+          sizes="(max-width:600px) 50vw, 60vw"
           alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
         >
       </div>
@@ -119,7 +117,11 @@
     {% endif %}
 
     {# Main Content#}
-    <div class="main-content{% if piece.sectionStyle == 'slide' %} half{% endif %}">
+    <div class="main-content{% if piece.sectionStyle == 'slide' %} half{% endif %}"
+      {% if data.widget.sectionMinHeight and piece.sectionStyle == 'default' %}
+        style="min-height: 100vh;"
+      {% endif %}
+    >
 
     {% if piece.container %}
       <div class="container">
