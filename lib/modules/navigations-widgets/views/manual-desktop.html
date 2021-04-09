@@ -27,7 +27,7 @@
 
     {% if item._subpages %}
       {# Dropdown Desktop #}
-      <ul class="dropdown-content" id="{{ item._id }}">
+      <ul class="dropdown-content nav-color" id="{{ item._id }}">
           {% for subpage in item._subpages %}
             <li>
               <a href="{{ subpage._url }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"

@@ -21,7 +21,7 @@
 
   {# Sections of Home Loop Dropdown #}
   {% if data.page._url == data.home._url %}
-    <ul class="dropdown-content" id="dropdown-mobile">
+    <ul class="dropdown-content nav-color" id="dropdown-mobile">
 
       {% for piece in pieces %}
         <li>
@@ -63,7 +63,7 @@
 
     {# Dropdown #}
     {% if (data.page._url == tab._url and data.page.sectionArea.items[0]) or tab._children.length %}
-      <ul class="dropdown-content" id="{{ tab._id }}-mobile">
+      <ul class="dropdown-content nav-color" id="{{ tab._id }}-mobile">
 
         {# Sections of Tabs Loop Dropdown #}
         {% if data.page._url == tab._url and data.page.sectionArea.items[0] %}
