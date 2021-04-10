@@ -1,7 +1,6 @@
 {# Get last piece of sectionArea from pages #}
 {# THIS IS NICE! for getting data from other widgets or pieces #}
-{% set pieces = data.page.sectionArea.items[0]._pieces %}
-{% set lastPiece = pieces[pieces.length - 1] %}
+{% set lastPiece = data.options.pieces[data.options.pieces.length - 1] %}
 {% set shapeDividerHeight = lastPiece.shapeDividerBottom.items[0].shapeDividerHeight %}
 {# Set Colors #}
 {% set footerColor = data.widget.footerColor or data.global.footerColor %}
@@ -26,22 +25,22 @@
             style="color: {{ footerTextColor }}"
           {% endif %}
           >
-            {{ data.global.websiteTitle or data.home.title }}
+            {{ data.global.websiteTitle or data.options.homeTitle }}
           </h3>
 
           <ul>
             {# Home #}
             <li>
-              <a class="btn-flat accent-color" href="{{ data.home._url }}"
+              <a class="btn-flat accent-color" href="{{ data.options.homeUrl }}"
                 {% if footerTextColor %}
                   style="color: {{ footerTextColor }}"
                 {% endif %}
               >
-                <h4>{{ data.home.title }}</h4>
+                <h4>{{ data.options.homeTitle }}</h4>
               </a>
             </li>
 
-            {% for tab in data.home._children %}
+            {% for tab in data.options.homeChildrenn %}
               <li>
                 <a class="btn-flat accent-color" href="{{ tab._url }}"
                   {% if footerTextColor %}
