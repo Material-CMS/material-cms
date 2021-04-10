@@ -24,6 +24,11 @@
     .apos-empty {
       height: 100%;
     }
+    .apos-ui {
+      .apos-area-widget-controls {
+        position: fixed;
+      }
+    }
   }
   .sections-content {
     min-height: calc(90vh - 64px);
@@ -33,6 +38,10 @@
       width: 100%;
       top: 50%;
       transform: translate(0, -50%)
+    }
+    .apos-empty[data-dot-path="shapeDividerTop"],
+    .apos-empty[data-dot-path="shapeDividerBottom"] {
+      height: 5rem;
     }
   }
   .fixed-action-btn {

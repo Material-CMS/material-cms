@@ -61,7 +61,8 @@ var apos = require('apostrophe')({
     'sections-widgets': {
       player: true
     },
-    'share-widgets':{},
+    'share-widgets': {},
+    'shape-divider-path-widgets': {},
     'slider-widgets':{
       player: true
     },

@@ -1,0 +1,23 @@
+<div class="custom-shape-divider">
+  <svg
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+    width="100"
+    viewBox="{{ data.widget.shapeDividerViewBox }}"
+    {% if data.widget.shapeDividerHeight %}
+      height="{{ data.widget.shapeDividerHeight }}rem"
+    {% endif %}
+    {% if data.widget.shapeDividerInvert %}
+      style="transform: rotateY(180deg);"
+    {% endif %}
+  >
+      <path
+        class="shape-fill"
+        d="{{ data.widget.shapeDivider }}"
+        {% if data.widget.shapeDividerColor  %}
+          style="fill:{{ data.widget.shapeDividerColor }}"
+        {% endif %}
+      ></path>
+  </svg>
+</div>

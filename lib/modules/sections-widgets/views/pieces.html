@@ -1,5 +1,6 @@
 {% set pieces = data.widget._pieces or data.pieces %}
 
+
 {% for piece in pieces %}
 
   {# Parallax Container #}
@@ -16,57 +17,39 @@
         >
       </div>
 
+      {# Top Shape Divider #}
+      {% if piece.shapeDividerTop %}
+        <div class="shape-divider-top"
+          {% if piece.backgroundColor or data.global.backgroundColor %}
+            style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
+          {% endif %}
+        >
+          {{ apos.area(piece, 'shapeDividerTop', {
+            widgets: {
+              'shape-divider-path': {
+                addLabel: 'Add Shape Divider',
+                editLabel: 'Change Shape Divider',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  movable: false,
+                  position: 'top-left'
+                }
+              }
+            }
+          }) }}
+        </div>
+      {% endif %}
+
     </div>
   {% endif %}
 
   {# Section #}
   <div id="{{ piece.slug }}" class="section"
-    {% if piece.color %}
-      style="background-color:{{ piece.color }};"
+    {% if piece.backgroundColor %}
+      style="background-color:{{ piece.backgroundColor }};"
     {% endif %}
   >
-
-    {# Shape Fill Top #}
-    {% if piece.shapeFillTop %}
-      <div class="custom-shape-divider top"
-      {% if piece.shapeFillHeight or piece.sectionStyle == 'slide' %}
-        style="
-          {% if piece.shapeFillHeight and piece.sectionStyle == 'slide' %}
-            top: calc(-{{ piece.shapeFillHeight }}px + 50vh);
-          {% else %}
-            top: -{{ piece.shapeFillHeight }}px;
-          {% endif %}
-        "
-      {% endif %}
-      >
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          {% if piece.shapeFillTopInvert or piece.shapeFillHeight %}
-            style="
-              {% if piece.shapeFillTopInvert %}transform: rotateY(180deg);{% endif %}
-              {% if piece.shapeFillHeight %}height: {{ piece.shapeFillHeight }}px;{% endif %}
-            "
-          {% endif %}
-        >
-            <path
-              class="shape-fill"
-              d="{{ piece.shapeFillTop }}"
-              {% if piece.color %}
-                style="fill:{{ piece.color }}"
-              {% else %}
-                {% if data.global.backgroundColor %}
-                  style="fill:{{ data.global.backgroundColor }}"
-                {% else %}
-                  style="fill:#fff"
-                {% endif %}
-              {% endif %}
-            ></path>
-        </svg>
-      </div>
-    {% endif %}
 
     {# Background Image #}
     {% if piece._backgroundImage and not piece.backgroundImageParallax %}
@@ -249,42 +232,32 @@
     {% endif %}
 
     </div>
-
-    {# Shape Fill Bottom #}
-    {% if piece.shapeFillBottom %}
-      <div class="custom-shape-divider bottom"
-        {% if piece.shapeFillHeight %}
-          style="bottom: -{{ piece.shapeFillHeight }}px"
-        {% endif %}
-      >
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          {% if piece.shapeFillBottomInvert or piece.shapeFillHeight %}
-            style="
-              {% if piece.shapeFillBottomInvert %}transform: rotateY(180deg);{% endif %}
-              {% if piece.shapeFillHeight %}height: {{ piece.shapeFillHeight }}px;{% endif %}
-            "
-          {% endif %}
-          >
-            <path
-              class="shape-fill"
-              d="{{ piece.shapeFillBottom}}"
-              {% if piece.color %}
-                style="fill:{{ piece.color }}"
-              {% else %}
-                {% if data.global.backgroundColor %}
-                  style="fill:{{ data.global.backgroundColor }}"
-                {% else %}
-                  style="fill:#fff"
-                {% endif %}
-              {% endif %}
-            ></path>
-        </svg>
-      </div>
-    {% endif %}
-
   </div>
+
+
+  {# Bottom Shape Divider #}
+  {% if piece.shapeDividerBottom %}
+    <div class="shape-divider-bottom"
+      {% if piece.backgroundColor or data.global.backgroundColor %}
+        style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
+      {% endif %}
+    >
+      {{ apos.area(piece, 'shapeDividerBottom', {
+        limit: 1,
+        widgets: {
+          'shape-divider-path': {
+            addLabel: 'Add Shape Divider',
+            editLabel: 'Change Shape Divider',
+            controls: {
+              cloneable: false,
+              removable: true,
+              movable: false,
+              position: 'top-left'
+            }
+          }
+        }
+      }) }}
+    </div>
+  {% endif %}
+
 {% endfor %}
