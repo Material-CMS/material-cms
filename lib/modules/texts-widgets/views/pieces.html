@@ -82,7 +82,7 @@
             {% endif %}
           </div>
 
-          {% if piece.text.items[0] or piece.extraLink %}
+          {% if piece.text.items[0] or piece.linkArea.items[0] %}
 
             {% if piece._url and piece.blogOn == true %}
 
@@ -141,19 +141,16 @@
                         </div>
                       {% endif %}
 
-                      {% if piece.extraLink %}
+                      {% if piece.linkArea.items[0] %}
+                      {% set item = piece.linkArea.items[0] %}
                         <div class="col s12{% if piece.text.items <= 1 %} m12 center-align{% else %} m6 right-align{% endif %}">
                           <a
                             class="btn-flat"
-                            href="{{ piece.extraLink }}"
+                            href="{{ item.url or item._page._url }}"
                             target="_blank"
                             style="color:{{ data.global.accentColor }}"
                           >
-                            {% if piece.linkText %}
-                              {{ piece.linkText }}
-                            {% else %}
-                              link
-                            {% endif %}
+                            {{ item.label or item._page.title }}
                           </a>
                         </div>
                       {% endif %}

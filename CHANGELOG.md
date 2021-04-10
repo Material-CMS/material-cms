@@ -23,7 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Kenburns for nav background image
 - Add anchor to rich-text-widet options
 - Make nav logo svg only
-- Add link and page-link widgets for extraLink in text-widgets
 - Add aspect-ratio trick with padding 100% to double-widget
 
 ## [0.9.7 ] - Unreleased
@@ -47,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Jquery initialization improvements
 - Reworked navigations
 - Reworked galleries
+- Add link and page-link widgets for extraLink in text-widgets
 
 ### Removed
 - Unnecessary javascript trough lean front end
