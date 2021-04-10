@@ -5,11 +5,19 @@
 module.exports = {
   baseUrl: 'http://localhost:3000',
   modules: {
+    // Minify Html
+    'apostrophe-templates': {
+      minify: (process.env.ENV === 'prod') // minify: true
+    },
+    // Minify Assets
+    'apostrophe-assets': {
+      minify: (process.env.ENV === 'prod') // minify: true
+    },
     // Set a Secre for your Session
     // https://docs.apostrophecms.org/howtos/storing-sessions-in-redis.html#what-about-caches
     'apostrophe-express': {
       session: {
-        secret: 'put-your-secret-here'
+        secret: 'YOUR_SECRET'
       }
     }
     // Email Settings for nodemailer
@@ -56,14 +64,6 @@ module.exports = {
     // Change default Port
     'apostrophe-express': {
       // port: 3001
-    },
-    // Minify Html
-    'apostrophe-templates': {
-      minify: (process.env.ENV === 'prod') // minify: true
-    },
-    // Minify Assets
-    'apostrophe-assets': {
-      minify: (process.env.ENV === 'prod') // minify: true
     },
     // DB performance test tool
     'apostrophe-profiler': {

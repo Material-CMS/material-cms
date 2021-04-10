@@ -25,16 +25,18 @@ You can build a your content management system in 10 Minutes and modify your web
 
 ````bash
 # clone repository
-git clone https://github.com/felixlberg/fullpage-cms
+git clone https://github.com/felixlberg/material-cms
 # cd into the new project
-cd fullpage-cms
+cd material-cms
 # Install dependencies
 npm install
+# Copy local.example.js to data and add a individual session secret to be able to login
+cp local.example.js data/local.js
 # Add an admin user to the admin group; prompts for password
 node app.js apostrophe-users:add admin admin
 # Go go go!
 mpm start
-# Open Browser "http://localhost:3000/login" to login with your user to add first content
+# Open Browser "http://localhost:3000/login" to login with your user to add content
 ````
 
 ### Email sending
