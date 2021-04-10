@@ -28,7 +28,7 @@
     >
 
     {# Brand Logo #}
-    <a class="brand-logo" href="{{ data.home._url }}">
+    <a class="brand-logo" href="{{ data.options.homeUrl }}">
       {% if data.widget._logo %}
         <img
           src="{{ apos.attachments.url(data.widget._logo.attachment, { size: 'full' }) }}"
@@ -46,7 +46,7 @@
               style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
             {% endif %}
             >
-            {{ data.home.title }}
+            {{ data.options.homeTitle }}
           </h1>
         {% endif %}
       {% endif %}

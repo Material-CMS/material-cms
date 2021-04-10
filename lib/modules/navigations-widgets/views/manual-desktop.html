@@ -3,7 +3,7 @@
 {# Nav Items #}
 {% for item in piece.linkArea.items %}
   <li
-    {% if data.page._url == item._page._url %}
+    {% if data.options.pageUrl == item._page._url %}
       class="active"
     {% endif %}
   >

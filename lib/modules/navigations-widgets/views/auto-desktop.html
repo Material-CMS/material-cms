@@ -1,29 +1,28 @@
-{% set pieces = data.page.sectionArea.items[0]._pieces or data.pieces %}
 {# Home #}
 <li
-  {% if data.page._url == data.home._url %}
+  {% if data.options.pageUrl == data.options.homeUrl %}
     class="active"
   {% endif %}
 >
-  <a href="{{ data.home._url }}" data-target="dropdown-desktop" class="flow-text
-    {% if data.page._url == data.home._url and data.page.sectionArea.items[0] %}
+  <a href="{{ data.options.homeUrl }}" data-target="dropdown-desktop" class="flow-text
+    {% if data.options.pageUrl == data.options.homeUrl and data.options.items %}
       dropdown-trigger-hover
     {% endif %}"
     {% if data.widget.navTextColor or data.global.navTextColor %}
       style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
     {% endif %}
   >
-    {{ data.home.title }}
-    {% if data.page._url == data.home._url and data.page.sectionArea.items[0] %}
+    {{ data.options.homeTitle }}
+    {% if data.options.pageUrl == data.options.homeUrl and data.options.items %}
       <i class="material-icons left">arrow_drop_down</i>
     {% endif %}
   </a>
 
   {# Sections of Home Loop Dropdown #}
-  {% if data.page._url == data.home._url %}
+  {% if data.options.pageUrl == data.options.homeUrl %}
     <ul class="dropdown-content nav-color" id="dropdown-desktop">
 
-      {% for piece in pieces %}
+      {% for piece in data.options.pieces %}
         <li>
           <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
             {% if data.widget.navTextColor or data.global.navTextColor %}
@@ -41,9 +40,9 @@
 </li>
 
 {# Tabs Loop #}
-{% for tab in data.home._children %}
+{% for tab in data.options.homeChildren %}
   <li
-    {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+    {% if data.options.pageUrl == tab._url %}
       class="active"
     {% endif %}
   >
@@ -62,12 +61,12 @@
     </a>
 
     {# Dropdown #}
-    {% if (data.page._url == tab._url and data.page.sectionArea.items[0]) or tab._children.length %}
+    {% if (data.options.pageUrl == tab._url and data.options.items) or tab._children.length %}
       <ul class="dropdown-content nav-color" id="{{ tab._id }}">
 
         {# Sections of Tabs Loop Dropdown #}
-        {% if data.page._url == tab._url and data.page.sectionArea.items[0] %}
-          {% for piece in pieces %}
+        {% if data.options.pageUrl == tab._url and data.options.items %}
+          {% for piece in data.options.pieces %}
             <li>
               <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
                 {% if data.widget.navTextColor or data.global.navTextColor %}
@@ -84,7 +83,7 @@
         {# Children of Tabs Loop Dropdown #}
         {% for child in tab._children %}
           <li
-          {% if data.page._url == child._url %}
+          {% if data.options.pageUrl == child._url %}
             class="active"
           {% endif %}
           >
@@ -98,7 +97,7 @@
           </li>
 
           {# Sections of Children of Tabs Dropdown Loop #}
-          {% if data.page._url == child._url and data.page.sectionArea.items[0] %}
+          {% if data.options.pageUrl == child._url and data.options.items %}
             <li class="divider" tabindex="-1"></li>
             {% for piece in pieces %}
               <li>

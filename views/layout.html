@@ -52,6 +52,12 @@
       limit: 1,
       widgets: {
         'navigations': {
+          homeUrl: data.home._url,
+          homeTitle: data.home.title,
+          homeChildren: data.home._children,
+          pageUrl: data.page._url,
+          items: data.page.sectionArea.items[0] or data.pieces.length,
+          pieces: data.page.sectionArea.items[0]._pieces or data.pieces,
           addLabel: 'Add Navigation',
           editLabel: 'Change Navigation',
           controls: {
