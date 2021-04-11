@@ -12,6 +12,7 @@
         {% set relationship = entry.relationship %}
 
         <li>
+
           <div class="gradient-overlay">
             <img data-image
               src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
@@ -26,6 +27,7 @@
               {% endif -%}
             >
           </div>
+
           <div class="caption {{ image.align }}">
 
             {% if data.widget.title %}
