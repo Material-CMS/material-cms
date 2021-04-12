@@ -16,18 +16,19 @@
         >
       </div>
 
-      {# Top Shape Divider #}
-      {% if piece.shapeDividerTop %}
-        <div class="shape-divider-top"
+      {# Top Shape Divider Parallax #}
+      {% if piece.shapeDividerTop.items[0] %}
+        <div class="shape-divider-top divider-parallax"
           {% if piece.backgroundColor or data.global.backgroundColor %}
             style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
           {% endif %}
         >
           {{ apos.area(piece, 'shapeDividerTop', {
+            limit: 1,
             widgets: {
               'shape-divider-path': {
-                addLabel: 'Add Shape Divider',
-                editLabel: 'Change Shape Divider',
+                addLabel: 'Add Top Shape Divider',
+                editLabel: 'Change Top Shape Divider',
                 controls: {
                   cloneable: false,
                   removable: true,
@@ -45,10 +46,42 @@
 
   {# Section #}
   <div id="{{ piece.slug }}" class="section"
-    {% if piece.backgroundColor %}
-      style="background-color:{{ piece.backgroundColor }};"
+    {% if piece.backgroundColor or piece.shapeDividerTop.items[0].shapeDividerHeight %}
+      style="
+        {% if piece.backgroundColor %}
+          background-color:{{ piece.backgroundColor }};
+        {% endif %}
+        {% if piece.shapeDividerTop.items[0].shapeDividerHeight %}
+          padding-top: {{ piece.shapeDividerTop.items[0].shapeDividerHeight }}rem;
+        {% endif %}
+        "
     {% endif %}
   >
+
+    {# Top Shape Divider #}
+    {% if piece.shapeDividerTop.items[0] and not (piece._backgroundImage and piece.backgroundImageParallax) %}
+      <div class="shape-divider-top"
+        {% if piece.backgroundColor or data.global.backgroundColor %}
+          style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
+        {% endif %}
+      >
+        {{ apos.area(piece, 'shapeDividerTop', {
+          limit: 1,
+          widgets: {
+            'shape-divider-path': {
+              addLabel: 'Add Top Shape Divider',
+              editLabel: 'Change Top Shape Divider',
+              controls: {
+                cloneable: false,
+                removable: true,
+                movable: false,
+                position: 'top-left'
+              }
+            }
+          }
+        }) }}
+      </div>
+    {% endif %}
 
     {# Background Image #}
     {% if piece._backgroundImage and not piece.backgroundImageParallax %}
@@ -108,7 +141,6 @@
     {% if piece.container %}
       <div class="container">
     {% endif %}
-
         <div class="widgets-container">
 
           {# Header #}
@@ -245,7 +277,7 @@
 
 
   {# Bottom Shape Divider #}
-  {% if piece.shapeDividerBottom %}
+  {% if piece.shapeDividerBottom.items[0] %}
     <div class="shape-divider-bottom"
       {% if piece.backgroundColor or data.global.backgroundColor %}
         style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
@@ -255,13 +287,13 @@
         limit: 1,
         widgets: {
           'shape-divider-path': {
-            addLabel: 'Add Shape Divider',
-            editLabel: 'Change Shape Divider',
+            addLabel: 'Add Bottom Shape Divider',
+            editLabel: 'Change Bottom Shape Divider',
             controls: {
               cloneable: false,
               removable: true,
               movable: false,
-              position: 'top-left'
+              position: 'top-right'
             }
           }
         }

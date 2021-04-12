@@ -43,6 +43,8 @@
     .apos-empty[data-dot-path="shapeDividerBottom"] {
       height: 5rem;
     }
+
+
   }
   .fixed-action-btn {
     width: inherit;
@@ -274,6 +276,19 @@ fieldset[data-name="linkArea"] {
         span {
           text-transform: uppercase;
           color: @red;
+        }
+      }
+      // Shape Diviers Admin view
+      fieldset[data-name="shapeDividerTop"] {
+        .custom-shape-divider {
+          transform: rotate(180deg);
+        }
+      }
+      fieldset {
+        .custom-shape-divider {
+          svg {
+            width: 100%;
+          }
         }
       }
     }
