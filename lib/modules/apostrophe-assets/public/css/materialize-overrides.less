@@ -313,7 +313,6 @@ h4 {
 .main-content {
   .flex();
   .flex-align-items(center);
-  width: 100vw;
   padding-top: 64px;
 	padding-bottom: 64px;
 }
@@ -381,18 +380,75 @@ h4 {
 }
 // Widgets
 .widgets-container {
+	.flex();
+	.flex-align-items(center);
+	.flex-justify(center);
   width: 100%;
-  margin: 64px 0;
-  .widget {
-    margin-bottom: 64px;
-    .col {
-      padding: 0;
-    }
-    .gallery {
-      margin-bottom: 3.7rem;
-    }
-  }
+  margin: 4rem 0;
+	.apos-area {
+		width: 100%;
+	  .row.widget {
+	    .col {
+	      padding: 0;
+				// Double Widgets
+				.row.double {
+					.flex();
+					.flex-align-items(center);
+					.flex-justify(center);
+					
+					.col.force-aspect-ratio {
+						position: relative;
+						margin-left: 0;
+						margin-right: 0;
+						.double-container {
+							position: absolute;
+							top: 0;
+							left: 0;
+							bottom: 0;
+							right: 0;
+							.apos-area {
+								height: 100%;
+								.apos-area-widgets {
+									height: 100%;
+									.apos-area-widget-wrapper {
+										height: 100%;
+										.apos-area-widget {
+											height: 100%;
+											.row.widget {
+												height: 100%;
+												.col {
+													height: 100%;
+													.radius {
+														height: 100%;
+														.card {
+															height: 100%;
+															.card-image {
+																height: 100%;
+																img {
+																	width: auto;
+																	height: 100%;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+	    }
+			// Gallery is this still needed ?
+	    .gallery {
+	      margin-bottom: 3.7rem;
+	    }
+	  }
+	}
 }
+
 // Container
 .container {
   .flex();
@@ -868,10 +924,6 @@ h4 {
     width: 90px !important;
     height: 90px !important;
   }
-}
-// Double Widgets
-.double {
-  .flex();
 }
 // Icons
 .material-icons {

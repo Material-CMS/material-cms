@@ -1,79 +1,111 @@
-<div class="double row">
+<div class="row widget">
+  <div class="col s12">
 
-  <div class="col s12 m6 l6">
-      {{ apos.area(data.widget, 'cardLeft', {
-        limit: 2,
-        widgets: {
-          'card': {
-            aspectRatio: [ 2, 1 ],
-            size: 'two-thirds',
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
+    <div class="row double">
+
+      <div class="col s12 m6 l6{% if data.widget.forceAspectRatio %} force-aspect-ratio{% endif %}"
+        style="
+          width: {{ data.widget.widgetsWidth }}%;
+          margin-right: {{ data.widget.widgetsMargin }}rem;
+          {% if data.widget.forceAspectRatio %}
+            padding-top: {{ data.widget.widgetsWidth }}%;
+          {% endif %}
+          "
+      >
+        <div class="double-container">
+
+          {{ apos.area(data.widget, 'widgetsLeft', {
+            limit: 2,
+            widgets: {
+              'card': {
+                aspectRatio: [ 1, 1 ],
+                size: 'two-thirds',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'events': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'video': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
             }
-          },
-          'events': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
+          }) }}
+
+        </div>
+
+      </div>
+
+      <div class="col s12 m6 l6{% if data.widget.forceAspectRatio %} force-aspect-ratio{% endif %}"
+        style="
+          width: {{ data.widget.widgetsWidth }}%;
+          margin-left: {{ data.widget.widgetsMargin }}rem;
+          {% if data.widget.forceAspectRatio %}
+            padding-top: {{ data.widget.widgetsWidth }}%;
+          {% endif %}
+          "
+      >
+        <div class="double-container">
+
+          {{ apos.area(data.widget, 'widgetsRight', {
+            limit: 2,
+            widgets: {
+              'card': {
+                aspectRatio: [ 1, 1 ],
+                size: 'two-thirds',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'events': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'apostrophe-video': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
             }
-          },
-          'texts': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
-          'video': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          }
-        }
-      }) }}
+          }) }}
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
-
-  <div class="col s12 m6 l6">
-      {{ apos.area(data.widget, 'cardRight', {
-        limit: 2,
-        widgets: {
-          'card': {
-            aspectRatio: [ 2, 1 ],
-            size: 'two-thirds',
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
-          'events': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
-          'texts': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          },
-          'apostrophe-video': {
-            controls: {
-              cloneable: false,
-              removable: true,
-              position: 'top-right'
-            }
-          }
-        }
-      }) }}
-  </div>
-
 </div>
