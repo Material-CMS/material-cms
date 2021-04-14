@@ -1,0 +1,149 @@
+// Mixins
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+.animation(@arguments) {
+	-webkit-animation: @arguments;
+	-moz-animation: @arguments;
+	animation: @arguments;
+}
+.transition (@prop: all, @time: 1s, @ease: linear) {
+    -webkit-transition: @prop @time @ease;
+    -moz-transition: @prop @time @ease;
+    -o-transition: @prop @time @ease;
+    -ms-transition: @prop @time @ease;
+    transition: @prop @time @ease;
+}
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -ms-transform: @transform;
+    -o-transform: @transform;
+    transform: @transform;
+}
+.transform-origin(@arguments) {
+    -webkit-transform-origin: @arguments;
+    -moz-transform-origin: @arguments;
+    -ms-transform-origin: @arguments;
+    -o-transform-origin: @arguments;
+    transform-origin: @arguments;
+}
+.flex() {
+    display: -webkit-box;
+    display: -moz-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display:flex;
+}
+.flex-align-items(@alignStyle) {
+    -ms-flex-align: @alignStyle;
+    -webkit-align-items: @alignStyle;
+     align-items: @alignStyle;
+}
+.flex-justify(@justifyStyle) {
+    .ms-flex-justify(@justifyStyle);
+    -webkit-justify-content: @justifyStyle;
+    justify-content: @justifyStyle;
+}
+.ms-flex-justify(@msJustify) {
+    & when (@msJustify = space-between) {
+        -ms-flex-pack: justify;
+    }
+    & when (@msJustify = space-around) {
+        -ms-flex-pack: distribute;
+    }
+    & when (@msJustify = flex-end) {
+        -ms-flex-pack: end;
+    }
+    & when (@msJustify = flex-start) {
+        -ms-flex-pack: start;
+    }
+    & when (@msJustify = center) {
+        -ms-flex-pack: center;
+    }
+}
+.flex-wrap(@wrap: nowrap) {
+  -webkit-flex-wrap: @wrap;
+  -ms-flex-wrap: @wrap;
+  flex-wrap: @wrap;
+}
+.border-radius(@radius) {
+  -webkit-border-radius:   @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.border-radius(top-left, @radius) {
+  -webkit-border-top-left-radius: @radius;
+  -moz-border-radius-topleft: @radius;
+  border-top-left-radius: @radius;
+}
+.border-radius(top-right, @radius) {
+  -webkit-border-top-right-radius: @radius;
+  -moz-border-radius-topright: @radius;
+  border-top-right-radius: @radius;
+}
+.border-radius(bottom-right, @radius) {
+  -webkit-border-bottom-right-radius: @radius;
+  -moz-border-radius-topright: @radius;
+  border-bottom-right-radius: @radius;
+}
+.border-radius(bottom-left, @radius) {
+  -webkit-border-bottom-left-radius: @radius;
+  -moz-border-radius-bottomleft: @radius;
+  border-bottom-left-radius: @radius;
+}
+.border-radius(top, @radius) {
+  .border-radius(top-right, @radius);
+  .border-radius(top-left, @radius);
+}
+.border-radius(bottom, @radius) {
+  .border-radius(bottom-right, @radius);
+  .border-radius(bottom-left, @radius);
+}
+.border-radius(left, @radius) {
+  .border-radius(top-left, @radius);
+  .border-radius(bottom-left, @radius);
+}
+.border-radius(right, @radius) {
+  .border-radius(top-right, @radius);
+  .border-radius(bottom-right, @radius);
+}
+.box-shadow (@string) {
+  -webkit-box-shadow: @string;
+  -moz-box-shadow: @string;
+  box-shadow: @string;
+}
+.translate(@x, @y) {
+-webkit-transform: translate(@x, @y);
+  -ms-transform: translate(@x, @y);
+   -o-transform: translate(@x, @y);
+      transform: translate(@x, @y);
+}
+.object-fit(@fit){
+  -o-object-fit: @fit;
+     object-fit: @fit;
+  font-family: 'object-fit: @{fit}';
+}
+.perspective (@value) {
+	-webkit-perspective: 	@value;
+	-moz-perspective: 	@value;
+	-ms-perspective: 	@value;
+	perspective: 		@value;
+}
+.column-count(@columnCount) {
+  -webkit-column-count: @columnCount;
+  -moz-column-count: @columnCount;
+  column-count: @columnCount;
+}
+.column-gap(@columnGap) {
+	-webkit-column-gap: @columnGap;
+	-moz-column-gap: @columnGap;
+	column-gap: @columnGap;
+}
+.break-inside(@breakInside) {
+	-webkit-column-break-inside: @breakInside;
+	page-break-inside:@breakInside;
+	break-inside: @breakInside;
+}

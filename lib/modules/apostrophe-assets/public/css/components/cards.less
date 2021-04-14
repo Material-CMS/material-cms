@@ -1,0 +1,134 @@
+// Cards
+.card {
+  background-color: inherit;
+  margin: 0;
+	.gradient-overlay {
+		position: relative;
+		cursor: pointer;
+		width: 100%;
+		height: 100%;
+	  .card-image {
+	    max-height: 100vh;
+	    cursor: pointer;
+	    img {
+	      width: 100%;
+	      height: 100%;
+	      .object-fit(cover);
+	      visibility: visible;
+	    }
+	  }
+	  .card-title {
+			opacity: 1;
+			.transition(opacity, 0.5s, ease);
+	    width: 100%;
+	    h4 {
+	      line-height: 2rem;
+	    }
+	  }
+		.click-action-link {
+			pointer-events: none;
+			touch-action: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 4;
+			opacity: 0;
+			.transition(opacity, 1s, ease);
+		}
+	}
+	.gradient-overlay:after {
+		content:'';
+		z-index: 3;
+		position:absolute;
+		left:0; top:0;
+		width:100%; height:100%;
+		display: none;
+		opacity: 0;
+		.transition(opacity, 0.5s, ease);
+	}
+	.gradient-overlay:hover:after,
+	.gradient-overlay:hover span {
+		opacity: 1;
+	}
+	.gradient-overlay:hover .card-title {
+		opacity: 0;
+	}
+  .card-content {
+    cursor: pointer;
+    p {
+      pointer-events: none;
+      touch-action: none;
+    }
+    .apos-area-widget-wrapper {
+      margin: 1.52rem 0 .912rem;
+    }
+    .apos-area-widget-wrapper:first-child {
+      margin: 0;
+    }
+  }
+	// no active element for that in DOM really needed ?
+  @media (max-width: 600px) {
+    .card-content.no-padding-mobile {
+      padding: 0;
+      .row {
+        .col {
+          padding: 0;
+          .gallery {
+            .title {
+              text-align: center;
+            }
+            .images {
+              margin-bottom: -.45rem;
+              .images-container {
+                padding: 0;
+                .radius {
+
+                  margin: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .card-reveal {
+    width: 101%;
+    height: 101%;
+    background-color: inherit;
+    .material-icons.close {
+      position: absolute;
+      right: 32px;
+      top: 50px;
+      pointer-events: none;
+      touch-action: none;
+    }
+    h4 {
+      width: 90%;
+      margin: 0;
+      padding: 1.5rem 0;
+      pointer-events: none;
+      touch-action: none;
+    }
+  }
+  .card-action {
+		background-color: transparent;
+    margin: 0;
+    .row.widget {
+      margin: 2rem 0;
+      .radius {
+        .border-radius(inherit);
+      }
+    }
+    a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+      margin-right: 0 !important;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .btn-floating.halfway-fab {
+    right: 50px;
+  }
+}

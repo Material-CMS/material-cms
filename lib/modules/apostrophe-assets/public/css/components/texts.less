@@ -1,0 +1,78 @@
+// Blog Card
+.card.blog {
+  .row {
+    margin: 0;
+    .col {
+      padding: 0;
+      .radius {
+        .border-radius(0) !important;
+      }
+    }
+  }
+}
+// Horizontal Card Height Overrides
+.card.horizontal {
+  .card-action a {
+    margin-right: 0 !important;
+  }
+  .height-100 {
+    padding: 0;
+    height: 100% !important;
+  }
+  .card-image {
+    max-width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      .object-fit(cover);
+    }
+    .col {
+      padding: 0;
+    }
+    .row {
+      margin: 0;
+    }
+    .row.widget {
+      padding: 0;
+    }
+    .radius {
+      .border-radius(0) !important;
+    }
+  }
+  .card-stacked {
+    height: 100% !important;
+  }
+  .card-image {
+    height: 100% !important;
+    .apos-area,
+    .apos-area-widget,
+    .apos-area-widget-wrapper,
+    .card,
+    .col,
+    .material-placeholder,
+    .radius,
+    .row,
+    .slideshow-items {
+      height: 100% !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .height-100 {
+      height: inherit !important;
+    }
+    .card-image {
+      height: 50vh !important;
+      .apos-area,
+      .apos-area-widget,
+      .apos-area-widget-wrapper,
+      .card,
+      .col,
+      .material-placeholder,
+      .radius,
+      .row,
+      .slideshow-items {
+        height: 50vh !important;
+      }
+    }
+  }
+}

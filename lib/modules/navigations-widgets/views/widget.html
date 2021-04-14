@@ -1,14 +1,17 @@
+{% import 'components/automatic.html' as automatic with context %}
+{% import 'components/manual.html' as manual with context %}
+
 <div class="nav">
 
   {# Nav Background #}
   {% if data.widget._navBackgroundImage or data.global._navBackgroundImage %}
-    {% include "nav-bg.html" %}
+    {% include "components/background.html" %}
   {% endif %}
 
   {# Desktop #}
   <nav class="nav-extended{% if data.widget._navBackgroundImage or data.global._navBackgroundImage %} nav-pushpin{% endif %}"
     {% set regExp = r/^#.*/g %}
-    {% if regExp.test(data.global.navColor) %}
+    {% if regExp.test(data.global.navColor or data.widget.navColor) %}
       style="height: 64px"
     {% endif %}
   >
@@ -64,13 +67,13 @@
       <ul class="nav-activator right hide-on-med-and-down">
 
         {# Extra Links #}
-        {% include "extra-links.html" %}
+        {% include "components/extra-links.html" %}
 
         {# Include Nav #}
         {% if data.widget.nav == 'default' %}
-          {% include "auto-desktop.html" %}
+          {{ automatic.base('dropdown-desktop','dropdown-trigger-hover', '') }}
         {% elif data.widget.nav == 'manual' and data.widget._pieces.length %}
-          {% include "manual-desktop.html" %}
+          {{ manual.base('dropdown-desktop','dropdown-trigger-hover') }}
         {% else %}
           <div class="apos-area apos-empty">
             <i class="material-icons">clear</i>
@@ -89,13 +92,13 @@
 <ul class="sidenav" id="mobile">
 
   {# Extra Links #}
-  {% include "extra-links.html" %}
+  {% include "components/extra-links.html" %}
 
   {# Include Nav #}
   {% if data.widget.nav == 'default' %}
-    {% include "auto-mobile.html" %}
+    {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
   {% elif data.widget.nav == 'manual' %}
-    {% include "manual-mobile.html" %}
+    {{ manual.base('dropdown-mobile','dropdown-trigger') }}
   {% endif %}
 
 </ul>

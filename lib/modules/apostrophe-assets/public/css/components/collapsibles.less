@@ -1,0 +1,62 @@
+// Collapsibles
+.collapsible {
+  background-color: inherit;
+  margin: 0;
+  border-top: inherit;
+  overflow: hidden;
+  border-right: 0;
+  border-left: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  .collapsible-header {
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: inherit;
+    border-bottom: inherit;
+    a {
+      float: right;
+    }
+    .row {
+      width: 100%;
+    }
+    .col {
+      margin: 0.4rem 0;
+    }
+    @media (max-width: 600px) {
+      a {
+        float: none;
+      }
+      .col {
+        text-align: center;
+      }
+    }
+  }
+  .collapsible-body {
+    border-bottom: inherit;
+    background-color: inherit;
+  }
+  h4 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1000px) {
+  .collapsible {
+    h4 {
+      font-size: 1.35rem;
+    }
+    h5 {
+      font-size: 1.2rem;
+    }
+  }
+}
+.events {
+  .collapsible {
+    .collapsible-header:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
