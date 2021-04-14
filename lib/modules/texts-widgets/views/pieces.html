@@ -62,7 +62,14 @@
               {% if piece._url %}
                 <a href="{{ piece._url }}">
               {% endif %}
-                  <h3 class="accent-color card-title{% if piece.titleCenter %} center-align{% endif %}"
+                  <h3 class="accent-color card-title
+                    {% if piece.titleAlign == 'left' %}
+                      left-align
+                    {% elif piece.titleAlign == 'center' %}
+                      center-align
+                    {% elif piece.titleAlign == 'right' %}
+                      right-align
+                    {% endif %}"
                     {% if piece.titleColor %}
                        style="color:{{ piece.titleColor }}"
                     {% endif %}
