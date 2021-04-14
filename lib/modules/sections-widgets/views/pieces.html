@@ -141,6 +141,7 @@
     {% if piece.container %}
       <div class="container">
     {% endif %}
+
         <div class="widgets-container">
 
           {# Header #}
@@ -161,7 +162,7 @@
             </h2>
           {% endif %}
 
-          {% if piece.glueWidgets == true %}
+          {% if pieces.length > 1 and piece.glueWidgets == true %}
             <div class="glue-container">
           {% endif %}
 
@@ -262,7 +263,7 @@
                 }
               }) }}
 
-          {% if piece.glueWidgets == true %}
+          {% if pieces.length > 1 and piece.glueWidgets == true %}
             </div>
           {% endif %}
 
