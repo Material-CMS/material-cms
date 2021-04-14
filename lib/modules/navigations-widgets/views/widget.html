@@ -97,8 +97,13 @@
   {# Include Nav #}
   {% if data.widget.nav == 'default' %}
     {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
-  {% elif data.widget.nav == 'manual' %}
+  {% elif data.widget.nav == 'manual' and data.widget._pieces.length  %}
     {{ manual.base('dropdown-mobile','dropdown-trigger') }}
+  {% else %}
+    <div class="apos-area apos-empty">
+      <i class="material-icons">clear</i>
+      <p class="flow-text">no navigation<p>
+    </div>
   {% endif %}
 
 </ul>

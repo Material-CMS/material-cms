@@ -29,20 +29,26 @@
 
       </a>
 
+      {# Dropdown Desktop #}
       {% if item._subpages %}
-        {# Dropdown Desktop #}
-        <ul class="dropdown-content nav-color" id="{{ item._id }}-{{ dataTarget }}">
-            {% for subpage in item._subpages %}
-              <li>
-                <a href="{{ subpage._url }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
-                  {% if data.global.navTextColor %}
-                    style="color: {{ data.global.navTextColor }}"
-                  {% endif %}
-                >
-                  {{ subpage.title }}
-                </a>
-              </li>
-            {% endfor %}
+        <ul id="{{ item._id }}-{{ dataTarget }}"
+            class="dropdown-content nav-color
+            {% if data.widget.navLightHover or data.global.navLightHover %} light-hover{% else %} dark-hover{% endif %}"
+            {% if data.widget.navColor %}
+              style="background-color: {{ data.widget.navColor }};"
+            {% endif %}
+        >
+          {% for subpage in item._subpages %}
+            <li>
+              <a href="{{ subpage._url }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
+                {% if data.global.navTextColor %}
+                  style="color: {{ data.global.navTextColor }}"
+                {% endif %}
+              >
+                {{ subpage.title }}
+              </a>
+            </li>
+          {% endfor %}
         </ul>
       {% endif %}
 

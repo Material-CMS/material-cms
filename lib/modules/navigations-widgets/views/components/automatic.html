@@ -22,10 +22,12 @@
 
     {# Sections of Home Loop Dropdown #}
     {% if data.options.pageUrl == data.options.homeUrl %}
-      <ul class="dropdown-content nav-color" id="{{ dataTarget }}"
-      {% if data.widget.navColor %}
-        style="background-color: {{ data.widget.navColor }};"
-      {% endif %}
+      <ul id="{{ dataTarget }}"
+          class="dropdown-content nav-color
+          {% if data.widget.navLightHover or data.global.navLightHover %} light-hover{% else %} dark-hover{% endif %}"
+          {% if data.widget.navColor %}
+            style="background-color: {{ data.widget.navColor }};"
+          {% endif %}
       >
 
         {% for piece in data.options.pieces %}
