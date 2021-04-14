@@ -180,6 +180,9 @@ h4 {
 	.flex-wrap(wrap);
   width: 100%;
   margin: 4rem 0;
+  .section-header {
+    width: 100%;
+  }
 	.apos-area {
 		width: 100%;
 	  .row.widget {
@@ -242,6 +245,21 @@ h4 {
 	  }
 	}
 }
+// Glue Containers
+.widgets-container.glue-container {
+  .apos-area-widget-wrapper:nth-last-child(n+2) .widget {
+    margin-bottom: 0;
+  }
+  .apos-area-widget-wrapper:nth-child(-n+1) .radius {
+    .border-radius(bottom, inherit)
+  }
+	.apos-area-widget-wrapper:nth-child(n+2):nth-last-child(n+2) .radius {
+		.border-radius(inherit)
+	}
+  .apos-area-widget-wrapper:nth-last-child(-n+1) .radius {
+    .border-radius(top, inherit)
+  }
+}
 // Container
 .container {
   .flex();
@@ -258,21 +276,6 @@ h4 {
 // Grid
 .row {
   margin-bottom: 0;
-}
-// Glue Containers
-.glue-container {
-  .apos-area-widget-wrapper:nth-last-child(n+2) .widget {
-    margin-bottom: 0;
-  }
-  .apos-area-widget-wrapper:nth-child(-n+1) .radius {
-    .border-radius(bottom, inherit)
-  }
-	.apos-area-widget-wrapper:nth-child(n+2):nth-last-child(n+2) .radius {
-		.border-radius(inherit)
-	}
-  .apos-area-widget-wrapper:nth-last-child(-n+1) .radius {
-    .border-radius(top, inherit)
-  }
 }
 // Carousels
 .card-content.carousel {

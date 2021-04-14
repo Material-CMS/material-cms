@@ -142,7 +142,11 @@
       <div class="container">
     {% endif %}
 
-        <div class="widgets-container">
+        <div class="widgets-container
+          {% if piece.content.items.length > 1 and piece.glueWidgets == true %}
+            glue-container
+          {% endif %}
+        ">
 
           {# Header #}
           {% if piece.header %}
@@ -162,110 +166,103 @@
             </h2>
           {% endif %}
 
-          {% if pieces.length > 1 and piece.glueWidgets == true %}
-            <div class="glue-container">
-          {% endif %}
-
-              {{ apos.area(piece, 'content', {
-                widgets: {
-                  'card': {
-                    pageShadow: data.options.pageShadow,
-                    size: 'one-half',
-                    limit: 1,
-                    noHeight: true,
-                    sizesAttr: '(max-width:600px) 50vw, 40vw',
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'double': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'bottom-right'
-                    }
-                  },
-                  'events': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'texts': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'texts-carousels': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'video': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'galleries': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'people': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'tables': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'swiper': {
-                    pageShadow: data.options.pageShadow,
-                    controls: {
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  },
-                  'apostrophe-forms': {
-                    controls: {
-                      movable: false,
-                      cloneable: false,
-                      removable: true,
-                      position: 'top-right'
-                    }
-                  }
+          {# Content #}
+          {{ apos.area(piece, 'content', {
+            widgets: {
+              'card': {
+                pageShadow: data.options.pageShadow,
+                size: 'one-half',
+                limit: 1,
+                noHeight: true,
+                sizesAttr: '(max-width:600px) 50vw, 40vw',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
                 }
-              }) }}
-
-          {% if pieces.length > 1 and piece.glueWidgets == true %}
-            </div>
-          {% endif %}
+              },
+              'double': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'bottom-right'
+                }
+              },
+              'events': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts-carousels': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'video': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'galleries': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'people': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'tables': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'swiper': {
+                pageShadow: data.options.pageShadow,
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'apostrophe-forms': {
+                controls: {
+                  movable: false,
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
+            }
+          }) }}
 
         </div>
 
