@@ -9,12 +9,7 @@
   {% endif %}
 
   {# Desktop #}
-  <nav class="nav-extended{% if data.widget._navBackgroundImage or data.global._navBackgroundImage %} nav-pushpin{% endif %}"
-    {% set regExp = r/^#.*/g %}
-    {% if regExp.test(data.global.navColor or data.widget.navColor) %}
-      style="height: 64px"
-    {% endif %}
-  >
+  <nav class="nav-extended{% if data.widget._navBackgroundImage or data.global._navBackgroundImage %} nav-pushpin{% endif %}">
 
     {# Nav Wrapper #}
     <div class="nav-wrapper pin-top nav-color{% if data.widget.navShadow or data.global.navShadow %} z-depth-2{% endif %}"

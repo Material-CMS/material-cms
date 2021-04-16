@@ -1,4 +1,15 @@
 @material-icons: Material Icons, sans-serif;
+// Responsive Styles
+@media (max-width: 600px) {
+  .no-padding-mobile {
+    padding: 0 !important;
+  }
+}
+@media (max-width: 600px) {
+  .bottom-margin-mobile {
+    margin-bottom: 2.4rem !important;
+  }
+}
 // Basics
 body {
   overflow-x: hidden;
@@ -179,8 +190,8 @@ h4 {
 	.flex-align-items(center);
 	.flex-justify(center);
 	.flex-wrap(wrap);
-  width: 100%;
-  margin: 4rem 0;
+  width: 90%;
+  margin: 4rem auto;
   .section-header {
     width: 100%;
   }
@@ -190,17 +201,16 @@ h4 {
 	    .col {
 	      padding: 0;
 				// Double Widgets
-				.row.double {
-					.flex();
-					.flex-align-items(center);
-					.flex-justify(center);
-          .col {
-            margin: 0;
-          }
+				 .row.double {
+           .double-container {
+             padding: 0 0.75rem;
+
+           }
 					.col.force-aspect-ratio {
 						position: relative;
 						margin-left: 0;
 						margin-right: 0;
+            padding-top: 50%;
 						.double-container {
 							position: absolute;
 							top: 0;
@@ -240,14 +250,27 @@ h4 {
 							}
 						}
 					}
+          @media (max-width: 600px) {
+            .col.force-aspect-ratio {
+              padding-top: 100%;
+            }
+          }
 				}
-	    }
-			// Gallery is this still needed ?
-	    .gallery {
-	      margin-bottom: 3.7rem;
 	    }
 	  }
 	}
+}
+// Container
+.container {
+  .flex();
+  .flex-align-items(center);
+  margin: auto;
+  .widgets-container {
+    width: 100%;
+  }
+}
+.footer-container {
+  width: 100%;
 }
 // Glue Containers
 .widgets-container.glue-container {
@@ -263,15 +286,6 @@ h4 {
   .apos-area-widget-wrapper:nth-last-child(-n+1) .radius {
     .border-radius(top, inherit)
   }
-}
-// Container
-.container {
-  .flex();
-  .flex-align-items(center);
-  margin: auto;
-}
-.footer-container {
-  width: 100%;
 }
 // Container Radius Overflow
 .radius {

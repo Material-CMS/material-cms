@@ -5,8 +5,7 @@
 		.column-gap(1.5rem);
     width: 100%;
     display: inline-block;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 1.3rem auto 0 auto;
     .images-container {
 			.break-inside(avoid);
 			position: relative;
@@ -147,6 +146,12 @@
 		}
   }
 	@media (max-width: 450px) {
+    .images.column-count-3 {
+      .column-count(1);
+      .images-container {
+        margin-bottom: 2.4rem;
+      }
+    }
 		.images.column-count-4,
 		.images.column-count-5 {
 			.column-count(2);
