@@ -3,11 +3,9 @@
 
     <div class="row columns">
 
-      <div class="col s12 m6{% if data.widget.forceAspectRatio %} force-aspect-ratio double{% endif %}">
+      <div class="col s12 m4{% if data.widget.forceAspectRatio %} force-aspect-ratio triple{% endif %}">
         <div class="columns-container no-padding-mobile bottom-margin-mobile">
-
           {{ apos.area(data.widget, 'widgetsOne', {
-            limit: 2,
             widgets: {
               'card': {
                 size: 'two-thirds',
@@ -40,16 +38,12 @@
               }
             }
           }) }}
-
         </div>
-
       </div>
 
-      <div class="col s12 m6{% if data.widget.forceAspectRatio %} force-aspect-ratio double{% endif %}">
+      <div class="col s12 m4{% if data.widget.forceAspectRatio %} force-aspect-ratio triple{% endif %}">
         <div class="columns-container no-padding-mobile bottom-margin-mobile">
-
           {{ apos.area(data.widget, 'widgetsTwo', {
-            limit: 2,
             widgets: {
               'card': {
                 size: 'two-thirds',
@@ -82,9 +76,45 @@
               }
             }
           }) }}
-
         </div>
+      </div>
 
+      <div class="col s12 m4{% if data.widget.forceAspectRatio %} force-aspect-ratio triple{% endif %}">
+        <div class="columns-container no-padding-mobile bottom-margin-mobile">
+          {{ apos.area(data.widget, 'widgetsThree', {
+            widgets: {
+              'card': {
+                size: 'two-thirds',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'events': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'apostrophe-video': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
+            }
+          }) }}
+        </div>
       </div>
 
     </div>

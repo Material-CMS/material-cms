@@ -123,7 +123,7 @@ h4 {
 	padding-bottom: 4rem;
 }
 .main-content.half {
-	width: 100vw;
+	width: 100%;
 	min-height: 50vh;
 	position: relative;
 	padding-top: 0;
@@ -198,11 +198,12 @@ h4 {
 	.apos-area {
 		width: 100%;
 	  .row.widget {
+      margin-bottom: 2.4rem;
 	    .col {
 	      padding: 0;
 				// Double Widgets
-				 .row.double {
-           .double-container {
+				 .row.columns {
+           .columns-container {
              padding: 0 0.75rem;
 
            }
@@ -210,8 +211,7 @@ h4 {
 						position: relative;
 						margin-left: 0;
 						margin-right: 0;
-            padding-top: 50%;
-						.double-container {
+						.columns-container {
 							position: absolute;
 							top: 0;
 							left: 0;
@@ -250,9 +250,18 @@ h4 {
 							}
 						}
 					}
+          .col.force-aspect-ratio.double {
+            padding-top: 50%;
+          }
+          .col.force-aspect-ratio.triple {
+            padding-top: 33.3333333333%;
+          }
+          .col.force-aspect-ratio.quadruple {
+            padding-top: 25%;
+          }
           @media (max-width: 600px) {
             .col.force-aspect-ratio {
-              padding-top: 100%;
+              padding-top: 100% !important;
             }
           }
 				}
