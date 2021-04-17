@@ -4,15 +4,13 @@
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="none"
     width="100"
-    {% if data.widget.shapeDividerHeight %}
-      height="{{ data.widget.shapeDividerHeight }}rem"
-    {% endif %}
+    height="calc(100vw * {{ data.widget.shapeDividerHeight }})"
     {% if data.widget.shapeDividerViewBox %}
       viewBox="{{ data.widget.shapeDividerViewBox }}"
     {% endif %}
     {% if data.widget.shapeDividerInvert %}
       style="transform: rotateY(180deg);"
-    {% endif %}
+    {% endif %}"
   >
       <path
         class="shape-fill"
