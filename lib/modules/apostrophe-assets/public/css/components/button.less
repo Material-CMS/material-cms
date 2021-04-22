@@ -1,0 +1,52 @@
+// Share Buttons
+.btn-radius {
+  padding: 0;
+  min-width: 3rem;
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+// Floating Action Button
+.fixed-action-btn {
+  z-index: 99;
+  .btn-floating {
+    i {
+      color: inherit;
+    }
+  }
+}
+// Floating Action Button Tooltips
+.fab-tip {
+  display: none;
+  position: fixed;
+  right: 85px;
+  padding: 0.5rem 0.5rem !important;
+  text-align: center;
+  background-color: #323232;
+  .border-radius(2px);
+  color: #fff;
+  width: auto;
+  line-height: 25px;
+}
+.tip:hover ~ .fab-tip {
+  display: inline-block;
+}
+// Inline SVG
+span.dark-hover-background {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  svg {
+    position: absolute;
+    width: 45%;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+  }
+}
+span.dark-hover-background:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
