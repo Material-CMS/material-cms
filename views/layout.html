@@ -105,8 +105,18 @@
   </div>
 
   {# Contact Button #}
-  {% if data.global.showContactButton and not data.page.hideContactButton %}
-    {% include "btn-widgets:widget.html" %}
+  {% if data.global.floatingActionButton.items[0] and not data.page.hideContactButton %}
+    {{ apos.area(data.global, 'floatingActionButton', {
+      edit: false,
+      widgets: {
+        'button': {}
+      }
+    }) }}
   {% endif %}
 
+{% endblock %}
+
+{# Load Fonts #}
+{% block extraBody %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 {% endblock %}
