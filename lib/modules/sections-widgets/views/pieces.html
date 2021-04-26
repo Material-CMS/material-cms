@@ -140,7 +140,7 @@
       {% if data.widget.sectionMinHeight and piece.sectionStyle == 'slide' %}
         half-height
       {% endif %}"
-      {% if data.widget.sectionMinHeight %}
+      {% if piece.shapeDividerTop.items[0] %}
         style="padding-top: calc(100vw * {{ piece.shapeDividerTop.items[0].shapeDividerHeight }})"
       {% endif %}
     >
