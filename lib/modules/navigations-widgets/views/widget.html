@@ -1,7 +1,11 @@
 {% import 'components/automatic.html' as automatic with context %}
 {% import 'components/manual.html' as manual with context %}
-{# query and cache global to reduce load  #}
+{# cache global to reduce load  #}
 {% set global = data.global %}
+{# cache nav background images and gradient colors #}
+{% set navBackgroundImage = data.widget._navBackgroundImage or global._navBackgroundImage %}
+{% set gradientColorTop = data.widget.gradientColorTop or global.gradientColorTop %}
+{% set gradientColorBottom = data.widget.gradientColorBottom or global.gradientColorBottom %}
 
 <div class="nav">
 
@@ -11,7 +15,7 @@
   {% endif %}
 
   {# Desktop #}
-  <nav class="nav-extended{% if data.widget._navBackgroundImage or global._navBackgroundImage %} nav-pushpin{% endif %}">
+  <nav class="nav-extended{% if navBackgroundImage %} nav-pushpin{% endif %}">
 
     {# Nav Wrapper #}
     <div class="
@@ -23,7 +27,7 @@
           nav-text-color
         {% endif %}
       "
-    {% if data.widget.navColor or (data.widget._navBackgroundImage or global._navBackgroundImage) %}
+    {% if data.widget.navColor or data.widget.navTextColor or navBackgroundImage %}
       style="
         {% if data.widget.navColor %}
           background-color: {{ data.widget.navColor }} !important;
@@ -31,7 +35,7 @@
         {% if data.widget.navTextColor %}
           color: {{ data.widget.navTextColor }};
         {% endif %}
-        {% if data.widget._navBackgroundImage or global._navBackgroundImage %}
+        {% if navBackgroundImage %}
           position: relative;
         {% endif %}
       "

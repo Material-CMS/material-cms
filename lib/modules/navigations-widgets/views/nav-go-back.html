@@ -1,14 +1,19 @@
 {# query and cache global to reduce load  #}
 {% set global = data.global %}
+{# cache nav background images and gradient colors #}
+{% set navBackgroundImage = data.widget._navBackgroundImage or global._navBackgroundImage %}
+{% set gradientColorTop = data.widget.gradientColorTop or global.gradientColorTop %}
+{% set gradientColorBottom = data.widget.gradientColorBottom or global.gradientColorBottom %}
+
 <div class="nav">
 
   {# Nav Background #}
-  {% if data.widget._navBackgroundImage or global._navBackgroundImage %}
+  {% if navBackgroundImage %}
     {% include "nav-bg.html" %}
   {% endif %}
 
   {# Desktop #}
-  <nav class="nav-extended{% if data.widget._backgroundImage %} nav-pushpin{% endif %}"
+  <nav class="nav-extended{% if navBackgroundImage %} nav-pushpin{% endif %}"
     {% if global.navColor %}
       style="height: 64px"
     {% endif %}
