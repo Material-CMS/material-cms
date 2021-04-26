@@ -10,12 +10,12 @@
     {% endif %}
     {% if data.widget.shapeDividerInvert %}
       style="transform: rotateY(180deg);"
-    {% endif %}"
+    {% endif %}
   >
       <path
         class="shape-fill"
         d="{{ data.widget.shapeDivider }}"
-        {% if data.widget.shapeDividerColor  %}
+        {% if data.widget.shapeDividerColor %}
           style="fill:{{ data.widget.shapeDividerColor }}"
         {% endif %}
       ></path>
