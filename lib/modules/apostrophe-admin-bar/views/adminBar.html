@@ -1,8 +1,8 @@
 {% import 'apostrophe-ui:components/dropdowns.html' as dropdowns with context -%}
 <div class="admin-bar">
-  <a class="btn btn-large dropdown-trigger red" href="#" data-target="dropdown1"><i class="material-icons right">verified_user</i>Admin</a>
+  <a class="btn btn-large dropdown-trigger trigger-admin" href="#" data-target="dropdown-admin"><i class="material-icons right">verified_user</i>Admin</a>
 </div>
-<ul id='dropdown1' class='dropdown-content'>
+<ul id='dropdown-admin' class='dropdown-content'>
   {% for item in data.items %}
     <li >
       {% if item.menu %}
