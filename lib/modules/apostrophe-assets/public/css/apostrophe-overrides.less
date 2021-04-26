@@ -13,7 +13,7 @@
     }
   }
   .sections-content {
-    min-height: calc(90vh - 64px);
+    min-height: 87vh;
     position: relative;
     .apos-empty[data-dot-path="sectionArea"] {
       position: absolute;
@@ -25,11 +25,18 @@
     .apos-empty[data-dot-path="shapeDividerBottom"] {
       height: 5rem;
     }
-
-
   }
   .fixed-action-btn {
     width: inherit;
+  }
+  .apos-area[data-dot-path="floatingActionButton"] {
+    width: 56px;
+    height: 56px;
+    position: fixed;
+    right: 23px;
+    bottom: 23px;
+    padding-top: 15px;
+    margin-bottom: 0;
   }
 }
 // Video player
@@ -273,6 +280,12 @@ fieldset[data-name="linkArea"] {
           }
         }
       }
+      // FloatingActionButton Form Override
+      .apos-field-floating-action-button {
+        .fixed-action-btn {
+          position: static;
+        }
+      }
     }
   }
   .apos-fieldset-row {
@@ -436,7 +449,7 @@ fieldset[data-name="linkArea"] {
   }
   .apos-rich-text-widget {
     min-height: 130px;
-    background-color: @grey;
+    background-color: @light;
     .apos-rich-text {
       min-height: 130px;
       p {

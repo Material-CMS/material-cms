@@ -11,7 +11,7 @@ var apos = require('apostrophe')({
     'apostrophe-pieces-orderings-bundle': {},
     // Custom Modules
     'card-widgets': {},
-    'btn-widgets':{
+    'button-widgets':{
       player: true
     },
     'double-widgets': {},
@@ -63,7 +63,6 @@ var apos = require('apostrophe')({
     'sections-widgets': {
       player: true
     },
-    'share-widgets': {},
     'shape-divider-path-widgets': {},
     'slider-widgets':{
       player: true
@@ -90,7 +89,6 @@ var apos = require('apostrophe')({
     'texts-pages': {
       orderings: true
     },
-    'texts-carousels-widgets': {},
     'texts-widgets': {
       player: true
     },
@@ -158,6 +156,26 @@ var apos = require('apostrophe')({
         height: 600
       }]
       */
+      fileGroups: [
+        {
+          name: 'images',
+          label: 'Images',
+          extensions: [ 'jpg', 'png' ],
+          extensionMaps: {
+            jpeg: 'jpg'
+          },
+          // uploadfs should treat this as an image and create scaled versions
+          image: true
+        },
+        {
+          name: 'office',
+          label: 'Office',
+          extensions: [ 'txt', 'rtf', 'pdf', 'xls', 'ppt', 'doc', 'pptx', 'sldx', 'ppsx', 'potx', 'xlsx', 'xltx', 'csv', 'docx', 'dotx' ],
+          extensionMaps: {},
+          // uploadfs should just accept this file as-is
+          image: false
+        }
+      ]
     },
     // Forms
     'apostrophe-forms': {

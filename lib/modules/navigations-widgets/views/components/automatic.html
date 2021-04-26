@@ -1,42 +1,54 @@
 {% macro base(dataTarget, dropdown, classes) %}
+
   {# Home #}
-  <li class="
-      {% if data.widget.navLightHover or data.global.navLightHover %}light-hover{% else %}dark-hover{% endif %}
-      {% if data.options.pageUrl == data.options.homeUrl %} active{% endif %}
-  ">
-    <a href="{{ data.options.homeUrl }}" data-target="{{ dataTarget }}" class="flow-text
+  <li
+    {% if data.options.pageUrl == data.options.homeUrl %}
+      class="active"
+    {% endif %}
+  >
+    <a href="{{ data.options.homeUrl }}" data-target="{{ dataTarget }}" class="flow-text text-color waves-effect
       {% if data.options.pageUrl == data.options.homeUrl and data.options.items %}
         {{ dropdown }}
       {% endif %}"
-      {% if data.widget.navTextColor or data.global.navTextColor %}
-        style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-      {% endif %}
     >
 
-      {{ data.options.homeTitle }}
-
       {% if data.options.pageUrl == data.options.homeUrl and data.options.items %}
-        <i class="material-icons left">arrow_drop_down</i>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+          <path d="M7 10l5 5 5-5z"
+          {% if data.widget.navTextColor %}
+            fill="{{ data.widget.navTextColor }}"
+          {% endif %}
+          />
+        </svg>
       {% endif %}
+
+      {{ data.options.homeTitle }}
     </a>
 
     {# Sections of Home Loop Dropdown #}
     {% if data.options.pageUrl == data.options.homeUrl %}
-      <ul id="{{ dataTarget }}"
-          class="dropdown-content nav-color
-          {% if data.widget.navLightHover or data.global.navLightHover %} light-hover{% else %} dark-hover{% endif %}"
-          {% if data.widget.navColor %}
-            style="background-color: {{ data.widget.navColor }};"
-          {% endif %}
+      <ul id="{{ dataTarget }}" class="dropdown-content nav-color"
+        {% if data.widget.navColor %}
+          style="background-color: {{ data.widget.navColor }} !important"
+        {% endif %}
       >
 
         {% for piece in data.options.pieces %}
           <li>
-            <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate {{ classes }}"
-              {% if data.widget.navTextColor or data.global.navTextColor %}
-                style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-              {% endif %}
-            >
+            <a
+              href="#{{ piece.slug }}"
+              class="
+                accent-color
+                flow-text
+                text-color
+                anchor-jump
+                truncate
+                waves-effect
+                {{ classes }}
+                {% if data.options.pageType === 'home' %}
+                  anchor-scroll
+                {% endif %}
+            ">
               {{ piece.title }}
             </a>
           </li>
@@ -49,49 +61,65 @@
 
   {# Tabs Loop #}
   {% for tab in data.options.homeChildren %}
-    <li class="
-          {% if data.widget.navLightHover or data.global.navLightHover %}light-hover{% else %}dark-hover{% endif %}
-          {% if data.options.pageUrl == tab._url  %} active{% endif %}
-    ">
-      <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text
+    <li
+      {% if data.options.pageUrl == tab._url  %}
+        class="active"
+      {% endif %}
+    >
+      <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text text-color waves-effect
         {% if tab._children.length %}
           {{ dropdown }}
         {% endif %}"
-        {% if data.widget.navTextColor or data.global.navTextColor %}
-          style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-        {% endif %}
       >
-        {{ tab.title }}
+
         {% if tab._children.length %}
-          <i class="material-icons left">arrow_drop_down</i>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M7 10l5 5 5-5z"
+              {% if data.widget.navTextColor %}
+                fill="{{ data.widget.navTextColor }}"
+              {% endif %}
+            />
+          </svg>
         {% endif %}
+
+        {{ tab.title }}
+
       </a>
 
       {# Dropdown #}
       {% if (data.options.pageUrl == tab._url and data.options.items) or tab._children.length %}
-        <ul id="{{ tab._id }}-{{ dataTarget }}"
-          class="nav-color dropdown-content
-            {% if data.widget.navLightHover or data.global.navLightHover %} light-hover{% else %} dark-hover{% endif %}
-          "
+        <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color dropdown-content"
           {% if data.widget.navColor %}
-            style="background-color: {{ data.widget.navColor }};"
+            style="background-color: {{ data.widget.navColor }} !important"
           {% endif %}
         >
 
           {# Sections of Tabs Loop Dropdown #}
           {% if data.options.pageUrl == tab._url and data.options.items %}
+
             {% for piece in data.options.pieces %}
               <li>
-                <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate {{ classes }}"
-                  {% if data.widget.navTextColor or data.global.navTextColor %}
-                    style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-                  {% endif %}
-                >
+                <a
+                  href="#{{ piece.slug }}"
+                  class="
+                    accent-color
+                    flow-text
+                    text-color
+                    anchor-jump
+                    truncate
+                    waves-effect
+                    {{ classes }}
+                    {% if data.options.pageType === 'home' %}
+                      anchor-scroll
+                    {% endif %}
+                    ">
                   {{ piece.title }}
                 </a>
               </li>
             {% endfor %}
+
             <li class="divider" tabindex="-1"></li>
+
           {% endif %}
 
           {# Children of Tabs Loop Dropdown #}
@@ -101,11 +129,7 @@
                 class="active"
               {% endif %}
             >
-              <a href="{{ child._url }}" class="accent-color flow-text truncate"
-                {% if data.widget.navTextColor or data.global.navTextColor %}
-                  style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-                {% endif %}
-              >
+              <a href="{{ child._url }}" class="accent-color flow-text text-color truncate">
                 {{ child.title }}
               </a>
             </li>
@@ -115,11 +139,7 @@
               <li class="divider" tabindex="-1"></li>
               {% for piece in pieces %}
                 <li>
-                  <a href="#{{ piece.slug }}" class="accent-color flow-text anchor-jump anchor-scroll truncate {{ classes }}"
-                    {% if data.widget.navTextColor or data.global.navTextColor %}
-                      style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-                    {% endif %}
-                  >
+                  <a href="#{{ piece.slug }}" class="accent-color flow-text text-color anchor-jump anchor-scroll truncate {{ classes }}">
                     {{ piece.title }}
                   </a>
                 </li>

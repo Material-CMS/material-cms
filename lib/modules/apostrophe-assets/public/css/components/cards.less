@@ -19,7 +19,7 @@
 	  }
 	  .card-title {
 			opacity: 1;
-			.transition(opacity, 0.5s, ease);
+			.transition(opacity, .5s, ease);
 	    width: 100%;
 	    h4 {
 	      line-height: 2rem;
@@ -45,7 +45,7 @@
 		width:100%; height:100%;
 		display: none;
 		opacity: 0;
-		.transition(opacity, 0.5s, ease);
+		.transition(opacity, .5s, ease);
 	}
 	.gradient-overlay:hover:after,
 	.gradient-overlay:hover span {
@@ -126,6 +126,14 @@
     }
     p {
       margin: 0;
+    }
+  }
+  .card-action.collapsible {
+    .btn {
+      padding: 0;
+      span {
+        padding: 0 16px;
+      }
     }
   }
   .btn-floating.halfway-fab {

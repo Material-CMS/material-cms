@@ -1,4 +1,6 @@
 {% if data.widget._pieces.length %}
+  {# query and cache global to reduce load  #}
+  {% set global = data.global %}
 
   <div class="section-wrapper">
 

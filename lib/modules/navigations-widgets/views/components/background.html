@@ -1,38 +1,38 @@
 <div class="nav-background"
-  {% if (data.widget._navBackgroundImage or data.global.gradientColorTop) or (data.widget._navBackgroundImage or data.global.gradientColorBottom) %}
+  {% if (data.widget._navBackgroundImage or global.gradientColorTop) or (data.widget._navBackgroundImage or global.gradientColorBottom) %}
     style="
       background: linear-gradient(
-        {% if data.widget.gradientColorTop or data.global.gradientColorTop %}
-          {{ data.widget.gradientColorTop or data.global.gradientColorTop }}
+        {% if data.widget.gradientColorTop or global.gradientColorTop %}
+          {{ data.widget.gradientColorTop or global.gradientColorTop }}
         {% else %}
           rgba(0, 0, 0, 0)
         {% endif %},
-        {% if data.widget.gradientColorBottom or data.global.gradientColorBottom %}
-          {{ data.widget.gradientColorBottom or data.global.gradientColorBottom }}
+        {% if data.widget.gradientColorBottom or global.gradientColorBottom %}
+          {{ data.widget.gradientColorBottom or global.gradientColorBottom }}
         {% else %}
           rgba(0, 0, 0, 0)
         {% endif %}
       );
       background: -o-linear-gradient(
-        {% if data.widget.gradientColorTop or data.global.gradientColorTop %}
-          {{ data.widget.gradientColorTop or data.global.gradientColorTop }}
+        {% if data.widget.gradientColorTop or global.gradientColorTop %}
+          {{ data.widget.gradientColorTop or global.gradientColorTop }}
         {% else %}
           rgba(0, 0, 0, 0)
         {% endif %},
-        {% if data.widget.gradientColorBottom or data.global.gradientColorBottom %}
-          {{ data.widget.gradientColorBottom or data.global.gradientColorBottom }}
+        {% if data.widget.gradientColorBottom or global.gradientColorBottom %}
+          {{ data.widget.gradientColorBottom or global.gradientColorBottom }}
         {% else %}
           rgba(0, 0, 0, 0)
         {% endif %}
       );
       background: -webkit-linear-gradient(
-        {% if data.widget.gradientColorTop or data.global.gradientColorTop %}
-          {{ data.widget.gradientColorTop or data.global.gradientColorTop }}
+        {% if data.widget.gradientColorTop or global.gradientColorTop %}
+          {{ data.widget.gradientColorTop or global.gradientColorTop }}
         {% else %}
           rgba(0, 0, 0, 0)
         {% endif %},
-        {% if data.widget.gradientColorBottom or data.global.gradientColorBottom %}
-          {{ data.widget.gradientColorBottom or data.global.gradientColorBottom }}
+        {% if data.widget.gradientColorBottom or global.gradientColorBottom %}
+          {{ data.widget.gradientColorBottom or global.gradientColorBottom }}
         {% else %}
           rgba(0, 0, 0, 0)
         {% endif %}
@@ -49,12 +49,12 @@
           sizes="50vw"
           alt="{{ data.widget._navBackgroundImage.title }}"
         >
-      {% elif data.global._navBackgroundImage %}
+      {% elif global._navBackgroundImage %}
         <img
-          src="{{ apos.attachments.url(data.global._navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
-          srcset="{{apos.images.srcset(data.global._navBackgroundImage.attachment) }}"
+          src="{{ apos.attachments.url(global._navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+          srcset="{{apos.images.srcset(global._navBackgroundImage.attachment) }}"
           sizes="50vw"
-          alt="{{ data.global._navBackgroundImage.title }}"
+          alt="{{ global._navBackgroundImage.title }}"
         >
       {% endif %}
     </div>

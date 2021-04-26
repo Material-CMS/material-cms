@@ -9,7 +9,7 @@
       {% endif %}
     >
       <a
-        class="flow-text
+        class="flow-text text-color waves-effect
           {% if item._subpages %}
             {{ dropdown }}
           {% endif %}"
@@ -17,34 +17,44 @@
         {% if item._subpages %}
           data-target="{{ item._id }}-{{ dataTarget }}"
         {% endif %}
-        {% if data.global.navTextColor %}
-          style="color: {{ data.global.navTextColor }}"
-        {% endif %}
       >
-        {{ item.label or item._page.title }}
 
         {% if item._subpages %}
-          <i class="material-icons left">arrow_drop_down</i>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M7 10l5 5 5-5z"
+              {% if data.widget.navTextColor %}
+                fill="{{ data.widget.navTextColor }}"
+              {% endif %}
+            />
+          </svg>
         {% endif %}
+
+        {{ item.label or item._page.title }}
 
       </a>
 
       {# Dropdown Desktop #}
       {% if item._subpages %}
-        <ul id="{{ item._id }}-{{ dataTarget }}"
-            class="dropdown-content nav-color
-            {% if data.widget.navLightHover or data.global.navLightHover %} light-hover{% else %} dark-hover{% endif %}"
-            {% if data.widget.navColor %}
-              style="background-color: {{ data.widget.navColor }};"
-            {% endif %}
+        <ul id="{{ item._id }}-{{ dataTarget }}" class="dropdown-content nav-color"
+          {% if data.widget.navColor %}
+            style="background-color: {{ data.widget.navColor }} !important"
+          {% endif %}
         >
           {% for subpage in item._subpages %}
             <li>
-              <a href="{{ subpage._url }}" class="accent-color flow-text anchor-jump anchor-scroll truncate"
-                {% if data.global.navTextColor %}
-                  style="color: {{ data.global.navTextColor }}"
-                {% endif %}
-              >
+              <a
+                href="{{ subpage._url }}"
+                class="
+                  accent-color
+                  flow-text
+                  text-color
+                  anchor-jump
+                  truncate
+                  {{ classes }}
+                  {% if data.options.pageType === 'home' %}
+                    anchor-scroll
+                  {% endif %}
+              ">
                 {{ subpage.title }}
               </a>
             </li>

@@ -1,10 +1,10 @@
-{# Links Array Page #}
+{# Links Array Widget #}
 {% if data.widget.linksArray[0] %}
   {% for name in data.widget.linksArray %}
    <li>
      <a href="{{ name.url }}" class="accent-color"
-       {% if data.widget.navTextColor or data.global.navTextColor %}
-         style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+       {% if data.widget.navTextColor %}
+         style="color: {{ data.widget.navTextColor }}"
        {% endif %}
      >
        {% if name.icon %}
@@ -15,12 +15,12 @@
    </li>
   {% endfor %}
 {# Links Array Global #}
-{% elif data.global.linksArray[0] %}
-  {% for name in data.global.linksArray %}
+{% elif global.linksArray[0] %}
+  {% for name in global.linksArray %}
    <li>
      <a href="{{ name.url }}" class="accent-color"
-       {% if data.widget.navTextColor or data.global.navTextColor %}
-         style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
+       {% if data.widget.navTextColor %}
+         style="color: {{ data.widget.navTextColor }}"
        {% endif %}
      >
        {% if name.icon %}

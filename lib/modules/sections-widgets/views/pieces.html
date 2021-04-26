@@ -1,3 +1,4 @@
+{# choose either pices of templates of piece pages #}
 {% set pieces = data.widget._pieces or data.pieces %}
 
 {% for piece in pieces %}
@@ -19,8 +20,8 @@
       {# Top Shape Divider Parallax #}
       {% if piece.shapeDividerTop.items[0] %}
         <div class="shape-divider-top divider-parallax"
-          {% if piece.backgroundColor or data.global.backgroundColor %}
-            style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
+          {% if piece.backgroundColor or global.backgroundColor %}
+            style="fill: {{ piece.backgroundColor or global.backgroundColor }}"
           {% endif %}
         >
           {{ apos.area(piece, 'shapeDividerTop', {
@@ -61,8 +62,8 @@
     {# Top Shape Divider #}
     {% if piece.shapeDividerTop.items[0] and not (piece._backgroundImage and piece.backgroundImageParallax) %}
       <div class="shape-divider-top"
-        {% if piece.backgroundColor or data.global.backgroundColor %}
-          style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
+        {% if piece.backgroundColor or global.backgroundColor %}
+          style="fill: {{ piece.backgroundColor or global.backgroundColor }}"
         {% endif %}
       >
         {{ apos.area(piece, 'shapeDividerTop', {
@@ -132,16 +133,24 @@
     {% endif %}
 
     {# Main Content#}
-    <div class="main-content{% if piece.sectionStyle == 'slide' %} half{% endif %}"
-      {% if data.widget.sectionMinHeight and piece.sectionStyle == 'default' %}
-        style="min-height: 100vh;"
+    <div class="main-content
+      {% if data.widget.sectionMinHeight %}
+        min-height
+      {% endif %}
+      {% if data.widget.sectionMinHeight and piece.sectionStyle == 'slide' %}
+        half-height
+      {% endif %}"
+      {% if data.widget.sectionMinHeight %}
+        style="padding-top: calc(100vw * {{ piece.shapeDividerTop.items[0].shapeDividerHeight }})"
       {% endif %}
     >
 
+    {# Container #}
     {% if piece.container %}
       <div class="container">
     {% endif %}
 
+        {# Widgets Container #}
         <div class="widgets-container
           {% if piece.content.items.length > 1 and piece.glueWidgets == true %}
             glue-container
@@ -215,13 +224,6 @@
                   position: 'top-right'
                 }
               },
-              'texts-carousels': {
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
               'video': {
                 controls: {
                   cloneable: false,
@@ -270,6 +272,7 @@
 
         </div>
 
+    {# Container End #}
     {% if piece.container %}
       </div>
     {% endif %}
@@ -281,8 +284,8 @@
   {# Bottom Shape Divider #}
   {% if piece.shapeDividerBottom.items[0] %}
     <div class="shape-divider-bottom"
-      {% if piece.backgroundColor or data.global.backgroundColor %}
-        style="fill: {{ piece.backgroundColor or data.global.backgroundColor }}"
+      {% if piece.backgroundColor or global.backgroundColor %}
+        style="fill: {{ piece.backgroundColor or global.backgroundColor }}"
       {% endif %}
     >
       {{ apos.area(piece, 'shapeDividerBottom', {

@@ -27,8 +27,18 @@
 
           </div>
 
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+          {% if data.widget.pagination and data.widget.swipers.length > 1 %}
+            <div class="swiper-pagination"></div>
+          {% endif %}
+
+          {% if data.widget.navigation and data.widget.swipers.length > 1 %}
+            <div class="accent-color swiper-button-prev"></div>
+            <div class="accent-color swiper-button-next"></div>
+          {% endif %}
+
+          {% if data.widget.scrollbar and data.widget.swipers.length > 1 %}
+            <div class="swiper-scrollbar"></div>
+          {% endif %}
 
         </div>
 

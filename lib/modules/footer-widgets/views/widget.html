@@ -1,52 +1,53 @@
-{# Get last piece of sectionArea from pages #}
-{# THIS IS NICE! for getting data from other widgets or pieces #}
+{# import buttons macro #}
+{% import 'button-widgets:components/button.html' as button with context %}
+{# query and cache global to reduce load  #}
+{% set global = data.global %}
+{# get last piece of sectionArea from pages #}
 {% set lastPiece = data.options.pieces[data.options.pieces.length - 1] %}
 {% set shapeDividerHeight = lastPiece.shapeDividerBottom.items[0].shapeDividerHeight %}
-{# Set Colors #}
-{% set footerColor = data.widget.footerColor or data.global.footerColor %}
-{% set footerTextColor = data.widget.footerTextColor or data.global.footerTextColor %}
+{# set colors #}
+{% set footerColor = data.widget.footerColor or global.footerColor %}
+{% set footerTextColor = data.widget.footerTextColor or global.footerTextColor %}
 
-<footer class="page-footer{% if data.widget.bigFooter or data.global.bigFooter  %} nav-color{% endif %}"
+<footer
+  class="
+    page-footer
+    {% if data.widget.bigFooter or global.bigFooter  %}
+      nav-color
+    {% endif %}
+    {% if footerTextColor %}
+      footer-text-color
+    {% endif %}
+  "
   {% if footerColor or lastPiece.shapeDividerBottom %}
     style="
-      {% if footerColor %}background-color: {{ footerColor }};{% endif %}
-      {% if lastPiece.shapeDividerBottom %}padding-top: {{ shapeDividerHeight }}rem;{% endif %}
+      {% if footerColor %}background-color: {{ footerColor }} !important;{% endif %}
+      {% if footerTextColor %}color: {{ footerTextColor }};fill: {{ footerTextColor }};{% endif %}
+      {% if lastPiece.shapeDividerBottom %}padding-top: calc(100vw * {{ shapeDividerHeight }});{% endif %}
       "
   {% endif %}
 >
-  {% if data.widget.bigFooter or data.global.bigFooter %}
+  {% if data.widget.bigFooter or global.bigFooter %}
     <div class="container">
       <div class="row">
 
-        <div class="col m4 s12">
+        <div class="col s12 m3">
 
-          <h3 class="accent-color"
-          {% if footerTextColor %}
-            style="color: {{ footerTextColor }}"
-          {% endif %}
-          >
-            {{ data.global.websiteTitle or data.options.homeTitle }}
+          <h3 class="accent-color">
+            {{ global.websiteTitle or data.options.homeTitle }}
           </h3>
 
           <ul>
             {# Home #}
             <li>
-              <a class="btn-flat accent-color" href="{{ data.options.homeUrl }}"
-                {% if footerTextColor %}
-                  style="color: {{ footerTextColor }}"
-                {% endif %}
-              >
+              <a class="btn-flat accent-color" href="{{ data.options.homeUrl }}">
                 <h4>{{ data.options.homeTitle }}</h4>
               </a>
             </li>
 
-            {% for tab in data.options.homeChildrenn %}
+            {% for tab in data.options.homeChildren %}
               <li>
-                <a class="btn-flat accent-color" href="{{ tab._url }}"
-                  {% if footerTextColor %}
-                    style="color: {{ footerTextColor }}"
-                  {% endif %}
-                >
+                <a class="btn-flat accent-color" href="{{ tab._url }}">
                   <h4>{{ tab.title }}</h4>
                 </a>
               </li>
@@ -55,170 +56,174 @@
           </ul>
         </div>
 
-        <div class="col m4 s12">
+        <div class="col s12 m6">
           <div class="container">
-            {% if data.global.facebook %}
-              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
-                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                	 viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
-                <path d="M0,0v455.73h242.704V279.691h-59.33v-71.864h59.33v-60.353c0-43.893,35.582-79.475,79.475-79.475h62.025v64.622h-44.382
-                   c-13.947,0-25.254,11.307-25.254,25.254v49.953h68.521l-9.47,71.864h-59.051V455.73H455.73V0H0z"/>
-                </svg>
-              </a>
+
+            {# Facebook button macro #}
+            {% if global.facebook.items[0] %}
+              {% set item = global.facebook.items[0] %}
+              <li>
+                {{ button.svg(
+                  'btn-radius btn-color footer-social-icons',
+                  item.url,
+                  'M0,0v455.73h242.704V279.691h-59.33v-71.864h59.33v-60.353c0-43.893,35.582-79.475,79.475-79.475h62.025v64.622h-44.382
+                  c-13.947,0-25.254,11.307-25.254,25.254v49.953h68.521l-9.47,71.864h-59.051V455.73H455.73V0H0z')
+                }}
+                {% if data.widget.tooltips %}
+                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
+                {% endif %}
+              </li>
             {% endif %}
-            {% if data.global.instagram %}
-              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
-                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                   viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
-                <path d="M0,0v455.731h455.731V0H0z M361.271,163.944c0.104,2.676,0.161,5.362,0.161,8.067c0,108.339-87.831,196.18-196.18,196.18
+
+            {# Instagram button macro #}
+            {% if global.instagram.items[0] %}
+              {% set item = global.instagram.items[0] %}
+              <li>
+                {{ button.svg(
+                  'btn-radius btn-color footer-social-icons',
+                  item.url,
+                  'M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33
+                	C273.18,202.88,252.85,182.55,227.86,182.55z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33
+                	c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z M303.36,108.66H152.37
+                	c-24.1,0-43.71,19.61-43.71,43.71v150.99c0,24.1,19.61,43.71,43.71,43.71h150.99c24.1,0,43.71-19.61,43.71-43.71V152.37
+                	C347.07,128.27,327.46,108.66,303.36,108.66z M227.86,306.35c-43.27,0-78.48-35.21-78.48-78.49c0-43.27,35.21-78.48,78.48-78.48
+                	c43.28,0,78.49,35.21,78.49,78.48C306.35,271.14,271.14,306.35,227.86,306.35z M308.87,165.61c-10.24,0-18.57-8.33-18.57-18.57
+                	s8.33-18.57,18.57-18.57s18.57,8.33,18.57,18.57S319.11,165.61,308.87,165.61z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31
+                	c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z M303.36,108.66
+                	H152.37c-24.1,0-43.71,19.61-43.71,43.71v150.99c0,24.1,19.61,43.71,43.71,43.71h150.99c24.1,0,43.71-19.61,43.71-43.71V152.37
+                	C347.07,128.27,327.46,108.66,303.36,108.66z M227.86,306.35c-43.27,0-78.48-35.21-78.48-78.49c0-43.27,35.21-78.48,78.48-78.48
+                	c43.28,0,78.49,35.21,78.49,78.48C306.35,271.14,271.14,306.35,227.86,306.35z M308.87,165.61c-10.24,0-18.57-8.33-18.57-18.57
+                	s8.33-18.57,18.57-18.57s18.57,8.33,18.57,18.57S319.11,165.61,308.87,165.61z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31
+                	c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z M0,0v455.73h455.73
+                	V0H0z M380.23,303.36c0,42.39-34.48,76.87-76.87,76.87H152.37c-42.39,0-76.87-34.48-76.87-76.87V152.37
+                	c0-42.39,34.48-76.87,76.87-76.87h150.99c42.39,0,76.87,34.48,76.87,76.87V303.36z M303.36,108.66H152.37
+                	c-24.1,0-43.71,19.61-43.71,43.71v150.99c0,24.1,19.61,43.71,43.71,43.71h150.99c24.1,0,43.71-19.61,43.71-43.71V152.37
+                	C347.07,128.27,327.46,108.66,303.36,108.66z M227.86,306.35c-43.27,0-78.48-35.21-78.48-78.49c0-43.27,35.21-78.48,78.48-78.48
+                	c43.28,0,78.49,35.21,78.49,78.48C306.35,271.14,271.14,306.35,227.86,306.35z M308.87,165.61c-10.24,0-18.57-8.33-18.57-18.57
+                	s8.33-18.57,18.57-18.57s18.57,8.33,18.57,18.57S319.11,165.61,308.87,165.61z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31
+                	c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z M227.86,182.55
+                	c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33
+                	C273.18,202.88,252.85,182.55,227.86,182.55z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33
+                	c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z M303.36,108.66H152.37
+                	c-24.1,0-43.71,19.61-43.71,43.71v150.99c0,24.1,19.61,43.71,43.71,43.71h150.99c24.1,0,43.71-19.61,43.71-43.71V152.37
+                	C347.07,128.27,327.46,108.66,303.36,108.66z M227.86,306.35c-43.27,0-78.48-35.21-78.48-78.49c0-43.27,35.21-78.48,78.48-78.48
+                	c43.28,0,78.49,35.21,78.49,78.48C306.35,271.14,271.14,306.35,227.86,306.35z M308.87,165.61c-10.24,0-18.57-8.33-18.57-18.57
+                	s8.33-18.57,18.57-18.57s18.57,8.33,18.57,18.57S319.11,165.61,308.87,165.61z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31
+                	c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z M227.86,182.55
+                	c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33
+                	C273.18,202.88,252.85,182.55,227.86,182.55z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33
+                	c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z M303.36,108.66H152.37
+                	c-24.1,0-43.71,19.61-43.71,43.71v150.99c0,24.1,19.61,43.71,43.71,43.71h150.99c24.1,0,43.71-19.61,43.71-43.71V152.37
+                	C347.07,128.27,327.46,108.66,303.36,108.66z M227.86,306.35c-43.27,0-78.48-35.21-78.48-78.49c0-43.27,35.21-78.48,78.48-78.48
+                	c43.28,0,78.49,35.21,78.49,78.48C306.35,271.14,271.14,306.35,227.86,306.35z M308.87,165.61c-10.24,0-18.57-8.33-18.57-18.57
+                	s8.33-18.57,18.57-18.57s18.57,8.33,18.57,18.57S319.11,165.61,308.87,165.61z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31
+                	c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z')
+                }}
+                {% if data.widget.tooltips %}
+                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
+                {% endif %}
+              </li>
+            {% endif %}
+
+            {# LinkedIn button macro #}
+            {% if global.linkedin.items[0] %}
+              {% set item = global.linkedin.items[0] %}
+              <li>
+                {{ button.svg(
+                  'btn-radius btn-color footer-social-icons',
+                  item.url,
+                  'M0,0v455.731h455.731V0H0z M139.94,375.963c0,5.804-4.705,10.509-10.509,10.509H84.71c-5.804,0-10.509-4.705-10.509-10.509
+                  V185.18c0-5.804,4.705-10.509,10.509-10.509h44.721c5.804,0,10.509,4.705,10.509,10.509V375.963z M106.998,145.491
+                  c-20.308,0.411-38.155-16.551-38.151-38.188c0-20.985,17.282-38.105,38.408-38.088c20.873,0.017,38.088,17.257,38.043,38.234
+                  C145.248,129.413,127.02,145.969,106.998,145.491z M386.884,382.153c0,2.41-1.954,4.363-4.364,4.362l-57.152-0.014
+                  c-2.409-0.001-4.362-1.954-4.362-4.363V264.331c0-10.183-4.126-19.407-10.802-26.079c-6.764-6.768-16.149-10.916-26.501-10.799
+                  c-20.279,0.229-36.454,17.068-36.454,37.348v117.323c0,2.41-1.954,4.363-4.364,4.362l-57.011-0.014
+                  c-2.409-0.001-4.361-1.954-4.361-4.362V179.034c0-2.409,1.953-4.363,4.363-4.363h55.795c2.409,0,4.363,1.953,4.363,4.363v23.418
+                  c0.005-0.01,0.225,0.018,0.599,0.075c1.078-1.95,2.252-3.839,3.52-5.658c11.628-16.688,30.96-27.606,52.842-27.606h11.47
+                  c39.996,0,72.42,32.423,72.42,72.42V382.153z')
+                }}
+                {% if data.widget.tooltips %}
+                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
+                {% endif %}
+              </li>
+            {% endif %}
+
+            {# Twitter button macro #}
+            {% if global.twitter.items[0] %}
+              {% set item = global.twitter.items[0] %}
+              <li>
+                {{ button.svg(
+                  'btn-radius btn-color footer-social-icons',
+                  item.url,
+                  'M0,0v455.731h455.731V0H0z M361.271,163.944c0.104,2.676,0.161,5.362,0.161,8.067c0,108.339-87.831,196.18-196.18,196.18
                   c-38.568,0-74.545-11.132-104.875-30.368c-0.007-0.001-0.014-0.002-0.02-0.003l0.02,0.003c0,0,0,0,0,0
                   c59.293,8.843,101.06-28.888,101.06-28.888c-52.832-4.109-63.271-48.077-63.271-48.077c18.667,3.16,30.368-1.272,30.368-1.272
                   c-59.465-13.912-54.407-68.329-54.407-68.329c13.77,8.228,29.733,8.864,29.733,8.864c-52.509-46.188-19.607-91.105-19.607-91.105
                   c55.052,66.668,135.975,71.204,141.289,71.423c-1.167-5.011-1.784-10.23-1.784-15.592c0-37.998,30.814-68.803,68.841-68.803
                   c19.825,0,37.685,8.37,50.25,21.78c3.483-0.977,6.861-2.031,10.088-3.103c19.493-6.501,33.415-13.932,33.415-13.932
                   c-3.359,20.129-28.176,37.021-29.951,38.207c-0.066,0.047-0.104,0.066-0.104,0.066c0.038,0,0.085-0.009,0.123-0.009
-                  c19.265-1.927,38.948-10.107,38.948-10.107C389.428,141.433,365.19,160.859,361.271,163.944z"/>
-                </svg>
-              </a>
+                  c19.265-1.927,38.948-10.107,38.948-10.107C389.428,141.433,365.19,160.859,361.271,163.944z')
+                }}
+                {% if data.widget.tooltips %}
+                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
+                {% endif %}
+              </li>
             {% endif %}
-            {% if data.global.linkedin %}
-              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
-                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                   viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
-                <path d="M0,0v455.731h455.731V0H0z M139.94,375.963c0,5.804-4.705,10.509-10.509,10.509H84.71c-5.804,0-10.509-4.705-10.509-10.509
-                	V185.18c0-5.804,4.705-10.509,10.509-10.509h44.721c5.804,0,10.509,4.705,10.509,10.509V375.963z M106.998,145.491
-                	c-20.308,0.411-38.155-16.551-38.151-38.188c0-20.985,17.282-38.105,38.408-38.088c20.873,0.017,38.088,17.257,38.043,38.234
-                	C145.248,129.413,127.02,145.969,106.998,145.491z M386.884,382.153c0,2.41-1.954,4.363-4.364,4.362l-57.152-0.014
-                	c-2.409-0.001-4.362-1.954-4.362-4.363V264.331c0-10.183-4.126-19.407-10.802-26.079c-6.764-6.768-16.149-10.916-26.501-10.799
-                	c-20.279,0.229-36.454,17.068-36.454,37.348v117.323c0,2.41-1.954,4.363-4.364,4.362l-57.011-0.014
-                	c-2.409-0.001-4.361-1.954-4.361-4.362V179.034c0-2.409,1.953-4.363,4.363-4.363h55.795c2.409,0,4.363,1.953,4.363,4.363v23.418
-                	c0.005-0.01,0.225,0.018,0.599,0.075c1.078-1.95,2.252-3.839,3.52-5.658c11.628-16.688,30.96-27.606,52.842-27.606h11.47
-                	c39.996,0,72.42,32.423,72.42,72.42V382.153z"/>
-                </svg>
-              </a>
-            {% endif %}
-            {% if data.global.twitter %}
-              <a class="footer-social-icons" href="{{ data.global.facebook }}" target="_blank">
-                <svg class="radius" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                   viewBox="0 0 455.731 455.731" style="max-width: 4.4rem; fill: {{ data.widget.footerTextColor or data.global.footerTextColor or data.global.accentColor }}">
-                <path d="M0,0v455.731h455.731V0H0z M361.271,163.944c0.104,2.676,0.161,5.362,0.161,8.067c0,108.339-87.831,196.18-196.18,196.18
-                  c-38.568,0-74.545-11.132-104.875-30.368c-0.007-0.001-0.014-0.002-0.02-0.003l0.02,0.003c0,0,0,0,0,0
-                  c59.293,8.843,101.06-28.888,101.06-28.888c-52.832-4.109-63.271-48.077-63.271-48.077c18.667,3.16,30.368-1.272,30.368-1.272
-                  c-59.465-13.912-54.407-68.329-54.407-68.329c13.77,8.228,29.733,8.864,29.733,8.864c-52.509-46.188-19.607-91.105-19.607-91.105
-                  c55.052,66.668,135.975,71.204,141.289,71.423c-1.167-5.011-1.784-10.23-1.784-15.592c0-37.998,30.814-68.803,68.841-68.803
-                  c19.825,0,37.685,8.37,50.25,21.78c3.483-0.977,6.861-2.031,10.088-3.103c19.493-6.501,33.415-13.932,33.415-13.932
-                  c-3.359,20.129-28.176,37.021-29.951,38.207c-0.066,0.047-0.104,0.066-0.104,0.066c0.038,0,0.085-0.009,0.123-0.009
-                  c19.265-1.927,38.948-10.107,38.948-10.107C389.428,141.433,365.19,160.859,361.271,163.944z"/>
-                </svg>
-              </a>
-            {% endif %}
+
           </div>
         </div>
-        <div class="col m4 l3 offset-l1 s12 left-margin">
 
-          <h3 class="accent-color"
-            {% if footerTextColor %}
-              style="color: {{ footerTextColor }}"
-            {% endif %}
-          >
-            {{ data.widget.aboutTitle or data.global.aboutTitle or 'About' }}
+        {# About Fields #}
+        <div class="col s12 m3 offset-l1 l2 left-margin">
+
+          <h3 class="accent-color">
+            {{ data.widget.aboutTitle or global.aboutTitle or 'About' }}
           </h3>
 
 
-          {% if data.global.phone %}
-            <a class="btn-flat" href="tel:{{ data.global.phone }}"
-              {% if footerTextColor %}
-                style="color: {{ footerTextColor }}"
-              {% endif %}
-            >
-              <div class="row">
-                <div class="col s3 m2">
-                  <i class="material-icons left accent-color"
-                    {% if footerTextColor %}
-                      style="color: {{ footerTextColor }}"
-                    {% endif %}
-                  >
-                    local_phone
-                  </i>
-                </div>
-                <div class="col s9 m10">
-                  <h4 class="text-color"
-                    {% if footerTextColor %}
-                      style="color: {{ footerTextColor }}"
-                    {% endif %}
-                  >
-                    {{ data.global.phone }}
-                  </h4>
-                </div>
-              </div>
+          {% if global.phone %}
+            <a class="btn-flat" href="tel:{{ global.phone }}">
+              <i class="material-icons left accent-color">
+                local_phone
+              </i>
+              <h4 class="accent-color">
+                {{ global.phone }}
+              </h4>
             </a>
           {% endif %}
 
-          {% if data.global.email %}
-            <a class="btn-flat" href="mailto:{{ data.global.email }}"
-              {% if footerTextColor %}
-                style="color: {{ footerTextColor }}"
-              {% endif %}
-            >
-              <div class="row">
-                <div class="col s3 m2">
-                  <i class="material-icons left accent-color"
-                    {% if footerTextColor %}
-                      style="color: {{ footerTextColor }}"
-                    {% endif %}
-                  >
-                    mail
-                  </i>
-                </div>
-                <div class="col s9 m10">
-                  <h4 class="text-color"
-                    {% if footerTextColor %}
-                      style="color: {{ footerTextColor }}"
-                    {% endif %}
-                  >
-                    {{ data.global.email }}
-                  </h4>
-                </div>
-              </div>
+          {% if global.email %}
+            <a class="btn-flat" href="mailto:{{ global.email }}">
+              <i class="material-icons left accent-color">
+                mail
+              </i>
+              <h4 class="accent-color">
+                {{ global.email }}
+              </h4>
             </a>
           {% endif %}
 
-          {% if data.global.address or data.global.zip or data.global.city or data.global.country %}
-            <a class="btn-flat address" target=“_blank” href="http://maps.google.com/?q={{ data.global.street }},{{ data.global.zip }},{{ data.global.city }},{{ data.global.country }}">
-              <div class="row">
-                <div class="col s3 m2">
-                  <i class="material-icons left accent-color"
-                    {% if footerTextColor %}
-                      style="color: {{ footerTextColor }}"
-                    {% endif %}
-                  >
-                    location_city
-                  </i>
-                </div>
-                <div class="col s9 m10">
-                  <h4 class="text-color"
-                    {% if footerTextColor %}
-                      style="color: {{ footerTextColor }}"
-                    {% endif %}
-                  >
-                    {% if data.global.street %}
-                      {{ data.global.street }},
-                    {% endif %}
-                    {% if data.global.zip %}
-                      <br/>{{ data.global.zip }},
-                    {% endif %}
-                    {% if data.global.city %}
-                      {{ data.global.city }},
-                    {% endif %}
-                    {% if data.global.country %}
-                      <br/>{{ data.global.country }}
-                    {% endif %}
-                  </h4>
-                </div>
-              </div>
+          {% if global.address or global.zip or global.city or global.country %}
+            <a class="btn-flat address" target=“_blank” href="http://maps.google.com/?q={{ global.street }},{{ global.zip }},{{ global.city }},{{ global.country }}">
+              <i class="material-icons left accent-color">
+                location_city
+              </i>
+              <h4 class="accent-color">
+                {% if global.street %}
+                  {{ global.street }},
+                {% endif %}
+                {% if global.zip %}
+                  <br/>{{ global.zip }},
+                {% endif %}
+                {% if global.city %}
+                  {{ global.city }},
+                {% endif %}
+                {% if global.country %}
+                  <br/>{{ global.country }}
+                {% endif %}
+              </h4>
             </a>
           {% endif %}
-
 
         </div>
 
@@ -231,21 +236,17 @@
       <div class="row">
 
         <div class="col s12 m3 push-m6 l2 push-l8 center">
-          {%- if data.global.privacy -%}
+          {%- if global.privacy -%}
           <h4>
             <a href="#modal-1" rel="nofollow"
-              class="right modal-trigger accent-color"
-                {% if footerTextColor %}
-                  style="color: {{ footerTextColor }}"
-                {% endif %}
-            >
-              {{ data.widget.footerPrivacy or data.global.footerPrivacy or 'Privacy' }}
+              class="right modal-trigger accent-color">
+              {{ data.widget.footerPrivacy or global.footerPrivacy or 'Privacy' }}
             </a>
           <h4>
             <div id="modal-1" class="modal">
               <div class="modal-content text-darken-4">
 
-                <h3>{{ data.widget.footerPrivacy or data.global.footerPrivacy or 'Privacy' }}</h3>
+                <h3>{{ data.widget.footerPrivacy or global.footerPrivacy or 'Privacy' }}</h3>
                 <iframe src="/modules/footer-widgets/privacy" width="100%" height="500px"></iframe >
 
               </div>
@@ -254,21 +255,17 @@
         </div>
 
         <div class="col s12 m3 push-m6 l2 push-l8 center">
-          {%- if data.global.legal -%}
+          {%- if global.legal -%}
             <h4>
               <a href="#modal-2" rel="nofollow"
-                class="right modal-trigger accent-color"
-                  {% if footerTextColor %}
-                    style="color: {{ footerTextColor }}"
-                  {% endif %}
-              >
-                {{ data.widget.footerLegal or data.global.footerLegal or 'Legal' }}
+                class="right modal-trigger accent-color">
+                {{ data.widget.footerLegal or global.footerLegal or 'Legal' }}
               </a>
             <h4>
             <div id="modal-2" class="modal">
               <div class="modal-content text-darken-4">
 
-                <h3>{{ data.global.footerLegal or data.global.footerLegal or 'Legal Info' }}</h3>
+                <h3>{{ global.footerLegal or global.footerLegal or 'Legal Info' }}</h3>
                 <iframe src="/modules/footer-widgets/legal" width="100%" height="500px"></iframe >
 
               </div>
@@ -277,13 +274,9 @@
         </div>
 
         <div class="col s12 m6 pull-m6 l8 pull-l4 copyright-center">
-          {%- if data.global.creationDate or data.global.copyright -%}
-            <h4 class="text-color"
-              {% if footerTextColor %}
-                style="color: {{ footerTextColor }}"
-              {% endif %}
-            >
-              © {{ data.global.creationDate }} {{ data.global.copyright }}
+          {%- if global.creationDate or global.copyright -%}
+            <h4 class="accent-color">
+              © {{ global.creationDate }} {{ global.copyright }}
             </h4>
           {%- endif -%}
         </div>

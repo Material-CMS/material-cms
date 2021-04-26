@@ -1,24 +1,37 @@
 {% import 'components/automatic.html' as automatic with context %}
 {% import 'components/manual.html' as manual with context %}
+{# query and cache global to reduce load  #}
+{% set global = data.global %}
 
 <div class="nav">
 
   {# Nav Background #}
-  {% if data.widget._navBackgroundImage or data.global._navBackgroundImage %}
+  {% if data.widget._navBackgroundImage or global._navBackgroundImage %}
     {% include "components/background.html" %}
   {% endif %}
 
   {# Desktop #}
-  <nav class="nav-extended{% if data.widget._navBackgroundImage or data.global._navBackgroundImage %} nav-pushpin{% endif %}">
+  <nav class="nav-extended{% if data.widget._navBackgroundImage or global._navBackgroundImage %} nav-pushpin{% endif %}">
 
     {# Nav Wrapper #}
-    <div class="nav-wrapper pin-top nav-color{% if data.widget.navShadow or data.global.navShadow %} z-depth-2{% endif %}"
-    {% if data.widget.navColor or (data.widget._navBackgroundImage or data.global._navBackgroundImage) %}
+    <div class="
+        nav-wrapper pin-top nav-color
+        {% if data.widget.navShadow or global.navShadow %}
+          z-depth-2
+        {% endif %}
+        {% if data.widget.navTextColor %}
+          nav-text-color
+        {% endif %}
+      "
+    {% if data.widget.navColor or (data.widget._navBackgroundImage or global._navBackgroundImage) %}
       style="
         {% if data.widget.navColor %}
-          background-color: {{ data.widget.navColor}};
+          background-color: {{ data.widget.navColor }} !important;
         {% endif %}
-        {% if data.widget._navBackgroundImage or data.global._navBackgroundImage %}
+        {% if data.widget.navTextColor %}
+          color: {{ data.widget.navTextColor }};
+        {% endif %}
+        {% if data.widget._navBackgroundImage or global._navBackgroundImage %}
           position: relative;
         {% endif %}
       "
@@ -33,17 +46,13 @@
           alt="{{ data.widget._logo.description }}"
         >
       {% else %}
-        {% if data.global._logo %}
+        {% if global._logo %}
           <img
-            src="{{ apos.attachments.url(data.global._logo.attachment, { size: 'full' }) }}"
-            alt="{{ data.global._logo.description }}"
+            src="{{ apos.attachments.url(global._logo.attachment, { size: 'full' }) }}"
+            alt="{{ global._logo.description }}"
           >
         {% else %}
-          <h1 class="accent-color"
-            {% if data.widget.navTextColor or data.global.navTextColor %}
-              style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-            {% endif %}
-            >
+          <h1 class="text-color">
             {{ data.options.homeTitle }}
           </h1>
         {% endif %}
@@ -51,11 +60,7 @@
     </a>
 
       {# Sidenav Trigger #}
-      <a href="#" data-target="mobile" class="accent-color sidenav-trigger"
-        {% if data.widget.navTextColor or data.global.navTextColor %}
-          style="color: {{ data.widget.navTextColor or data.global.navTextColor }}"
-        {% endif %}
-      >
+      <a href="#" data-target="mobile" class="accent-color sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
 
@@ -84,7 +89,17 @@
 </div>
 
 {# Mobile Sidenav #}
-<ul class="sidenav" id="mobile">
+<ul id="mobile"
+  class="
+    sidenav nav-color
+    {% if data.widget.navTextColor %}
+      nav-text-color
+    {% endif %}
+    "
+  {% if data.widget.navColor %}
+    style="background-color: {{ data.widget.navColor}} !important"
+  {% endif %}
+>
 
   {# Extra Links #}
   {% include "components/extra-links.html" %}
@@ -93,7 +108,7 @@
   {% if data.widget.nav == 'default' %}
     {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
   {% elif data.widget.nav == 'manual' and data.widget._pieces.length  %}
-    {{ manual.base('dropdown-mobile','dropdown-trigger') }}
+    {{ manual.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
   {% else %}
     <div class="apos-area apos-empty">
       <i class="material-icons">clear</i>
