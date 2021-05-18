@@ -19,7 +19,7 @@
       footer-text-color
     {% endif %}
   "
-  {% if footerColor or lastPiece.shapeDividerBottom %}
+  {% if footerColor or footerTextColor or lastPiece.shapeDividerBottom %}
     style="
       {% if footerColor %}background-color: {{ footerColor }} !important;{% endif %}
       {% if footerTextColor %}color: {{ footerTextColor }};fill: {{ footerTextColor }};{% endif %}

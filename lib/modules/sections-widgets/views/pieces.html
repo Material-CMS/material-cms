@@ -1,7 +1,10 @@
-{# choose either pices of templates of piece pages #}
+{# choose either pieces of templates of piece pages #}
 {% set pieces = data.widget._pieces or data.pieces %}
 
 {% for piece in pieces %}
+
+  {# choose either piece background color or global background color #}
+  {% set backgroundColor = piece.backgroundColor or global.backgroundColor %}
 
   {# Parallax Container #}
   {% if piece.sectionStyle == 'default' and (piece._backgroundImage and piece.backgroundImageParallax) %}
@@ -20,8 +23,8 @@
       {# Top Shape Divider Parallax #}
       {% if piece.shapeDividerTop.items[0] %}
         <div class="shape-divider-top divider-parallax"
-          {% if piece.backgroundColor or global.backgroundColor %}
-            style="fill: {{ piece.backgroundColor or global.backgroundColor }}"
+          {% if backgroundColor %}
+            style="fill: {{ backgroundColor }}"
           {% endif %}
         >
           {{ apos.area(piece, 'shapeDividerTop', {
@@ -47,13 +50,10 @@
 
   {# Section #}
   <div id="{{ piece.slug }}" class="section"
-    {% if piece.backgroundColor or piece.shapeDividerTop.items[0].shapeDividerHeight %}
+    {% if backgroundColor %}
       style="
-        {% if piece.backgroundColor %}
-          background-color:{{ piece.backgroundColor }};
-        {% endif %}
-        {% if piece.shapeDividerTop.items[0].shapeDividerHeight %}
-          padding-top: {{ piece.shapeDividerTop.items[0].shapeDividerHeight }}rem;
+        {% if backgroundColor %}
+          background-color:{{ backgroundColor }};
         {% endif %}
         "
     {% endif %}
@@ -62,8 +62,8 @@
     {# Top Shape Divider #}
     {% if piece.shapeDividerTop.items[0] and not (piece._backgroundImage and piece.backgroundImageParallax) %}
       <div class="shape-divider-top"
-        {% if piece.backgroundColor or global.backgroundColor %}
-          style="fill: {{ piece.backgroundColor or global.backgroundColor }}"
+        {% if backgroundColor %}
+          style="fill: {{ backgroundColor }}"
         {% endif %}
       >
         {{ apos.area(piece, 'shapeDividerTop', {
@@ -278,14 +278,17 @@
     {% endif %}
 
     </div>
+    
   </div>
 
 
   {# Bottom Shape Divider #}
   {% if piece.shapeDividerBottom.items[0] %}
     <div class="shape-divider-bottom"
-      {% if piece.backgroundColor or global.backgroundColor %}
-        style="fill: {{ piece.backgroundColor or global.backgroundColor }}"
+      {% if backgroundColor %}
+        style="
+          fill: {{ backgroundColor }}
+        "
       {% endif %}
     >
       {{ apos.area(piece, 'shapeDividerBottom', {
@@ -305,5 +308,11 @@
       }) }}
     </div>
   {% endif %}
+
+<style type="text/css">
+#{{piece.slug}} ~ .section .main-content {
+  padding-top: calc(100vw * {{ piece.shapeDividerBottom.items[0].shapeDividerHeight }});
+}
+</style>
 
 {% endfor %}

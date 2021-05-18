@@ -1,0 +1,53 @@
+{% macro base() %}
+
+  <div class="row widget expand">
+    <div class="col s12">
+
+      {% for entry in data.widget._pieces %}
+        {% set image = entry.item or entry %}
+        {% set relationship = entry.relationship %}
+
+        <div class="expand-item expand-init expand-filter">
+
+          <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %}">
+            <div class="expand-curve-wrapper">
+              <a class="expand-cover radius z-depth-1">
+                <img
+                  src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
+                  srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
+                  sizes="{{ data.options.sizesAttr or '100vw' }}"
+                  alt="{{ image.title }}"
+                  {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                    style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+                  {%- endif -%}
+                >
+              </a>
+
+              {% if image.description %}
+                <div class="expand-header">
+                  <p class="flow-text">
+                    {{ image.description | nlbr }}
+                  </p>
+                </div>
+              {% endif %}
+
+              <div class="expand-body radius z-depth-1">
+                <div class="expand-container">
+                <div class="row widget">
+                  <div class="col s12">
+                    {{ apos.area(data.widget, 'expandWidgets', { edit: false }) }}
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+{% endmacro %}

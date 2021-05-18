@@ -120,6 +120,9 @@ h4 {
       }
 		}
 	}
+  // .shape-divider-bottom + .section .main-content {
+  //   padding-top: 6rem;
+  // }
 }
 // Sections
 .section {
@@ -516,5 +519,30 @@ table {
   }
   .radius {
     .border-radius(0)!important;
+  }
+}
+// Gallery expand
+.expand-expand {
+  .radius {
+    .expand-curve-wrapper {
+      .border-radius(inherit);
+      .expand-body {
+        .border-radius(inherit);
+      }
+    }
+  }
+}
+.expand-expand.active {
+  .placeholder:hover {
+    
+  }
+  .radius {
+    overflow: visible;
+    .expand-curve-wrapper {
+      .border-radius(inherit);
+      .expand-cover {
+        .border-radius(inherit);
+      }
+    }
   }
 }

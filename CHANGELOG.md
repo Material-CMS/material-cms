@@ -21,9 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add events pages
 - All materialize initialization by always and lean in widget itself
 - Kenburns for nav background image
-- Add anchor to rich-text-widet options
 - Make nav logo svg only
-- Add aspect-ratio trick with padding 100% to double-widget
+- Create code widget
 
 ## [0.9.7 ] - Unreleased
 
@@ -47,6 +46,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reworked navigations
 - Reworked galleries
 - Add link and page-link widgets for extraLink in text-widgets
+- Replaced centerTitle in texts with titleAlign
+- Add force aspect-ratio 1:1 to double-widget
+- Add anchor to rich-text-widet options
+- Add gallery expand for card widgets
 
 ### Removed
 - Unnecessary javascript trough lean front end

@@ -10,7 +10,9 @@ var apos = require('apostrophe')({
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
     // Custom Modules
-    'card-widgets': {},
+    'card-widgets': {
+      player: true
+    },
     'button-widgets':{
       player: true
     },
@@ -92,6 +94,7 @@ var apos = require('apostrophe')({
     'texts-widgets': {
       player: true
     },
+    'texts-card-widgets': {},
     'video-widgets': {},
 
     // CSS in context editing

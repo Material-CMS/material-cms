@@ -1,6 +1,4 @@
-{% import 'components/expand.html' as expand with context %}
 {% import 'components/lightbox.html' as lightbox with context %}
-{% import 'components/link.html' as link with context %}
 {% import 'components/off.html' as off with context %}
 
 {% if data.widget._pieces.length %}
@@ -8,10 +6,6 @@
   {# Include components #}
   {% if data.widget.clickAction == 'clickActionLightbox' %}
     {{ lightbox.base() }}
-  {% elif data.widget.clickAction == 'clickActionLink' %}
-    {{ link.base() }}
-  {% elif data.widget.clickAction == 'clickActionGalleryExpand' %}
-    {{ expand.base() }}
   {% elif data.widget.clickAction == false %}
     {{ off.base() }}
   {% endif %}

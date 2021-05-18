@@ -117,6 +117,17 @@ fieldset {
   .apos-area-widget,
   .apos-area-widgets {
     width: 100%;
+    .apos-area-widget[data-apos-widget="texts"] {
+      .card-action {
+        .btn {
+          span {
+            .flex();
+            .flex-align-items(center);
+            .flex-justify(center);
+          }
+        }
+      }
+    }
   }
 }
 // Manual Nav Fieldset Overrides
@@ -263,8 +274,7 @@ fieldset[data-name="linkArea"] {
       }
       .apos-field-help {
         span {
-          text-transform: uppercase;
-          color: @red;
+          font-weight: bold;
         }
       }
       // Shape Diviers Admin view
