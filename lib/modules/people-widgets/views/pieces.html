@@ -18,10 +18,9 @@
       </a>
     {% endif %}
 
-      {{ apos.area(piece, 'body', {
-        edit: false,
-        widgets: { 'apostrophe-rich-text': {} }
-      }) }}
+    {% if piece.body.items[0] %}
+      {{ apos.area(piece, 'body', { edit: false }) }}
+    {% endif %}
 
     {% if piece.email or piece.phone %}
       <div class="card-action">

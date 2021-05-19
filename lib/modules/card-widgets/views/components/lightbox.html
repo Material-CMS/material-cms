@@ -66,10 +66,9 @@
                       </h4>
                     </span>
 
-                    {{ apos.area(image, 'revealText', {
-                      edit: false,
-                      widgets: { 'apostrophe-rich-text': { } }
-                    }) }}
+                    {% if data.widget.revealText.items[0] %}
+                      {{ apos.area(image, 'revealText', { edit: false }) }}
+                    {% endif %}
 
                 </div>
               {% endif %}
