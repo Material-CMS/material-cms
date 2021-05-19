@@ -87,11 +87,9 @@
             {% endif %}
 
             {% if piece.description.items[0] %}
-              {{ apos.area(piece, 'description', {
-                edit: false,
-                widgets: { 'apostrophe-rich-text': { } }
-              }) }}
+              {{ apos.area(piece, 'description', { edit: false }) }}
             {% endif %}
+            
           </div>
 
           {% if piece.text.items[0] or piece.linkArea.items[0] %}

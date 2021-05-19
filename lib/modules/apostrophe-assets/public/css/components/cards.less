@@ -55,10 +55,13 @@
 		opacity: 0;
 	}
   .card-content {
-    cursor: pointer;
     p {
       pointer-events: none;
       touch-action: none;
+      a {
+        pointer-events: auto;
+        touch-action: auto;
+      }
     }
     .apos-area-widget-wrapper {
       margin: 1.52rem 0 .912rem;

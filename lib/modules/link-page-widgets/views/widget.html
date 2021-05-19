@@ -1,1 +1,11 @@
-<h4><a href="{{ data.widget._page._url }}">{{ data.widget._page.title }}</a></h4>
+<h4 class="
+  {% if data.widget.headerAlign == 'left' %}
+    left-align
+  {% elif data.widget.headerAlign == 'center' %}
+    center-align
+  {% elif data.widget.headerAlign == 'right' %}
+    right-align
+  {% endif %}"
+>
+  <a class="accent-color" href="{{ data.widget._page._url }}">{{ data.widget._page.title }}</a>
+</h4>
