@@ -1,0 +1,160 @@
+@material-icons: Material Icons, sans-serif;
+// Responsive Styles
+@media (max-width: 992px) {
+  .no-padding-medium {
+    .columns-container {
+      padding: 0 !important;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .bottom-margin-medium {
+    .columns-container {
+      margin-bottom: 2.4rem !important;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .no-padding-mobile {
+    .columns-container {
+      padding: 0 !important;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .bottom-margin-mobile {
+    .columns-container {
+      margin-bottom: 2.4rem !important;
+    }
+  }
+}
+// Basics
+body {
+  overflow-x: hidden;
+}
+// iframe
+iframe {
+  border: none;
+}
+// Typo
+h3 {
+  font-size: 1.64rem !important;
+}
+h4 {
+  font-size: 1.64rem !important;
+}
+// Default Colors
+.text-color {
+	color: @dark;
+}
+// Grid
+.row {
+  margin-bottom: 0;
+  margin-left: inherit !important;
+  margin-right: inherit !important;
+}
+// Flow Text is huge in default settings!
+@media (min-width: 600px) {
+  .flow-text {
+    font-size: 1.25rem !important;
+  }
+}
+@media (min-width: 700px) {
+  .flow-text {
+    font-size: 1.3rem !important;
+  }
+}
+@media (min-width: 800px) {
+  .flow-text {
+    font-size: 1.35rem !important;
+  }
+}
+@media (min-width: 1000px) {
+  .flow-text {
+    font-size: 1.4rem !important;
+  }
+}
+// Pages
+.pages-container {
+  width: 100%;
+  margin: 4rem 0 9rem;
+	.container {
+	  .row {
+	    width: 100%;
+			.card {
+				.card-image {
+					.radius {
+						.box-shadow(none);
+					}
+				}
+			}
+	  }
+	}
+}
+@media (max-width: 600px) {
+  .pages-container {
+    margin: 4rem 0 16rem;
+  }
+}
+// Infinite content
+.content {
+  .apos-ui {
+    .apos-pager {
+      height: 100%;
+      font-size: 18px;
+    }
+  }
+  .pagination {
+    height: 4rem;
+		.flex();
+		.flex-align-items(center);
+		.flex-justify(center);
+  }
+}
+// Icons
+.material-icons {
+  font-family: @material-icons !important;
+  font-display: swap;
+}
+// Modals
+.modal {
+  top: auto !important;
+  bottom: 5% !important;
+  overflow: hidden;
+}
+.modal-content {
+  padding: 24px 0 !important;
+  h4,
+  p {
+    color: #000 !important;
+  }
+}
+// Texts
+.apos-rich-text ul {
+  padding-left: 40px;
+}
+.apos-rich-text ul,
+.apos-rich-text ul li {
+  list-style-type: inherit;
+}
+// Different Stuff
+.margin-top {
+  margin-top: 1rem;
+}
+// Admin UI Overrides
+.apos-ui {
+  .apos-dropdown.apos-dropdown--area-controls {
+    .apos-dropdown-items {
+      max-width: 92%;
+      .apos-dropdown-item {
+        float: left;
+      }
+    }
+  }
+  .apos-field-input {
+    height: inherit;
+  }
+  .radius {
+    .border-radius(0)!important;
+  }
+}
