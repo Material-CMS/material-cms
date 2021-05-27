@@ -9,19 +9,7 @@
 
             {% for swiper in data.widget.swipers %}
             <div class="swiper-slide">
-              {{ apos.area(swiper, 'swiper', {
-                edit: false,
-                widgets: {
-                  'card': {
-                    size: 'one-half',
-                    sizesAttr: '(max-width:600px) 50vw, 40vw',
-                    noHeight: true,
-                    focalPoint: true
-                  },
-                  'texts': {},
-                  'video': {}
-                }
-              }) }}
+              {{ apos.area(swiper, 'swiper', { edit: false }) }}
             </div>
             {% endfor %}
 
