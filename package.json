@@ -22,6 +22,7 @@
     "apostrophe-optimizer": "^2.0.2",
     "apostrophe-palette": "^2.0.30",
     "apostrophe-pieces-orderings-bundle": "^2.1.3",
+    "apostrophe-rich-text-permalinks": "^2.0.5",
     "apostrophe-seo": "^1.4.1",
     "apostrophe-site-map": "^2.5.3",
     "core-js": "^3.10.1",
