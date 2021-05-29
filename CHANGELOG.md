@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Make nav logo svg only
 - Create code widget
 
-## [0.9.7 ] - Unreleased
+## [0.9.7 ] - 29.05.2021
 
 ### Added
 - Apostrophe-forms
