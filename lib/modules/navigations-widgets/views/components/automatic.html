@@ -6,7 +6,7 @@
       class="active"
     {% endif %}
   >
-    <a href="{{ data.options.homeUrl }}" data-target="{{ dataTarget }}" class="flow-text text-color waves-effect
+    <a href="{{ data.options.homeUrl }}" data-target="{{ dataTarget }}" class="flow-text waves-effect
       {% if data.options.pageUrl == data.options.homeUrl and data.options.items %}
         {{ dropdown }}
       {% endif %}"
@@ -38,9 +38,7 @@
             <a
               href="#{{ piece.slug }}"
               class="
-                accent-color
                 flow-text
-                text-color
                 anchor-jump
                 truncate
                 waves-effect
@@ -66,7 +64,7 @@
         class="active"
       {% endif %}
     >
-      <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text text-color waves-effect
+      <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text waves-effect
         {% if tab._children.length %}
           {{ dropdown }}
         {% endif %}"
@@ -102,9 +100,7 @@
                 <a
                   href="#{{ piece.slug }}"
                   class="
-                    accent-color
                     flow-text
-                    text-color
                     anchor-jump
                     truncate
                     waves-effect
@@ -129,7 +125,7 @@
                 class="active"
               {% endif %}
             >
-              <a href="{{ child._url }}" class="accent-color flow-text text-color truncate">
+              <a href="{{ child._url }}" class="flow-text truncate">
                 {{ child.title }}
               </a>
             </li>
@@ -139,7 +135,7 @@
               <li class="divider" tabindex="-1"></li>
               {% for piece in pieces %}
                 <li>
-                  <a href="#{{ piece.slug }}" class="accent-color flow-text text-color anchor-jump anchor-scroll truncate {{ classes }}">
+                  <a href="#{{ piece.slug }}" class="flow-text anchor-jump anchor-scroll truncate {{ classes }}">
                     {{ piece.title }}
                   </a>
                 </li>

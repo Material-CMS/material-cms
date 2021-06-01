@@ -2,7 +2,7 @@
 {% if data.widget.linksArray[0] %}
   {% for name in data.widget.linksArray %}
    <li>
-     <a href="{{ name.url }}" class="accent-color"
+     <a href="{{ name.url }}"
        {% if data.widget.navTextColor %}
          style="color: {{ data.widget.navTextColor }}"
        {% endif %}
@@ -18,7 +18,7 @@
 {% elif global.linksArray[0] %}
   {% for name in global.linksArray %}
    <li>
-     <a href="{{ name.url }}" class="accent-color"
+     <a href="{{ name.url }}"
        {% if data.widget.navTextColor %}
          style="color: {{ data.widget.navTextColor }}"
        {% endif %}
