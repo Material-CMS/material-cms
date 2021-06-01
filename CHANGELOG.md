@@ -6,10 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Video local files
 - Materialize tab widget
 - Add description text to text-show page when not blog
-- Add link color for palette and options for UPPERCASE text
+- UPPERCASE for apostrophe-rich-texts
 - Change nav title to page title
 - Replace slider with swiper
 - Hide card-reveal in swiper
@@ -19,10 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add shape divider svg file as well
 - Add page background color chooser
 - Add events pages
-- All materialize initialization by always and lean in widget itself
 - Kenburns for nav background image
 - Make nav logo svg only
 - Create code widget
+
+## [0.9.8 ] - Unreleased
+
+### Added
+- Video local files
 
 ## [0.9.7 ] - 29.05.2021
 

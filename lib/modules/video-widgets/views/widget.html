@@ -4,34 +4,38 @@
       <div class="card z-depth-0" {% if piece.backColor%} style="background-color:{{ piece.backColor }}" {% endif %}>
         <div class="card-stacked">
 
-          <div class="card-image">
-            {{ apos.area(data.widget, 'apostropheVideo', {
-              edit: false,
-              widgets: {
-                'apostrophe-video': {}
-              }
-            }) }}
-          </div>
+          <div class="card-video">
 
-          {% if data.widget.title %}
-            <div class="card-content" {% if piece.backColor%} style="background-color:{{ piece.backColor }}" {% endif %}>
-              <h4 class="accent-color card-title" {% if data.widget.titleColor %} style="color:{{ data.widget.titleColor }}" {% endif %}>
-                {{ data.widget.title }}
-              </h4>
-            </div>
+          {% if data.widget.videoSource == 'extern' %}
+
+            {{ apos.singleton(data.widget, 'apostropheVideo', { edit: false }) }}
+
+          {% elif data.widget.videoSource == 'local' %}
+
+            {% set vidFile = data.widget.filename.items[0]._pieces[0].attachment %}
+            {% set vidPoster = data.widget._poster.attachment %}
+
+            {% if vidPoster %}
+              <video
+                width=100%
+                controls
+                controlsList="nodownload"
+                poster="{{ apos.attachments.url(vidPoster, { size: data.options.size or 'two-thirds' }) }}"
+              >
+            {% else %}
+              <video
+                width=100%
+                controls
+                controlsList="nodownload"
+              >
+            {% endif %}
+                <source src="{{ apos.attachments.url(vidFile) }}" type='video/mp4' >
+                <button id="play">&gt;</button>
+                <button type="button" class="btn btn-primary">Primary</button>
+              </video>
           {% endif %}
 
-          {%- if data.widget.credit -%}
-            <div class="card-action center-align">
-              {%- if image.creditUrl -%}
-                  <a class="btn-flat" href="{{ image.creditUrl }}" target="_blank">
-              {%- endif -%}
-                    {{ image.credit }}
-              {%- if image.creditUrl -%}
-                  </a>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
+          </div>
 
         </div>
       </div>
