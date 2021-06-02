@@ -1,5 +1,7 @@
 {# choose either pieces of templates of piece pages #}
 {% set pieces = data.widget._pieces or data.pieces %}
+{# set additional font from global #}
+{% set additionalFont = data.global.additionalFonts | replace("+"," ") or null %}
 
 {% for piece in pieces %}
 
@@ -167,8 +169,15 @@
               {% elif piece.headerAlign == 'right' %}
                 right-align
               {% endif %}"
-              {% if piece.headerColor %}
-                style="color: {{ piece.headerColor }}"
+              {% if piece.headerColor or data.global.additionalFonts %}
+                style="
+                  {% if piece.headerColor %}
+                    color: {{ piece.headerColor }}
+                  {% endif %}
+                  {% if piece.headerAdditionalFont %}
+                    font-family: {{ additionalFont }}, sans-serif;
+                  {% endif %}
+                "
               {% endif %}
             >
               {{ piece.header }}
@@ -196,18 +205,11 @@
                   position: 'bottom-right'
                 }
               },
-              'triple': {
+              'events': {
                 controls: {
                   cloneable: false,
                   removable: true,
-                  position: 'bottom-right'
-                }
-              },
-              'quadruple': {
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'bottom-right'
+                  position: 'top-right'
                 }
               },
               'link': {
@@ -224,7 +226,7 @@
                   position: 'bottom-right'
                 }
               },
-              'events': {
+              'grid': {
                 controls: {
                   cloneable: false,
                   removable: true,
