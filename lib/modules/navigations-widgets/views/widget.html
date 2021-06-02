@@ -43,7 +43,7 @@
     >
 
     {# Brand Logo #}
-    <a class="brand-logo" href="{{ data.options.homeUrl }}">
+    <a aria-label="Back to home" class="brand-logo" href="{{ data.options.homeUrl }}">
       {% if data.widget._logo %}
         <img
           src="{{ apos.attachments.url(data.widget._logo.attachment, { size: 'full' }) }}"
@@ -64,7 +64,7 @@
     </a>
 
       {# Sidenav Trigger #}
-      <a href="#" data-target="mobile" class="accent-color sidenav-trigger">
+      <a aria-label="Open sidenav" href="#" data-target="mobile" class="accent-color sidenav-trigger">
         {# <i class="material-icons">menu</i> #}
         <svg class="hamburger accent-color"
           xmlns="http://www.w3.org/2000/svg"
