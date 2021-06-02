@@ -1,7 +1,5 @@
 # Material CMS
 
-----
-
 ## Ultra fast CMS with material design, reusable widgets.
 
 **🧠 Developer Ready**
