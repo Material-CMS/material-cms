@@ -207,13 +207,20 @@
           .col.force-aspect-ratio.quadruple {
             padding-top: 25%;
           }
+					@media (max-width: 992px) {
+						.col.force-aspect-ratio.quadruple {
+							padding-top: 40%;
+						}
+					}
           @media (max-width: 600px) {
             .col.force-aspect-ratio.double,
 						.col.force-aspect-ratio.triple {
-              padding-top: 100% !important;
+              padding-top: 100%;
+							margin-bottom: 2.4rem;
             }
 						.col.force-aspect-ratio.quadruple {
-							padding-top: 50% !important;
+							padding-top: 50%;
+							margin-bottom: 2.4rem;
 						}
           }
 				}
