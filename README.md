@@ -1,20 +1,35 @@
+<p align="center">
+  <a href="https://github.com/Material-CMS/material-cms">
+    <img src="logo.png" alt="Logo" width="140" height="140">
+  </a>
+
+  <h3 align="center">Material CMS</h3>
+
+  <p align="center">
+    The ultimate website builder for everyone from self-employed to business or enterprise, Material-CMS is easy to use, fast, secure. You can present content in extremely diverse ways, through its reusable content. No templates needed redesign your website in minutes without losing the speed of a static page.
+    <br />
+    <a href="https://material-cms.com/"><strong>Website</strong></a>
+    <br />
+    <br />
+    <a href="https://demo.material-cms.com/">Demo</a>
+    ·
+    <a href="https://github.com/Material-CMS/material-cms/issues">Report Bug</a>
+  </p>
+</p>
+
 # Material CMS
 
-## Ultra fast CMS with material design, reusable widgets.
+- Ultra fast
+- Secure
+- Business ready
+- Lighthouse maximum
+- Easy to use
+- Extremely versatile
+- Realtime javascript
+- Extensible through plugins
+- Developer friendly
 
-**🧠 Developer Ready**
-**🐳 Dockerfile**
-**💻📲 Mobile Ready**
-**🔖 OnePage Navigation**
-**⚫️ Material Design**
-
-The ultimate website builder for everyone from self-employed to business or enterprice, Material-CMS is easy to use, fast, secure and of course its main ability, the almost unbelievable versatility should not be forgotten.
-
-No templates needed redesign your website in minutes without losing the speed of a static page.
-
-![Screenshot](screenshot.png)
-
-## Ridiculously Fast
+## Google Lighthouse
 
 ![Screenshot](lighthouse.png)
 
