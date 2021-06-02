@@ -145,6 +145,8 @@
 	.apos-area {
 		width: 100%;
 	  .row.widget {
+			margin-left: auto;
+			margin-right: auto;
       margin-bottom: 2.4rem;
 	    .col {
 	      padding: 0;
@@ -206,9 +208,13 @@
             padding-top: 25%;
           }
           @media (max-width: 600px) {
-            .col.force-aspect-ratio {
+            .col.force-aspect-ratio.double,
+						.col.force-aspect-ratio.triple {
               padding-top: 100% !important;
             }
+						.col.force-aspect-ratio.quadruple {
+							padding-top: 50% !important;
+						}
           }
 				}
         // columns widgets as full card
