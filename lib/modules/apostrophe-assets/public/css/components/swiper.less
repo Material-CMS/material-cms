@@ -1,8 +1,31 @@
 // Swiper Overrides
 .swiper-container {
   .swiper-wrapper {
-    .row.widget {
-      margin-bottom: 0 !important;
+    .swiper-slide {
+      .radius {
+        .box-shadow(none);
+        border-radius: 0;
+      }
+      .row.widget {
+        margin: 0;
+        .card-image {
+          img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            font-family: 'object-fit: cover';
+          }
+        }
+        @media (max-width: 600px) {
+          .card-image {
+            height: 50vh;
+          }
+        }
+        .card-action {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -10,17 +33,5 @@
   span.swiper-pagination-bullet {
     width: 16px;
     height: 16px;
-  }
-}
-.swiper-slide {
-  .radius {
-    .box-shadow(none);
-    border-radius: 0;
-  }
-  .widget {
-    margin: 0;
-  }
-  .card-action {
-    display: none;
   }
 }
