@@ -1,6 +1,10 @@
 {% if data.widget.gridItems.length %}
-  <div class="row widget">
-    <div class=" s12">
+  <div class="row widget
+    {% if data.widget.gridItems.length <= 1 %}
+      single-grid
+    {%- endif -%}"
+  >
+    <div class="s12">
 
       <div class="grid{% if data.widget.containerCard %} card radius{% endif %}">
 
