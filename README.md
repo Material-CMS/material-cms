@@ -11,15 +11,27 @@
 **🔖 OnePage Navigation**
 **⚫️ Material Design**
 
-You can build a your content management system in 10 Minutes and modify your website with fullpage scroll, materialized content, six different widgets, thousands of different possibility's trough reusable content and layered settings.
+The ultimate website builder for everyone from self-employed to business or enterprice, Material-CMS is easy to use, fast, secure and of course its main ability, the almost unbelievable versatility should not be forgotten.
+
+No templates needed redesign your website in minutes without losing the speed of a static page.
 
 ![Screenshot](screenshot.png)
+
+## Ridiculously Fast
+
+![Screenshot](lighthouse.png)
+
+## Compatible Plugins Apostrophe
+
+You can use all plugins from apostrophe cms
+
+[Apostrophe CMS Extensions](https://apostrophecms.com/extensions).
 
 ## Installing instructions
 
 ### Install Dependencies
 - git
-- nodejs 8.x or 10.x
+- nodejs 8.x, 10.x, 12.x
 - redis-server
 - mongodb
 
@@ -39,24 +51,6 @@ mpm start
 # Open Browser "http://localhost:3000/login" to login with your user to add content
 ````
 
-### Email sending
-
-To send customer requests wit smtp email, copy `local.example.js` to add the following to `data/local.js` ther you can put in your pivate config.
-
-````javascript
-'apostrophe-email': {
-  nodemailer: {
-    host: 'SMTP SERVER',
-    port: 587,
-    secure: false, // true if 465
-    auth: {
-        user: 'USER',
-        pass: 'XXXXX'
-    }
-  }
-}
-````
-
 ## Development
 
 ### Materialize components ES6
@@ -65,6 +59,6 @@ Materialize is written in ECMAScript 6. The version of Uglify in use in Apostrop
 
 ----
 
-For more documentation on Apostrophe CMS, visit [Apostrophe CMS](http://apostrophecms.com).
+For documentation on Apostrophe CMS, visit [Apostrophe CMS](https://docs.apostrophecms.org/).
 
 For more infos about Materialize , visit [Materialize](https://materializecss.com/).
