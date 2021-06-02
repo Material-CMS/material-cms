@@ -1,9 +1,5 @@
 {% for _image in piece._images %}
 
-{% if piece.columnCount == '1' %}
-  <div class="images-container placeholder"></div>
-{% endif %}
-
   <div class="images-container
     {% if piece.forceAspectRatio %}
       ratio-1-1
@@ -66,13 +62,9 @@
           </div>
         {% endif %}
 
-        </div>
       </div>
-
     </div>
 
-    {% if piece.columnCount == '1' %}
-      <div class="images-container placeholder"></div>
-    {% endif %}
+  </div>
 
 {% endfor %}
