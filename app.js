@@ -17,8 +17,6 @@ var apos = require('apostrophe')({
       player: true
     },
     'double-widgets': {},
-    'triple-widgets': {},
-    'quadruple-widgets': {},
     'events': {},
     'events-widgets': {
       player: true
@@ -36,6 +34,7 @@ var apos = require('apostrophe')({
       orderings: true
     },
     'galleries-widgets': {},
+    'grid-widgets': {},
     'navigations':{},
     'navigations-widgets': {
       player: true
@@ -179,7 +178,7 @@ var apos = require('apostrophe')({
         {
           name: 'office',
           label: 'Office',
-          extensions: [ 'txt', 'rtf', 'pdf', 'xls', 'ppt', 'doc', 'pptx', 'sldx', 'ppsx', 'potx', 'xlsx', 'xltx', 'csv', 'docx', 'dotx' ],
+          extensions: [ 'txt', 'rtf', 'pdf', 'xls', 'ppt', 'doc', 'pptx', 'sldx', 'ppsx', 'potx', 'xlsx', 'xltx', 'csv', 'docx', 'dotx', 'mp4' ],
           extensionMaps: {},
           // uploadfs should just accept this file as-is
           image: false

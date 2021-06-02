@@ -1,0 +1,25 @@
+{% if data.widget.gridItems.length %}
+  <div class="row widget">
+    <div class=" s12">
+
+      <div class="grid{% if data.widget.containerCard %} card radius{% endif %}">
+
+        {% for item in data.widget.gridItems %}
+          <div class="col">
+              {{ apos.area(item, 'item', { edit: false }) }}
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="apos-area apos-empty">
+    <i class="material-icons">clear</i>
+    <p class="flow-text">no items<p>
+  </div>
+
+{% endif %}
