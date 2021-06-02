@@ -1,0 +1,81 @@
+<div class="row widget">
+  <div class="col s12">
+
+    <div class="row columns{% if data.widget.containerCard %} card radius{% endif %}">
+
+      <div class="col s12 m4 force-aspect-ratio triple">
+        <div class="columns-container">
+          {{ apos.area(data.widget, 'widgetsOne', {
+            widgets: {
+              'card': {
+                size: 'two-thirds',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
+            }
+          }) }}
+        </div>
+      </div>
+
+      <div class="col s12 m4 force-aspect-ratio triple">
+        <div class="columns-container">
+          {{ apos.area(data.widget, 'widgetsTwo', {
+            widgets: {
+              'card': {
+                size: 'two-thirds',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
+            }
+          }) }}
+        </div>
+      </div>
+
+      <div class="col s12 m4 force-aspect-ratio triple">
+        <div class="columns-container">
+          {{ apos.area(data.widget, 'widgetsThree', {
+            widgets: {
+              'card': {
+                size: 'two-thirds',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              },
+              'texts': {
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  position: 'top-right'
+                }
+              }
+            }
+          }) }}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

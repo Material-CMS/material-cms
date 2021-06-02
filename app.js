@@ -94,6 +94,7 @@ var apos = require('apostrophe')({
       player: true
     },
     'texts-card-widgets': {},
+    'triple-widgets': {},
     'video-widgets': {},
     // CKEditor addons
     'apostrophe-rich-text-permalinks': {
