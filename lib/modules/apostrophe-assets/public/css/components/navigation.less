@@ -16,6 +16,9 @@
     a:not(.sidenav-trigger) {
       color: @light;
       fill: @light;
+      i {
+        color: @light;
+      }
     }
     li:hover,
     li.active {
@@ -33,6 +36,9 @@
     a:not(.sidenav-trigger) {
       color: @dark;
       fill: @dark;
+      i {
+        color: @dark;
+      }
     }
     li:hover,
     li.active {
@@ -115,6 +121,9 @@
     }
   }
   // Sidenav Mobile
+  .hamburger {
+    height: 100%;
+  }
   .sidenav {
     width: 20rem !important;
     li {
@@ -130,7 +139,7 @@
     }
   }
 }
-// override accent and text color if navTextColor
+// override auto text color if navTextColor
 .nav-color.nav-text-color.light-background,
 .nav-color.nav-text-color.dark-background {
   .text-color {

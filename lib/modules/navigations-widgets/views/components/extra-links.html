@@ -8,7 +8,13 @@
        {% endif %}
      >
        {% if name.icon %}
-          <i class="material-icons left">{{ name.icon }}</i>
+          <i class="material-icons left"
+            {% if data.widget.navTextColor %}
+              style="color: {{ data.widget.navTextColor }};"
+            {% endif %}
+          >
+            {{ name.icon }}
+          </i>
        {% endif %}
        {{ name.name }}
      </a>
