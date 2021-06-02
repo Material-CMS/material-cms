@@ -1,4 +1,6 @@
 {% set pieces = data.widget._pieces or data.pieces %}
+{# set additional font from global #}
+{% set additionalFont = data.global.additionalFonts | replace("+", " ") or null %}
 
 {% for piece in pieces %}
   <div class="card z-depth-0
@@ -63,7 +65,7 @@
             {% endif %}
           >
 
-            {% if piece.titleShow == true %}
+            {% if piece.titleShow %}
               {% if piece._url %}
                 <a href="{{ piece._url }}">
               {% endif %}
@@ -75,11 +77,18 @@
                     {% elif piece.titleAlign == 'right' %}
                       right-align
                     {% endif %}"
-                    {% if piece.titleColor %}
-                       style="color:{{ piece.titleColor }}"
+                    {% if piece.titleColor or piece.titleAdditionalFont %}
+                      style="
+                        {% if piece.titleColor %}
+                          color:{{ piece.titleColor }}
+                        {% endif %}
+                        {% if piece.titleAdditionalFont %}
+                          font-family: {{ additionalFont }}, sans-serif;
+                        {% endif %}
+                       "
                     {% endif %}
                   >
-                    {{ piece.title  | replace("Blog - ", "" )  }}
+                    {{ piece.title  | replace("Blog - ", "" ) }}
                   </h3>
               {% if piece._url %}
                 </a>
@@ -89,7 +98,7 @@
             {% if piece.description.items[0] %}
               {{ apos.area(piece, 'description', { edit: false }) }}
             {% endif %}
-            
+
           </div>
 
           {% if piece.text.items[0] or piece.linkArea.items[0] %}

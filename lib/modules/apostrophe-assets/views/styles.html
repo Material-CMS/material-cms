@@ -1,5 +1,8 @@
 {% set accentColor = data.global.accentColor %}
 <style>
+  .apos-rich-text {
+    font-family: {{ data.global.font | safe }}
+  }
   .btn-radius {
     background-color:{{ data.global.btnColor }}
   }
@@ -69,3 +72,7 @@
 </style>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+{% if data.global.additionalFonts %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family={{ data.global.additionalFonts }}" />
+{% endif %}

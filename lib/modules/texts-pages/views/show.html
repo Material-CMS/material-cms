@@ -16,7 +16,16 @@
               {% endif %}
             ">
 
-              <div class="card z-depth-0 {% if data.piece.blogOn == true %}blog{% else %}horizontal{% endif %}" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
+              <div class="card z-depth-0
+                {% if data.piece.blog%}
+                  blog
+                {% else %}
+                  horizontal
+                {% endif %}"
+                {% if data.piece.backColor %}
+                  style="background-color:{{ data.piece.backColor }}"
+                {% endif %}
+              >
 
                 {% if data.piece.blog %}
                   {% if data.piece.topImage.items[0] %}
@@ -119,7 +128,7 @@
                           ">
 
                             {% if data.piece.blog %}
-                            
+
                               {# Facebook share button #}
                               {{ button.svg(
                                 'btn-radius btn-color',
