@@ -7,5 +7,13 @@
     right-align
   {% endif %}"
 >
-  <a class="accent-color" href="{{ data.widget._page._url }}">{{ data.widget._page.title }}</a>
+  <a
+    class="accent-color"
+    href="{{ data.widget.url }}"
+    {% if data.widget.color %}
+      style="color: {{ data.widget.color }}"
+    {% endif %}
+  >
+    {{ data.widget._page.title }}
+  </a>
 </h4>
