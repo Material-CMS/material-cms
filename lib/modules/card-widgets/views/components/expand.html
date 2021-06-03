@@ -11,7 +11,7 @@
 
           <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %}">
             <div class="expand-curve-wrapper">
-              <a href="#" class="expand-cover z-depth-1">
+              <button class="expand-cover z-depth-1">
                 <img
                   src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
                   srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
@@ -21,7 +21,7 @@
                     style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
                   {%- endif -%}
                 >
-              </a>
+              </button>
 
               {% if image.description %}
                 <div class="expand-header">
