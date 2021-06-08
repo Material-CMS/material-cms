@@ -3,7 +3,7 @@
 
     <div class="row columns double radius">
 
-        <div class="columns-container left">
+        <div class="columns-container left{% if data.widget.widgetsOne.items.length > 1 %} multiple{% endif %}">
 
           {{ apos.area(data.widget, 'widgetsOne', {
             widgets: {
@@ -32,7 +32,7 @@
 
         </div>
 
-        <div class="columns-container right">
+        <div class="columns-container right{% if data.widget.widgetsTwo.items.length > 1 %} multiple{% endif %}">
 
           {{ apos.area(data.widget, 'widgetsTwo', {
             widgets: {
