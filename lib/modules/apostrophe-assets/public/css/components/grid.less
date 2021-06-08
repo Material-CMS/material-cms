@@ -1,12 +1,20 @@
 .row.widget {
-  .grid {
+  .grid.radius {
+    overflow: visible;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     grid-template-rows: 1fr;
     grid-gap: 20px;
     .col {
+      .border-radius(inherit);
       display: flex;
+      .apos-area,
+      .apos-area-widget-wrapper,
+      .apos-area-widget {
+        .border-radius(inherit);
+      }
       .row.widget {
+        .border-radius(inherit);
         height: 100%;
         width: 100%;
         margin-bottom: 0 !important;
@@ -44,4 +52,24 @@
   width: 33%;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+// Glue widgets override
+.widgets-container.glue-container {
+  .grid.radius {
+    grid-gap: 0;
+    // first child
+    .grid-radius:nth-child(-n+1) .radius {
+      .border-radius(top-right, initial);
+      .border-radius(bottom-right, initial);
+    }
+    // all except first and last child
+    .grid-radius:nth-child(n+2):nth-last-child(n+2) .radius {
+      .border-radius(initial)
+    }
+    // // last child
+    .grid-radius:nth-last-child(-n+1) .radius {
+      .border-radius(top-left, initial);
+      .border-radius(bottom-left, initial);
+    }
+  }
 }

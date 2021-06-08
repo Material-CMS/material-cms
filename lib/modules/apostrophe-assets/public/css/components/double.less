@@ -1,0 +1,89 @@
+.row.columns.double.radius {
+  overflow: visible;
+   .flex();
+   .columns-container {
+     border-radius: inherit;
+     width: 50%;
+     .apos-area,
+     .apos-area-widgets {
+       .flex();
+       flex-direction: column;
+       border-radius: inherit;
+       height: 100%;
+       .apos-area-widget-wrapper {
+         border-radius: inherit;
+         flex-grow: 1;
+         margin-bottom: 1.8rem;
+         .apos-area-widget {
+           border-radius: inherit;
+           height: 100%;
+         }
+         .row.widget {
+           border-radius: inherit;
+           height: 100%;
+           .col {
+             border-radius: inherit;
+             height: 100%;
+             .radius {
+               height: 100%;
+               .card {
+                 height: 100%;
+                 .card-image {
+                   height: 100%;
+                   img {
+                     .object-fit(cover);
+                     width: 100%;
+                     height: 100%;
+                   }
+                 }
+               }
+             }
+           }
+         }
+       }
+     }
+   }
+}
+// Glue widgets override
+.widgets-container.glue-container {
+  .row.columns.double {
+    .columns-container.left {
+      padding: 0 !important;
+      .apos-area-widget-wrapper {
+        margin-bottom: 0;
+      }
+      .apos-area-widget-wrapper:nth-child(-n+1) .radius {
+        .border-radius(top-right, initial)
+      }
+      .apos-area-widget-wrapper:nth-last-child(-n+1) .radius {
+        .border-radius(bottom-right, initial);
+      }
+    }
+    .columns-container.right {
+      padding: 0 !important;
+      .apos-area-widget-wrapper {
+        margin-bottom: 0;
+      }
+      .apos-area-widget-wrapper:nth-child(-n+1) .radius {
+        .border-radius(top-left, initial)
+      }
+      .apos-area-widget-wrapper:nth-last-child(-n+1) .radius {
+        .border-radius(bottom-left, initial);
+      }
+    }
+  }
+}
+// Mobile
+@media (max-width: 600px) {
+  .row.columns.double {
+    display: block;
+    .columns-container {
+      width: 100%;
+    }
+    .columns-container:first-child {
+      .apos-area-widget-wrapper:last-child .card {
+        padding-bottom: 2.4rem;
+      }
+    }
+  }
+}

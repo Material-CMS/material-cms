@@ -27,7 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Video local files
 - Underline for active nav elements
-- Custom Fonts
+- Custom fonts
+- Reworked layout widgets
 
 ## [0.9.7 ] - 29.05.2021
 

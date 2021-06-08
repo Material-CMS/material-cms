@@ -1,10 +1,10 @@
 <div class="row widget">
   <div class="col s12">
 
-    <div class="row columns{% if data.widget.containerCard %} card radius{% endif %}">
+    <div class="row columns triple radius">
 
-      <div class="col s12 m4 force-aspect-ratio triple">
-        <div class="columns-container">
+        <div class="columns-container left">
+
           {{ apos.area(data.widget, 'widgetsOne', {
             widgets: {
               'card': {
@@ -12,6 +12,7 @@
                 controls: {
                   cloneable: false,
                   removable: true,
+                  movable: false,
                   position: 'top-right'
                 }
               },
@@ -19,16 +20,17 @@
                 controls: {
                   cloneable: false,
                   removable: true,
+                  movable: false,
                   position: 'top-right'
                 }
               }
             }
           }) }}
-        </div>
-      </div>
 
-      <div class="col s12 m4 force-aspect-ratio triple">
-        <div class="columns-container">
+        </div>
+
+        <div class="columns-container middle">
+
           {{ apos.area(data.widget, 'widgetsTwo', {
             widgets: {
               'card': {
@@ -36,6 +38,7 @@
                 controls: {
                   cloneable: false,
                   removable: true,
+                  movable: false,
                   position: 'top-right'
                 }
               },
@@ -43,16 +46,17 @@
                 controls: {
                   cloneable: false,
                   removable: true,
+                  movable: false,
                   position: 'top-right'
                 }
               }
             }
           }) }}
-        </div>
-      </div>
 
-      <div class="col s12 m4 force-aspect-ratio triple">
-        <div class="columns-container">
+        </div>
+
+        <div class="columns-container right">
+
           {{ apos.area(data.widget, 'widgetsThree', {
             widgets: {
               'card': {
@@ -60,6 +64,7 @@
                 controls: {
                   cloneable: false,
                   removable: true,
+                  movable: false,
                   position: 'top-right'
                 }
               },
@@ -67,13 +72,14 @@
                 controls: {
                   cloneable: false,
                   removable: true,
+                  movable: false,
                   position: 'top-right'
                 }
               }
             }
           }) }}
+
         </div>
-      </div>
 
     </div>
 

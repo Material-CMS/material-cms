@@ -6,10 +6,10 @@
   >
     <div class="s12">
 
-      <div class="grid{% if data.widget.containerCard %} card radius{% endif %}">
+      <div class="grid radius">
 
         {% for item in data.widget.gridItems %}
-          <div class="col">
+          <div class="col grid-radius">
               {{ apos.area(item, 'item', { edit: false }) }}
           </div>
         {% endfor %}
