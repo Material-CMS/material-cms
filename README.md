@@ -25,9 +25,10 @@
 - Lighthouse maximum
 - Easy to use
 - Extremely versatile
-- Realtime javascript
+- Realtime JS
 - Extensible through plugins
 - Developer friendly
+- Galleries with JQuery append AJAX
 
 ## Google Lighthouse
 
