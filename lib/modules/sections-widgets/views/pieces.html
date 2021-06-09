@@ -157,6 +157,9 @@
           {% if piece.content.items.length > 1 and piece.glueWidgets == true %}
             glue-container
           {% endif %}
+          {% if (piece.content.items[0].type == 'double' or piece.content.items[0].type == 'triple') and piece.glueWidgets == true %}
+            glue-container-columns-single
+          {% endif %}
         ">
 
           {# Header #}
