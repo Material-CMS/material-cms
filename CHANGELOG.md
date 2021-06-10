@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Kenburns for nav background image
 - Make nav logo svg only
 - Create code widget
+- Create Iframe widget
 
 ## [0.9.8 ] - Unreleased
 
@@ -30,6 +31,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom fonts
 - Reworked layout widgets
 - CKEditor add attributes and classes to elements programatically
+- Auto flow text to all apostrophe-rich-texts
+
+### Fixed
+- Specific page script context
+
+### Removed
+- Unnecessary styles from apostrophe-rich-texts
 
 ## [0.9.7 ] - 29.05.2021
 
