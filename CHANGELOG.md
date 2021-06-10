@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Underline for active nav elements
 - Custom fonts
 - Reworked layout widgets
+- CKEditor add attributes and classes to elements programatically
 
 ## [0.9.7 ] - 29.05.2021
 
