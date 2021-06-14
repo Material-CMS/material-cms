@@ -58,13 +58,13 @@ var apos = require('apostrophe')({
     'sections-orderings': {
       extend: 'apostrophe-pieces-orderings'
     },
-    'sections-pages': {
-      orderings: true
-    },
     'sections-widgets': {
       player: true
     },
     'shape-divider-path-widgets': {},
+    'shape-divider-file-widgets': {
+      player: true
+    },
     'slider-widgets':{
       player: true
     },
@@ -157,7 +157,6 @@ var apos = require('apostrophe')({
     },
     // Allow svgs
     'apostrophe-attachments': {
-      svgImages: true,
       /*
       addImageSizes: [{
         name: 'side',
@@ -169,7 +168,7 @@ var apos = require('apostrophe')({
         {
           name: 'images',
           label: 'Images',
-          extensions: [ 'jpg', 'png' ],
+          extensions: [ 'jpg', 'png', 'gif', 'svg'],
           extensionMaps: {
             jpeg: 'jpg'
           },
