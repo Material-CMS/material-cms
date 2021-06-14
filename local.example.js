@@ -1,7 +1,5 @@
 // Settings specific to this server. Change the URL
-// if you are deploying in production. Then copy to
-// data/local.js. That folder is shared by all
-// deployments in our stagecoach recipe
+// if you are deploying in production.
 module.exports = {
   baseUrl: 'http://localhost:3000',
   modules: {
@@ -19,6 +17,8 @@ module.exports = {
       session: {
         secret: 'YOUR_SECRET'
       }
+      // use other port than 3000
+      // port: 3001
     }
     // Email Settings for nodemailer
     'apostrophe-email': {
@@ -39,7 +39,7 @@ module.exports = {
       //   'home'
       // ]
     },
-    // Add parked page for search fuctions. Parked pages
+    // Add parked page for search functions. Parked pages
     // configures certain pages to be automatically created
     // and refreshed whenever the site starts up.
     'apostrophe-pages': {
@@ -61,11 +61,8 @@ module.exports = {
       // but this is not necessary. They can all go in the uri option like this:
       // mongodb://user:password@host:port/dbname
     },
-    // Change default Port
-    'apostrophe-express': {
-      // port: 3001
-    },
     // DB performance test tool
+    // remove in production
     'apostrophe-profiler': {
     }
   }
