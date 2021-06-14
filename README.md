@@ -60,7 +60,7 @@ cp local.example.js data/local.js
 # Add an admin user to the admin group; prompts for password
 node app.js apostrophe-users:add admin admin
 # Go go go!
-mpm start
+npm start
 # Open Browser "http://localhost:3000/login" to login with your user to add content
 ````
 
