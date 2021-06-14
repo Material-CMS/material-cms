@@ -58,12 +58,12 @@
       <div class="height-100 col s12{% if piece.sideImageLeft == true %} m9 pull-m3{% else %} m9{% endif %}">
       {% endif %}
 
-        <div class="card-stacked">
-          <div class="card-content"
-            {% if piece.backColor%}
-              style="background-color:{{ piece.backColor }}"
-            {% endif %}
-          >
+        <div class="card-stacked bg-color"
+          {% if piece.backColor %}
+            style="background-color:{{ piece.backColor }}"
+          {% endif %}
+        >
+          <div class="card-content">
 
             {% if piece.titleShow %}
               {% if piece._url %}
