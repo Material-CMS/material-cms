@@ -99,7 +99,7 @@ module.exports = {
       }
       // use other port than 3000
       // port: 3001
-    }
+    },
     // Email Settings for nodemailer
     'apostrophe-email': {
       nodemailer: {
@@ -111,7 +111,7 @@ module.exports = {
             pass: 'SMTP_PW' // or use: process.env.SMTP_PW
         }
       }
-    }
+    },
     // Apostrophe has full-text search capabilities built set searched pages here
     // https://docs.apostrophecms.org/core-concepts/apostrophe-search/search.html
     'apostrophe-search': {
@@ -140,10 +140,6 @@ module.exports = {
       // There is legacy support for host, port, name, user and password options,
       // but this is not necessary. They can all go in the uri option like this:
       // mongodb://user:password@host:port/dbname
-    },
-    // DB performance test tool
-    // remove in production
-    'apostrophe-profiler': {
     }
   }
 };
