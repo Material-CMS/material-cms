@@ -6,7 +6,7 @@
       class="active"
     {% endif %}
   >
-    <a href="{{ data.options.homeUrl }}" data-target="{{ dataTarget }}" class="flow-text waves-effect
+    <a href="{{ data.options.homeUrl }}" data-target="{{ dataTarget }}" class="flow-text waves-effect underline
       {% if data.options.pageUrl == data.options.homeUrl and data.options.items %}
         {{ dropdown }}
       {% endif %}"
@@ -64,7 +64,7 @@
         class="active"
       {% endif %}
     >
-      <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text waves-effect
+      <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text waves-effect underline
         {% if tab._children.length %}
           {{ dropdown }}
         {% endif %}"
