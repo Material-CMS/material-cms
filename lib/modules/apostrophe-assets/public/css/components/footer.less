@@ -150,6 +150,18 @@ footer.page-footer {
 		}
 	}
 }
+.btn-flat.dark-background {
+  color: @light;
+  span.hover-background:hover {
+    background-color: @light-hover;
+  }
+}
+.btn-flat.light-background {
+  color: @dark;
+  span.hover-background:hover {
+    background-color: @dark-hover;
+  }
+}
 // override accent and text color if footerTextColor
 footer.page-footer.footer-text-color {
   a,
@@ -158,6 +170,12 @@ footer.page-footer.footer-text-color {
   h4,
   .footer-copyright {
     color: inherit;
+  }
+  .btn.btn-color.dark-background {
+    fill: inherit;
+  }
+  .btn.btn-color.light-background {
+    fill: inherit;
   }
   span.accent-color {
     fill: inherit;
