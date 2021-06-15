@@ -84,16 +84,21 @@
       }
       .nav-activator {
         li {
+          height: 64px;
+          a {
+            top: -2px;
+          }
           a.dropdown-trigger-hover {
             .flex();
             .flex-align-items(center);
+            top: 0;
             svg {
               margin-right: 15px;
             }
           }
         }
         li.active {
-          a.dropdown-trigger-hover {
+          a {
             .box-shadow (inset 0 -2px 0);
           }
         }
