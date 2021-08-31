@@ -1,0 +1,15 @@
+<div class="custom-shape-divider file"
+{% if data.widget.shapeDividerFlip %}
+  style="transform: rotate(180deg);"
+{% endif %}
+>
+  <img class="img-svg"
+    src="{{ apos.attachments.url(data.widget._shapeDividerFile.attachment, { size: 'full' }) }}"
+    {% if data.widget.shapeDividerColor %}
+      style="fill: {{ data.widget.shapeDividerColor }}"
+    {% endif %}
+    {% if data.widget.shapeDividerInvert %}
+      style="transform: rotateY(180deg);"
+    {% endif %}
+  >
+</div>

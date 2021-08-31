@@ -33,21 +33,21 @@
 
         <div class="col s12 m3">
 
-          <h3 class="accent-color">
+          <h3>
             {{ global.websiteTitle or data.options.homeTitle }}
           </h3>
 
           <ul>
             {# Home #}
             <li>
-              <a class="btn-flat accent-color" href="{{ data.options.homeUrl }}">
+              <a class="btn-flat" href="{{ data.options.homeUrl }}">
                 <h4>{{ data.options.homeTitle }}</h4>
               </a>
             </li>
 
             {% for tab in data.options.homeChildren %}
               <li>
-                <a class="btn-flat accent-color" href="{{ tab._url }}">
+                <a class="btn-flat" href="{{ tab._url }}">
                   <h4>{{ tab.title }}</h4>
                 </a>
               </li>
@@ -180,14 +180,14 @@
         {# About Fields #}
         <div class="col s12 m3 offset-l1 l2 left-margin">
 
-          <h3 class="accent-color">
+          <h3>
             {{ data.widget.aboutTitle or global.aboutTitle or 'About' }}
           </h3>
 
 
           {% if global.phone %}
             <a class="btn-flat" href="tel:{{ global.phone }}">
-              <i class="material-icons left accent-color">
+              <i class="material-icons left">
                 local_phone
               </i>
               <h4 class="accent-color">
@@ -198,7 +198,7 @@
 
           {% if global.email %}
             <a class="btn-flat" href="mailto:{{ global.email }}">
-              <i class="material-icons left accent-color">
+              <i class="material-icons left">
                 mail
               </i>
               <h4 class="accent-color">
@@ -209,10 +209,10 @@
 
           {% if global.address or global.zip or global.city or global.country %}
             <a class="btn-flat address" target=“_blank” href="http://maps.google.com/?q={{ global.street }},{{ global.zip }},{{ global.city }},{{ global.country }}">
-              <i class="material-icons left accent-color">
+              <i class="material-icons left">
                 location_city
               </i>
-              <h4 class="accent-color">
+              <h4>
                 {% if global.street %}
                   {{ global.street }},
                 {% endif %}

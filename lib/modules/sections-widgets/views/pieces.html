@@ -41,6 +41,16 @@
                   movable: false,
                   position: 'top-left'
                 }
+              },
+              'shape-divider-file': {
+                addLabel: 'Add Top Shape Divider',
+                editLabel: 'Change Top Shape Divider',
+                controls: {
+                  cloneable: false,
+                  removable: true,
+                  movable: false,
+                  position: 'top-left'
+                }
               }
             }
           }) }}
@@ -72,6 +82,16 @@
           limit: 1,
           widgets: {
             'shape-divider-path': {
+              addLabel: 'Add Top Shape Divider',
+              editLabel: 'Change Top Shape Divider',
+              controls: {
+                cloneable: false,
+                removable: true,
+                movable: false,
+                position: 'top-left'
+              }
+            },
+            'shape-divider-file': {
               addLabel: 'Add Top Shape Divider',
               editLabel: 'Change Top Shape Divider',
               controls: {
@@ -329,16 +349,28 @@
               movable: false,
               position: 'top-right'
             }
+          },
+          'shape-divider-file': {
+            addLabel: 'Add Top Shape Divider',
+            editLabel: 'Change Top Shape Divider',
+            controls: {
+              cloneable: false,
+              removable: true,
+              movable: false,
+              position: 'top-left'
+            }
           }
         }
       }) }}
     </div>
   {% endif %}
 
-<style type="text/css">
-#{{piece.slug}} ~ .section .main-content {
-  padding-top: calc(100vw * {{ piece.shapeDividerBottom.items[0].shapeDividerHeight }});
-}
-</style>
+{% if piece.shapeDividerBottom.items[0].type == 'shape-divider-path' %}
+  <style type="text/css">
+    #{{piece.slug}} ~ .section .main-content {
+      padding-top: calc(100vw * {{ piece.shapeDividerBottom.items[0].shapeDividerHeight }});
+    }
+  </style>
+{% endif %}
 
 {% endfor %}

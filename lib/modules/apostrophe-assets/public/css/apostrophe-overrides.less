@@ -287,11 +287,35 @@ fieldset[data-name="linkArea"] {
         .custom-shape-divider {
           transform: rotate(180deg);
         }
+        .custom-shape-divider.file {
+          transform: rotate(0deg);
+          svg {
+            visibility: visible;
+            path {
+              fill: inherit !important;
+            }
+            polygon {
+              fill: inherit !important;
+            }
+          }
+        }
       }
       fieldset {
         .custom-shape-divider {
           svg {
             width: 100%;
+          }
+        }
+        .custom-shape-divider.file {
+          transform: rotate(180deg);
+          svg {
+            visibility: visible;
+            path {
+              fill: inherit !important;
+            }
+            polygon {
+              fill: inherit !important;
+            }
           }
         }
       }
