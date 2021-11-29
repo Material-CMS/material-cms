@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CKEditor add attributes and classes to elements programatically
 - Auto flow text to all apostrophe-rich-texts
 - Shape dividers as SVG & shape divider path array
+- Text justify for texts and people
 
 ### Fixed
 - Specific page script context
