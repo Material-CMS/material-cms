@@ -14,19 +14,19 @@
   "author": "Felix Langenberg",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.220.0",
-    "apostrophe-caches-redis": "^2.1.3",
+    "apostrophe": "^2.220.7",
+    "apostrophe-caches-redis": "^2.1.4",
     "apostrophe-favicons": "^2.0.6",
-    "apostrophe-forms": "^1.10.3",
+    "apostrophe-forms": "^1.10.5",
     "apostrophe-open-graph": "^1.1.6",
     "apostrophe-optimizer": "^2.0.2",
     "apostrophe-palette": "^2.0.30",
     "apostrophe-pieces-orderings-bundle": "^2.1.3",
     "apostrophe-rich-text-permalinks": "^2.0.5",
     "apostrophe-seo": "^1.5.0",
-    "apostrophe-site-map": "^2.5.3",
+    "apostrophe-site-map": "^2.6.0",
     "html-minifier": "^4.0.0",
-    "mozjpeg": "^7.1.0"
+    "mozjpeg": "^7.1.1"
   },
   "devDependencies": {
     "apostrophe-profiler": "^2.1.1",
