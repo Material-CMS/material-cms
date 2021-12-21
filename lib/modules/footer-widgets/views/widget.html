@@ -21,9 +21,9 @@
   "
   {% if footerColor or footerTextColor or lastPiece.shapeDividerBottom %}
     style="
-      {% if footerColor %}background-color: {{ footerColor }} !important;{% endif %}
-      {% if footerTextColor %}color: {{ footerTextColor }};fill: {{ footerTextColor }};{% endif %}
-      {% if lastPiece.shapeDividerBottom %}padding-top: calc(100vw * {{ shapeDividerHeight }});{% endif %}
+      {%- if footerColor -%}background-color: {{ footerColor }} !important;{% endif %}
+      {% if footerTextColor %}color: {{ footerTextColor }};fill: {{ footerTextColor }};{%- endif -%}
+      {% if lastPiece.shapeDividerBottom %}padding-top: calc(100vw * {{ shapeDividerHeight }});{%- endif -%}
       "
   {% endif %}
 >
@@ -38,6 +38,7 @@
           </h3>
 
           <ul>
+
             {# Home #}
             <li>
               <a class="btn-flat" href="{{ data.options.homeUrl }}">
@@ -190,7 +191,7 @@
               <i class="material-icons left">
                 local_phone
               </i>
-              <h4 class="accent-color">
+              <h4>
                 {{ global.phone }}
               </h4>
             </a>
@@ -201,7 +202,7 @@
               <i class="material-icons left">
                 mail
               </i>
-              <h4 class="accent-color">
+              <h4>
                 {{ global.email }}
               </h4>
             </a>
@@ -243,7 +244,7 @@
           {%- if global.privacy -%}
           <h4>
             <a href="#modal-1" rel="nofollow"
-              class="right modal-trigger accent-color">
+              class="right modal-trigger">
               {{ data.widget.footerPrivacy or global.footerPrivacy or 'Privacy' }}
             </a>
           <h4>
@@ -262,7 +263,7 @@
           {%- if global.legal -%}
             <h4>
               <a href="#modal-2" rel="nofollow"
-                class="right modal-trigger accent-color">
+                class="right modal-trigger">
                 {{ data.widget.footerLegal or global.footerLegal or 'Legal' }}
               </a>
             <h4>
@@ -279,7 +280,7 @@
 
         <div class="col s12 m6 pull-m6 l8 pull-l4 copyright-center">
           {%- if global.creationDate or global.copyright -%}
-            <h4 class="accent-color">
+            <h4>
               © {{ global.creationDate }} {{ global.copyright }}
             </h4>
           {%- endif -%}
