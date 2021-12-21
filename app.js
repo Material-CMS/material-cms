@@ -16,6 +16,7 @@ var apos = require('apostrophe')({
     'button-widgets':{
       player: true
     },
+    'call-to-action-widgets': {},
     'double-widgets': {},
     'events': {},
     'events-widgets': {

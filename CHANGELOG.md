@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Create code widget
 - Create Iframe widget
 
+### Fixed
+- Form send button not using button color
+
+
 ## [0.9.8 ] - Unreleased
 
 ### Added
@@ -33,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Auto flow text to all apostrophe-rich-texts
 - Shape dividers as SVG & shape divider path array
 - Text justify for texts and people
+- Call to action button as widget
 
 ### Fixed
 - Specific page script context
