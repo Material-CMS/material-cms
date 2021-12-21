@@ -4,7 +4,7 @@
 {% set classPrefix = data.widget.classPrefix %}
 <div class="input-field">
   {% if widget.icon %}
-    <i class="material-icons prefix accent-color">{{ widget.icon}}</i>
+    <i class="material-icons prefix accent-color">{{ widget.icon }}</i>
   {% endif %}
   <input class="validate apos-forms-input {{ classPrefix + '__input' if classPrefix }}"
     type="{{ widget.inputType or "text" }}"
