@@ -71,9 +71,6 @@
                   'M0,0v455.73h242.704V279.691h-59.33v-71.864h59.33v-60.353c0-43.893,35.582-79.475,79.475-79.475h62.025v64.622h-44.382
                   c-13.947,0-25.254,11.307-25.254,25.254v49.953h68.521l-9.47,71.864h-59.051V455.73H455.73V0H0z')
                 }}
-                {% if data.widget.tooltips %}
-                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
-                {% endif %}
               </li>
             {% endif %}
 
@@ -122,9 +119,6 @@
                 	s8.33-18.57,18.57-18.57s18.57,8.33,18.57,18.57S319.11,165.61,308.87,165.61z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31
                 	c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33C273.18,202.88,252.85,182.55,227.86,182.55z')
                 }}
-                {% if data.widget.tooltips %}
-                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
-                {% endif %}
               </li>
             {% endif %}
 
@@ -146,9 +140,6 @@
                   c0.005-0.01,0.225,0.018,0.599,0.075c1.078-1.95,2.252-3.839,3.52-5.658c11.628-16.688,30.96-27.606,52.842-27.606h11.47
                   c39.996,0,72.42,32.423,72.42,72.42V382.153z')
                 }}
-                {% if data.widget.tooltips %}
-                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
-                {% endif %}
               </li>
             {% endif %}
 
@@ -169,9 +160,6 @@
                   c-3.359,20.129-28.176,37.021-29.951,38.207c-0.066,0.047-0.104,0.066-0.104,0.066c0.038,0,0.085-0.009,0.123-0.009
                   c19.265-1.927,38.948-10.107,38.948-10.107C389.428,141.433,365.19,160.859,361.271,163.944z')
                 }}
-                {% if data.widget.tooltips %}
-                  {{ button.base('btn-floating btn-color text-color fab-tip', item.label) }}
-                {% endif %}
               </li>
             {% endif %}
 
@@ -184,7 +172,6 @@
           <h3>
             {{ data.widget.aboutTitle or global.aboutTitle or 'About' }}
           </h3>
-
 
           {% if global.phone %}
             <a class="btn-flat" href="tel:{{ global.phone }}">
