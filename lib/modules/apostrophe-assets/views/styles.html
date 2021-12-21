@@ -1,10 +1,12 @@
-{% set accentColor = data.global.accentColor %}
+{# query and cache global to reduce load  #}
+{% set global = data.global %}
+{% set accentColor = global.accentColor %}
 <style>
   .apos-rich-text {
-    font-family: {{ data.global.font | safe }}
+    font-family: {{ global.font | safe }}
   }
   .btn-radius {
-    background-color:{{ data.global.btnColor }}
+    background-color:{{ global.btnColor }}
   }
   .nav .dropdown-content li > a {
     color: {{ accentColor }}
@@ -66,11 +68,11 @@
   .slider .indicators .indicator-item.active {
     background-color: {{ accentColor }}
   }
-  {% if data.global.additionalStyles %}
-    {{ data.global.additionalStyles }}
+  {% if global.additionalStyles %}
+    {{ global.additionalStyles }}
   {% endif %}
 </style>
 
-{% if data.global.additionalFonts %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family={{ data.global.additionalFonts }}" />
+{% if global.additionalFonts %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family={{ global.additionalFonts }}" />
 {% endif %}
