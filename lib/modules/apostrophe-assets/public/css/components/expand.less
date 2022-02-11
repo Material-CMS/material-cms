@@ -123,6 +123,7 @@
 		}
 	}
 	.expand-header.invisible {
+		background-color: transparent !important;
 		height: 0;
 		padding: 0;
 	}
@@ -133,6 +134,7 @@
 		top: 0;
 		left: 0;
 		width: 70% !important;
+		height: initial !important;
 		margin: 0 15%;
 		z-index: 1;
 		.title-wrapper {
@@ -161,6 +163,10 @@
 			font-weight: 300;
 		}
 		.expand-container {
+			.row.widget,
+			.apos-area-widget-wrapper {
+				margin-bottom: 0 !important;
+			}
 			.z-depth-1 {
 				.box-shadow(none);
 			}
