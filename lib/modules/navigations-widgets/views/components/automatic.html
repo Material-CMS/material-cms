@@ -40,13 +40,12 @@
               class="
                 flow-text
                 anchor-jump
-                truncate
                 waves-effect
                 {{ classes }}
                 {% if data.options.pageType === 'home' %}
                   anchor-scroll
-                {% endif %}
-            ">
+                {% endif %}"
+            >
               {{ piece.title }}
             </a>
           </li>
@@ -59,18 +58,25 @@
 
   {# Tabs Loop #}
   {% for tab in data.options.homeChildren %}
+
     <li
-      {% if data.options.pageUrl == tab._url  %}
+      {% if data.options.pageUrl == tab._url %}
         class="active"
+      {% elif data.options.pageUrl != data.options.homeUrl %}
+        {% for child in tab._children %}
+          {% if data.options.pageUrl == child._url %}
+            class="active"
+          {% endif %}
+        {% endfor %}
       {% endif %}
     >
       <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text waves-effect underline
-        {% if tab._children.length %}
+        {% if data.options.pageUrl == tab._url or tab._children.length %}
           {{ dropdown }}
         {% endif %}"
       >
 
-        {% if tab._children.length %}
+        {% if data.options.pageUrl == tab._url or tab._children.length %}
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
             <path d="M7 10l5 5 5-5z"
               {% if data.widget.navTextColor %}
@@ -85,7 +91,7 @@
       </a>
 
       {# Dropdown #}
-      {% if (data.options.pageUrl == tab._url and data.options.items) or tab._children.length %}
+      {% if data.options.pageUrl == tab._url and data.options.items %}
         <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color dropdown-content"
           {% if data.widget.navColor %}
             style="background-color: {{ data.widget.navColor }} !important"
@@ -94,7 +100,6 @@
 
           {# Sections of Tabs Loop Dropdown #}
           {% if data.options.pageUrl == tab._url and data.options.items %}
-
             {% for piece in data.options.pieces %}
               <li>
                 <a
@@ -102,49 +107,56 @@
                   class="
                     flow-text
                     anchor-jump
-                    truncate
                     waves-effect
                     {{ classes }}
                     {% if data.options.pageType === 'home' %}
                       anchor-scroll
-                    {% endif %}
-                    ">
+                    {% endif %}"
+                >
                   {{ piece.title }}
                 </a>
               </li>
             {% endfor %}
-
-            <li class="divider" tabindex="-1"></li>
-
           {% endif %}
 
-          {# Children of Tabs Loop Dropdown #}
-          {% for child in tab._children %}
-            <li
-              {% if data.options.pageUrl == child._url %}
-                class="active"
-              {% endif %}
-            >
-              <a href="{{ child._url }}" class="flow-text truncate">
-                {{ child.title }}
-              </a>
-            </li>
+        </ul>
 
-            {# Sections of Children of Tabs Dropdown Loop #}
+      {# Children of Tabs Dropdown #}
+      {% elif tab._children.length %}
+
+        <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color dropdown-content"
+          {% if data.widget.navColor %}
+            style="background-color: {{ data.widget.navColor }} !important"
+          {% endif %}
+        >
+
+          {% for child in tab._children %}
+
             {% if data.options.pageUrl == child._url and data.options.items %}
-              <li class="divider" tabindex="-1"></li>
-              {% for piece in pieces %}
+
+              {# Sections of Children of Tabs #}
+              {% for piece in data.options.pieces %}
                 <li>
-                  <a href="#{{ piece.slug }}" class="flow-text anchor-jump anchor-scroll truncate {{ classes }}">
+                  <a href="#{{ piece.slug }}" class="flow-text anchor-jump anchor-scroll {{ classes }}">
                     {{ piece.title }}
                   </a>
                 </li>
               {% endfor %}
+
+            {% elif data.options.pageUrl == data.options.homeUrl %}
+
+              {# Children of Tabs #}
+              <li>
+                <a href="{{ child._url }}" class="flow-text">
+                  {{ child.title }}
+                </a>
+              </li>
+
             {% endif %}
 
           {% endfor %}
-
         </ul>
+
       {% endif %}
 
     </li>
