@@ -19,7 +19,7 @@ module.exports = {
       }
       // use other port than 3000
       // port: 3001
-    }
+    },
     // Email Settings for nodemailer
     'apostrophe-email': {
       nodemailer: {
@@ -31,7 +31,7 @@ module.exports = {
             pass: 'SMTP_PW' // or use: process.env.SMTP_PW
         }
       }
-    }
+    },
     // Apostrophe has full-text search capabilities built set searched pages here
     // https://docs.apostrophecms.org/core-concepts/apostrophe-search/search.html
     'apostrophe-search': {
