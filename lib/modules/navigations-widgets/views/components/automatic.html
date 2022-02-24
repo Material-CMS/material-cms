@@ -132,27 +132,16 @@
 
           {% for child in tab._children %}
 
-            {% if data.options.pageUrl == child._url and data.options.items %}
-
-              {# Sections of Children of Tabs #}
-              {% for piece in data.options.pieces %}
-                <li>
-                  <a href="#{{ piece.slug }}" class="flow-text anchor-jump anchor-scroll {{ classes }}">
-                    {{ piece.title }}
-                  </a>
-                </li>
-              {% endfor %}
-
-            {% elif data.options.pageUrl == data.options.homeUrl %}
-
-              {# Children of Tabs #}
-              <li>
-                <a href="{{ child._url }}" class="flow-text">
-                  {{ child.title }}
-                </a>
-              </li>
-
-            {% endif %}
+            {# Children of Tabs #}
+            <li
+              {% if data.options.pageUrl == child._url %}
+                class="active"
+              {% endif %}
+            >
+              <a href="{{ child._url }}" class="flow-text">
+                {{ child.title }}
+              </a>
+            </li>
 
           {% endfor %}
         </ul>
