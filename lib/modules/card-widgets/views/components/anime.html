@@ -1,0 +1,157 @@
+{% macro base() %}
+
+  <div class="row widget">
+    <div class="col s12">
+      <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %} anime-image">
+        <div class="card z-depth-0">
+
+          {% for entry in data.widget._pieces %}
+            {% set image = entry.item or entry %}
+            {% set relationship = entry.relationship %}
+
+            <div class="card-image">
+
+              <img
+                src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
+                srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
+                sizes="{{ data.options.sizesAttr or '100vw' }}"
+                alt="{{ image.title }}"
+                {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                  style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+                {%- endif -%}
+              >
+
+              {% if data.widget.titleDisplay %}
+                <span class="card-title {{ data.widget.titleAlign }}">
+                  <h4 class="accent-color truncate"
+                    {%- if data.widget.titleColor -%}
+                      style="color:{{ data.widget.titleColor }}"
+                    {%- endif -%}
+                  >
+                    {{ image.title }}
+                  </h4>
+                </span>
+              {% endif %}
+
+            </div>
+
+            {% if image.description %}
+
+              <div class="card-content{% if image.revealText.items.length >= 1 %} activator{% endif %}">
+                <p class="flow-text">
+
+                  {{ image.description | nlbr }}
+
+                  {% if image.revealText.items.length >= 1 %}
+                    <i class="material-icons right accent-color">more_vert</i>
+                  {% endif %}
+
+                </p>
+              </div>
+
+            {% endif %}
+
+            {% if image.credit %}
+              <div class="credit">
+                {% if image.creditUrl %}
+                    <a href="{{ image.creditUrl }}" target="_blank">
+                {% endif %}
+                      <span>{{ image.credit }}</span>
+                {% if image.creditUrl %}
+                    </a>
+                {% endif %}
+              </div>
+            {% endif %}
+
+          {% endfor %}
+
+        </div>
+      </div>
+
+    <div class="anime-overlay"></div>
+
+      <div class="anime-container">
+        <div class="row widget">
+          <div class="col s12">
+            {{ apos.area(data.widget, 'expandWidgets', {
+              widgets: {
+                'double': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'bottom-right'
+                  }
+                },
+                'events': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'top-right'
+                  }
+                },
+                'grid': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'bottom-right'
+                  }
+                },
+                'link': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'bottom-right'
+                  }
+                },
+                'link-page': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'bottom-right'
+                  }
+                },
+                'people': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'top-right'
+                  }
+                },
+                'swiper': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'top-right'
+                  }
+                },
+                'texts': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'top-right'
+                  }
+                },
+                'tables': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'top-right'
+                  }
+                },
+                'video': {
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    position: 'top-right'
+                  }
+                }
+              }
+            }) }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endmacro %}
