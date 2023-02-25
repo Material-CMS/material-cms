@@ -38,12 +38,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shape dividers as SVG & shape divider path array
 - Text justify for texts and people
 - Call to action button as widget
+- rewrite jquery dependent functions
 
 ### Fixed
 - Specific page script context
 
 ### Removed
 - Unnecessary styles from apostrophe-rich-texts
+- Jquery library for lean mode
 
 ## [0.9.7 ] - 29.05.2021
 
