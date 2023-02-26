@@ -143,31 +143,40 @@
     right: 50px;
   }
 }
-.anime-image {
-  cursor: pointer;
-  z-index: 4;
+.col.anime {
   position: relative;
-}
-.anime-overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2;
-  cursor: pointer;
-}
-.anime-container {
-  position: relative;
-  z-index: 3;
-  transform: scale(0);
-}
-@media (max-width: 600px) {
-  .anime-container {
-    margin-top: 3rem;
+  .anime-image {
+    cursor: pointer;
+    z-index: 4;
+    position: relative;
   }
+  .anime-overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    .transition(opacity, .5s, ease);
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+  .anime-container {
+    position: absolute;
+    z-index: 3;
+    transform: scale(0);
+    .card-content {
+      .transition(padding, .5s, ease);
+    }
+  }
+  @media (max-width: 600px) {
+    .anime-container {
+      margin-top: 3rem;
+    }
+  }
+
 }
