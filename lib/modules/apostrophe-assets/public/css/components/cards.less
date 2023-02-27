@@ -169,14 +169,26 @@
     position: absolute;
     z-index: 3;
     transform: scale(0);
+    padding-top: 0;
     .card-content {
-      .transition(padding, .5s, ease);
-    }
-  }
-  @media (max-width: 600px) {
-    .anime-container {
-      margin-top: 3rem;
+      padding-top: 0;
     }
   }
 
+}
+.col.anime.active {
+  .anime-container {
+    @media (max-width: 1000px) {
+      .card-content {
+        padding-top: 6rem;
+        .transition(padding, .5s, ease);
+      }
+    }
+    @media (max-width: 600px) {
+      .card-content {
+        padding-top: 4rem;
+        .transition(padding, .5s, ease);
+      }
+    }
+  }
 }
