@@ -149,6 +149,7 @@
     cursor: pointer;
     z-index: 4;
     position: relative;
+    .transition(margin, .5s, ease);
   }
   .anime-overlay {
     position: fixed;
@@ -170,25 +171,53 @@
     z-index: 3;
     transform: scale(0);
     padding-top: 0;
-    .card-content {
-      padding-top: 0;
+    .row.widget {
+      margin-bottom: 0;
+      .radius {
+        // max-height: 60vh;
+        .card-content {
+          margin: 10px;
+          min-height: 40vh;
+          max-height: 50vh;
+          overflow-y: scroll;
+          .transition(padding, .5s, ease);
+        }
+      }
     }
   }
-
 }
 .col.anime.active {
-  .anime-container {
-    @media (max-width: 1000px) {
-      .card-content {
-        padding-top: 6rem;
-        .transition(padding, .5s, ease);
+    @media (min-width: 350px) {
+      .anime-image {
+        margin-bottom: 8vh;
+      }
+      .anime-container {
+        .card-content {
+          max-height: 60vh;
+          padding-top: 3vh;
+        }
       }
     }
-    @media (max-width: 600px) {
-      .card-content {
-        padding-top: 4rem;
-        .transition(padding, .5s, ease);
+    @media (min-width: 500px) {
+      .anime-image {
+        margin-bottom: 4vh;
+      }
+      .anime-container {
+        .card-content {
+          max-height: 60vh;
+          padding-top: 4vh;
+        }
       }
     }
-  }
+    @media (min-width: 600px) {
+      .anime-image {
+        margin-bottom: 3vh;
+      }
+      .anime-container {
+        .card-content {
+          max-height: 60vh;
+          padding-top: 4vh;
+        }
+      }
+    }
 }
