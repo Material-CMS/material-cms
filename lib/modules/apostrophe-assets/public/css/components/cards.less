@@ -147,7 +147,6 @@
   position: relative;
   .anime-image {
     cursor: pointer;
-    z-index: 4;
     position: relative;
     .transition(margin, .5s, ease);
   }
@@ -167,8 +166,12 @@
     cursor: pointer;
   }
   .anime-container {
-    position: absolute;
+    position: fixed;
     z-index: 3;
+    height: 50vh;
+    top: 30%;
+    left: 5%;
+    width: 90%;
     transform: scale(0);
     padding-top: 0;
     .row.widget {
@@ -177,47 +180,30 @@
         // max-height: 60vh;
         .card-content {
           margin: 10px;
-          min-height: 40vh;
-          max-height: 50vh;
-          overflow-y: scroll;
           .transition(padding, .5s, ease);
+          .apos-area {
+            max-height: 50vh;
+            overflow-y: scroll;
+          }
         }
       }
     }
   }
 }
 .col.anime.active {
-    @media (min-width: 350px) {
-      .anime-image {
-        margin-bottom: 8vh;
-      }
-      .anime-container {
-        .card-content {
-          max-height: 60vh;
-          padding-top: 3vh;
-        }
-      }
-    }
-    @media (min-width: 500px) {
-      .anime-image {
-        margin-bottom: 4vh;
-      }
-      .anime-container {
-        .card-content {
-          max-height: 60vh;
-          padding-top: 4vh;
-        }
-      }
-    }
-    @media (min-width: 600px) {
-      .anime-image {
-        margin-bottom: 3vh;
-      }
-      .anime-container {
-        .card-content {
-          max-height: 60vh;
-          padding-top: 4vh;
-        }
-      }
-    }
+    // @media (min-width: 300px) {
+    //   .anime-image {
+    //     margin-top: -8rem;
+    //   }
+    // }
+    // @media (min-width: 500px) {
+    //   .anime-image {
+    //     margin-bottom: 4vh;
+    //   }
+    // }
+    // @media (min-width: 600px) {
+    //   .anime-image {
+    //     margin-bottom: 3vh;
+    //   }
+    // }
 }
