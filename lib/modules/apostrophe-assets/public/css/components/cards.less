@@ -144,10 +144,13 @@
   }
 }
 .col.anime {
+  max-height: 50vh;
   position: relative;
   .anime-image {
+    // margin-bottom: 10rem;
     cursor: pointer;
     position: relative;
+    transform-origin: 0 100%;
     .transition(margin, .5s, ease);
   }
   .anime-overlay {
@@ -160,24 +163,21 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    .transition(opacity, .5s, ease);
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
     cursor: pointer;
   }
   .anime-container {
-    position: fixed;
+    position: absolute;
     z-index: 3;
     height: 50vh;
-    top: 30%;
-    left: 5%;
-    width: 90%;
+    top: 0;
     transform: scale(0);
     padding-top: 0;
     .row.widget {
       margin-bottom: 0;
       .radius {
-        // max-height: 60vh;
+        max-height: 60vh;
         .card-content {
           margin: 10px;
           .transition(padding, .5s, ease);
@@ -191,19 +191,10 @@
   }
 }
 .col.anime.active {
-    // @media (min-width: 300px) {
-    //   .anime-image {
-    //     margin-top: -8rem;
-    //   }
-    // }
-    // @media (min-width: 500px) {
-    //   .anime-image {
-    //     margin-bottom: 4vh;
-    //   }
-    // }
-    // @media (min-width: 600px) {
-    //   .anime-image {
-    //     margin-bottom: 3vh;
-    //   }
-    // }
+  .anime-image {
+    z-index: 4;
+    margin-top: 40px;
+    // top: 30%;
+    // transform: translate(0, -100%) scale(0.5);
+  }
 }
