@@ -150,6 +150,7 @@
     cursor: pointer;
     position: relative;
     transform-origin: 0 100%;
+    .transition(height, .5s, ease);
   }
   .anime-overlay {
     position: fixed;
@@ -168,7 +169,6 @@
   .anime-container {
     position: absolute;
     z-index: 3;
-    height: 50vh;
     top: 0;
     transform: scale(0);
     padding-top: 0;
@@ -177,12 +177,23 @@
       .radius {
         max-height: 60vh;
         .card-content {
+          height: 100%;
           margin: 10px;
           .transition(padding, .5s, ease);
           .apos-area {
-            max-height: 50vh;
+            max-height: 45vh;
             overflow-y: scroll;
           }
+        }
+        .card-content:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          box-shadow: inset 0px 30px 8px -10px #000, inset 0px -30px 8px -10px #fff;
+          z-index: 1;
         }
       }
     }
@@ -195,4 +206,9 @@
     // top: 30%;
     // transform: translate(0, -100%) scale(0.5);
   }
+  // .anime-container {
+  //   .apos-rich-text-widget-wrapper {
+  //     margin-bottom: 2rem;
+  //   }
+  // }
 }
