@@ -1,4 +1,3 @@
-{% import 'components/expand.html' as expand with context %}
 {% import 'components/lightbox.html' as lightbox with context %}
 {% import 'components/link.html' as link with context %}
 {% import 'components/anime.html' as anime with context %}
@@ -11,8 +10,6 @@
     {{ lightbox.base() }}
   {% elif data.widget.clickAction == 'clickActionLink' %}
     {{ link.base() }}
-  {% elif data.widget.clickAction == 'clickActionGalleryExpand' %}
-    {{ expand.base() }}
   {% elif data.widget.clickAction == 'clickActionAnime' %}
     {{ anime.base() }}
   {% elif data.widget.clickAction == false %}

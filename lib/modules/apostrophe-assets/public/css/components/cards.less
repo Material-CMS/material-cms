@@ -144,14 +144,12 @@
   }
 }
 .col.anime {
-  max-height: 50vh;
   position: relative;
   .anime-image {
     // margin-bottom: 10rem;
     cursor: pointer;
     position: relative;
     transform-origin: 0 100%;
-    .transition(margin, .5s, ease);
   }
   .anime-overlay {
     position: fixed;
@@ -191,9 +189,9 @@
   }
 }
 .col.anime.active {
+  max-height: 50vh;
   .anime-image {
     z-index: 4;
-    margin-top: 40px;
     // top: 30%;
     // transform: translate(0, -100%) scale(0.5);
   }
