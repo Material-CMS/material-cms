@@ -18,14 +18,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add page background color chooser
 - Add events pages
 - Kenburns for nav background image
-- Make nav logo svg only
 - Create code widget
 - Create Iframe widget
+- Local video for blog entries
+- Ofcanvas option for grid widgets
+- Color choices for pages
+- New Lightbox animation
 
 ### Fixed
 - Form send button not using button color
 - Rewrite texts-pages function to pure javascript
-- Improve materialboxed animation
+- Pro: language selector in nav color
 
 ## [0.9.8 ] - 08.03.2023
 
