@@ -13,7 +13,6 @@
        .apos-area-widget-wrapper {
          border-radius: inherit;
          flex-grow: 1;
-         margin-bottom: 1.8rem;
          .apos-area-widget {
            border-radius: inherit;
            height: 100%;
@@ -42,6 +41,12 @@
          }
        }
      }
+   }
+   .columns-container.left {
+     padding-right: 0.75rem;
+   }
+   .columns-container.right {
+     padding-left: 0.75rem;
    }
 }
 // Glue widgets override
@@ -162,6 +167,10 @@
     }
     .columns-container {
       width: 100%;
+      padding: 0;
+      .apos-area-widget-wrapper{
+        margin-bottom: 1.8rem;
+      }
     }
   }
   // Glue widgets override

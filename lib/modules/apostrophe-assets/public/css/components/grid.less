@@ -66,10 +66,14 @@
     .grid-radius:nth-child(n+2):nth-last-child(n+2) .radius {
       .border-radius(initial)
     }
-    // // last child
+    // last child
     .grid-radius:nth-last-child(-n+1) .radius {
       .border-radius(top-left, initial);
       .border-radius(bottom-left, initial);
     }
   }
+  @media (max-width: 400px) {
+
+  }
+
 }
