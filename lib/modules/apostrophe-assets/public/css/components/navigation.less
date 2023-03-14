@@ -73,6 +73,7 @@
   		background-color: transparent;
       .nav-wrapper {
         background-color: @white;
+        color: @black;
   			position: fixed;
         width: 100%;
         height: 64px;
@@ -157,17 +158,14 @@
 // override auto text color if navTextColor
 .nav-color.nav-text-color {
   .text-color {
-    color: inherit;
+    color: inherit !important;;
   }
   a:not(.sidenav-trigger) {
-    color: inherit;
+    color: inherit !important;;
   }
   .dropdown-content {
     li {
       color: inherit;
-      a {
-        color: inherit;
-      }
     }
   }
 }
