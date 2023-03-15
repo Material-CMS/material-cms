@@ -138,6 +138,32 @@ h4 {
 .margin-top {
   margin-top: 1rem;
 }
+// Ajax append styles
+.ajax-append {
+  .pagination-wrapper {
+    .flex();
+    .flex-align-items(center);
+    .flex-justify(center);
+    .apos-ui,
+    .pagination {
+      li.active {
+        display: inline-block;
+        font-size: 1.2rem;
+        padding: 0px 10px;
+        line-height: 30px;
+      }
+    }
+    .btn.next {
+      margin:10px auto;
+    }
+  }
+}
+.ajax-append.active {
+  .pagination-wrapper {
+    display: none;
+  }
+}
+
 // Admin UI Overrides
 .apos-ui {
   .apos-dropdown.apos-dropdown--area-controls {
