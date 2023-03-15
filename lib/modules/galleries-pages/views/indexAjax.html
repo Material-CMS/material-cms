@@ -1,7 +1,7 @@
 <div class="ajax-append{% if data.page.ajaxAppend %} active{% endif %}">
 
-  <div class="pagination-wrapper">
-    {% import 'apostrophe-pages:macros.html' as pager with context %}
+  <div class="pagination-wrapper hide">
+    {% import 'apostrophe-pager:macros.html' as pager with context %}
     {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
   </div>
 
