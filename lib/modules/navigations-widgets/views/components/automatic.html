@@ -10,13 +10,16 @@
       class="active"
     {% endif %}
   >
-    <a href="{{ options.homeUrl }}" data-target="{{ dataTarget }}" class="flow-text waves-effect underline
+    <a
+      href="{% if options.pageUrl == options.homeUrl %}#{% else %}{{ options.homeUrl }}{% endif %}"
+      data-target="{{ dataTarget }}"
+      class="flow-text waves-effect underline
       {% if options.pageUrl == options.homeUrl and options.pieces.length > 1 %}
         {{ dropdown }}
       {% endif %}"
     >
 
-      {% if options.pageUrl == options.homeUrl and options.pieces.length > 1 %}
+      {% if (options.pageUrl == options.homeUrl and options.pieces.length > 1) and options.pageType == 'home' %}
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
           <path d="M7 10l5 5 5-5z"
           {% if data.widget.navTextColor %}
@@ -30,7 +33,7 @@
     </a>
 
     {# Sections of Home Loop Dropdown #}
-    {% if options.pageUrl == options.homeUrl and options.pieces.length > 1 %}
+    {% if (options.pageUrl == options.homeUrl and options.pieces.length > 1) and options.pageType == 'home' %}
       <ul id="{{ dataTarget }}" class="dropdown-content nav-color"
         {% if data.widget.navColor %}
           style="background-color: {{ data.widget.navColor }} !important"
@@ -64,17 +67,20 @@
   {% for tab in options.homeChildren %}
 
     <li
-      {% if options.pageUrl == tab._url or childActive == true %}
+      {% if options.pageUrl == tab._url or childActive %}
         class="active"
       {% endif %}
     >
-      <a href="{{ tab._url }}" data-target="{{ tab._id }}-{{ dataTarget }}" class="flow-text waves-effect underline
+      <a
+        href="{% if options.pageUrl == tab._url or childActive %}#{% else %}{{ tab._url }}{% endif %}"
+        data-target="{{ tab._id }}-{{ dataTarget }}"
+        class="flow-text waves-effect underline
         {% if (options.pageUrl == tab._url and options.pieces.length > 1 ) or tab._children.length %}
           {{ dropdown }}
         {% endif %}"
       >
 
-        {% if (options.pageUrl == tab._url and options.pieces.length > 1 ) or tab._children.length %}
+        {% if ((options.pageUrl == tab._url and options.pieces.length > 1) and options.pageType == 'home' ) or tab._children.length %}
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
             <path d="M7 10l5 5 5-5z"
               {% if data.widget.navTextColor %}
@@ -89,7 +95,7 @@
       </a>
 
       {# Dropdown #}
-      {% if options.pageUrl == tab._url and options.pieces.length > 1 %}
+      {% if (options.pageUrl == tab._url and options.pieces.length > 1) and options.pageType == 'home' %}
         <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color dropdown-content"
           {% if data.widget.navColor %}
             style="background-color: {{ data.widget.navColor }} !important"
