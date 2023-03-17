@@ -1,7 +1,7 @@
 <div class="ajax-append{% if data.page.ajaxAppend %} active{% endif %}">
 
-  <div class="pagination-wrapper">
-    {% import 'apostrophe-pager:macros.html' as pager with context %}
+  <div class="pagination-wrapper{% if data.page.ajaxAppend %} hide{% endif %}">
+    {% import 'apostrophe-pages:macros.html' as pager with context %}
     {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
   </div>
 
@@ -15,8 +15,14 @@
   </div>
 
   {% if data.currentPage < data.totalPages %}
-    <div class="pagination-wrapper">
-      <a class="btn next"  href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">Load More...</a>
+    <div class="pagination-wrapper{% if data.page.ajaxAppend %} hide{% endif %}">
+      <a class="btn next" href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">
+        {% if data.page.ajaxAppend %}
+          {{ data.page.buttonText or 'Load More...' }}
+        {% else %}
+          {{ data.page.buttonText or 'Next' }}
+        {% endif %}
+      </a>
     </div>
   {% endif %}
 
