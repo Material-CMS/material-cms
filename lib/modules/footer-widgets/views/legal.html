@@ -1,38 +1,31 @@
-{% block extraHead %}
-
-  <meta name="robots" content="noindex" />
-
-{% endblock %}
-
-{% block main %}
-
-  <div class="iframe-container">
-    {{ apos.area(data.global, 'legal', {
-      edit: false,
-      widgets: { 'apostrophe-rich-text': { } }
-    }) }}
-  </div>
-
-{% endblock %}
-
-{% block afterMain %}
-
-  <style>
-    .iframe-container {
-      padding: 0 24px;
-    }
-    p {
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Oxygen-Sans,
-        Ubuntu,
-        Cantarell,
-        "Helvetica Neue",
-        sans-serif;
-    }
-  </style>
-
-{% endblock %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <div class="iframe-container">
+      {{ apos.area(data.global, 'legal', {
+        edit: false,
+        widgets: { 'apostrophe-rich-text': { } }
+      }) }}
+    </div>
+    <style>
+      .iframe-container {
+        padding: 0 24px;
+      }
+      p {
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen-Sans,
+          Ubuntu,
+          Cantarell,
+          "Helvetica Neue",
+          sans-serif;
+      }
+    </style>
+  </body>
+</html>
