@@ -27,4 +27,13 @@
     </div>
   </div>
 
+  {# Initialize materialize page components #}
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var collapsibles = document.querySelectorAll('.collapsible');
+      for (var i = 0; i < collapsibles.length; i++) {
+        M.Collapsible.init(collapsibles[i]);
+      }
+    });
+  </script>
 {% endblock %}
