@@ -14,7 +14,7 @@
       href="{% if options.pageUrl == options.homeUrl %}#{% else %}{{ options.homeUrl }}{% endif %}"
       data-target="{{ dataTarget }}"
       class="flow-text waves-effect underline
-      {% if options.pageUrl == options.homeUrl and options.pieces.length > 1 %}
+      {% if (options.pageUrl == options.homeUrl and options.pieces.length > 1) and options.pageType == 'home' %}
         {{ dropdown }}
       {% endif %}"
     >
@@ -75,7 +75,7 @@
         href="{% if options.pageUrl == tab._url or childActive %}#{% else %}{{ tab._url }}{% endif %}"
         data-target="{{ tab._id }}-{{ dataTarget }}"
         class="flow-text waves-effect underline
-        {% if (options.pageUrl == tab._url and options.pieces.length > 1 ) or tab._children.length %}
+        {% if ((options.pageUrl == tab._url and options.pieces.length > 1 ) and options.pageType == 'home') or tab._children.length %}
           {{ dropdown }}
         {% endif %}"
       >
