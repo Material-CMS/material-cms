@@ -2,7 +2,11 @@
 
 {% block main %}
 
-  <div class="main-content">
+  <div class="main-content"
+    {% if data.page.backgroundColor %}
+      style="background-color: {{ data.page.backgroundColor }}"
+    {% endif %}
+  >
     <div class="pages-container">
       <div class="container">
 
