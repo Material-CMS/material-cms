@@ -4,7 +4,7 @@
 
 {% block main %}
 
-  <div class="main-content">
+  <div class="main-content bg-color">
     <div class="pages-container">
       <div class="container">
 
@@ -22,9 +22,6 @@
                 {% else %}
                   horizontal
                 {% endif %}"
-                {% if data.piece.backColor %}
-                  style="background-color:{{ data.piece.backColor }}"
-                {% endif %}
               >
 
                 {% if data.piece.blog %}
@@ -70,9 +67,9 @@
                     <div class="height-100 col s12 m9">
                     {% endif %}
 
-                    <div class="card-stacked">
+                    <div class="card-stacked" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
 
-                      <div class="card-content" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
+                      <div class="card-content">
 
                         {% if data.piece.title %}
                           <h4 class="accent-color card-title" {% if data.piece.titleColor %} style="color:{{ data.piece.titleColor }}" {% endif %}>
@@ -94,11 +91,12 @@
                               }
                             }
                           }) }}
-                        {% elif data.piece.description.items[0] %}
-                          {{ apos.area(data.piece, 'description', {
-                            edit: false,
-                            widgets: { 'apostrophe-rich-text': { } }
-                          }) }}
+                        {% endif %}
+
+                        <br/>
+
+                        {% if data.piece.description.items[0] %}
+                          {{ apos.area(data.piece, 'description', { edit: false }) }}
                         {% endif %}
 
                       </div>
@@ -106,21 +104,24 @@
                       <div class="card-action z-depth-0" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
                         <div class="row">
 
-                          {% if data.piece.extraLink %}
-                            <div class="col s6">
-                              <a class="btn-flat" href="{{ data.piece.extraLink }}" target="_blank">
-                                {% if data.piece.linkText %}
-                                  {{ data.piece.linkText }}
-                                {% else %}
-                                  link
-                                {% endif %}
+                          {% if data.piece.linkArea.items[0] %}
+                          {% set item = data.piece.linkArea.items[0] %}
+                            <div class="col s12{% if data.piece.blog %} m6 left-align{% else %} m12 center-align{% endif %}">
+                              <a
+                                class="btn-flat"
+                                href="{{ item.url or item._page._url }}"
+                                target="_blank"
+                                rel="noopener"
+                                style="color:{{ data.global.accentColor }}"
+                              >
+                                {{ item.label or item._page.title }}
                               </a>
                             </div>
                           {% endif %}
 
                           <div
                             class="right-align col
-                            {% if data.piece.extraLink %}
+                            {% if data.piece.linkArea.items[0] %}
                               s6
                             {% else %}
                               s12

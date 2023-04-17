@@ -113,20 +113,31 @@
                 <div class="collapsible-header">
                   <div class="row">
 
-                    <div class="col s12">
-                      {% if piece._url %}
-                        <a href="{{ piece._url }}">
-                      {% endif %}
-
-                          <div class="btn btn-color waves-effect">
-                            <span class="hover-background">
-                              {{ piece.buttonText or 'read' }}
-                            </span>
-                          </div>
-
-                      {% if piece._url %}
+                    {% if piece.linkArea.items[0] %}
+                    {% set item = piece.linkArea.items[0] %}
+                      <div class="left-align col s12 m6">
+                        <a
+                          class="btn-flat"
+                          href="{{ item.url or item._page._url }}"
+                          target="_blank"
+                          rel="noopener"
+                          style="color:{{ data.global.accentColor }}"
+                        >
+                          {{ item.label or item._page.title }}
                         </a>
-                      {% endif %}
+                      </div>
+                    {% endif %}
+
+                    <div class="col s12 m6">
+
+                      <a href="{{ piece._url }}">
+                        <div class="btn btn-color waves-effect">
+                          <span class="hover-background">
+                            {{ piece.buttonText or 'read' }}
+                          </span>
+                        </div>
+                      </a>
+
                     </div>
 
                   </div>
