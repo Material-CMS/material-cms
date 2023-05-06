@@ -38,7 +38,14 @@
                   {% endif %}
                 </div>
 
-                <span class="click-action-link flow-text">{{ linkItem.label or linkItem._page.title }}</span>
+                <span
+                  class="click-action-link flow-text accent-color"
+                  {% if linkItem.color %}
+                    style="color: {{ linkItem.color }}"
+                  {% endif %}
+                >
+                  {{ linkItem.label or linkItem._page.title }}
+                </span>
 
               </div>
             </a>
