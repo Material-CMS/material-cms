@@ -2,7 +2,6 @@
 
 {# Cache data.options #}
 {% set options = data.options %}
-{% set childActive = false %}
 
   {# Home #}
   <li
@@ -67,12 +66,12 @@
   {% for tab in options.homeChildren %}
 
     <li
-      {% if options.pageUrl == tab._url or childActive %}
+      {% if options.pageUrl == tab._url %}
         class="active"
       {% endif %}
     >
       <a
-        href="{% if options.pageUrl == tab._url or childActive %}#{% else %}{{ tab._url }}{% endif %}"
+        href="{% if options.pageUrl == tab._url %}#{% else %}{{ tab._url }}{% endif %}"
         data-target="{{ tab._id }}-{{ dataTarget }}"
         class="flow-text waves-effect underline
         {% if ((options.pageUrl == tab._url and options.pieces.length > 1 ) and options.pageType == 'home') or tab._children.length %}
@@ -134,13 +133,6 @@
 
           {# Children of Tabs #}
           {% for child in tab._children %}
-
-          {# Set childActive true #}
-          {% if options.pageUrl == child._url %}
-            {% set childActive = true %}
-            {{ apos.log(childActive) }}
-          {% endif %}
-
 
             <li
               {% if options.pageUrl == child._url %}
