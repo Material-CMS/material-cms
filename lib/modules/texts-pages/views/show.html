@@ -77,6 +77,12 @@
                           </h4>
                         {% endif %}
 
+                        {% if data.piece.description.items[0] %}
+                          {{ apos.area(data.piece, 'description', { edit: false }) }}
+                        {% endif %}
+
+                        <br/>
+
                         {% if data.piece.text.items[0] %}
                           {{ apos.area(data.piece, 'text', {
                             edit: false,
@@ -91,12 +97,6 @@
                               }
                             }
                           }) }}
-                        {% endif %}
-
-                        <br/>
-
-                        {% if data.piece.description.items[0] %}
-                          {{ apos.area(data.piece, 'description', { edit: false }) }}
                         {% endif %}
 
                       </div>
