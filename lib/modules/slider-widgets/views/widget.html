@@ -28,12 +28,12 @@
             >
           </div>
 
-          <div class="caption {{ image.align }}">
+          <div class="caption valign-wrapper {{ data.widget.imageCaptionAlign }}">
 
             {% if data.widget.title %}
-              <h3 class="accent-color truncate hide-on-small-only"
-                {% if image.titleColor %}
-                  style="color:{{ image.titleColor }}"
+              <h3 class="text-color truncate"
+                {% if data.widget.imageCaptionColor %}
+                  style="color:{{ data.widget.imageCaptionColor }}"
                 {% endif %}
               >
                 {{ image.title }}
