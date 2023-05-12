@@ -39,7 +39,12 @@
                 </div>
 
                 <span
-                  class="click-action-link flow-text accent-color"
+                  class="center
+                    flow-text accent-color
+                    click-action-link
+                    {% if data.widget.clickActionBottom %}
+                    bottom
+                    {% endif %}"
                   {% if linkItem.color %}
                     style="color: {{ linkItem.color }}"
                   {% endif %}

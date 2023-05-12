@@ -22,6 +22,7 @@
 			.transition(opacity, .5s, ease);
 	    width: 100%;
 	    h4 {
+        margin: 0;
 	      line-height: 2rem;
 	    }
 	  }
@@ -29,13 +30,18 @@
 			pointer-events: none;
 			touch-action: none;
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			bottom: 50%;
+      width: 100%;
+			transform: translate(0, -50%);
 			z-index: 4;
 			opacity: 0;
+      padding: 24px;
 			.transition(opacity, 1s, ease);
 		}
+    .click-action-link.bottom {
+      bottom: 0;
+      transform: translate(0);
+    }
 	}
 	.gradient-overlay:after {
 		content:'';
