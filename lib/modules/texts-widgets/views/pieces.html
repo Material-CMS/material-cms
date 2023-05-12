@@ -115,9 +115,9 @@
 
                     {% if piece.linkArea.items[0] %}
                     {% set item = piece.linkArea.items[0] %}
-                      <div class="left-align col s12 m6">
+                      <div class="left col s12 m6">
                         <a
-                          class="btn-flat"
+                          class="left btn-flat"
                           href="{{ item.url or item._page._url }}"
                           target="_blank"
                           rel="noopener"
@@ -128,7 +128,7 @@
                       </div>
                     {% endif %}
 
-                    <div class="col s12 m6">
+                    <div class="right col s12 m6">
 
                       <a href="{{ piece._url }}">
                         <div class="btn btn-color waves-effect">
