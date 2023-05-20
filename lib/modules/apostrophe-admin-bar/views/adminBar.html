@@ -1,6 +1,11 @@
 {% import 'apostrophe-ui:components/dropdowns.html' as dropdowns with context -%}
 <div class="admin-bar">
-  <a class="btn btn-large dropdown-trigger trigger-admin" href="#" data-target="dropdown-admin"><i class="material-icons right">verified_user</i>Admin</a>
+  <a class="btn btn-large dropdown-trigger trigger-admin" href="#" data-target="dropdown-admin">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+      <path d="M7 10l5 5 5-5z"/>
+    </svg>
+    Admin
+  </a>
 </div>
 <ul id='dropdown-admin' class='dropdown-content'>
   {% for item in data.items %}

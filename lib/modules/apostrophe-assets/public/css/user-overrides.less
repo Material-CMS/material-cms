@@ -529,8 +529,14 @@ fieldset[data-name="linkArea"] {
   z-index: 999;
   transform: translate(-50%);
   .btn.btn-large {
+    display: flex;
+    align-items: center;
     color: @white;
     background-color: @red;
+    svg {
+      fill: @white;
+      margin-right: 15px;
+    }
   }
 }
 .apos-ui .apos-admin-bar {
