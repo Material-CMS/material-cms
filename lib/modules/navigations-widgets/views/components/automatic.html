@@ -4,11 +4,8 @@
 {% set options = data.options %}
 
   {# Home #}
-  <li
-    {% if options.pageUrl == options.homeUrl %}
-      class="active"
-    {% endif %}
-  >
+  <li {% if options.pageUrl == options.homeUrl %}class="active"{% endif %}>
+
     <a
       href="{% if options.pageUrl == options.homeUrl %}#{% else %}{{ options.homeUrl }}{% endif %}"
       data-target="{{ dataTarget }}"
@@ -20,10 +17,11 @@
 
       {% if (options.pageUrl == options.homeUrl and options.pieces.length > 1) and options.pageType == 'home' %}
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-          <path d="M7 10l5 5 5-5z"
-          {% if data.widget.navTextColor %}
-            fill="{{ data.widget.navTextColor }}"
-          {% endif %}
+          <path
+            d="M7 10l5 5 5-5z"
+            {% if data.widget.navTextColor %}
+              fill="{{ data.widget.navTextColor }}"
+            {% endif %}
           />
         </svg>
       {% endif %}
@@ -65,11 +63,8 @@
   {# Tabs Loop #}
   {% for tab in options.homeChildren %}
 
-    <li
-      {% if options.pageUrl == tab._url %}
-        class="active"
-      {% endif %}
-    >
+    <li {% if tab._url in options.pageUrl %}class="active"{% endif %}>
+
       <a
         href="{% if options.pageUrl == tab._url %}#{% else %}{{ tab._url }}{% endif %}"
         data-target="{{ tab._id }}-{{ dataTarget }}"
@@ -81,7 +76,8 @@
 
         {% if ((options.pageUrl == tab._url and options.pieces.length > 1) and options.pageType == 'home' ) or tab._children.length %}
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-            <path d="M7 10l5 5 5-5z"
+            <path
+              d="M7 10l5 5 5-5z"
               {% if data.widget.navTextColor %}
                 fill="{{ data.widget.navTextColor }}"
               {% endif %}
