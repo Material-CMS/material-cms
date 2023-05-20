@@ -83,15 +83,24 @@
         {% include "components/extra-links.html" %}
 
         {# Include Nav #}
-        {% if data.widget.nav == 'default' %}
-          {{ automatic.base('dropdown-desktop','dropdown-trigger-hover', '') }}
-        {% elif data.widget.nav == 'manual' and data.widget._pieces.length %}
-          {{ manual.base('dropdown-desktop','dropdown-trigger-hover') }}
+        {% if data.page.orphan %}
+          <li>
+            <a href="javascript:history.back()" class="flow-text waves-effect underline">
+              <i class="material-icons left">arrow_back</i>
+              back
+            </a>
+          </li>
         {% else %}
-          <div class="apos-area apos-empty">
-            <i class="material-icons">clear</i>
-            <p class="flow-text">no navigation<p>
-          </div>
+          {% if data.widget.nav == 'default' %}
+            {{ automatic.base('dropdown-desktop','dropdown-trigger-hover', '') }}
+          {% elif data.widget.nav == 'manual' and data.widget._pieces.length %}
+            {{ manual.base('dropdown-desktop','dropdown-trigger-hover') }}
+          {% else %}
+            <div class="apos-area apos-empty">
+              <i class="material-icons">clear</i>
+              <p class="flow-text">no navigation<p>
+            </div>
+          {% endif %}
         {% endif %}
 
       </ul>
@@ -124,15 +133,17 @@
   {% include "components/extra-links.html" %}
 
   {# Include Nav #}
-  {% if data.widget.nav == 'default' %}
-    {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
-  {% elif data.widget.nav == 'manual' and data.widget._pieces.length  %}
-    {{ manual.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
-  {% else %}
-    <div class="apos-area apos-empty">
-      <i class="material-icons">clear</i>
-      <p class="flow-text">no navigation<p>
-    </div>
+  {% if not data.page.orphan %}
+    {% if data.widget.nav == 'default' %}
+      {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
+    {% elif data.widget.nav == 'manual' and data.widget._pieces.length  %}
+      {{ manual.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
+    {% else %}
+      <div class="apos-area apos-empty">
+        <i class="material-icons">clear</i>
+        <p class="flow-text">no navigation<p>
+      </div>
+    {% endif %}
   {% endif %}
 
 </ul>

@@ -120,7 +120,6 @@
 
       {# Children of Tabs Dropdown #}
       {% elif tab._children.length %}
-
         <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color dropdown-content"
           {% if data.widget.navColor %}
             style="background-color: {{ data.widget.navColor }} !important"
@@ -142,9 +141,9 @@
           {% endfor %}
 
         </ul>
-
       {% endif %}
 
     </li>
+
   {% endfor %}
 {% endmacro %}
