@@ -65,19 +65,29 @@
     </a>
 
       {# Sidenav Trigger #}
-      <a aria-label="Open sidenav" href="#" data-target="mobile" class="accent-color sidenav-trigger">
+      {% if not data.page.orphan %}
+        <a aria-label="Open sidenav" href="#" data-target="mobile" class="accent-color sidenav-trigger">
 
-        <svg class="hamburger"
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 0 24 24"
-          width="24px"
-        >
-          <path d="M0 0h24v24H0z" fill="none" />
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>
-      </a>
+          <svg class="hamburger"
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </a>
+      {% else %}
+        <a href="javascript:history.back()" class="flow-text waves-effect hide-on-large-only go-back">
 
+          <i class="material-icons center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
+              <path d="M480 896 160 576l320-320 57 56-224 224h487v80H313l224 224-57 56Z"/>
+            </svg>
+          </i>
+        </a>
+      {% endif %}
       <ul class="nav-activator right hide-on-med-and-down">
 
         {# Extra Links #}
@@ -86,8 +96,12 @@
         {# Include Nav #}
         {% if data.page.orphan %}
           <li>
-            <a href="javascript:history.back()" class="flow-text waves-effect underline">
-              <i class="material-icons left">arrow_back</i>
+            <a href="javascript:history.back()" class="flow-text waves-effect go-back">
+              <i class="material-icons left">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
+                  <path d="M480 896 160 576l320-320 57 56-224 224h487v80H313l224 224-57 56Z"/>
+                </svg>
+              </i>
               {{ navGoBack or 'Back' }}
             </a>
           </li>
@@ -112,39 +126,40 @@
 </div>
 
 {# Mobile Sidenav #}
-<ul id="mobile"
-  class="sidenav nav-color
-    {% if data.widget.navTextColor %}
-      nav-text-color
-    {% endif %}"
+{% if not data.page.orphan %}
+  <ul id="mobile"
 
-  {% if data.widget.navColor or data.widget.navTextColor %}
-    style="
-      {% if data.widget.navColor %}
-        background-color: {{ data.widget.navColor }} !important;
-      {% endif %}
+    class="sidenav nav-color
       {% if data.widget.navTextColor %}
-        color: {{ data.widget.navTextColor }};
-      {% endif %}
-    "
-  {% endif %}
->
+        nav-text-color
+      {% endif %}"
 
-  {# Extra Links #}
-  {% include "components/extra-links.html" %}
-
-  {# Include Nav #}
-  {% if not data.page.orphan %}
-    {% if data.widget.nav == 'default' %}
-      {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
-    {% elif data.widget.nav == 'manual' and data.widget._pieces.length  %}
-      {{ manual.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
-    {% else %}
-      <div class="apos-area apos-empty">
-        <i class="material-icons">clear</i>
-        <p class="flow-text">no navigation<p>
-      </div>
+    {% if data.widget.navColor or data.widget.navTextColor %}
+      style="
+        {% if data.widget.navColor %}
+          background-color: {{ data.widget.navColor }} !important;
+        {% endif %}
+        {% if data.widget.navTextColor %}
+          color: {{ data.widget.navTextColor }};
+        {% endif %}
+      "
     {% endif %}
-  {% endif %}
+  >
 
-</ul>
+    {# Extra Links #}
+    {% include "components/extra-links.html" %}
+
+    {# Include Nav #}
+      {% if data.widget.nav == 'default' %}
+        {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
+      {% elif data.widget.nav == 'manual' and data.widget._pieces.length  %}
+        {{ manual.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
+      {% else %}
+        <div class="apos-area apos-empty">
+          <i class="material-icons">clear</i>
+          <p class="flow-text">no navigation<p>
+        </div>
+      {% endif %}
+
+  </ul>
+{% endif %}
