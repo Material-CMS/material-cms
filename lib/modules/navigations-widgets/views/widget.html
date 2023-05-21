@@ -6,6 +6,7 @@
 {% set navBackgroundImage = data.widget._navBackgroundImage or global._navBackgroundImage %}
 {% set gradientColorTop = data.widget.gradientColorTop or global.gradientColorTop %}
 {% set gradientColorBottom = data.widget.gradientColorBottom or global.gradientColorBottom %}
+{% set navGoBack = data.widget.navGoBack or global.navGoBack %}
 
 <div class="nav">
 
@@ -87,7 +88,7 @@
           <li>
             <a href="javascript:history.back()" class="flow-text waves-effect underline">
               <i class="material-icons left">arrow_back</i>
-              back
+              {{ navGoBack or 'Back' }}
             </a>
           </li>
         {% else %}
