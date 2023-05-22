@@ -117,7 +117,7 @@
                     {% set item = piece.linkArea.items[0] %}
                       <div class="left col s12 m6">
                         <a
-                          class="left btn-flat"
+                          class="left btn-flat btn-radius"
                           href="{{ item.url or item._page._url }}"
                           target="_blank"
                           rel="noopener"
@@ -131,7 +131,7 @@
                     <div class="right col s12 m6">
 
                       <a href="{{ piece._url }}">
-                        <div class="btn btn-color waves-effect">
+                        <div class="btn btn-color btn-radius waves-effect">
                           <span class="hover-background">
                             {{ piece.buttonText or 'read' }}
                           </span>
@@ -161,7 +161,7 @@
 
                       {% if piece.text.items[0] %}
                         <div class="left-align col s12 m6">
-                          <div class="btn btn-color waves-effect">
+                          <div class="btn btn-color btn-radius waves-effect">
                             <span class="hover-background">
                               {{ piece.buttonText or 'more' }}
                             </span>
