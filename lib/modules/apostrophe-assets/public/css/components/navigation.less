@@ -86,7 +86,12 @@
           }
         }
         .go-back {
+          position: absolute;
+          top: 0;
+          height: 100%;
           min-width: 15%;
+          .flex();
+          .flex-justify(center);
         }
         @media (max-width: 600px) {
           .sidenav-trigger,
