@@ -25,7 +25,7 @@
               >
 
                 {% if data.piece.blog %}
-                  {% if data.piece.topImage.items[0] %}
+                  {% if data.piece.topImage.items.length %}
                     <div class="card-image">
                       {{ apos.area(data.piece, 'topImage', {
                         edit: false,
@@ -42,7 +42,7 @@
                   {% endif %}
 
                 {% else %}
-                  {% if data.piece.sideImage.items[0] %}
+                  {% if data.piece.sideImage.items.length %}
                     <div class="row">
                       <div class="height-100 col s12 m3">
                         <div class="card-image">
@@ -62,7 +62,7 @@
                     {% endif %}
                   {% endif %}
 
-                  {% if data.piece.sideImage.items[0] %}
+                  {% if data.piece.sideImage.items.length %}
                     <div class="height-100 col s12 m9">
                     {% endif %}
 
@@ -76,13 +76,13 @@
                           </h4>
                         {% endif %}
 
-                        {% if data.piece.description.items[0] %}
+                        {% if data.piece.description.items.length %}
                           {{ apos.area(data.piece, 'description', { edit: false }) }}
                         {% endif %}
 
                         <br/>
 
-                        {% if data.piece.text.items[0] %}
+                        {% if data.piece.text.items.length %}
                           {{ apos.area(data.piece, 'text', {
                             edit: false,
                             widgets: {
@@ -103,7 +103,7 @@
                       <div class="card-action z-depth-0" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
                         <div class="row">
 
-                          {% if data.piece.linkArea.items[0] %}
+                          {% if data.piece.linkArea.items.length %}
                           {% set item = data.piece.linkArea.items[0] %}
                             <div class="col s12{% if data.piece.blog %} m6 left-align{% else %} m12 center-align{% endif %}">
                               <a
@@ -142,7 +142,7 @@
                               {{ button.svg(
                                 'Share On Pinterest',
                                 'btn-share btn-radius btn-color',
-                                'http://www.pinterest.com/pin/create/button/?url='+ data.piece._url | urlencode +'&media='+ apos.attachments.url(apos.images.first(data.piece.topImage), { size: data.options.size or 'full' }) | urlencode +'&description='+ apos.areas.plaintext(data.piece.description, { limit: '210' } ) | urlencode,
+                                'http://www.pinterest.com/pin/create/button/?url='+ data.piece._url | urlencode +'&media='+ (apos.attachments.url(apos.images.first(data.piece.topImage) , { size: 'full' }) if data.piece.topImage.items.length) | urlencode +'&description='+ apos.areas.plaintext(data.piece.description, { limit: '210' } ) | urlencode,
                                 'M0,0v455h455V0H0z M251.83,297.635c-19.57,0-37.973-10.516-44.227-22.557
                                   c0,0-10.516,41.691-12.71,49.78c-7.84,28.437-30.926,56.874-32.684,59.176c-1.229,1.649-4.013,1.105-4.324-1.026
                                   c-0.482-3.656-6.379-39.497,0.545-68.728c3.469-14.701,23.272-98.627,23.272-98.627s-5.771-11.543-5.771-28.624
@@ -192,7 +192,7 @@
 
                     </div>
 
-                    {% if data.piece.sideImage.items[0] %}
+                    {% if data.piece.sideImage.items.length %}
                     </div>
                   </div>
                 {% endif %}
