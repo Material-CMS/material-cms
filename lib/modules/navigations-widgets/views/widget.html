@@ -65,7 +65,16 @@
     </a>
 
       {# Sidenav Trigger #}
-      {% if not data.page.orphan %}
+      {% if data.page.orphan or data.piece %}
+        <a href="javascript:history.back()" class="flow-text waves-effect hide-on-large-only go-back">
+
+          <i class="material-icons center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
+              <path d="M480 896 160 576l320-320 57 56-224 224h487v80H313l224 224-57 56Z"/>
+            </svg>
+          </i>
+        </a>
+      {% else %}
         <a aria-label="Open sidenav" href="#" data-target="mobile" class="accent-color sidenav-trigger">
 
           <svg class="hamburger"
@@ -78,15 +87,6 @@
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
           </svg>
         </a>
-      {% else %}
-        <a href="javascript:history.back()" class="flow-text waves-effect hide-on-large-only go-back">
-
-          <i class="material-icons center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
-              <path d="M480 896 160 576l320-320 57 56-224 224h487v80H313l224 224-57 56Z"/>
-            </svg>
-          </i>
-        </a>
       {% endif %}
       <ul class="nav-activator right hide-on-med-and-down">
 
@@ -94,7 +94,7 @@
         {% include "components/extra-links.html" %}
 
         {# Include Nav #}
-        {% if data.page.orphan %}
+        {% if data.page.orphan or data.piece %}
           <li>
             <a href="javascript:history.back()" class="flow-text waves-effect go-back">
               <i class="material-icons left">
@@ -126,7 +126,7 @@
 </div>
 
 {# Mobile Sidenav #}
-{% if not data.page.orphan %}
+{% if not data.page.orphan or data.piece %}
   <ul id="mobile"
 
     class="sidenav nav-color
