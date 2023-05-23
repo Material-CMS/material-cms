@@ -37,40 +37,13 @@
 
             {% if image.description %}
 
-              <div class="card-content{% if image.revealText.items.length >= 1 %} activator{% endif %}">
+              <div class="card-content">
                 <p class="flow-text">
 
                   {{ image.description | nlbr }}
 
-                  {% if image.revealText.items.length >= 1 %}
-                    <i class="material-icons right accent-color">more_vert</i>
-                  {% endif %}
-
                 </p>
               </div>
-
-              {% if image.revealText.items.length >= 1 %}
-                <div class="card-reveal">
-
-                    <span class="card-title {{ image.align }}">
-                      <i class="material-icons close accent-color">close</i>
-                      <h4 class="accent-color"
-                        {%- if data.widget.titleColor -%}
-                          style="color:{{ data.widget.titleColor }}"
-                        {%- elif image.titleColor -%}
-                          style="color:{{ image.titleColor }}"
-                        {%- endif -%}
-                      >
-                        {{ image.title }}
-                      </h4>
-                    </span>
-
-                    {% if data.widget.revealText.items[0] %}
-                      {{ apos.area(image, 'revealText', { edit: false }) }}
-                    {% endif %}
-
-                </div>
-              {% endif %}
 
             {% endif %}
 
