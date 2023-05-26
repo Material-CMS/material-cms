@@ -16,7 +16,7 @@
 
   {% if data.currentPage < data.totalPages %}
     <div class="pagination-wrapper{% if data.page.ajaxAppend %} hide{% endif %}">
-      <a class="btn btn-color next" href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">
+      <a class="btn btn-color btn-radius next" href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">
         {% if data.page.ajaxAppend %}
           {{ data.page.buttonText or 'Load More...' }}
         {% else %}
