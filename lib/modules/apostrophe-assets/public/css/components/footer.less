@@ -49,15 +49,6 @@ footer.page-footer {
 					height: 100%;
           li {
             display: inline-block;
-  					.footer-social-icons {
-  						.flex();
-  						.flex-align-items(center);
-  						.flex-justify(center);
-  						.radius {
-    						margin: .2rem .6rem;
-    						min-width: 3rem;
-  						}
-  					}
           }
 				}
 			}
@@ -152,15 +143,15 @@ footer.page-footer {
 }
 footer.page-footer.dark-background {
   color: @light;
-  span.hover-background:hover {
-    background-color: @light-hover;
-  }
 }
 footer.page-footer.light-background {
   color: @dark;
-  span.hover-background:hover {
-    background-color: @dark-hover;
-  }
+}
+.modal.dark-background {
+  color: @light;
+}
+.modal.light-background {
+  color: @dark;
 }
 // override accent and text color if footerTextColor
 footer.page-footer.footer-text-color {

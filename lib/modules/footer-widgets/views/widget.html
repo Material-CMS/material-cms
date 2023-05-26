@@ -66,7 +66,7 @@
               <li>
                 {{ button.svg(
                   'Open Facebook Profile',
-                  'btn-radius btn-color footer-social-icons',
+                  'btn-icon btn-radius btn-color',
                   item.url,
                   'M0,0v455.73h242.704V279.691h-59.33v-71.864h59.33v-60.353c0-43.893,35.582-79.475,79.475-79.475h62.025v64.622h-44.382
                   c-13.947,0-25.254,11.307-25.254,25.254v49.953h68.521l-9.47,71.864h-59.051V455.73H455.73V0H0z')
@@ -80,7 +80,7 @@
               <li>
                 {{ button.svg(
                   'Open Instagram Profile',
-                  'btn-radius btn-color footer-social-icons',
+                  'btn-icon btn-radius btn-color',
                   item.url,
                   'M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33c24.99,0,45.32-20.34,45.32-45.33
                 	C273.18,202.88,252.85,182.55,227.86,182.55z M227.86,182.55c-24.98,0-45.32,20.33-45.32,45.31c0,24.99,20.34,45.33,45.32,45.33
@@ -128,7 +128,7 @@
               <li>
                 {{ button.svg(
                   'Open LinkedIn Profile',
-                  'btn-radius btn-color footer-social-icons',
+                  'btn-icon btn-radius btn-color',
                   item.url,
                   'M0,0v455.731h455.731V0H0z M139.94,375.963c0,5.804-4.705,10.509-10.509,10.509H84.71c-5.804,0-10.509-4.705-10.509-10.509
                   V185.18c0-5.804,4.705-10.509,10.509-10.509h44.721c5.804,0,10.509,4.705,10.509,10.509V375.963z M106.998,145.491
@@ -149,7 +149,7 @@
               <li>
                 {{ button.svg(
                   'Open Twitter Profile',
-                  'btn-radius btn-color footer-social-icons',
+                  'btn-icon btn-radius btn-color',
                   item.url,
                   'M0,0v455.731h455.731V0H0z M361.271,163.944c0.104,2.676,0.161,5.362,0.161,8.067c0,108.339-87.831,196.18-196.18,196.18
                   c-38.568,0-74.545-11.132-104.875-30.368c-0.007-0.001-0.014-0.002-0.02-0.003l0.02,0.003c0,0,0,0,0,0
@@ -235,8 +235,8 @@
               {{ data.widget.footerPrivacy or global.footerPrivacy or 'Privacy' }}
             </a>
           <h4>
-            <div id="modal-1" class="modal">
-              <div class="modal-content text-darken-4">
+            <div id="modal-1" class="radius modal main-color">
+              <div class="modal-content">
 
                 <h3>{{ data.widget.footerPrivacy or global.footerPrivacy or 'Privacy' }}</h3>
                 <iframe src="/modules/footer-widgets/privacy" width="100%" height="500px"></iframe >
@@ -254,8 +254,8 @@
                 {{ data.widget.footerLegal or global.footerLegal or 'Legal' }}
               </a>
             <h4>
-            <div id="modal-2" class="modal">
-              <div class="modal-content text-darken-4">
+            <div id="modal-2" class="radius modal main-color">
+              <div class="modal-content">
 
                 <h3>{{ global.footerLegal or global.footerLegal or 'Legal Info' }}</h3>
                 <iframe src="/modules/footer-widgets/legal" width="100%" height="500px"></iframe >
