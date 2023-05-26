@@ -132,7 +132,7 @@
                               {# Facebook share button #}
                               {{ button.svg(
                                 'Share On Facebook',
-                                'btn-share btn-radius btn-color',
+                                'btn-icon btn-radius btn-color',
                                 'https://www.facebook.com/sharer.php?u='+ data.piece._url | urlencode,
                                 'M0,0v455.73h242.704V279.691h-59.33v-71.864h59.33v-60.353c0-43.893,35.582-79.475,79.475-79.475h62.025v64.622h-44.382
                                   c-13.947,0-25.254,11.307-25.254,25.254v49.953h68.521l-9.47,71.864h-59.051V455.73H455.73V0H0z')
@@ -141,7 +141,7 @@
                               {# Pinterest share button #}
                               {{ button.svg(
                                 'Share On Pinterest',
-                                'btn-share btn-radius btn-color',
+                                'btn-icon btn-radius btn-color',
                                 'http://www.pinterest.com/pin/create/button/?url='+ data.piece._url | urlencode +'&media='+ (apos.attachments.url(apos.images.first(data.piece.topImage) , { size: 'full' }) if data.piece.topImage.items.length) | urlencode +'&description='+ apos.areas.plaintext(data.piece.description, { limit: '210' } ) | urlencode,
                                 'M0,0v455h455V0H0z M251.83,297.635c-19.57,0-37.973-10.516-44.227-22.557
                                   c0,0-10.516,41.691-12.71,49.78c-7.84,28.437-30.926,56.874-32.684,59.176c-1.229,1.649-4.013,1.105-4.324-1.026
@@ -156,7 +156,7 @@
                               {# LinkedIn share button #}
                               {{ button.svg(
                                 'Share On LinkedIn',
-                                'btn-share btn-radius btn-color',
+                                'btn-icon btn-radius btn-color',
                                 'https://www.linkedin.com/shareArticle?mini=true&url='+ data.piece._url | urlencode +'&title='+ data.piece.title | urlencode +'&summary='+ apos.areas.plaintext(data.piece.description, { limit: '210' } ) | urlencode +'&source='+ data.home._url | urlencode,
                                 'M0,0v455.731h455.731V0H0z M139.94,375.963c0,5.804-4.705,10.509-10.509,10.509H84.71c-5.804,0-10.509-4.705-10.509-10.509
                                   V185.18c0-5.804,4.705-10.509,10.509-10.509h44.721c5.804,0,10.509,4.705,10.509,10.509V375.963z M106.998,145.491
@@ -172,7 +172,7 @@
                               {# Twitter share button #}
                               {{ button.svg(
                                 'Share On Twitter',
-                                'btn-share btn-radius btn-color',
+                                'btn-icon btn-radius btn-color',
                                 'https://twitter.com/intent/tweet?url='+ data.piece._url | urlencode +'&text='+ apos.areas.plaintext(data.piece.description, { limit: '210' } ) | urlencode,
                                 'M0,0v455.731h455.731V0H0z M361.271,163.944c0.104,2.676,0.161,5.362,0.161,8.067c0,108.339-87.831,196.18-196.18,196.18
                                   c-38.568,0-74.545-11.132-104.875-30.368c-0.007-0.001-0.014-0.002-0.02-0.003l0.02,0.003c0,0,0,0,0,0
