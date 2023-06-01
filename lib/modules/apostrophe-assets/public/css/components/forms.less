@@ -75,6 +75,13 @@ form {
 		-webkit-tap-highlight-color: transparent;
 	}
 }
+.input-field .prefix ~ .autocomplete-content,
+.input-field .prefix ~ .helper-text,
+.input-field .prefix ~ .validate ~ label,
+.input-field .prefix ~ input, .input-field .prefix ~ label,
+.input-field .prefix ~ textarea {
+	width: calc(100% - 3rem) !important;
+}
 // Contact form Still needed ????
 .contact-form {
   .thank-you {
