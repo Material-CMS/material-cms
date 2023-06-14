@@ -5,9 +5,6 @@
   .apos-rich-text {
     font-family: {{ global.font | safe }}
   }
-  .btn-radius {
-    background-color:{{ global.btnColor }}
-  }
   .nav .dropdown-content li > a {
     color: {{ accentColor }}
   }
@@ -57,12 +54,12 @@
   [type="radio"]:checked + span::after,
   [type="radio"].with-gap:checked + span::before,
   [type="radio"].with-gap:checked + span::after {
-    border-color:{{ accentColor }}
+    border-color: {{ accentColor }}
   }
-  form button,
+  form button[type="submit"],
   [type="radio"]:checked + span::after,
   [type="radio"].with-gap:checked + span::after {
-    background-color: {{ accentColor }}
+    background-color: {{ global.btnColor }}
   }
   .swiper-pagination-bullet-active,
   .slider .indicators .indicator-item.active {

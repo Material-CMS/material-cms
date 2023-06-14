@@ -11,5 +11,11 @@
     {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}
     <span class="apos-forms-label-message {{ classPrefix + '__label-message' if classPrefix }}" data-apos-input-message="{{ widget.fieldName}}" hidden></span>
   </label>
-  <textarea class="validate materialize-textarea apos-forms-input {{ classPrefix + '__input' if classPrefix }}" id="{{ id }}" name="{{ widget.fieldName}}" placeholder="{{widget.placeholder}}" {% if widget.required %}required{% endif %}></textarea>
+  <textarea class="validate materialize-textarea apos-forms-input {{ classPrefix + '__input' if classPrefix }}"
+    id="{{ id }}" name="{{ widget.fieldName}}" data-length="120"
+    {% if widget.placeholder %}
+      placeholder="{{widget.placeholder}}"
+    {% endif %}
+    {% if widget.required %}required{% endif %}
+  ></textarea>
 </div>
