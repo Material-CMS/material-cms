@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Material Icons;
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/4.0.0/font/MaterialIcons-Regular.ttf);
+}
+
 @material-icons: Material Icons, sans-serif;
 // Basic colors
 @white: #ffffff;
@@ -113,8 +118,20 @@ strong {
 }
 // Icons
 .material-icons {
-  font-family: @material-icons !important;
+  font-family: @material-icons;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
   font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 // Modals
 .modal {
