@@ -12,7 +12,7 @@
 >
   <div class="btn btn-color btn-radius{{ classPrefix + '__input' if classPrefix }}">
     <span>{{ widget.fieldName }}</span>
-    <input type="file" class="apos-forms-input {{ classPrefix + '__input' if classPrefix }}" multiple>
+    <input type="file" class="apos-forms-input {{ classPrefix + '__input' if classPrefix }}">
   </div>
   <div class="file-path-wrapper">
     <label for="{{ id }}" class="apos-forms-label {{classPrefix + '__label' if classPrefix }}">
@@ -22,7 +22,7 @@
       <span class="apos-forms-label-message {{ classPrefix + '__label-message' if classPrefix }}" data-apos-forms-file-spinner hidden>Uploading...</span>
       <span class="apos-forms-error apos-forms-label-message {{classPrefix + '__error' if classPrefix }} {{ classPrefix + '__label-message' if classPrefix }}" data-apos-forms-file-error role="alert" hidden>An error occurred uploading the file. It may be too large or of an inappropriate type.</span>
     </label>
-    <input class="validate file-path apos-forms-input {{ classPrefix + '__input' if classPrefix }}"
+    <input class="file-path validate apos-forms-input {{ classPrefix + '__input' if classPrefix }}"
       type="text" id="{{ id }}"
       name="{{ widget.fieldName }}"
       {% if widget.required %}required{% endif %}
