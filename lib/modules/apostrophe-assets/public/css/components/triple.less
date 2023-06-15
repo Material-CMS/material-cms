@@ -2,6 +2,7 @@
   overflow: visible;
    .flex();
    .columns-container {
+     transition: width 1.2s, opacity 0.6s;
      border-radius: inherit;
      width: 50%;
      .apos-area,
@@ -53,6 +54,27 @@
    .columns-container.right {
      padding-left: 0.75rem;
    }
+}
+@media (min-width: 601px) {
+  .row.columns.triple.radius.animate {
+    .columns-container:not(.active) {
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+    .columns-container.active {
+      padding: 0;
+      // height: 100%;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .row.columns.triple.radius.animate {
+    .columns-container:not(.active) {
+      opacity: 0;
+    }
+  }
 }
 // Glue widgets override
 .widgets-container.glue-container {
