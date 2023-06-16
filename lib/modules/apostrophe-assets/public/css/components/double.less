@@ -2,7 +2,7 @@
   overflow: visible;
    .flex();
    .columns-container {
-     transition: width 1.2s;
+     .transition(all, .6s, ease);
      border-radius: inherit;
      width: 50%;
      .apos-area,
@@ -52,12 +52,19 @@
 }
 .row.columns.double.radius.animate {
   .columns-container:not(.active) {
+    opacity: 0;
     height: 0;
     width: 0;
   }
   .columns-container.active {
-    height: 100%;
+    padding: 0;
+    height: auto;
     width: 100%;
+    .anime.active.portrait {
+      .radius {
+        height: 40% !important;
+      }
+    }
   }
 }
 // Glue widgets override
