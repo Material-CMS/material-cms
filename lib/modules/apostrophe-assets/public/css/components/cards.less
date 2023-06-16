@@ -137,10 +137,9 @@
     cursor: pointer;
     position: relative;
     transform-origin: 0 100%;
-    .transition(height, .5s, ease);
+    .transition(height, .3s, ease);
   }
   .anime-overlay {
-    .transition(opacity, .6s, ease);
     position: fixed;
     display: none;
     width: 100%;
@@ -165,6 +164,7 @@
     }
   }
   .anime-container {
+    .transition(height, .3s, ease);
     position: absolute;
     z-index: 5;
     top: 0;
@@ -193,6 +193,10 @@
     display: block;
   }
   .anime-image {
+    height: 80% !important;
     z-index: 6;
+  }
+  .anime-image.portrait {
+    height: 40% !important;
   }
 }
