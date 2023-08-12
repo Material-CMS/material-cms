@@ -103,7 +103,7 @@
     }
   }
   .card-action {
-		background-color: transparent;
+		background-color: inherit;
     margin: 0;
     .row.widget {
       margin: 2rem 0;
@@ -133,7 +133,6 @@
 .col.anime {
   position: relative;
   .anime-image {
-    // margin-bottom: 10rem;
     cursor: pointer;
     position: relative;
     transform-origin: 0 100%;
@@ -149,7 +148,7 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color:  #797d7f;
     z-index: 4;
     cursor: pointer;
     .go-back {
@@ -176,12 +175,26 @@
       margin-bottom: 0;
       .radius {
         max-height: 60vh;
+        .card-image {
+          display: none;
+        }
         .card-content {
           .transition(padding, .5s, ease);
           height: 100%;
           .apos-area {
             max-height: 45vh;
             overflow-y: scroll;
+          }
+        }
+        .card-action {
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+          .collapsible-body {
+            .apos-area {
+              max-height: 40vh;
+              overflow-y: scroll;
+            }
           }
         }
       }

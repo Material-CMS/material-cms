@@ -64,31 +64,18 @@
         </div>
       </div>
 
-      <div class="anime-overlay">
+      <div class="anime-overlay"
+        {% if data.widget.animeOverlayColor %}
+          style="background-color: {{ data.widget.animeOverlayColor }}"
+        {% endif %}
+      >
         <a class="flow-text go-back"><i class="material-icons">arrow_back</i>Go Back</a>
       </div>
 
       <div class="anime-container">
         <div class="row widget">
           <div class="col s12">
-            {{ apos.area(data.widget, 'animeWidgets', {
-              widgets: {
-                'texts': {
-                  controls: {
-                    cloneable: false,
-                    removable: true,
-                    position: 'top-right'
-                  }
-                },
-                'video': {
-                  controls: {
-                    cloneable: false,
-                    removable: true,
-                    position: 'top-right'
-                  }
-                }
-              }
-            }) }}
+            {{ apos.area(data.widget, 'animeWidgets', { edit: false  }) }}
           </div>
         </div>
       </div>
