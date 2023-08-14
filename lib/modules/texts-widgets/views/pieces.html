@@ -162,7 +162,7 @@
                     <div class="row">
 
                       {% if piece.text.items[0] %}
-                        <div class="right right-align col s12 m6">
+                        <div class="right right-align col s6">
                           <div class="btn btn-color btn-radius waves-effect">
                             <span class="hover-background">
                               {{ piece.buttonText or 'more' }}
@@ -173,9 +173,9 @@
 
                       {% if piece.linkArea.items[0] %}
                       {% set item = piece.linkArea.items[0] %}
-                        <div class="col s12{% if piece.text.items <= 1 %} m12 center-align{% else %} m6 right-align{% endif %}">
+                        <div class="col s6">
                           <a
-                            class="btn-flat"
+                            class=" left btn-flat"
                             href="{{ item.url or item._page._url }}"
                             target="_blank"
                             rel="noopener"
