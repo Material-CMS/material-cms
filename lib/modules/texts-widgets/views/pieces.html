@@ -164,8 +164,11 @@
                       {% if piece.text.items[0] %}
                         <div class="right col s6">
                           <div class="right btn btn-color btn-radius waves-effect">
-                            <span class="hover-background">
+                            <span class="hover-background more">
                               {{ piece.buttonText or 'more' }}
+                            </span>
+                            <span class="hover-background less">
+                              {{ piece.buttonTextClose or 'less' }}
                             </span>
                           </div>
                         </div>
