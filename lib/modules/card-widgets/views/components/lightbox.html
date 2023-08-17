@@ -5,12 +5,13 @@
     <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %}">
       <div class="card z-depth-0">
 
-        {% for entry in data.widget._pieces %}
+        <div class="lightbox">
+
+          {% for entry in data.widget._pieces %}
           {% set image = entry.item or entry %}
           {% set relationship = entry.relationship %}
 
           <div class="card-image">
-
             <img
               src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
               srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
@@ -35,6 +36,24 @@
 
           </div>
 
+          <div class="lightbox-overlay"
+            {% if data.widget.overlayColor %}
+              style="background-color: {{ data.widget.overlayColor }}"
+            {% endif %}
+          ></div>
+
+          <div class="lightbox-image">
+            <img class="radius"
+              data-src="{{ apos.attachments.url(image.attachment, { size: full, crop: relationship }) }}"
+              alt="{{ image.title }}"
+              {%- if apos.attachments.hasFocalPoint(relationship) -%}
+                style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+              {%- endif -%}
+            >
+          </div>
+
+        </div>
+
           {% if image.description %}
 
             <div class="card-content">
@@ -44,7 +63,7 @@
 
               </p>
             </div>
-            
+
           {% endif %}
 
           {% if image.credit %}
