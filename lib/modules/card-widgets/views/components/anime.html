@@ -2,7 +2,7 @@
 
   <div class="row widget">
     <div class="col s12 anime">
-      <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %} anime-image">
+      <div class="anime-image radius{% if data.widget.shadow %} z-depth-1{% endif %}">
         <div class="card z-depth-0">
 
           {% for entry in data.widget._pieces %}
@@ -72,10 +72,23 @@
         <a class="flow-text go-back"><i class="material-icons">arrow_back</i>Go Back</a>
       </div>
 
-      <div class="anime-container">
+      <div class="anime-container radius">
         <div class="row widget">
           <div class="col s12">
-            {{ apos.area(data.widget, 'animeWidgets', { edit: false  }) }}
+            {{ apos.area(data.widget, 'animeWidgets', {
+              limit: 1,
+              widgets: {
+                'texts': {
+                  animeContainer: true,
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    movable: false,
+                    position: 'bottom-left'
+                  }
+                }
+              }
+            }) }}
           </div>
         </div>
       </div>

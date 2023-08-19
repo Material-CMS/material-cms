@@ -27,6 +27,7 @@
         margin-bottom: -3px;
         width: 100%;
         height: auto !important;
+        .transition(border-radius, .4s, ease);
       }
     }
     .lightbox-image.active {
@@ -217,6 +218,7 @@
     position: absolute;
     z-index: 5;
     top: 0;
+    width: 100%;
     height: initial !important;
     transform: scale(0);
     opacity: 0;
@@ -237,18 +239,18 @@
             overflow-y: scroll;
           }
         }
-        .card-content.collapsible-open {
+        .card-content.collapsed {
           max-height: 0;
-          padding: 0;
+          padding: 0 24px;
         }
         .card-action {
           min-height: 75.2px;
           max-height: 40vh;
           .collapsible-header {
-            .transition(all, .5s, ease);
             position: absolute;
             width: 100%;
             bottom: 0;
+            z-index: 1;
           }
           .collapsible-body {
             .apos-area {
@@ -265,7 +267,7 @@
   .anime-overlay {
     display: block;
   }
-  .anime-image {
+  .anime-image.radius {
     height: 80% !important;
     z-index: 6;
   }
@@ -273,3 +275,14 @@
     height: 40% !important;
   }
 }
+// // Double & triple widgets radius override
+// .radius.animate {
+//   .anime-image.radius {
+//     .border-radius(inherit) !important;
+//     .transition(border-radius, .4s, ease);
+//   }
+//   .anime-container.radius {
+//     .border-radius(inherit) !important;
+//     .transition(border-radius, .4s, ease);
+//   }
+// }
