@@ -6,7 +6,11 @@
   >
     <div class="s12">
 
-      <div class="grid radius">
+      <div class="grid radius"
+        {% if data.widget.gridTemplateColumns %}
+          style="grid-template-columns:{{ data.widget.gridTemplateColumns }}"
+        {% endif %}
+      >
 
         {% for item in data.widget.gridItems %}
           <div class="col grid-radius columns-container">
