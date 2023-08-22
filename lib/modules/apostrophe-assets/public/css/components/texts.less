@@ -15,24 +15,6 @@
   .row {
     width: 100%;
   }
-  .card-action {
-    a {
-      margin-right: 0 !important;
-    }
-    li {
-      .less {
-        display: none;
-      }
-    }
-    li.active {
-      .more {
-        display: none;
-      }
-      .less {
-        display: block;
-      }
-    }
-  }
   .height-100 {
     padding: 0;
     height: 100% !important;
@@ -93,6 +75,29 @@
       .row,
       .slideshow-items {
         height: 50vh !important;
+      }
+    }
+  }
+}
+// Card action buttons
+.card-action {
+  a {
+    margin-right: 0 !important;
+  }
+  li {
+    .collapsible-header {
+      span.hover-background.less {
+        display: none;
+      }
+    }
+  }
+  li.active {
+    .collapsible-header {
+      span.hover-background.more {
+        display: none;
+      }
+      span.hover-background.less {
+        display: block;
       }
     }
   }
