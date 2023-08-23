@@ -1,0 +1,20 @@
+<div class="row widget">
+  <div class="col s12 m12">
+    <div class="radius {% if data.widget.shadow %} z-depth-1 {% endif %}">
+      <div class="card iframe z-depth-0">
+        <div class="iframe-container">
+          <iframe
+            src="{{ data.widget.iframeSrc }}"
+            allow="{{ data.widget.iframeAllow }}"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            {% if data.widget.blockInteraction %}
+              style="pointer-events: none;"
+            {% endif  %}
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
