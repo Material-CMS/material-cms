@@ -17,7 +17,7 @@
       height: 100%;
       transform: translate(-50%, -50%);
       transform-origin: center;
-      z-index: 8;
+      z-index: 999;
       cursor: zoom-in;
       .transition(all, .4s, ease);
       img {
@@ -61,7 +61,7 @@
       right: 0;
       bottom: 0;
       background-color: rgb(121, 125, 127);
-      z-index: 4;
+      z-index: 998;
       cursor: pointer;
       .transition(opacity, .4s, ease);
     }
@@ -215,7 +215,7 @@
     bottom: 0;
     opacity: 0;
     background-color:  #797d7f;
-    z-index: 4;
+    z-index: 995;
     cursor: pointer;
     .go-back {
       color: @white;
@@ -231,7 +231,7 @@
   .anime-container {
     .transition(height, .3s, ease);
     position: absolute;
-    z-index: 5;
+    z-index: 996;
     top: 0;
     width: 100%;
     height: initial !important;
@@ -280,17 +280,17 @@
 }
 .col.anime.active {
   .anime-overlay {
-    display: block;
+    display:block;
   }
   .anime-image.radius {
     height: 80% !important;
-    z-index: 6;
+    z-index: 997;
   }
   .anime-image.portrait {
     height: 40% !important;
   }
 }
-// // Double & triple widgets radius override
+// Double & triple widgets radius override
 // .radius.animate {
 //   .anime-image.radius {
 //     .border-radius(inherit) !important;
