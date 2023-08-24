@@ -1,7 +1,7 @@
 {# choose either pieces of templates of piece pages #}
 {% set pieces = data.widget._pieces or data.pieces %}
 {# set additional font from global #}
-{% set additionalFont = data.global.additionalFonts | replace("+"," ") or null %}
+{% set additionalFont = data.global.additionalFonts | replace("+"," ") | replace( r/:.*$/,"") or null %}
 
 {% for piece in pieces %}
 
