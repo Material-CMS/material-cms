@@ -90,7 +90,7 @@
                   >
                     {{ piece.title  | replace("Blog - ", "" ) }}
                   </h3>
-              {% if piece._url %}
+              {% if piece._url and piece.description.items[0] %}
                 </a>
               {% endif %}
             {% else %}
