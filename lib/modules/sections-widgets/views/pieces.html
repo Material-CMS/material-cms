@@ -188,10 +188,10 @@
               {% elif piece.headerAlign == 'right' %}
                 right-align
               {% endif %}"
-              {% if piece.headerColor or data.global.additionalFonts %}
+              {% if piece.headerColor or piece.headerAdditionalFont %}
                 style="
                   {% if piece.headerColor %}
-                    color: {{ piece.headerColor }}
+                    color: {{ piece.headerColor }};
                   {% endif %}
                   {% if piece.headerAdditionalFont %}
                     font-family: {{ additionalFont }}, sans-serif;
