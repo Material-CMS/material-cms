@@ -203,6 +203,7 @@
     position: relative;
     transform-origin: 0 100%;
     .transition(height, .3s, ease);
+    object-fit: cover;
   }
   .anime-overlay {
     position: fixed;
@@ -217,16 +218,6 @@
     background-color:  #797d7f;
     z-index: 9;
     cursor: pointer;
-    .go-back {
-      color: @white;
-      display: block;
-      height: 64px;
-      .flex();
-      .flex-align-items(center);
-      i {
-        margin: 0 5px;
-      }
-    }
   }
   .anime-container {
     .transition(height, .3s, ease);
@@ -283,7 +274,7 @@
     display:block;
   }
   .anime-image.radius {
-    height: 80% !important;
+    // height: 80% !important;
     z-index: 11;
   }
   .anime-image.portrait {
