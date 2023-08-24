@@ -36,7 +36,9 @@ var apos = require('apostrophe')({
     },
     'galleries-widgets': {},
     'grid-widgets': {},
-    'iframe-widgets': {},
+    'iframe-widgets': {
+      player : true
+    },
     'link-widgets': {},
     'link-page-widgets': {},
     'link-subpages-widgets': {},

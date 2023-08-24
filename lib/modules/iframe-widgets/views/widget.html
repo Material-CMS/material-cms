@@ -3,16 +3,31 @@
     <div class="radius {% if data.widget.shadow %} z-depth-1 {% endif %}">
       <div class="card iframe z-depth-0">
         <div class="iframe-container">
+
           <iframe
             src="{{ data.widget.iframeSrc }}"
-            allow="{{ data.widget.iframeAllow }}"
             width="100%"
             height="100%"
             frameborder="0"
+            {% if data.widget._previewImage.attachment %}
+              allow="{{ data.widget._previewImage.attachment }}"
+            {% endif %}
             {% if data.widget.blockInteraction %}
               style="pointer-events: none;"
             {% endif  %}
           ></iframe>
+
+          {% if data.widget._previewImage.attachment %}
+            <div class="background-image">
+              <img
+                src="{{ apos.attachments.url(data.widget._previewImage.attachment, { size: data.options.size or 'one-third' }) }}"
+                srcset="{{ apos.images.srcset(data.widget._previewImage.attachment) }}"
+                sizes="(max-width:600px) 50vw, 60vw"
+                alt="{{ data.widget._previewImage.description or data.widget._previewImage.title }}"
+              >
+            </div>
+          {% endif %}
+
         </div>
       </div>
     </div>
