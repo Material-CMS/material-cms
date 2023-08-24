@@ -1,7 +1,10 @@
 {# choose either pieces of templates of piece pages #}
 {% set pieces = data.widget._pieces or data.pieces %}
+
 {# set additional font from global #}
-{% set additionalFont = data.global.additionalFonts | replace("+"," ") | replace( r/:.*$/,"") or null %}
+{% if piece.shapeDividerTop.items[0] %}
+  {% set additionalFont = data.global.additionalFonts | replace("+"," ") | replace( r/:.*$/,"") %}
+{% endif %}
 
 {% for piece in pieces %}
 
@@ -132,8 +135,8 @@
 
     {# Slide #}
     {% if piece.sectionStyle == 'slide' %}
-      <div class="slide-content">
 
+      <div class="slide-content">
         {{ apos.singleton(piece, 'sliderContent', 'slider', {
           size: 'full',
           sizesAttr: '(max-width:600px) 120vw, 58vw',
@@ -146,8 +149,8 @@
             position: 'top-right'
           }
         }) }}
-
       </div>
+
     {% endif %}
 
     {# Main Content#}
