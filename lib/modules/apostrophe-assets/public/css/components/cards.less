@@ -4,9 +4,6 @@
   margin: 0;
   .lightbox {
     height: 100%;
-    .card-image {
-      cursor: zoom-in;
-    }
     .lightbox-image {
       position: absolute;
       display: block;
@@ -17,7 +14,6 @@
       height: 100%;
       transform: translate(-50%, -50%);
       transform-origin: center;
-      z-index: 9;
       cursor: zoom-in;
       .transition(all, .4s, ease);
       img {
@@ -28,26 +24,18 @@
         margin-bottom: -3px;
         width: 100%;
         height: auto !important;
-        .transition(border-radius, .4s, ease);
+        .border-radius(inherit);
+        .transition(all, .5s, ease);
       }
     }
     .lightbox-image.active {
       position: fixed;
-      width: 98%;
       cursor: zoom-out;
+      z-index: 10;
       img {
         max-height: 95vh;
         object-fit: cover;
-      }
-    }
-    .lightbox-image.portrait.active {
-      position: fixed;
-      width: 98%;
-      cursor: zoom-out;
-      img {
-        width: auto;
-        max-height: 95vh;
-        object-fit: cover;
+        padding: 0 2vw;
       }
     }
     .lightbox-overlay {

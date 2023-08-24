@@ -42,14 +42,24 @@
             {% endif %}
           ></div>
 
-          <div class="lightbox-image">
-            <img class="radius"
-              data-src="{{ apos.attachments.url(image.attachment, { size: full, crop: relationship }) }}"
-              alt="{{ image.title }}"
-              {%- if apos.attachments.hasFocalPoint(relationship) -%}
-                style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
-              {%- endif -%}
-            >
+          <div class="lightbox-image radius">
+
+            {% if data.widget.lightboxNoCrop %}
+              <img
+                data-src="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}"
+                srcset="{{ apos.images.srcset(image.attachment) }}"
+                sizes="{{ data.options.sizesAttr or '100vw' }}"
+                alt="{{ image.title }}"
+              >
+            {% else %}
+              <img
+                data-src="{{ apos.attachments.url(image.attachment, { size: 'full', crop: relationship }) }}"
+                srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
+                sizes="{{ data.options.sizesAttr or '100vw' }}"
+                alt="{{ image.title }}"
+              >
+            {% endif %}
+
           </div>
 
         </div>
