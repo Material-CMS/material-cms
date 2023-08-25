@@ -2,7 +2,7 @@
 {% set pieces = data.widget._pieces or data.pieces %}
 
 {# set additional font from global #}
-{% if piece.shapeDividerTop.items[0] %}
+{% if data.global.additionalFonts %}
   {% set additionalFont = data.global.additionalFonts | replace("+"," ") | replace( r/:.*$/,"") %}
 {% endif %}
 
