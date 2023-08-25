@@ -34,15 +34,22 @@
       z-index: 10;
       padding: 0 2vw;
       img {
-        height: 95vh !important;
+        max-height: 95vh;
         object-fit: cover;
-        width: auto;
+        width: 95vw;
       }
     }
     .lightbox-image.portrait.active {
       img {
         height: 95vh !important;
         width: auto;
+      }
+    }
+    @media (max-width: 600px) {
+      .lightbox-image.portrait.active {
+        img {
+          width: 95vw;
+        }
       }
     }
     .lightbox-overlay {
