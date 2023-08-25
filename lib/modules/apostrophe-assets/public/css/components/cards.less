@@ -32,10 +32,17 @@
       position: fixed;
       cursor: zoom-out;
       z-index: 10;
+      padding: 0 2vw;
       img {
-        max-height: 95vh;
+        height: 95vh !important;
         object-fit: cover;
-        padding: 0 2vw;
+        width: auto;
+      }
+    }
+    .lightbox-image.portrait.active {
+      img {
+        height: 95vh !important;
+        width: auto;
       }
     }
     .lightbox-overlay {
@@ -263,10 +270,17 @@
   }
   .anime-image.radius {
     // height: 80% !important;
+    .border-radius(inherit) !important;
     z-index: 11;
   }
   .anime-image.portrait {
     height: 40% !important;
+  }
+  .anime-container {
+    .border-radius(inherit) !important;
+    .radius {
+      .border-radius(inherit) !important;
+    }
   }
 }
 // Double & triple widgets radius override

@@ -1,7 +1,7 @@
 {% macro base() %}
 
   <div class="row widget">
-    <div class="col s12 anime">
+    <div class="col s12 anime image-radius">
       <div class="anime-image radius{% if data.widget.shadow %} z-depth-1{% endif %}">
         <div class="card z-depth-0">
 
@@ -72,7 +72,7 @@
 
       </div>
 
-      <div class="anime-container radius">
+      <div class="anime-container">
         <div class="row widget">
           <div class="col s12">
             {{ apos.area(data.widget, 'animeWidgets', {
