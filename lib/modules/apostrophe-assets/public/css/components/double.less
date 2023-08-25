@@ -77,7 +77,8 @@
   .row.columns.double:not(.radius.animate) {
     .columns-container.left {
       padding: 0 !important;
-      .apos-area-widget-wrapper {
+      .apos-area-widget-wrapper,
+      .row.widget {
         margin-bottom: 0;
       }
       .apos-area-widget-wrapper .radius {
@@ -102,7 +103,8 @@
     }
     .columns-container.right {
       padding: 0 !important;
-      .apos-area-widget-wrapper {
+      .apos-area-widget-wrapper,
+      .row.widget {
         margin-bottom: 0;
       }
       .apos-area-widget-wrapper .radius {
@@ -131,7 +133,8 @@
   .row.columns.double:not(.radius.animate) {
     .columns-container.left {
       padding: 0 !important;
-      .apos-area-widget-wrapper {
+      .apos-area-widget-wrapper,
+      .row.widget {
         margin-bottom: 0;
       }
       .apos-area-widget-wrapper .radius {
@@ -156,7 +159,8 @@
     }
     .columns-container.right {
       padding: 0 !important;
-      .apos-area-widget-wrapper {
+      .apos-area-widget-wrapper,
+      .row.widget {
         margin-bottom: 0;
       }
       .apos-area-widget-wrapper .radius {
@@ -185,9 +189,9 @@
 @media (max-width: 600px) {
   .row.columns.double.radius {
     display: block;
-    .row.widget {
-      margin-bottom: 0;
-    }
+    // .row.widget {
+    //   margin-bottom: 0;
+    // }
     .columns-container {
       width: 100%;
       padding: 0 !important;
