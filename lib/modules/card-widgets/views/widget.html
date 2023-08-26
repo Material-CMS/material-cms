@@ -5,7 +5,7 @@
       <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %}">
         <div class="card z-depth-0">
 
-          <div{% if data.widget.lightboxOn %} class="lightbox"{% endif %}>
+          <div class="height-100{% if data.widget.lightboxOn %} lightbox{% endif %}">
 
             {% for entry in data.widget._pieces %}
               {% set image = entry.item or entry %}
