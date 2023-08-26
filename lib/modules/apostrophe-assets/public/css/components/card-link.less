@@ -1,0 +1,58 @@
+.gradient-overlay {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  .card-image {
+    max-height: 100vh;
+    cursor: pointer;
+    img {
+      width: 100%;
+      height: 100%;
+      .object-fit(cover);
+      visibility: visible;
+    }
+  }
+  .card-title {
+    opacity: 1;
+    .transition(opacity, .5s, ease);
+    width: 100%;
+    h4 {
+      margin: 0;
+      line-height: 2rem;
+    }
+  }
+  .click-action-link {
+    pointer-events: none;
+    touch-action: none;
+    position: absolute;
+    bottom: 50%;
+    width: 100%;
+    transform: translate(0, -50%);
+    z-index: 4;
+    opacity: 0;
+    padding: 24px;
+    .transition(opacity, 1s, ease);
+  }
+  .click-action-link.bottom {
+    bottom: 0;
+    transform: translate(0);
+  }
+}
+.gradient-overlay:after {
+  content:'';
+  z-index: 3;
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  display: none;
+  opacity: 0;
+  .transition(opacity, .5s, ease);
+}
+.gradient-overlay:hover:after,
+.gradient-overlay:hover span {
+  opacity: 1;
+}
+.gradient-overlay:hover .card-title {
+  opacity: 0;
+}

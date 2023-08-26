@@ -1,4 +1,4 @@
-{% macro base() %}
+{% if data.widget._pieces.length %}
 
   <div class="row widget">
     <div class="col s12">
@@ -8,8 +8,9 @@
           {% for entry in data.widget._pieces %}
             {% set image = entry.item or entry %}
             {% set relationship = entry.relationship %}
+            
             {# Set link item item #}
-            {% set linkItem = data.widget.clickActionLinkArea.items[0] %}
+            {% set linkItem = data.widget.linkArea.items[0] %}
 
             <a class="anchor-jump" href="{{ linkItem.url or linkItem._page._url }}">
               <div id="{{ data.widget._id }}" class="gradient-overlay">
@@ -119,4 +120,9 @@
     </div>
   </div>
 
-{% endmacro %}
+{% else %}
+  <div class="apos-area apos-empty">
+    <i class="material-icons">clear</i>
+    <p class="flow-text">NO IMAGE<p>
+  </div>
+{% endif %}

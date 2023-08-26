@@ -1,0 +1,97 @@
+.col.anime {
+  position: relative;
+  .anime-image {
+    cursor: pointer;
+    position: relative;
+    transform-origin: 0 100%;
+    .transition(height, .3s, ease);
+    object-fit: cover;
+  }
+  .anime-overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color:  #797d7f;
+    z-index: 9;
+    cursor: pointer;
+  }
+  .anime-container {
+    .transition(height, .3s, ease);
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    height: initial !important;
+    transform: scale(0);
+    opacity: 0;
+    padding-top: 0;
+    .row.widget {
+      margin-bottom: 0;
+      .radius {
+        // max-height: 60vh;
+        .card-image {
+          display: none;
+        }
+        .card-content {
+          .transition(all, .5s, ease);
+          height: 100%;
+          max-height: 800px;
+          .apos-area {
+            max-height: 45vh;
+            overflow-y: scroll;
+          }
+        }
+        .card-content.collapsed {
+          max-height: 0;
+          padding: 0 24px;
+        }
+        .card-action {
+          min-height: 75.2px;
+          max-height: 40vh;
+          .collapsible-header {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            z-index: 1;
+          }
+          .collapsible-body {
+            .apos-area {
+              max-height: 40vh;
+              overflow-y: scroll;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.col.anime.active {
+  .anime-overlay {
+    display:block;
+  }
+  .anime-image.radius {
+    // height: 80% !important;
+    .border-radius(inherit) !important;
+    z-index: 11;
+  }
+  .anime-image.portrait {
+    height: 40% !important;
+  }
+}
+//Columns widgets override
+.row.columns {
+  .col.anime.active {
+    .anime-container {
+      .border-radius(inherit) !important;
+      .radius {
+        .border-radius(inherit) !important;
+      }
+    }
+  }
+}

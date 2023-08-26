@@ -10,9 +10,9 @@ var apos = require('apostrophe')({
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
     // Custom Modules
-    'card-widgets': {
-      player: true
-    },
+    'card-widgets': {},
+    'card-anime-widgets': {},
+    'card-link-widgets': {},
     'button-widgets':{
       player: true
     },
@@ -97,7 +97,6 @@ var apos = require('apostrophe')({
     'texts-widgets': {
       player: true
     },
-    'texts-card-widgets': {},
     'triple-widgets': {},
     'video-widgets': {},
     // CKEditor addons

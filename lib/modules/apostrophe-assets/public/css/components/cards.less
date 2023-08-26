@@ -14,7 +14,6 @@
       height: 100%;
       transform: translate(-50%, -50%);
       transform-origin: center;
-      cursor: zoom-in;
       .transition(all, .4s, ease);
       img {
         position: absolute;
@@ -71,64 +70,6 @@
       display: block;
     }
   }
-	.gradient-overlay {
-		position: relative;
-		cursor: pointer;
-		width: 100%;
-		height: 100%;
-	  .card-image {
-	    max-height: 100vh;
-	    cursor: pointer;
-	    img {
-	      width: 100%;
-	      height: 100%;
-	      .object-fit(cover);
-	      visibility: visible;
-	    }
-	  }
-	  .card-title {
-			opacity: 1;
-			.transition(opacity, .5s, ease);
-	    width: 100%;
-	    h4 {
-        margin: 0;
-	      line-height: 2rem;
-	    }
-	  }
-		.click-action-link {
-			pointer-events: none;
-			touch-action: none;
-			position: absolute;
-			bottom: 50%;
-      width: 100%;
-			transform: translate(0, -50%);
-			z-index: 4;
-			opacity: 0;
-      padding: 24px;
-			.transition(opacity, 1s, ease);
-		}
-    .click-action-link.bottom {
-      bottom: 0;
-      transform: translate(0);
-    }
-	}
-	.gradient-overlay:after {
-		content:'';
-		z-index: 3;
-		position:absolute;
-		left:0; top:0;
-		width:100%; height:100%;
-		display: none;
-		opacity: 0;
-		.transition(opacity, .5s, ease);
-	}
-	.gradient-overlay:hover:after,
-	.gradient-overlay:hover span {
-		opacity: 1;
-	}
-	.gradient-overlay:hover .card-title {
-		opacity: 0;
-	}
   .card-content {
     p {
       pointer-events: none;
@@ -198,106 +139,3 @@
     right: 50px;
   }
 }
-.col.anime {
-  position: relative;
-  .anime-image {
-    cursor: pointer;
-    position: relative;
-    transform-origin: 0 100%;
-    .transition(height, .3s, ease);
-    object-fit: cover;
-  }
-  .anime-overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    background-color:  #797d7f;
-    z-index: 9;
-    cursor: pointer;
-  }
-  .anime-container {
-    .transition(height, .3s, ease);
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    width: 100%;
-    height: initial !important;
-    transform: scale(0);
-    opacity: 0;
-    padding-top: 0;
-    .row.widget {
-      margin-bottom: 0;
-      .radius {
-        // max-height: 60vh;
-        .card-image {
-          display: none;
-        }
-        .card-content {
-          .transition(all, .5s, ease);
-          height: 100%;
-          max-height: 800px;
-          .apos-area {
-            max-height: 45vh;
-            overflow-y: scroll;
-          }
-        }
-        .card-content.collapsed {
-          max-height: 0;
-          padding: 0 24px;
-        }
-        .card-action {
-          min-height: 75.2px;
-          max-height: 40vh;
-          .collapsible-header {
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            z-index: 1;
-          }
-          .collapsible-body {
-            .apos-area {
-              max-height: 40vh;
-              overflow-y: scroll;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-.col.anime.active {
-  .anime-overlay {
-    display:block;
-  }
-  .anime-image.radius {
-    // height: 80% !important;
-    .border-radius(inherit) !important;
-    z-index: 11;
-  }
-  .anime-image.portrait {
-    height: 40% !important;
-  }
-  .anime-container {
-    .border-radius(inherit) !important;
-    .radius {
-      .border-radius(inherit) !important;
-    }
-  }
-}
-// Double & triple widgets radius override
-// .radius.animate {
-//   .anime-image.radius {
-//     .border-radius(inherit) !important;
-//     .transition(border-radius, .4s, ease);
-//   }
-//   .anime-container.radius {
-//     .border-radius(inherit) !important;
-//     .transition(border-radius, .4s, ease);
-//   }
-// }
