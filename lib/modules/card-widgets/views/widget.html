@@ -5,11 +5,11 @@
       <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %}">
         <div class="card z-depth-0">
 
-          <div class="lightbox">
+          <div{% if data.widget.lightboxOn %} class="lightbox"{% endif %}>
 
             {% for entry in data.widget._pieces %}
-            {% set image = entry.item or entry %}
-            {% set relationship = entry.relationship %}
+              {% set image = entry.item or entry %}
+              {% set relationship = entry.relationship %}
 
             <div class="card-image">
               <img
@@ -36,31 +36,34 @@
 
             </div>
 
-            <div class="lightbox-overlay"
-              {% if data.widget.overlayColor %}
-                style="background-color: {{ data.widget.overlayColor }}"
-              {% endif %}
-            ></div>
+            {% if data.widget.lightboxOn %}
 
-            <div class="lightbox-image image-radius">
+              <div class="lightbox-overlay"
+                {% if data.widget.overlayColor %}
+                  style="background-color: {{ data.widget.overlayColor }}"
+                {% endif %}
+              ></div>
 
-              {% if data.widget.lightboxNoCrop %}
-                <img
-                  data-src="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}"
-                  srcset="{{ apos.images.srcset(image.attachment) }}"
-                  sizes="{{ data.options.sizesAttr or '100vw' }}"
-                  alt="{{ image.title }}"
-                >
-              {% else %}
-                <img
-                  data-src="{{ apos.attachments.url(image.attachment, { size: 'full', crop: relationship }) }}"
-                  srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
-                  sizes="{{ data.options.sizesAttr or '100vw' }}"
-                  alt="{{ image.title }}"
-                >
-              {% endif %}
+              <div class="lightbox-image image-radius">
 
-            </div>
+                {% if data.widget.lightboxNoCrop %}
+                  <img
+                    data-src="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}"
+                    srcset="{{ apos.images.srcset(image.attachment) }}"
+                    sizes="{{ data.options.sizesAttr or '100vw' }}"
+                    alt="{{ image.title }}"
+                  >
+                {% else %}
+                  <img
+                    data-src="{{ apos.attachments.url(image.attachment, { size: 'full', crop: relationship }) }}"
+                    srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
+                    sizes="{{ data.options.sizesAttr or '100vw' }}"
+                    alt="{{ image.title }}"
+                  >
+                {% endif %}
+              </div>
+
+            {% endif %}
 
           </div>
 

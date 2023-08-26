@@ -1,39 +1,60 @@
 {% for _image in piece._images %}
 
-  <div class="images-container
-    {% if piece.forceAspectRatio %}
-      ratio-1-1
-    {% endif %}
-  ">
-    <div class="radius
-      {% if piece.imagesShadow %}
-        z-depth-1
-      {% endif %}
-    ">
+  <div class="images-container{% if piece.forceAspectRatio %} ratio-1-1{% endif %}">
+    <div class="radius{% if piece.imagesShadow %} z-depth-1{% endif %}">
+
       <div class="card">
 
-        <div class="card-image">
+        <div{% if piece.lightboxOn %} class="lightbox"{% endif %}>
 
-          <img src="{{ apos.attachments.url(_image.attachment, { size: 'one-third', crop: relationship }) }}"
-            srcset="{{ apos.images.srcset(_image.attachment) }}"
-            sizes="(min-width:1200px)20vw, 30vw"
-            alt="{{ _image.title }}"
-            width="100%"
-            {% if piece.clickActionLightbox %}
-              data-featherlight="{{ apos.attachments.url( _image.attachment, { size: 'full' }) }}"
+          <div class="card-image">
+            <img src="{{ apos.attachments.url(_image.attachment, { size: 'one-third', crop: relationship }) }}"
+              srcset="{{ apos.images.srcset(_image.attachment) }}"
+              sizes="(min-width:1200px)20vw, 30vw"
+              alt="{{ _image.title }}"
+              width="100%"
+            >
+
+
+            {% if data.widget.imagesTitlesDisplay and piece.columnCount <= '4' %}
+              <span class="card-title center-align">
+                <h4 class="accent-color truncate"
+                  {%- if _image.titleColor -%}
+                    style="color:{{ piece.imagesTitleColor }}"
+                  {% endif %}
+                >
+                  {{  _image.title }}
+                </h4>
+              </span>
             {% endif %}
-          >
+          </div>
+          
+          {% if piece.lightboxOn %}
 
-          {% if data.widget.imagesTitlesDisplay and piece.columnCount <= '4' %}
-            <span class="card-title center-align">
-              <h4 class="accent-color truncate"
-                {%- if _image.titleColor -%}
-                  style="color:{{ piece.imagesTitleColor }}"
-                {% endif %}
-              >
-                {{  _image.title }}
-              </h4>
-            </span>
+            <div class="lightbox-overlay"
+              {% if data.widget.overlayColor %}
+                style="background-color: {{ data.widget.overlayColor }}"
+              {% endif %}
+            ></div>
+
+            <div class="lightbox-image image-radius">
+              {% if data.widget.lightboxNoCrop %}
+                <img
+                  data-src="{{ apos.attachments.url(_image.attachment, { size: 'full' }) }}"
+                  srcset="{{ apos.images.srcset(_image.attachment) }}"
+                  sizes="{{ data.options.sizesAttr or '100vw' }}"
+                  alt="{{ image.title }}"
+                >
+              {% else %}
+                <img
+                  data-src="{{ apos.attachments.url(_image.attachment, { size: 'full', crop: relationship }) }}"
+                  srcset="{{ apos.images.srcset(_image.attachment, relationship ) }}"
+                  sizes="{{ data.options.sizesAttr or '100vw' }}"
+                  alt="{{ image.title }}"
+                >
+              {% endif %}
+            </div>
+
           {% endif %}
 
         </div>

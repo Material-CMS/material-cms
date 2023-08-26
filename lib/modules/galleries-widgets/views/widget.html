@@ -2,11 +2,7 @@
 
   <div class="row widget">
     <div class="col s12 m12">
-      <div class="radius
-        {% if data.widget.shadow %}
-          z-depth-1
-        {% endif %}
-      ">
+      <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %}">
 
         {# Include pieces.html #}
         {% include "pieces.html" %}

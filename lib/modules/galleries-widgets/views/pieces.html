@@ -33,11 +33,7 @@
           </div>
         {% endif %}
 
-          <div class="gallery"
-            {% if piece.columnCount == '1' or piece.columnCount == '2' %}
-              style="display: flex"
-            {% endif %}
-          >
+          <div class="gallery">
 
             <div class="images
                 {% if piece.columnCount == '5' %}
@@ -48,8 +44,6 @@
                  column-count-3
                 {% elif piece.columnCount == '2' %}
                  column-count-2
-                {% elif piece.columnCount == '1' %}
-                 column-count-1
                 {% endif %}"
               >
 
