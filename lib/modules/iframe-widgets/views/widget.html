@@ -10,8 +10,8 @@
             frameborder="0"
             src="{{ data.widget.iframeSrc }}"
             title="{{ data.widget.iframeSrc or 'Iframe Widget' }}"
-            {% if data.widget._previewImage.attachment %}
-              allow="{{ data.widget._previewImage.attachment }}"
+            {% if data.widget.iframeAllow %}
+              allow="{{ data.widget.iframeAllow }}"
             {% endif %}
             {% if data.widget.blockInteraction %}
               style="pointer-events: none;"

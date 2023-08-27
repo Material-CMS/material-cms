@@ -36,16 +36,12 @@ var apos = require('apostrophe')({
     },
     'galleries-widgets': {},
     'grid-widgets': {},
-    'iframe-widgets': {
-      player : true
-    },
+    'iframe-widgets': {},
     'link-widgets': {},
     'link-page-widgets': {},
     'link-subpages-widgets': {},
     'navigations':{},
-    'navigations-widgets': {
-      player: true
-    },
+    'navigations-widgets': {},
     'people': {
       ordering: true
     },
