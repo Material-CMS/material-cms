@@ -5,7 +5,15 @@
 {% block main %}
 
   <div class="main-content bg-color">
+
     <div class="pages-container">
+      {% if data.piece.title %}
+        <h2 class="accent-color center-align"
+          {% if data.piece.titleColor %} style="color:{{ data.piece.titleColor }}" {% endif %}
+        >
+          {{ data.piece.title }}
+        </h2>
+      {% endif %}
       <div class="container">
 
         <div class="row">
@@ -69,12 +77,6 @@
                     <div class="card-stacked main-color" {% if data.piece.backColor %} style="background-color:{{ data.piece.backColor }}" {% endif %}>
 
                       <div class="card-content">
-
-                        {% if data.piece.title %}
-                          <h4 class="accent-color card-title" {% if data.piece.titleColor %} style="color:{{ data.piece.titleColor }}" {% endif %}>
-                            {{ data.piece.title }}
-                          </h4>
-                        {% endif %}
 
                         {% if data.piece.description.items.length %}
                           {{ apos.area(data.piece, 'description', { edit: false }) }}

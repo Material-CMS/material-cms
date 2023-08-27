@@ -5,7 +5,7 @@
 
       <div class="card">
 
-        <div{% if piece.lightboxOn %} class="lightbox"{% endif %}>
+        <div class="height-100 {% if piece.lightboxOn %} lightbox{% endif %}">
 
           <div class="card-image">
             <img src="{{ apos.attachments.url(_image.attachment, { size: 'one-third', crop: relationship }) }}"
@@ -14,21 +14,8 @@
               alt="{{ _image.title }}"
               width="100%"
             >
-
-
-            {% if data.widget.imagesTitlesDisplay and piece.columnCount <= '4' %}
-              <span class="card-title center-align">
-                <h4 class="accent-color truncate"
-                  {%- if _image.titleColor -%}
-                    style="color:{{ piece.imagesTitleColor }}"
-                  {% endif %}
-                >
-                  {{  _image.title }}
-                </h4>
-              </span>
-            {% endif %}
           </div>
-          
+
           {% if piece.lightboxOn %}
 
             <div class="lightbox-overlay"
@@ -58,30 +45,6 @@
           {% endif %}
 
         </div>
-
-        {% if _image.description and piece.columnCount <= '3' %}
-          <div class="card-content">
-            <p class="flow-text"
-              {% if _image.descriptionColor %}
-                style="color:{{ _image.descriptionColor }}"
-              {% endif %}
-            >
-              {{ _image.description }}
-            </p>
-          </div>
-        {% endif %}
-
-        {% if _image.credit and _image.clickAction == 'lightbox' %}
-          <div class="card-action center-align flow-text">
-            {% if _image.creditUrl %}
-                <a class="btn-flat anchor-jump" href="{{ _image.creditUrl }}">
-            {% endif %}
-                  <p>{{ _image.credit }}</p>
-            {% if _image.creditUrl %}
-                </a>
-            {% endif %}
-          </div>
-        {% endif %}
 
       </div>
     </div>
