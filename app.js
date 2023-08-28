@@ -13,18 +13,14 @@ var apos = require('apostrophe')({
     'card-widgets': {},
     'card-anime-widgets': {},
     'card-link-widgets': {},
-    'button-widgets':{
-      player: true
-    },
+    'button-widgets':{},
     'call-to-action-widgets': {},
     'double-widgets': {},
     'events': {},
     'events-widgets': {
       player: true
     },
-    'footer-widgets':{
-      player : true
-    },
+    'footer-widgets':{},
     'galleries':{
       orderings: true
     },

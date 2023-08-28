@@ -9,6 +9,26 @@
     // .transition(background-color, .2s, ease-in);
   }
   // desktop and mobile nav hover colors
+  .nav-color {
+    .text-color {
+      color: @dark;
+    }
+    a {
+      color: @dark;
+      fill: @dark;
+      i {
+        color: @dark;
+      }
+    }
+    li:hover,
+    li.active {
+      background-color: @dark-hover;
+    }
+    .dropdown-content li.active,
+    .dropdown-content li:hover {
+      background-color: @dark-hover;
+    }
+  }
   .nav-color.dark-background {
     .text-color {
       color: @light;
@@ -27,26 +47,6 @@
     .dropdown-content li.active,
     .dropdown-content li:hover {
       background-color: @light-hover;
-    }
-  }
-  .nav-color.light-background {
-    .text-color {
-      color: @dark;
-    }
-    a {
-      color: @dark;
-      fill: @dark;
-      i {
-        color: @dark;
-      }
-    }
-    li:hover,
-    li.active {
-      background-color: @dark-hover;
-    }
-    .dropdown-content li.active,
-    .dropdown-content li:hover {
-      background-color: @dark-hover;
     }
   }
   // Desktop Nav
