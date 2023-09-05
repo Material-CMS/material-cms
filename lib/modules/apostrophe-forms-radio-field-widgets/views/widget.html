@@ -14,7 +14,7 @@
   <legend {% if classPrefix %}class="{{classPrefix + '__legend' }}"{% endif %}>
     <label>
       {{ widget.fieldLabel}}
-        {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}
+        {% if widget.required %}<span> {{ __("*") }}</span>{% endif %}
     </label>
   </legend>
   {% for choice in widget.choices %}

@@ -22,7 +22,7 @@
     <legend class="active {{ classPrefix + '__legend' }}">
       <label>
         {{ widget.fieldLabel}}
-        {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}
+        {% if widget.required %}<span> {{ __("*") }}</span>{% endif %}
       </label>
     </legend>
     {% for choice in widget.choices %}
@@ -47,7 +47,7 @@
     {% endfor %}
   {% else %}
     <button data-apos-form-toggle class="apos-forms-checkboxes-toggle btn {% if classPrefix %}{{ classPrefix + '__toggle' }}{% endif %}">{{ widget.fieldLabel}}
-    {% if not widget.required %}<span class="apos-form-field-optional"> {{ __("(Optional)") }}</span>{% endif %}</button>
+    {% if widget.required %}<span> {{ __("*") }}</span>{% endif %}</button>
     <div class="apos-forms-checkboxes-dropdown-choices">
       {% for choice in widget.choices %}
         {% set choiceId = id + apos.utils.slugify(choice.value) %}

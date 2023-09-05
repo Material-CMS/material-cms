@@ -10,8 +10,14 @@
     name="{{ widget.fieldName}}" value="true"
     {% if widget.checked %}checked{% endif %}
     {% if widget.required %}required{% endif %}>
-  <span class="apos-forms-label-message {{ classPrefix + '__label-message' if classPrefix }}" data-apos-input-message="{{ widget.fieldName}}" hidden>
-    {{ widget.fieldLabel}}
-    {% if widget.required %} {{ __("(Required)") }}{% endif %}
-  </span>
+    <span class="apos-forms-label-message {{ classPrefix + '__label-message' if classPrefix }}" data-apos-input-message="{{ widget.fieldName}}" hidden>
+      {% if widget.url %}
+        <a href="{{ widget.url }}" rel="nofollow" class="modal-trigger">
+      {% endif %}
+          {{ widget.fieldLabel}}
+      {% if widget.url %}
+        </a>
+      {% endif %}
+        {% if widget.required %} {{ __("*") }}{% endif %}
+    </span>
 </label>
