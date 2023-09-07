@@ -18,9 +18,9 @@
       {# Parallax Image #}
       <div class="parallax">
         <img
-          src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+          src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'full' }) }}"
           srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
-          sizes="(max-width:600px) 50vw, 60vw"
+          sizes="(max-width:600px) 80vw, 100vw"
           alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
         >
       </div>

@@ -54,9 +54,7 @@ var apos = require('apostrophe')({
     'sections-orderings': {
       extend: 'apostrophe-pieces-orderings'
     },
-    'sections-widgets': {
-      player: true
-    },
+    'sections-widgets': {},
     'shape-divider-path-widgets': {},
     'shape-divider-file-widgets': {
       player: true
