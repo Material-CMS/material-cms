@@ -22,7 +22,12 @@
               >
 
               {% if data.widget.titleDisplay %}
-                <span class="card-title {{ data.widget.titleAlign }}">
+                <span
+                  class="card-title {{ data.widget.titleAlign }}"
+                  {%- if data.widget.titleBackgroundColor -%}
+                    style="background-color: {{ data.widget.titleBackgroundColor }}"
+                  {%- endif -%}
+                >
                   <h4 class="accent-color truncate"
                     {%- if data.widget.titleColor -%}
                       style="color:{{ data.widget.titleColor }}"
