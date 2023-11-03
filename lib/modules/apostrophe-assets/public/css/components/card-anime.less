@@ -6,6 +6,9 @@
     transform-origin: 0 100%;
     .transition(height, .3s, ease);
     object-fit: cover;
+    .card-title {
+      .transition(opacity, .5s, ease);
+    }
   }
   .anime-overlay {
     position: fixed;
@@ -79,6 +82,9 @@
     // height: 80% !important;
     .border-radius(inherit) !important;
     z-index: 11;
+    .card-title {
+      opacity: 0;
+    }
   }
   .anime-image.portrait {
     height: 40% !important;
@@ -95,9 +101,6 @@
 //Columns widgets override
 .row.columns {
   .col.anime.active {
-    .card-title {
-      display: none;
-    }
     .anime-image.portrait {
       height: 100% !important;
     }
