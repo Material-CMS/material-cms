@@ -44,9 +44,10 @@ You can use all plugins from apostrophe cms
 
 ### Install Dependencies
 - git
-- nodejs 8.x, 10.x, 12.x
+- nodejs 16.x or higher
 - redis-server
 - mongodb
+- imagemagick
 
 ```bash
 # clone repository
