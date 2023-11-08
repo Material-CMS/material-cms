@@ -6,6 +6,7 @@
 {% set navBackgroundImage = data.widget._navBackgroundImage or global._navBackgroundImage %}
 {% set gradientColorTop = data.widget.gradientColorTop or global.gradientColorTop %}
 {% set gradientColorBottom = data.widget.gradientColorBottom or global.gradientColorBottom %}
+{% set navTextColor = data.widget.navTextColor or global.navTextColor %}
 {% set navGoBack = data.widget.navGoBack or global.navGoBack %}
 
 <div class="nav">
@@ -24,17 +25,17 @@
         {% if data.widget.navShadow or global.navShadow %}
           z-depth-2
         {% endif %}
-        {% if data.widget.navTextColor %}
+        {% if navTextColor %}
           nav-text-color
         {% endif %}
       "
-    {% if data.widget.navColor or data.widget.navTextColor or navBackgroundImage %}
+    {% if data.widget.navColor or navTextColor or navBackgroundImage %}
       style="
         {% if data.widget.navColor %}
           background-color: {{ data.widget.navColor }} !important;
         {% endif %}
-        {% if data.widget.navTextColor %}
-          color: {{ data.widget.navTextColor }};
+        {% if navTextColor %}
+          color: {{ navTextColor }};
         {% endif %}
         {% if navBackgroundImage %}
           position: relative;
@@ -83,9 +84,13 @@
             viewBox="0 0 24 24"
             width="24px"
           >
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              {% if navTextColor %}
+                fill="{{ navTextColor }}"
+              {% endif %}
+            />
           </svg>
+
         </a>
       {% endif %}
       <ul class="nav-activator right hide-on-med-and-down">
@@ -130,17 +135,17 @@
   <ul id="mobile"
 
     class="sidenav nav-color
-      {% if data.widget.navTextColor %}
+      {% if navTextColor %}
         nav-text-color
       {% endif %}"
 
-    {% if data.widget.navColor or data.widget.navTextColor %}
+    {% if data.widget.navColor or navTextColor %}
       style="
         {% if data.widget.navColor %}
           background-color: {{ data.widget.navColor }} !important;
         {% endif %}
-        {% if data.widget.navTextColor %}
-          color: {{ data.widget.navTextColor }};
+        {% if navTextColor %}
+          color: {{ navTextColor }};
         {% endif %}
       "
     {% endif %}
