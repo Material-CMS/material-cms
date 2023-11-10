@@ -70,41 +70,6 @@
     {% endif %}
   >
 
-    {# Top Shape Divider #}
-    {% if piece.shapeDividerTop.items[0] and not (piece._backgroundImage and piece.backgroundImageParallax) %}
-      <div class="shape-divider-top"
-        {% if backgroundColor %}
-          style="fill: {{ backgroundColor }}"
-        {% endif %}
-      >
-        {{ apos.area(piece, 'shapeDividerTop', {
-          limit: 1,
-          widgets: {
-            'shape-divider-path': {
-              addLabel: 'Add Top Shape Divider',
-              editLabel: 'Change Top Shape Divider',
-              controls: {
-                cloneable: false,
-                removable: true,
-                movable: false,
-                position: 'top-left'
-              }
-            },
-            'shape-divider-file': {
-              addLabel: 'Add Top Shape Divider',
-              editLabel: 'Change Top Shape Divider',
-              controls: {
-                cloneable: false,
-                removable: true,
-                movable: false,
-                position: 'top-left'
-              }
-            }
-          }
-        }) }}
-      </div>
-    {% endif %}
-
     {# Background Image #}
     {% if piece._backgroundImage and not piece.backgroundImageParallax %}
       <div class="background-image">
@@ -137,6 +102,7 @@
     {% if piece.sectionStyle == 'slide' %}
 
       <div class="slide-content">
+
         {{ apos.singleton(piece, 'sliderContent', 'slider', {
           size: 'full',
           sizesAttr: '(max-width:600px) 120vw, 58vw',
@@ -149,6 +115,42 @@
             position: 'top-right'
           }
         }) }}
+
+        {# Top Shape Divider #}
+        {% if piece.shapeDividerTop.items[0] and not (piece._backgroundImage and piece.backgroundImageParallax) %}
+          <div class="shape-divider-top divider-slide"
+            {% if backgroundColor %}
+              style="fill: {{ backgroundColor }}"
+            {% endif %}
+          >
+            {{ apos.area(piece, 'shapeDividerTop', {
+              limit: 1,
+              widgets: {
+                'shape-divider-path': {
+                  addLabel: 'Add Top Shape Divider',
+                  editLabel: 'Change Top Shape Divider',
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    movable: false,
+                    position: 'top-left'
+                  }
+                },
+                'shape-divider-file': {
+                  addLabel: 'Add Top Shape Divider',
+                  editLabel: 'Change Top Shape Divider',
+                  controls: {
+                    cloneable: false,
+                    removable: true,
+                    movable: false,
+                    position: 'top-left'
+                  }
+                }
+              }
+            }) }}
+          </div>
+        {% endif %}
+
       </div>
 
     {% endif %}
