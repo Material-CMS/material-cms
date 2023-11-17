@@ -1,10 +1,14 @@
 // Swiper Overrides
 .swiper-container {
+  overflow: visible;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   .swiper-wrapper {
+    width: 120vw;
     .swiper-slide {
       .radius {
         .box-shadow(none);
-        border-radius: 0;
+        // border-radius: 0;
       }
       .row.widget {
         margin: 0;
@@ -31,10 +35,19 @@
       }
     }
   }
+  .swiper-wrapper.no-transform {
+    .transform(none) !important;
+  }
+}
+.swiper-container::-webkit-scrollbar {
+  display: none;
 }
 .swiper-pagination {
   span.swiper-pagination-bullet {
     width: 16px;
     height: 16px;
   }
+}
+.overflow-visible {
+  overflow: visible;
 }

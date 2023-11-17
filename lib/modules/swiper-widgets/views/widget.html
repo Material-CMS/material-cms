@@ -8,7 +8,11 @@
           <div class="swiper-wrapper">
 
             {% for swiper in data.widget.swipers %}
-            <div class="swiper-slide">
+            <div class="swiper-slide"
+            {% if data.widget.overflow %}
+              style="width:{{ data.widget.slidesWidth }}%"
+            {% endif %}
+            >
               {{ apos.area(swiper, 'swiper', { edit: false }) }}
             </div>
             {% endfor %}
