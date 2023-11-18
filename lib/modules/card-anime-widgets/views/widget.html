@@ -1,7 +1,7 @@
 {% if data.widget._pieces.length %}
 
   <div class="row widget">
-    <div class="col s12 anime image-radius">
+    <div class="col s12 anime">
       <div class="anime-image radius{% if data.widget.shadow %} z-depth-1{% endif %}">
         <div class="card z-depth-0">
 
@@ -9,7 +9,7 @@
             {% set image = entry.item or entry %}
             {% set relationship = entry.relationship %}
 
-            <div class="card-image">
+            <div class="card-image image-radius">
 
               <img
                 src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
@@ -77,23 +77,77 @@
 
       </div>
 
-      <div class="anime-container">
+      <div class="anime-container radius">
         <div class="row widget">
           <div class="col s12">
-            {{ apos.area(data.widget, 'animeWidgets', {
-              limit: 1,
-              widgets: {
-                'texts': {
-                  animeContainer: true,
-                  controls: {
-                    cloneable: false,
-                    removable: true,
-                    movable: false,
-                    position: 'bottom-left'
+
+            {% if data.widget.doubleColumns %}
+              <div class="row columns double">
+                <div class="columns-container left">
+            {% endif %}
+
+                {{ apos.area(data.widget, 'animeWidgets', {
+                  limit: 1,
+                  widgets: {
+                    'texts': {
+                      animeContainer: true,
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        movable: false,
+                        position: 'bottom-left'
+                      }
+                    },
+                    'card': {
+                      size: 'one-half',
+                      sizesAttr: '(max-width:600px) 50vw, 25vw',
+                      focalPoint: true,
+                      noHeight: true,
+                      controls: {
+                        cloneable: false,
+                        removable: true,
+                        movable: false,
+                        position: 'top-right'
+                      }
+                    }
                   }
-                }
-              }
-            }) }}
+                }) }}
+
+            {% if data.widget.doubleColumns %}
+              </div>
+                <div class="columns-container right">
+
+                  {{ apos.area(data.widget, 'animeWidgetsDoubleColumns', {
+                    limit: 1,
+                    widgets: {
+                      'texts': {
+                        animeContainer: true,
+                        controls: {
+                          cloneable: false,
+                          removable: true,
+                          movable: false,
+                          position: 'bottom-left'
+                        }
+                      },
+                      'card': {
+                        size: 'one-half',
+                        sizesAttr: '(max-width:600px) 50vw, 25vw',
+                        focalPoint: true,
+                        noHeight: true,
+                        controls: {
+                          cloneable: false,
+                          removable: true,
+                          movable: false,
+                          position: 'top-right'
+                        }
+                      }
+                    }
+                  }) }}
+
+                </div>
+              </div>
+            {% endif %}
+
           </div>
         </div>
       </div>

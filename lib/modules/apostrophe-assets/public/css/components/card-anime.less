@@ -38,9 +38,9 @@
       margin-bottom: 0;
       .radius {
         // max-height: 60vh;
-        .card-image {
-          display: none;
-        }
+        // .card-image {
+        //   display: none;
+        // }
         .card-content {
           .transition(all, .5s, ease);
           height: 100%;
@@ -82,8 +82,11 @@
     // height: 80% !important;
     .border-radius(inherit) !important;
     z-index: 11;
-    .card-title {
-      opacity: 0;
+    .card-image.image-radius {
+      overflow: hidden;
+      .card-title {
+        opacity: 0;
+      }
     }
   }
   .anime-image.portrait {
@@ -98,6 +101,9 @@
     }
   }
 }
+// .col.anime.image-radius:not(.active) {
+//   .border-radius(inherit) !important;
+// }
 //Columns widgets override
 .row.columns {
   .col.anime.active {
