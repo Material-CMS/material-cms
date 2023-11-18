@@ -8,7 +8,7 @@
           {% for entry in data.widget._pieces %}
             {% set image = entry.item or entry %}
             {% set relationship = entry.relationship %}
-            
+
             {# Set link item item #}
             {% set linkItem = data.widget.linkArea.items[0] %}
 
@@ -27,7 +27,11 @@
                   >
 
                   {% if data.widget.titleDisplay %}
-                    <span class="card-title {{ data.widget.titleAlign }}">
+                    <span class="card-title {{ data.widget.titleAlign }}"
+                      {%- if data.widget.titleBackgroundColor -%}
+                        style="background-color: {{ data.widget.titleBackgroundColor }}"
+                      {%- endif -%}
+                    >
                       <h4 class="flow-text accent-color truncate"
                         {%- if data.widget.titleColor -%}
                           style="color:{{ data.widget.titleColor }}"
