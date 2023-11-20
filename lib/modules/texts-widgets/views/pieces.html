@@ -14,28 +14,24 @@
     {% endif %}
   >
 
-    {% if piece.blog %}
-
-      {% if piece.topImage.items[0] %}
-        <div class="card-image">
-          {{ apos.area(piece, 'topImage', {
-            edit: false,
-            widgets: {
-              'card': {
-                size: 'one-half',
-                sizesAttr: '(max-width:600px) 50vw, 40vw',
-                noHeight: true,
-                focalPoint: true
-              },
-              'apostrophe-video': {}
-            }
-          }) }}
-        </div>
-      {% endif %}
-
+    {% if (piece.blog and piece.topImage.items[0]) and not data.options.animeContext %}
+      <div class="card-image">
+        {{ apos.area(piece, 'topImage', {
+          edit: false,
+          widgets: {
+            'card': {
+              size: 'one-half',
+              sizesAttr: '(max-width:600px) 50vw, 40vw',
+              noHeight: true,
+              focalPoint: true
+            },
+            'apostrophe-video': {}
+          }
+        }) }}
+      </div>
     {% endif %}
 
-    {% if piece.sideImage.items[0] %}
+    {% if not piece.blog and piece.sideImage.items[0] %}
     <div class="row">
       <div class="height-100 col s12{% if piece.sideImageLeft == true %} m3 push-m9{% else %} m3{% endif %}">
         <div class="card-image">
@@ -54,7 +50,7 @@
       </div>
       {% endif %}
 
-      {% if piece.sideImage.items[0] %}
+      {% if not piece.blog and piece.sideImage.items[0] %}
       <div class="height-100 col s12{% if piece.sideImageLeft == true %} m9 pull-m3{% else %} m9{% endif %}">
       {% endif %}
 
@@ -218,7 +214,7 @@
 
         </div>
 
-    {% if piece.sideImage.items[0] %}
+    {% if not piece.blog and piece.sideImage.items[0] %}
       </div>
     </div>
     {% endif %}
