@@ -39,6 +39,18 @@
                 </span>
               {% endif %}
 
+              {% if image.credit %}
+                <div class="credit">
+                  {% if image.creditUrl %}
+                      <a href="{{ image.creditUrl }}" target="_blank">
+                  {% endif %}
+                        <span>{{ image.credit }}</span>
+                  {% if image.creditUrl %}
+                      </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+
             </div>
 
             {% if data.widget.lightboxOn %}
@@ -74,7 +86,7 @@
 
             {% if image.description %}
 
-              <div class="card-content">
+              <div class="card-content main-color">
                 <p class="flow-text">
 
                   {{ image.description | nlbr }}
@@ -82,18 +94,6 @@
                 </p>
               </div>
 
-            {% endif %}
-
-            {% if image.credit %}
-              <div class="credit">
-                {% if image.creditUrl %}
-                    <a href="{{ image.creditUrl }}" target="_blank">
-                {% endif %}
-                      <span>{{ image.credit }}</span>
-                {% if image.creditUrl %}
-                    </a>
-                {% endif %}
-              </div>
             {% endif %}
 
           {% endfor %}
