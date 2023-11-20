@@ -13,7 +13,8 @@
             {% set linkItem = data.widget.linkArea.items[0] %}
 
             <a class="anchor-jump" href="{{ linkItem.url or linkItem._page._url }}">
-              <div id="{{ data.widget._id }}" class="gradient-overlay">
+
+              <div id="{{ data.widget._id }}" class="link-container{% if not data.widget.linkButton %} gradient-overlay{% endif %}">
 
                 <div class="card-image">
                   <img
@@ -32,24 +33,52 @@
                         style="background-color: {{ data.widget.titleBackgroundColor }}"
                       {%- endif -%}
                     >
-                      <h4 class="flow-text accent-color truncate"
+                      <h4 class="flow-text accent-color{% if data.widget.linkButton %} margin{% endif %}"
                         {%- if data.widget.titleColor -%}
                           style="color:{{ data.widget.titleColor }}"
                         {%- endif -%}
                       >
                         {{ image.title }}
                       </h4>
+
+                      {% if data.widget.linkButton %}
+                        <span
+                          class="btn btn-color btn-radius"
+                          {% if linkItem.color %}
+                            style="color: {{ linkItem.color }}"
+                          {% endif %}
+                        >
+                          {{ linkItem.label or linkItem._page.title }}
+                        </span>
+                      {% endif %}
+
                     </span>
                   {% endif %}
+
+                  {% if image.credit %}
+                    <div class="credit">
+                      {% if image.creditUrl %}
+                          <a href="{{ image.creditUrl }}" target="_blank">
+                      {% endif %}
+                            <span>{{ image.credit }}</span>
+                      {% if image.creditUrl %}
+                          </a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
                 </div>
 
-                <span class="center flow-text accent-color click-action-link"
-                  {% if linkItem.color %}
-                    style="color: {{ linkItem.color }}"
-                  {% endif %}
-                >
-                  {{ linkItem.label or linkItem._page.title }}
-                </span>
+                {% if not data.widget.linkButton %}
+                  <span
+                    class="center flow-text accent-color click-action-link"
+                    {% if linkItem.color %}
+                      style="color: {{ linkItem.color }}"
+                    {% endif %}
+                  >
+                    {{ linkItem.label or linkItem._page.title }}
+                  </span>
+                {% endif %}
 
               </div>
             </a>
@@ -61,18 +90,6 @@
                   {{ image.description | nlbr }}
 
                 </p>
-              </div>
-            {% endif %}
-
-            {% if image.credit %}
-              <div class="credit">
-                {% if image.creditUrl %}
-                    <a href="{{ image.creditUrl }}" target="_blank">
-                {% endif %}
-                      <span>{{ image.credit }}</span>
-                {% if image.creditUrl %}
-                    </a>
-                {% endif %}
               </div>
             {% endif %}
 
