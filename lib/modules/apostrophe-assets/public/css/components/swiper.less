@@ -1,7 +1,6 @@
 // Swiper Overrides
 .swiper-container {
   overflow: visible;
-  -ms-overflow-style: none;
   scrollbar-width: none;
   .swiper-wrapper {
     .swiper-slide {
@@ -37,16 +36,30 @@
   .swiper-wrapper.no-transform {
     .transform(none) !important;
   }
+  // .swiper-button-prev,
+  // .swiper-button-next {
+  //   top: auto;
+  //   bottom: 10px;
+  // }
 }
 .swiper-container::-webkit-scrollbar {
   display: none;
+}
+// Overflow override
+.radius.overflow-visible  {
+  overflow: visible;
+  // .swiper-container {
+  //   width: 85vw;
+  // }
+  // @media (max-width: 600px) {
+  //   .swiper-container {
+  //     width: 95vw;
+  //   }
+  // }
 }
 .swiper-pagination {
   span.swiper-pagination-bullet {
     width: 16px;
     height: 16px;
   }
-}
-.overflow-visible {
-  overflow: visible;
 }

@@ -8,11 +8,7 @@
           <div class="swiper-wrapper">
 
             {% for swiper in data.widget.swipers %}
-            <div class="swiper-slide"
-            {% if data.widget.overflow %}
-              style="width:{{ data.widget.slidesWidth }}%"
-            {% endif %}
-            >
+            <div class="swiper-slide" {% if data.widget.overflow %} style="width:{{ data.widget.slidesWidth }}%" {% endif %}>
               {{ apos.area(swiper, 'swiper', { edit: false }) }}
             </div>
             {% endfor %}
@@ -23,7 +19,7 @@
             <div class="swiper-pagination"></div>
           {% endif %}
 
-          {% if data.widget.navigation and data.widget.swipers.length > 1 %}
+          {% if (data.widget.navigation and data.widget.swipers.length > 1) and not data.widget.overflow %}
             <div class="accent-color swiper-button-prev"></div>
             <div class="accent-color swiper-button-next"></div>
           {% endif %}
@@ -37,6 +33,7 @@
       </div>
     </div>
   </div>
+
 {% else %}
 
   <div class="apos-area apos-empty">
