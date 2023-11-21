@@ -4,6 +4,7 @@
   scrollbar-width: none;
   .swiper-wrapper {
     .swiper-slide {
+      margin-right: 20px;
       .radius {
         .box-shadow(none);
         // border-radius: 0;
@@ -32,15 +33,13 @@
         }
       }
     }
+    .swiper-slide:last-child {
+      margin-right: 0;
+    }
   }
   .swiper-wrapper.no-transform {
     .transform(none) !important;
   }
-  // .swiper-button-prev,
-  // .swiper-button-next {
-  //   top: auto;
-  //   bottom: 10px;
-  // }
 }
 .swiper-container::-webkit-scrollbar {
   display: none;
@@ -48,14 +47,6 @@
 // Overflow override
 .radius.overflow-visible  {
   overflow: visible;
-  // .swiper-container {
-  //   width: 85vw;
-  // }
-  // @media (max-width: 600px) {
-  //   .swiper-container {
-  //     width: 95vw;
-  //   }
-  // }
 }
 .swiper-pagination {
   span.swiper-pagination-bullet {
