@@ -1,5 +1,6 @@
 // Section Wrapper
 .section-wrapper {
+	position: relative;
 	.parallax-container {
 		.parallax {
 			background-color: rgb(158, 158, 158);
@@ -139,18 +140,6 @@
   width: 100%;
   max-height: 100%;
 }
-.credit {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 16px 24px;
-  span {
-    color: #ffab40;
-    margin-right: 24px;
-    .transition(color, 0.3s, ease);
-    text-transform: uppercase;
-  }
-}
 // Widgets
 .widgets-container {
 	.flex();
@@ -206,17 +195,24 @@
 	  }
 	}
 }
-// Container
-.container {
-	// TESTING IF THIS DOES NOT HAVE UNINTENDE CONSEQUENCES
-	// z-index: 4;
-	margin: auto;
-  .flex();
-  .flex-align-items(center);
-  .widgets-container {
-    width: 100%;
-  }
+@media (max-width: 600px) {
+	.widgets-container {
+		.container {
+			width: 100%;
+		}
+	}
 }
+// Container
+// .container {
+// 	// TESTING IF THIS DOES NOT HAVE UNINTENDE CONSEQUENCES
+// 	// z-index: 4;
+// 	margin: auto;
+//   .flex();
+//   .flex-align-items(center);
+//   .widgets-container {
+//     width: 100%;
+//   }
+// }
 .footer-container {
   width: 100%;
 }

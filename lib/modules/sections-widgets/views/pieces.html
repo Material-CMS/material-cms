@@ -168,20 +168,20 @@
       {% endif %}
     >
 
-    {# Container #}
-    {% if piece.container %}
-      <div class="container">
-    {% endif %}
+      {# Widgets Container #}
+      <div class="widgets-container
+        {% if piece.content.items.length > 1 and piece.glueWidgets == true %}
+          glue-container
+        {% endif %}
+        {% if (piece.content.items[0].type == 'double' or piece.content.items[0].type == 'triple') and piece.glueWidgets == true %}
+          glue-container-columns-single
+        {% endif %}
+      ">
 
-        {# Widgets Container #}
-        <div class="widgets-container
-          {% if piece.content.items.length > 1 and piece.glueWidgets == true %}
-            glue-container
-          {% endif %}
-          {% if (piece.content.items[0].type == 'double' or piece.content.items[0].type == 'triple') and piece.glueWidgets == true %}
-            glue-container-columns-single
-          {% endif %}
-        ">
+        {# Container #}
+        {% if piece.container %}
+          <div class="container">
+        {% endif %}
 
           {# Header #}
           {% if piece.header %}
@@ -388,12 +388,12 @@
             }
           }) }}
 
-        </div>
+        {# Container End #}
+        {% if piece.container %}
+          </div>
+        {% endif %}
 
-    {# Container End #}
-    {% if piece.container %}
       </div>
-    {% endif %}
 
     </div>
 

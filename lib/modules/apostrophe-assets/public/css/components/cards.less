@@ -2,73 +2,19 @@
 .card {
   background-color: inherit;
   margin: 0;
-  .lightbox {
-    .lightbox-image {
+  .card-image {
+    .credit {
       position: absolute;
-      display: block;
-      opacity: 0;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      transform: translate(-50%, -50%);
-      transform-origin: center;
-      .transition(all, .4s, ease);
-      img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin-bottom: -3px;
-        width: 100%;
-        height: auto !important;
-        .border-radius(inherit);
-        .transition(all, .5s, ease);
-      }
-    }
-    .lightbox-image.active {
-      position: fixed;
-      cursor: zoom-out !important;
-      z-index: 10;
-      padding: 0 2vw;
-      img {
-        max-height: 95vh;
-        object-fit: cover;
-        width: 95vw;
-      }
-    }
-    .lightbox-image.portrait.active {
-      img {
-        height: 95vh !important;
-        width: auto;
-        max-width: 95vw;
-      }
-    }
-    @media (max-width: 600px) {
-      .lightbox-image.portrait.active {
-        img {
-          max-height: 75vh;
-          width: 95vw;
-        }
-      }
-    }
-    .lightbox-overlay {
-      position: fixed;
-      display: none;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      top: 0;
       left: 0;
-      right: 0;
       bottom: 0;
-      background-color: rgb(121, 125, 127);
-      z-index: 9;
-      cursor: pointer;
-      .transition(opacity, .4s, ease);
-    }
-    .lightbox-overlay.active {
-      display: block;
+      padding: 24px;
+      z-index: 8;
+      span {
+        color: #ffab40;
+        margin-right: 24px;
+        .transition(color, 0.3s, ease);
+        text-transform: uppercase;
+      }
     }
   }
   .card-content {
@@ -152,5 +98,81 @@
   }
   .btn-floating.halfway-fab {
     right: 50px;
+  }
+  .lightbox {
+    .lightbox-image {
+      cursor: pointer;
+      position: absolute;
+      display: block;
+      opacity: 0;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      transform-origin: center;
+      .transition(all, .4s, ease);
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-bottom: -3px;
+        width: 100%;
+        height: auto !important;
+        .border-radius(inherit);
+        .transition(all, .5s, ease);
+      }
+    }
+    .lightbox-image.active {
+      position: fixed;
+      cursor: zoom-out !important;
+      z-index: 10;
+      padding: 0 2vw;
+      img {
+        max-height: 95vh;
+        object-fit: cover;
+        width: 95vw;
+      }
+      // .card-content {
+      //   bottom: 24px;
+      //   border-radius: inherit;
+      //   position: absolute;
+      //   width: 95vw;
+      // }
+    }
+    .lightbox-image.portrait.active {
+      img {
+        height: 95vh !important;
+        width: auto;
+        max-width: 95vw;
+      }
+    }
+    @media (max-width: 600px) {
+      .lightbox-image.portrait.active {
+        img {
+          max-height: 75vh;
+          width: 95vw;
+        }
+      }
+    }
+    .lightbox-overlay {
+      position: fixed;
+      display: none;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgb(121, 125, 127);
+      z-index: 9;
+      cursor: pointer;
+      .transition(opacity, .4s, ease);
+    }
+    .lightbox-overlay.active {
+      display: block;
+    }
   }
 }
