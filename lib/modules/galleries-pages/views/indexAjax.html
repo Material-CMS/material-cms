@@ -7,7 +7,12 @@
     </div>
   {% endif %}
 
-  <div data-apos-ajax-append>
+  <div data-apos-ajax-append
+    class="radius main-color
+      {% if data.page.shadow %}
+        z-depth-1
+      {% endif %}"
+  >
 
     {# Include pieces.html from galleries-widget #}
     {% include "galleries-widgets:pieces.html" %}
