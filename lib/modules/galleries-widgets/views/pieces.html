@@ -35,17 +35,7 @@
 
           <div class="gallery">
 
-            <div class="images
-                {% if piece.columnCount == '5' %}
-                 column-count-5
-                {% elif piece.columnCount == '4' %}
-                 column-count-4
-                {% elif piece.columnCount == '3' %}
-                 column-count-3
-                {% elif piece.columnCount == '2' %}
-                 column-count-2
-                {% endif %}"
-              >
+            <div class="images column-count-{{ piece.columnCount }}">
 
               {# Includes #}
               {% include "images.html" %}
