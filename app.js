@@ -155,6 +155,12 @@ var apos = require('apostrophe')({
     },
     // Favicons
     'apostrophe-favicons': {},
+    // Disable new alt field warning
+    // This project is mostly using card-widgets
+    // to display images, so this dosen't much effect
+    'apostrophe-images': {
+      enableAltField: true
+    },
     // Forms
     'apostrophe-forms': {
       disableBaseStyles: true,
