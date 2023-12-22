@@ -13,9 +13,9 @@
 
             <div class="card-image">
               <img
-                src="{{ apos.attachments.url(image.attachment, { size: data.options.size, crop: relationship }) }}"
+                src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
                 srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
-                sizes="{{ data.options.sizesAttr or '100vw' }}"
+                sizes="{{ data.widget.sizesAttr or data.options.sizesAttr or '100vw' }}"
                 alt="{{ image.title }}"
                 {%- if apos.attachments.hasFocalPoint(relationship) -%}
                   style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
@@ -67,14 +67,14 @@
                   <img
                     data-src="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}"
                     srcset="{{ apos.images.srcset(image.attachment) }}"
-                    sizes="{{ data.options.sizesAttr or '100vw' }}"
+                    sizes="{{ '100vw' }}"
                     alt="{{ image.title }}"
                   >
                 {% else %}
                   <img
                     data-src="{{ apos.attachments.url(image.attachment, { size: 'full', crop: relationship }) }}"
                     srcset="{{ apos.images.srcset(image.attachment, relationship ) }}"
-                    sizes="{{ data.options.sizesAttr or '100vw' }}"
+                    sizes="{{ '100vw' }}"
                     alt="{{ image.title }}"
                   >
                 {% endif %}
