@@ -17,9 +17,7 @@ var apos = require('apostrophe')({
     'call-to-action-widgets': {},
     'double-widgets': {},
     'events': {},
-    'events-widgets': {
-      player: true
-    },
+    'events-widgets': {},
     'footer-widgets':{},
     'galleries':{
       orderings: true
@@ -56,15 +54,9 @@ var apos = require('apostrophe')({
     },
     'sections-widgets': {},
     'shape-divider-path-widgets': {},
-    'shape-divider-file-widgets': {
-      player: true
-    },
-    'slider-widgets':{
-      player: true
-    },
-    'swiper-widgets':{
-      player: true
-    },
+    'shape-divider-file-widgets': {},
+    'slider-widgets':{},
+    'swiper-widgets':{},
     'tables': {
       orderings: true
     },
@@ -84,9 +76,7 @@ var apos = require('apostrophe')({
     'texts-pages': {
       orderings: true
     },
-    'texts-widgets': {
-      player: true
-    },
+    'texts-widgets': {},
     'triple-widgets': {},
     'video-widgets': {},
     // CKEditor addons
@@ -100,7 +90,6 @@ var apos = require('apostrophe')({
     'apostrophe-palette-widgets': {},
     'apostrophe-palette': {},
     'apostrophe-palette-global': {},
-
     // Production Modules
     'apostrophe-db': {
       connect: {
@@ -130,26 +119,8 @@ var apos = require('apostrophe')({
       stats: false,
       debug: false
     },
-    'apostrophe-favicons': {},
-    'apostrophe-favicons-global': {
-      destinationDir: '/fav/',
-      faviconConfig : {
-        icons: {
-          windows: false
-        }
-      }
-    },
-    'apostrophe-video-widgets': {
-      player: true
-    },
-    // Serve Attacments over SSL only
     'apostrophe-attachments': {
-      uploadfs: {
-        https: true
-      }
-    },
-    // Allow svgs
-    'apostrophe-attachments': {
+      // Add more image sizes example:
       /*
       addImageSizes: [{
         name: 'side',
@@ -157,6 +128,10 @@ var apos = require('apostrophe')({
         height: 600
       }]
       */
+      // Serve Attacments over SSL only
+      uploadfs: {
+        https: true
+      },
       fileGroups: [
         {
           name: 'images',
@@ -178,6 +153,8 @@ var apos = require('apostrophe')({
         }
       ]
     },
+    // Favicons
+    'apostrophe-favicons': {},
     // Forms
     'apostrophe-forms': {
       disableBaseStyles: true,
