@@ -51,18 +51,22 @@
           padding: 0 24px;
         }
         .card-action {
-          min-height: 75.2px;
-          max-height: 40vh;
-          .collapsible-header {
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            z-index: 1;
-          }
-          .collapsible-body {
-            .apos-area {
-              max-height: 40vh;
-              overflow-y: scroll;
+          display: table;
+          padding: 0;
+          li {
+          display: table-cell;
+            .collapsible-header {
+              position: absolute;
+              width: 100%;
+              bottom: 0;
+              z-index: 1;
+            }
+            .collapsible-body {
+              padding-bottom: 4rem;
+              .apos-area {
+                max-height: 34vh;
+                overflow-y: scroll;
+              }
             }
           }
         }
