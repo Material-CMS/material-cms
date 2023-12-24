@@ -1,5 +1,8 @@
 // Blog Card
-.card.blog {
+.card.text {
+  // Auto color changes default
+  background-color: @white;
+  color: @dark;
   .row {
     margin: 0 !important;
     .col {
@@ -9,100 +12,32 @@
       .border-radius(0) !important;
     }
   }
-}
-// Horizontal Card Height Overrides
-.card.horizontal {
-  .row {
-    width: 100%;
-  }
-  .height-100 {
-    padding: 0;
-  }
-  .card-image {
-    max-width: 100%;
-    height: 100% !important;
-    img {
-      width: 100%;
-      height: 100%;
-      .object-fit(cover);
+  // Card action buttons
+  .card-action {
+    a {
+      margin-right: 0 !important;
     }
-    .col {
-      padding: 0;
-    }
-    .row {
-      margin: 0;
-    }
-    .row.widget {
-      padding: 0;
-    }
-    .radius {
-      .border-radius(0) !important;
-    }
-    .apos-area,
-    .apos-area-widget,
-    .apos-area-widget-wrapper,
-    .card,
-    .col,
-    .material-placeholder,
-    .radius,
-    .row,
-    .slideshow-items {
-      height: 100% !important;
-    }
-  }
-  .card-stacked {
-    height: 100% !important;
-  }
-  @media (max-width: 600px) {
-    .height-100 {
-      height: inherit !important;
-    }
-    .card-image {
-      height: 50vh !important;
-      .apos-area,
-      .apos-area-widget,
-      .apos-area-widget-wrapper,
-      .card,
-      .col,
-      .material-placeholder,
-      .radius,
-      .row,
-      .slideshow-items {
-        height: 50vh !important;
+    li {
+      .collapsible-header {
+        span.hover-background.less {
+          display: none;
+        }
       }
     }
-  }
-}
-// Card action buttons
-.card-action {
-  a {
-    margin-right: 0 !important;
-  }
-  li {
-    .collapsible-header {
-      span.hover-background.less {
-        display: none;
-      }
-    }
-  }
-  li.active {
-    .collapsible-header {
-      span.hover-background.more {
-        display: none;
-      }
-      span.hover-background.less {
-        display: block;
+    li.active {
+      .collapsible-header {
+        span.hover-background.more {
+          display: none;
+        }
+        span.hover-background.less {
+          display: block;
+        }
       }
     }
   }
 }
 // Auto color changes
-.card-stacked {
-  background-color: @white;
-  color: @dark;
-}
-// Auto color changes
-.card-stacked.dark-background {
+.card.text.dark-background {
   color: @light;
 }
 // Pages styles
