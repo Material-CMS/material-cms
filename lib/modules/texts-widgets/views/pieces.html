@@ -8,7 +8,7 @@
   <div class="card text main-color z-depth-0" {%- if piece.backColor%} style="background-color:{{ piece.backColor }}" {% endif -%}>
 
     {% if piece.topImage.items[0] and not data.options.animeContext %}
-      <div class="card-image">
+      <div class="card-image{% if piece.topImageRounded%} rounded{% endif %}">
         {{ apos.area(piece, 'topImage', {
           edit: false,
           widgets: {
