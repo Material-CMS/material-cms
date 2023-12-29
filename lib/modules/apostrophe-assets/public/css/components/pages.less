@@ -1,0 +1,23 @@
+.pages-container {
+  // Ajax append styles
+  .ajax-append {
+    .pagination-wrapper {
+      .flex();
+      .flex-align-items(center);
+      .flex-justify(center);
+      .apos-ui,
+      .btn.next {
+        margin:10px auto;
+      }
+    }
+  }
+  .ajax-append.active {
+    .pagination-wrapper {
+      display: none;
+    }
+    .ajax-append.active {
+      .border-radius(top-right, initial);
+      .border-radius(top-left, initial);
+    }
+  }
+}

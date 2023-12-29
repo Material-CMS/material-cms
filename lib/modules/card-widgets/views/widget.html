@@ -2,7 +2,7 @@
 
   <div class="row widget">
     <div class="col s12">
-      <div class="radius{% if data.widget.shadow %} z-depth-1{% endif %}">
+      <div class="radius{% if data.widget.shadow or data.page.shadow %} z-depth-1{% endif %}">
         <div class="card z-depth-0">
 
           <div class="height-100{% if data.widget.lightboxOn %} lightbox{% endif %}">

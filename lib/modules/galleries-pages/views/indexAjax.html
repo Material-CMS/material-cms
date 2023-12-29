@@ -1,18 +1,13 @@
-<div class="ajax-append{% if data.page.ajaxAppend %} active{% endif %}">
+<div class="ajax-append {%- if data.page.ajaxAppend %} active {% endif -%}">
 
   {% if data.totalPages > 1 %}
-    <div class="pagination-wrapper{% if data.page.ajaxAppend %} hide{% endif %}">
+    <div class="pagination-wrapper">
       {% import 'apostrophe-pages:macros.html' as pager with context %}
       {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
     </div>
   {% endif %}
 
-  <div data-apos-ajax-append
-    class="radius main-color
-      {% if data.page.shadow %}
-        z-depth-1
-      {% endif %}"
-  >
+  <div data-apos-ajax-append class="radius main-color {%- if data.page.shadow %} z-depth-1 {% endif -%}">
 
     {# Include pieces.html from galleries-widget #}
     {% include "galleries-widgets:pieces.html" %}
@@ -20,7 +15,7 @@
   </div>
 
   {% if data.currentPage < data.totalPages %}
-    <div class="pagination-wrapper{% if data.page.ajaxAppend %} hide{% endif %}">
+    <div class="pagination-wrapper">
       <a class="btn btn-color btn-radius next"  href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}">
       {% if data.page.ajaxAppend %}
         {{ data.page.buttonText or 'Load More...' }}
