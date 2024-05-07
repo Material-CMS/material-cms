@@ -52,6 +52,15 @@
   }
   .card-stacked {
     height: 100% !important;
+    .card-content {
+      max-height: 1600px;
+      .transition(all, .5s, ease);
+    }
+    .card-content.collapsed {
+      padding-top: 0;
+      padding-bottom: 0;
+      max-height: 0;
+    }
   }
   @media (max-width: 600px) {
     .height-100 {

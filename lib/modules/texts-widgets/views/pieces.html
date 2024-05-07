@@ -106,7 +106,11 @@
                   style="background-color:{{ piece.backColor }}"
                 {% endif %}
               >
-                <div class="collapsible-header">
+                <div class="collapsible-header"
+                  {% if piece.backColor%}
+                    style="background-color:{{ piece.backColor }}"
+                  {% endif %}
+                >
                   <div class="row">
 
                     {% if piece.linkArea.items[0] %}
@@ -150,7 +154,11 @@
                 <li>
 
                 {% if piece.text.items[0] %}
-                  <div class="collapsible-header">
+                  <div class="collapsible-header"
+                    {% if piece.backColor%}
+                      style="background-color:{{ piece.backColor }}"
+                    {% endif %}
+                  >
                 {% endif %}
 
                     <div class="row">
