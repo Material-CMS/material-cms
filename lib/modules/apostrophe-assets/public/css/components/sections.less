@@ -157,43 +157,36 @@
       font-size: 2.4rem;
     }
   }
-	.apos-area {
-		width: 100%;
-	  .row.widget:not(.row.widget .row.widget) {
-			margin-left: auto;
-			margin-right: auto;
-      margin-bottom: 2.4rem;
-	    .col {
-	      padding: 0;
-				// columnts widgets
-				 .row.columns {
-           .columns-container {
-             // padding: 0 0.75rem;
-           }
-				}
-        // columns widgets as full card
-        .row.columns.card.radius {
-          .col {
-            .columns-container {
-              .row.widget {
-                margin-bottom: 0;
-                .radius.z-depth-1 {
-                  .border-radius(inherit);
-                  .box-shadow(none);
-                }
+  .row.widget:not(.row.widget .row.widget) {
+    margin-bottom: 2.4rem;
+    .col {
+      padding: 0;
+      // columns widgets as full card
+      .row.columns.card.radius {
+        .col {
+          .columns-container {
+            .row.widget {
+              margin-bottom: 0;
+              .radius.z-depth-1 {
+                .border-radius(inherit);
+                .box-shadow(none);
               }
             }
           }
-          .col:nth-child(-n+1) .columns-container {
-            padding-left: 0;
-          }
-          .col:nth-last-child(-n+1) .columns-container {
-            padding-right: 0;
-          }
         }
-	    }
-	  }
-	}
+        .col:nth-child(-n+1) .columns-container {
+          padding-left: 0;
+        }
+        .col:nth-last-child(-n+1) .columns-container {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+// Workaround for apos-area bigger than widgets-container
+.widgets-container > .apos-area {
+	width: 100%;
 }
 @media (max-width: 600px) {
 	.widgets-container {
@@ -220,7 +213,7 @@
 .widgets-container.glue-container {
   // all except last child
   .apos-area-widget-wrapper:nth-last-child(n+2) .widget {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
   // first child
   .apos-area-widget-wrapper:nth-child(-n+1) .radius:first-child {
