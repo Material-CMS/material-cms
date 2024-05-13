@@ -185,24 +185,17 @@
 
           {# Header #}
           {% if piece.header %}
-            <h2 class="section-header accent-color
-              {% if piece.headerAlign == 'left' %}
-                left-align
-              {% elif piece.headerAlign == 'center' %}
-                center-align
-              {% elif piece.headerAlign == 'right' %}
-                right-align
-              {% endif %}"
-              {% if piece.headerColor or piece.headerAdditionalFont %}
+            <h2 class="section-header accent-color {{ piece.headerAlign }}"
+              {%- if piece.headerColor or piece.headerAdditionalFont -%}
                 style="
-                  {% if piece.headerColor %}
+                  {%- if piece.headerColor -%}
                     color: {{ piece.headerColor }};
-                  {% endif %}
-                  {% if piece.headerAdditionalFont %}
+                  {%- endif -%}
+                  {%- if piece.headerAdditionalFont -%}
                     font-family: {{ additionalFont }}, sans-serif;
-                  {% endif %}
+                  {%- endif -%}
                 "
-              {% endif %}
+              {%- endif -%}
             >
               {{ piece.header }}
             </h2>
