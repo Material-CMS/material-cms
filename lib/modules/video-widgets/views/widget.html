@@ -2,42 +2,39 @@
   <div class="col s12 m12">
     <div class="radius {% if data.widget.shadow %} z-depth-1 {% endif %}">
       <div class="card z-depth-0">
-        <div class="card-stacked">
 
-          <div class="card-video">
+        <div class="card-video">
 
-          {% if data.widget.videoSource == 'extern' %}
+        {% if data.widget.videoSource == 'extern' %}
 
-            {{ apos.singleton(data.widget, 'apostropheVideo', { edit: false }) }}
+          {{ apos.singleton(data.widget, 'apostropheVideo', { edit: false }) }}
 
-          {% elif data.widget.videoSource == 'local' %}
+        {% elif data.widget.videoSource == 'local' %}
 
-            {% set vidFile = data.widget.filename.items[0]._pieces[0].attachment %}
-            {% set vidPoster = data.widget._poster.attachment %}
+          {% set vidFile = data.widget.filename.items[0]._pieces[0].attachment %}
+          {% set vidPoster = data.widget._poster.attachment %}
 
-            {% if vidPoster %}
-              <video
-                width=100%
-                controls
-                controlsList="nodownload"
-                poster="{{ apos.attachments.url(vidPoster, { size: data.options.size or 'two-thirds' }) }}"
-              >
-            {% else %}
-              <video
-                width=100%
-                controls
-                controlsList="nodownload"
-              >
-            {% endif %}
-                <source title="External Video" src="{{ apos.attachments.url(vidFile) }}" type='video/mp4' >
-                <button id="play">&gt;</button>
-                <button type="button" class="btn btn-primary">Primary</button>
-              </video>
+          {% if vidPoster %}
+            <video
+              width=100%
+              controls
+              controlsList="nodownload"
+              poster="{{ apos.attachments.url(vidPoster, { size: data.options.size or 'two-thirds' }) }}"
+            >
+          {% else %}
+            <video
+              width=100%
+              controls
+              controlsList="nodownload"
+            >
           {% endif %}
-
-          </div>
-
+              <source title="External Video" src="{{ apos.attachments.url(vidFile) }}" type='video/mp4' >
+              <button id="play">&gt;</button>
+              <button type="button" class="btn btn-primary">Primary</button>
+            </video>
+        {% endif %}
         </div>
+
       </div>
     </div>
   </div>
