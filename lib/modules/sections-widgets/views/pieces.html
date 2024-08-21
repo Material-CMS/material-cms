@@ -72,14 +72,7 @@
 
     {# Background Image #}
     {% if piece._backgroundImage and not piece.backgroundImageParallax %}
-      <div class="background-image">
-        <img
-          src="{{ apos.attachments.url(piece._backgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
-          srcset="{{ apos.images.srcset(piece._backgroundImage.attachment) }}"
-          sizes="(max-width:600px) 50vw, 60vw"
-          alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
-        >
-      </div>
+      <div class="background-image" style="background-image: url('{{ apos.attachments.url(piece._backgroundImage.attachment) }}');"></div>
     {% endif %}
 
     {# Small Side Image #}
