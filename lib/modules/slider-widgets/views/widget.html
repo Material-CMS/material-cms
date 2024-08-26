@@ -17,7 +17,7 @@
             <img data-image
               src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
               srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
-              sizes="(max-width:600px) 50vw, 60vw"
+              sizes="{{ data.options.sizesAttr or '100vw' }}"
               alt="{{ image.title }}"
               {% if data.widget.animated %}
                 class="animated"
