@@ -1,20 +1,21 @@
-{% macro base(dataTarget, dropdown, classes) %}
+{% macro base(dataTarget, dropdownTrigger, dropdownContent, classes) %}
 
 {# Cache data.options #}
 {% set options = data.options %}
 
   {# Home #}
-  <li {% if options.pageUrl == options.homeUrl %}class="active"{% endif %}>
+  <li {% if options.pageUrl == options.homeUrl %} class="active"{% endif %}>
 
     <a
       href="{% if options.pageUrl == options.homeUrl %}#{% else %}{{ options.homeUrl }}{% endif %}"
       data-target="{{ dataTarget }}"
       class="flow-text waves-effect underline
       {% if (options.pageUrl == options.homeUrl and options.pieces.length > 1) and options.pageType == 'home' %}
-        {{ dropdown }}
+        {{ dropdownTrigger }}
       {% endif %}"
     >
 
+    {% if dataTarget == 'dropdown-desktop' %}
       {% if (options.pageUrl == options.homeUrl and options.pieces.length > 1) and options.pageType == 'home' %}
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
           <path
@@ -25,13 +26,14 @@
           />
         </svg>
       {% endif %}
+    {% endif %}
 
       {{ options.homeTitle }}
     </a>
 
     {# Sections of Home Loop Dropdown #}
     {% if (options.pageUrl == options.homeUrl and options.pieces.length > 1) and options.pageType == 'home' %}
-      <ul id="{{ dataTarget }}" class="dropdown-content nav-color"
+      <ul id="{{ dataTarget }}" class="nav-color {{ dropdownContent }}"
         {% if data.widget.navColor %}
           style="background-color: {{ data.widget.navColor }} !important"
         {% endif %}
@@ -41,8 +43,7 @@
           <li>
             <a
               href="#{{ piece.slug }}"
-              class="
-                flow-text
+              class="flow-text
                 anchor-jump
                 waves-effect
                 {{ classes }}
@@ -63,26 +64,28 @@
   {# Tabs Loop #}
   {% for tab in options.homeChildren %}
 
-    <li {% if tab._url in options.pageUrl %}class="active"{% endif %}>
+    <li {% if tab._url in options.pageUrl %} class="active"{% endif %}>
 
       <a
         href="{% if options.pageUrl == tab._url %}#{% else %}{{ tab._url }}{% endif %}"
         data-target="{{ tab._id }}-{{ dataTarget }}"
         class="flow-text waves-effect underline
         {% if ((options.pageUrl == tab._url and options.pieces.length > 1 ) and options.pageType == 'home') or tab._children.length %}
-          {{ dropdown }}
+          {{ dropdownTrigger }}
         {% endif %}"
       >
 
-        {% if ((options.pageUrl == tab._url and options.pieces.length > 1) and options.pageType == 'home' ) or tab._children.length %}
-          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-            <path
-              d="M7 10l5 5 5-5z"
-              {% if navTextColor %}
-                fill="{{ navTextColor }}"
-              {% endif %}
-            />
-          </svg>
+        {% if dataTarget == 'dropdown-desktop' %}
+          {% if ((options.pageUrl == tab._url and options.pieces.length > 1) and options.pageType == 'home' ) or tab._children.length %}
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path
+                d="M7 10l5 5 5-5z"
+                {% if navTextColor %}
+                  fill="{{ navTextColor }}"
+                {% endif %}
+              />
+            </svg>
+          {% endif %}
         {% endif %}
 
         {{ tab.title }}
@@ -91,7 +94,7 @@
 
       {# Dropdown #}
       {% if (options.pageUrl == tab._url and options.pieces.length > 1) and options.pageType == 'home' %}
-        <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color dropdown-content"
+        <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color {{ dropdownContent }}"
           {% if data.widget.navColor %}
             style="background-color: {{ data.widget.navColor }} !important"
           {% endif %}
@@ -120,7 +123,7 @@
 
       {# Children of Tabs Dropdown #}
       {% elif tab._children.length %}
-        <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color dropdown-content"
+        <ul id="{{ tab._id }}-{{ dataTarget }}" class="nav-color {{ dropdownContent }}"
           {% if data.widget.navColor %}
             style="background-color: {{ data.widget.navColor }} !important"
           {% endif %}
@@ -129,14 +132,12 @@
           {# Children of Tabs #}
           {% for child in tab._children %}
 
-            <li
-              {% if options.pageUrl == child._url %}
-                class="active"
-              {% endif %}
-            >
-              <a href="{{ child._url }}" class="flow-text">
+            <li {% if options.pageUrl == child._url %} class="active"{% endif %}>
+
+              <a href="{{ child._url }}" class="flow-text waves-effect {{ classes }}">
                 {{ child.title }}
               </a>
+
             </li>
           {% endfor %}
 

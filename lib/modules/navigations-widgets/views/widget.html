@@ -120,9 +120,9 @@
           </li>
         {% else %}
           {% if data.widget.nav == 'default' %}
-            {{ automatic.base('dropdown-desktop','dropdown-trigger-hover', '') }}
+            {{ automatic.base('dropdown-desktop', 'dropdown-trigger-hover', 'dropdown-content', '') }}
           {% elif data.widget.nav == 'manual' and data.widget._pieces.length %}
-            {{ manual.base('dropdown-desktop','dropdown-trigger-hover') }}
+            {{ manual.base('dropdown-desktop', 'dropdown-trigger-hover', 'dropdown-content') }}
           {% else %}
             <div class="apos-area apos-empty">
               <i class="material-icons">clear</i>
@@ -164,9 +164,9 @@
 
     {# Include Nav #}
       {% if data.widget.nav == 'default' %}
-        {{ automatic.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
+        {{ automatic.base('', '', '', 'sidenav-close truncate') }}
       {% elif data.widget.nav == 'manual' and data.widget._pieces.length  %}
-        {{ manual.base('dropdown-mobile','dropdown-trigger', 'sidenav-close') }}
+        {{ manual.base('', '', '', 'sidenav-close truncate') }}
       {% else %}
         <div class="apos-area apos-empty">
           <i class="material-icons">clear</i>

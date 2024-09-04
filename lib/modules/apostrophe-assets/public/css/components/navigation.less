@@ -170,16 +170,21 @@
   .sidenav {
     width: 20rem !important;
     li {
+      line-height: initial;
       width: 100%;
       a {
-        height: 64px;
-        .flex();
-        .flex-align-items(center);
-        .flex-justify(center);
+        height: 56px;
+        line-height: 56px;
+        // .flex();
+        // .flex-align-items(center);
+        // .flex-justify(center);
+        // svg {
+        //     display: none;
+        // }
       }
-      @media (max-width: 600px) {
-        a {
-          height: 56px;
+      ul {
+        li {
+          padding-left: 24px;
         }
       }
     }
