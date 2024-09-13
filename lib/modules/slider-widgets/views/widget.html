@@ -1,110 +1,54 @@
-<div class="slider fullscreen"
-  {% if data.widget.sliderHalf %}
-    style="height: 50vh"
-  {%- endif -%}
-  >
-  <ul class="slides">
+<div class="swiper-container gradient-overlay" style="height: {{ data.widget.sliderHeight }}vh">
+  <div class="swiper-wrapper">
 
     {% block items %}
-
       {% for entry in data.widget._pieces %}
         {% set image = entry.item or entry %}
         {% set relationship = entry.relationship %}
 
-        <li>
-
-          <div class="gradient-overlay">
-            <img data-image
-              src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
-              srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
-              sizes="{{ data.options.sizesAttr or '100vw' }}"
-              alt="{{ image.title }}"
-              {% if data.widget.animated %}
-                class="animated"
-              {% endif %}
-              {% if apos.attachments.hasFocalPoint(relationship) %}
-                style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
-              {% endif -%}
-            >
-          </div>
-
-          <div class="caption valign-wrapper {{ data.widget.imageCaptionAlign }}">
-
-            {% if data.widget.title %}
-              <h3 class="text-color truncate"
-                {% if data.widget.imageCaptionColor %}
-                  style="color:{{ data.widget.imageCaptionColor }}"
-                {% endif %}
-              >
-                {{ image.title }}
-              </h3>
+        <div class="swiper-slide">
+          <img data-image
+            src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
+            srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
+            sizes="{{ data.options.sizesAttr or '100vw' }}"
+            alt="{{ image.title }}"
+            {% if data.widget.animated %}
+              class="animated"
             {% endif %}
+            {% if apos.attachments.hasFocalPoint(relationship) %}
+              style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+            {% endif -%}
+          >
+        </div>
 
-            {% if image.description %}
-              <p class="flow-text"
-                {% if image.descriptionColor %}
-                  style="color:{{ image.descriptionColor }}"
-                {% endif %}
-              >
-                {{ image.description | nlbr }}
-              </p>
+        {% if image.credit %}
+          <div class="credit">
+            {% if image.creditUrl %}
+                <a href="{{ image.creditUrl }}" target="_blank">
             {% endif %}
-
-          </div>
-
-          {% if image.credit %}
-            <div class="credit">
-              {% if image.creditUrl %}
-                  <a href="{{ image.creditUrl }}" target="_blank">
-              {% endif %}
-                    <span>{{ image.credit }}</span>
-              {% if image.creditUrl %}
-                  </a>
-              {% endif %}
-          </div>
-          {% endif %}
-
-        </li>
+                  <span>{{ image.credit }}</span>
+            {% if image.creditUrl %}
+                </a>
+            {% endif %}
+        </div>
+        {% endif %}
 
       {% endfor %}
     {% endblock %}
 
-  </ul>
+  </div>
+
+  {% if data.widget.pagination and data.widget._pieces.length > 1 %}
+    <div class="swiper-pagination"></div>
+  {% endif %}
+
 </div>
 
 <style>
-  {% if data.widget._pieces.length <= 1 %}
-    .slider .indicators {
-      display: none
-    }
-  {% endif %}
   {% if data.widget.gradientColorTop or data.widget.gradientColorBottom %}
-    .gradient-overlay:after {
+    .swiper-container.gradient-overlay:after {
+      opacity: 1;
       background: linear-gradient(
-        {% if data.widget.gradientColorTop %}
-          {{ data.widget.gradientColorTop }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %},
-        {% if data.widget.gradientColorBottom %}
-          {{ data.widget.gradientColorBottom }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %}
-      );
-      background: -o-linear-gradient(
-        {% if data.widget.gradientColorTop %}
-          {{ data.widget.gradientColorTop }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %},
-        {% if data.widget.gradientColorBottom %}
-          {{ data.widget.gradientColorBottom }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %}
-      );
-      background: -webkit-linear-gradient(
         {% if data.widget.gradientColorTop %}
           {{ data.widget.gradientColorTop }}
         {% else %}

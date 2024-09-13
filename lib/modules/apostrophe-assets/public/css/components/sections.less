@@ -24,6 +24,47 @@
 			height: 25vh;
 		}
 	}
+	.swiper-container {
+		height: calc(100vh - 64px);
+		.swiper-wrapper {
+			.swiper-slide {
+				overflow: hidden;
+				img {
+					width: 100%;
+					height: 100%;
+					.object-fit(cover);
+				}
+				img.animated {
+					.animation(move 80s infinite);
+					.keyframes(move;{
+						0% {
+							.transform-origin (bottom left);
+							.transform(scale(1.0))
+						}
+						50% {
+							.transform(scale(1.2))
+						}
+						100% {
+							.transform(scale(1.0))
+						}
+					});
+				}
+			}
+		}
+	}
+	@media (max-width: 600px) {
+		.swiper-container {
+			height: calc(100vh - 56px);
+		}
+	}
+	.swiper-container.gradient-overlay:after {
+		content:'';
+		z-index: 3;
+		position:absolute;
+		left:0; top:0;
+		width:100%; height:100%;
+		display:inline-block;
+	}
 	// Shape Dividers
   .shape-divider-top {
 		position: absolute;
