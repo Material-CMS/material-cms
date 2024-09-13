@@ -27,23 +27,24 @@
                     {%- endif -%}
                   >
 
-                  {% if data.widget.titleDisplay %}
-                    <span class="card-title {{ data.widget.titleAlign }}"
-                      {%- if data.widget.titleBackgroundColor -%}
-                        style="background-color: {{ data.widget.titleBackgroundColor }}"
+                    <span class="card-title {{ data.widget.elementsAlign }}"
+                      {%- if data.widget.elementsBackgroundColor -%}
+                        style="background-color: {{ data.widget.elementsBackgroundColor }}"
                       {%- endif -%}
                     >
-                      <h4 class="flow-text accent-color{% if data.widget.linkButton %} margin{% endif %}"
-                        {%- if data.widget.titleColor -%}
-                          style="color:{{ data.widget.titleColor }}"
-                        {%- endif -%}
-                      >
-                        {{ image.title }}
-                      </h4>
 
-                      {% if data.widget.linkButton %}
-                        <span
-                          class="btn btn-color btn-radius"
+                      {% if data.widget.titleDisplay %}
+                        <h4 class="flow-text accent-color{% if data.widget.linkButton %} margin{% endif %}"
+                          {%- if data.widget.titleColor -%}
+                            style="color:{{ data.widget.titleColor }}"
+                          {%- endif -%}
+                        >
+                          {{ image.title }}
+                        </h4>
+                      {% endif %}
+
+                      {% if data.widget.linkArea.items.length %}
+                        <span class="btn btn-color btn-radius"
                           {% if linkItem.color %}
                             style="color: {{ linkItem.color }}"
                           {% endif %}
@@ -53,7 +54,6 @@
                       {% endif %}
 
                     </span>
-                  {% endif %}
 
                   {% if image.credit %}
                     <div class="credit">
@@ -68,72 +68,15 @@
                   {% endif %}
 
                 </div>
-
-                {% if not data.widget.linkButton %}
-                  <span
-                    class="center flow-text accent-color click-action-link"
-                    {% if linkItem.color %}
-                      style="color: {{ linkItem.color }}"
-                    {% endif %}
-                  >
-                    {{ linkItem.label or linkItem._page.title }}
-                  </span>
-                {% endif %}
-
               </div>
             </a>
 
             {% if image.description %}
               <div class="card-content">
-                <p class="flow-text">
-
-                  {{ image.description | nlbr }}
-
-                </p>
+                <p class="flow-text">{{ image.description | nlbr }}</p>
               </div>
             {% endif %}
 
-            <style>
-              #{{ data.widget._id }}.gradient-overlay:after {
-                display: inline-block !important;
-                background: linear-gradient(
-                  {% if data.widget.gradientColorTop %}
-                    {{ data.widget.gradientColorTop }}
-                  {% else %}
-                    rgba(0, 0, 0, 0.7)
-                  {% endif %},
-                  {% if data.widget.gradientColorBottom %}
-                    {{ data.widget.gradientColorBottom }}
-                  {% else %}
-                    rgba(0, 0, 0, 0.7)
-                  {% endif %}
-                );
-                background: -o-linear-gradient(
-                  {% if data.widget.gradientColorTop %}
-                    {{ data.widget.gradientColorTop }}
-                  {% else %}
-                    rgba(0, 0, 0, 0.7)
-                  {% endif %},
-                  {% if data.widget.gradientColorBottom %}
-                    {{ data.widget.gradientColorBottom }}
-                  {% else %}
-                    rgba(0, 0, 0, 0.7)
-                  {% endif %}
-                );
-                background: -webkit-linear-gradient(
-                  {% if data.widget.gradientColorTop %}
-                    {{ data.widget.gradientColorTop }}
-                  {% else %}
-                    rgba(0, 0, 0, 0.7)
-                  {% endif %},
-                  {% if data.widget.gradientColorBottom %}
-                    {{ data.widget.gradientColorBottom }}
-                  {% else %}
-                    rgba(0, 0, 0, 0.7)
-                  {% endif %}
-                );
-              }
-            </style>
           {% endfor %}
 
         </div>
