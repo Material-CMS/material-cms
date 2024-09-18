@@ -13,14 +13,8 @@
     }
   }
   .sections-content {
-    min-height: 87vh;
+    min-height: 100vh;
     position: relative;
-    .apos-empty[data-dot-path="sectionArea"] {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      transform: translate(0, -50%);
-    }
     .apos-empty[data-dot-path="shapeDividerTop"],
     .apos-empty[data-dot-path="shapeDividerBottom"] {
       height: 5rem;
@@ -79,44 +73,37 @@
   }
 }
 // Empty widget area
-.slide-content {
-  .apos-empty {
-    width: 100%;
+.apos-empty {
+  width: 100%;
+  .material-icons {
     position: absolute;
-    top: 25%;
+    color: @red;
+    font-size: 4rem;
+    top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -25%);
+    transform: translate(-50%, -50%);
+  }
+  .flow-text {
+    position: absolute;
+    color: @black;
+    text-transform: uppercase;
+    bottom: 0;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
   }
 }
-.main-content {
+.section {
   .apos-empty {
     position: relative;
     top: 0;
     left: 0;
     transform: translate(0, 0);
-    .material-icons {
-      position: absolute;
-      color: @red;
-      font-size: 4rem;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%);
-    }
-    .flow-text {
-      position: absolute;
-      color: @black;
-      text-transform: uppercase;
-      bottom: 0;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%);
-    }
   }
-  .apos-area.apos-empty {
-    min-height: 200px;
-  }
+  // .apos-area.apos-empty {
+  //   min-height: 200px;
+  // }
 }
 fieldset {
   .apos-area-widget,

@@ -12,7 +12,7 @@
   {% set backgroundColor = piece.backgroundColor or global.backgroundColor %}
 
   {# Parallax Container #}
-  {% if piece.sectionStyle == 'default' and (piece._backgroundImage and piece.backgroundImageParallax) %}
+  {% if not piece.sectionSlide and (piece._backgroundImage and piece.backgroundImageParallax) %}
     <div class="parallax-container">
 
       {# Parallax Image #}
@@ -24,41 +24,6 @@
           alt="{{ piece._backgroundImage.description or piece._backgroundImage.title }}"
         >
       </div>
-
-      {# Top Shape Divider Parallax #}
-      {% if piece.shapeDividerTop.items[0] %}
-        <div class="shape-divider-top divider-parallax"
-          {% if backgroundColor %}
-            style="fill: {{ backgroundColor }}"
-          {% endif %}
-        >
-          {{ apos.area(piece, 'shapeDividerTop', {
-            limit: 1,
-            widgets: {
-              'shape-divider-path': {
-                addLabel: 'Add Top Shape Divider',
-                editLabel: 'Change Top Shape Divider',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  movable: false,
-                  position: 'top-left'
-                }
-              },
-              'shape-divider-file': {
-                addLabel: 'Add Top Shape Divider',
-                editLabel: 'Change Top Shape Divider',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  movable: false,
-                  position: 'top-left'
-                }
-              }
-            }
-          }) }}
-        </div>
-      {% endif %}
 
     </div>
   {% endif %}
@@ -75,26 +40,17 @@
       <div class="background-image" style="background-image: url('{{ apos.attachments.url(piece._backgroundImage.attachment) }}');"></div>
     {% endif %}
 
-    {# Small Side Image #}
-    {% if piece._sideImage %}
-      <div class="side-image"
-        {% if piece.sideImageRight %}
-          style="right:0;"
-        {% endif %}
-      >
-        <img
-          src="{{ apos.attachments.url(piece._sideImage.attachment, { size: data.options.size or 'one-third' }) }}"
-          srcset="{{ apos.images.srcset(piece._sideImage.attachment) }}"
-          sizes="(max-width:600px) 50vw, 40vw"
-          alt="{{ piece._sideImage.description or piece._sideImage.title }}"
-        >
-      </div>
-    {% endif %}
-
     {# Slide #}
-    {% if piece.sectionStyle == 'slide' %}
+    {% if piece.sectionSlide %}
 
-      <div class="slide-content">
+      {% if  piece.backgroundImageParallax %}
+
+        <div class="apos-area apos-empty">
+          <i class="material-icons">clear</i>
+          <p class="flow-text">Deactivate parralax background for slider!<p>
+        </div>
+
+      {% else %}
 
         {{ apos.singleton(piece, 'sliderContent', 'slider', {
           size: 'full',
@@ -109,42 +65,7 @@
           }
         }) }}
 
-        {# Top Shape Divider #}
-        {% if piece.shapeDividerTop.items[0] and not (piece._backgroundImage and piece.backgroundImageParallax) %}
-          <div class="shape-divider-top divider-slide"
-            {% if backgroundColor %}
-              style="fill: {{ backgroundColor }}"
-            {% endif %}
-          >
-            {{ apos.area(piece, 'shapeDividerTop', {
-              limit: 1,
-              widgets: {
-                'shape-divider-path': {
-                  addLabel: 'Add Top Shape Divider',
-                  editLabel: 'Change Top Shape Divider',
-                  controls: {
-                    cloneable: false,
-                    removable: true,
-                    movable: false,
-                    position: 'top-left'
-                  }
-                },
-                'shape-divider-file': {
-                  addLabel: 'Add Top Shape Divider',
-                  editLabel: 'Change Top Shape Divider',
-                  controls: {
-                    cloneable: false,
-                    removable: true,
-                    movable: false,
-                    position: 'top-left'
-                  }
-                }
-              }
-            }) }}
-          </div>
-        {% endif %}
-
-      </div>
+      {% endif %}
 
     {% endif %}
 
@@ -195,184 +116,7 @@
           {% endif %}
 
           {# Content #}
-          {{ apos.area(piece, 'content', {
-            widgets: {
-              'card': {
-                addLabel: 'Image',
-                editLabel: 'Cange Image',
-                size: 'one-half',
-                limit: 1,
-                noHeight: true,
-                sizesAttr: '(max-width:600px) 50vw, 40vw',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'card-anime': {
-                addLabel: 'Image Animated',
-                editLabel: 'Cange Anime Image',
-                size: 'one-half',
-                limit: 1,
-                noHeight: true,
-                sizesAttr: '(max-width:600px) 50vw, 40vw',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'card-link': {
-                addLabel: 'Image Link',
-                editLabel: 'Cange Link Image',
-                size: 'one-half',
-                limit: 1,
-                noHeight: true,
-                sizesAttr: '(max-width:600px) 50vw, 40vw',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'double': {
-                addLabel: 'Double Elements',
-                editLabel: 'Cange Elements',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'bottom-right'
-                }
-              },
-              'events': {
-                addLabel: 'Events',
-                editLabel: 'Cange Events',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'iframe': {
-                addLabel: 'Iframe',
-                editLabel: 'Cange Iframe',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'link': {
-                addLabel: 'Link to Anywhere',
-                editLabel: 'Cange Link',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'bottom-right'
-                }
-              },
-              'link-page': {
-                addLabel: 'Link to a Page',
-                editLabel: 'Cange Link',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'bottom-right'
-                }
-              },
-              'call-to-action': {
-                addLabel: 'Call To Action Button',
-                editLabel: 'Cange Button',
-                controls: {
-                  movable: true,
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'grid': {
-                addLabel: 'Grid Elements',
-                editLabel: 'Cange Grid',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'texts': {
-                addLabel: 'Texts',
-                editLabel: 'Cange Texts',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'triple': {
-                addLabel: 'Triple Elements',
-                editLabel: 'Cange Elements',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'bottom-right'
-                }
-              },
-              'video': {
-                addLabel: 'Video',
-                editLabel: 'Cange Video',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'galleries': {
-                addLabel: 'Galleries',
-                editLabel: 'Cange Galleries',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'people': {
-                addLabel: 'People',
-                editLabel: 'Cange People',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'tables': {
-                addLabel: 'Tables',
-                editLabel: 'Cange Tables',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'swiper': {
-                addLabel: 'Swiper',
-                editLabel: 'Cange Swiper',
-                controls: {
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              },
-              'apostrophe-forms': {
-                controls: {
-                  movable: false,
-                  cloneable: false,
-                  removable: true,
-                  position: 'top-right'
-                }
-              }
-            }
-          }) }}
+          {% include "components/content.html" %}
 
         {# Container End #}
         {% if piece.container %}

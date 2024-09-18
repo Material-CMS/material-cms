@@ -1,45 +1,79 @@
-<div class="swiper-container gradient-overlay" style="height: {{ data.widget.sliderHeight }}vh">
-  <div class="swiper-wrapper">
+<div class="slide-content">
 
-    {% block items %}
-      {% for entry in data.widget._pieces %}
-        {% set image = entry.item or entry %}
-        {% set relationship = entry.relationship %}
+  <div class="swiper-container gradient-overlay" style="height: {{ data.widget.sliderHeight }}vh">
+    <div class="swiper-wrapper">
 
-        <div class="swiper-slide">
-          <img data-image
-            src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
-            srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
-            sizes="{{ data.options.sizesAttr or '100vw' }}"
-            alt="{{ image.title }}"
-            {% if data.widget.animated %}
-              class="animated"
-            {% endif %}
-            {% if apos.attachments.hasFocalPoint(relationship) %}
-              style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
-            {% endif -%}
-          >
-        </div>
+      {% block items %}
+        {% for entry in data.widget._pieces %}
+          {% set image = entry.item or entry %}
+          {% set relationship = entry.relationship %}
 
-        {% if image.credit %}
-          <div class="credit">
-            {% if image.creditUrl %}
-                <a href="{{ image.creditUrl }}" target="_blank">
-            {% endif %}
-                  <span>{{ image.credit }}</span>
-            {% if image.creditUrl %}
-                </a>
-            {% endif %}
-        </div>
-        {% endif %}
+          <div class="swiper-slide">
+            <img data-image
+              src="{{ apos.attachments.url(image.attachment, { size: data.options.size or 'full', crop: relationship }) }}"
+              srcset="{{ apos.images.srcset(image.attachment, relationship) }}"
+              sizes="{{ data.options.sizesAttr or '100vw' }}"
+              alt="{{ image.title }}"
+              {% if data.widget.animated %}
+                class="animated"
+              {% endif %}
+              {% if apos.attachments.hasFocalPoint(relationship) %}
+                style="object-position: {{ apos.attachments.focalPointToBackgroundPosition(relationship) }}"
+              {% endif -%}
+            >
+          </div>
 
-      {% endfor %}
-    {% endblock %}
+          {% if image.credit %}
+            <div class="credit">
+              {% if image.creditUrl %}
+                  <a href="{{ image.creditUrl }}" target="_blank">
+              {% endif %}
+                    <span>{{ image.credit }}</span>
+              {% if image.creditUrl %}
+                  </a>
+              {% endif %}
+          </div>
+          {% endif %}
+
+        {% endfor %}
+      {% endblock %}
+
+    </div>
+
+    {% if data.widget.pagination and data.widget._pieces.length > 1 %}
+      <div class="swiper-pagination"></div>
+    {% endif %}
 
   </div>
 
-  {% if data.widget.pagination and data.widget._pieces.length > 1 %}
-    <div class="swiper-pagination"></div>
+  {% if data.widget.shapeDivider %}
+    <div class="shape-divider"{% if backgroundColor %} style="fill:{{ backgroundColor }}"{% endif %}>
+      {{ apos.area(data.widget, 'shapeDivider', {
+        limit: 1,
+        widgets: {
+          'shape-divider-path': {
+            addLabel: 'Add Top Shape Divider',
+            editLabel: 'Change Top Shape Divider',
+            controls: {
+              cloneable: false,
+              removable: true,
+              movable: false,
+              position: 'top-left'
+            }
+          },
+          'shape-divider-file': {
+            addLabel: 'Add Top Shape Divider',
+            editLabel: 'Change Top Shape Divider',
+            controls: {
+              cloneable: false,
+              removable: true,
+              movable: false,
+              position: 'top-left'
+            }
+          }
+        }
+      }) }}
+    </div>
   {% endif %}
 
 </div>
