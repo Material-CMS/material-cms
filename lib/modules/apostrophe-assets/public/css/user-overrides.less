@@ -20,6 +20,11 @@
       height: 5rem;
     }
   }
+  .sections-content > .apos-empty {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
   .fixed-action-btn {
     width: inherit;
   }
@@ -76,15 +81,17 @@
 .apos-empty {
   width: 100%;
   .material-icons {
+    display: block !important;
     position: absolute;
     color: @red;
     font-size: 4rem;
-    top: 50%;
+    top: 30%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
   }
   .flow-text {
+    display: block !important;
     position: absolute;
     color: @black;
     text-transform: uppercase;
@@ -93,17 +100,6 @@
     margin-right: -50%;
     transform: translate(-50%);
   }
-}
-.section {
-  .apos-empty {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: translate(0, 0);
-  }
-  // .apos-area.apos-empty {
-  //   min-height: 200px;
-  // }
 }
 fieldset {
   .apos-area-widget,

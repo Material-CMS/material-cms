@@ -46,7 +46,7 @@
 
   </div>
 
-  {% if data.widget.shapeDivider %}
+  {% if data.widget.shapeDivider.length %}
     <div class="shape-divider"{% if backgroundColor %} style="fill:{{ backgroundColor }}"{% endif %}>
       {{ apos.area(data.widget, 'shapeDivider', {
         limit: 1,
