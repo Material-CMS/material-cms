@@ -19,7 +19,7 @@
           ></iframe>
 
           {% if data.widget._previewImage.attachment %}
-            <div class="background-image">
+            <div class="loading-image">
               <img
                 src="{{ apos.attachments.url(data.widget._previewImage.attachment, { size: data.options.size or 'one-third' }) }}"
                 srcset="{{ apos.images.srcset(data.widget._previewImage.attachment) }}"
