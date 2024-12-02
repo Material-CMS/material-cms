@@ -58,10 +58,15 @@ cd material-cms
 npm install
 # Copy local.example.js to data and add a individual session secret to be able to login
 cp local.example.js data/local.js
+
+# (Optional) Start mongodb and redis with docker for development purposes
+npm run dev:docker:up
+
 # Replace USERNAME with your individual name and add it to admin group; prompts for password
 node app.js apostrophe-users:add USERNAME admin
 # Go go go!
 npm start
+
 # Open Browser "http://localhost:3000/login" to login with your user to add content
 ```
 
