@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "build": "babel src -d build"
+    "build": "babel src -d build",
+    "dev:docker:up": "docker compose -f ./docker-compose.dev.yml up -d --wait",
+    "dev:docker:down": "docker compose -f ./docker-compose.dev.yml down"
   },
   "repository": {
     "type": "git",
