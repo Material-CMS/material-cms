@@ -16,7 +16,7 @@
   "author": "Felix Langenberg",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.227.4",
+    "apostrophe": "^2.227.11",
     "apostrophe-caches-redis": "^2.1.6",
     "apostrophe-favicons": "^2.0.7",
     "apostrophe-forms": "^1.12.0",
@@ -25,8 +25,8 @@
     "apostrophe-palette": "^2.0.30",
     "apostrophe-pieces-orderings-bundle": "^2.1.3",
     "apostrophe-rich-text-permalinks": "^2.0.5",
-    "apostrophe-seo": "^1.6.1",
-    "apostrophe-site-map": "^2.9.0",
+    "apostrophe-seo": "^1.7.0",
+    "apostrophe-site-map": "^2.10.0",
     "html-minifier": "^4.0.0",
     "mozjpeg": "^7.1.1",
     "redis": "^3.1.2"
