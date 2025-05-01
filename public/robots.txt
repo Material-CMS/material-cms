@@ -1,7 +1,23 @@
 User-agent: *
-
+Crawl-delay: 10
 Disallow: /login
-Disallow: /modules/footer-widgets/legal
-Disallow: /modules/footer-widgets/privacy
+Disallow: /modules/
 
-Allow: /
+Allow: /public/
+Allow: /*.js
+Allow: /*.css
+
+User-agent: Nuclei
+User-agent: WikiDo
+User-agent: Riddler
+User-agent: PetalBot
+User-agent: Zoominfobot
+User-agent: Go-http-client
+User-agent: Node/simplecrawler
+User-agent: CazoodleBot
+User-agent: dotbot/1.0
+User-agent: Gigabot
+User-agent: Barkrowler
+User-agent: BLEXBot
+User-agent: magpie-crawler
+Disallow: /
