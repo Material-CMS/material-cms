@@ -37,7 +37,10 @@
 
     {# Background Image #}
     {% if piece._backgroundImage and not piece.backgroundImageParallax %}
-      <div class="background-image" style="background-image: url('{{ apos.attachments.url(piece._backgroundImage.attachment) }}');"></div>
+      <div class="background-image"
+        style="background-image: url('{{ apos.attachments.url(piece._backgroundImage.attachment) }}');
+          background-position: {{ piece.backgroundImagePosition }};">
+      </div>
     {% endif %}
 
     {# Slide #}
@@ -70,13 +73,7 @@
     {% endif %}
 
     {# Main Content#}
-    <div class="main-content
-      {% if data.widget.sectionMinHeight %}
-        min-height
-      {% endif %}
-      {% if data.widget.sectionMinHeight and piece.sectionStyle == 'slide' %}
-        half-height
-      {% endif %}"
+    <div class="main-content{% if piece.sectionMinHeight %} min-height{% endif %}"
       {% if piece.shapeDividerTop.items[0] %}
         style="padding-top: calc(100vw * {{ piece.shapeDividerTop.items[0].shapeDividerHeight }})"
       {% endif %}
@@ -84,10 +81,10 @@
 
       {# Widgets Container #}
       <div class="widgets-container
-        {% if piece.content.items.length > 1 and piece.glueWidgets == true %}
+        {% if piece.content.items.length > 1 and piece.glueWidgets %}
           glue-container
         {% endif %}
-        {% if (piece.content.items[0].type == 'double' or piece.content.items[0].type == 'triple') and piece.glueWidgets == true %}
+        {% if (piece.content.items[0].type == 'double' or piece.content.items[0].type == 'triple') and piece.glueWidgets %}
           glue-container-columns-single
         {% endif %}
       ">
