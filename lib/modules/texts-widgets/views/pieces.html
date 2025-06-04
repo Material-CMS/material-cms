@@ -9,7 +9,7 @@
     {% else %}
       horizontal
     {% endif %}"
-    {% if piece.backColor%}
+    {% if piece.backColor %}
        style="background-color:{{ piece.backColor }}"
     {% endif %}
   >
@@ -33,7 +33,7 @@
 
     {% if not piece.blog and piece.sideImage.items[0] %}
     <div class="row">
-      <div class="height-100 col s12{% if piece.sideImageLeft == true %} m3 push-m9{% else %} m3{% endif %}">
+      <div class="height-100 col s12 m3{% if piece.sideImageLeft %} push-m9{% endif %}">
         <div class="card-image">
           {{ apos.area(piece, 'sideImage', {
             edit: false,
@@ -51,7 +51,7 @@
       {% endif %}
 
       {% if not piece.blog and piece.sideImage.items[0] %}
-      <div class="height-100 col s12{% if piece.sideImageLeft == true %} m9 pull-m3{% else %} m9{% endif %}">
+      <div class="height-100 col s12 m9{% if piece.sideImageLeft %} pull-m3{% endif %}">
       {% endif %}
 
         <div class="card-stacked main-color"
@@ -65,14 +65,7 @@
               {% if piece._url and piece.description.items[0] %}
                 <a href="{{ piece._url }}">
               {% endif %}
-                  <h3 class="accent-color card-title
-                    {% if piece.titleAlign == 'left' %}
-                      left-align
-                    {% elif piece.titleAlign == 'center' %}
-                      center-align
-                    {% elif piece.titleAlign == 'right' %}
-                      right-align
-                    {% endif %}"
+                  <h3 class="accent-color card-title {{piece.titleAlign}}"
                     {% if piece.titleColor or piece.titleAdditionalFont %}
                       style="
                         {% if piece.titleColor %}

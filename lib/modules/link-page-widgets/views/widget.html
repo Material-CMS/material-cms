@@ -1,12 +1,4 @@
-<h4 class="
-  {%- if data.widget.headerAlign == 'left' -%}
-    left-align
-  {%- elif data.widget.headerAlign == 'center' -%}
-    center-align
-  {%- elif data.widget.headerAlign == 'right' -%}
-    right-align
-  {%- endif -%}"
->
+<h4 class="{{ data.widget.headerAlign }}">
   <a
     class="accent-color"
     href="{{ data.widget._page._url }}"
