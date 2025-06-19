@@ -1,20 +1,11 @@
 {% set item = data.widget.callToActionLink.items[0] %}
-<h4 class="
-  {%- if data.widget.align == 'left' -%}
-    left-align
-  {%- elif data.widget.align == 'center' -%}
-    center-align
-  {%- elif data.widget.align == 'right' -%}
-    right-align
-  {%- endif -%}"
->
-
+<h4 class="{{ data.widget.align }}">
   <a
-    class="waves-effect waves-light btn btn-large btn-color btn-radius"
+    class="waves-effect waves-light btn btn-large btn-radius"
     href="{{ item.url or item._page._url }}"
     target="_blank"
     rel="noopener"
-    style="background-color: {{ data.widget.color or data.global.accentColor }}
+    style="background-color: {{ data.widget.color or data.global.btnColor }}
       {% if item.color %}
         ; color: {{ item.color }}
       {% endif %}"
