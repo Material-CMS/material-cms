@@ -8,6 +8,7 @@
 {% set gradientColorBottom = data.widget.gradientColorBottom or global.gradientColorBottom %}
 {% set navTextColor = data.widget.navTextColor or global.navTextColor %}
 {% set navGoBack = data.widget.navGoBack or global.navGoBack %}
+{% set navDouble = data.widget.navDouble or global.navDouble %}
 
 <div class="nav">
 
@@ -16,12 +17,18 @@
     {% include "components/background.html" %}
   {% endif %}
 
+  {% if navDouble %}
+    <div class="nav-background nav-color">
+      <div class="nav-double"></div>
+    </div>
+  {% endif %}
+
   {# Desktop #}
-  <nav class="nav-extended{% if navBackgroundImage %} nav-pushpin{% endif %}">
+  <nav class="nav-extended{% if navBackgroundImage or navDouble %} nav-pushpin{% endif %}">
 
     {# Nav Wrapper #}
     <div class="
-        nav-wrapper pin-top nav-color
+        nav-wrapper big pin-top nav-color
         {% if data.widget.navShadow or global.navShadow %}
           z-depth-2
         {% endif %}
@@ -29,16 +36,13 @@
           nav-text-color
         {% endif %}
       "
-    {% if data.widget.navColor or navTextColor or navBackgroundImage %}
+    {% if data.widget.navColor or navTextColor %}
       style="
         {% if data.widget.navColor %}
           background-color: {{ data.widget.navColor }} !important;
         {% endif %}
         {% if navTextColor %}
           color: {{ navTextColor }};
-        {% endif %}
-        {% if navBackgroundImage %}
-          position: relative;
         {% endif %}
       "
     {% endif %}
