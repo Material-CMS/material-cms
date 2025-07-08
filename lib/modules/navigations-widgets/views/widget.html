@@ -71,7 +71,7 @@
 
       {# Sidenav Trigger #}
       {% if data.page.orphan or data.piece %}
-        <a href="javascript:history.back()" class="flow-text waves-effect hide-on-large-only go-back">
+        <a href="#" class="flow-text waves-effect hide-on-large-only go-back">
 
           <i class="material-icons center">
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
@@ -101,6 +101,7 @@
 
         </a>
       {% endif %}
+
       <ul class="nav-activator right hide-on-med-and-down">
 
         {# Extra Links #}
@@ -109,7 +110,7 @@
         {# Include Nav #}
         {% if data.page.orphan or data.piece %}
           <li>
-            <a href="javascript:history.back()" class="flow-text waves-effect go-back">
+            <a href="#" class="flow-text waves-effect go-back">
               <i class="material-icons left">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
                   <path d="M480 896 160 576l320-320 57 56-224 224h487v80H313l224 224-57 56Z"
@@ -123,6 +124,7 @@
             </a>
           </li>
         {% else %}
+
           {% if data.widget.nav == 'default' %}
             {{ automatic.base('dropdown-desktop', 'dropdown-trigger-hover', 'dropdown-content', '') }}
           {% elif data.widget.nav == 'manual' and data.widget._pieces.length %}
@@ -133,6 +135,7 @@
               <p class="flow-text hide">no navigation<p>
             </div>
           {% endif %}
+
         {% endif %}
 
       </ul>
@@ -146,10 +149,7 @@
 {% if not data.page.orphan or data.piece %}
   <ul id="mobile"
 
-    class="sidenav nav-color
-      {% if navTextColor %}
-        nav-text-color
-      {% endif %}"
+    class="sidenav nav-color{% if navTextColor %} nav-text-color{% endif %}"
 
     {% if data.widget.navColor or navTextColor %}
       style="
