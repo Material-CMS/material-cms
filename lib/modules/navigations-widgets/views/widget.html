@@ -147,10 +147,7 @@
 
 {# Mobile Sidenav #}
 {% if not data.page.orphan or data.piece %}
-  <ul id="mobile"
-
-    class="sidenav nav-color{% if navTextColor %} nav-text-color{% endif %}"
-
+  <ul id="mobile" class="sidenav nav-color{% if navTextColor %} nav-text-color{% endif %}"
     {% if data.widget.navColor or navTextColor %}
       style="
         {% if data.widget.navColor %}
