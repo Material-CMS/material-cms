@@ -170,8 +170,8 @@ Examples:
   ./html_inspect.sh                          # Inspect default health endpoint
   ./html_inspect.sh --json                   # Output structured JSON from default endpoint
   ./html_inspect.sh --raw                    # Output raw response
-  ./html_inspect.sh http://localhost:8080/health  # Inspect custom URL
-  ./html_inspect.sh --json http://localhost:8080/api/v1/stats  # Structured JSON from stats
+  ./html_inspect.sh http://localhost:3000 # Inspect custom URL
+  ./html_inspect.sh --json http://localhost:3000  # Structured JSON from stats
 
 Exit Codes:
   0 - Success (request completed, regardless of HTTP status)
