@@ -7,6 +7,7 @@
     {%- if data.widget.headerAdditionalFont -%}
     ; font-family: {{ additionalFont }}, sans-serif;
     {%- endif -%}"
+    {{ data.widget.header | translationsAttribute }}
 >
   {{ data.widget.header | i18n }}
 </h2>
