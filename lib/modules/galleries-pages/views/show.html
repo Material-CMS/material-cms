@@ -5,6 +5,14 @@
   <div class="main-content">
     <div class="pages-container">
 
+      {% if data.piece.title %}
+        <h2 class="accent-color center-align"
+          {% if data.piece.titleColor %} style="color:{{ data.piece.titleColor }}" {% endif %}
+        >
+          {{ data.piece.title }}
+        </h2>
+      {% endif %}
+
       {% if data.piece.container == true %}
         <div class="container">
       {% endif %}
@@ -27,102 +35,58 @@
 
                           <div class="gallery">
 
-                            <div class="title">
-                              <h3 class="accent-color" style="
-                                {% if data.piece.titleColor %}
-                                  color:{{ data.piece.titleColor }};
-                                {% endif %}
-                                {% if data.piece.titleCenter %}
-                                  text-align: center;
-                                {% endif %}
-                              ">
-                                {{ data.piece.title }}
-                              </h3>
-                            </div>
-
-                            <div class="images" style="
-                              {% if data.piece.columnCount == '5' %}
-                                -webkit-column-count: 5;
-                                -moz-column-count: 5;
-                                column-count: 5;
-                              {% elif data.piece.columnCount == '4' %}
-                                -webkit-column-count: 4;
-                                -moz-column-count: 4;
-                                column-count: 4;
-                              {% elif data.piece.columnCount == '3' %}
-                                -webkit-column-count: 3;
-                                -moz-column-count: 3;
-                                column-count: 3;
-                              {% else %}
-                                -webkit-column-count: 5;
-                                -moz-column-count: 5;
-                                column-count: 5;
-                              {% endif %}"
-                            >
+                            <div class="images column-count-{{ data.piece.columnCount }}">
 
                               {% for _image in data.piece._images %}
-                                <div class="images-container">
-                                  <div class="radius
-                                    {% if data.page.shadow %}
-                                      z-depth-2
-                                    {% endif %}
-                                  ">
+                                <div class="images-container{% if data.piece.forceAspectRatio %} ratio-1-1{% endif %}">
+                                  <div class="image-radius{% if data.piece.imagesShadow %} z-depth-1{% endif %}">
+
                                     <div class="card">
 
-                                      <div class="card-image">
+                                      <div class="height-100 {% if data.piece.lightboxOn %} lightbox{% endif %}">
 
-                                        <img
-                                          srcset="{{ apos.images.srcset(_image.attachment) }}"
-                                          sizes="(min-width:1200px)20vw, 40vw"
-                                          data-featherlight="{{ apos.attachments.url(_image.attachment, { size: data.options.size or 'full' }) }}"
-                                          alt="{{ _image.description or _image.title }}"
-                                          width="100%"
-                                        >
-
-                                        {% if data.piece.imagesTitleShow == true and data.piece.columnCount == '3' %}
-                                          <span class="card-title
-                                            {% if data.piece.imagesTitleCenter %}
-                                             center-align
-                                            {% endif %}"
+                                        <div class="card-image">
+                                          <img src="{{ apos.attachments.url(_image.attachment, { size: 'one-third', crop: relationship }) }}"
+                                            srcset="{{ apos.images.srcset(_image.attachment) }}"
+                                            sizes="(min-width:1200px)20vw, 30vw"
+                                            alt="{{ _image.title }}"
+                                            width="100%"
                                           >
-                                            <h4 class="accent-color truncate"
-                                              {%- if data.piece.imagesTitleColor -%}
-                                                style="color:{{ data.piece.imagesTitleColor}}"
-                                              {% endif %}
-                                            >
-                                              {{ _image.title }}
-                                            </h4>
-                                          </span>
+                                        </div>
+
+                                        {% if piece.lightboxOn %}
+
+                                          <div class="lightbox-overlay"
+                                            {% if data.widget.overlayColor %}
+                                              style="background-color: {{ data.widget.overlayColor }}"
+                                            {% endif %}
+                                          ></div>
+
+                                          <div class="lightbox-image image-radius">
+                                            {% if data.widget.lightboxNoCrop %}
+                                              <img
+                                                data-src="{{ apos.attachments.url(_image.attachment, { size: 'full' }) }}"
+                                                srcset="{{ apos.images.srcset(_image.attachment) }}"
+                                                sizes="{{ data.options.sizesAttr or '100vw' }}"
+                                                alt="{{ image.title }}"
+                                              >
+                                            {% else %}
+                                              <img
+                                                data-src="{{ apos.attachments.url(_image.attachment, { size: 'full', crop: relationship }) }}"
+                                                srcset="{{ apos.images.srcset(_image.attachment, relationship ) }}"
+                                                sizes="{{ data.options.sizesAttr or '100vw' }}"
+                                                alt="{{ image.title }}"
+                                              >
+                                            {% endif %}
+                                          </div>
+
                                         {% endif %}
 
                                       </div>
 
-                                      {% if _image.description and data.piece.columnCount == '3' %}
-                                        <div class="card-content">
-                                          <p class="flow-text"
-                                            {% if image.descriptionColor %}
-                                              style="color:{{ _image.descriptionColor }}"
-                                            {% endif %}
-                                          >
-                                            {{ _image.description }}
-                                          </p>
-                                        </div>
-                                      {% endif %}
-
-                                      {% if _image.credit and data.piece.columnCount == '3' %}
-                                        <div class="card-action center-align flow-text">
-                                          {% if _image.creditUrl %}
-                                              <a class="btn-flat" href="{{ _image.creditUrl }}">
-                                          {% endif %}
-                                                <p>{{ _image.credit }}</p>
-                                          {% if _image.creditUrl %}
-                                              </a>
-                                          {% endif %}
-                                        </div>
-                                      {% endif %}
-
                                     </div>
                                   </div>
+
                                 </div>
                               {% endfor %}
 

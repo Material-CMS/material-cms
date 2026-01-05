@@ -16,11 +16,10 @@
       <div class="col s12 m12">
 
         {% if piece.titleDisplay or data.widget.galleriesTitlesDisplay %}
-          <div class="card-title {{ piece.titleAlign or data.widget.galleriesTitlesAlign }}">
             {% if piece._url %}
-              <a href="{{ piece._url }}">
+              <a class="piece-url" href="{{ piece._url }}">
             {% endif %}
-                <h4 class="accent-color"
+                <h3 class="accent-color card-title {{ data.widget.galleriesTitlesAlign }}"
                   {% if piece.titleColor or data.widget.galleriesTitlesColor %}
                     style="color:{{ piece.titleColor or data.widget.galleriesTitlesColor }}"
                   {% endif %}
@@ -30,7 +29,6 @@
             {% if piece._url %}
               </a>
             {% endif %}
-          </div>
         {% endif %}
 
           <div class="gallery">
