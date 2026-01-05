@@ -1,0 +1,51 @@
+{#
+  Language Switcher Widget
+  Provides links to switch between available locales.
+  Uses cookie 'material-cms.locale' to store user preference.
+#}
+<div class="apos-language-switcher" data-apos-language-switcher>
+  {% if data.widget.style == 'dropdown' %}
+    <select class="apos-language-switcher-dropdown" data-apos-language-switcher-select>
+      {% for locale in data.widget.locales %}
+        <option value="{{ locale }}" {% if locale == data.widget.currentLocale %}selected{% endif %}>
+          {% if data.widget.showFlags %}
+            <span class="apos-language-flag apos-language-flag-{{ locale }}"></span>
+          {% endif %}
+          {% if data.widget.showLabels %}
+            {{ locale|upper }}
+          {% else %}
+            {{ locale }}
+          {% endif %}
+        </option>
+      {% endfor %}
+    </select>
+  {% elif data.widget.style == 'flags' %}
+    <div class="apos-language-flags">
+      {% for locale in data.widget.locales %}
+        <a href="#" class="apos-language-flag-link" data-locale="{{ locale }}" title="{{ locale|upper }}">
+          <span class="apos-language-flag apos-language-flag-{{ locale }}"></span>
+          {% if data.widget.showLabels %}
+            <span class="apos-language-label">{{ locale|upper }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <ul class="apos-language-list">
+      {% for locale in data.widget.locales %}
+        <li class="apos-language-item {% if locale == data.widget.currentLocale %}apos-language-current{% endif %}">
+          <a href="#" class="apos-language-link" data-locale="{{ locale }}">
+            {% if data.widget.showFlags %}
+              <span class="apos-language-flag apos-language-flag-{{ locale }}"></span>
+            {% endif %}
+            {% if data.widget.showLabels %}
+              <span class="apos-language-label">{{ locale|upper }}</span>
+            {% else %}
+              {{ locale }}
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
