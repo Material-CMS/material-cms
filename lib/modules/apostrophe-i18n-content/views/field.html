@@ -3,9 +3,12 @@
 
 {# Macro for multilingual string field content #}
 {% macro multilingualString(data) %}
+  {# Debug: ensure locales exist #}
+  {% set locales = data.locales or ['en'] %}
+  {% set defaultLocale = data.defaultLocale or locales[0] %}
   <div class="apos-multilingual-string" data-multilingual-string>
-    {% for locale in data.locales %}
-      <div class="apos-multilingual-locale{% if locale === data.defaultLocale %} apos-multilingual-default{% endif %}" data-locale="{{ locale }}">
+    {% for locale in locales %}
+      <div class="apos-multilingual-locale{% if locale === defaultLocale %} apos-multilingual-default{% endif %}" data-locale="{{ locale }}">
         <label class="apos-multilingual-label">
           <span class="apos-multilingual-locale-label">{{ locale|upper }}:</span>
           <input 
