@@ -1,7 +1,7 @@
 {
   "name": "material-cms",
   "version": "0.9.7",
-  "description": "Material CMS - materialized CMS with clever designed widgets based on Apostrophe CMS",
+  "description": "Material CMS - materialized CMS with reusable widgets based on Apostrophe CMS",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -13,10 +13,10 @@
     "type": "git",
     "url": ""
   },
-  "author": "Felix Langenberg",
+  "author": "Felix Lberg",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.227.11",
+    "apostrophe": "^2.227.12",
     "apostrophe-caches-redis": "^2.1.6",
     "apostrophe-favicons": "^2.0.7",
     "apostrophe-forms": "^1.12.0",
@@ -32,8 +32,6 @@
     "redis": "^3.1.2"
   },
   "devDependencies": {
-    "apostrophe-profiler": "^2.1.1",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "apostrophe-profiler": "^2.1.1"
   }
 }
