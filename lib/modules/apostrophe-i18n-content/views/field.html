@@ -1,0 +1,25 @@
+{# Based on color-picker pattern from Apostrophe documentation #}
+{%- import "apostrophe-schemas:macros.html" as schemas -%}
+
+{# Macro for multilingual string field content #}
+{% macro multilingualString(data) %}
+  <div class="apos-multilingual-string" data-multilingual-string>
+    {% for locale in data.locales %}
+      <div class="apos-multilingual-locale{% if locale === data.defaultLocale %} apos-multilingual-default{% endif %}" data-locale="{{ locale }}">
+        <label class="apos-multilingual-label">
+          <span class="apos-multilingual-locale-label">{{ locale|upper }}:</span>
+          <input 
+            type="text" 
+            class="apos-multilingual-input" 
+            data-locale-input="{{ locale }}"
+            placeholder="{{ __ns('apostrophe', 'Translation for') }} {{ locale }}"
+          />
+        </label>
+      </div>
+    {% endfor %}
+    <input type="hidden" name="{{ data.name }}" value="" data-multilingual-value />
+  </div>
+{% endmacro %}
+
+{# Wrap in standard fieldset #}
+{{ schemas.fieldset(data, multilingualString) }}

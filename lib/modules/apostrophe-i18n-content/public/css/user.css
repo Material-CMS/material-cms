@@ -1,0 +1,44 @@
+.apos-multilingual-string {
+  margin: 10px 0;
+}
+
+.apos-multilingual-locale {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+
+.apos-multilingual-default {
+  border-left: 4px solid #4CAF50;
+  background: #f0f9f0;
+}
+
+.apos-multilingual-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.apos-multilingual-locale-label {
+  font-weight: bold;
+  color: #333;
+  min-width: 60px;
+  display: inline-block;
+}
+
+.apos-multilingual-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.apos-multilingual-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
