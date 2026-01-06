@@ -1,3 +1,6 @@
+{# Build the style strings #}
+{% set overlayColor = "background-color: " + (data.widget.overlayColor) %}
+
 {% for _image in piece._images %}
 
   <div class="images-container{% if piece.forceAspectRatio %} ratio-1-1{% endif %}">
@@ -18,12 +21,10 @@
 
           {% if piece.lightboxOn %}
 
-            <div class="lightbox-overlay"
-              {% if data.widget.overlayColor %}
-                style="background-color: {{ data.widget.overlayColor }}"
-              {% endif %}
-            ></div>
+            {# Lightbox overlay #}
+            <div class="lightbox-overlay" style="{{ overlayColor }}"></div>
 
+            {# Lightbox image #}
             <div class="lightbox-image image-radius">
               {% if data.widget.lightboxNoCrop %}
                 <img

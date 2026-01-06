@@ -1,13 +1,16 @@
-{# set additional font from global #}
+{# Set additional font from global #}
 {% if data.global.additionalFonts %}
   {% set additionalFont = data.global.additionalFonts | replace("+"," ") | replace( r/:.*$/,"") %}
 {% endif %}
 
-<h2 class="section-header accent-color {{ data.widget.headerAlign }}" style="color: {{ data.widget.color or data.global.accentColor }}
-    {%- if data.widget.headerAdditionalFont -%}
-    ; font-family: {{ additionalFont }}, sans-serif;
-    {%- endif -%}"
-    {{ data.widget.header | translationsAttribute }}
+{# Build style strings #}
+{% set styleString = "color: " + (data.widget.color or data.global.accentColor) %}
+{% if data.widget.headerAdditionalFont %}
+  {% set styleString = styleString + "; font-family: " + additionalFont + ", sans-serif" %}
+{% endif %}
+
+<h2 class="section-header accent-color {{ data.widget.headerAlign }}" 
+    style="{{ styleString }}" {{ data.widget.header | translationsAttribute }}
 >
   {{ data.widget.header | i18n }}
 </h2>

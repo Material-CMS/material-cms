@@ -1,15 +1,14 @@
+{# Cache pieces #}
 {% set pieces = data.widget._pieces or data.pieces %}
 
+{# Build the style strings #}
+{% set color = "color: " + (piece.titleColor or data.widget.galleriesTitlesColor) %}
+{% set backgroundColor = "background-color: " + (data.widget.backColor or piece.backColor) %}
+
 {% for piece in pieces %}
-  <div class="card z-depth-0"
-    {% if data.widget.backColor or piece.backColor %}
-      style="background-color:{{ data.widget.backColor or piece.backColor }}"
-    {% endif %}
+  <div class="card z-depth-0" style="{{ backgroundColor }}"
   >
-    <div class="card-content"
-      {% if data.widget.backColor or piece.backColor %}
-        style="background-color:{{ data.widget.backColor or piece.backColor }}"
-      {% endif %}
+    <div class="card-content" style="{{ backgroundColor }}"
     >
 
     <div class="row">
@@ -19,13 +18,10 @@
             {% if piece._url %}
               <a class="piece-url" href="{{ piece._url }}">
             {% endif %}
-                <h3 class="accent-color card-title {{ data.widget.galleriesTitlesAlign }}"
-                  {% if piece.titleColor or data.widget.galleriesTitlesColor %}
-                    style="color:{{ piece.titleColor or data.widget.galleriesTitlesColor }}"
-                  {% endif %}
-                >
+                <h3 class="accent-color card-title {{ data.widget.galleriesTitlesAlign }}" 
+                  style="{{ color }}">
                   {{ piece.title }}
-                </h4>
+                </h3>
             {% if piece._url %}
               </a>
             {% endif %}
