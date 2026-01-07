@@ -1,0 +1,37 @@
+{
+  "css.validate": false,
+  
+  // Better syntax highlighting for Nunjucks in attributes
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      // Target CSS strings in Nunjucks files to make them grey
+      {
+        "scope": [
+          "text.html.njk source.css string.quoted.double.html",
+          "text.html.njk meta.embedded.line.css string.quoted.double.html"
+        ],
+        "settings": {
+          "foreground": "#888888",
+          "fontStyle": "italic" 
+        }
+      },
+      // Keep regular strings in Nunjucks files normal
+      {
+        "scope": "text.html.njk string.quoted.double.html",
+        "settings": {
+          "foreground": "#CE9178"  // Original string color
+        }
+      }
+    ]
+  },
+  
+  // Disable problematic validators
+  "html.validate.styles": false,
+  "css.lint.unknownProperties": "ignore",
+  
+  // File associations
+  "files.associations": {
+    "**/views/**/*.html": "nunjucks",
+    "**/templates/**/*.html": "nunjucks"
+  }
+}

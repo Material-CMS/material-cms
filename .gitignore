@@ -18,6 +18,5 @@ node_modules
 build
 prod-bundle
 .atom
-.vscode
 .rooignore
 AGENTS.md
