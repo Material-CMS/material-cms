@@ -5,11 +5,11 @@ module.exports = {
   modules: {
     // Minify Html
     'apostrophe-templates': {
-      minify: (process.env.ENV === 'prod') // minify: true
+      minify: (process.env.NODE_ENV === 'prod')
     },
     // Minify Assets
     'apostrophe-assets': {
-      minify: (process.env.ENV === 'prod') // minify: true
+      minify: (process.env.NODE_ENV === 'prod')
     },
     // Set a Secre for your Session
     // https://docs.apostrophecms.org/howtos/storing-sessions-in-redis.html#what-about-caches
@@ -17,8 +17,15 @@ module.exports = {
       session: {
         secret: 'YOUR_SECRET'
       }
-      // use other port than 3000
+      // Touse other port than 3000
       // port: 3001
+    },
+    // Internationalization
+    'apostrophe-i18n': {
+      locales: ['en', 'de'],
+      defaultLocale: 'en',
+      cookie: 'material-cms.locale',
+      updateFiles: true
     },
     // Email Settings for nodemailer
     'apostrophe-email': {

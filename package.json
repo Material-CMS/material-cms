@@ -5,9 +5,16 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "build": "babel src -d build",
+    "dev:start": "npx pm2 start app.js deploy/dev.config.js",
+    "dev:reload": "npx pm2 reload material-cms-dev",
+    "dev:restart": "npx pm2 restart material-cms-dev",
+    "dev:stop": "npx pm2 stop material-cms-dev",
     "dev:docker:up": "docker compose -f ./docker-compose.dev.yml up -d --wait",
-    "dev:docker:down": "docker compose -f ./docker-compose.dev.yml down"
+    "dev:docker:down": "docker compose -f ./docker-compose.dev.yml down",
+    "prod:start": "npx pm2 start app.js deploy/prod.config.js",
+    "prod:reload": "npx pm2 reload material-cms",
+    "prod:restart": "npx pm2 restart material-cms",
+    "prod:stop": "npx pm2 stop material-cms"
   },
   "repository": {
     "type": "git",
@@ -29,6 +36,7 @@
     "apostrophe-site-map": "^2.10.0",
     "html-minifier": "^4.0.0",
     "mozjpeg": "^7.1.1",
+    "pm2": "^6.0.14",
     "redis": "^3.1.2"
   },
   "devDependencies": {
