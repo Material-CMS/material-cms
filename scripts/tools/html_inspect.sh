@@ -144,6 +144,103 @@ generate_json_output() {
     fi
 }
 
+# Generate HTML summary output (new --summary flag)
+generate_summary_output() {
+    local response="$1"
+    local http_code="$2"
+    local url="$3"
+    
+    local timestamp=$(date)
+    
+    # Use Python to extract summary
+    python3 -c "
+import sys, json, re
+from html.parser import HTMLParser
+
+class SummaryParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.title = ''
+        self.meta = {}
+        self.scripts = []
+        self.links = []
+        self.headings = {'h1': [], 'h2': [], 'h3': [], 'h4': [], 'h5': [], 'h6': []}
+        self.images = []
+        self.tag_counts = {}
+        self.in_title = False
+        
+    def handle_starttag(self, tag, attrs):
+        self.tag_counts[tag] = self.tag_counts.get(tag, 0) + 1
+        attrs_dict = dict(attrs)
+        
+        if tag == 'title':
+            self.in_title = True
+        elif tag == 'meta':
+            if 'name' in attrs_dict and 'content' in attrs_dict:
+                self.meta[attrs_dict['name']] = attrs_dict['content']
+            elif 'property' in attrs_dict and 'content' in attrs_dict:
+                self.meta[attrs_dict['property']] = attrs_dict['content']
+        elif tag == 'script':
+            if 'src' in attrs_dict:
+                self.scripts.append(attrs_dict['src'])
+        elif tag == 'link':
+            if 'href' in attrs_dict:
+                self.links.append({'href': attrs_dict['href'], 'rel': attrs_dict.get('rel', '')})
+        elif tag == 'img':
+            if 'src' in attrs_dict:
+                self.images.append(attrs_dict['src'])
+        elif tag in self.headings:
+            pass  # heading text will be captured in handle_data
+        
+    def handle_endtag(self, tag):
+        if tag == 'title':
+            self.in_title = False
+            
+    def handle_data(self, data):
+        if self.in_title:
+            self.title += data
+        # Check if we're inside a heading (simplistic)
+        # For simplicity, we'll capture heading text via regex later
+        
+    def get_summary(self):
+        # Count total tags
+        total_tags = sum(self.tag_counts.values())
+        
+        # Extract headings via regex (simpler)
+        headings = {}
+        for level in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+            pattern = r'<' + level + r'[^>]*>(.*?)</' + level + r'>'
+            matches = re.findall(pattern, html, re.IGNORECASE | re.DOTALL)
+            cleaned = [re.sub(r'<[^>]+>', '', m).strip() for m in matches]
+            headings[level] = cleaned
+            
+        return {
+            'title': self.title.strip(),
+            'meta': self.meta,
+            'scripts_count': len(self.scripts),
+            'scripts': self.scripts[:10],  # limit
+            'links_count': len(self.links),
+            'links': self.links[:10],
+            'images_count': len(self.images),
+            'images': self.images[:10],
+            'headings': headings,
+            'tag_counts': self.tag_counts,
+            'total_tags': total_tags
+        }
+
+html = sys.stdin.read()
+parser = SummaryParser()
+try:
+    parser.feed(html)
+    summary = parser.get_summary()
+except Exception as e:
+    summary = {'error': str(e)}
+
+# Output as JSON
+print(json.dumps(summary, indent=2))
+" <<< "$response" 2>/dev/null || echo '{}'
+}
+
 # Generate raw response output (new --raw flag)
 generate_raw_response_output() {
     local response="$1"
@@ -161,6 +258,7 @@ Usage:
 Options:
   --json       Output structured JSON with response metadata
   --raw        Output raw response regardless of content type
+  --summary    Output HTML summary (title, meta, scripts, headings, etc.) as JSON
   --help       Show this help message
 
 Arguments:
@@ -170,18 +268,20 @@ Examples:
   ./html_inspect.sh                          # Inspect default health endpoint
   ./html_inspect.sh --json                   # Output structured JSON from default endpoint
   ./html_inspect.sh --raw                    # Output raw response
+  ./html_inspect.sh --summary                # Output HTML summary analysis
   ./html_inspect.sh http://localhost:3000 # Inspect custom URL
   ./html_inspect.sh --json http://localhost:3000  # Structured JSON from stats
 
 Exit Codes:
-  0 - Success (request completed, regardless of HTTP status)
-  1 - Missing dependencies (curl or jq)
-  2 - Connection failed or timeout
-  3 - Invalid arguments
+   0 - Success (request completed, regardless of HTTP status)
+   1 - Missing dependencies (curl or jq)
+   2 - Connection failed or timeout
+   3 - Invalid arguments
 
 Note: The script shows error responses as rendered on the page, not just HTTP status codes.
 For JSON responses, it pretty-prints with jq. For HTML errors, it extracts error messages.
 The --json flag always outputs valid JSON with metadata (url, status, timestamp, response).
+The --summary flag extracts structural information from HTML (requires Python 3).
 
 EOF
 }
@@ -200,6 +300,10 @@ main() {
                 ;;
             --raw)
                 output_mode="raw"
+                shift
+                ;;
+            --summary)
+                output_mode="summary"
                 shift
                 ;;
             --help)
@@ -265,6 +369,10 @@ main() {
             ;;
         "raw")
             generate_raw_response_output "$response"
+            return 0
+            ;;
+        "summary")
+            generate_summary_output "$response" "$http_code" "$url"
             return 0
             ;;
     esac
