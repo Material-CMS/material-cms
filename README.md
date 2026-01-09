@@ -81,6 +81,82 @@ Modify the file accoring to your wishes, remove modules that you don't need
 
 ## Development
 
+### Front end JS & CSS
+
+Front end javascript and css which are not loaded by specific widgets trough `apos.utils.widgetPlayers` is loaded through the `apostrophe-assets` module to get bundled and minified in production.
+
+```bash
+# Current apostrophe asset files
+lib/modules/apostrophe-assets/public
+├── css
+│   ├── anon-overrides.less
+│   ├── components
+│   │   ├── basic.less
+│   │   ├── button.less
+│   │   ├── call-to-action.less
+│   │   ├── card-anime.less
+│   │   ├── card-link.less
+│   │   ├── cards.less
+│   │   ├── collapsibles.less
+│   │   ├── collection.less
+│   │   ├── double.less
+│   │   ├── expand.less
+│   │   ├── footer.less
+│   │   ├── forms.less
+│   │   ├── galleries.less
+│   │   ├── grid.less
+│   │   ├── iframe.less
+│   │   ├── language-switcher.less
+│   │   ├── mixins.less
+│   │   ├── navigation.less
+│   │   ├── people.less
+│   │   ├── sections.less
+│   │   ├── share.less
+│   │   ├── slides.less
+│   │   ├── swiper.less
+│   │   ├── texts.less
+│   │   ├── triple.less
+│   │   └── video.less
+│   ├── user-overrides.less
+│   ├── utils
+│   │   └── reset.less
+│   └── vendor
+│       ├── materialize-small.min.css
+│       └── swiper-bundle.min.css
+└── js
+    ├── infinity.js
+    ├── lightbox.js
+    ├── page.js
+    ├── utils.js
+    └── vendor
+        ├── lodash.custom.min.js
+        ├── materialize
+        │   ├── admin-ui.js
+        │   ├── components
+        │   │   ├── buttons.js
+        │   │   ├── cards.js
+        │   │   ├── collapsible.js
+        │   │   ├── component.js
+        │   │   ├── dropdown.js
+        │   │   ├── forms.js
+        │   │   ├── global.js
+        │   │   ├── modal.js
+        │   │   ├── parallax.js
+        │   │   ├── pushpin.js
+        │   │   ├── select.js
+        │   │   ├── sidenav.js
+        │   │   ├── tabs.js
+        │   │   └── waves.js
+        │   └── vendor
+        │       ├── anime.min.js
+        │       └── cash.js
+        ├── svg-inject.min.js
+        ├── swiper-bundle.min.js
+        └── swiper-bundle.min.js.map
+
+10 directories, 56 files
+```
+
 ### Material CMS Documentation
 
 The [Material CMS Documentation](docs/material-cms-docs) provides references for material cms specific overrides and extension of the apostrophe cms core.
