@@ -1,6 +1,5 @@
 module.exports = {
   apps: [{
-    name: 'material-cms',
     script: 'app.js',
     output: 'data/temp/prod.log',
     error: 'data/temp/prod.log',

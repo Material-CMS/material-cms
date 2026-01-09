@@ -4,17 +4,14 @@
   "description": "Material CMS - materialized CMS with reusable widgets based on Apostrophe CMS",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev:start": "npx pm2 start app.js deploy/dev.config.js",
-    "dev:reload": "npx pm2 reload material-cms-dev",
-    "dev:restart": "npx pm2 restart material-cms-dev",
-    "dev:stop": "npx pm2 stop material-cms-dev",
+    "start": "npx pm2 start app.js",
+    "restart": "npx pm2 restart app",
+    "reload": "npx pm2 reload app",
+    "stop": "npx pm2 stop app",
+    "dev:start": "npx pm2 start deploy/dev.config.js",
+    "prod:start": "npx pm2 start deploy/prod.config.js",
     "dev:docker:up": "docker compose -f ./docker-compose.dev.yml up -d --wait",
-    "dev:docker:down": "docker compose -f ./docker-compose.dev.yml down",
-    "prod:start": "npx pm2 start app.js deploy/prod.config.js",
-    "prod:reload": "npx pm2 reload material-cms",
-    "prod:restart": "npx pm2 restart material-cms",
-    "prod:stop": "npx pm2 stop material-cms"
+    "dev:docker:down": "docker compose -f ./docker-compose.dev.yml down"
   },
   "repository": {
     "type": "git",
