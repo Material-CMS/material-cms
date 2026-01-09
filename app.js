@@ -93,8 +93,6 @@ var apos = require('apostrophe')({
     'apostrophe-caches': {
       redis: {}
     },
-    'apostrophe-seo': {},
-    'apostrophe-open-graph': {},
     'apostrophe-global': {
       seoGoogleFields: true
     },

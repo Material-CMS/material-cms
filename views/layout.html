@@ -8,13 +8,13 @@
 {# Page Title depends on variables above #}
 {% if data.piece %}
   {% if data.piece.seoTitle %}
-    {% set title = data.piece.seoTitle %}
+    {% set title = data.piece.seoTitle | i18n %}
   {% else %}
     {% set title = data.piece.title %}
   {% endif %}
 {% else %}
   {% if data.page.seoTitle %}
-    {% set title = data.page.seoTitle %}
+    {% set title = data.page.seoTitle | i18n %}
   {% else %}
     {% set title = data.page.title %}
   {% endif %}
@@ -34,8 +34,7 @@
 
   {# Includes #}
   {% include "apostrophe-pages:extraHead.html" %}
-  {% include "apostrophe-seo:view.html" %}
-  {% include "apostrophe-open-graph:view.html" %}
+  {% include "apostrophe-i18n-content:meta-tags.html" %}
 
   {# Favicons #}
   {{ favicons.renderLinks(apos, data.global) }}
@@ -107,15 +106,5 @@
       }
     }) }}
   </div>
-
-  {# Contact Button #}
-  {% if data.global.floatingActionButton.items[0] and not data.page.hideContactButton %}
-    {{ apos.area(data.global, 'floatingActionButton', {
-      edit: false,
-      widgets: {
-        'button': {}
-      }
-    }) }}
-  {% endif %}
 
 {% endblock %}

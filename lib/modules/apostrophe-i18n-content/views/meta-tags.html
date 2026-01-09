@@ -1,0 +1,105 @@
+{# Multilingual SEO and Open Graph Meta Tags Partial #}
+{# This partial replaces apostrophe-seo:view.html and apostrophe-open-graph:view.html #}
+
+{# Determine the current document (page or piece) #}
+{% set doc = data.piece if data.piece else data.page %}
+{% set global = data.global %}
+
+{# Helper: get localized value with fallback #}
+{% macro getLocalizedValue(field, fallback) %}
+  {% if field %}
+    {{ field | i18nMeta | trim }}
+  {% elif fallback %}
+    {{ fallback | trim }}
+  {% endif %}
+{% endmacro %}
+
+{# Get localized values #}
+{% set seoTitle = doc.seoTitle | i18nMeta if doc.seoTitle else '' %}
+{% set seoDescription = doc.seoDescription | i18nMeta if doc.seoDescription else '' %}
+{% set ogTitle = doc.openGraphTitle | i18nMeta if doc.openGraphTitle else seoTitle %}
+{% set ogDescription = doc.openGraphDescription | i18nMeta if doc.openGraphDescription else seoDescription %}
+
+{# SEO Meta Tags #}
+{% if seoTitle %}
+  <meta name="title" content="{{ seoTitle }}">
+{% endif %}
+
+{% if seoDescription %}
+  <meta name="description" content="{{ seoDescription }}">
+{% endif %}
+
+{# Robots Meta Tag #}
+{% if doc.seoRobots and doc.seoRobots.length %}
+  <meta name="robots" content="{{ doc.seoRobots | join(',') }}">
+{% endif %}
+
+{# Open Graph Tags #}
+{% if ogTitle %}
+  <meta property="og:title" content="{{ ogTitle }}">
+{% endif %}
+
+{% if ogDescription %}
+  <meta property="og:description" content="{{ ogDescription }}">
+{% endif %}
+
+{% if doc.openGraphType %}
+  <meta property="og:type" content="{{ doc.openGraphType }}">
+{% else %}
+  <meta property="og:type" content="website">
+{% endif %}
+
+{% if doc.openGraphImage and doc.openGraphImage.items and doc.openGraphImage.items[0] %}
+  {% set image = doc.openGraphImage.items[0] %}
+  <meta property="og:image" content="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}">
+  <meta property="og:image:width" content="{{ image.attachment.width }}">
+  <meta property="og:image:height" content="{{ image.attachment.height }}">
+  {% if image.attachment.alt %}
+    <meta property="og:image:alt" content="{{ image.attachment.alt }}">
+  {% endif %}
+{% elif global.openGraphImage and global.openGraphImage.items and global.openGraphImage.items[0] %}
+  {% set image = global.openGraphImage.items[0] %}
+  <meta property="og:image" content="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}">
+  <meta property="og:image:width" content="{{ image.attachment.width }}">
+  <meta property="og:image:height" content="{{ image.attachment.height }}">
+  {% if image.attachment.alt %}
+    <meta property="og:image:alt" content="{{ image.attachment.alt }}">
+  {% endif %}
+{% endif %}
+
+{# Canonical URL #}
+{% if doc._url %}
+  <link rel="canonical" href="{{ apos.prefix }}{{ doc._url }}">
+  <meta property="og:url" content="{{ apos.prefix }}{{ doc._url }}">
+{% endif %}
+
+{# Locale and Language #}
+{% if data.locale %}
+  <meta property="og:locale" content="{{ data.locale }}">
+  {% if data.locale == 'en' %}
+    <meta property="og:locale:alternate" content="de">
+  {% elif data.locale == 'de' %}
+    <meta property="og:locale:alternate" content="en">
+  {% endif %}
+{% endif %}
+
+{# Site Name #}
+{% if global.title %}
+  <meta property="og:site_name" content="{{ global.title }}">
+{% endif %}
+
+{# Twitter Card #}
+<meta name="twitter:card" content="summary_large_image">
+{% if ogTitle %}
+  <meta name="twitter:title" content="{{ ogTitle }}">
+{% endif %}
+{% if ogDescription %}
+  <meta name="twitter:description" content="{{ ogDescription }}">
+{% endif %}
+{% if doc.openGraphImage and doc.openGraphImage.items and doc.openGraphImage.items[0] %}
+  {% set image = doc.openGraphImage.items[0] %}
+  <meta name="twitter:image" content="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}">
+{% elif global.openGraphImage and global.openGraphImage.items and global.openGraphImage.items[0] %}
+  {% set image = global.openGraphImage.items[0] %}
+  <meta name="twitter:image" content="{{ apos.attachments.url(image.attachment, { size: 'full' }) }}">
+{% endif %}
