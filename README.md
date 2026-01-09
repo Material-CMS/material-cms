@@ -81,6 +81,10 @@ Modify the file accoring to your wishes, remove modules that you don't need
 
 ## Development
 
+### Material CMS Documentation
+
+The [Material CMS Documentation](docs/material-cms-docs) provides references for material cms specific overrides and extension of the apostrophe cms core.
+
 ### Apostrophe CMS v2 Documentation
 
 The [Apostrophe CMS v2 Documentation](docs/apostrophe-v2-docs) provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation.
