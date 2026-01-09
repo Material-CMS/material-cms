@@ -60,16 +60,6 @@ var apos = require('apostrophe')({
     'shape-divider-file-widgets': {},
     'slider-widgets':{},
     'swiper-widgets':{},
-    'tables': {
-      orderings: true
-    },
-    'tables-orderings': {
-      extend: 'apostrophe-pieces-orderings'
-    },
-    'tables-pages': {
-      orderings: true
-    },
-    'tables-widgets': {},
     'texts': {
       orderings: true
     },
