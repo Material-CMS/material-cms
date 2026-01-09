@@ -44,7 +44,7 @@ You can use all plugins from apostrophe cms
 
 ### Install Dependencies
 - git
-- nodejs 16.x or higher
+- nodejs 20.x or higher
 - redis-server
 - mongodb
 - imagemagick
@@ -52,11 +52,14 @@ You can use all plugins from apostrophe cms
 ```bash
 # clone repository
 git clone https://github.com/felixlberg/material-cms
+
 # cd into the new project
 cd material-cms
+
 # Install dependencies
 npm install
-# Copy local.example.js to data and add a individual session secret to be able to login
+
+# Copy local.example.js to data/ and add a individual session secret to be able to login
 cp local.example.js data/local.js
 
 # (Optional) Start mongodb and redis with docker for development purposes
@@ -73,90 +76,111 @@ npm start
 ## Production
 
 For server specific changes add the file `data/local.js`.
-You will find an example under `local.example.js` in root directory.
-
-```bash
-# Copy file
-cp local.example.js data/local.js
-```
-
-Change `baseUrl` and add a session secret.
-Modify the file accoring to your wishes, remove modules that you don't need:
-
-```javascript
-// Settings specific to this server. Change the URL
-// if you are deploying in production.
-module.exports = {
-  baseUrl: 'http://localhost:3000',
-  modules: {
-    // Minify Html
-    'apostrophe-templates': {
-      minify: (process.env.ENV === 'prod') // minify: true
-    },
-    // Minify Assets
-    'apostrophe-assets': {
-      minify: (process.env.ENV === 'prod') // minify: true
-    },
-    // Set a Secre for your Session
-    // https://docs.apostrophecms.org/howtos/storing-sessions-in-redis.html#what-about-caches
-    'apostrophe-express': {
-      session: {
-        secret: 'YOUR_SECRET'
-      }
-      // use other port than 3000
-      // port: 3001
-    },
-    // Email Settings for nodemailer
-    'apostrophe-email': {
-      nodemailer: {
-        host: 'SMTP_SERVER', // or use: process.env.SMTP_SERVER
-        port: 587,
-        secure: false,
-        auth: {
-            user: 'SMTP_USER', // or use: process.env.SMTP_USER
-            pass: 'SMTP_PW' // or use: process.env.SMTP_PW
-        }
-      }
-    },
-    // Apostrophe has full-text search capabilities built set searched pages here
-    // https://docs.apostrophecms.org/core-concepts/apostrophe-search/search.html
-    'apostrophe-search': {
-      // types: [
-      //   'home'
-      // ]
-    },
-    // Add parked page for search functions. Parked pages
-    // configures certain pages to be automatically created
-    // and refreshed whenever the site starts up.
-    'apostrophe-pages': {
-      // park: [
-      //   {
-      //     title: 'Search',
-      //     slug: '/search',
-      //     type: 'apostrophe-search',
-      //     label: 'Search',
-      //     published: true
-      //   }
-      // ]
-    },
-    // If these are your db settings then you don't need to be explicit. If not
-    // you can uncomment this and get more specific.
-    'apostrophe-db': {
-      // uri: 'mongodb://localhost:27017/apostrophe-sandbox'
-      // There is legacy support for host, port, name, user and password options,
-      // but this is not necessary. They can all go in the uri option like this:
-      // mongodb://user:password@host:port/dbname
-    }
-  }
-};
-
-```
-
+You will find an example under `local.example.js` in root directory. Change `baseUrl` and add a session secret.
+Modify the file accoring to your wishes, remove modules that you don't need
 
 ## Development
 
-----
+### Apostrophe CMS v2 Documentation
 
-For documentation on Apostrophe CMS, visit [Apostrophe CMS](https://docs.apostrophecms.org/).
+The [Apostrophe CMS v2 Documentation](docs/apostrophe-v2-docs) provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation.
+
+Documentation Organization:
+```bash
+docs/apostrophe-v2-docs
+├── advanced-topics
+│   ├── advanced-pages-topics
+│   ├── advanced-pieces-topics
+│   ├── database
+│   └── promise-events
+├── core-concepts
+│   ├── apostrophe-search
+│   ├── editable-content-on-pages
+│   ├── front-end-assets
+│   ├── global-settings
+│   ├── modules
+│   ├── pages-and-navigation
+│   ├── reusable-content-pieces
+│   ├── users-and-permissions
+│   └── working-with-templates
+├── devops
+│   ├── cloud
+│   └── deployment
+├── getting-started
+├── howtos
+└── reference
+    ├── field-properties
+    ├── field-types
+    └── modules
+        ├── apostrophe-admin-bar
+        ├── apostrophe-any-page-manager
+        ├── apostrophe-areas
+        ├── apostrophe-assets
+        ├── apostrophe-attachments
+        ├── apostrophe-browser-utils
+        ├── apostrophe-custom-pages
+        ├── apostrophe-docs
+        ├── apostrophe-doc-type-manager
+        ├── apostrophe-files
+        ├── apostrophe-files-widgets
+        ├── apostrophe-global
+        ├── apostrophe-groups
+        ├── apostrophe-html-widgets
+        ├── apostrophe-images
+        ├── apostrophe-images-widgets
+        ├── apostrophe-jobs
+        ├── apostrophe-login
+        ├── apostrophe-modal
+        ├── apostrophe-module
+        ├── apostrophe-notifications
+        ├── apostrophe-oembed
+        ├── apostrophe-pages
+        ├── apostrophe-pieces
+        ├── apostrophe-pieces-pages
+        ├── apostrophe-pieces-widgets
+        ├── apostrophe-polymorphic-manager
+        ├── apostrophe-rich-text-widgets
+        ├── apostrophe-schemas
+        ├── apostrophe-search
+        ├── apostrophe-tags
+        ├── apostrophe-ui
+        ├── apostrophe-users
+        ├── apostrophe-utils
+        ├── apostrophe-versions
+        ├── apostrophe-video-fields
+        ├── apostrophe-video-widgets
+        └── apostrophe-widgets
+```
+Learning Progression:
+1. Getting Started - Environment setup & basic site creation
+2. Core Concepts - Fundamental Apostrophe features & tools
+3. Advanced Development - Deep dive into advanced features
+4. DevOps - Production deployment & configuration
+Reference Materials:
+  - Module Reference - Complete coverage of Apostrophe modules
+  - Schema Field Types - 22 different field types with detailed documentation
+  - Schema Field Properties - Configuration options for fields
+  - Core API - Server and browser-side apos object documentation
+  - Glossary - Terminology and concepts
+  Practical Guides:
+  - HOWTOs - 18 practical guides covering common tasks and solutions
+  - Topics range from Docker deployment to custom field types
+  Key Features Documented
+  Field System:
+  - 22 field types (area, array, attachment, boolean, etc.)
+  - Comprehensive property system (choices, options, sortify, etc.)
+  - Relationship management (joinByOne, joinByArray)
+  Module System:
+  - 10+ core modules documented
+  - Browser and server-side APIs
+  - Template and asset management
+  Development Tools:
+  - Custom schema field creation
+  - Admin bar customization
+  - Form building capabilities
+  - Session management (Redis)
+This documentation provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation.
+
+----
 
 For more infos about Materialize , visit [Materialize](https://materializecss.com/).

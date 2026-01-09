@@ -1,7 +1,7 @@
-# TRANSLATION PRIVACY CONFIGURATION
+# Translation Privacy Configuration
 ## Configurable Translation Exposure for Debugging vs Production
 
-## OVERVIEW
+## Overview
 
 The multilingual system now supports **configurable translation privacy** with three modes:
 
@@ -9,7 +9,7 @@ The multilingual system now supports **configurable translation privacy** with t
 2. **Privacy Mode**: Translations Base64 encoded in HTML  
 3. **Production Mode**: Translations not exposed in HTML (requires page reload)
 
-## CONFIGURATION OPTIONS
+## Configuration Options
 
 In `data/local.js`:
 
@@ -25,7 +25,7 @@ In `data/local.js`:
 }
 ```
 
-## MODES EXPLAINED
+## Modes Explained
 
 ### **1. DEBUG MODE (Default)**
 ```javascript

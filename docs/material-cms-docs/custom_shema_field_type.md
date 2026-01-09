@@ -2,7 +2,7 @@
 
 ## Problem Summary
 
-When implementing a custom schema field type that stores structured data (objects), you may encounter:
+When implementing a [custom schema field type](docs/apostrophe-v2-docs/howtos/custom-schema-field-types.md) that stores structured data (objects), you may encounter:
 
 1. **Field data appears empty in rendered HTML** (`data.widget.field` shows `{}`)
 2. **Template filters receive `[object Object]`** instead of actual values
