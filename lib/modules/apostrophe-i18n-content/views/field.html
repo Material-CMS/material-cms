@@ -6,14 +6,17 @@
   {# Debug: ensure locales exist #}
   {% set locales = data.locales or ['en'] %}
   {% set defaultLocale = data.defaultLocale or locales[0] %}
-  <div class="apos-multilingual-string" data-multilingual-string>
+  <div class="apos-field" data-multilingual-string>
     {% for locale in locales %}
-      <div class="apos-multilingual-locale{% if locale === defaultLocale %} apos-multilingual-default{% endif %}" data-locale="{{ locale }}">
-        <label class="apos-multilingual-label">
-          <span class="apos-multilingual-locale-label">{{ locale|upper }}:</span>
-          <input 
-            type="text" 
-            class="apos-multilingual-input" 
+      <div class="apos-field" data-locale="{{ locale }}">
+        <label class="apos-field-label">
+          {% if locale === defaultLocale %}
+            <span class="apos-label">DEFAULT</span><br>
+          {% endif %}
+          <span class="apos-label">{{ locale|upper }}:</span>
+          <input
+            type="text"
+            class="apos-field-input"
             data-locale-input="{{ locale }}"
             placeholder="{{ __ns('apostrophe', 'Translation for') }} {{ locale }}"
           />
