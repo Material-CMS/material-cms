@@ -87,7 +87,9 @@
 {% endblock %}
 
 {% block afterMain %}
-{% set lastPiece = data.options.pieces[data.options.pieces.length - 1] %}
+
+  {% set lastPiece = data.options.pieces[data.options.pieces.length - 1] %}
+
   {# Footer #}
   <div class="footer-content">
     {{ apos.area(data.page, 'footerArea', {
@@ -110,9 +112,11 @@
     }) }}
   </div>
 
+{% endblock %}
+
+{% block extraBody %}
   {# Centralized translations JSON - placed at bottom to ensure all translations are collected #}
   <script id="translations-map" type="application/json">
-    {{ translationsMap | dump | safe }}
+    {{ data.translationsMap | dump | safe }}
   </script>
-
 {% endblock %}
