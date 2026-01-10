@@ -81,6 +81,9 @@
     this block. It is safe to assume this is where your page-specific content
     should go.
   #}
+  <div data-apos-ajax-context="page">
+    {% block mainInner %}{% endblock %}
+  </div>
 {% endblock %}
 
 {% block afterMain %}
