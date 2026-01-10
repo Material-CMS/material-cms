@@ -110,4 +110,9 @@
     }) }}
   </div>
 
+  {# Centralized translations JSON - placed at bottom to ensure all translations are collected #}
+  <script id="translations-map" type="application/json">
+    {{ translationsMap | dump | safe }}
+  </script>
+
 {% endblock %}
