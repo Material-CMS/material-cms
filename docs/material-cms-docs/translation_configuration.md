@@ -3,7 +3,7 @@
 
 ## Overview
 
-The multilingual system now supports **configurable translation privacy** with three modes:
+The multilingual system supports **configurable translation privacy** with three modes:
 
 1. **Debug Mode** (default): Translations exposed as plain JSON in HTML
 2. **Privacy Mode**: Translations Base64 encoded in HTML  
@@ -83,13 +83,15 @@ The `translationsAttribute` filter generates the appropriate HTML attribute:
 ```
 
 ### **JavaScript Handling**
-The `translation-utils.js` automatically:
-1. Detects if translations are exposed
-2. Parses JSON or Base64 as needed
-3. Falls back to page reload if translations not exposed
+The language switcher widget automatically:
+1. Detects if translations are exposed (checks for `[data-translations]` elements)
+2. Uses AJAX navigation when available (`apos.utils.ajaxGo`)
+3. Falls back to page reload if translations not exposed or AJAX not available
 
 ### **Language Switcher Integration**
-The language switcher widget uses `apos.utils.translationUtils.switchLocale()` which handles all modes automatically.
+The language switcher widget uses progressive enhancement:
+- **If translations exposed AND AJAX available**: Uses `apos.utils.ajaxGo` for seamless switching
+- **Otherwise**: Page reload (works for all modes)
 
 ## MIGRATION GUIDE
 
@@ -130,25 +132,63 @@ Always use the filter:
 3. Verify no special characters breaking encoding
 
 ### **Page Reloads Instead of Instant Switching**
-1. `exposeTranslations` is likely `false`
-2. Check configuration is loaded correctly
-3. Verify `translation-utils.js` is included
+1. `exposeTranslations` is likely `false` (Production Mode)
+2. Check `data-apos-ajax-context="page"` is present in template
+3. Verify `ajax-utils.js` is loaded
 
 ## API REFERENCE
 
 ### **Template Filters**
 - `i18n`: Get translation for current locale
+- `i18nMeta`: Get translation for meta tags (sanitized)
 - `translationsAttribute`: Generate `data-translations` attribute (respects config)
 
-### **JavaScript API**
+### **JavaScript Implementation**
+The language switcher uses simple progressive enhancement:
+
 ```javascript
-// Check current configuration
-apos.utils.translationUtils.config.exposeTranslations
-apos.utils.translationUtils.config.base64Encode
-
-// Switch language (handles all modes)
-apos.utils.translationUtils.switchLocale('de')
-
-// Check if translations are exposed
-apos.utils.translationUtils.areTranslationsExposed()
+// Simplified switchLocale function
+function switchLocale(locale) {
+  // Set cookie
+  document.cookie = 'material-cms.locale=' + locale + '; path=/; max-age=31536000';
+  
+  // Progressive enhancement
+  if (apos.utils.ajaxGo && document.querySelector('[data-translations]')) {
+    // Use AJAX navigation
+    var url = window.location.pathname + window.location.search;
+    url = url.replace(/[?&]locale=[^&]*/, '');
+    var separator = url.includes('?') ? '&' : '?';
+    apos.utils.ajaxGo('page', url + separator + 'locale=' + locale);
+  } else {
+    // Fallback: page reload
+    window.location.reload();
+  }
+}
 ```
+
+### **Meta Tags Note**
+Meta tags (`<meta name="title" content="TEST SEITE">`) require page reload to change because:
+1. Meta tags are rendered server-side
+2. They're not part of the AJAX-replaced content
+3. Browser doesn't re-parse meta tags after AJAX updates
+
+For meta tag updates, use Production Mode (`exposeTranslations: false`) which forces page reloads.
+
+### **Migration Notes (v2.0)**
+- **Simplified Architecture**: Removed 528-line `translation-utils.js` module
+- **Framework Primitive Usage**: Now uses `ajax-utils.js` for AJAX navigation
+- **Progressive Enhancement**: Page reload as baseline, AJAX as enhancement
+- **Reduced Complexity**: 35 functions → 15 functions (57% reduction)
+
+### **Integration with Apostrophe AJAX System**
+For optimal performance, ensure `data-apos-ajax-context="page"` wraps your main content:
+
+```html
+{% block main %}
+  <div data-apos-ajax-context="page">
+    {% block mainInner %}{% endblock %}
+  </div>
+{% endblock %}
+```
+
+This enables seamless AJAX-based language switching when `ajax-utils.js` is loaded.
