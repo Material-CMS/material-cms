@@ -27,6 +27,12 @@ module.exports = {
       cookie: 'material-cms.locale',
       updateFiles: true
     },
+    // Multilingual content handling
+    'apostrophe-i18n-content': {
+      // Expose translations in HTML for debugging (default: true)
+      // Set to false in production to hide translations from HTML source
+      exposeTranslations: true
+    }
     // Email Settings for nodemailer
     'apostrophe-email': {
       nodemailer: {
