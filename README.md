@@ -209,4 +209,8 @@ This documentation provides a complete reference for ApostropheCMS v2 developmen
 
 ----
 
-For more infos about Materialize , visit [Materialize](https://materializecss.com/).
+## Materialize CSS Documentation
+
+A modern responsive front-end framework based on Material Design
+
+For more infos about Materialize CSS, visit [Materialize](https://materializecss.com/).
