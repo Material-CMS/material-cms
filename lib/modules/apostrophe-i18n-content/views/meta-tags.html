@@ -22,11 +22,11 @@
 
 {# SEO Meta Tags #}
 {% if seoTitle %}
-  <meta name="title" content="{{ seoTitle }}">
+  <meta name="title" {{ doc.seoTitle | translationsAttribute }} content="{{ seoTitle }}">
 {% endif %}
 
 {% if seoDescription %}
-  <meta name="description" content="{{ seoDescription }}">
+  <meta name="description" {{ doc.seoDescription | translationsAttribute }} content="{{ seoDescription }}">
 {% endif %}
 
 {# Robots Meta Tag #}
@@ -36,11 +36,13 @@
 
 {# Open Graph Tags #}
 {% if ogTitle %}
-  <meta property="og:title" content="{{ ogTitle }}">
+  {% set ogTitleTranslationsAttr = doc.openGraphTitle | translationsAttribute if doc.openGraphTitle else doc.seoTitle | translationsAttribute %}
+  <meta property="og:title" {{ ogTitleTranslationsAttr }} content="{{ ogTitle }}">
 {% endif %}
 
 {% if ogDescription %}
-  <meta property="og:description" content="{{ ogDescription }}">
+  {% set ogDescriptionTranslationsAttr = doc.openGraphDescription | translationsAttribute if doc.openGraphDescription else doc.seoDescription | translationsAttribute %}
+  <meta property="og:description" {{ ogDescriptionTranslationsAttr }} content="{{ ogDescription }}">
 {% endif %}
 
 {% if doc.openGraphType %}
@@ -91,10 +93,12 @@
 {# Twitter Card #}
 <meta name="twitter:card" content="summary_large_image">
 {% if ogTitle %}
-  <meta name="twitter:title" content="{{ ogTitle }}">
+  {% set twitterTitleTranslationsAttr = doc.openGraphTitle | translationsAttribute if doc.openGraphTitle else doc.seoTitle | translationsAttribute %}
+  <meta name="twitter:title" {{ twitterTitleTranslationsAttr }} content="{{ ogTitle }}">
 {% endif %}
 {% if ogDescription %}
-  <meta name="twitter:description" content="{{ ogDescription }}">
+  {% set twitterDescriptionTranslationsAttr = doc.openGraphDescription | translationsAttribute if doc.openGraphDescription else doc.seoDescription | translationsAttribute %}
+  <meta name="twitter:description" {{ twitterDescriptionTranslationsAttr }} content="{{ ogDescription }}">
 {% endif %}
 {% if doc.openGraphImage and doc.openGraphImage.items and doc.openGraphImage.items[0] %}
   {% set image = doc.openGraphImage.items[0] %}

@@ -5,19 +5,11 @@
 {% import 'apostrophe-favicons:faviconMacros.html' as favicons %}
 {% import 'apostrophe-palette-widgets:macros.html' as palette %}
 
-{# Page Title depends on variables above #}
-{% if data.piece %}
-  {% if data.piece.seoTitle %}
-    {% set title = data.piece.seoTitle | i18n %}
-  {% else %}
-    {% set title = data.piece.title %}
-  {% endif %}
+{# Page Title depends on variables below #}
+{% if data.page.seoTitle %}
+  {% set title = data.page.seoTitle | i18n %}
 {% else %}
-  {% if data.page.seoTitle %}
-    {% set title = data.page.seoTitle | i18n %}
-  {% else %}
-    {% set title = data.page.title %}
-  {% endif %}
+  {% set title = data.page.title %}
 {% endif %}
 
 {# Actual Title #}

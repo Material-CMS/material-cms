@@ -9,7 +9,7 @@
   {% set styleString = styleString + "; font-family: " + additionalFont + ", sans-serif" %}
 {% endif %}
 
-<h2 class="section-header accent-color {{ data.widget.headerAlign }}" 
+<h2 class="section-header accent-color {{ data.widget.headerAlign }}"
     style="{{ styleString }}" {{ data.widget.header | translationsAttribute }}
 >
   {{ data.widget.header | i18n }}
