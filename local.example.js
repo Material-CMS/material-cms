@@ -5,45 +5,45 @@ module.exports = {
   modules: {
     // Minify Html
     'apostrophe-templates': {
-      minify: (process.env.NODE_ENV === 'prod')
+      // minify: (process.env.NODE_ENV === 'prod')
     },
     // Minify Assets
     'apostrophe-assets': {
-      minify: (process.env.NODE_ENV === 'prod')
+      // minify: (process.env.NODE_ENV === 'prod')
     },
     // Set a Secre for your Session
     // https://docs.apostrophecms.org/howtos/storing-sessions-in-redis.html#what-about-caches
     'apostrophe-express': {
-      session: {
-        secret: 'YOUR_SECRET'
-      }
+      // session: {
+      //   secret: 'YOUR_SECRET'
+      // }
       // Touse other port than 3000
       // port: 3001
     },
     // Internationalization
     'apostrophe-i18n': {
-      locales: ['en', 'de'],
-      defaultLocale: 'en',
-      cookie: 'material-cms.locale',
-      updateFiles: true
+      // locales: ['en', 'de'],
+      // defaultLocale: 'en',
+      // cookie: 'material-cms.locale',
+      // updateFiles: true
     },
     // Multilingual content handling
     'apostrophe-i18n-content': {
       // Expose translations in HTML for debugging (default: true)
       // Set to false in production to hide translations from HTML source
-      exposeTranslations: true
-    }
+      // exposeTranslations: true
+    },
     // Email Settings for nodemailer
     'apostrophe-email': {
-      nodemailer: {
-        host: 'SMTP_SERVER', // or use: process.env.SMTP_SERVER
-        port: 587,
-        secure: false,
-        auth: {
-            user: 'SMTP_USER', // or use: process.env.SMTP_USER
-            pass: 'SMTP_PW' // or use: process.env.SMTP_PW
-        }
-      }
+      // nodemailer: {
+      //   host: 'SMTP_SERVER', // or use: process.env.SMTP_SERVER
+      //   port: 587,
+      //   secure: false,
+      //   auth: {
+      //       user: 'SMTP_USER', // or use: process.env.SMTP_USER
+      //       pass: 'SMTP_PW' // or use: process.env.SMTP_PW
+      //   }
+      // }
     },
     // Apostrophe has full-text search capabilities built set searched pages here
     // https://docs.apostrophecms.org/core-concepts/apostrophe-search/search.html
