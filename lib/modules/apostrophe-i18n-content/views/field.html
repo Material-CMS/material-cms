@@ -6,6 +6,7 @@
   {# Debug: ensure locales exist #}
   {% set locales = data.locales or ['en'] %}
   {% set defaultLocale = data.defaultLocale or locales[0] %}
+  {% set isTextarea = data.textarea or data.textArea %}
   <div class="apos-field" data-multilingual-string>
     {% for locale in locales %}
       <div class="apos-field" data-locale="{{ locale }}">
@@ -14,12 +15,21 @@
             <span class="apos-label">DEFAULT</span><br>
           {% endif %}
           <span class="apos-label">{{ locale|upper }}:</span>
-          <input
-            type="text"
-            class="apos-field-input"
-            data-locale-input="{{ locale }}"
-            placeholder="{{ __ns('apostrophe', 'Translation for') }} {{ locale }}"
-          />
+          {% if isTextarea %}
+            <textarea
+              class="apos-field-input apos-field-input-textarea"
+              data-locale-input="{{ locale }}"
+              placeholder="{{ __ns('apostrophe', 'Translation for') }} {{ locale }}"
+              rows="5"
+            ></textarea>
+          {% else %}
+            <input
+              type="text"
+              class="apos-field-input"
+              data-locale-input="{{ locale }}"
+              placeholder="{{ __ns('apostrophe', 'Translation for') }} {{ locale }}"
+            />
+          {% endif %}
         </label>
       </div>
     {% endfor %}
