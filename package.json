@@ -17,7 +17,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "Felix Lberg",
+  "author": "Kafkiano",
   "license": "MIT",
   "dependencies": {
     "apostrophe": "^2.227.12",
