@@ -67,10 +67,9 @@ npm run dev:docker:up
 
 # Replace USERNAME with your individual name and add it to admin group; prompts for password
 node app.js apostrophe-users:add USERNAME admin
-# Go go go!
-npm start
 
-# Open Browser "http://localhost:3000/login" to login with your user to add content
+# Go Go Go!
+npm run dev:start
 ```
 
 ## Production
@@ -81,11 +80,21 @@ Modify the file accoring to your wishes, remove modules that you don't need
 
 ## Development
 
+### Nunjucks Templating
+
+![Alt Text](https://tenor.com/view/black-ninja-flipping-out-gif-15992169.gif)
+
+Material CMS uses Nunjucks, a powerful templating engine for JavaScript. It's notable for its rich feature set, including template inheritance, macros, and various logical constructs such as loops and conditionals. 
+
+Check [mozilla.github.io/nunjucks](https://mozilla.github.io/nunjucks/templating.html) for more references.
+
+----
+
 ### Front end JS & CSS
 
 Front end javascript and css which are not loaded by specific widgets trough `apos.utils.widgetPlayers` is loaded through the `apostrophe-assets` module to get bundled and minified in production.
 
-```bash
+```shell
 # Current apostrophe asset files
 lib/modules/apostrophe-assets/public
 ├── css
@@ -156,81 +165,18 @@ lib/modules/apostrophe-assets/public
 
 10 directories, 56 files
 ```
+----
 
 ### Material CMS Documentation
 
 The [Material CMS Documentation](docs/material-cms-docs) provides references for material cms specific overrides and extension of the apostrophe cms core.
 
+----
+
 ### Apostrophe CMS v2 Documentation
 
 The [Apostrophe CMS v2 Documentation](docs/apostrophe-v2-docs) provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation.
 
-Documentation Organization:
-```bash
-docs/apostrophe-v2-docs
-├── advanced-topics
-│   ├── advanced-pages-topics
-│   ├── advanced-pieces-topics
-│   ├── database
-│   └── promise-events
-├── core-concepts
-│   ├── apostrophe-search
-│   ├── editable-content-on-pages
-│   ├── front-end-assets
-│   ├── global-settings
-│   ├── modules
-│   ├── pages-and-navigation
-│   ├── reusable-content-pieces
-│   ├── users-and-permissions
-│   └── working-with-templates
-├── devops
-│   ├── cloud
-│   └── deployment
-├── getting-started
-├── howtos
-└── reference
-    ├── field-properties
-    ├── field-types
-    └── modules
-        ├── apostrophe-admin-bar
-        ├── apostrophe-any-page-manager
-        ├── apostrophe-areas
-        ├── apostrophe-assets
-        ├── apostrophe-attachments
-        ├── apostrophe-browser-utils
-        ├── apostrophe-custom-pages
-        ├── apostrophe-docs
-        ├── apostrophe-doc-type-manager
-        ├── apostrophe-files
-        ├── apostrophe-files-widgets
-        ├── apostrophe-global
-        ├── apostrophe-groups
-        ├── apostrophe-html-widgets
-        ├── apostrophe-images
-        ├── apostrophe-images-widgets
-        ├── apostrophe-jobs
-        ├── apostrophe-login
-        ├── apostrophe-modal
-        ├── apostrophe-module
-        ├── apostrophe-notifications
-        ├── apostrophe-oembed
-        ├── apostrophe-pages
-        ├── apostrophe-pieces
-        ├── apostrophe-pieces-pages
-        ├── apostrophe-pieces-widgets
-        ├── apostrophe-polymorphic-manager
-        ├── apostrophe-rich-text-widgets
-        ├── apostrophe-schemas
-        ├── apostrophe-search
-        ├── apostrophe-tags
-        ├── apostrophe-ui
-        ├── apostrophe-users
-        ├── apostrophe-utils
-        ├── apostrophe-versions
-        ├── apostrophe-video-fields
-        ├── apostrophe-video-widgets
-        └── apostrophe-widgets
-```
 Learning Progression:
 1. Getting Started - Environment setup & basic site creation
 2. Core Concepts - Fundamental Apostrophe features & tools
