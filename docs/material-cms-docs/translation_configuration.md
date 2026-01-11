@@ -15,60 +15,11 @@ In `data/local.js`:
 
 ```javascript
 'apostrophe-i18n-content': {
-  // Expose translations in HTML for debugging (default: true)
-  // Set to false in production to hide translations from HTML source
+  // Expose translations in HTML needed for ajax language switch (default: true)
+  // Set to false to hide translations from HTML and require page reload
   exposeTranslations: true,
-  
-  // Base64 encode translations for additional privacy (default: false)
-  // When true, translations are Base64 encoded in data-translations attribute
-  base64Encode: false
 }
 ```
-
-## Modes Explained
-
-### **1. DEBUG MODE (Default)**
-```javascript
-exposeTranslations: true,
-base64Encode: false
-```
-**HTML Output**:
-```html
-<h2 data-translations="{"en":"Hello","de":"Guten Tag"}">
-  Hello
-</h2>
-```
-**Use Case**: Development, debugging, testing
-**Pros**: Easy to inspect translations in browser devtools
-**Cons**: All translations visible in page source
-
-### **2. PRIVACY MODE**
-```javascript
-exposeTranslations: true,
-base64Encode: true
-```
-**HTML Output**:
-```html
-<h2 data-translations="eyJlbiI6IkhlbGxvIiwiZGUiOiJHdXRlbiBUYWcifQ==">
-  Hello
-</h2>
-```
-**Use Case**: Production with instant language switching
-**Pros**: Translations not human-readable at a glance
-**Cons**: Base64 increases size by ~33%, still decodable
-
-### **3. PRODUCTION MODE**
-```javascript
-exposeTranslations: false,
-base64Encode: false  // Ignored when exposeTranslations is false
-```
-**HTML Output**:
-```html
-<h2>Hello</h2>
-```
-**Use Case**: Maximum privacy/SEO, no translations in HTML
-**Pros**: Clean HTML, no translation exposure
-**Cons**: Language switching requires page reload
 
 ## HOW IT WORKS
 
@@ -93,19 +44,6 @@ The language switcher widget uses progressive enhancement:
 - **If translations exposed AND AJAX available**: Uses `apos.utils.ajaxGo` for seamless switching
 - **Otherwise**: Page reload (works for all modes)
 
-## MIGRATION GUIDE
-
-### **For Existing Widgets**
-Update widget templates to use the `translationsAttribute` filter:
-
-```html
-{# Before (hardcoded) #}
-data-translations="{{ data.widget.header.translations | dump | e }}"
-
-{# After (configurable) #}
-{{ data.widget.header | translationsAttribute }}
-```
-
 ### **For New Widgets**
 Always use the filter:
 ```html
@@ -114,22 +52,7 @@ Always use the filter:
 </div>
 ```
 
-### **Recommendation**
-- Use **Debug Mode** during development
-- Use **Privacy Mode** for staging/pre-production  
-- Use **Production Mode** for sensitive content or maximum SEO control
-
 ## TROUBLESHOOTING
-
-### **Translations Not Updating**
-1. Check `exposeTranslations` is `true`
-2. Verify widget template uses `translationsAttribute` filter
-3. Check browser console for errors
-
-### **Base64 Decoding Errors**
-1. Ensure `atob()` is available (all modern browsers)
-2. Check JSON is valid before encoding
-3. Verify no special characters breaking encoding
 
 ### **Page Reloads Instead of Instant Switching**
 1. `exposeTranslations` is likely `false` (Production Mode)
@@ -173,12 +96,6 @@ Meta tags (`<meta name="title" content="TEST SEITE">`) require page reload to ch
 3. Browser doesn't re-parse meta tags after AJAX updates
 
 For meta tag updates, use Production Mode (`exposeTranslations: false`) which forces page reloads.
-
-### **Migration Notes (v2.0)**
-- **Simplified Architecture**: Removed 528-line `translation-utils.js` module
-- **Framework Primitive Usage**: Now uses `ajax-utils.js` for AJAX navigation
-- **Progressive Enhancement**: Page reload as baseline, AJAX as enhancement
-- **Reduced Complexity**: 35 functions → 15 functions (57% reduction)
 
 ### **Integration with Apostrophe AJAX System**
 For optimal performance, ensure `data-apos-ajax-context="page"` wraps your main content:
