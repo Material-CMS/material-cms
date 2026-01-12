@@ -121,11 +121,10 @@ You can login as admin with the following command:
 
 ```shell
 # 5. Returns "Found. Redirecting to /" when successful:
-http --form POST http://localhost:3000/login username=admin password=secret
-```
+http --form POST http://localhost:3000/login username=admin password=admin
 
 This can be done with `curl` as well but is more complex.
-
+```
 
 ## DEBUGGING: MINIMAL INSTRUCTIONS
 
@@ -142,6 +141,9 @@ This can be done with `curl` as well but is more complex.
 - Fail early with clear error messages
 - Include comprehensive `--help` documentation
 
+**SEARCH THE DOCS FOR REFERENCES**
+
+The [Apostrophe CMS v2 Documentation](docs/apostrophe-v2-docs) provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation. Use `tree docs/ -d` to get a quick overview of the existing documentation material.
 
 ## CURRENT DEVELOPMENT PARADIGM
 
@@ -151,6 +153,12 @@ This can be done with `curl` as well but is more complex.
 
 ----
 
-**SEARCH THE DOCS FOR REFERENCES**
+## CURRENT DEVELOPMENT PARADIGM
 
-The [Apostrophe CMS v2 Documentation](docs/apostrophe-v2-docs) provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation. Use `tree docs/ -d` to get a quick overview of the existing documentation material.
+- NO TIMELINE EXPECTATIONS!
+- NO DEADLINE WE HAVE UNLIMITED TIME!
+- RUN HTML INSPECTION AFTER CHANGES!
+- USE **ApostropheCMS v2** functions, NOT WRAPPERS!
+
+**CRITICAL**
+- Every change on the i18n/multilingual implementation must be verified by `npm run test:i18n`

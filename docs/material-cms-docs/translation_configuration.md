@@ -28,7 +28,7 @@ modules: {
 ```javascript
 // data/local.js
 'apostrophe-i18n-content': {
-  exposeTranslations: true,   // false in production
+  exposeTranslations: true,   // deactivates no reload language switching
   cookieName: 'material-cms.locale'
 }
 ```
