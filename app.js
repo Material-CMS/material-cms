@@ -30,9 +30,11 @@ var apos = require('apostrophe')({
     },
     'galleries-widgets': {},
     'grid-widgets': {},
-    'header-widgets': {},
+    // i18n integration
     'apostrophe-i18n-content': {},
     'language-switcher-widgets': {},
+    'i18n-header-widgets': {},
+    'i18n-text-widgets': {},
     'iframe-widgets': {},
     'link-widgets': {},
     'link-page-widgets': {},
