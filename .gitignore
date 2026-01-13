@@ -1,4 +1,7 @@
+.atom
+.roo
 package-lock.json
+session.json
 /locales
 npm-debug.log
 /data/local.js
@@ -17,6 +20,3 @@ node_modules
 /public/js/_site-compiled.js
 build
 prod-bundle
-.atom
-.roo
-AGENTS.md
