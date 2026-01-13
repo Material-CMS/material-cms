@@ -1,0 +1,33 @@
+{% extends "apostrophe-modal:baseSlideable.html" %}
+{% import "apostrophe-modal:macros.html" as modals %}
+{% import "apostrophe-schemas:macros.html" as schemas %}
+{% import 'apostrophe-ui:components/buttons.html' as buttons with context %}
+
+
+{% block controls %}
+  {{ buttons.minor('Cancel', { action: 'cancel' }) }}
+  
+  {# Add DeepL translate buttons for multilingual-string fields #}
+  {% if data.schema %}
+    {% for field in data.schema %}
+      {% if field.type == 'multilingual-string' %}
+        {% set attr = 'data-deepl-translate data-field="' ~ field.name ~ '"' %}
+        {{ buttons.minor('Auto Translate', { action: 'deepl-translate', attributes: attr }) }}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  {{ buttons.major('Save ' + data.label, { action: 'save' }) }}
+{% endblock %}
+
+{% block label %}
+{{ __ns('apostrophe', data.label | d('')) }}
+{% endblock %}
+
+{% block body %}
+  <div class="apos-form" data-apos-form>
+    {{ schemas.fields(data.schema) }}
+  </div>
+{% endblock %}
+
+{% block footerContainer %}{% endblock %}
