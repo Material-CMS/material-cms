@@ -9,6 +9,10 @@ var apos = require('apostrophe')({
     },
     // Ordering Module for Pieces
     'apostrophe-pieces-orderings-bundle': {},
+    // i18n Modules
+    'apostrophe-i18n-content': {},
+    'apostrophe-i18n-deepl': {},
+    'i18n-header-widgets': {},
     // Custom Modules
     'card-widgets': {},
     'card-anime-widgets': {},
@@ -30,9 +34,6 @@ var apos = require('apostrophe')({
     },
     'galleries-widgets': {},
     'grid-widgets': {},
-    'header-widgets': {},
-    'apostrophe-i18n-content': {},
-    'apostrophe-i18n-deepl': {},
     'language-switcher-widgets': {},
     'iframe-widgets': {},
     'link-widgets': {},
