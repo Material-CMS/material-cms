@@ -13,6 +13,7 @@ var apos = require('apostrophe')({
     'apostrophe-i18n-content': {},
     'apostrophe-i18n-deepl': {},
     'i18n-header-widgets': {},
+    'i18n-text-widgets': {},
     // Custom Modules
     'card-widgets': {},
     'card-anime-widgets': {},

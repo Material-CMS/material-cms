@@ -29,9 +29,8 @@ module.exports = {
     },
     // Multilingual content handling
     'apostrophe-i18n-content': {
-      // Expose translations in HTML for debugging (default: true)
-      // Set to false in production to hide translations from HTML source
-      // exposeTranslations: true
+      // API-first architecture - translations delivered via secure endpoints
+      // No configuration required for basic operation
     },
     // Email Settings for nodemailer
     'apostrophe-email': {

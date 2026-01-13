@@ -1,0 +1,8 @@
+{# Build color style string #}
+{% set color = "color: " + (data.widget.color or data.global.accentColor) %}
+
+<h2 class="flow-text white-space-pre {{ data.widget.align }}" 
+    style="{{ color }}" {{ data.widget.text | translationsAttribute }}
+>
+  {{ data.widget.text | i18n }}
+</h2>
