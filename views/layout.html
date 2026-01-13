@@ -115,8 +115,4 @@
 {% endblock %}
 
 {% block extraBody %}
-  {# Centralized translations JSON - placed at bottom to ensure all translations are collected #}
-  <script id="translations-map" type="application/json">
-    {{ data.translationsMap | dump | safe }}
-  </script>
 {% endblock %}

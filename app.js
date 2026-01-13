@@ -32,6 +32,7 @@ var apos = require('apostrophe')({
     'grid-widgets': {},
     'header-widgets': {},
     'apostrophe-i18n-content': {},
+    'apostrophe-i18n-deepl': {},
     'language-switcher-widgets': {},
     'iframe-widgets': {},
     'link-widgets': {},
