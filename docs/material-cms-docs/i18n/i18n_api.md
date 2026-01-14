@@ -79,7 +79,7 @@ apos.utils.get('/modules/apostrophe-i18n-content/translations', {
 
 ### Batch Translation Endpoint (DeepL Ready)
 
-**POST `/modules/apostrophe-i18n-content/translate-batch`**
+**POST `/modules/apostrophe-i18n-deepl/translate-batch`**
 
 Placeholder endpoint for DeepL integration. Requires authentication.
 

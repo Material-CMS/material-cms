@@ -19,7 +19,7 @@ Material CMS implements an **API-first translation architecture** that eliminate
 #### Key Components:
 - **Custom Field Type**: `multilingual-string` with `textarea` support
 - **Template Filters**: `i18n`, `i18nMeta`, `translationsAttribute`
-- **API Endpoints**: `/translations` (GET), `/translate-batch` (POST)
+- **API Endpoints**: `/translations` (GET)
 - **Middleware**: Locale detection (cookie → Accept-Language → default)
 
 #### Configuration (`data/local.js`):
@@ -51,7 +51,6 @@ Material CMS implements an **API-first translation architecture** that eliminate
 ### 3. Widget Modules Using i18n
 - `i18n-header-widgets`: Header with multilingual text
 - `i18n-text-widgets`: Text content with multilingual support
-- **Note**: `i18n-text-widgets` has template bug (uses `header` instead of `text`)
 
 ### 4. `apostrophe-i18n-deepl` (Integration Ready)
 **Purpose**: DeepL translation integration placeholder
@@ -90,10 +89,10 @@ apos.utils.get('/modules/apostrophe-i18n-content/translations', {
 ```
 
 ### Batch Translation Endpoint (DeepL Ready)
-**POST** `/modules/apostrophe-i18n-content/translate-batch`
+**POST** `/modules/apostrophe-i18n-deepl/translate-batch`
 
 **Authentication**: Requires logged-in user
-**Purpose**: Placeholder for DeepL integration
+**Purpose**: DeepL batch translation endpoint (placeholder)
 
 ## Template Integration
 
@@ -241,9 +240,8 @@ module.exports = {
 - ✅ Textarea support for multilingual-string
 
 ### Technical Debt
-1. **Critical**: `i18n-text-widgets` template bug (line 5 references `header` instead of `text`)
-2. **Documentation**: Translation API doc mentions legacy artifacts that don't exist
-3. **DeepL Integration**: Placeholder module needs actual implementation
+1. **DeepL Integration**: Add error handling for API failures
+2. **Code Quality**: Replace jQuery AJAX with pure JavaScript solution in admin UI
 
 ## Implementation Patterns
 
@@ -363,7 +361,7 @@ apos.utils.get('/modules/apostrophe-i18n-content/translations', {
 ### Widget Implementations
 - `lib/modules/language-switcher-widgets/` - Language switcher
 - `lib/modules/i18n-header-widgets/` - Example header widget
-- `lib/modules/i18n-text-widgets/` - Example text widget (has bug)
+- `lib/modules/i18n-text-widgets/` - Example text widget
 
 ### Configuration
 - `data/local.js` - i18n configuration
