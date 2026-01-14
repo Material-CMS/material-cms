@@ -1,9 +1,9 @@
 {# Build color style string #}
 {% set color = "color: " + (data.widget.color) %}
 
-<h2 {{ data.widget.text | translationsAttribute }}
-  class="flow-text white-space-pre {{ data.widget.align }}" 
+<div {{ data.widget.text | translationsAttribute }}
+  class="flow-text white-space-pre {{ data.widget.align }}"
   style="{{ color }}"
 >
-  {{ data.widget.text | i18n }}
-</h2>
+  {{ data.widget.text | i18n | markdown }}
+</div>

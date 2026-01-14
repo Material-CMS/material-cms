@@ -14,6 +14,8 @@ var apos = require('apostrophe')({
     'apostrophe-i18n-deepl': {},
     'i18n-header-widgets': {},
     'i18n-text-widgets': {},
+    // Markdown processing
+    'apostrophe-markdown': {},
     // Custom Modules
     'card-widgets': {},
     'card-anime-widgets': {},
