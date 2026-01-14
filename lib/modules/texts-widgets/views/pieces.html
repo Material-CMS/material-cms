@@ -61,33 +61,6 @@
         >
           <div class="card-content">
 
-            {% if piece.titleShow %}
-
-              {% if piece._url and piece.description.items[0] %}
-                <a class="piece-url" href="{{ piece._url }}">
-              {% endif %}
-
-                  <h3 class="accent-color card-title {{ piece.titleAlign }}"
-                    {% if piece.titleColor or piece.titleAdditionalFont %}
-                      style="
-                        {% if piece.titleColor %}
-                          color:{{ piece.titleColor }}
-                        {% endif %}
-                        {% if piece.titleAdditionalFont %}
-                        ; font-family: {{ additionalFont }}, sans-serif;
-                        {% endif %}
-                       "
-                    {% endif %}
-                  >
-                    {{ piece.title  | replace("Blog - ", "" ) }}
-                  </h3>
-
-              {% if piece._url and piece.description.items[0] %}
-                </a>
-              {% endif %}
-
-            {% endif %}
-
             {% if piece.description.items[0] %}
               {{ apos.area(piece, 'description', { edit: false }) }}
             {% endif %}
@@ -198,7 +171,7 @@
                     {{ apos.area(piece, 'text', {
                       edit: false,
                       widgets: {
-                        'apostrophe-rich-text': {},
+                        'i18n-text': {},
                         'apostrophe-video': {},
                         'card': {
                           size: 'one-half',

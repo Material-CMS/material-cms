@@ -7,13 +7,6 @@
   <div class="main-content bg-color">
 
     <div class="pages-container">
-      {% if data.piece.title %}
-        <h2 class="accent-color center-align"
-          {% if data.piece.titleColor %} style="color:{{ data.piece.titleColor }}" {% endif %}
-        >
-          {{ data.piece.title }}
-        </h2>
-      {% endif %}
       <div class="container">
 
         <div class="row">
@@ -88,7 +81,7 @@
                           {{ apos.area(data.piece, 'text', {
                             edit: false,
                             widgets: {
-                              'apostrophe-rich-text': {},
+                              'i18n-text': {},
                               'apostrophe-video': {},
                               'card': {
                                 size: 'one-half',

@@ -77,13 +77,6 @@ var apos = require('apostrophe')({
     'texts-widgets': {},
     'triple-widgets': {},
     'video-widgets': {},
-    // CKEditor addons
-    'apostrophe-rich-text-permalinks': {
-      projection: {
-        title: 1,
-        _url: 1
-      }
-    },
     // CSS in context editing
     'apostrophe-palette-widgets': {},
     'apostrophe-palette': {},
