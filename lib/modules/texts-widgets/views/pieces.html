@@ -1,6 +1,9 @@
 {% set pieces = data.widget._pieces or data.pieces %}
 {# set additional font from global #}
 {% set additionalFont = data.global.additionalFonts | replace("+", " ") or null %}
+{# set backgroundColor style string #}
+{% set backgroundColor = "background-color: " + piece.backColor %}
+
 
 {% for piece in pieces %}
   <div class="card z-depth-0
@@ -10,7 +13,7 @@
       horizontal
     {% endif %}"
     {% if piece.backColor %}
-       style="background-color:{{ piece.backColor }}"
+       style="{{ backgroundColor }}"
     {% endif %}
   >
 
@@ -56,7 +59,7 @@
 
         <div class="card-stacked main-color"
           {% if piece.backColor %}
-            style="background-color:{{ piece.backColor }}"
+            style="{{ backgroundColor }}"
           {% endif %}
         >
           <div class="card-content">
@@ -73,12 +76,12 @@
 
               <div class="card-action collapsible z-depth-0"
                 {% if piece.backColor%}
-                  style="background-color:{{ piece.backColor }}"
+                  style="{{ backgroundColor }}"
                 {% endif %}
               >
                 <div class="collapsible-header"
                   {% if piece.backColor%}
-                    style="background-color:{{ piece.backColor }}"
+                    style="{{ backgroundColor }}"
                   {% endif %}
                 >
                   <div class="row">
@@ -118,7 +121,7 @@
 
               <ul class="card-action z-depth-0{% if piece.text.items[0] %} collapsible{% endif %}"
                 {% if piece.backColor %}
-                   style="background-color:{{ piece.backColor }}"
+                   style="{{ backgroundColor }}"
                 {% endif %}
               >
                 <li>
@@ -126,7 +129,7 @@
                 {% if piece.text.items[0] %}
                   <div class="collapsible-header"
                     {% if piece.backColor%}
-                      style="background-color:{{ piece.backColor }}"
+                      style="{{ backgroundColor }}"
                     {% endif %}
                   >
                 {% endif %}

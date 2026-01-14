@@ -3,17 +3,17 @@
 {# cache global to reduce load  #}
 {% set global = data.global %}
 {# cache nav background images and gradient colors #}
-{% set navBackgroundImage = data.widget._navBackgroundImage or global._navBackgroundImage %}
-{% set gradientColorTop = data.widget.gradientColorTop or global.gradientColorTop %}
-{% set gradientColorBottom = data.widget.gradientColorBottom or global.gradientColorBottom %}
-{% set navTextColor = data.widget.navTextColor or global.navTextColor %}
-{% set navGoBack = data.widget.navGoBack or global.navGoBack %}
-{% set navDouble = data.widget.navDouble or global.navDouble %}
+{% set navBackgroundImage = data.widget._navBackgroundImage %}
+{% set gradientColorTop = data.widget.gradientColorTop %}
+{% set gradientColorBottom = data.widget.gradientColorBottom %}
+{% set navTextColor = global.navTextColor %}
+{% set navGoBack = global.navGoBack %}
+{% set navDouble = global.navDouble %}
 
 <div class="nav">
 
   {# Nav Background #}
-  {% if data.widget._navBackgroundImage or global._navBackgroundImage %}
+  {% if navBackgroundImage %}
     {% include "components/background.html" %}
   {% endif %}
 
@@ -29,7 +29,7 @@
     {# Nav Wrapper #}
     <div class="
         nav-wrapper big pin-top nav-color
-        {% if data.widget.navShadow or global.navShadow %}
+        {% if global.navShadow %}
           z-depth-2
         {% endif %}
         {% if navTextColor %}
@@ -50,23 +50,16 @@
 
     {# Brand Logo #}
     <a aria-label="Back to home" class="brand-logo" href="{{ data.options.homeUrl }}">
-      {% if data.widget._logo %}
-        <img
-          src="{{ apos.attachments.url(data.widget._logo.attachment, { size: 'full' }) }}"
-          alt="{{ data.widget._logo.description }}"
-        >
-      {% else %}
         {% if global._logo %}
           <img
             src="{{ apos.attachments.url(global._logo.attachment, { size: 'full' }) }}"
             alt="{{ global._logo.description }}"
           >
-        {% else %}
+        {% else %} 
           <h1 class="text-color">
             {{ data.options.homeTitle }}
           </h1>
         {% endif %}
-      {% endif %}
     </a>
 
       {# Sidenav Trigger #}
@@ -103,9 +96,6 @@
       {% endif %}
 
       <ul class="nav-activator right hide-on-med-and-down">
-
-        {# Extra Links #}
-        {% include "components/extra-links.html" %}
 
         {# Include Nav #}
         {% if data.page.orphan or data.piece %}
@@ -159,9 +149,6 @@
       "
     {% endif %}
   >
-
-    {# Extra Links #}
-    {% include "components/extra-links.html" %}
 
     {# Include Nav #}
       {% if data.widget.nav == 'default' %}

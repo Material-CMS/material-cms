@@ -1,31 +1,7 @@
 <div class="nav-background"
-  {% if (navBackgroundImage or gradientColorTop) or (navBackgroundImage or gradientColorBottom) %}
+  {% if gradientColorTop or gradientColorBottom %}
     style="
       background: linear-gradient(
-        {% if gradientColorTop %}
-          {{ gradientColorTop }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %},
-        {% if gradientColorBottom %}
-          {{ gradientColorBottom }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %}
-      );
-      background: -o-linear-gradient(
-        {% if gradientColorTop %}
-          {{ gradientColorTop }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %},
-        {% if gradientColorBottom %}
-          {{ gradientColorBottom }}
-        {% else %}
-          rgba(0, 0, 0, 0)
-        {% endif %}
-      );
-      background: -webkit-linear-gradient(
         {% if gradientColorTop %}
           {{ gradientColorTop }}
         {% else %}
@@ -42,14 +18,12 @@
 >
   <div class="parallax-container">
     <div class="parallax">
-      {% if navBackgroundImage %}
-        <img
-          src="{{ apos.attachments.url(navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
-          srcset="{{apos.images.srcset(navBackgroundImage.attachment) }}"
-          sizes="70vw"
-          alt="{{ navBackgroundImage.title }}"
-        >
-      {% endif %}
+      <img
+        src="{{ apos.attachments.url(navBackgroundImage.attachment, { size: data.options.size or 'one-third' }) }}"
+        srcset="{{apos.images.srcset(navBackgroundImage.attachment) }}"
+        sizes="70vw"
+        alt="{{ navBackgroundImage.title }}"
+      >
     </div>
   </div>
 </div>
