@@ -6,17 +6,19 @@
 
 {% block controls %}
   {{ buttons.minor('Cancel', { action: 'cancel' }) }}
-  
-  {# Add DeepL translate buttons for multilingual-string fields #}
-  {% if data.schema %}
-    {% for field in data.schema %}
-      {% if field.type == 'multilingual-string' %}
-        {% set attr = 'data-deepl-translate data-field="' ~ field.name ~ '"' %}
-        {{ buttons.minor('Auto Translate', { action: 'deepl-translate', attributes: attr }) }}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-  
+  {% for field in data.schema %}
+    {% if field.type == 'multilingual-string' %}
+      <button type="button"
+              class="apos-button apos-button--minor deepl-translate-button"
+              data-deepl-translate="{{ field.name }}"
+              data-apos-deepl-translate="{{ field.name }}">
+        <span class="apos-button-label">
+          <i class="apos-button-icon apos-button-icon--translate"></i>
+          Auto Translate
+        </span>
+      </button>
+    {% endif %}
+  {% endfor %}
   {{ buttons.major('Save ' + data.label, { action: 'save' }) }}
 {% endblock %}
 
