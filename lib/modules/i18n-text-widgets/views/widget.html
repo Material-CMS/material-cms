@@ -4,6 +4,7 @@
 <div {{ data.widget.text | translationsAttribute }}
   class="flow-text white-space-pre {{ data.widget.align }}"
   style="{{ color }}"
+  data-markdown="true"
 >
   {{ data.widget.text | i18n | markdown }}
 </div>
