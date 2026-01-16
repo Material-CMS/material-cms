@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'chromium',
-    script: 'scripts/launch_cdp.sh',
+    script: 'scripts/cdp-cli/launch_cdp.sh',
     autorestart: true,
     watch: false,
     max_memory_restart: '1G',
