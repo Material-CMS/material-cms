@@ -8,12 +8,14 @@
 {# Page Title depends on variables above #}
 {% if data.page.seoTitle %}
   {% set title = data.page.seoTitle | i18n %}
+  {% set titleAttr = data.page.seoTitle | translationsAttribute %}
 {% else %}
   {% set title = data.page.title %}
+  {% set titleAttr = '' %}
 {% endif %}
 
 {# Actual Title #}
-{% block title %}{{ title }}{% endblock %}
+{% block title %}<span {{ titleAttr }}>{{ title }}</span>{% endblock %}
 
 {% block extraHead %}
 
