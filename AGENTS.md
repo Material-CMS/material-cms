@@ -141,7 +141,7 @@ http --session=./session.json GET http://localhost:3000/ > admin_home.html
 - Check the database with: `mongosh material-cms`
 
 **Pre installed tools**:
-The cli tools: `npm`, `pm2`,`http`, `jq` and `cdp-cli` are installed globally and already in your PATH. They will be available whenever you need them.
+The cli tools: `npm`, `pm2`,`http`, `jq`, `cdp-cli`, `opencode` are installed globally and already in your PATH. They will be available whenever you need them.
 
 ---
 
@@ -182,6 +182,7 @@ cdp-cli snapshot "TEST PAGE" --format text
 
 ### Ready‑to‑use bash utilities
 Scripts in `scripts/` wrap common cdp‑cli tasks (all output is pipe‑able, no colors/emojis).
+This become beneficiary if you need to execute repeating commandos with `cdp-cli`
 
 - `scripts/cdp-tabs.sh` – list pages (human‑readable table or NDJSON)  
 - `scripts/cdp-snapshot-text.sh` – get text snapshot of a page  
@@ -219,6 +220,26 @@ cdp-cli eval "TEST PAGE" "document.querySelectorAll('*').length" | jq -r '.value
 - Include comprehensive `--help` documentation.
 
 ---
+
+## CODEBASE EXPLORATION WITH OPENCODE
+**Rationale**: Rapidly explore the codebase and `node_modules` without flooding the primary agent's context. The Opencode CLI acts as a dedicated research assistant, executing semantic searches and returning concise findings for the lead agent to act upon.
+
+**Specialist Agent Delegation**: For major tasks, directly delegate to Opencode's specialist agents. Use `opencode agent explore` for research and discovery. Use `opencode agent build` for execution and implementation.
+
+
+### **Agent Delegation Patterns**
+| Agent | Command Pattern | When the Lead Developer Should Delegate |
+| :--- | :--- | :--- |
+| **`explore`** | `opencode agent explore "your research goal"` | To understand a new module, trace code flow, or gather examples before making a design decision. |
+| **`build`** | `opencode agent build "your implementation task"` | To execute well-defined implementation work, such as creating a module, fixing a bug, or writing a script. |
+| **`review`** | `opencode agent review "file or code to analyze"` | To get a security, performance, or best-practices audit of a code block before integration. |
+
+
+### **Benefits of Outsourcing Work**
+- **Optimal Context Use**: The heavy context consumption of reading many files happens in the specialized agent, not your main context.
+- **Higher Quality Output**: The `build` agent is specifically fine-tuned for generating correct, runnable code.
+- **Clearer Mental Model**: You become a Lead Agent - Your thought process becomes a management script: *"I don't need to read all those files myself; I'll have my explore agent brief me."*
+
 
 ## SEARCH THE DOCS
 - [Apostrophe CMS v2 Documentation](docs/apostrophe-v2-docs) – complete reference for ApostropheCMS v2 development.  
