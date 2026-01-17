@@ -33,48 +33,6 @@ cdp-cli click "MyPage" "button#submit"
 cdp-cli click "MyPage" "button#enter-vr" --user-gesture
 ```
 
-## Installation
-
-```bash
-npm install -g @myerscarpenter/cdp-cli
-```
-
-## Quick Start
-
-```bash
-# Launch Chrome with remote debugging
-cdp-cli launch
-
-# List all open pages
-cdp-cli tabs
-
-# Navigate to a URL
-cdp-cli new "https://example.com"
-
-# Get page snapshot (accessibility tree)
-cdp-cli snapshot "example"
-
-# Click an element
-cdp-cli click "example" "a"
-
-# Take a screenshot
-cdp-cli screenshot "example" screenshot.jpg
-```
-
-Or start Chrome manually:
-
-```bash
-# macOS
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --remote-debugging-port=9222
-
-# Linux
-google-chrome --remote-debugging-port=9222
-
-# Windows
-chrome.exe --remote-debugging-port=9222
-```
-
 ## Output Format: NDJSON
 
 All list commands output **newline-delimited JSON (NDJSON)** - one complete JSON object per line. This format is:
@@ -108,13 +66,13 @@ cdp-cli tabs
 
 **new** - Create a new page/tab
 ```bash
-cdp-cli new "https://example.com"
+cdp-cli new "http://localhost:3000"
 cdp-cli new  # Empty page
 ```
 
 **go** - Navigate page (URL, back, forward, reload)
 ```bash
-cdp-cli go "example" "https://github.com"
+cdp-cli go "example" "http://localhost:3000"
 cdp-cli go "example" back
 cdp-cli go "example" forward
 cdp-cli go "example" reload
