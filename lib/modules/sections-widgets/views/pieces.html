@@ -96,7 +96,8 @@
 
           {# Header #}
           {% if piece.header %}
-            <h2 class="section-header accent-color {{ piece.headerAlign }}"
+            <h1 {{ piece.header | translationsAttribute }}
+              class="section-header accent-color {{ piece.headerAlign }}"
               {%- if piece.headerColor or piece.headerAdditionalFont -%}
                 style="
                   {%- if piece.headerColor -%}
@@ -108,8 +109,8 @@
                 "
               {%- endif -%}
             >
-              {{ piece.header }}
-            </h2>
+              {{ piece.header | i18n }} 
+            </h1>
           {% endif %}
 
           {# Content #}
