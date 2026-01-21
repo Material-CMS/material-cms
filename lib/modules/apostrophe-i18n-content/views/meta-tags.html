@@ -21,18 +21,14 @@
 {% set ogDescription = doc.openGraphDescription | i18nMeta if doc.openGraphDescription else seoDescription %}
 
 {# Translation attributes for API-based updates #}
-{% set seoTitleAttr = doc.seoTitle | translationsAttribute %}
-{% set seoDescriptionAttr = doc.seoDescription | translationsAttribute %}
-{% set ogTitleAttr = doc.openGraphTitle | translationsAttribute %}
-{% set ogDescriptionAttr = doc.openGraphDescription | translationsAttribute %}
 
 {# SEO Meta Tags #}
 {% if seoTitle %}
-  <meta name="title" content="{{ seoTitle }}" {{ seoTitleAttr }}>
+  <meta name="title" content="{{ seoTitle }}">
 {% endif %}
 
 {% if seoDescription %}
-  <meta name="description" content="{{ seoDescription }}" {{ seoDescriptionAttr }}>
+  <meta name="description" content="{{ seoDescription }}">
 {% endif %}
 
 {# Robots Meta Tag #}
@@ -42,11 +38,11 @@
 
 {# Open Graph Tags #}
 {% if ogTitle %}
-  <meta property="og:title" content="{{ ogTitle }}" {{ ogTitleAttr }}>
+  <meta property="og:title" content="{{ ogTitle }}">
 {% endif %}
 
 {% if ogDescription %}
-  <meta property="og:description" content="{{ ogDescription }}" {{ ogDescriptionAttr }}>
+  <meta property="og:description" content="{{ ogDescription }}">
 {% endif %}
 
 {% if doc.openGraphType %}
@@ -97,10 +93,10 @@
 {# Twitter Card #}
 <meta name="twitter:card" content="summary_large_image">
 {% if ogTitle %}
-  <meta name="twitter:title" content="{{ ogTitle }}" {{ ogTitleAttr }}>
+  <meta name="twitter:title" content="{{ ogTitle }}">
 {% endif %}
 {% if ogDescription %}
-  <meta name="twitter:description" content="{{ ogDescription }}" {{ ogDescriptionAttr }}>
+  <meta name="twitter:description" content="{{ ogDescription }}">
 {% endif %}
 {% if doc.openGraphImage and doc.openGraphImage.items and doc.openGraphImage.items[0] %}
   {% set image = doc.openGraphImage.items[0] %}
