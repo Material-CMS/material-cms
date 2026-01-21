@@ -20,8 +20,6 @@
 {% set ogTitle = doc.openGraphTitle | i18nMeta if doc.openGraphTitle else seoTitle %}
 {% set ogDescription = doc.openGraphDescription | i18nMeta if doc.openGraphDescription else seoDescription %}
 
-{# Translation attributes for API-based updates #}
-
 {# SEO Meta Tags #}
 {% if seoTitle %}
   <meta name="title" content="{{ seoTitle }}">
