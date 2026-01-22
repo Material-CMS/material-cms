@@ -81,7 +81,7 @@ Sensitive configuration belongs in `data/local.js` (not committed).
 
 **Rationale**: Quick commands to control the ApostropheCMS development server.
 
-- Start the server with logs: `npm run dev`
+- Start the dev environment (app + chromium): `npm run dev`
 - Hot reload without restarting: `npm run reload`
 - Restart the server: `npm restart`
 - Stop the server: `npm stop`
@@ -159,14 +159,14 @@ http --session=./session.json GET http://localhost:3000/ > admin_home.html
 
 **Rationale**: Automate front‑end inspection, interaction, and debugging via Chrome DevTools Protocol. Output is NDJSON (newline‑delimited JSON), ideal for parsing with `jq`.
 
+**Since `npm run dev` starts a chromium instance this feature is always available**
+
 ### Quick start
 
 ```bash
-# List open pages
-cdp-cli tabs
-
-# open new page at localhost:3000
-cdp-cli new "http://localhost:3000"
+# Extract page titles
+# Chromium launches always with a localhost:3000 new tab
+cdp-cli tabs | jq -r '.title'
 
 # Inspect page content
 cdp-cli snapshot "TEST PAGE" --format dom
@@ -191,9 +191,6 @@ cdp-cli snapshot "TEST PAGE" --format dom
 **Example parsing with `jq`**
 
 ```bash
-# Extract page titles
-cdp-cli tabs | jq -r '.title'
-
 # Filter console errors
 cdp-cli console "TEST PAGE" --verbose | jq -c 'select(.type == "error")'
 
@@ -205,9 +202,106 @@ cdp-cli eval "TEST PAGE" "document.querySelectorAll('*').length" | jq -r '.value
 
 - **Page not found**: Use `cdp-cli tabs` to see current page titles.
 - **No console output**: Ensure `--duration` is set and page has logged messages.
-- **CDP connection refused**: Verify Chromium is running with `--remote-debugging-port=9222`.
 
-**Detailed Readme**: Read `scripts/cdp-cli/cdp-cli.md` for detailed examples and command patterns to for `cdp-cli` in a case of heavy debugging.
+**Detailed Reference**: Read `docs/cdp-cli.md` for detailed examples and command patterns for `cdp-cli` in a case of heavy debugging.
+
+---
+
+## RECURSIVE LANGUAGE MODEL (RLM) INFRASTRUCTURE
+
+**Rationale**: Process arbitrarily long contexts (codebases, documentation, logs) through recursive decomposition, enabling sophisticated analysis beyond token limits.
+
+### Quick Start
+
+1. **Load a context** – any text (file content, log output, documentation):
+   ```javascript
+   // Via MCP tool
+   mcp_rlm_rlm_load_context({
+     context: "Your long text here...",
+     context_id: "my_context"
+   })
+   ```
+
+2. **Get metadata** – understand size and structure:
+   ```javascript
+   mcp_rlm_rlm_get_context_info({ context_id: "my_context" })
+   ```
+
+3. **Decompose** – split into manageable chunks:
+   ```javascript
+   mcp_rlm_rlm_decompose_context({
+     context_id: "my_context",
+     strategy: "by_sections"  // or "fixed_size", "by_lines", "by_paragraphs"
+   })
+   ```
+
+4. **Read specific chunks** – retrieve content by index:
+   ```javascript
+   mcp_rlm_rlm_get_chunks({
+     context_id: "my_context",
+     chunk_indices: [0, 1, 2]
+   })
+   ```
+
+5. **Search** – find patterns with regex:
+   ```javascript
+   mcp_rlm_rlm_search_context({
+     context_id: "my_context",
+     pattern: "error|warning",
+     flags: "gi"
+   })
+   ```
+
+### Use Cases
+
+- **Codebase analysis**: Load entire module directories, decompose by file, search for patterns (e.g., `\$\(` for jQuery usage).
+- **Documentation mining**: Parse `docs/` folder, extract architectural decisions.
+- **Log inspection**: Load server logs, search for errors, decompose by time windows.
+- **Long‑form planning**: Store migration plans, action items, and reference them chunk‑wise.
+
+### Example Workflow: Audit jQuery Usage
+
+```javascript
+// 1. Load all public JavaScript files as a single context
+// 2. Decompose by lines or fixed‑size chunks
+// 3. Search for pattern `\$\(` or `jQuery`
+// 4. Retrieve matching chunks with line numbers
+// 5. Produce a report of files and lines to fix
+```
+
+### Key Tools
+
+| Tool | Purpose |
+|------|---------|
+| `rlm_load_context` | Load text content into the RLM session |
+| `rlm_get_context_info` | Get metadata (length, line count, structure) |
+| `rlm_decompose_context` | Split context into chunks using various strategies |
+| `rlm_get_chunks` | Retrieve content of specific chunks |
+| `rlm_search_context` | Search context using regex patterns |
+| `rlm_find_all` | Find all occurrences of a substring |
+| `rlm_execute_code` | Execute JavaScript for custom data manipulation |
+
+### Integration with Existing Toolkit
+
+- **Combine with `cdp‑cli`**: Load browser console logs as context, search for errors.
+- **Combine with `http`**: Fetch HTML pages, load as context, extract patterns.
+- **Combine with `grep`/`jq`**: Pipe command outputs into RLM for deeper analysis.
+
+### Performance Notes
+
+- **Chunk size**: Default 10,000 characters with 200‑character overlap.
+- **Strategies**: Choose based on content type:
+  - `by_sections` for markdown with headers
+  - `by_lines` for logs
+  - `fixed_size` for uniform text
+  - `by_paragraphs` for prose
+- **Cache**: LRU caching of chunks for repeated access.
+
+### Troubleshooting
+
+- **Context not found**: Verify `context_id` matches loaded context.
+- **No matches in search**: Check regex flags (`gi` for global case‑insensitive).
+- **Large contexts**: Use `strategy: "fixed_size"` with `chunk_size: 50000` for very long texts.
 
 ---
 
@@ -224,7 +318,7 @@ cdp-cli eval "TEST PAGE" "document.querySelectorAll('*').length" | jq -r '.value
 
 ## SEARCH THE DOCS TO CONNECT THE MISSING DOTS
 
-- `Apostrophe CMS v2 Documentation` – A complete reference for ApostropheCMS v2 development.
+- `docs/apostrophe-v2-docs` – A complete reference for ApostropheCMS v2 development.
 - `node_modules/apostrophe/lib` - For references of the installed apostrophe v2.227.11 package.
 - `docs/material-cms-docs`- References to custom Material CMS modules like `i18n`, `apostrophe-markdown` and `ajax-utils.js`.
 

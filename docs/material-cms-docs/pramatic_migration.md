@@ -2,7 +2,7 @@
 
 ## Guiding Principles
 
-1. **No massive breaking changes** – each step must keep the site fully functional.
+1. **No massive breaking changes** – each step should not affect large parts of the rest of the site
 2. **Fork useful Apostrophe core modules** – copy and trim rather than rewrite from scratch.
 3. **Replace jQuery with vanilla JS** – continue the “lean frontend” initiative to its conclusion.
 4. **Adopt lighter alternatives** where they provide clear benefits without disproportionate effort.

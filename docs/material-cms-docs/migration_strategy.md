@@ -47,7 +47,7 @@ Material CMS is built on Apostrophe CMS v2, which is near end‑of‑life. The c
 
 ## 4. Proposed Phases
 
-### Phase 1: Extract Utilities and Database Layer (3–4 weeks)
+### Phase 1: Extract Utilities and Database Layer
 - **Goal**: Replace `self.apos.utils` and `self.apos.db` with our own implementations.
 - **Actions**:
   1. Create `@material‑cms/utils` package with `log`, `generateId`, `http.get/post`, `dom.ready`, `emit`.
@@ -56,7 +56,7 @@ Material CMS is built on Apostrophe CMS v2, which is near end‑of‑life. The c
   4. Update `ajax‑utils.js` to use new `http` module instead of `apos.utils.get`.
 - **Risk**: Low – utilities are stateless and can be swapped gradually.
 
-### Phase 2: Replace Template Engine Dependencies (2–3 weeks)
+### Phase 2: Replace Template Engine Dependencies
 - **Goal**: Remove `self.apos.templates` dependency.
 - **Actions**:
   1. Extract template filters (`i18n`, `i18nMeta`, `markdown`, `i18nMarkdown`) as standalone Nunjucks extensions.
@@ -65,7 +65,7 @@ Material CMS is built on Apostrophe CMS v2, which is near end‑of‑life. The c
   4. Update all widget templates to use new filter syntax (no functional change).
 - **Risk**: Medium – template rendering is pervasive; need to ensure parity.
 
-### Phase 3: Build Lightweight Widget System (4–6 weeks)
+### Phase 3: Build Lightweight Widget System
 - **Goal**: Replace `apostrophe‑widgets` and `apostrophe‑pieces` base classes.
 - **Actions**:
   1. Design a widget registry that:
@@ -77,7 +77,7 @@ Material CMS is built on Apostrophe CMS v2, which is near end‑of‑life. The c
   4. Gradually migrate remaining widgets.
 - **Risk**: High – core content rendering; requires thorough testing.
 
-### Phase 4: Replace Asset Pipeline (2–3 weeks)
+### Phase 4: Replace Asset Pipeline
 - **Goal**: Eliminate `self.pushAsset` and `when` conditions.
 - **Actions**:
   1. Implement a build‑time asset manifest (Webpack/Vite) that outputs `manifest.json`.
@@ -86,7 +86,7 @@ Material CMS is built on Apostrophe CMS v2, which is near end‑of‑life. The c
   4. Use conditional loading based on `lean` vs `user` via server‑side template logic.
 - **Risk**: Medium – frontend asset loading must remain performant.
 
-### Phase 5: Remove Apostrophe Module System (3–4 weeks)
+### Phase 5: Remove Apostrophe Module System
 - **Goal**: Replace moog with a simple class‑based registry.
 - **Actions**:
   1. Write a lightweight module loader that calls `construct`/`afterConstruct` similarly to Apostrophe.
@@ -95,7 +95,7 @@ Material CMS is built on Apostrophe CMS v2, which is near end‑of‑life. The c
   4. Remove Apostrophe dependency from `package.json`.
 - **Risk**: High – module lifecycle intricacies may cause subtle bugs.
 
-### Phase 6: Final Cleanup and Performance Tuning (2 weeks)
+### Phase 6: Final Cleanup and Performance Tuning
 - **Goal**: Remove all Apostrophe code, optimize performance.
 - **Actions**:
   1. Delete `node_modules/apostrophe` and all Apostrophe‑related modules.

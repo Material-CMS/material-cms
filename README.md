@@ -80,22 +80,12 @@ Modify the file accoring to your wishes, remove modules that you don't need
 
 ## Development
 
-### Nunjucks Templating
-
-![Alt Text](https://tenor.com/view/black-ninja-flipping-out-gif-15992169.gif)
-
-Material CMS uses Nunjucks, a powerful templating engine for JavaScript. It's notable for its rich feature set, including template inheritance, macros, and various logical constructs such as loops and conditionals. 
-
-Check [mozilla.github.io/nunjucks](https://mozilla.github.io/nunjucks/templating.html) for more references.
-
-----
-
 ### Front end JS & CSS
 
 Front end javascript and css which are not loaded by specific widgets trough `apos.utils.widgetPlayers` is loaded through the `apostrophe-assets` module to get bundled and minified in production.
 
 ```shell
-# Current apostrophe asset files
+# Current asset files
 lib/modules/apostrophe-assets/public
 ├── css
 │   ├── anon-overrides.less
@@ -173,39 +163,13 @@ The [Material CMS Documentation](docs/material-cms-docs) provides references for
 
 ----
 
-### Apostrophe CMS v2 Documentation
+### Nunjucks Templating
 
-The [Apostrophe CMS v2 Documentation](docs/apostrophe-v2-docs) provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation.
+![Alt Text](https://tenor.com/view/black-ninja-flipping-out-gif-15992169.gif)
 
-Learning Progression:
-1. Getting Started - Environment setup & basic site creation
-2. Core Concepts - Fundamental Apostrophe features & tools
-3. Advanced Development - Deep dive into advanced features
-4. DevOps - Production deployment & configuration
-Reference Materials:
-  - Module Reference - Complete coverage of Apostrophe modules
-  - Schema Field Types - 22 different field types with detailed documentation
-  - Schema Field Properties - Configuration options for fields
-  - Core API - Server and browser-side apos object documentation
-  - Glossary - Terminology and concepts
-  Practical Guides:
-  - HOWTOs - 18 practical guides covering common tasks and solutions
-  - Topics range from Docker deployment to custom field types
-  Key Features Documented
-  Field System:
-  - 22 field types (area, array, attachment, boolean, etc.)
-  - Comprehensive property system (choices, options, sortify, etc.)
-  - Relationship management (joinByOne, joinByArray)
-  Module System:
-  - 10+ core modules documented
-  - Browser and server-side APIs
-  - Template and asset management
-  Development Tools:
-  - Custom schema field creation
-  - Admin bar customization
-  - Form building capabilities
-  - Session management (Redis)
-This documentation provides a complete reference for ApostropheCMS v2 development, from beginner tutorials to advanced API documentation.
+Material CMS uses Nunjucks, a powerful templating engine for JavaScript. It's notable for its rich feature set, including template inheritance, macros, and various logical constructs such as loops and conditionals. 
+
+Check [mozilla.github.io/nunjucks](https://mozilla.github.io/nunjucks/templating.html) for more references.
 
 ----
 
