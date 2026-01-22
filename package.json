@@ -8,9 +8,8 @@
     "restart": "npx pm2 restart app",
     "reload": "npx pm2 reload app",
     "stop": "npx pm2 stop app",
-    "dev": "npx pm2 start app.js --log data/temp/dev.log",
-    "chromium": "npx pm2 start deploy/chromium.config.js",
     "prod": "npx pm2 start deploy/prod.config.js",
+    "dev": "npx pm2 start deploy/dev.config.js",
     "dev:docker:up": "docker compose -f ./docker-compose.dev.yml up -d --wait",
     "dev:docker:down": "docker compose -f ./docker-compose.dev.yml down"
   },
